@@ -1,0 +1,79 @@
+/*
+    Document   : pop-up
+    Created on : Aug 31, 2012, 10:07:36 AM
+    Author     : Robbyl
+    Description: styles pop-ups
+*/
+
+.pop-up-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255, 0.7);
+    z-index: 70;
+}
+
+.pop-up-form, .pop-up-receipt {
+    padding: 20px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 25px rgba(0,0,0, 0.3);
+    border-radius: 3px;
+}
+
+.pop-up-form{
+    width: 600px;
+    height: 500px;
+}
+
+
+.form-body {
+    height: 365px;
+    overflow: auto;
+}
+
+.form-footer {
+    clear: both;
+}
+
+.close {
+    float: right;
+    width: 16px;
+    height: 16px;
+    background-image: url(../images/close_nornal.png);
+}
+.close:hover {
+    background-image: url(../images/close_hover.png);
+}
+
+.pop-up-receipt {
+    width: 900px;
+}
+
+.receipt-header {
+    width: 900px;
+    height: 65px;
+}
+.receipt-body {
+    width: 900px;
+    *height: 200px;
+}
+
+.receipt-table {
+
+}
+
+.receipt-table td {
+    vertical-align: top;
+    padding: 0 5px;
+}
+
+@media-print {
+    .pop-up-receipt {
+    zoom: 80%;
+}
+}
+
