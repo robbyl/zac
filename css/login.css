@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "Segoe UI Light";
+    src: url(fonts/segoeuil.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+body {
+    font-family: "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif" !important;
+    background: #ffffff;
+    font-weight: normal;
+    color: #272727;
+}
+
+.login-wrapper {
+    width: 400px;
+    height: 320px;
+    background: #fff;
+    font-size: 20px;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0px 1px 5px rgba(0,0,0, 0.15);
+}
+
+.main-wrapper {
+    width: 402px;
+    margin: 120px auto 0 auto;
+}
+
+.login-header {
+	height: 50px;
+    font-size: 30px;
+	border: 1px solid #fff;
+	background: url(../images/softbill_logo.png) no-repeat 20px center;
+	background-color: #ffc28b;
+	margin-bottom: 55px;
+}
+
+.text-box {
+    height: 25px;
+    padding: 0 5px;
+    border: 1px solid #d0d0d0;
+    outline: none;
+    font-size: 16px;
+}
+
+.login-table {
+    margin: 40px 25px 0 25px;
+}
+
+.login {
+    width: 195px;
+}
+
+.login-footer {
+    width: 400px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #a0a0a0;
+}
+
+.button {
+    padding: 5px 10px;
+    border: 1px solid #d0d0d0;
+    background-color: #efefef;
+    box-shadow: 0px 0 3px rgba(0,0,0, 0.1) inset;
+    cursor: pointer;
+    color: #606060;
+}
+
+.link {
+    font-size: 14px;
+}
+
+.link:hover {
+    text-decoration: none;
+}
+
+.message-outer {
+    background: #ffffe0;
+    border: 1px #e5d553 solid;
+    padding: 10px;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    border-radius: 2px;
+}
+
+.error-outer {
+    background: #ffebe8;
+    border: 1px #cd0707 solid;
+    padding: 10px;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    border-radius: 2px;
+}
