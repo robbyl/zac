@@ -74,6 +74,7 @@ $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
                         <table width="" border="0" cellpadding="5">
                             <tr>
                                 <td width="170" bgcolor="#f1f1e1">Tariff Name</td>
+                                <td width="100" colspan="4" align="center" bgcolor="#f1f1e1">Consumption Range</td>
                                 <td width="100" align="right" bgcolor="#f1f1e1">Metered Rate</td>
                                 <td width="100" align="right" bgcolor="#f1f1e1">Flat Rate</td>
                             </tr>
@@ -84,6 +85,16 @@ $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
                                 <tr>
                                 <input type="hidden" name="wt_id[]" value="<?php echo $p_row['wt_id'] ?>">
                                     <td width="170"><?php echo $p_row['service'] ?></td>
+                                    <td>From</td>
+                                    <td align="right">
+                                        <input name="wt_rate[]" value="<?php echo $p_row['wt_rate'] ?>"
+                                               type="number" min="0" step="0.01" class="number" style="width: 100px;" >
+                                    </td>
+                                    <td>To</td>
+                                    <td align="right">
+                                        <input name="wt_rate[]" value="<?php echo $p_row['wt_rate'] ?>"
+                                               type="number" min="0" step="0.01" class="number" style="width: 100px;" >
+                                    </td>
                                     <td align="right">
                                         <input name="wt_rate[]" value="<?php echo $p_row['wt_rate'] ?>"
                                                type="number" min="0" step="0.01" class="number" style="width: 100px;" >
