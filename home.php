@@ -91,7 +91,7 @@ session_commit();
                 </a>
                 <a href="modules/invoice/invoices.php" class="tooltip fltlft" title="View,generate... invoices" >
                     <div class="home-icon invoice-icon">
-                        <div class="icon-label">Invoice</div>
+                        <div class="icon-label">Sales</div>
                     </div>
                 </a>
                 <a href="modules/paypoint/paypoint.php" class="tooltip fltlft" title="Accept payments.., provide receipts" >

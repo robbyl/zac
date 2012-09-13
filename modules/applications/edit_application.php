@@ -68,7 +68,7 @@
                         while (list($key, $val) = each($_POST['checkbox'])) {
                             // Getting applicantion data form the database
 
-                            $query_appln = "SELECT appln_id, appnt.appnt_id, appln_type, appln_date, engeneer_appr, appnt.appnt_id,
+                            $query_appln = "SELECT appln_id, appln_type, appln_date, engeneer_appr, appnt.appnt_id,
                                                    appnt_fullname, appnt.appnt_type_id, approved_date, inspected_by,
                                                    premise_nature, surveyed_date, service_nature_id, occupants,
                                                    appnt_tel, appnt_post_addr, appnt_phy_addr, block_no, plot_no,
@@ -87,8 +87,7 @@
 
                             <fieldset style="float: left">
                                 <legend>Applicant Details</legend>
-                                <input type="hidden" name="appln_id[]" value="<?php echo $val ?>" id="appln_id">
-                                <input type="hidden" name="appnt_id[]" value="<?php echo $row['appnt_id'] ?>" id="appnt_id">
+                                <input type="hidden" name="appln_id" value="<?php echo $val ?>" id="appln_id">
                                 <table width="" border="0" cellpadding="5">
                                     <tr>
                                         <td width="170">Applicant Type</td>
