@@ -2,19 +2,19 @@
 require '../../includes/session_validator.php';
 require '../../config/config.php';
 
-$query_p_tariff = "SELECT service, wt_rate, wt_flat_rate, wt_id
-                   FROM service_nature s
-              LEFT JOIN water_tariff wt
-                     ON s.service_nature_id = wt.service_nature_id
-               ORDER BY service ASC";
+$query_p_tariff = "SELECT service, wt_rate, wt_flat_rate, wt_id, wt_from, wt_to
+                     FROM service_nature s
+                LEFT JOIN water_tariff wt
+                       ON s.service_nature_id = wt.service_nature_id
+                 ORDER BY service ASC";
 
 $result_p_tariff = mysql_query($query_p_tariff) or die(mysql_error());
 
 $query_s_tariff = "SELECT service, s_flat_rate, st_id
-                   FROM service_nature s
-              LEFT JOIN sewer_tariff st
-                     ON s.service_nature_id = st.service_nature_id
-               ORDER BY service ASC";
+                     FROM service_nature s
+                LEFT JOIN sewer_tariff st
+                       ON s.service_nature_id = st.service_nature_id
+                 ORDER BY service ASC";
 
 $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
 ?>
@@ -84,25 +84,25 @@ $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
 
                                 <tr>
                                 <input type="hidden" name="wt_id[]" value="<?php echo $p_row['wt_id'] ?>">
-                                    <td width="170"><?php echo $p_row['service'] ?></td>
-                                    <td>From</td>
-                                    <td align="right">
-                                        <input name="wt_rate[]" value="<?php echo $p_row['wt_rate'] ?>"
-                                               type="number" min="0" step="0.01" class="number" style="width: 100px;" >
-                                    </td>
-                                    <td>To</td>
-                                    <td align="right">
-                                        <input name="wt_rate[]" value="<?php echo $p_row['wt_rate'] ?>"
-                                               type="number" min="0" step="0.01" class="number" style="width: 100px;" >
-                                    </td>
-                                    <td align="right">
-                                        <input name="wt_rate[]" value="<?php echo $p_row['wt_rate'] ?>"
-                                               type="number" min="0" step="0.01" class="number" style="width: 100px;" >
-                                    </td>
-                                    <td align="right">
-                                        <input name="wt_flat_rate[]" value="<?php echo $p_row['wt_flat_rate'] ?>"
-                                               type="number" min="0" step="0.01" class="number" style="width: 150px;" >
-                                    </td>
+                                <td width="170"><?php echo $p_row['service'] ?></td>
+                                <td>From</td>
+                                <td align="right">
+                                    <input name="wt_from[]" value="<?php echo $p_row['wt_from'] ?>"
+                                           type="number" min="0" class="number" style="width: 100px;" >
+                                </td>
+                                <td>To</td>
+                                <td align="right">
+                                    <input name="wt_to[]" value="<?php echo $p_row['wt_to'] ?>"
+                                           type="number" min="0" class="number" style="width: 100px;" >
+                                </td>
+                                <td align="right">
+                                    <input name="wt_rate[]" value="<?php echo $p_row['wt_rate'] ?>"
+                                           type="number" min="0" step="0.01" class="number" style="width: 100px;" >
+                                </td>
+                                <td align="right">
+                                    <input name="wt_flat_rate[]" value="<?php echo $p_row['wt_flat_rate'] ?>"
+                                           type="number" min="0" step="0.01" class="number" style="width: 150px;" >
+                                </td>
                                 </tr>
                             <?php } ?>
                         </table>
@@ -119,12 +119,12 @@ $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
                                 ?>
 
                                 <tr>
-                                    <input type="hidden" name="st_id[]" value="<?php echo $s_row['st_id'] ?>">
-                                    <td><?php echo $s_row['service'] ?></td>
-                                    <td align="right">
-                                        <input name="s_flat_rate[]" value="<?php echo $s_row['s_flat_rate'] ?>"
-                                               type="number" min="0" step="0.01" class="number" style="width: 150px;" >
-                                    </td>
+                                <input type="hidden" name="st_id[]" value="<?php echo $s_row['st_id'] ?>">
+                                <td><?php echo $s_row['service'] ?></td>
+                                <td align="right">
+                                    <input name="s_flat_rate[]" value="<?php echo $s_row['s_flat_rate'] ?>"
+                                           type="number" min="0" step="0.01" class="number" style="width: 150px;" >
+                                </td>
                                 </tr>
                             <?php } ?>
                         </table>

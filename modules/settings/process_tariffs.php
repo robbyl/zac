@@ -21,6 +21,8 @@ require '../../functions/general_functions.php';
 
 $wt_id = clean_arr($_POST['wt_id']);
 $st_id = clean_arr($_POST['st_id']);
+$from = clean_arr($_POST['wt_from']);
+$to = clean_arr($_POST['wt_to']);
 $wt_rate = clean_arr($_POST['wt_rate']);
 $wt_flat_rate = clean_arr($_POST['wt_flat_rate']);
 $s_flat_rate = clean_arr($_POST['s_flat_rate']);
@@ -31,6 +33,8 @@ for ($i = 0; $i < $num_rate; $i++) {
 
     $query_water_tariff = "UPDATE water_tariff
                               SET wt_rate = '$wt_rate[$i]',
+                                  wt_from = '$from[$i]',
+                                  wt_to = '$to[$i]',
                                   wt_flat_rate = '$wt_flat_rate[$i]'
                             WHERE wt_id = '$wt_id[$i]'";
 
