@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 11, 2012 at 12:08 AM
+-- Generation Time: Sep 14, 2012 at 02:14 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -414,11 +414,11 @@ CREATE TABLE IF NOT EXISTS `sewer_tariff` (
 
 INSERT INTO `sewer_tariff` (`st_id`, `service_nature_id`, `s_flat_rate`) VALUES
 (1, 1, 660.00),
-(2, 2, 660.00),
+(2, 2, 659.97),
 (3, 3, 660.00),
 (4, 4, 660.00),
 (5, 5, 660.00),
-(6, 6, 660.00),
+(6, 6, 659.99),
 (7, 7, 660.00),
 (8, 8, 660.00);
 
@@ -492,6 +492,8 @@ INSERT INTO `users` (`user_id`, `user_full_name`, `email`, `username`, `password
 CREATE TABLE IF NOT EXISTS `water_tariff` (
   `wt_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_nature_id` int(11) NOT NULL,
+  `wt_from` int(11) NOT NULL,
+  `wt_to` int(11) NOT NULL,
   `wt_rate` decimal(10,2) NOT NULL,
   `wt_flat_rate` decimal(10,2) NOT NULL,
   KEY `wt_id` (`wt_id`),
@@ -502,15 +504,15 @@ CREATE TABLE IF NOT EXISTS `water_tariff` (
 -- Dumping data for table `water_tariff`
 --
 
-INSERT INTO `water_tariff` (`wt_id`, `service_nature_id`, `wt_rate`, `wt_flat_rate`) VALUES
-(1, 1, 300.00, 8000.00),
-(2, 2, 200.00, 7500.00),
-(3, 3, 200.00, 6000.00),
-(4, 4, 200.00, 4000.00),
-(5, 5, 460.00, 14400.00),
-(6, 6, 630.00, 14000.00),
-(7, 7, 0.00, 0.00),
-(8, 8, 400.00, 7000.00);
+INSERT INTO `water_tariff` (`wt_id`, `service_nature_id`, `wt_from`, `wt_to`, `wt_rate`, `wt_flat_rate`) VALUES
+(1, 1, 0, 60, 300.00, 8000.00),
+(2, 2, 0, 30, 200.00, 7500.00),
+(3, 3, 0, 40, 200.00, 6000.00),
+(4, 4, 0, 20, 200.00, 4000.00),
+(5, 5, 0, 10, 460.00, 14400.00),
+(6, 6, 0, 50, 630.00, 1399.95),
+(7, 7, 0, 80, 340.00, 8000.00),
+(8, 8, 0, 70, 400.00, 7000.00);
 
 --
 -- Constraints for dumped tables
