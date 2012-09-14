@@ -84,10 +84,11 @@
                             $row = mysql_fetch_array($result_appln);
                             ?>
                             <h3><?php echo $row['appnt_fullname'] ?> Application Details</h3>
+                            <input type="hidden" name="appln_id" value="<?php echo $val ?>" id="appln_id">
 
                             <fieldset style="float: left">
                                 <legend>Applicant Details</legend>
-                                <input type="hidden" name="appln_id" value="<?php echo $val ?>" id="appln_id">
+                                <input type="hidden" name="appnt_id" value="<?php echo $val ?>" id="appnt_id">
                                 <table width="" border="0" cellpadding="5">
                                     <tr>
                                         <td width="170">Applicant Type</td>

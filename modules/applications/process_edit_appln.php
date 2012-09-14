@@ -21,6 +21,7 @@ require '../../functions/general_functions.php';
 
 $appln_id = $_POST['appln_id'];
 $appnt_id = $_POST['appnt_id'];
+$ba_id = $_POST['ba_id'];
 $appln_date = clean_arr($_POST['appln_date']);
 $appln_type = clean_arr($_POST['appln_type']);
 $surveyed_date = clean_arr($_POST['surveyed_date']);
@@ -39,14 +40,14 @@ $block_no = clean_arr($_POST['block_no']);
 $plot_no = clean_arr($_POST['plot_no']);
 $living_area = clean_arr($_POST['living_area']);
 $living_town = clean_arr($_POST['living_town']);
-$tech_area = clean_arr($_POST['tech_area']);
-$tech_zone = clean_arr($_POST['tech_zone']);
-
+$billing_area = clean_arr($_POST['billing_area']);
 $appln_no = count($appln_id);
 
 for ($i = 0; $i < $appln_no; $i++) {
     $query_appln = "UPDATE application
-                       SET appln_date = '$appln_date[$i]',
+                       SET 
+                 appln_id = '$appln_id[$i]]',
+                        appln_date = '$appln_date[$i]',
                            appln_type = '$appln_type[$i]',
                            surveyed_date = '$surveyed_date[$i]',
                            engeneer_appr = '$engeneer_appr[$i]',
@@ -69,9 +70,12 @@ for ($i = 0; $i < $appln_no; $i++) {
                            plot_no = '$plot_no[$i]',
                            living_area = '$living_area[$i]',
                            living_town = '$living_town[$i]',
-                           tech_area_id = '$tech_area[$i]',
-                           tech_zone_id = '$tech_zone[$i]'
                      WHERE appnt_id = $appnt_id[$i]";
+    
+    $query_billing_area = "UPDATE billing_area
+                            SET billing_area = '$billing_area[$i]]'
+                      WHERE ba_id = $ba_id[$i]";
+                        
 
     $result_applnt = mysql_query($query_appnt) or die(mysql_error());
 }
