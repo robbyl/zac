@@ -23,8 +23,8 @@ require '../../config/config.php';
 $billing_month = clean($_POST['billing_month']);
 
 $query_readings = "SELECT premise_status, appln_type, consumption, appnt_fullname,
-                          billing_date, service, wt_rate, wt_flat_rate, cust.cust_id,
-                          s_flat_rate, acc_id
+                          billing_date, service, wt_from, wt_to, wt_rate, wt_flat_rate,
+                          cust.cust_id, s_flat_rate, acc_id
                      FROM customer cust
                 LEFT JOIN application appln
                        ON cust.appln_id = appln.appln_id
