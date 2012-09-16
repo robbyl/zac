@@ -66,7 +66,7 @@ function printPage(id, css){
     html+= document.getElementById(id).innerHTML;
     html+="</body></html>";
 
-    var printWin = window.open('','','left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+    var printWin = window.open('','','left=0,top=0,width=1060,height=900,toolbar=0,scrollbars=0,status=0');
     printWin.document.write(html);
     printWin.document.close();
     printWin.focus();
