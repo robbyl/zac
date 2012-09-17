@@ -54,7 +54,7 @@
                 // Displaying message and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Edit Application Details</h1>
+                <h1>Edit Customer Details</h1>
                 <div class="hr-line"></div>
                 <form action="process_edit_appln.php" method="post">
                     <?php
@@ -83,17 +83,18 @@
                             $result_appln = mysql_query($query_appln) or die(mysql_error());
                             $row = mysql_fetch_array($result_appln);
                             ?>
-                            <h3><?php echo $row['appnt_fullname'] ?> Application Details</h3>
+                            <h3><?php echo $row['appnt_fullname'] ?> Customer Details</h3>
 
                             <fieldset style="float: left">
-                                <legend>Applicant Details</legend>
-                                <input type="hidden" name="appln_id[]" value="<?php echo $val ?>" id="appln_id">
-                                <input type="hidden" name="appnt_id[]" value="<?php echo $row['appnt_id'] ?>" id="appnt_id">
+                                <legend>Customer Details</legend>
+                                <input type="hidden" name="cust_id[]" value="<?php echo $val ?>" id="cust_id">
+                                
+                                
                                 <table width="" border="0" cellpadding="5">
                                     <tr>
-                                        <td width="170">Applicant Type</td>
+                                        <td width="170">Customer  Type</td>
                                         <td><select name="appnt_type[]" id="appnt_type" required class="select">
-                                                <option value="">--select Applicant type--</option>
+                                                <option value="">--select Customer type--</option>
                                                 <?php
                                                 $result_type = mysql_query("SELECT * FROM appnt_type ORDER BY appnt_types ASC") or die(mysql_error());
                                                 while ($row_type = mysql_fetch_array($result_type)) {
@@ -159,21 +160,29 @@
                                                 ?>
                                             </select></td>
                                     </tr>
+                                    <td width="170">Customer  status</td>
+                                        <td><select name="appnt_type[]" id="appnt_type" required class="select">
+                                                <option value="">--select Customer status--</option>
+                                                <?php
+                                                $result_type = mysql_query("SELECT * FROM appnt_type ORDER BY appnt_types ASC") or die(mysql_error());
+                                                while ($row_type = mysql_fetch_array($result_type)) {
+                                                    ?>
+                                                    <option value="<?php echo $row_type['appnt_type_id'] ?>" <?php if ($row_type['appnt_type_id'] === $row['appnt_type_id']) echo 'selected'; ?> >
+                                                        <?php echo $row_type['appnt_types'] ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select></td>
+                                    </tr>
 
                                 </table>
                             </fieldset>
 
                             <fieldset style="float: left">
-                                <legend>Application Details</legend>
+                                <legend>Service Details</legend>
                                 <table width="" border="0" cellpadding="5">
 
-                                    <tr>
-                                        <td width="170">Application Date</td>
-                                        <td>
-                                            <input type="date" name="appln_date[]" max="<?php echo date('Y-m-d'); ?>"
-                                                   required autocomplete="off" class="text" value="<?php echo $row['appln_date'] ?>" style="text-align: left">
-                                        </td>
-                                    </tr>
+                                    
                                     <tr>
                                         <td width="170">Application Type</td>
                                         <td>
@@ -182,29 +191,13 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td width="170">Inspected By</td>
-                                        <td><input type="text" name="inspected_by[]" value="<?php echo $row['inspected_by'] ?>" required size="255" class="text"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td width="170">Surveyed Date</td>
-                                        <td><input type="date" name="surveyed_date[]" value="<?php echo $row['surveyed_date'] ?>" max="<?php echo date('Y-m-d'); ?>"
-                                                   required autocomplete="off" class="text" style="text-align: left"></td>
-                                    </tr>
-                                    <tr>
-                                        <td width="170">Engineer Approval</td>
-                                        <td>
-                                            <label><input type="radio" <?php if ($row['engeneer_appr'] === "Yes") echo 'checked' ?> name="engeneer_appr[]" value="Yes">Yes</label>&nbsp;&nbsp;
-                                            <label><input type="radio" <?php if ($row['engeneer_appr'] === "No") echo 'checked' ?> name="engeneer_appr[]" value="No">No</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="170">Approved Date</td>
-                                        <td><input type="date" name="approved_date[]" value="<?php echo $row['approved_date'] ?>" max="<?php echo date('Y-m-d'); ?>"
-                                                   required autocomplete="off" class="text" style="text-align: left"></td>
-                                    </tr>
-
+                                    
+                                    
+                                   
+                                       
+                                        
+                                    
+                                    
                                     <tr>
                                         <td width="170">Premises Nature</td>
                                         <td>
@@ -239,8 +232,8 @@
                     </form>
                     <?php
                 } else {
-                    info('error', 'Please select appln first');
-                    header('Location: applications.php');
+                    info('error', 'Please select customer first');
+                    header('Location: customers.php');
                 }
                 ?>
                 <!-- end .content --></div>

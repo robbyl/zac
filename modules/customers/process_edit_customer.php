@@ -1,7 +1,7 @@
 <?php
 
 /*
- * 2012 Flight
+ * 2012 softbill
  *
  * NOTICE OF LICENSE
  *
@@ -12,49 +12,61 @@
  * Do not edit or add to this file.
  *
  *  @author Robert Londo <robbyl@ovi.com>
- *  @copyright  2012 Flight
+ *  @copyright  2012 softbill
  *  @version  Release: 1.0.0
  */
-require '../../includes/session_validator.php';
+
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
-// Getting form data
-$customer_id = $_POST['cust_id'];
-$user_full_name = $_POST['fullname'];
-$email = $_POST['email'];
-$role = $_POST['role'];
+/* @var $appln_id type */
+$cust_id = $_POST['cust_id'];
+$appln_id = $_POST['appln_id'];
+$appnt_id = $_POST['appnt_id'];
+$ba_id = $_POST['ba_id'];
+$cust_name = $_POST[appnt_full_name];
+$service_type  = clean_arr($_POST['service']);
+$premise_status = clean_arr($_POST['premise_status']);
+$assigned_met_no = clean_arr($_POST['met_number']);
+$pay_center = clean_arr($_POST['pay_center']);
+$added_date = clean_arr($_POST['added_date']);
 
-$num_id = count($cust_id_id);
 
-for ($i = 0; $i < $num_id; $i++) {
+$cust_no = count($cust_id);
 
-    $cust_id[$i] = $user_id[$i];
-    echo  $customer_id;
-    exit;
-    $user_full_name[$i] = $user_full_name[$i];
-    $email[$i] = $email[$i];
-    $role[$i] = $role[$i];
-
-    // Inserting form data to the database
+for ($i = 0; $i < $cust_no; $i++) {
     $query_customer = "UPDATE customer
-                      SET user_full_name = '$user_full_name[$i]',
-                          email = '$email[$i]', role = '$role[$i]'
-                    WHERE user_id = '$user_id[$i]' ";
+                       SET cust_id = '$cust_id[$i]]',
+                           added_date = '$added_date[$i]',
+                           premise_status = '$premise_status[$i]',
+                           
+                     WHERE cust_id = '$cust_id[$i]'";
 
-    $result_user = mysql_query($query_customer) or die(mysql_error());
+    $result_appln = mysql_query($query_appln) or die(mysql_error());
+
+    $query_appnt = "UPDATE applicant
+                       SET appnt_type_id = '$appnt_type[$i]',
+                           appnt_fullname = '$appnt_fullname[$i]',
+                           occupants = '$occupants[$i]',
+                           appnt_tel = '$appnt_tel[$i]',
+                           appnt_post_addr = '$appnt_post_addr[$i]',
+                           appnt_phy_addr = '$appnt_phy_addr[$i]',
+                           block_no = '$block_no[$i]',
+                           plot_no = '$plot_no[$i]',
+                           living_area = '$living_area[$i]',
+                           living_town = '$living_town[$i]',
+                           ba_id = '$ba_id[$i]'
+                     WHERE appnt_id = '$appnt_id[$i]'";
+    $result_appnt = mysql_query($query_appnt) or die(mysql_error());
 }
 
+if ($result_appnt && $result_appln && $result_appnt) {
 
-if ($result_customer) {
-
-    // Showing success message
     info('message', 'Updated successfully!');
     header('Location: customers.php');
 } else {
 
-    // Showing error message
-    info('error', 'Cannot update. Please try again!');
+    info('error', 'Cannot save, Please try again.');
     header('Location: customers.php');
 }
 ?>

@@ -72,10 +72,12 @@
                                                    appnt_fullname, appnt.appnt_type_id, approved_date, inspected_by,
                                                    premise_nature, surveyed_date, service_nature_id, occupants,
                                                    appnt_tel, appnt_post_addr, appnt_phy_addr, block_no, plot_no,
-                                                   living_area, living_town, ba_id
+                                                   living_area, living_town,  billing_areas, ba.ba_id
                                               FROM application appln
                                          LEFT JOIN applicant appnt
-                                                ON appln.appnt_id = appnt.appnt_id
+                                              ON appln.appnt_id = appnt.appnt_id
+                                          LEFT JOIN billing_area ba
+                                              ON ba.ba_id = appnt.ba_id
                                          LEFT JOIN appnt_type apnty
                                                 ON appnt.appnt_type_id = apnty.appnt_type_id
                                              WHERE appln_id = '$val'";
@@ -84,7 +86,8 @@
                             $row = mysql_fetch_array($result_appln);
                             ?>
                             <h3><?php echo $row['appnt_fullname'] ?> Application Details</h3>
-                            <input type="hidden" name="appln_id" value="<?php echo $val ?>" id="appln_id">
+                            <input type="hidden" name="appln_id[]" value="<?php echo $val ?>" id="appln_id">
+                            <input type="hidden" name="ba_id[]" value="<?php echo $row['ba_id'] ?>" id="ba_id">
 
                             <fieldset style="float: left">
                                 <legend>Applicant Details</legend>
@@ -144,7 +147,7 @@
 
                                     <tr>
                                         <td width="170">Billing Area/Zone</td>
-                                        <td><select name="billing_area" class="select" required>
+                                        <td><select name="billing_area[]" class="select" required>
                                                 <option value="">--select technical area/zone--</option>
                                                 <?php
                                                 $result = mysql_query("SELECT * FROM billing_area ORDER BY billing_areas ASC") or die(mysql_error());

@@ -8,7 +8,7 @@ ob_start();
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | APPLICATIONS</title>
+        <title>SOFTBILL | CUSTOMERS</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/data_table.css" rel="stylesheet" type="text/css">
         <link href="../../css/jquery.ui.theme.css" rel="stylesheet" type="text/css">

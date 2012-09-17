@@ -40,14 +40,13 @@ $block_no = clean_arr($_POST['block_no']);
 $plot_no = clean_arr($_POST['plot_no']);
 $living_area = clean_arr($_POST['living_area']);
 $living_town = clean_arr($_POST['living_town']);
-$billing_area = clean_arr($_POST['billing_area']);
+
 $appln_no = count($appln_id);
 
 for ($i = 0; $i < $appln_no; $i++) {
     $query_appln = "UPDATE application
-                       SET 
-                 appln_id = '$appln_id[$i]]',
-                        appln_date = '$appln_date[$i]',
+                       SET appln_id = '$appln_id[$i]]',
+                           appln_date = '$appln_date[$i]',
                            appln_type = '$appln_type[$i]',
                            surveyed_date = '$surveyed_date[$i]',
                            engeneer_appr = '$engeneer_appr[$i]',
@@ -70,17 +69,12 @@ for ($i = 0; $i < $appln_no; $i++) {
                            plot_no = '$plot_no[$i]',
                            living_area = '$living_area[$i]',
                            living_town = '$living_town[$i]',
-                     WHERE appnt_id = $appnt_id[$i]";
-    
-    $query_billing_area = "UPDATE billing_area
-                            SET billing_area = '$billing_area[$i]]'
-                      WHERE ba_id = $ba_id[$i]";
-                        
-
-    $result_applnt = mysql_query($query_appnt) or die(mysql_error());
+                           ba_id = '$ba_id[$i]'
+                     WHERE appnt_id = '$appnt_id[$i]'";
+    $result_appnt = mysql_query($query_appnt) or die(mysql_error());
 }
 
-if ($result_applnt && $result_appln) {
+if ($result_appnt && $result_appln && $result_appnt) {
 
     info('message', 'Updated successfully!');
     header('Location: applications.php');
