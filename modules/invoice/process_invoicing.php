@@ -47,6 +47,15 @@ $result_readings = mysql_query($query_readings) or die(mysql_error());
 
 $num_readings = mysql_num_rows($result_readings);
 
+$query_inv_no = "SELECT MAX(inv_no) AS cur_inv_no
+             FROM invoice";
+$result_inv_no = mysql_query($query_inv_no) or die(mysql_error());
+$row_inv = mysql_fetch_array($result_inv_no);
+$inv_rows = mysql_num_rows($result_inv_no);
+$cur_inv_no = $row_inv['cur_inv_no'];
+
+$inv_rows > 0 ? $inv_no = $cur_inv_no : $inv_no = '00000001';
+
 if ($num_readings > 0) {
     while ($row_reading = mysql_fetch_array($result_readings)) {
 
@@ -93,10 +102,12 @@ if ($num_readings > 0) {
                 $query_invoice_water = "INSERT INTO invoice
                                                 (inv_no, invoicing_date, created_date,
                                                  cust_id, acc_id, trans_id, inv_type, cost)
-                                         VALUES ('89232AS', '$billing_month', CURRENT_TIMESTAMP(),
+                                         VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
                                                  '$cust_id', '$acc_id', '$trans_id', 'Actual', '$cost_water')";
 
                 $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
+
+                $inv_no++;
             } elseif ($row_reading['premise_status'] === 'Un metered') {
 
                 // If water customer and premise status un metered use
@@ -106,10 +117,12 @@ if ($num_readings > 0) {
                 $query_invoice_water = "INSERT INTO invoice
                                                 (inv_no, invoicing_date, created_date,
                                                  cust_id, acc_id, trans_id, inv_type, cost)
-                                         VALUES ('89232AS', '$billing_month', CURRENT_TIMESTAMP(),
+                                         VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
                                                  '$cust_id', '$acc_id', '$trans_id', 'Estimate', '$cost_water')";
 
                 $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
+
+                $inv_no++;
             }
         } elseif ($row_reading['appln_type'] === 'Sewer') {
 
@@ -130,10 +143,12 @@ if ($num_readings > 0) {
             $query_invoice_sewer = "INSERT INTO invoice
                                       (inv_no, invoicing_date, created_date,
                                        cust_id, trans_id, inv_type, cost)
-                                VALUES ('893439', '$billing_month', CURRENT_TIMESTAMP(),
+                                VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
                                        '$cust_id', '$trans_id', 'Estimate', '$cost_sewer')";
 
             $result_invoice_sewer = mysql_query($query_invoice_sewer) or die(mysql_error());
+
+            $inv_no++;
         }
     }
 
