@@ -102,36 +102,41 @@
                     <form action="../../includes/pdf.php" method="post" id="html-form">
                         <input type="hidden" name="html" id="html">
                     </form>
-                    <div id="invoice">
+
+
+                    <div class="invoice-wrapper">
+                        <div id="invoice">
                         <div class="invoice">
                             <div class="company-header">
 
                             </div>
                             <div class="customer-header">
-                                <ul class="inv-list" style="width: 280px">
+                                <ul class="inv-list" style="width: 400px">
                                     <li><strong><?php echo $row_invoice['appnt_fullname']; ?></strong></li>
                                     <li>P.o.Box 2323</li>
                                     <li>Dar es Salaam</li>
                                     <li>&nbsp;</li>
                                     <li>&nbsp;</li>
-                                    <li style="font-weight: bolder">Copy</li>
                                 </ul>
                                 <ul class="inv-list" style="width: 230px">
                                     <li>Plot No: <span style="float: right"><?php echo $row_invoice['plot_no']; ?></span></li>
                                     <li>Block No: <span style="float: right"><?php echo $row_invoice['block_no']; ?></span></li>
                                     <li>Street: <span style="float: right"><?php echo $row_invoice['living_area']; ?></span></li>
                                 </ul>
-                                <ul class="inv-list" style="width: 230px">
+                                <ul class="inv-list" style="width: 230px; float:  right; padding-right:  0 !important;">
                                     <li><strong>Account No:<span style="float: right"><?php echo $row_invoice['acc_no']; ?></span></strong></li>
                                     <li>Billing Period: <span style="float: right"><?php echo $row_invoice['invoicing_date']; ?></span></li>
                                     <li>Invoice Number: <span style="float: right"><?php echo $row_invoice['inv_no']; ?></span></li>
                                     <li>&nbsp;</li>
-                                    <li>Print Date: <span style="float: right"><?php echo date('d M, Y'); ?></span></li>
-                                    <li><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></li>
+                                    <li>Print Date: <span style="float: right"><?php echo date('d M, Y'); ?></span></li>     
                                 </ul>
                             </div>
                             <div class="invoice-body">
                                 <table border="0" cellspacing="0" cellpadding="2" class="invoice-table">
+                                    <tr>
+                                        <td colspan="4" style="font-weight: bolder">Copy</td>
+                                        <td  colspan="5" align="right"><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></td>
+                                    </tr>
                                     <tr class="tr-line">
                                         <td bgcolor="#f1f1f1">Balance</td>
                                         <td colspan="7"><span style="font-weight: normal">This is the available amount</span></td>
@@ -148,19 +153,6 @@
                                         <td>&nbsp;</td>
                                         <td>21 Aug, 2012</td>
                                         <td colspan="6">Debit Notes: EWURA charge</td>
-                                        <td align="right">72,092.38</td>
-                                    </tr>
-                                    <tr height="20"></tr>
-                                    <tr class="tr-line">
-                                        <td bgcolor="#f1f1f1">Payments</td>
-                                        <td>Date</td>
-                                        <td colspan="6">Description</td>
-                                        <td align="right">72,092.38</td>
-                                    </tr>
-                                    <tr>
-                                        <td>&nbsp;</td>
-                                        <td>21 Aug, 2012</td>
-                                        <td colspan="6">Receipting-Consumption</td>
                                         <td align="right">72,092.38</td>
                                     </tr>
                                     <tr height="20"></tr>
@@ -189,11 +181,12 @@
                                 </table>
                             </div>
                             <div class="invoice-footer">
-                                <table border="0" cellspacing="3" cellpadding="5" width="100%">
+                                <table border="0" cellspacing="3" cellpadding="5" width="1000">
                                     <tr>
                                         <td width="53%" rowspan="2" style="vertical-align: top">
                                             <strong>NOTE:</strong> Sasa unaweza kulipia bili yako kupitia Zap, M-Pesa, Selcome, Backlays Bank au CRDB
                                         </td>
+                                        <td rowspan="2">&nbsp;</td>
                                         <td width="47%" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS 999,450,302.12</span></strong></td>
                                     </tr>
                                     <tr>
@@ -201,8 +194,9 @@
                                     </tr>
                                 </table>
                             </div>
-                            <!-- end .invoice --></div>
-                    </div>
+                                  <!-- end .invoice --></div>
+                            <!-- end #invoice --></div> 
+                    <!-- end .invoice-wrapper --></div>
                     <?php
                 }
                 ?>

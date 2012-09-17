@@ -1,9 +1,25 @@
+@charset "utf-8";
 /*
     Document   : pop-up
     Created on : Aug 31, 2012, 10:07:36 AM
     Author     : Robbyl
     Description: styles pop-ups
 */
+
+@font-face {
+    font-family: "Segoe UI Light";
+    src: url(fonts/segoeuil.ttf);
+}
+
+body {
+    -webkit-print-color-adjust: exact;
+    font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    background-color: #ffffff;
+    color: #272727;
+}
 
 .pop-up-wrapper {
     position: fixed;
@@ -60,10 +76,6 @@
 .receipt-body {
     width: 900px;
     *height: 200px;
-}
-
-.receipt-table {
-
 }
 
 .receipt-table td {
