@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 11, 2012 at 12:08 AM
+-- Generation Time: Sep 15, 2012 at 05:25 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `account`
 --
 
+DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `acc_id` int(11) NOT NULL AUTO_INCREMENT,
   `acc_no` varchar(255) NOT NULL,
@@ -55,6 +56,7 @@ INSERT INTO `account` (`acc_id`, `acc_no`, `cust_id`, `credit`, `debit`, `balanc
 -- Table structure for table `applicant`
 --
 
+DROP TABLE IF EXISTS `applicant`;
 CREATE TABLE IF NOT EXISTS `applicant` (
   `appnt_id` int(11) NOT NULL AUTO_INCREMENT,
   `appnt_type_id` int(11) NOT NULL,
@@ -92,6 +94,7 @@ INSERT INTO `applicant` (`appnt_id`, `appnt_type_id`, `appnt_fullname`, `occupan
 -- Table structure for table `application`
 --
 
+DROP TABLE IF EXISTS `application`;
 CREATE TABLE IF NOT EXISTS `application` (
   `appln_id` int(11) NOT NULL AUTO_INCREMENT,
   `appln_date` date NOT NULL,
@@ -127,6 +130,7 @@ INSERT INTO `application` (`appln_id`, `appln_date`, `appln_type`, `surveyed_dat
 -- Table structure for table `appnt_type`
 --
 
+DROP TABLE IF EXISTS `appnt_type`;
 CREATE TABLE IF NOT EXISTS `appnt_type` (
   `appnt_type_id` int(11) NOT NULL AUTO_INCREMENT,
   `appnt_types` varchar(255) NOT NULL,
@@ -151,6 +155,7 @@ INSERT INTO `appnt_type` (`appnt_type_id`, `appnt_types`) VALUES
 -- Table structure for table `billing_area`
 --
 
+DROP TABLE IF EXISTS `billing_area`;
 CREATE TABLE IF NOT EXISTS `billing_area` (
   `ba_id` int(11) NOT NULL AUTO_INCREMENT,
   `billing_areas` varchar(255) NOT NULL,
@@ -172,6 +177,7 @@ INSERT INTO `billing_area` (`ba_id`, `billing_areas`) VALUES
 -- Table structure for table `customer`
 --
 
+DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
   `cust_id` int(11) NOT NULL AUTO_INCREMENT,
   `added_date` datetime NOT NULL,
@@ -180,6 +186,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `pay_center` int(11) NOT NULL,
   `ba_id` int(11) NOT NULL,
   `premise_status` varchar(255) NOT NULL,
+  `cust_status` varchar(255) NOT NULL,
   `added_by` int(11) NOT NULL,
   `appnt_id` int(11) NOT NULL,
   PRIMARY KEY (`cust_id`),
@@ -195,12 +202,12 @@ CREATE TABLE IF NOT EXISTS `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`cust_id`, `added_date`, `met_id`, `appln_id`, `pay_center`, `ba_id`, `premise_status`, `added_by`, `appnt_id`) VALUES
-(2, '2012-08-18 17:16:30', 1, 2, 1, 2, 'Metered', 1, 2),
-(4, '2012-08-19 13:53:49', 2, 3, 1, 1, 'Metered', 1, 3),
-(5, '2012-08-21 13:28:07', 6, 4, 1, 3, 'Metered', 1, 4),
-(6, '2012-08-21 13:28:32', 5, 5, 1, 3, 'Metered', 1, 5),
-(7, '2012-08-21 13:28:50', 3, 6, 1, 1, 'Metered', 1, 6);
+INSERT INTO `customer` (`cust_id`, `added_date`, `met_id`, `appln_id`, `pay_center`, `ba_id`, `premise_status`, `cust_status`, `added_by`, `appnt_id`) VALUES
+(2, '2012-08-18 17:16:30', 1, 2, 1, 2, 'Metered', '', 1, 2),
+(4, '2012-08-19 13:53:49', 2, 3, 1, 1, 'Metered', '', 1, 3),
+(5, '2012-08-21 13:28:07', 6, 4, 1, 3, 'Metered', '', 1, 4),
+(6, '2012-08-21 13:28:32', 5, 5, 1, 3, 'Metered', '', 1, 5),
+(7, '2012-08-21 13:28:50', 3, 6, 1, 1, 'Metered', '', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -208,6 +215,7 @@ INSERT INTO `customer` (`cust_id`, `added_date`, `met_id`, `appln_id`, `pay_cent
 -- Table structure for table `invoice`
 --
 
+DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE IF NOT EXISTS `invoice` (
   `inv_id` int(11) NOT NULL AUTO_INCREMENT,
   `inv_no` varchar(255) NOT NULL,
@@ -240,6 +248,7 @@ INSERT INTO `invoice` (`inv_id`, `inv_no`, `invoicing_date`, `created_date`, `cu
 -- Table structure for table `meter`
 --
 
+DROP TABLE IF EXISTS `meter`;
 CREATE TABLE IF NOT EXISTS `meter` (
   `met_id` int(11) NOT NULL AUTO_INCREMENT,
   `met_number` varchar(255) NOT NULL,
@@ -260,11 +269,11 @@ CREATE TABLE IF NOT EXISTS `meter` (
 
 INSERT INTO `meter` (`met_id`, `met_number`, `met_type`, `met_status_id`, `met_size`, `no_digits`, `initial_reading`, `added_date`, `availability`, `remarks`) VALUES
 (1, '32422', 'Metscant', 0, '0', 8, 0, '2012-08-16', 'ISSUED', 'some'),
-(2, '88yyy090', '', 0, '0', 9, 0, '2012-08-16', 'ISSUED', 'k'),
-(3, 'OD-20C899', '', 0, '0', 10, 0, '2012-08-21', 'ISSUED', ''),
-(4, 'OC-20A490', '', 0, '0', 10, 0, '2012-08-21', 'AVAILABLE', ''),
-(5, 'OA-600090', '', 1, '0', 10, 0, '2012-08-21', 'ISSUED', ''),
-(6, 'OC-205W90', '', 1, '0', 10, 30, '2012-08-21', 'ISSUED', '');
+(2, '88yyy090', 'Metscant', 0, '0', 9, 0, '2012-08-16', 'ISSUED', 'k'),
+(3, 'OD-20C899', 'Metscant', 0, '1/3', 10, 0, '2012-08-21', 'ISSUED', ''),
+(4, 'OC-20A490', 'Tameng', 0, '0', 10, 0, '2012-08-21', 'AVAILABLE', ''),
+(5, 'OA-600090', 'Tameng', 1, '0', 10, 0, '2012-08-21', 'ISSUED', ''),
+(6, 'OC-205W90', 'Metscant', 1, '0', 10, 30, '2012-08-21', 'ISSUED', '');
 
 -- --------------------------------------------------------
 
@@ -272,6 +281,7 @@ INSERT INTO `meter` (`met_id`, `met_number`, `met_type`, `met_status_id`, `met_s
 -- Table structure for table `meter_reading`
 --
 
+DROP TABLE IF EXISTS `meter_reading`;
 CREATE TABLE IF NOT EXISTS `meter_reading` (
   `mred_id` int(11) NOT NULL AUTO_INCREMENT,
   `billing_date` date NOT NULL,
@@ -310,6 +320,7 @@ INSERT INTO `meter_reading` (`mred_id`, `billing_date`, `reading_date`, `entered
 -- Table structure for table `pay_center`
 --
 
+DROP TABLE IF EXISTS `pay_center`;
 CREATE TABLE IF NOT EXISTS `pay_center` (
   `pac_id` int(11) NOT NULL AUTO_INCREMENT,
   `pay_center` varchar(255) NOT NULL,
@@ -329,6 +340,7 @@ INSERT INTO `pay_center` (`pac_id`, `pay_center`) VALUES
 -- Table structure for table `receipt`
 --
 
+DROP TABLE IF EXISTS `receipt`;
 CREATE TABLE IF NOT EXISTS `receipt` (
   `rec_id` int(11) NOT NULL AUTO_INCREMENT,
   `tran_id` int(11) NOT NULL,
@@ -342,6 +354,7 @@ CREATE TABLE IF NOT EXISTS `receipt` (
 -- Table structure for table `service_nature`
 --
 
+DROP TABLE IF EXISTS `service_nature`;
 CREATE TABLE IF NOT EXISTS `service_nature` (
   `service_nature_id` int(11) NOT NULL AUTO_INCREMENT,
   `service` varchar(255) NOT NULL,
@@ -370,6 +383,7 @@ INSERT INTO `service_nature` (`service_nature_id`, `service`, `appnt_type_id`) V
 -- Table structure for table `settings`
 --
 
+DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `set_id` int(10) NOT NULL AUTO_INCREMENT,
   `aut_name` varchar(255) NOT NULL,
@@ -400,6 +414,7 @@ INSERT INTO `settings` (`set_id`, `aut_name`, `address`, `phone`, `fax`, `email`
 -- Table structure for table `sewer_tariff`
 --
 
+DROP TABLE IF EXISTS `sewer_tariff`;
 CREATE TABLE IF NOT EXISTS `sewer_tariff` (
   `st_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_nature_id` int(11) NOT NULL,
@@ -414,11 +429,11 @@ CREATE TABLE IF NOT EXISTS `sewer_tariff` (
 
 INSERT INTO `sewer_tariff` (`st_id`, `service_nature_id`, `s_flat_rate`) VALUES
 (1, 1, 660.00),
-(2, 2, 660.00),
+(2, 2, 659.97),
 (3, 3, 660.00),
 (4, 4, 660.00),
 (5, 5, 660.00),
-(6, 6, 660.00),
+(6, 6, 659.99),
 (7, 7, 660.00),
 (8, 8, 660.00);
 
@@ -428,6 +443,7 @@ INSERT INTO `sewer_tariff` (`st_id`, `service_nature_id`, `s_flat_rate`) VALUES
 -- Table structure for table `transaction`
 --
 
+DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE IF NOT EXISTS `transaction` (
   `trans_id` int(11) NOT NULL AUTO_INCREMENT,
   `trans_date` datetime NOT NULL,
@@ -452,6 +468,7 @@ INSERT INTO `transaction` (`trans_id`, `trans_date`, `description`) VALUES
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(10) NOT NULL AUTO_INCREMENT,
   `user_full_name` varchar(255) NOT NULL,
@@ -489,9 +506,12 @@ INSERT INTO `users` (`user_id`, `user_full_name`, `email`, `username`, `password
 -- Table structure for table `water_tariff`
 --
 
+DROP TABLE IF EXISTS `water_tariff`;
 CREATE TABLE IF NOT EXISTS `water_tariff` (
   `wt_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_nature_id` int(11) NOT NULL,
+  `wt_from` int(11) NOT NULL,
+  `wt_to` int(11) NOT NULL,
   `wt_rate` decimal(10,2) NOT NULL,
   `wt_flat_rate` decimal(10,2) NOT NULL,
   KEY `wt_id` (`wt_id`),
@@ -502,15 +522,15 @@ CREATE TABLE IF NOT EXISTS `water_tariff` (
 -- Dumping data for table `water_tariff`
 --
 
-INSERT INTO `water_tariff` (`wt_id`, `service_nature_id`, `wt_rate`, `wt_flat_rate`) VALUES
-(1, 1, 300.00, 8000.00),
-(2, 2, 200.00, 7500.00),
-(3, 3, 200.00, 6000.00),
-(4, 4, 200.00, 4000.00),
-(5, 5, 460.00, 14400.00),
-(6, 6, 630.00, 14000.00),
-(7, 7, 0.00, 0.00),
-(8, 8, 400.00, 7000.00);
+INSERT INTO `water_tariff` (`wt_id`, `service_nature_id`, `wt_from`, `wt_to`, `wt_rate`, `wt_flat_rate`) VALUES
+(1, 1, 0, 60, 300.00, 8000.00),
+(2, 2, 0, 30, 200.00, 7500.00),
+(3, 3, 0, 40, 200.00, 6000.00),
+(4, 4, 0, 20, 200.00, 4000.00),
+(5, 5, 0, 10, 460.00, 14400.00),
+(6, 6, 0, 50, 630.00, 1399.95),
+(7, 7, 0, 80, 340.00, 8000.00),
+(8, 8, 0, 70, 400.00, 7000.00);
 
 --
 -- Constraints for dumped tables
