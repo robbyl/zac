@@ -68,17 +68,19 @@
                         while (list($key, $val) = each($_POST['checkbox'])) {
                             // Getting applicantion data form the database
 
-                            $query_appln = "SELECT appln_id, appnt.appnt_id, appln_type, appln_date, engeneer_appr, appnt.appnt_id,
+                            $query_appln = "SELECT appln.appln_id, appnt_id, appln_type, appln_date, engeneer_appr, appnt.appnt_id,
                                                    appnt_fullname, appnt.appnt_type_id, approved_date, inspected_by,
                                                    premise_nature, surveyed_date, service_nature_id, occupants,
                                                    appnt_tel, appnt_post_addr, appnt_phy_addr, block_no, plot_no,
-                                                   living_area, living_town, ba_id
+                                                   living_area, living_town,  cust_id
                                               FROM application appln
                                          LEFT JOIN applicant appnt
                                                 ON appln.appnt_id = appnt.appnt_id
                                          LEFT JOIN appnt_type apnty
+                                          LEFT JOIN customer cust
+                                                ON cust.appnt_id = appnt.appnt_id
                                                 ON appnt.appnt_type_id = apnty.appnt_type_id
-                                             WHERE appln_id = '$val'";
+                                             WHERE appln.appln_id = '$val'";
 
                             $result_appln = mysql_query($query_appln) or die(mysql_error());
                             $row = mysql_fetch_array($result_appln);
@@ -161,14 +163,14 @@
                                             </select></td>
                                     </tr>
                                     <td width="170">Customer  status</td>
-                                        <td><select name="appnt_type[]" id="appnt_type" required class="select">
+                                        <td><select name="cust_status[]" id="cust_status" required class="select">
                                                 <option value="">--select Customer status--</option>
                                                 <?php
-                                                $result_type = mysql_query("SELECT * FROM appnt_type ORDER BY appnt_types ASC") or die(mysql_error());
-                                                while ($row_type = mysql_fetch_array($result_type)) {
+                                                $result_status = mysql_query("SELECT * FROM customer ORDER BY cust_status ASC") or die(mysql_error());
+                                                while ($row_status = mysql_fetch_array($result_status)) {
                                                     ?>
-                                                    <option value="<?php echo $row_type['appnt_type_id'] ?>" <?php if ($row_type['appnt_type_id'] === $row['appnt_type_id']) echo 'selected'; ?> >
-                                                        <?php echo $row_type['appnt_types'] ?></option>
+                                                    <option value="<?php echo $row_type['cust_id'] ?>" <?php if ($row_status['cust_id'] === $row['cust_id']) echo 'selected'; ?> >
+                                                        <?php echo $row_status['cust_status'] ?></option>
                                                     <?php
                                                 }
                                                 ?>
