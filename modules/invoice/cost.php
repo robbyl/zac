@@ -96,16 +96,22 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             } elseif ($consumption > $to && $curr_level != $top_level) {
 
                 $cost = $to * $wt_rate;
-                
+
                 $extra = $consumption - $to;
 
-                while ($extra > 0 && $curr_level < $top_level) {
+                while ($extra >= 0 && $curr_level < $top_level) {
 
                     $curr_level = $curr_level + 0.1;
-
+                    
                     if ($curr_level == $top_level) {
+                        
+                        $cost += $extra * $nwt_rate[strval($curr_level)];
+                        
+                    } elseif ($extra <= $nwt_to[strval($curr_level)] && $curr_level != $top_level) {
 
                         $cost += $extra * $nwt_rate[strval($curr_level)];
+                        $extra -= $nwt_to[strval($curr_level)];       
+                          
                     } else {
 
                         $cost += $nwt_to[strval($curr_level)] * $nwt_rate[strval($curr_level)];
