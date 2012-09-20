@@ -36,12 +36,12 @@ body {
 }
 
 .login-header {
-	height: 50px;
+    height: 50px;
     font-size: 30px;
-	border: 1px solid #fff;
-	background: url(../images/softbill_logo.png) no-repeat 20px center;
-	background-color: #ffc28b;
-	margin-bottom: 55px;
+    border: 1px solid #fff;
+    background: url(../images/softbill_logo.png) no-repeat 20px center;
+    background-color: #ffc28b;
+    margin-bottom: 55px;
 }
 
 .text-box {

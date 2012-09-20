@@ -55,5 +55,4 @@ if (!empty($_SESSION['error'])) {
 }
 
 session_commit();
-
 ?>

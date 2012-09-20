@@ -23,5 +23,4 @@ define('DATABASE', 'softbill');
 
 $conn = mysql_connect(HOST, USER, PASSWORD) or die(mysql_error());
 $db = mysql_select_db(DATABASE);
-
 ?>

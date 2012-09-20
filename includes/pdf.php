@@ -24,11 +24,10 @@ $html = $_POST['html'];
 //echo $html;
 //exit;
 
-  $dompdf = new DOMPDF();
-  $dompdf->load_html($html);
-  $dompdf->set_paper('latter', 'portrait');
-  $dompdf->render();
+$dompdf = new DOMPDF();
+$dompdf->load_html($html);
+$dompdf->set_paper('latter', 'portrait');
+$dompdf->render();
 
- $dompdf->stream("invoice.pdf", array("Attachment" => false));
-
+$dompdf->stream("invoice.pdf", array("Attachment" => false));
 ?>
