@@ -41,14 +41,15 @@ $query_readings = "SELECT premise_status, appln_type,  appnt_fullname,
                        ON sn.service_nature_id = st.service_nature_id
                 LEFT JOIN account acc
                        ON cust.cust_id = acc.cust_id
-                    WHERE billing_date = '$billing_month'";
+                    WHERE cust_status = 'Connected'
+                      AND invoiced = 'N'";
 
 $result_readings = mysql_query($query_readings) or die(mysql_error());
 
 $num_readings = mysql_num_rows($result_readings);
 
 $query_inv_no = "SELECT MAX(inv_no) AS cur_inv_no
-             FROM invoice";
+                   FROM invoice";
 $result_inv_no = mysql_query($query_inv_no) or die(mysql_error());
 $row_inv = mysql_fetch_array($result_inv_no);
 $inv_rows = mysql_num_rows($result_inv_no);
@@ -73,9 +74,7 @@ if ($num_readings > 0) {
             $cust_id = $row_reading['cust_id'];
             $acc_id = $row_reading['acc_id'];
 
-
-
-            if ($row_reading['premise_status'] === 'Metered') {
+            if ($row_reading['premise_status'] === 'Metered' && $row_reading['billing_date'] === $billing_month) {
 
                 $consumption = $row_reading['consumption'];
                 $from = $row_reading['wt_from'];
@@ -110,8 +109,8 @@ if ($num_readings > 0) {
                 $inv_no++;
             } elseif ($row_reading['premise_status'] === 'Un metered') {
 
-                // If water customer and premise status un metered use
-                // water flat rate as water cost
+                // If water customer and premise status un metered
+                // Generating invoice using flat rate
                 $cost_water = $row_reading['wt_flat_rate'];
 
                 $query_invoice_water = "INSERT INTO invoice

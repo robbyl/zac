@@ -7,13 +7,15 @@
             $(this).slideUp('normal');
         });
 
-        $('#meter_number').hide();
+        $('#meter_number').css('display', 'none');
+        
         $('#un_metered').click(function(){
-            $('#met_id').val("");
-            $('#meter_number').hide();
+            $('#met_id').val("").removeAttr('required');
+            $('#meter_number').css('display', 'none');
         });
         $('#metered').click(function(){
             $('#meter_number').show();
+            $('#met_id').attr('required', 'required');
         });
 
         $('.close').click(function(){
@@ -68,7 +70,7 @@
             $row_appnt = mysql_fetch_array($result_applnt);
             ?>
 
-            <form action="process_add_customer.php" method="post" >
+            <form action="../customers/process_add_customer.php" method="post" >
                 <div class="form-body">
                     <fieldset>
                         <legend>Customer Details </legend>
@@ -91,7 +93,7 @@
                                     <label><input type="radio" name="premise_status" value="Un metered" required class="radio" id="un_metered">Un metered</label>
                                 </td>
                             </tr>
-                            <tr id="meter_number">
+                            <tr id="meter_number" style="display: none">
                                 <td width="170">Assigned Meter No</td>
                                 <td>
                                     <select name="meter_number" id="met_id" required class="select" >

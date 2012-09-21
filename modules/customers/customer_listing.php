@@ -26,20 +26,22 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     $query_appln = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number, service,
                            premise_status, appnt_post_addr, billing_areas, appln_type,
-                           plot_no
+                           plot_no, cust_status
                       FROM customer cust
                  LEFT JOIN applicant appnt
                         ON cust.appnt_id = appnt.appnt_id
                  LEFT JOIN application appln
                         ON appln.appnt_id = appnt.appnt_id
+                 LEFT JOIN meter_customer mecu
+                        ON cust.cust_id = mecu.cust_id
+                 LEFT JOIN meter met
+                        ON mecu.met_id = met.met_id
                  LEFT JOIN service_nature sn
                         ON appln.service_nature_id = sn.service_nature_id
                  LEFT JOIN billing_area ba
                         ON cust.ba_id = ba.ba_id
                  LEFT JOIN account acc
-                        ON cust.cust_id = acc.cust_id
-                 LEFT JOIN meter met
-                        ON cust.met_id = met.met_id
+                        ON cust.cust_id = acc.cust_id                 
                           {$filter}";
 
     $result_appln = mysql_query($query_appln) or die(mysql_error());
@@ -61,6 +63,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     <th>Service type</th>
                     <th>Service nature</th>
                     <th>Premise status</th>
+                    <th>Customer status</th>
                     <th>Meter No.</th>
                     <th>Plot No.</th>
                     <th>Billing area/zone</th>
@@ -78,6 +81,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <td><?php echo $row['appln_type'] ?></td>
                         <td><?php echo $row['service'] ?></td>
                         <td><?php echo $row['premise_status'] ?></td>
+                        <td><?php echo $row['cust_status'] ?></td>
                         <td><?php echo $row['met_number'] ?></td>
                         <td><?php echo $row['plot_no'] ?></td>
                         <td><?php echo $row['billing_areas'] ?></td>
