@@ -75,6 +75,7 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
                                         ON wt.service_nature_id = sev.service_nature_id
                                      WHERE appnt_type_id = '$appnt_type'
                                   ORDER BY level ASC";
+
             $result_level = mysql_query($query_level) or die(mysql_error());
             $no_level = mysql_num_rows($result_level);
 
@@ -90,35 +91,39 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             if ($consumption <= $to) {
 
                 $cost = $consumption * $wt_rate;
-            } elseif ($consumption > $to && $curr_level == $top_level) {
+            } elseif ($consumption > $to) {
 
                 $cost = $consumption * $wt_rate;
-            } elseif ($consumption > $to && $curr_level != $top_level) {
+            } elseif ($consumption > $to && strval($curr_level) != strval($top_level)) {
 
+                $curr_level = $row_reading['level'];
+                $extra = $consumption - $to;
                 $cost = $to * $wt_rate;
 
-                $extra = $consumption - $to;
+                while ($extra >= 0 && $curr_level <= $top_level) {
 
-                while ($extra >= 0 && $curr_level < $top_level) {
+                    $curr_level += + 0.1;
 
-                    $curr_level = $curr_level + 0.1;
-                    
-                    if ($curr_level == $top_level) {
-                        
-                        $cost += $extra * $nwt_rate[strval($curr_level)];
-                        
-                    } elseif ($extra <= $nwt_to[strval($curr_level)] && $curr_level != $top_level) {
+                    if ($extra <= $nwt_to[strval($curr_level)]) {
 
                         $cost += $extra * $nwt_rate[strval($curr_level)];
-                        $extra -= $nwt_to[strval($curr_level)];       
-                          
-                    } else {
+                        break;
+                    } elseif ($extra > $nwt_to[strval($curr_level)]) {
 
-                        $cost += $nwt_to[strval($curr_level)] * $nwt_rate[strval($curr_level)];
-                        $extra -= $nwt_to[strval($curr_level)];
+                        if (strval($curr_level) === strval($top_level)) {
+
+                            $cost += $extra * $nwt_rate[strval($curr_level)];
+                            break;
+                        } else {
+
+                            $extra -= $nwt_to[strval($curr_level)];
+                            $cost += $nwt_to[strval($curr_level)] * $nwt_rate[strval($curr_level)];
+                        }
                     }
                 }
             }
+
+
 
             //If water customer and premise status metered
         } elseif ($row_reading['premise_status'] === 'Un metered') {
@@ -127,8 +132,6 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             // water flat rate as water cost
             $cost = $row_reading['wt_flat_rate'];
         }
-
-        echo $cost . '<br>';
     } elseif ($row_reading['appln_type'] === 'Sewer') {
 
         // Making Sewer Billing transaction
@@ -145,6 +148,8 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
 //        //Generating Invoices for Sewer
 //        $cost_sewer = $row_reading['s_flat_rate'];
     }
+
+    echo $cost . '<br>';
 }
 
 exit;
