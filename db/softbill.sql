@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 19, 2012 at 10:44 AM
+-- Generation Time: Sep 24, 2012 at 11:42 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -30,13 +30,13 @@ CREATE TABLE IF NOT EXISTS `account` (
   `acc_id` int(11) NOT NULL AUTO_INCREMENT,
   `acc_no` varchar(255) NOT NULL,
   `cust_id` int(11) NOT NULL,
-  `credit` decimal(10,2) NOT NULL,
-  `debit` decimal(10,2) NOT NULL,
-  `balance` decimal(10,2) NOT NULL,
+  `credit` decimal(15,2) NOT NULL,
+  `debit` decimal(15,2) NOT NULL,
+  `balance` decimal(15,2) NOT NULL,
   PRIMARY KEY (`acc_id`),
   UNIQUE KEY `acc_no` (`acc_no`),
   KEY `cust_id` (`cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `account`
@@ -46,7 +46,35 @@ INSERT INTO `account` (`acc_id`, `acc_no`, `cust_id`, `credit`, `debit`, `balanc
 (1, 'FA3BF035C9', 2, 0.00, 0.00, 0.00),
 (2, '0C5BE083DD', 4, 0.00, 0.00, 0.00),
 (4, '362D03C319', 6, 0.00, 0.00, 0.00),
-(5, '362E25752E', 7, 0.00, 0.00, 0.00);
+(5, '362E25752E', 7, 0.00, 0.00, 0.00),
+(6, 'CCF49838A1', 11, 0.00, 0.00, 0.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `aging_analysis`
+--
+
+CREATE TABLE IF NOT EXISTS `aging_analysis` (
+  `aging_id` int(11) NOT NULL AUTO_INCREMENT,
+  `aging_date` date NOT NULL,
+  `cust_id` int(11) NOT NULL,
+  `aging_debit` decimal(15,2) NOT NULL,
+  PRIMARY KEY (`aging_id`),
+  KEY `cust_id` (`cust_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1551 ;
+
+--
+-- Dumping data for table `aging_analysis`
+--
+
+INSERT INTO `aging_analysis` (`aging_id`, `aging_date`, `cust_id`, `aging_debit`) VALUES
+(1545, '2012-09-23', 2, 7000.00),
+(1546, '2012-09-23', 7, 12880.00),
+(1547, '2012-09-23', 11, 6000.00),
+(1548, '2012-09-23', 2, 14750.00),
+(1549, '2012-09-23', 7, 17940.00),
+(1550, '2012-09-23', 11, 12000.00);
 
 -- --------------------------------------------------------
 
@@ -112,13 +140,26 @@ CREATE TABLE IF NOT EXISTS `application` (
 --
 
 INSERT INTO `application` (`appln_id`, `appln_date`, `appln_type`, `surveyed_date`, `engeneer_appr`, `approved_date`, `inspected_by`, `premise_nature`, `service_nature_id`, `appnt_id`) VALUES
-(2, '2012-08-07', 'Clean water', '2012-08-09', 'Yes', '2012-08-17', 'Mkumbo', 'Residential', 3, 2),
+(2, '2012-08-07', 'Clean water', '2012-08-09', 'Yes', '2012-08-17', 'Mkumbo', 'Residential', 2, 2),
 (3, '2012-08-19', 'Clean water', '2012-08-01', 'Yes', '2012-07-03', 'Mkumbo', 'Residential', 3, 3),
 (4, '2012-08-21', 'Clean water', '2012-06-18', 'Yes', '2012-06-28', 'Mkumbo', 'Residential', 3, 4),
 (5, '2012-08-21', 'Clean water', '2012-04-17', 'Yes', '2012-05-14', 'Mkumbo', 'Institution', 1, 5),
 (6, '2012-08-21', 'Clean water', '2012-06-20', 'Yes', '2012-06-11', 'Juma Shabaani', 'Business', 5, 6),
 (7, '2012-08-21', 'Sewer', '2011-10-17', 'Yes', '2011-11-24', 'Juma Shabaani', 'Residential', 6, 7),
 (8, '2012-08-29', 'Clean water', '2012-08-21', 'Yes', '2012-08-28', 'Juma Shabaani', 'Residential', 2, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appnt_payment`
+--
+
+CREATE TABLE IF NOT EXISTS `appnt_payment` (
+  `appntp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rec_id` int(11) NOT NULL,
+  KEY `appntp_id` (`appntp_id`),
+  KEY `rec_id` (`rec_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -168,13 +209,27 @@ INSERT INTO `billing_area` (`ba_id`, `billing_areas`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cheque`
+--
+
+CREATE TABLE IF NOT EXISTS `cheque` (
+  `cheq_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cheq_no` varchar(255) NOT NULL,
+  `bank` varchar(255) NOT NULL,
+  `rec_id` int(11) NOT NULL,
+  PRIMARY KEY (`cheq_id`),
+  KEY `rec_id` (`rec_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customer`
 --
 
 CREATE TABLE IF NOT EXISTS `customer` (
   `cust_id` int(11) NOT NULL AUTO_INCREMENT,
   `added_date` datetime NOT NULL,
-  `met_id` int(11) NOT NULL,
   `appln_id` int(11) NOT NULL,
   `pay_center` int(11) NOT NULL,
   `ba_id` int(11) NOT NULL,
@@ -183,23 +238,36 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `added_by` int(11) NOT NULL,
   `appnt_id` int(11) NOT NULL,
   PRIMARY KEY (`cust_id`),
-  KEY `met_id` (`met_id`),
   KEY `appln_id` (`appln_id`),
   KEY `pay_center` (`pay_center`),
   KEY `added_by` (`added_by`),
   KEY `appnt_id` (`appnt_id`),
   KEY `ba_id` (`ba_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`cust_id`, `added_date`, `met_id`, `appln_id`, `pay_center`, `ba_id`, `premise_status`, `cust_status`, `added_by`, `appnt_id`) VALUES
-(2, '2012-08-18 17:16:30', 1, 2, 1, 2, 'Metered', 'Connected', 1, 2),
-(4, '2012-08-19 13:53:49', 2, 3, 1, 1, 'Metered', 'Disconnected', 1, 3),
-(6, '2012-08-21 13:28:32', 5, 5, 1, 3, 'Metered', 'Blocked', 1, 5),
-(7, '2012-08-21 13:28:50', 3, 6, 1, 1, 'Metered', '', 1, 6);
+INSERT INTO `customer` (`cust_id`, `added_date`, `appln_id`, `pay_center`, `ba_id`, `premise_status`, `cust_status`, `added_by`, `appnt_id`) VALUES
+(2, '2012-08-18 17:16:30', 2, 1, 2, 'Metered', 'Connected', 1, 2),
+(4, '2012-08-19 13:53:49', 3, 1, 1, 'Metered', 'Disconnected', 1, 3),
+(6, '2012-08-21 13:28:32', 5, 1, 3, 'Metered', 'Blocked', 1, 5),
+(7, '2012-08-21 13:28:50', 6, 1, 1, 'Metered', 'Connected', 1, 6),
+(11, '2012-09-21 13:34:17', 4, 1, 3, 'Un metered', 'Connected', 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cust_payment`
+--
+
+CREATE TABLE IF NOT EXISTS `cust_payment` (
+  `custp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rec_id` int(11) NOT NULL,
+  PRIMARY KEY (`custp_id`),
+  KEY `cust_id` (`rec_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -210,27 +278,30 @@ INSERT INTO `customer` (`cust_id`, `added_date`, `met_id`, `appln_id`, `pay_cent
 CREATE TABLE IF NOT EXISTS `invoice` (
   `inv_id` int(11) NOT NULL AUTO_INCREMENT,
   `inv_no` varchar(255) NOT NULL,
+  `inv_type` varchar(255) NOT NULL,
   `invoicing_date` date NOT NULL,
   `created_date` datetime NOT NULL,
   `cust_id` int(11) NOT NULL,
   `acc_id` int(11) NOT NULL,
   `trans_id` int(11) NOT NULL,
-  `cost` decimal(10,2) NOT NULL,
+  `cost` decimal(15,2) NOT NULL,
   PRIMARY KEY (`inv_id`),
   KEY `cust_id` (`cust_id`),
   KEY `acc_id` (`acc_id`),
   KEY `trans_id` (`trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1636 ;
 
 --
 -- Dumping data for table `invoice`
 --
 
-INSERT INTO `invoice` (`inv_id`, `inv_no`, `invoicing_date`, `created_date`, `cust_id`, `acc_id`, `trans_id`, `cost`) VALUES
-(27, '89232AS', '2012-06-22', '2012-09-03 20:51:52', 2, 1, 24, 3600.00),
-(28, '89232AS', '2012-06-22', '2012-09-03 20:51:52', 4, 2, 25, 4400.00),
-(30, '89232AS', '2012-06-22', '2012-09-03 20:51:52', 6, 4, 27, 5700.00),
-(31, '89232AS', '2012-06-22', '2012-09-03 20:51:52', 7, 5, 28, 17480.00);
+INSERT INTO `invoice` (`inv_id`, `inv_no`, `inv_type`, `invoicing_date`, `created_date`, `cust_id`, `acc_id`, `trans_id`, `cost`) VALUES
+(1630, '1', 'Actual', '2012-05-22', '2012-09-23 22:37:03', 2, 1, 1645, 7000.00),
+(1631, '2', 'Actual', '2012-05-22', '2012-09-23 22:37:03', 7, 5, 1646, 12880.00),
+(1632, '3', 'Estimate', '2012-05-22', '2012-09-23 22:37:03', 11, 6, 1647, 6000.00),
+(1633, '4', 'Actual', '2012-06-22', '2012-09-23 22:40:57', 2, 1, 1648, 7750.00),
+(1634, '5', 'Actual', '2012-06-22', '2012-09-23 22:40:57', 7, 5, 1649, 5060.00),
+(1635, '6', 'Estimate', '2012-06-22', '2012-09-23 22:40:57', 11, 6, 1650, 6000.00);
 
 -- --------------------------------------------------------
 
@@ -257,12 +328,35 @@ CREATE TABLE IF NOT EXISTS `meter` (
 --
 
 INSERT INTO `meter` (`met_id`, `met_number`, `met_type`, `met_status_id`, `met_size`, `no_digits`, `initial_reading`, `added_date`, `availability`, `remarks`) VALUES
-(1, '32422', 'Metscant', 0, '0', 8, 0, '2012-08-16', 'ISSUED', 'some'),
-(2, '88yyy090', 'Metscant', 0, '0', 9, 0, '2012-08-16', 'ISSUED', 'k'),
-(3, 'OD-20C899', 'Metscant', 0, '1/3', 10, 0, '2012-08-21', 'ISSUED', ''),
+(1, '32422', 'Metscant', 0, '0', 8, 0, '2012-08-16', 'AVAILABLE', 'some'),
+(2, '88yyy090', 'Metscant', 0, '0', 9, 0, '2012-08-16', 'AVAILABLE', 'k'),
+(3, 'OD-20C899', 'Metscant', 0, '1/3', 10, 0, '2012-08-21', 'AVAILABLE', ''),
 (4, 'OC-20A490', 'Tameng', 0, '0', 10, 0, '2012-08-21', 'AVAILABLE', ''),
 (5, 'OA-600090', 'Tameng', 1, '0', 10, 0, '2012-08-21', 'ISSUED', ''),
 (6, 'OC-205W90', 'Metscant', 1, '0', 10, 30, '2012-08-21', 'ISSUED', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `meter_customer`
+--
+
+CREATE TABLE IF NOT EXISTS `meter_customer` (
+  `mecu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `met_id` int(11) NOT NULL,
+  `cust_id` int(11) NOT NULL,
+  PRIMARY KEY (`mecu_id`),
+  KEY `met_id` (`met_id`),
+  KEY `cust_id` (`cust_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `meter_customer`
+--
+
+INSERT INTO `meter_customer` (`mecu_id`, `met_id`, `cust_id`) VALUES
+(2, 5, 2),
+(3, 6, 7);
 
 -- --------------------------------------------------------
 
@@ -295,10 +389,25 @@ INSERT INTO `meter_reading` (`mred_id`, `billing_date`, `reading_date`, `entered
 (562, '2012-05-22', '2012-08-22', '2012-08-22 12:54:23', 33, 33, 2, 4, 0.00, ''),
 (564, '2012-05-22', '2012-08-22', '2012-08-22 12:54:23', 20, 20, 5, 6, 0.00, ''),
 (565, '2012-05-22', '2012-08-22', '2012-08-22 12:54:23', 28, 28, 3, 7, 0.00, ''),
-(566, '2012-06-22', '2012-07-22', '2012-08-22 13:02:18', 46, 18, 1, 2, 0.00, ''),
-(567, '2012-06-22', '2012-07-22', '2012-08-22 13:02:18', 55, 22, 2, 4, 0.00, ''),
+(566, '2012-06-22', '2012-07-22', '2012-08-22 13:02:18', 99, 31, 1, 2, 0.00, ''),
+(567, '2012-06-22', '2012-07-22', '2012-08-22 13:02:18', 55, 19, 2, 4, 0.00, ''),
 (569, '2012-06-22', '2012-07-22', '2012-08-22 13:02:18', 39, 19, 5, 6, 0.00, ''),
-(570, '2012-06-22', '2012-07-22', '2012-08-22 13:02:18', 66, 38, 3, 7, 0.00, '');
+(570, '2012-06-22', '2012-07-22', '2012-08-22 13:02:18', 66, 11, 3, 7, 0.00, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_type`
+--
+
+CREATE TABLE IF NOT EXISTS `payment_type` (
+  `paytype_id` int(11) NOT NULL AUTO_INCREMENT,
+  `payment` varchar(255) NOT NULL,
+  `amount` decimal(15,2) NOT NULL,
+  `amount_in_words` varchar(500) NOT NULL,
+  PRIMARY KEY (`paytype_id`),
+  KEY `paytype_id` (`paytype_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -328,6 +437,7 @@ INSERT INTO `pay_center` (`pac_id`, `pay_center`) VALUES
 CREATE TABLE IF NOT EXISTS `receipt` (
   `rec_id` int(11) NOT NULL AUTO_INCREMENT,
   `tran_id` int(11) NOT NULL,
+  `payment_type` varchar(255) NOT NULL,
   PRIMARY KEY (`rec_id`),
   KEY `tran_id` (`tran_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -429,26 +539,19 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `trans_date` datetime NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1651 ;
 
 --
 -- Dumping data for table `transaction`
 --
 
 INSERT INTO `transaction` (`trans_id`, `trans_date`, `description`) VALUES
-(24, '2012-09-03 20:51:52', 'Water Billing'),
-(25, '2012-09-03 20:51:52', 'Water Billing'),
-(26, '2012-09-03 20:51:52', 'Water Billing'),
-(27, '2012-09-03 20:51:52', 'Water Billing'),
-(28, '2012-09-03 20:51:52', 'Water Billing'),
-(29, '2012-09-19 09:58:40', 'Water Billing'),
-(30, '2012-09-19 09:58:40', 'Water Billing'),
-(31, '2012-09-19 09:58:40', 'Water Billing'),
-(32, '2012-09-19 09:58:40', 'Water Billing'),
-(33, '2012-09-19 10:02:08', 'Water Billing'),
-(34, '2012-09-19 10:02:08', 'Water Billing'),
-(35, '2012-09-19 10:02:08', 'Water Billing'),
-(36, '2012-09-19 10:02:08', 'Water Billing');
+(1645, '2012-09-23 22:37:03', 'Water Billing'),
+(1646, '2012-09-23 22:37:03', 'Water Billing'),
+(1647, '2012-09-23 22:37:03', 'Water Billing'),
+(1648, '2012-09-23 22:40:57', 'Water Billing'),
+(1649, '2012-09-23 22:40:57', 'Water Billing'),
+(1650, '2012-09-23 22:40:57', 'Water Billing');
 
 -- --------------------------------------------------------
 
@@ -530,6 +633,12 @@ ALTER TABLE `account`
   ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `aging_analysis`
+--
+ALTER TABLE `aging_analysis`
+  ADD CONSTRAINT `aging_analysis_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `applicant`
 --
 ALTER TABLE `applicant`
@@ -544,15 +653,32 @@ ALTER TABLE `application`
   ADD CONSTRAINT `application_ibfk_3` FOREIGN KEY (`appnt_id`) REFERENCES `applicant` (`appnt_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `appnt_payment`
+--
+ALTER TABLE `appnt_payment`
+  ADD CONSTRAINT `appnt_payment_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `cheque`
+--
+ALTER TABLE `cheque`
+  ADD CONSTRAINT `cheque_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`met_id`) REFERENCES `meter` (`met_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `customer_ibfk_2` FOREIGN KEY (`appln_id`) REFERENCES `application` (`appln_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `customer_ibfk_3` FOREIGN KEY (`pay_center`) REFERENCES `pay_center` (`pac_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `customer_ibfk_5` FOREIGN KEY (`added_by`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `customer_ibfk_6` FOREIGN KEY (`appnt_id`) REFERENCES `applicant` (`appnt_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `customer_ibfk_7` FOREIGN KEY (`ba_id`) REFERENCES `billing_area` (`ba_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `cust_payment`
+--
+ALTER TABLE `cust_payment`
+  ADD CONSTRAINT `cust_payment_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `invoice`
@@ -561,6 +687,13 @@ ALTER TABLE `invoice`
   ADD CONSTRAINT `invoice_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `invoice_ibfk_2` FOREIGN KEY (`acc_id`) REFERENCES `account` (`acc_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `invoice_ibfk_3` FOREIGN KEY (`trans_id`) REFERENCES `transaction` (`trans_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `meter_customer`
+--
+ALTER TABLE `meter_customer`
+  ADD CONSTRAINT `meter_customer_ibfk_1` FOREIGN KEY (`met_id`) REFERENCES `meter` (`met_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `meter_customer_ibfk_2` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `meter_reading`
