@@ -67,7 +67,7 @@ ob_start();
                 // Displaying messages and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Applicant Applications</h1>
+                <h1>View Applications</h1>
                 <div class="hr-line"></div>
                 <div style="margin-bottom: 15px;">
                     <label> Billing Area/Zone &nbsp;

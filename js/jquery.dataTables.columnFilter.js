@@ -94,25 +94,25 @@
         *	Author: 	Allan Jardine, Modified by Jovan Popovic
         */
         $.fn.dataTableExt.afnFiltering.push(
-	        function (oSettings, aData, iDataIndex) {
-	            var iMin = document.getElementById(sFromId).value * 1;
-	            var iMax = document.getElementById(sToId).value * 1;
-	            var iValue = aData[index] == "-" ? 0 : aData[index] * 1;
-	            if (iMin == "" && iMax == "") {
-	                return true;
-	            }
-	            else if (iMin == "" && iValue < iMax) {
-	                return true;
-	            }
-	            else if (iMin < iValue && "" == iMax) {
-	                return true;
-	            }
-	            else if (iMin < iValue && iValue < iMax) {
-	                return true;
-	            }
-	            return false;
-	        }
-        );
+            function (oSettings, aData, iDataIndex) {
+                var iMin = document.getElementById(sFromId).value * 1;
+                var iMax = document.getElementById(sToId).value * 1;
+                var iValue = aData[index] == "-" ? 0 : aData[index] * 1;
+                if (iMin == "" && iMax == "") {
+                    return true;
+                }
+                else if (iMin == "" && iValue < iMax) {
+                    return true;
+                }
+                else if (iMin < iValue && "" == iMax) {
+                    return true;
+                }
+                else if (iMin < iValue && iValue < iMax) {
+                    return true;
+                }
+                return false;
+            }
+            );
         //------------end range filtering function
 
 
@@ -153,31 +153,31 @@
         //------------start date range filtering function
 
         $.fn.dataTableExt.afnFiltering.push(
-	        function (oSettings, aData, iDataIndex) {
-	            var dStartDate = from.datepicker("getDate");
+            function (oSettings, aData, iDataIndex) {
+                var dStartDate = from.datepicker("getDate");
 
-	            var dEndDate = to.datepicker("getDate");
+                var dEndDate = to.datepicker("getDate");
 
-	            var dCellDate = $.datepicker.parseDate($.datepicker.regional[""].dateFormat, aData[index]);
+                var dCellDate = $.datepicker.parseDate($.datepicker.regional[""].dateFormat, aData[index]);
 
-	            if (dCellDate == null)
-	                return false;
+                if (dCellDate == null)
+                    return false;
 
-	            if (dStartDate == null && dEndDate == null) {
-	                return true;
-	            }
-	            else if (dStartDate == null && dCellDate < dEndDate) {
-	                return true;
-	            }
-	            else if (dStartDate < dCellDate && dEndDate == null) {
-	                return true;
-	            }
-	            else if (dStartDate < dCellDate && dCellDate < dEndDate) {
-	                return true;
-	            }
-	            return false;
-	        }
-        );
+                if (dStartDate == null && dEndDate == null) {
+                    return true;
+                }
+                else if (dStartDate == null && dCellDate < dEndDate) {
+                    return true;
+                }
+                else if (dStartDate < dCellDate && dEndDate == null) {
+                    return true;
+                }
+                else if (dStartDate < dCellDate && dCellDate < dEndDate) {
+                    return true;
+                }
+                return false;
+            }
+            );
         //------------end date range filtering function
 
         $('#' + sFromId + ',#' + sToId, th).change(function () {
@@ -211,13 +211,13 @@
 
     function _fnRangeLabelPart(iPlace){
         switch(iPlace){
-        case 0:
-            return sRangeFormat.substring(0, sRangeFormat.indexOf("{from}"));
-        case 1:
-            return sRangeFormat.substring(sRangeFormat.indexOf("{from}") + 6, sRangeFormat.indexOf("{to}"));
-        default:
-            return sRangeFormat.substring(sRangeFormat.indexOf("{to}") + 4);
-	}
+            case 0:
+                return sRangeFormat.substring(0, sRangeFormat.indexOf("{from}"));
+            case 1:
+                return sRangeFormat.substring(sRangeFormat.indexOf("{from}") + 6, sRangeFormat.indexOf("{to}"));
+            default:
+                return sRangeFormat.substring(sRangeFormat.indexOf("{to}") + 4);
+        }
     }
 
 
@@ -250,7 +250,8 @@
 
             $(sFilterRow + " th", oTable).each(function (index) {
                 i = index;
-                var aoColumn = { type: "text",
+                var aoColumn = {
+                    type: "text",
                     bRegex: false,
                     bSmart: true
                 };
@@ -314,7 +315,10 @@
                                 aoData[k].value = afnSearch_[j]();
                         }
                     }
-                    aoData.push({ "name": "sRangeSeparator", "value": properties.sRangeSeparator });
+                    aoData.push({
+                        "name": "sRangeSeparator", 
+                        "value": properties.sRangeSeparator
+                    });
 
                     if (fnServerDataOriginal != null) {
                         fnServerDataOriginal(sSource, aoData, fnCallback);
@@ -325,7 +329,7 @@
                         });
                     }
 
-                    /*
+                /*
                     if (fnServerDataOriginal != null) {
                     if (properties.iDelay != 0) {
                     if (oFunctionTimeout != null)

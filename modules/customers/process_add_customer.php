@@ -31,17 +31,13 @@ $meter_number = clean($_POST['meter_number']);
 $premise_status = clean($_POST['premise_status']);
 $pay_center = clean($_POST['pay_center']);
 
-echo $meter_number . '<br>';
-echo $premise_status . '<br>';
-echo $pay_center . '<br>';
-exit;
-
-
 $query_customer = "INSERT INTO customer
-                               (met_id, pay_center, ba_id, premise_status,
-                                added_date, appln_id, appnt_id, added_by)
-                        VALUES ('$meter_number', '$pay_center', '$ba_id', '$premise_status',
-                                CURRENT_TIMESTAMP(), '$appln_id', '$appnt_id', '$user_id')";
+                               (pay_center, ba_id, premise_status,
+                                added_date, appln_id, appnt_id, added_by,
+                                cust_status)
+                        VALUES ('$pay_center', '$ba_id', '$premise_status',
+                                CURRENT_TIMESTAMP(), '$appln_id', '$appnt_id', '$user_id',
+                                'Connected')";
 
 $result_customer = mysql_query($query_customer) or die(mysql_error());
 
@@ -53,12 +49,20 @@ $query_acc = "INSERT INTO account
                    VALUES ('$acc_no', '$cust_id')";
 $result_acc = mysql_query($query_acc) or die(mysql_error());
 
-$update_meter = "UPDATE meter
-                    SET availability = 'ISSUED'
-                  WHERE met_id = '$meter_number'";
-$result_meter = mysql_query($update_meter) or die(mysql_error());
+if (!empty($meter_number)) {
 
-if ($result_meter && $result_customer && $result_acc) {
+    $met_met_cust = "INSERT INTO meter_customer
+                             (met_id, cust_id)
+                      VALUES ('$meter_number', '$cust_id')";
+    $result_met_cust = mysql_query($met_met_cust) or die(mysql_error());
+
+    $update_meter = "UPDATE meter
+                        SET availability = 'ISSUED'
+                      WHERE met_id = '$meter_number'";
+    $result_meter = mysql_query($update_meter) or die(mysql_error());
+}
+
+if ($result_meter || $result_customer && $result_acc || $result_met_cust) {
 
     info('message', 'Customer seccessfully added!');
     header('Location: ../applications/applications.php');

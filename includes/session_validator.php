@@ -17,10 +17,9 @@
  */
 
 session_start();
-if(empty($_SESSION['username']) || empty($_SESSION['password'])){
+if (empty($_SESSION['username']) || empty($_SESSION['password'])) {
     $_SESSION['error-outer'] = 'Please sign in first to continue';
     header('Location: ../../index.php');
 }
 session_commit();
-
 ?>

@@ -31,7 +31,7 @@ ob_start();
         </script>
     </head>
 
-    <body>
+    <body onload="getContent('invoice_listing.php');">
         <div class="container">
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">

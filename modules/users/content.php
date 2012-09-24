@@ -29,7 +29,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
         <script src="../../js/jquery.dataTables.pagination.js" type="text/javascript"></script>
         <script src="../../js/tooltip.js" type="text/javascript"></script>
         <script type="text/javascript">
-            
+
             $(document).ready(function() {
                 oTable = $('#dataTable').dataTable({
                     "bJQueryUI": true,
@@ -75,25 +75,8 @@ $result_user = mysql_query($query_user) or die(mysql_error());
 
     <body>
         <div class="container">
-            <?php require '../../includes/header.php'; ?>
-            <div class="sidebar">
-                <ul class="nav">
-                    <li><a href="../../home.php" class="home">Home</a></li>
-                    <li> <a href="#" class="users">Manage Users</a>
-                        <ul>
-                            <li><a href="new_user.php">Add new user</a></li>
-                        </ul>
-                    </li>
-                    <li> <a href="../settings/settings.php" class="settings">Settings</a> </li>
-                    <li> <a href="../applications/applications.php" class="applications">Applications</a> </li>
-                    <li> <a href="../customers/customers.php" class="customers">Customers</a></li>
-                    <li> <a href="../meters/meters.php" class="meters">Water Meters</a></li>
-                    <li> <a href="../invoice/invoices.php" class="invoices">Invoice</a></li>
-                    <li> <a href="../paypoint/paypoint.php" class="financial">Pay Point</a></li>
-                    <li> <a href="../report/reports.php" class="reports">Reports</a></li>
-                </ul>
-                <!-- end .sidebar --></div>
-            <div class="content">
+
+            <div class="content" style="width: 100%; margin: 0">
                 <?php
                 // Displaying messages and errors
                 include '../../includes/info.php';
@@ -143,7 +126,6 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 </form>
 
                 <!-- end .content --></div>
-            <?php include '../../includes/footer.php';  ?>
             <!-- end .container --></div>
     </body>
 </html>

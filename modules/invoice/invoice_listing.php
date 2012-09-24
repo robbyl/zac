@@ -104,7 +104,7 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
                 <td>
                     <input type="checkbox" name="checkbox[]" value="<?php echo $row['inv_id'] ?>" id="<?php echo $row['inv_id'] ?>">
                 </td>
-                <td><?php echo $row['inv_no'] ?></td>
+                <td><?php echo sprintf('%08d', $row['inv_no']) ?></td>
                 <td><?php echo $row['acc_no'] ?></td>
                 <td><?php echo $row['invoicing_date'] ?></td>
                 <td><?php echo $row['created_date'] ?></td>

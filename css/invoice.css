@@ -34,7 +34,7 @@ ul {
 }
 .invoice {
     width: 1000px;
-    padding: 20px 30px !important;
+    padding: 10px 30px !important;
     clear: both;
     border-bottom: 1px dashed #000 !important;
 }
@@ -42,20 +42,34 @@ ul {
 .company-header {
     position: relative;
     width: 1000px;
-    height: 100px;
+    height: 83px;
+}
+
+.authority-logo {
+    clear: both;
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    height: 80px;
+}
+
+.authority-logo img {
+    display: table-cell;
+    vertical-align: middle;
+    margin: auto;
 }
 
 .customer-header {
     position: relative;
     width: 1000px;
-    height: 130px;
+    height: 110px;
     border-top: 3px solid #cd7171;
 }
 
 .invoice-body {
     position: relative;
     width: 1000px;
-    min-height: 200px;
+    min-height: 175px;
 }
 
 .invoice-footer {

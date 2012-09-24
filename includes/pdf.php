@@ -16,19 +16,14 @@
  *  @version  Release: 1.0.0
  */
 
-require_once("../plugins/dompdf/dompdf_config.inc.php");
-
 $html = $_POST['html'];
 
+include("../plugins/mpdf/mpdf.php");
 
-//echo $html;
-//exit;
+$mpdf=new mPDF('s');
+$mpdf->SetDisplayMode('fullpage');
 
-  $dompdf = new DOMPDF();
-  $dompdf->load_html($html);
-  $dompdf->set_paper('latter', 'portrait');
-  $dompdf->render();
-
- $dompdf->stream("invoice.pdf", array("Attachment" => false));
-
+$mpdf->WriteHTML($html);
+$mpdf->Output();
+exit;
 ?>
