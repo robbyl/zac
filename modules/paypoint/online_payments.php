@@ -37,7 +37,10 @@ ob_start();
                 });
 
                 $('#preview').click(function(){
-                    $('#receipt').fadeIn('fast');
+//                    $('payment-form').submit(function(){
+//                        //$('#receipt').fadeIn('fast');
+//                        return false;
+//                    });
                 });
 
                 $('#save-print').click(function(){
@@ -50,7 +53,7 @@ ob_start();
                     var payType = $(this).val();
                     
                     if(payType == 'Cheque'){
-                        $('#cheque, #bank').attr("requird", "required");
+                        $('#cheque, #bank').attr("required", "required");
                         $('.cheque-details').show();
                     }
                     if(payType == 'Cash'){
@@ -91,7 +94,7 @@ ob_start();
                 ?>
                 <h1>Accept Payments</h1>
                 <div class="hr-line"></div>
-                <form action="process_add_meter.php" method="post" >
+                <form action="" method="post" onsubmit="confirm('Are you sure')" >
                     <fieldset style="float: left">
                         <legend>Customer/Applicant details</legend>
                         <table width="" border="0" cellpadding="5">
@@ -106,7 +109,7 @@ ob_start();
                             <tr>
                                 <td width="170">Payment type</td>
                                 <td>
-                                    <select name="meter_status" class="select">
+                                    <select name="meter_status" class="select" required>
                                         <option value="">--select payment type--</option>
                                         <option value="">Water Payment</option>
                                         <option value="">Other Payment</option>
@@ -159,7 +162,7 @@ ob_start();
                                     <input type="text" class="text" required id="cheque">
                                 </td>
                             </tr>
-                            <tr class="cheque-details">
+                            <tr class="cheque-details" style="display: none">
                                 <td width="170">Bank</td>
                                 <td>
                                     <select name="meter_status" class="select" id="bank" required>
@@ -182,7 +185,9 @@ ob_start();
                             </tr>
                             <tr>
                                 <td width="170" style="vertical-align: top">Amount in Words</td>
-                                <td><textarea name="meter_remarks" rows="6" cols="33" placeholder="PAYED AMOUNT IN WORDS:"></textarea></td>
+                                <td>
+                                    <textarea name="meter_remarks" rows="6" cols="33" placeholder="PAYED AMOUNT IN WORDS:" required></textarea>
+                                </td>
                             </tr>
 
                         </table>
@@ -190,7 +195,7 @@ ob_start();
                     <table width="531" style="clear: both">
                         <tr>
                             <td width="212">&nbsp;</td>
-                            <td width="307"><button type="submit" id="preview">Preview Receipt</button>
+                            <td width="307"><button type="submit">Preview Receipt</button>
                                 <button type="reset">Reset</button></td>
                         </tr>
                     </table>
@@ -204,7 +209,7 @@ ob_start();
                             <div class="close"></div>
                             <!--  end . form-header --> </div>
 
-                        <form action="" method="post" style="padding-top: 30px; margin-bottom: 0" >
+                        <form action="" id="payment-form" method="post" style="padding-top: 30px; margin-bottom: 0" >
                             <div id="receipt-print">
                                 <div class="receipt-header"></div>
                                 <div class="receipt-body">
