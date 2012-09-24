@@ -1,5 +1,4 @@
 <?php require '../../includes/session_validator.php'; ?>
-<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -56,7 +55,7 @@
                 ?>
                 <h1>Edit Customer Details</h1>
                 <div class="hr-line"></div>
-                <form action="process_edit_appln.php" method="post">
+                <form action="process_edit_customer.php" method="post">
                     <?php
                     require '../../functions/general_functions.php';
 
@@ -68,17 +67,17 @@
                         while (list($key, $val) = each($_POST['checkbox'])) {
                             // Getting applicantion data form the database
 
-                            $query_appln = "SELECT appln.appln_id, appnt_id, appln_type, appln_date, engeneer_appr, appnt.appnt_id,
+                            $query_appln = "SELECT appln.appln_id, appnt.ba_id, appnt.appnt_id,  appln_type, appln_date, engeneer_appr, 
                                                    appnt_fullname, appnt.appnt_type_id, approved_date, inspected_by,
                                                    premise_nature, surveyed_date, service_nature_id, occupants,
                                                    appnt_tel, appnt_post_addr, appnt_phy_addr, block_no, plot_no,
-                                                   living_area, living_town,  cust_id
+                                                   living_area, living_town, cust_status
                                               FROM application appln
                                          LEFT JOIN applicant appnt
                                                 ON appln.appnt_id = appnt.appnt_id
-                                         LEFT JOIN appnt_type apnty
                                           LEFT JOIN customer cust
-                                                ON cust.appnt_id = appnt.appnt_id
+                                                 ON cust.appnt_id= appnt.appnt_id
+                                         LEFT JOIN appnt_type apnty
                                                 ON appnt.appnt_type_id = apnty.appnt_type_id
                                              WHERE appln.appln_id = '$val'";
 
@@ -90,13 +89,12 @@
                             <fieldset style="float: left">
                                 <legend>Customer Details</legend>
                                 <input type="hidden" name="cust_id[]" value="<?php echo $val ?>" id="cust_id">
-                                
-                                
+
                                 <table width="" border="0" cellpadding="5">
                                     <tr>
-                                        <td width="170">Customer  Type</td>
+                                        <td width="170">Customer Type</td>
                                         <td><select name="appnt_type[]" id="appnt_type" required class="select">
-                                                <option value="">--select Customer type--</option>
+                                                <option value="">--select Applicant type--</option>
                                                 <?php
                                                 $result_type = mysql_query("SELECT * FROM appnt_type ORDER BY appnt_types ASC") or die(mysql_error());
                                                 while ($row_type = mysql_fetch_array($result_type)) {
@@ -162,29 +160,21 @@
                                                 ?>
                                             </select></td>
                                     </tr>
-                                    <td width="170">Customer  status</td>
-                                        <td><select name="cust_status[]" id="cust_status" required class="select">
-                                                <option value="">--select Customer status--</option>
-                                                <?php
-                                                $result_status = mysql_query("SELECT * FROM customer ORDER BY cust_status ASC") or die(mysql_error());
-                                                while ($row_status = mysql_fetch_array($result_status)) {
-                                                    ?>
-                                                    <option value="<?php echo $row_type['cust_id'] ?>" <?php if ($row_status['cust_id'] === $row['cust_id']) echo 'selected'; ?> >
-                                                        <?php echo $row_status['cust_status'] ?></option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select></td>
-                                    </tr>
 
+                                    <td width="170">Customer  status</td>
+                                    <td>
+                                        <select name="cust_status" class="select" required>
+                                            <option value="">--select customer status--</option>
+                                            <option <?php if ($row['cust_status'] === "Connected") echo 'selected' ?> value="Connected">Connected</option>
+                                            <option <?php if ($row['cust_status'] === "Disconnected") echo 'selected' ?> value="Disconnected">Disconnected</option>                                          
+                                            <option <?php if ($row['cust_status'] === "Blocked") echo 'selected' ?>value="Blocked">Blocked</option>
+                                        </select>
                                 </table>
                             </fieldset>
 
                             <fieldset style="float: left">
                                 <legend>Service Details</legend>
-                                <table width="" border="0" cellpadding="5">
-
-                                    
+                                <table width="" border="0" cellpadding="5">                                 
                                     <tr>
                                         <td width="170">Application Type</td>
                                         <td>
@@ -192,14 +182,6 @@
                                             <label><input type="radio" name="appln_type[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" required class="radio">Sewer</label>
                                         </td>
                                     </tr>
-
-                                    
-                                    
-                                   
-                                       
-                                        
-                                    
-                                    
                                     <tr>
                                         <td width="170">Premises Nature</td>
                                         <td>
