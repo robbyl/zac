@@ -23,7 +23,7 @@ ob_start();
 
         <script type="text/javascript">
 
-            $(document).ready(function() {
+            $(document).ready(function() { 
 
                 $('#select-all').click(function(){
                     // Iterate each check box
@@ -67,7 +67,11 @@ ob_start();
                     <li> <a href="../users/users.php" class="users">Manage Users</a></li>
                     <li> <a href="../settings/settings.php" class="settings">Settings</a> </li>
                     <li> <a href="../applications/applications.php" class="applications">Applications</a></li>
-                    <li> <a href="../customers/customers.php" class="customers">Customers</a></li>
+                    <li> <a href="../customers/customers.php" class="customers">Customers</a>
+                        <ul>
+                            <li> <a href="../customers/customer_status.php" class="customer Status">Customer status</a></li>
+                        </ul>
+                    </li>
                     <li> <a href="../meters/meters.php" class="meters">Water Meters</a></li>
                     <li> <a href="../invoice/invoices.php" class="invoices">Invoice</a></li>
                     <li> <a href="../paypoint/paypoint.php" class="financial">Pay Point</a></li>

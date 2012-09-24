@@ -77,10 +77,10 @@ for ($i = 0; $i < $appln_no; $i++) {
 if ($result_appnt && $result_appln && $result_appnt) {
 
     info('message', 'Updated successfully!');
-    header('Location: applications.php');
+    header('Location: customers.php');
 } else {
 
     info('error', 'Cannot save, Please try again.');
-    header('Location: applications.php');
+    header('Location: customers.php');
 }
 ?>
