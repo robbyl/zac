@@ -43,6 +43,21 @@ ob_start();
                 $('#save-print').click(function(){
                     printPage('receipt-print', '../../css/pop-up.css');
                 });
+                
+                $('.cheque-details').hide();
+                $('#payment-type').change(function(){
+                    
+                    var payType = $(this).val();
+                    
+                    if(payType == 'Cheque'){
+                        $('#cheque, #bank').attr("requird", "required");
+                        $('.cheque-details').show();
+                    }
+                    if(payType == 'Cash'){
+                        $('#cheque, #bank').removeAttr('required');
+                        $('.cheque-details').hide();
+                    }
+                });
             });
         </script>
     </head>
@@ -81,7 +96,11 @@ ob_start();
                         <legend>Customer/Applicant details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="170">Account No</td>
+                                <td width="170">
+                                    <select class="select">
+                                        <option value="Account No">Account No</option>
+                                        <option value="Appln No">Application No</option>
+                                    </select></td>
                                 <td><input type="text" name="meter_number" required autocomplete="off" class="text" ></td>
                             </tr>
                             <tr>
@@ -127,27 +146,27 @@ ob_start();
                             <tr>
                                 <td width="170">Transaction type</td>
                                 <td>
-                                    <select name="meter_status" class="select">
+                                    <select name="meter_status" class="select" id="payment-type" required>
                                         <option value="">--select payment type--</option>
-                                        <option value="">Cash</option>
-                                        <option value="">Cheque</option>
+                                        <option value="Cash">Cash</option>
+                                        <option value="Cheque">Cheque</option>
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="cheque-details">
                                 <td width="170">Cheque Number</td>
                                 <td>
-                                    <input type="text" class="text" required>
+                                    <input type="text" class="text" required id="cheque">
                                 </td>
                             </tr>
-                            <tr>
-                                <td width="170">Number of Digits</td>
+                            <tr class="cheque-details">
+                                <td width="170">Bank</td>
                                 <td>
-                                    <select name="meter_status" class="select">
+                                    <select name="meter_status" class="select" id="bank" required>
                                         <option value="">--select bank--</option>
-                                        <option value="">CRDB</option>
-                                        <option value="">NBC</option>
-                                        <option value="">NMB</option>
+                                        <option value="CRDB">CRDB</option>
+                                        <option value="NBC">NBC</option>
+                                        <option value="NMB">NMB</option>
                                     </select>
                                 </td>
                             </tr>
@@ -158,7 +177,7 @@ ob_start();
                             <tr>
                                 <td width="170">Payed Amount</td>
                                 <td>
-                                    <input type="number" name="initial_reading" class="number" min="0" required style="width: 90px;">
+                                    <input type="number" name="initial_reading" class="number" min="0" required style="width: 150px;"> Payed in fully
                                 </td>
                             </tr>
                             <tr>

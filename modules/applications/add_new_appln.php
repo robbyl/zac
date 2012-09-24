@@ -17,8 +17,7 @@
                 $('#appnt_type').change(function(){
                     $.post('../../includes/service_nature.php',{appnt_type: $(this).val()},function(data){
                         $('#service_nature').html(data);
-                    });
-                    
+                    });     
                 });
  
             });
@@ -47,7 +46,7 @@
                 <!-- end .sidebar --></div>
             <div class="content">
                 <?php
-// Displaying message and errors
+               // Displaying message and errors
                 include '../../includes/info.php';
                 require '../../config/config.php';
 
