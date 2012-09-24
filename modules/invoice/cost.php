@@ -53,15 +53,15 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
     if ($row_reading['appln_type'] === 'Clean water') {
 
         // Making Water Billing transaction
-        $query_transaction_water = "INSERT INTO transaction
-                                                    (trans_date, description)
-                                             VALUES (CURRENT_TIMESTAMP(), 'Water Billing')";
-
-        $result_transaction_water = mysql_query($query_transaction_water) or die(mysql_error());
-
-        $trans_id = mysql_insert_id();
-        $cust_id = $row_reading['cust_id'];
-        $acc_id = $row_reading['acc_id'];
+//        $query_transaction_water = "INSERT INTO transaction
+//                                                    (trans_date, description)
+//                                             VALUES (CURRENT_TIMESTAMP(), 'Water Billing')";
+//
+//        $result_transaction_water = mysql_query($query_transaction_water) or die(mysql_error());
+//
+//        $trans_id = mysql_insert_id();
+//        $cust_id = $row_reading['cust_id'];
+//        $acc_id = $row_reading['acc_id'];
 
         if ($row_reading['premise_status'] === 'Metered') {
 
@@ -70,9 +70,8 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             $to = $row_reading['wt_to'];
             $wt_rate = $row_reading['wt_rate'];
             $curr_level = $row_reading['level'];
-
-
             $appnt_type = $row_reading['appnt_type_id'];
+            
             $query_level = "SELECT appnt_type_id, level, wt_rate, wt_from, wt_to 
                                       FROM water_tariff wt
                                 INNER JOIN service_nature sev
@@ -82,7 +81,6 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             $result_level = mysql_query($query_level) or die(mysql_error());
             $no_level = mysql_num_rows($result_level);
 
-
             if ($consumption <= $to) {
 
                 $cost = $consumption * $wt_rate;
@@ -90,31 +88,33 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             } elseif ($consumption > $to) {
 
                 for ($i = 0; $i < $no_level; $i++) {
-                    $levels[$i] = $row_reading['level'];
+                    $row_level = mysql_fetch_array($result_level);
+                    $levels[$i] = $row_level['level'];
+                    $nwt_to[$row_level['level']] = $row_level['wt_to'];
+                    $nwt_rate[$row_level['level']] = $row_level['wt_rate'];
                 }
+
                 $top_level = end($levels);
+
                 if ($curr_level === $top_level) {
 
                     $cost = $consumption * $wt_rate;
-                    echo $cost;
                 } elseif ($curr_level != $top_level) {
 
                     $cost = $to * $wt_rate;
                     $extra = $consumption - $to;
 
-                    while ($extra > 0) {
+                    while ($extra >= 0) {
 
                         $curr_level = $curr_level + 0.1;
 
-                        if ($extra <= $to) {
-                            $cost = $extra * $wt_rate;
-                        } elseif ($extra > $to) {
+                        if ($extra <= $nwt_rate[$curr_level]) {
+                            $cost += $extra * $nwt_rate[$curr_level];
+                        } elseif ($extra > $nwt_rate[$curr_level]) {
 
-                            $cost = $to * $wt_rate;
-                            $extra = $extra - $to;
+                            $cost += $nwt_to[$curr_level] * $nwt_rate[$curr_level];
+                            $extra -= $nwt_to[$curr_level];
                         }
-                        $arraycost[$cost] = $cost;
-                        $cost_sum = array_sum($arraycost);
                     }
 
                     echo $cost_sum;
@@ -126,25 +126,30 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
 
             // If water customer and premise status un metered use
             // water flat rate as water cost
-            $cost_water = $row_reading['wt_flat_rate'];
+            $cost = $row_reading['wt_flat_rate'];
         }
+        
+        echo $cost . '<br>';
+        
     } elseif ($row_reading['appln_type'] === 'Sewer') {
 
         // Making Sewer Billing transaction
-        $query_transaction_sewer = "INSERT INTO transaction
-                                                    (trans_date, description)
-                                             VALUES (CURRENT_TIMESTAMP(), 'Sewer Billing')";
-
-        $result_transaction_sewer = mysql_query($query_transaction_sewer) or die(mysql_error());
-
-        $trans_id = mysql_insert_id();
-        $cust_id = $row_reading['cust_id'];
-        $acc_id = $row_reading['acc_id'];
-
-        //Generating Invoices for Sewer
-        $cost_sewer = $row_reading['s_flat_rate'];
+//        $query_transaction_sewer = "INSERT INTO transaction
+//                                                    (trans_date, description)
+//                                             VALUES (CURRENT_TIMESTAMP(), 'Sewer Billing')";
+//
+//        $result_transaction_sewer = mysql_query($query_transaction_sewer) or die(mysql_error());
+//
+//        $trans_id = mysql_insert_id();
+//        $cust_id = $row_reading['cust_id'];
+//        $acc_id = $row_reading['acc_id'];
+//
+//        //Generating Invoices for Sewer
+//        $cost_sewer = $row_reading['s_flat_rate'];
     }
 }
+
+exit;
 
 mysql_close($conn);
 
