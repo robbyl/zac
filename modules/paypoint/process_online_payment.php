@@ -43,8 +43,8 @@ $transaction_id = mysql_insert_id();
 
 // Inserting receipt details
 $query_receipt = "INSERT INTO receipt
-                              (tran_id, payed_amount, amount_in_words)
-                       VALUES ('$transaction_id', '$payed_amount', '$amount_in_words')";
+                              (tran_id, payed_amount, amount_in_words, user_id)
+                       VALUES ('$transaction_id', '$payed_amount', '$amount_in_words', '$user_id')";
 
 $result_receipt = mysql_query($query_receipt) or die(mysql_error());
 
