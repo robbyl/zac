@@ -47,6 +47,7 @@ ob_start();
                     printPage('receipt-print', '../../css/pop-up.css');
                 });
                 
+                //Hide and show cheque details depending on transaction type.
                 $('.cheque-details').hide();
                 $('#payment-type').change(function(){
                     
