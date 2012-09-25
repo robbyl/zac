@@ -88,6 +88,7 @@
 
                             <fieldset style="float: left">
                                 <legend>Customer Details</legend>
+                                <input type="hidden" name="ba_id[]" value="<?php echo $row['ba_id'] ?>" id="ba_id">
                                 <input type="hidden" name="cust_id[]" value="<?php echo $val ?>" id="cust_id">
 
                                 <table width="" border="0" cellpadding="5">
@@ -108,6 +109,7 @@
                                     </tr>
                                     <tr>
                                         <td width="170">Full Name</td>
+                                         <input type="hidden" name="appnt_id[]" value="<?php echo $val ?>" id="appnt_id">
                                         <td><input type="text" name="appnt_fullname[]" value="<?php echo $row['appnt_fullname'] ?>" required size="255" class="text"></td>
                                     </tr>
                                     <tr>
@@ -145,7 +147,7 @@
 
                                     <tr>
                                         <td width="170">Billing Area/Zone</td>
-                                        <td><select name="billing_area" class="select" required>
+                                         <td><select name="billing_area" class="select" required>
                                                 <option value="">--select technical area/zone--</option>
                                                 <?php
                                                 $result = mysql_query("SELECT * FROM billing_area ORDER BY billing_areas ASC") or die(mysql_error());
@@ -161,22 +163,15 @@
                                             </select></td>
                                     </tr>
 
-                                    <td width="170">Customer  status</td>
-                                    <td>
-                                        <select name="cust_status" class="select" required>
-                                            <option value="">--select customer status--</option>
-                                            <option <?php if ($row['cust_status'] === "Connected") echo 'selected' ?> value="Connected">Connected</option>
-                                            <option <?php if ($row['cust_status'] === "Disconnected") echo 'selected' ?> value="Disconnected">Disconnected</option>                                          
-                                            <option <?php if ($row['cust_status'] === "Blocked") echo 'selected' ?>value="Blocked">Blocked</option>
-                                        </select>
-                                </table>
-                            </fieldset>
+                          </table>
+                             </fieldset>
 
                             <fieldset style="float: left">
                                 <legend>Service Details</legend>
                                 <table width="" border="0" cellpadding="5">                                 
                                     <tr>
                                         <td width="170">Application Type</td>
+                                         <input type="hidden" name="appln_id[]" value="<?php echo $val ?>" id="appln_id">
                                         <td>
                                             <label><input type="radio" name="appln_type[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water" required class="radio">Clean water</label>&nbsp;&nbsp;
                                             <label><input type="radio" name="appln_type[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" required class="radio">Sewer</label>
