@@ -66,10 +66,10 @@
 
                     $inv_id = clean($_GET['inv_id']);
 
-                    $query_invoice = "SELECT inv_no, invoicing_date, acc_no, appnt_fullname,
+                    $query_invoice = "SELECT inv_no, inv_type, invoicing_date, acc_no, appnt_fullname,
                                              appnt_post_addr, block_no, plot_no, living_town,
                                              billing_areas, living_area, consumption, reading_date,
-                                             reading, met_number, appnt_types, inv.cost
+                                             reading, met_number, appnt_types, inv.cost, reading_date
                                         FROM invoice inv
                                   INNER JOIN customer cust
                                           ON inv.cust_id = cust.cust_id
@@ -90,8 +90,18 @@
                     $result_invoice = mysql_query($query_invoice) or die(mysql_error());
 
                     $row_invoice = mysql_fetch_array($result_invoice);
-
-                    $from = $row_invoice['reading'] - $row_invoice['consumption'];
+                    
+                    //getting  invoice header data from the database
+                    $query_settings = "SELECT aut_name, address, phone,fax, email, logo,terms_conds
+                                         FROM settings ";
+                    
+                    $result_settings = mysql_query($query_settings) or die(mysql_error());
+                    
+                    $row_settings = mysql_fetch_array($result_settings);
+                    
+                    $reading = $row_invoice['reading'];
+                    $consumption = $row_invoice['consumption'];
+                    $from = $reading - $consumption;
                     ?>
                     <h1>Invoice for <?php echo $row_invoice['appnt_fullname'] ?></h1>
                     <div class="hr-line"></div>
@@ -109,7 +119,7 @@
                             <div class="invoice">
                                 <div class="company-header">
                                     <ul class="inv-list" style="width: 500px; position: absolute; top: 0; left: 0;">
-                                        <li><strong>MBINGA URBAN SEWER AND WATER AUTHORITY</strong></li>
+                                        <li><strong><?php echo $row_settings['aut_name'] ?></strong></li>
                                         <li>P.o.Box 2323</li>
                                         <li>Dar es Salaam</li>
                                     </ul>
@@ -117,9 +127,9 @@
                                     <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
                                     </div>
                                     <ul class="inv-list" style="width: 230px; padding-right: 0 !important; position: absolute; top: 0; right: 0">
-                                        <li>Phone: <span style="float: right"><?php echo $row_invoice['plot_no']; ?></span></li>
-                                        <li>Fax: <span style="float: right"><?php echo $row_invoice['block_no']; ?></span></li>
-                                        <li>E-mail: <span style="float: right"><?php echo $row_invoice['living_area']; ?></span></li>
+                                        <li>Phone: <span style="float: right"><?php echo $row_settings['phone']; ?></span></li>
+                                        <li>Fax: <span style="float: right"><?php echo $row_settings['fax']; ?></span></li>
+                                        <li>E-mail: <span style="float: right"><?php echo $row_settings['email']; ?></span></li>
                                     </ul>
                                 </div>
                                 <div class="customer-header">
@@ -183,8 +193,8 @@
                                             <td>Water</td>
                                             <td><?php echo $row_invoice['met_number'] ?></td>
                                             <td><?php echo $row_invoice['appnt_types'] ?></td>
-                                            <td>Actual</td>
-                                            <td>21 Aug, 2012</td>
+                                            <td><?php echo $row_invoice['inv_type']; ?></td>
+                                            <td><?php echo $row_invoice['reading_date'] ?></td>
                                             <td><?php echo $from; ?></td>
                                             <td><?php echo $row_invoice['reading'] ?></td>
                                             <td><?php echo $row_invoice['consumption'] ?></td>
@@ -196,7 +206,7 @@
                                     <table border="0" cellspacing="3" cellpadding="5" width="1000">
                                         <tr>
                                             <td width="53%" rowspan="2" style="vertical-align: top">
-                                                <strong>NOTE:</strong> Sasa unaweza kulipia bili yako kupitia Zap, M-Pesa, Selcome, Backlays Bank au CRDB
+                                                <strong>NOTE:</strong> <?php echo $row_settings['terms_conds'];?>
                                             </td>
                                             <td rowspan="2">&nbsp;</td>
                                             <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS 999,450,302.12</span></strong></td>
