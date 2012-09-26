@@ -151,10 +151,10 @@ ob_start();
                             require '../../config/config.php';
 
                             $query_meter_reading = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number,
-                               premise_status, appnt_post_addr, reading, met.met_id
+                               premise_status, appnt_post_addr, reading, met.met_id, 
                           FROM customer cust
                     INNER JOIN meter_reading metr
-                            ON cust.cust_id = metr.cust_id
+                            ON cust.cust_id = metr.cust
                     INNER JOIN applicant appnt
                             ON cust.appnt_id = appnt.appnt_id
                     INNER JOIN application appln
@@ -164,7 +164,7 @@ ob_start();
                     INNER JOIN account acc
                             ON cust.cust_id = acc.cust_id
                     INNER JOIN meter met
-                            ON cust.met_id = met.met_id";
+                            ON metr.met_id = met.met_id";
 
                             $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
                             ?>

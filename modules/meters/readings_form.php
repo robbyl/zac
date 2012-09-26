@@ -42,7 +42,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     INNER JOIN account acc
                             ON cust.cust_id = acc.cust_id
                     INNER JOIN meter met
-                            ON cust.met_id = met.met_id
+                            ON metr.met_id = met.met_id
                                {$filter}
                          WHERE premise_status = 'Metered'
                            AND billing_date = (

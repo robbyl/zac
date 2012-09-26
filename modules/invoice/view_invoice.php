@@ -90,15 +90,15 @@
                     $result_invoice = mysql_query($query_invoice) or die(mysql_error());
 
                     $row_invoice = mysql_fetch_array($result_invoice);
-                    
+
                     //getting  invoice header data from the database
                     $query_settings = "SELECT aut_name, address, phone,fax, email, logo,terms_conds
                                          FROM settings ";
-                    
+
                     $result_settings = mysql_query($query_settings) or die(mysql_error());
-                    
+
                     $row_settings = mysql_fetch_array($result_settings);
-                    
+
                     $reading = $row_invoice['reading'];
                     $consumption = $row_invoice['consumption'];
                     $from = $reading - $consumption;
@@ -124,7 +124,7 @@
                                         <li>Dar es Salaam</li>
                                     </ul>
                                     <div class="authority-logo">
-                                    <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
+                                        <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
                                     </div>
                                     <ul class="inv-list" style="width: 230px; padding-right: 0 !important; position: absolute; top: 0; right: 0">
                                         <li>Phone: <span style="float: right"><?php echo $row_settings['phone']; ?></span></li>
@@ -160,34 +160,23 @@
                                             <td  colspan="5" align="right"><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></td>
                                         </tr>
                                         <tr class="tr-line">
-                                            <td bgcolor="#f1f1f1">Balance</td>
-                                            <td colspan="7"><span style="font-weight: normal">This is the available amount</span></td>
-                                            <td align="right">23,893.67</td>
+                                            <td bgcolor="#f1f1f1">Open Balance</td>
+                                            <td colspan="7"><span style="font-weight: normal">Amount before charging </span></td>
+                                            <td align="right" style="font-weight: normal" >23,893.67</td>
                                         </tr>
-                                        <tr height="5"></tr>
-                                        <tr class="tr-line">
-                                            <td bgcolor="#f1f1f1">Adjustments</td>
-                                            <td>Date</td>
-                                            <td colspan="6">Description</td>
-                                            <td align="right">72,092.38</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td>21 Aug, 2012</td>
-                                            <td colspan="6">Debit Notes: EWURA charge</td>
-                                            <td align="right">72,092.38</td>
-                                        </tr>
+
+
                                         <tr height="10"></tr>
                                         <tr class="tr-line">
                                             <td bgcolor="#f1f1f1">Charges</td>
-                                            <td>Meter</td>
+                                            <td>Meter Number</td>
                                             <td>Category</td>
-                                            <td>Type</td>
-                                            <td>Date</td>
+                                            <td>Billing Type</td>
+                                            <td>Charged Date</td>
                                             <td>From</td>
                                             <td>To</td>
                                             <td>Consm</td>
-                                            <td align="right">24,782.00</td>
+                                            <td align="right"></td>
                                         </tr>
                                         <tr>
                                             <td>Water</td>
@@ -200,13 +189,21 @@
                                             <td><?php echo $row_invoice['consumption'] ?></td>
                                             <td align="right"><?php echo $row_invoice['cost'] ?></td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="8">Service Charge</td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Sewer</td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
                                     </table>
                                 </div>
                                 <div class="invoice-footer">
                                     <table border="0" cellspacing="3" cellpadding="5" width="1000">
                                         <tr>
                                             <td width="53%" rowspan="2" style="vertical-align: top">
-                                                <strong>NOTE:</strong> <?php echo $row_settings['terms_conds'];?>
+                                                <strong>NOTE:</strong> <?php echo $row_settings['terms_conds']; ?>
                                             </td>
                                             <td rowspan="2">&nbsp;</td>
                                             <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS 999,450,302.12</span></strong></td>
