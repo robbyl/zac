@@ -24,7 +24,7 @@ $action = $action[0];
 
 switch ($action) {
     case 'EDIT':
-        include 'edit_customer.php';
+        include 'edit_user.php';
         break;
 
     case 'BLOCK':
