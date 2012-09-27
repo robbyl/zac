@@ -94,9 +94,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
         <thead>
             <tr>
-                <th width="23" title="Serial No." class="tooltip">
-                    SN
-                </th>
+                <th width="23" title="Serial No." class="tooltip">SN</th>
                 <th title="Account number" class="tooltip">Account No.</th>
                 <th title="Meter number" class="tooltip">Meter No.</th>
                 <th>Customer name</th>
