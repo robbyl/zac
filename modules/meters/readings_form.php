@@ -27,7 +27,8 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     $query_meter_reading = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number,
                                premise_status, appnt_post_addr, reading, met.met_id,
-                               billing_date, initial_reading, reading_date, billing_areas
+                               billing_date, initial_reading, reading_date, billing_areas,
+                               cust_status
                           FROM customer cust
                      LEFT JOIN meter_reading metr
                             ON cust.cust_id = metr.cust_id
@@ -45,6 +46,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             ON metr.met_id = met.met_id
                                {$filter}
                          WHERE premise_status = 'Metered'
+                           AND cust_status = 'Connected'
                            AND billing_date = (
                         SELECT MAX(billing_date)
                           FROM meter_reading)";
@@ -123,13 +125,13 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 $SN++;
             }
             ?>
-        </tbody>
-    </table>
-    <table width="531">
-        <tr>
-            <td width="307"><button type="submit">Save</button>
-                <button type="reset">Reset</button></td>
-        </tr>
-    </table>
-</form>
+            </tbody>
+        </table>
+        <table width="531">
+            <tr>
+                <td width="307"><button type="submit">Save</button>
+                    <button type="reset">Reset</button></td>
+            </tr>
+        </table>
+    </form>
 <?php } ?>
