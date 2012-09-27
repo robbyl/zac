@@ -57,9 +57,9 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
         oTable = $('#dataTable').dataTable({
             "bJQueryUI": true,
-            "bScrollCollapse": true,
+            "bScrollCollapse": false,
             "sScrollY": "auto",
-            "bAutoWidth": true,
+            "bAutoWidth": false,
             "bPaginate": true,
             "sPaginationType": "full_numbers", //full_numbers,two_button
             "bStateSave": true,
