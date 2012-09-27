@@ -77,9 +77,9 @@
                                           ON cust.appnt_id = appnt.appnt_id
                                   INNER JOIN appnt_type apty
                                           ON appnt.appnt_type_id = apty.appnt_type_id
-                                  INNER JOIN meter_reading mred
+                                   LEFT JOIN meter_reading mred
                                           ON cust.cust_id = mred.cust_id
-                                  INNER JOIN meter met
+                                   LEFT JOIN meter met
                                           ON mred.met_id = met.met_id
                                   INNER JOIN billing_area ba
                                           ON appnt.ba_id = ba.ba_id
