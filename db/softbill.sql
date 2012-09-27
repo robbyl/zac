@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 24, 2012 at 11:42 AM
+-- Generation Time: Sep 26, 2012 at 09:05 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -157,6 +157,7 @@ INSERT INTO `application` (`appln_id`, `appln_date`, `appln_type`, `surveyed_dat
 CREATE TABLE IF NOT EXISTS `appnt_payment` (
   `appntp_id` int(11) NOT NULL AUTO_INCREMENT,
   `rec_id` int(11) NOT NULL,
+  `appnt_id` int(11) NOT NULL,
   KEY `appntp_id` (`appntp_id`),
   KEY `rec_id` (`rec_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -265,6 +266,7 @@ INSERT INTO `customer` (`cust_id`, `added_date`, `appln_id`, `pay_center`, `ba_i
 CREATE TABLE IF NOT EXISTS `cust_payment` (
   `custp_id` int(11) NOT NULL AUTO_INCREMENT,
   `rec_id` int(11) NOT NULL,
+  `cust_id` int(11) NOT NULL,
   PRIMARY KEY (`custp_id`),
   KEY `cust_id` (`rec_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -437,9 +439,12 @@ INSERT INTO `pay_center` (`pac_id`, `pay_center`) VALUES
 CREATE TABLE IF NOT EXISTS `receipt` (
   `rec_id` int(11) NOT NULL AUTO_INCREMENT,
   `tran_id` int(11) NOT NULL,
-  `payment_type` varchar(255) NOT NULL,
+  `payed_amount` decimal(15,2) NOT NULL,
+  `amount_in_words` varchar(500) NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`rec_id`),
-  KEY `tran_id` (`tran_id`)
+  KEY `tran_id` (`tran_id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -604,6 +609,7 @@ CREATE TABLE IF NOT EXISTS `water_tariff` (
   `wt_to` int(11) NOT NULL,
   `wt_rate` decimal(10,2) NOT NULL,
   `wt_flat_rate` decimal(10,2) NOT NULL,
+  `service_charge` decimal(10,2) NOT NULL,
   KEY `wt_id` (`wt_id`),
   KEY `service_nature_id` (`service_nature_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
@@ -612,15 +618,15 @@ CREATE TABLE IF NOT EXISTS `water_tariff` (
 -- Dumping data for table `water_tariff`
 --
 
-INSERT INTO `water_tariff` (`wt_id`, `service_nature_id`, `level`, `wt_from`, `wt_to`, `wt_rate`, `wt_flat_rate`) VALUES
-(1, 1, 3.0, 0, 60, 300.00, 8000.00),
-(2, 2, 1.3, 0, 30, 250.00, 7500.00),
-(3, 3, 1.2, 0, 40, 230.00, 6000.00),
-(4, 4, 1.1, 0, 20, 200.00, 4000.00),
-(5, 5, 2.0, 0, 10, 460.00, 14400.00),
-(6, 6, 4.0, 0, 50, 630.00, 1399.95),
-(7, 7, 6.0, 0, 80, 340.00, 8000.00),
-(8, 8, 5.0, 0, 70, 400.00, 7000.00);
+INSERT INTO `water_tariff` (`wt_id`, `service_nature_id`, `level`, `wt_from`, `wt_to`, `wt_rate`, `wt_flat_rate`, `service_charge`) VALUES
+(1, 1, 3.0, 0, 60, 300.00, 8000.00, 300.00),
+(2, 2, 1.3, 0, 30, 250.00, 7500.00, 500.00),
+(3, 3, 1.2, 0, 40, 230.00, 6000.00, 600.00),
+(4, 4, 1.1, 0, 20, 200.00, 4000.00, 700.00),
+(5, 5, 2.0, 0, 10, 460.00, 14400.00, 800.00),
+(6, 6, 4.0, 0, 50, 630.00, 1399.95, 900.00),
+(7, 7, 6.0, 0, 80, 340.00, 8000.00, 1000.00),
+(8, 8, 5.0, 0, 70, 400.00, 7000.00, 1500.00);
 
 --
 -- Constraints for dumped tables
@@ -706,7 +712,8 @@ ALTER TABLE `meter_reading`
 -- Constraints for table `receipt`
 --
 ALTER TABLE `receipt`
-  ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`tran_id`) REFERENCES `transaction` (`trans_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`tran_id`) REFERENCES `transaction` (`trans_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `receipt_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `service_nature`

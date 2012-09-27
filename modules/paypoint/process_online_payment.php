@@ -50,26 +50,33 @@ $result_receipt = mysql_query($query_receipt) or die(mysql_error());
 
 $receipt_id = mysql_insert_id();
 
-// Insert details into cheque
-$query_cheque = "INSERT INTO cheque
+if ($cust_appnt === "Account No") {
+
+    // Insert data into customer payment table
+    $query_cust_payment = "INSERT INTO cust_payment
+                                    (rec_id)
+                             VALUES ('$receipt_id')";
+
+    $result_cust_payment = mysql_query($query_cust_payment) or die(mysql_error());
+} elseif ($cust_appnt === "Appln No") {
+
+    // Insert data into applicant payment table
+    $query_appnt_payment = "INSERT INTO appnt_payment
+                                    (rec_id)
+                             VALUES ('$receipt_id')";
+
+    $result_appnt_payment = mysql_query($query_appnt_payment) or die(mysql_error());
+}
+
+if ($transaction_type === "Cheque") {
+
+    // Insert details into cheque
+    $query_cheque = "INSERT INTO cheque
                              (cheq_no, bank, rec_id)
                       VALUES ('$cheque_no', '$bank', '$receipt_id')";
 
-$result_cheque = mysql_query($query_cheque) or die(mysql_error());
-
-// Insert data into applicant payment table
-$query_appnt_payment = "INSERT INTO appnt_payment
-                                    (rec_id)
-                             VALUES ('$receipt_id')";
-
-$result_appnt_payment = mysql_query($query_appnt_payment) or die(mysql_error());
-
-// Insert data into customer payment table
-$query_cust_payment = "INSERT INTO cust_payment
-                                    (rec_id)
-                             VALUES ('$receipt_id')";
-
-$result_cust_payment = mysql_query($query_cust_payment) or die(mysql_error());
+    $result_cheque = mysql_query($query_cheque) or die(mysql_error());
+}
 
 if ($result_transaction && $result_receipt || $result_appnt_payment || $result_cust_payment || $result_cheque) {
 
