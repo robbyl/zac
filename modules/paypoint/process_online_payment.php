@@ -54,16 +54,16 @@ if ($cust_appnt === "Account No") {
 
     // Insert data into customer payment table
     $query_cust_payment = "INSERT INTO cust_payment
-                                    (rec_id)
-                             VALUES ('$receipt_id')";
+                                    (rec_id, trans_id, cust_id)
+                             VALUES ('$receipt_id', '$transaction_id', '$number')";
 
     $result_cust_payment = mysql_query($query_cust_payment) or die(mysql_error());
 } elseif ($cust_appnt === "Appln No") {
 
     // Insert data into applicant payment table
     $query_appnt_payment = "INSERT INTO appnt_payment
-                                    (rec_id)
-                             VALUES ('$receipt_id')";
+                                    (rec_id, trans_id, appnt_id)
+                             VALUES ('$receipt_id', '$transaction_id', '$number')";
 
     $result_appnt_payment = mysql_query($query_appnt_payment) or die(mysql_error());
 }

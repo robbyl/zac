@@ -26,11 +26,17 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     $filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter' ";
 
-    $query_appln = "SELECT appln_id, appln_type, appnt.appnt_id, appln_date, engeneer_appr,
-                       appnt_fullname, appnt_types, billing_areas
+    $query_appln = "SELECT appln.appln_id, appln_type, appnt.appnt_id, appln_date, engeneer_appr,
+                       appnt_fullname, appnt_types, billing_areas, description, cust.appnt_id AS is_customer
                   FROM application appln
              LEFT JOIN applicant appnt
                     ON appln.appnt_id = appnt.appnt_id
+             LEFT JOIN customer cust
+                    ON appnt.appnt_id = cust.appnt_id
+             LEFT JOIN appnt_payment appntp
+                    ON appnt.appnt_id = appntp.appnt_id
+             LEFT JOIN transaction trans
+                    ON appntp.trans_id = trans.trans_id
              LEFT JOIN appnt_type apnty
                     ON appnt.appnt_type_id = apnty.appnt_type_id
              LEFT JOIN billing_area ba
@@ -113,7 +119,13 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <td><?php echo $row['appnt_types'] ?></td>
                         <td><?php echo $row['billing_areas'] ?></td>
                         <td>
-                            <button type="reset" class="add-customer" value="<?php echo 'appln_id=' . $row["appln_id"] . '&appnt_id=' . $row["appnt_id"] ?>"></button>
+                            <?php
+                            if ($row['description'] === "Application fee" && $row['is_customer']) {
+                                ?>
+                                <button type="reset" class="add-customer" value="<?php echo 'appln_id=' . $row["appln_id"] . '&appnt_id=' . $row["appnt_id"] ?>"></button>
+                                <?php
+                            }
+                            ?>
                         </td>
                     </tr>
                     <?php
