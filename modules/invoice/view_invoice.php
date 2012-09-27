@@ -154,7 +154,7 @@
                                 <div class="invoice-body">
                                     <table border="0" cellspacing="0" cellpadding="2" class="invoice-table">
                                         <tr>
-                                            <td colspan="4" style="font-weight: bolder">Copy</td>
+                                            <td colspan="4">&nbsp;</td>
                                             <td  colspan="5" align="right"><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></td>
                                         </tr>
                                         <tr class="tr-line">
@@ -165,7 +165,7 @@
                                         <tr height="10"></tr>
                                         <tr class="tr-line">
                                             <td bgcolor="#f1f1f1">Charges</td>
-                                            <td>Meter Number</td>
+                                            <td>Meter No.</td>
                                             <td>Category</td>
                                             <td>Billing Type</td>
                                             <td>Charged Date</td>

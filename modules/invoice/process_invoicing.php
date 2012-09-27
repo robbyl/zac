@@ -145,6 +145,16 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             $inv_type = "Estimate";
             $cost = $row_reading['wt_flat_rate'];
         }
+
+        //Inserting debits in aging analysis
+        $curr_debit = $row_reading['aging_debit'];
+        $new_debit = $curr_debit + $cost;
+
+        $query_age_analysis = "INSERT INTO aging_analysis
+                                       (aging_date, cust_id, aging_debit)
+                                VALUES (CURRENT_DATE(), '$cust_id', '$new_debit')";
+
+        $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
     } elseif ($row_reading['appln_type'] === 'Sewer') {
 
         // Making Sewer Billing transaction
@@ -161,6 +171,16 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
 
         //Calculating sewer costs
         $cost = $row_reading['s_flat_rate'];
+
+        //Inserting debits in aging analysis
+        $curr_debit = $row_reading['aging_debit'];
+        $new_debit = $curr_debit + $cost;
+
+        $query_age_analysis = "INSERT INTO aging_analysis
+                                       (aging_date, cust_id, aging_debit)
+                                VALUES (CURRENT_DATE(), '$cust_id', '$new_debit')";
+
+        $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
     }
 
     // Generating invoices
