@@ -38,8 +38,8 @@ $billing_area = clean_arr($_POST['billing_area']);
 
 $cust_no = count($cust_id);
 
-for ($i = 0; $i < $cust_no; $i++){
-       $query_appln = "UPDATE application
+for ($i = 0; $i < $cust_no; $i++) {
+    $query_appln = "UPDATE application
                        SET appln_id = '$appln_id[$i]]',
                            appln_type = '$appln_type[$i]',
                            premise_nature = '$premise_nature[$i]',
@@ -50,9 +50,7 @@ for ($i = 0; $i < $cust_no; $i++){
 
     $query_appnt = "UPDATE applicant
                        SET appnt_type_id = '$appnt_type[$i]',
-                           appnt_fullname = '$appnt_fullname[$i]',
-                         
-                           appnt_tel = '$appnt_tel[$i]',
+                           appnt_fullname = '$appnt_fullname[$i]',                           appnt_tel = '$appnt_tel[$i]',
                            appnt_post_addr = '$appnt_post_addr[$i]',
                            appnt_phy_addr = '$appnt_phy_addr[$i]',
                            block_no = '$block_no[$i]',

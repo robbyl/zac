@@ -26,15 +26,7 @@ switch ($action) {
     case 'EDIT':
         include 'edit_customer.php';
         break;
-
-    case 'BLOCK':
-        include 'block_user.php';
-        break;
-
-    case 'ACTIVATE':
-        include 'activate_user.php';
-        break;
-
+    
     case 'PRINT':
         echo 'printing...';
         break;
