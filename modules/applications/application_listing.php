@@ -120,7 +120,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <td><?php echo $row['billing_areas'] ?></td>
                         <td>
                             <?php
-                            if ($row['description'] === "Application fee" && $row['is_customer']) {
+                            if ($row['description'] === "Application fee" && $row['is_customer'] === "NULL") {
                                 ?>
                                 <button type="reset" class="add-customer" value="<?php echo 'appln_id=' . $row["appln_id"] . '&appnt_id=' . $row["appnt_id"] ?>"></button>
                                 <?php
