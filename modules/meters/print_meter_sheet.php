@@ -69,6 +69,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         <body>
             <table cellpadding="3" cellspacing="0" border="1" width="100%">
                 <thead>
+                    <tr></tr>
                     <tr>
                         <th title="Serial No." class="tooltip">
                             SN
