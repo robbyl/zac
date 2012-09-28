@@ -91,7 +91,6 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" id="print-table">Print</button>
         <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
     </div>
-
     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
         <thead>
             <tr>
