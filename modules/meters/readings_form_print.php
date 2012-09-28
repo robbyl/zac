@@ -43,7 +43,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     INNER JOIN account acc
                             ON cust.cust_id = acc.cust_id
                     INNER JOIN meter met
-                            ON cust.met_id = met.met_id
+                            ON metr.met_id = met.met_id
                          WHERE premise_status = 'Metered'
                                {$filter}
                            AND billing_date = (
@@ -57,9 +57,9 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
         oTable = $('#dataTable').dataTable({
             "bJQueryUI": true,
-            "bScrollCollapse": true,
+            "bScrollCollapse": false,
             "sScrollY": "auto",
-            "bAutoWidth": true,
+            "bAutoWidth": false,
             "bPaginate": true,
             "sPaginationType": "full_numbers", //full_numbers,two_button
             "bStateSave": true,

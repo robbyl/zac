@@ -9,7 +9,7 @@ ob_start();
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | METER PAYMENTS</title>
+        <title>SOFTBILL | ONLINE PAYMENTS</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/data_table.css" rel="stylesheet" type="text/css">
         <link href="../../css/jquery.ui.theme.css" rel="stylesheet" type="text/css">
@@ -36,12 +36,31 @@ ob_start();
                     });
                 });
 
-                $('#preview').click(function(){
-                    $('#receipt').fadeIn('fast');
-                });
+                //                $('#preview').click(function(){
+                //                   $('#payment-form').submit(function(event){
+                //                       event.preventDefault();
+                //                       $('#receipt').fadeIn('fast');
+                //                   });       
+                //                });
 
                 $('#save-print').click(function(){
                     printPage('receipt-print', '../../css/pop-up.css');
+                });
+                
+                //Hide and show cheque details depending on transaction type.
+                $('.cheque-details').hide();
+                $('#payment-type').change(function(){
+                    
+                    var payType = $(this).val();
+                    
+                    if(payType == 'Cheque'){
+                        $('#cheque, #bank').attr("required", "required");
+                        $('.cheque-details').show();
+                    }
+                    if(payType == 'Cash'){
+                        $('#cheque, #bank').removeAttr('required');
+                        $('.cheque-details').hide();
+                    }
                 });
             });
         </script>
@@ -76,30 +95,34 @@ ob_start();
                 ?>
                 <h1>Accept Payments</h1>
                 <div class="hr-line"></div>
-                <form action="process_add_meter.php" method="post" >
+                <form action="process_online_payment.php" method="post">
                     <fieldset style="float: left">
                         <legend>Customer/Applicant details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="170">Account No</td>
-                                <td><input type="text" name="meter_number" required autocomplete="off" class="text" ></td>
+                                <td width="170">
+                                    <select name="cust_appnt" class="select">
+                                        <option value="Account No">Account No</option>
+                                        <option value="Appln No">Application No</option>
+                                    </select></td>
+                                <td><input type="text" name="number" required autocomplete="off" class="text" ></td>
                             </tr>
                             <tr>
                                 <td width="170">Payment type</td>
                                 <td>
-                                    <select name="meter_status" class="select">
+                                    <select name="payment_type" class="select" required>
                                         <option value="">--select payment type--</option>
-                                        <option value="">Water Payment</option>
-                                        <option value="">Other Payment</option>
-                                        <option value="">Sewer Payment</option>
-                                        <option value="">Other Sewer</option>
-                                        <option value="">Application fee</option>
-                                        <option value="">Brocken Meter</option>
-                                        <option value="">Meter Rental</option>
-                                        <option value="">Surge Disposal</option>
-                                        <option value="">Kiosk Sales</option>
-                                        <option value="">Reconnection Fee</option>
-                                        <option value="">Illegal Reconnection</option>
+                                        <option value="Water Payment">Water Payment</option>
+                                        <option value="Other Payment">Other Payment</option>
+                                        <option value="Sewer Payment">Sewer Payment</option>
+                                        <option value="Other Sewer">Other Sewer</option>
+                                        <option value="Application fee">Application fee</option>
+                                        <option value="Brocken Meter">Brocken Meter</option>
+                                        <option value="Meter Rental">Meter Rental</option>
+                                        <option value="Surge Disposal">Surge Disposal</option>
+                                        <option value="Kiosk Sales">Kiosk Sales</option>
+                                        <option value="Reconnection Fee">Reconnection Fee</option>
+                                        <option value="Illegal Reconnection">Illegal Reconnection</option>
                                     </select>
                                 </td>
                             </tr>
@@ -127,27 +150,27 @@ ob_start();
                             <tr>
                                 <td width="170">Transaction type</td>
                                 <td>
-                                    <select name="meter_status" class="select">
+                                    <select name="transaction_type" class="select" id="payment-type" required>
                                         <option value="">--select payment type--</option>
-                                        <option value="">Cash</option>
-                                        <option value="">Cheque</option>
+                                        <option value="Cash">Cash</option>
+                                        <option value="Cheque">Cheque</option>
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="cheque-details">
                                 <td width="170">Cheque Number</td>
                                 <td>
-                                    <input type="text" class="text" required>
+                                    <input type="text" name="cheque_no" class="text" required id="cheque">
                                 </td>
                             </tr>
-                            <tr>
-                                <td width="170">Number of Digits</td>
+                            <tr class="cheque-details" style="display: none">
+                                <td width="170">Bank</td>
                                 <td>
-                                    <select name="meter_status" class="select">
+                                    <select name="bank" class="select" id="bank" required>
                                         <option value="">--select bank--</option>
-                                        <option value="">CRDB</option>
-                                        <option value="">NBC</option>
-                                        <option value="">NMB</option>
+                                        <option value="CRDB">CRDB</option>
+                                        <option value="NBC">NBC</option>
+                                        <option value="NMB">NMB</option>
                                     </select>
                                 </td>
                             </tr>
@@ -158,12 +181,14 @@ ob_start();
                             <tr>
                                 <td width="170">Payed Amount</td>
                                 <td>
-                                    <input type="number" name="initial_reading" class="number" min="0" required style="width: 90px;">
+                                    <input type="number" name="payed_amount" class="number" min="0" required style="width: 150px;"> Payed in fully
                                 </td>
                             </tr>
                             <tr>
                                 <td width="170" style="vertical-align: top">Amount in Words</td>
-                                <td><textarea name="meter_remarks" rows="6" cols="33" placeholder="PAYED AMOUNT IN WORDS:"></textarea></td>
+                                <td>
+                                    <textarea name="amount_in_words" rows="6" cols="33" placeholder="PAYED AMOUNT IN WORDS:" required></textarea>
+                                </td>
                             </tr>
 
                         </table>
@@ -185,7 +210,7 @@ ob_start();
                             <div class="close"></div>
                             <!--  end . form-header --> </div>
 
-                        <form action="" method="post" style="padding-top: 30px; margin-bottom: 0" >
+                        <form action="" id="payment-form" method="post" style="padding-top: 30px; margin-bottom: 0" >
                             <div id="receipt-print">
                                 <div class="receipt-header"></div>
                                 <div class="receipt-body">

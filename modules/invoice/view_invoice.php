@@ -66,10 +66,10 @@
 
                     $inv_id = clean($_GET['inv_id']);
 
-                    $query_invoice = "SELECT inv_no, invoicing_date, acc_no, appnt_fullname,
+                    $query_invoice = "SELECT inv_no, inv_type, invoicing_date, acc_no, appnt_fullname,
                                              appnt_post_addr, block_no, plot_no, living_town,
                                              billing_areas, living_area, consumption, reading_date,
-                                             reading, met_number, appnt_types, inv.cost
+                                             reading, met_number, appnt_types, inv.cost, reading_date
                                         FROM invoice inv
                                   INNER JOIN customer cust
                                           ON inv.cust_id = cust.cust_id
@@ -91,7 +91,17 @@
 
                     $row_invoice = mysql_fetch_array($result_invoice);
 
-                    $from = $row_invoice['reading'] - $row_invoice['consumption'];
+                    //getting  invoice header data from the database
+                    $query_settings = "SELECT aut_name, address, phone,fax, email, logo,terms_conds
+                                         FROM settings ";
+
+                    $result_settings = mysql_query($query_settings) or die(mysql_error());
+
+                    $row_settings = mysql_fetch_array($result_settings);
+
+                    $reading = $row_invoice['reading'];
+                    $consumption = $row_invoice['consumption'];
+                    $from = $reading - $consumption;
                     ?>
                     <h1>Invoice for <?php echo $row_invoice['appnt_fullname'] ?></h1>
                     <div class="hr-line"></div>
@@ -106,97 +116,290 @@
 
                     <div class="invoice-wrapper">
                         <div id="invoice">
-                        <div class="invoice">
-                            <div class="company-header">
-
-                            </div>
-                            <div class="customer-header">
-                                <ul class="inv-list" style="width: 400px">
-                                    <li><strong><?php echo $row_invoice['appnt_fullname']; ?></strong></li>
-                                    <li>P.o.Box 2323</li>
-                                    <li>Dar es Salaam</li>
-                                    <li>&nbsp;</li>
-                                    <li>&nbsp;</li>
-                                </ul>
-                                <ul class="inv-list" style="width: 230px">
-                                    <li>Plot No: <span style="float: right"><?php echo $row_invoice['plot_no']; ?></span></li>
-                                    <li>Block No: <span style="float: right"><?php echo $row_invoice['block_no']; ?></span></li>
-                                    <li>Street: <span style="float: right"><?php echo $row_invoice['living_area']; ?></span></li>
-                                </ul>
-                                <ul class="inv-list" style="width: 230px; float:  right; padding-right:  0 !important;">
-                                    <li><strong>Account No:<span style="float: right"><?php echo $row_invoice['acc_no']; ?></span></strong></li>
-                                    <li>Billing Period: <span style="float: right"><?php echo $row_invoice['invoicing_date']; ?></span></li>
-                                    <li>Invoice Number: <span style="float: right"><?php echo $row_invoice['inv_no']; ?></span></li>
-                                    <li>&nbsp;</li>
-                                    <li>Print Date: <span style="float: right"><?php echo date('d M, Y'); ?></span></li>     
-                                </ul>
-                            </div>
-                            <div class="invoice-body">
-                                <table border="0" cellspacing="0" cellpadding="2" class="invoice-table">
-                                    <tr>
-                                        <td colspan="4" style="font-weight: bolder">Copy</td>
-                                        <td  colspan="5" align="right"><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></td>
-                                    </tr>
-                                    <tr class="tr-line">
-                                        <td bgcolor="#f1f1f1">Balance</td>
-                                        <td colspan="7"><span style="font-weight: normal">This is the available amount</span></td>
-                                        <td align="right">23,893.67</td>
-                                    </tr>
-                                    <tr height="20"></tr>
-                                    <tr class="tr-line">
-                                        <td bgcolor="#f1f1f1">Adjustments</td>
-                                        <td>Date</td>
-                                        <td colspan="6">Description</td>
-                                        <td align="right">72,092.38</td>
-                                    </tr>
-                                    <tr>
-                                        <td>&nbsp;</td>
-                                        <td>21 Aug, 2012</td>
-                                        <td colspan="6">Debit Notes: EWURA charge</td>
-                                        <td align="right">72,092.38</td>
-                                    </tr>
-                                    <tr height="20"></tr>
-                                    <tr class="tr-line">
-                                        <td bgcolor="#f1f1f1">Charges</td>
-                                        <td>Meter</td>
-                                        <td>Category</td>
-                                        <td>Type</td>
-                                        <td>Date</td>
-                                        <td>From</td>
-                                        <td>To</td>
-                                        <td>Consm</td>
-                                        <td align="right">24,782.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Water</td>
-                                        <td><?php echo $row_invoice['met_number'] ?></td>
-                                        <td><?php echo $row_invoice['appnt_types'] ?></td>
-                                        <td>Actual</td>
-                                        <td>21 Aug, 2012</td>
-                                        <td><?php echo $from; ?></td>
-                                        <td><?php echo $row_invoice['reading'] ?></td>
-                                        <td><?php echo $row_invoice['consumption'] ?></td>
-                                        <td align="right"><?php echo $row_invoice['cost'] ?></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="invoice-footer">
-                                <table border="0" cellspacing="3" cellpadding="5" width="1000">
-                                    <tr>
-                                        <td width="53%" rowspan="2" style="vertical-align: top">
-                                            <strong>NOTE:</strong> Sasa unaweza kulipia bili yako kupitia Zap, M-Pesa, Selcome, Backlays Bank au CRDB
-                                        </td>
-                                        <td rowspan="2">&nbsp;</td>
-                                        <td width="47%" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS 999,450,302.12</span></strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Pay by: 7 Aug, 2012</td>
-                                    </tr>
-                                </table>
-                            </div>
-                                  <!-- end .invoice --></div>
+                            <div class="invoice">
+                                <div class="company-header">
+                                    <ul class="inv-list" style="width: 500px; position: absolute; top: 0; left: 0;">
+                                        <li><strong><?php echo $row_settings['aut_name'] ?></strong></li>
+                                        <li>P.o.Box 2323</li>
+                                        <li>Dar es Salaam</li>
+                                    </ul>
+                                    <div class="authority-logo">
+                                        <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
+                                    </div>
+                                    <ul class="inv-list" style="width: 230px; padding-right: 0 !important; position: absolute; top: 0; right: 0">
+                                        <li>Phone: <span style="float: right"><?php echo $row_settings['phone']; ?></span></li>
+                                        <li>Fax: <span style="float: right"><?php echo $row_settings['fax']; ?></span></li>
+                                        <li>E-mail: <span style="float: right"><?php echo $row_settings['email']; ?></span></li>
+                                    </ul>
+                                </div>
+                                <div class="customer-header">
+                                    <ul class="inv-list" style="width: 400px">
+                                        <li><strong><?php echo $row_invoice['appnt_fullname']; ?></strong></li>
+                                        <li>P.o.Box 2323</li>
+                                        <li>Dar es Salaam</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                    </ul>
+                                    <ul class="inv-list" style="width: 230px">
+                                        <li>Plot No: <span style="float: right"><?php echo $row_invoice['plot_no']; ?></span></li>
+                                        <li>Block No: <span style="float: right"><?php echo $row_invoice['block_no']; ?></span></li>
+                                        <li>Street: <span style="float: right"><?php echo $row_invoice['living_area']; ?></span></li>
+                                    </ul>
+                                    <ul class="inv-list" style="width: 230px; float:  right; padding-right:  0 !important;">
+                                        <li><strong>Account No:<span style="float: right"><?php echo $row_invoice['acc_no']; ?></span></strong></li>
+                                        <li>Billing Period: <span style="float: right"><?php echo $row_invoice['invoicing_date']; ?></span></li>
+                                        <li>Invoice Number: <span style="float: right"><?php echo sprintf('%08d', $row_invoice['inv_no']); ?></span></li>
+                                        <li>&nbsp;</li>
+                                        <li>Print Date: <span style="float: right"><?php echo date('d M, Y'); ?></span></li>     
+                                    </ul>
+                                </div>
+                                <div class="invoice-body">
+                                    <table border="0" cellspacing="0" cellpadding="2" class="invoice-table">
+                                        <tr>
+                                            <td colspan="4" style="font-weight: bolder">Copy</td>
+                                            <td  colspan="5" align="right"><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></td>
+                                        </tr>
+                                        <tr class="tr-line">
+                                            <td bgcolor="#f1f1f1">Open Balance</td>
+                                            <td colspan="7"><span style="font-weight: normal">Amount before charging </span></td>
+                                            <td align="right" style="font-weight: normal" >23,893.67</td>
+                                        </tr>
+                                        <tr height="10"></tr>
+                                        <tr class="tr-line">
+                                            <td bgcolor="#f1f1f1">Charges</td>
+                                            <td>Meter Number</td>
+                                            <td>Category</td>
+                                            <td>Billing Type</td>
+                                            <td>Charged Date</td>
+                                            <td>From</td>
+                                            <td>To</td>
+                                            <td>Consm</td>
+                                            <td align="right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Water</td>
+                                            <td><?php echo $row_invoice['met_number'] ?></td>
+                                            <td><?php echo $row_invoice['appnt_types'] ?></td>
+                                            <td><?php echo $row_invoice['inv_type']; ?></td>
+                                            <td><?php echo $row_invoice['reading_date'] ?></td>
+                                            <td><?php echo $from; ?></td>
+                                            <td><?php echo $row_invoice['reading'] ?></td>
+                                            <td><?php echo $row_invoice['consumption'] ?></td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Service Charge</td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Sewer</td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="invoice-footer">
+                                    <table border="0" cellspacing="3" cellpadding="5" width="1000">
+                                        <tr>
+                                            <td width="53%" rowspan="2" style="vertical-align: top">
+                                                <strong>NOTE:</strong> <?php echo $row_settings['terms_conds']; ?>
+                                            </td>
+                                            <td rowspan="2">&nbsp;</td>
+                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS 999,450,302.12</span></strong></td>
+                                        </tr>
+                                        <tr><td></td></tr>
+                                    </table>
+                                </div>
+                                <!-- end .invoice --></div>
+                            <div class="invoice">
+                                <div class="company-header">
+                                    <ul class="inv-list" style="width: 500px; position: absolute; top: 0; left: 0;">
+                                        <li><strong><?php echo $row_settings['aut_name'] ?></strong></li>
+                                        <li>P.o.Box 2323</li>
+                                        <li>Dar es Salaam</li>
+                                    </ul>
+                                    <div class="authority-logo">
+                                        <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
+                                    </div>
+                                    <ul class="inv-list" style="width: 230px; padding-right: 0 !important; position: absolute; top: 0; right: 0">
+                                        <li>Phone: <span style="float: right"><?php echo $row_settings['phone']; ?></span></li>
+                                        <li>Fax: <span style="float: right"><?php echo $row_settings['fax']; ?></span></li>
+                                        <li>E-mail: <span style="float: right"><?php echo $row_settings['email']; ?></span></li>
+                                    </ul>
+                                </div>
+                                <div class="customer-header">
+                                    <ul class="inv-list" style="width: 400px">
+                                        <li><strong><?php echo $row_invoice['appnt_fullname']; ?></strong></li>
+                                        <li>P.o.Box 2323</li>
+                                        <li>Dar es Salaam</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                    </ul>
+                                    <ul class="inv-list" style="width: 230px">
+                                        <li>Plot No: <span style="float: right"><?php echo $row_invoice['plot_no']; ?></span></li>
+                                        <li>Block No: <span style="float: right"><?php echo $row_invoice['block_no']; ?></span></li>
+                                        <li>Street: <span style="float: right"><?php echo $row_invoice['living_area']; ?></span></li>
+                                    </ul>
+                                    <ul class="inv-list" style="width: 230px; float:  right; padding-right:  0 !important;">
+                                        <li><strong>Account No:<span style="float: right"><?php echo $row_invoice['acc_no']; ?></span></strong></li>
+                                        <li>Billing Period: <span style="float: right"><?php echo $row_invoice['invoicing_date']; ?></span></li>
+                                        <li>Invoice Number: <span style="float: right"><?php echo sprintf('%08d', $row_invoice['inv_no']); ?></span></li>
+                                        <li>&nbsp;</li>
+                                        <li>Print Date: <span style="float: right"><?php echo date('d M, Y'); ?></span></li>     
+                                    </ul>
+                                </div>
+                                <div class="invoice-body">
+                                    <table border="0" cellspacing="0" cellpadding="2" class="invoice-table">
+                                        <tr>
+                                            <td colspan="4" style="font-weight: bolder">Copy</td>
+                                            <td  colspan="5" align="right"><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></td>
+                                        </tr>
+                                        <tr class="tr-line">
+                                            <td bgcolor="#f1f1f1">Open Balance</td>
+                                            <td colspan="7"><span style="font-weight: normal">Amount before charging </span></td>
+                                            <td align="right" style="font-weight: normal" >23,893.67</td>
+                                        </tr>
+                                        <tr height="10"></tr>
+                                        <tr class="tr-line">
+                                            <td bgcolor="#f1f1f1">Charges</td>
+                                            <td>Meter Number</td>
+                                            <td>Category</td>
+                                            <td>Billing Type</td>
+                                            <td>Charged Date</td>
+                                            <td>From</td>
+                                            <td>To</td>
+                                            <td>Consm</td>
+                                            <td align="right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Water</td>
+                                            <td><?php echo $row_invoice['met_number'] ?></td>
+                                            <td><?php echo $row_invoice['appnt_types'] ?></td>
+                                            <td><?php echo $row_invoice['inv_type']; ?></td>
+                                            <td><?php echo $row_invoice['reading_date'] ?></td>
+                                            <td><?php echo $from; ?></td>
+                                            <td><?php echo $row_invoice['reading'] ?></td>
+                                            <td><?php echo $row_invoice['consumption'] ?></td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Service Charge</td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Sewer</td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="invoice-footer">
+                                    <table border="0" cellspacing="3" cellpadding="5" width="1000">
+                                        <tr>
+                                            <td width="53%" rowspan="2" style="vertical-align: top">
+                                                <strong>NOTE:</strong> <?php echo $row_settings['terms_conds']; ?>
+                                            </td>
+                                            <td rowspan="2">&nbsp;</td>
+                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS 999,450,302.12</span></strong></td>
+                                        </tr>
+                                        <tr><td></td></tr>
+                                    </table>
+                                </div>
+                                <!-- end .invoice --></div>
+                            <div class="invoice">
+                                <div class="company-header">
+                                    <ul class="inv-list" style="width: 500px; position: absolute; top: 0; left: 0;">
+                                        <li><strong><?php echo $row_settings['aut_name'] ?></strong></li>
+                                        <li>P.o.Box 2323</li>
+                                        <li>Dar es Salaam</li>
+                                    </ul>
+                                    <div class="authority-logo">
+                                        <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
+                                    </div>
+                                    <ul class="inv-list" style="width: 230px; padding-right: 0 !important; position: absolute; top: 0; right: 0">
+                                        <li>Phone: <span style="float: right"><?php echo $row_settings['phone']; ?></span></li>
+                                        <li>Fax: <span style="float: right"><?php echo $row_settings['fax']; ?></span></li>
+                                        <li>E-mail: <span style="float: right"><?php echo $row_settings['email']; ?></span></li>
+                                    </ul>
+                                </div>
+                                <div class="customer-header">
+                                    <ul class="inv-list" style="width: 400px">
+                                        <li><strong><?php echo $row_invoice['appnt_fullname']; ?></strong></li>
+                                        <li>P.o.Box 2323</li>
+                                        <li>Dar es Salaam</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                    </ul>
+                                    <ul class="inv-list" style="width: 230px">
+                                        <li>Plot No: <span style="float: right"><?php echo $row_invoice['plot_no']; ?></span></li>
+                                        <li>Block No: <span style="float: right"><?php echo $row_invoice['block_no']; ?></span></li>
+                                        <li>Street: <span style="float: right"><?php echo $row_invoice['living_area']; ?></span></li>
+                                    </ul>
+                                    <ul class="inv-list" style="width: 230px; float:  right; padding-right:  0 !important;">
+                                        <li><strong>Account No:<span style="float: right"><?php echo $row_invoice['acc_no']; ?></span></strong></li>
+                                        <li>Billing Period: <span style="float: right"><?php echo $row_invoice['invoicing_date']; ?></span></li>
+                                        <li>Invoice Number: <span style="float: right"><?php echo sprintf('%08d', $row_invoice['inv_no']); ?></span></li>
+                                        <li>&nbsp;</li>
+                                        <li>Print Date: <span style="float: right"><?php echo date('d M, Y'); ?></span></li>     
+                                    </ul>
+                                </div>
+                                <div class="invoice-body">
+                                    <table border="0" cellspacing="0" cellpadding="2" class="invoice-table">
+                                        <tr>
+                                            <td colspan="4" style="font-weight: bolder">Copy</td>
+                                            <td  colspan="5" align="right"><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></td>
+                                        </tr>
+                                        <tr class="tr-line">
+                                            <td bgcolor="#f1f1f1">Open Balance</td>
+                                            <td colspan="7"><span style="font-weight: normal">Amount before charging </span></td>
+                                            <td align="right" style="font-weight: normal" >23,893.67</td>
+                                        </tr>
+                                        <tr height="10"></tr>
+                                        <tr class="tr-line">
+                                            <td bgcolor="#f1f1f1">Charges</td>
+                                            <td>Meter Number</td>
+                                            <td>Category</td>
+                                            <td>Billing Type</td>
+                                            <td>Charged Date</td>
+                                            <td>From</td>
+                                            <td>To</td>
+                                            <td>Consm</td>
+                                            <td align="right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Water</td>
+                                            <td><?php echo $row_invoice['met_number'] ?></td>
+                                            <td><?php echo $row_invoice['appnt_types'] ?></td>
+                                            <td><?php echo $row_invoice['inv_type']; ?></td>
+                                            <td><?php echo $row_invoice['reading_date'] ?></td>
+                                            <td><?php echo $from; ?></td>
+                                            <td><?php echo $row_invoice['reading'] ?></td>
+                                            <td><?php echo $row_invoice['consumption'] ?></td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Service Charge</td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">Sewer</td>
+                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="invoice-footer">
+                                    <table border="0" cellspacing="3" cellpadding="5" width="1000">
+                                        <tr>
+                                            <td width="53%" rowspan="2" style="vertical-align: top">
+                                                <strong>NOTE:</strong> <?php echo $row_settings['terms_conds']; ?>
+                                            </td>
+                                            <td rowspan="2">&nbsp;</td>
+                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS 999,450,302.12</span></strong></td>
+                                        </tr>
+                                        <tr><td></td></tr>
+                                    </table>
+                                </div>
+                                <!-- end .invoice --></div>
                             <!-- end #invoice --></div> 
-                    <!-- end .invoice-wrapper --></div>
+                        <!-- end .invoice-wrapper --></div>
                     <?php
                 }
                 ?>
