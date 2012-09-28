@@ -112,8 +112,6 @@
                     <form action="../../includes/pdf.php" method="post" id="html-form">
                         <input type="hidden" name="html" id="html">
                     </form>
-
-
                     <div class="invoice-wrapper">
                         <div id="invoice">
                             <div class="invoice">

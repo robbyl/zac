@@ -24,6 +24,10 @@ switch ($action) {
     case 'EDIT':
         include 'edit_meter.php';
         break;
+    
+    case 'EDIT-READINGS':
+        include 'edit_meter_readings.php';
+        break;
 
     case 'PRINT':
         echo 'printing...';

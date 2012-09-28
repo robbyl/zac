@@ -138,8 +138,8 @@
                             <tr>
                                 <td width="170">Application Type</td>
                                 <td>
-                                    <label><input type="radio" name="appln_type" value="Clean water" required class="radio">Clean water</label>&nbsp;&nbsp;
-                                    <label><input type="radio" name="appln_type" value="Sewer" required class="radio">Sewer</label>
+                                    <label><input type="checkbox" name="water" value="Clean water" required class="checkbox">Clean water</label>&nbsp;&nbsp;
+                                    <label><input type="checkbox" name="sewer" value="Sewer" required class="checkbox">Sewer</label>
                                 </td>
                             </tr>
                             <tr>
