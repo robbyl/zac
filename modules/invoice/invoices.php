@@ -60,7 +60,7 @@ ob_start();
                 <div class="hr-line"></div>
                 <div style="margin-bottom: 15px;">
                     <label> Billing Area/Zone &nbsp;
-                        <select name="billing_area" class="select" required id="billing_area" >
+                        <select name="billing_area" class="select" required id="billing_area">
                             <option value="">--Select billing area/zone--</option>
                             <?php
                             require '../../config/config.php';

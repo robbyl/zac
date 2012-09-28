@@ -40,7 +40,7 @@
                     <li><a href="../../home.php" class="home">Home</a></li>
                     <li> <a href="../users/users.php" class="users">Manage Users</a></li>
                     <li> <a href="../settings/settings.php" class="settings">Settings</a> </li>
-                    <li> <a href="../applications/applications.php" class="applications">Applications</a> </li>
+                    <li> <a href="../applications/applications.php" class="applications">Applications</a></li>
                     <li> <a href="../customers/customers.php" class="customers">Customers</a></li>
                     <li> <a href="../meters/meters.php" class="meters">Water Meters</a></li>
                     <li> <a href="../invoice/invoices.php" class="invoices">Invoice</a>
