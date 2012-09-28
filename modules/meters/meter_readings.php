@@ -30,6 +30,7 @@ ob_start();
 
                     getContent('readings_form_view.php', {filter: $(this).val()});
                 });
+                
             } );
         </script>
 

@@ -173,8 +173,8 @@
                                         <td width="170">Application Type</td>
                                          <input type="hidden" name="appln_id[]" value="<?php echo $val ?>" id="appln_id">
                                         <td>
-                                            <label><input type="radio" name="appln_type[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water" required class="radio">Clean water</label>&nbsp;&nbsp;
-                                            <label><input type="radio" name="appln_type[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" required class="radio">Sewer</label>
+                                            <label><input type="checkbox" name="appln_type[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water" required class="radio">Clean water</label>&nbsp;&nbsp;
+                                            <label><input type="checkbox" name="appln_type[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" required class="radio">Sewer</label>
                                         </td>
                                     </tr>
                                     <tr>

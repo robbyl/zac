@@ -70,7 +70,8 @@
                                              appnt_post_addr, block_no, plot_no, living_town,
                                              billing_areas, living_area, consumption, reading_date,
                                              reading, met_number, appnt_types, reading_date,
-                                             
+                                             water_cost, sewer_cost, service_charge,
+                                             (water_cost + sewer_cost + service_charge) AS amount_payable
                                         FROM invoice inv
                                   INNER JOIN customer cust
                                           ON inv.cust_id = cust.cust_id
@@ -166,7 +167,7 @@
                                         <tr height="10"></tr>
                                         <tr class="tr-line">
                                             <td bgcolor="#f1f1f1">Charges</td>
-                                            <td>Meter No.</td>
+                                            <td>Meter Number</td>
                                             <td>Category</td>
                                             <td>Billing Type</td>
                                             <td>Charged Date</td>
@@ -184,15 +185,15 @@
                                             <td><?php echo $from; ?></td>
                                             <td><?php echo $row_invoice['reading'] ?></td>
                                             <td><?php echo $row_invoice['consumption'] ?></td>
-                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                            <td align="right"><?php echo $row_invoice['water_cost'] ?></td>
                                         </tr>
                                         <tr>
                                             <td colspan="8">Service Charge</td>
-                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                            <td align="right"><?php echo $row_invoice['service_charge'] ?></td>
                                         </tr>
                                         <tr>
                                             <td colspan="8">Sewer</td>
-                                            <td align="right"><?php echo $row_invoice['cost'] ?></td>
+                                            <td align="right"><?php echo $row_invoice['sewer_cost'] ?></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -203,7 +204,7 @@
                                                 <strong>NOTE:</strong> <?php echo $row_settings['terms_conds']; ?>
                                             </td>
                                             <td rowspan="2">&nbsp;</td>
-                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS 999,450,302.12</span></strong></td>
+                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS <?php echo $row_invoice['amount_payable'] ?></span></strong></td>
                                         </tr>
                                         <tr><td></td></tr>
                                     </table>
