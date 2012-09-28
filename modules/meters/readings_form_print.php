@@ -73,16 +73,20 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $('.message, .error').hide().slideDown('normal').click(function(){
             $(this).slideUp('normal');
         });
-
+        
+    $('.dataTables_scroll').attr('id', 'print-table');
+   
         $('.tooltip').tipTip({
             delay: "300"
         });
     </script>
 
     <div class="actions" style="top: 212px">
-        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" name="action[]" value="PRINT">Print</button>
+        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]"
+                onClick="printTable('print-table', '../../css/print.css','../../js/jquery-1.7.2.js','../../js/style_remover.js')">Print</button>
         <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
     </div>
+
     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
         <thead>
             <tr>

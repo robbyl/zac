@@ -61,17 +61,36 @@ function consumptions(){
 // Prints specified part of the page
 function printPage(id, css){
     var html="<html><head><title></title>";
-    html+="<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\"></head><body>";
+    html+="<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\">";
+    html+="</head><body>";
     html+= document.getElementById(id).innerHTML;
     html+="</body></html>";
 
-    var printWin = window.open('','','left=0,top=0,width=1060,height=900,toolbar=no,scrollbars=no,status=no');
+    var printWin = window.open('','','left=0,top=0,width=100,height=900,toolbar=no,scrollbars=no,status=no');
     printWin.document.write(html);
     printWin.document.close();
     printWin.focus();
-    printWin.print();
-    printWin.close();
+//printWin.print();
+//printWin.close();
 }
+
+function printTable(id, css, jq, js){
+    var html="<html><head><title></title>";
+    html+="<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\">";
+    html+="<script src="+jq+" type=\"text/javascript\"></script>";
+    html+="<script src="+js+" type=\"text/javascript\"></script>";
+    html+="</head><body>";
+    html+= document.getElementById(id).innerHTML;
+    html+="</body></html>";
+
+    var printWin = window.open('','','left=0,top=0,width=100,height=900,toolbar=no,scrollbars=no,status=no');
+    printWin.document.write(html);
+    printWin.document.close();
+    printWin.focus();
+//printWin.print();
+//printWin.close();
+}
+
 
 function savePDF(id, css){
     var html="<html><head><title></title>";
