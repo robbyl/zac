@@ -70,8 +70,9 @@
                                              appnt_post_addr, block_no, plot_no, living_town,
                                              billing_areas, living_area, consumption, reading_date,
                                              reading, met_number, appnt_types, reading_date,
-                                             water_cost, sewer_cost, service_charge,
-                                             (water_cost + sewer_cost + service_charge) AS amount_payable
+                                             water_cost, sewer_cost, service_charge, aging_debit,
+                                             (water_cost + sewer_cost + service_charge + aging_debit)
+                                          AS amount_payable
                                         FROM invoice inv
                                   INNER JOIN customer cust
                                           ON inv.cust_id = cust.cust_id
@@ -162,7 +163,7 @@
                                         <tr class="tr-line">
                                             <td bgcolor="#f1f1f1">Open Balance</td>
                                             <td colspan="7"><span style="font-weight: normal">Amount before charging </span></td>
-                                            <td align="right" style="font-weight: normal" >23,893.67</td>
+                                            <td align="right" style="font-weight: normal" ><?php echo $row_invoice['aging_debit'] ?></td>
                                         </tr>
                                         <tr height="10"></tr>
                                         <tr class="tr-line">
