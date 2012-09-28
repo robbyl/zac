@@ -26,7 +26,7 @@ $query_readings = "SELECT premise_status, appln_type,  appnt_fullname,
                           billing_date, service, cust_status, consumption,
                           level, wt_from, wt_to, wt_rate, wt_flat_rate, 
                           cust.cust_id, s_flat_rate, acc_id, appnt.appnt_type_id,
-                          aging_date, aging_debit
+                          aging_date, aging_debit, service_charge
                      FROM customer cust
                 LEFT JOIN application appln
                        ON cust.appln_id = appln.appln_id

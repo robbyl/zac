@@ -19,7 +19,8 @@
 require '../../config/config.php';
 
 $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
-                         appln_type, cost, billing_areas, acc_no, inv_id
+                         appln_type, billing_areas, acc_no, inv_id,
+                         water_cost, sewer_cost, service_charge, (water_cost + sewer_cost + service_charge) AS amount_payable
                     FROM invoice inv
               INNER JOIN customer cust
                       ON inv.cust_id = cust.cust_id
@@ -96,7 +97,7 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
             <th>Created date</th>
             <th>Customer name</th>
             <th>Service type</th>
-            <th>Cost</th>
+            <th title="Total amount payable" class="tooltip">Total</th>
         </tr>
     </thead>
     <tbody>
@@ -113,7 +114,7 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
                 <td><?php echo $row['created_date'] ?></td>
                 <td><?php echo $row['appnt_fullname'] ?></td>
                 <td><?php echo $row['appln_type'] ?></td>
-                <td align="right"><?php echo $row['cost'] ?></td>
+                <td align="right"><?php echo $row['amount_payable'] ?></td>
             </tr>
             <?php
         }

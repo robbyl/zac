@@ -69,7 +69,8 @@
                     $query_invoice = "SELECT inv_no, inv_type, invoicing_date, acc_no, appnt_fullname,
                                              appnt_post_addr, block_no, plot_no, living_town,
                                              billing_areas, living_area, consumption, reading_date,
-                                             reading, met_number, appnt_types, inv.cost, reading_date
+                                             reading, met_number, appnt_types, reading_date,
+                                             
                                         FROM invoice inv
                                   INNER JOIN customer cust
                                           ON inv.cust_id = cust.cust_id
