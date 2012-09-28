@@ -79,9 +79,9 @@
                                           ON cust.appnt_id = appnt.appnt_id
                                   INNER JOIN appnt_type apty
                                           ON appnt.appnt_type_id = apty.appnt_type_id
-                                  INNER JOIN meter_reading mred
+                                   LEFT JOIN meter_reading mred
                                           ON cust.cust_id = mred.cust_id
-                                  INNER JOIN meter met
+                                   LEFT JOIN meter met
                                           ON mred.met_id = met.met_id
                                   INNER JOIN billing_area ba
                                           ON appnt.ba_id = ba.ba_id
@@ -156,7 +156,7 @@
                                 <div class="invoice-body">
                                     <table border="0" cellspacing="0" cellpadding="2" class="invoice-table">
                                         <tr>
-                                            <td colspan="4" style="font-weight: bolder">Copy</td>
+                                            <td colspan="4">&nbsp;</td>
                                             <td  colspan="5" align="right"><span style="float: right; background: #e0e0e0; margin-top: 5px; padding: 2px ">Amount (TZS)</span></td>
                                         </tr>
                                         <tr class="tr-line">

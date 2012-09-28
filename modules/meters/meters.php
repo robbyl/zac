@@ -149,7 +149,6 @@ $result_meter = mysql_query($query_meter) or die(mysql_error());
                         </tbody>
                     </table>
                 </form>
-
                 <!-- end .content --></div>
             <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>

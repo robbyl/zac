@@ -73,6 +73,14 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $('.message, .error').hide().slideDown('normal').click(function(){
             $(this).slideUp('normal');
         });
+                    
+        $('#print-table').click(function(){
+            var printWin = window.open('print_meter_sheet.php?filter=All','','left=0,top=0,width=1060,height=900,toolbar=no,scrollbars=no,status=no');
+            printWin.document.close();
+            printWin.focus();
+            printWin.print();
+            printWin.close();    
+        });
 
         $('.tooltip').tipTip({
             delay: "300"
@@ -80,15 +88,13 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     </script>
 
     <div class="actions" style="top: 212px">
-        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" name="action[]" value="PRINT">Print</button>
+        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" id="print-table">Print</button>
         <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
     </div>
     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
         <thead>
             <tr>
-                <th width="23" title="Serial No." class="tooltip">
-                    SN
-                </th>
+                <th width="23" title="Serial No." class="tooltip">SN</th>
                 <th title="Account number" class="tooltip">Account No.</th>
                 <th title="Meter number" class="tooltip">Meter No.</th>
                 <th>Customer name</th>
