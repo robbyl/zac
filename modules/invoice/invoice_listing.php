@@ -19,7 +19,7 @@
 require '../../config/config.php';
 
 $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
-                         cost, billing_areas, acc_no, inv_id
+                         appln_type, cost, billing_areas, acc_no, inv_id
                     FROM invoice inv
               INNER JOIN customer cust
                       ON inv.cust_id = cust.cust_id
@@ -27,6 +27,8 @@ $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
                       ON cust.cust_id = acc.cust_id
               INNER JOIN applicant appnt
                       ON cust.appnt_id = appnt.appnt_id
+              INNER JOIN application appln
+                      ON appln.appnt_id = appnt.appnt_id
               INNER JOIN billing_area ba
                       ON appnt.ba_id = ba.ba_id";
 
@@ -93,6 +95,7 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
             <th>Billing month</th>
             <th>Created date</th>
             <th>Customer name</th>
+            <th>Service type</th>
             <th>Cost</th>
         </tr>
     </thead>
@@ -109,6 +112,7 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
                 <td><?php echo $row['invoicing_date'] ?></td>
                 <td><?php echo $row['created_date'] ?></td>
                 <td><?php echo $row['appnt_fullname'] ?></td>
+                <td><?php echo $row['appln_type'] ?></td>
                 <td align="right"><?php echo $row['cost'] ?></td>
             </tr>
             <?php
