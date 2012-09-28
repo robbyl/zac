@@ -146,6 +146,19 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             $cost = $row_reading['wt_flat_rate'];
         }
 
+        // Generating water invoices
+        $inv_no++;
+        $sewer_cost = 0;
+        $service_charge = 
+
+        $query_invoice_water = "INSERT INTO invoice
+                                            (inv_no, invoicing_date, created_date,
+                                             cust_id, acc_id, trans_id, inv_type, water_cost, sewer_cost, service_charge)
+                                     VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
+                                             '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
+
+        $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
+
         //Inserting debits in aging analysis
         $curr_debit = $row_reading['aging_debit'];
         $new_debit = $curr_debit + $cost;
@@ -172,6 +185,140 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
         //Calculating sewer costs
         $cost = $row_reading['s_flat_rate'];
 
+        // Generating invoices
+        $inv_no++;
+
+        $query_invoice_water = "INSERT INTO invoice
+                                        (inv_no, invoicing_date, created_date,
+                                        cust_id, acc_id, trans_id, inv_type, cost)
+                                 VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
+                                                 '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
+
+        $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
+
+        //Inserting debits in aging analysis
+        $curr_debit = $row_reading['aging_debit'];
+        $new_debit = $curr_debit + $cost;
+
+        $query_age_analysis = "INSERT INTO aging_analysis
+                                       (aging_date, cust_id, aging_debit)
+                                VALUES (CURRENT_DATE(), '$cust_id', '$new_debit')";
+
+        $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
+    } elseif ($row_reading['appln_type'] === 'Water and Sewer') {
+
+        // Generating Invoices for Clean water
+        $query_transaction_water = "INSERT INTO transaction
+                                                    (trans_date, description)
+                                             VALUES (CURRENT_TIMESTAMP(), 'Water Billing')";
+
+        $result_transaction_water = mysql_query($query_transaction_water) or die(mysql_error());
+
+        $trans_id = mysql_insert_id();
+        $cust_id = $row_reading['cust_id'];
+        $acc_id = $row_reading['acc_id'];
+
+        if ($row_reading['premise_status'] === 'Metered') {
+
+            $consumption = $row_reading['consumption'];
+            $to = $row_reading['wt_to'];
+            $wt_rate = $row_reading['wt_rate'];
+            $curr_level = $row_reading['level'];
+            $appnt_type = strval($row_reading['appnt_type_id']);
+            $inv_type = "Actual";
+            $top_level = end($levels[$appnt_type]);
+
+            if ($consumption <= $to) {
+
+                $cost = $consumption * $wt_rate;
+            } elseif ($consumption > $to) {
+
+                $cost = $consumption * $wt_rate;
+            } elseif ($consumption > $to && strval($curr_level) != strval($top_level)) {
+
+                $curr_level = $row_reading['level'];
+                $extra = $consumption - $to;
+                $cost = $to * $wt_rate;
+
+                while ($extra >= 0 && $curr_level <= $top_level) {
+
+                    $curr_level += + 0.1;
+
+                    if ($extra <= $nwt_to[$appnt_type][strval($curr_level)]) {
+
+                        $cost += $extra * $nwt_rate[$appnt_type][strval($curr_level)];
+                        break;
+                    } elseif ($extra > $nwt_to[$appnt_type][strval($curr_level)]) {
+
+                        if (strval($curr_level) === strval($top_level)) {
+
+                            $cost += $extra * $nwt_rate[$appnt_type][strval($curr_level)];
+                            break;
+                        } else {
+
+                            $extra -= $nwt_to[$appnt_type][strval($curr_level)];
+                            $cost += $nwt_to[$appnt_type][strval($curr_level)] * $nwt_rate[$appnt_type][strval($curr_level)];
+                        }
+                    }
+                }
+            }
+
+            //If water customer and premise status metered
+        } elseif ($row_reading['premise_status'] === 'Un metered') {
+
+            // If water customer and premise status un metered use
+            // water flat rate as water cost
+            $inv_type = "Estimate";
+            $cost = $row_reading['wt_flat_rate'];
+        }
+
+        // Generating invoices
+        $inv_no++;
+
+        $query_invoice_water = "INSERT INTO invoice
+                                        (inv_no, invoicing_date, created_date,
+                                        cust_id, acc_id, trans_id, inv_type, cost)
+                                 VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
+                                                 '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
+
+        $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
+
+        //Inserting debits in aging analysis
+        $curr_debit = $row_reading['aging_debit'];
+        $new_debit = $curr_debit + $cost;
+
+        $query_age_analysis = "INSERT INTO aging_analysis
+                                       (aging_date, cust_id, aging_debit)
+                                VALUES (CURRENT_DATE(), '$cust_id', '$new_debit')";
+
+        $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
+
+        // Making Sewer Billing transaction
+        $query_transaction_sewer = "INSERT INTO transaction
+                                                    (trans_date, description)
+                                             VALUES (CURRENT_TIMESTAMP(), 'Sewer Billing')";
+
+        $result_transaction_sewer = mysql_query($query_transaction_sewer) or die(mysql_error());
+
+        $trans_id = mysql_insert_id();
+        $cust_id = $row_reading['cust_id'];
+        $acc_id = $row_reading['acc_id'];
+        $inv_type = "Actual";
+
+        //Calculating sewer costs
+        $cost = $row_reading['s_flat_rate'];
+
+        // Generating invoices
+        $inv_no++;
+
+        $query_invoice_water = "INSERT INTO invoice
+                                        (inv_no, invoicing_date, created_date,
+                                        cust_id, acc_id, trans_id, inv_type, cost)
+                                 VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
+                                                 '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
+
+        $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
+
         //Inserting debits in aging analysis
         $curr_debit = $row_reading['aging_debit'];
         $new_debit = $curr_debit + $cost;
@@ -182,32 +329,11 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
 
         $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
     }
-
-    // Generating invoices
-    $inv_no++;
-
-    $query_invoice_water = "INSERT INTO invoice
-                                        (inv_no, invoicing_date, created_date,
-                                        cust_id, acc_id, trans_id, inv_type, cost)
-                                 VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
-                                                 '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
-
-    $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
-
-    //Inserting debits in aging analysis
-    $curr_debit = $row_reading['aging_debit'];
-    $new_debit = $curr_debit + $cost;
-
-    $query_age_analysis = "INSERT INTO aging_analysis
-                                       (aging_date, cust_id, aging_debit)
-                                VALUES (CURRENT_DATE(), '$cust_id', '$new_debit')";
-
-    $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
 }
 
 mysql_close($conn);
 
-if ($result_invoice_water || $result_invoice_sewer) {
+if ($result_age_analysis) {
 
     info('message', 'Invoices successfully generated');
     header('Location: generate_invoices.php');
