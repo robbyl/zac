@@ -21,6 +21,8 @@ require '../../config/config.php';
 
 //$last_receipting_date = clean($_POST['last_receipting_date']);
 $billing_month = clean($_POST['billing_month']);
+ $next_billing_month = strtotime(date("Y-m-d", strtotime($billing_month)) . "+1 month");
+ $fnext_billing_date = date('Y-m-d', $next_billing_month);
 
 // Checking first if the provided billing month has already been billed.
 
@@ -42,28 +44,28 @@ if ($num_month <= 0) {
                           cust.cust_id, s_flat_rate, acc_id, appnt.appnt_type_id,
                           aging_date, aging_debit, service_charge
                      FROM customer cust
-                LEFT JOIN application appln
+               INNER JOIN application appln
                        ON cust.appln_id = appln.appln_id
-                LEFT JOIN meter_customer mecu
-                       ON cust.cust_id = mecu.cust_id
                 LEFT JOIN meter_reading mred
-                       ON mecu.met_id = mred.met_id
-                LEFT JOIN applicant appnt
+                       ON cust.cust_id = mred.cust_id
+                LEFT JOIN aging_analysis age
+                       ON cust.cust_id = age.cust_id
+               INNER JOIN applicant appnt
                        ON cust.appnt_id = appnt.appnt_id
-                LEFT JOIN service_nature sn
+               INNER JOIN service_nature sn
                        ON appln.service_nature_id = sn.service_nature_id
                 LEFT JOIN water_tariff wt
                        ON sn.service_nature_id = wt.service_nature_id
                 LEFT JOIN sewer_tariff st
                        ON sn.service_nature_id = st.service_nature_id
-                LEFT JOIN account acc
+               INNER JOIN account acc
                        ON cust.cust_id = acc.cust_id
-                LEFT JOIN aging_analysis age
-                       ON mred.billing_date = age.aging_date
                     WHERE cust_status = 'Connected'
+                      AND aging_date = '$fnext_billing_date'
                       AND billing_date = '$billing_month'
-                       OR billing_date IS NULL";
-
+                       OR billing_date IS NULL
+                      AND aging_date = '$fnext_billing_date'";
+                      
     $result_readings = mysql_query($query_readings) or die(mysql_error());
 
     $query_inv_no = "SELECT MAX(inv_no) AS cur_inv_no
@@ -183,7 +185,7 @@ if ($num_month <= 0) {
 
             $query_age_analysis = "INSERT INTO aging_analysis
                                        (aging_date, cust_id, aging_debit)
-                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
+                                VALUES ('$fnext_billing_date', '$cust_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
         } elseif ($row_reading['appln_type'] === 'Sewer') {
@@ -224,7 +226,7 @@ if ($num_month <= 0) {
 
             $query_age_analysis = "INSERT INTO aging_analysis
                                        (aging_date, cust_id, aging_debit)
-                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
+                                VALUES ('$fnext_billing_date', '$cust_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
         } elseif ($row_reading['appln_type'] === 'Water and Sewer') {
@@ -317,7 +319,7 @@ if ($num_month <= 0) {
 
             $query_age_analysis = "INSERT INTO aging_analysis
                                        (aging_date, cust_id, aging_debit)
-                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
+                                VALUES ('$fnext_billing_date', '$cust_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
         }
