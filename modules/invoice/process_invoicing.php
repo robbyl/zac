@@ -21,8 +21,8 @@ require '../../config/config.php';
 
 //$last_receipting_date = clean($_POST['last_receipting_date']);
 $billing_month = clean($_POST['billing_month']);
- $next_billing_month = strtotime(date("Y-m-d", strtotime($billing_month)) . "+1 month");
- $fnext_billing_date = date('Y-m-d', $next_billing_month);
+$prev_billing_month = strtotime(date("Y-m-d", strtotime($billing_month)) . "-1 month");
+$fprev_billing_date = date('Y-m-d', $prev_billing_month);
 
 // Checking first if the provided billing month has already been billed.
 
@@ -61,11 +61,15 @@ if ($num_month <= 0) {
                INNER JOIN account acc
                        ON cust.cust_id = acc.cust_id
                     WHERE cust_status = 'Connected'
-                      AND aging_date = '$fnext_billing_date'
+                      AND aging_date = '$fprev_billing_date'
                       AND billing_date = '$billing_month'
                        OR billing_date IS NULL
-                      AND aging_date = '$fnext_billing_date'";
-                      
+                      AND aging_date = '$fprev_billing_date'
+                       OR billing_date IS NULL 
+                      AND aging_date IS NULL
+                       OR billing_date = '$billing_month'
+                      AND aging_date IS NULL";
+
     $result_readings = mysql_query($query_readings) or die(mysql_error());
 
     $query_inv_no = "SELECT MAX(inv_no) AS cur_inv_no
@@ -185,7 +189,7 @@ if ($num_month <= 0) {
 
             $query_age_analysis = "INSERT INTO aging_analysis
                                        (aging_date, cust_id, aging_debit)
-                                VALUES ('$fnext_billing_date', '$cust_id', '$new_debit')";
+                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
         } elseif ($row_reading['appln_type'] === 'Sewer') {
@@ -226,7 +230,7 @@ if ($num_month <= 0) {
 
             $query_age_analysis = "INSERT INTO aging_analysis
                                        (aging_date, cust_id, aging_debit)
-                                VALUES ('$fnext_billing_date', '$cust_id', '$new_debit')";
+                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
         } elseif ($row_reading['appln_type'] === 'Water and Sewer') {
@@ -319,7 +323,7 @@ if ($num_month <= 0) {
 
             $query_age_analysis = "INSERT INTO aging_analysis
                                        (aging_date, cust_id, aging_debit)
-                                VALUES ('$fnext_billing_date', '$cust_id', '$new_debit')";
+                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
         }
