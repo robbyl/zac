@@ -42,14 +42,17 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             ON appnt.appnt_type_id = apty.appnt_type_id
                     INNER JOIN account acc
                             ON cust.cust_id = acc.cust_id
+                    INNER JOIN meter_customer mecu
+                            ON cust.cust_id = mecu.cust_id
                     INNER JOIN meter met
-                            ON metr.met_id = met.met_id
+                            ON mecu.met_id = met.met_id
                                {$filter}
                          WHERE premise_status = 'Metered'
                            AND cust_status = 'Connected'
                            AND billing_date = (
                         SELECT MAX(billing_date)
-                          FROM meter_reading)";
+                          FROM meter_reading)
+                            OR billing_date IS NULL";
 
     $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
     ?>

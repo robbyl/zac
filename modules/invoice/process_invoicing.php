@@ -197,7 +197,7 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
                                         cust_id, acc_id, trans_id, inv_type, 
                                         water_cost, sewer_cost, service_charge)
                                  VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
-                                         $cust_id', '$acc_id', '$trans_id', '$inv_type',
+                                         '$cust_id', '$acc_id', '$trans_id', '$inv_type',
                                          '$water_cost', '$cost', '$service_charge')";
 
         $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
