@@ -149,13 +149,15 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
         // Generating water invoices
         $inv_no++;
         $sewer_cost = 0;
-        $service_charge = 
+        $service_charge = $row_reading['service_charge'];
 
         $query_invoice_water = "INSERT INTO invoice
                                             (inv_no, invoicing_date, created_date,
-                                             cust_id, acc_id, trans_id, inv_type, water_cost, sewer_cost, service_charge)
+                                             cust_id, acc_id, trans_id, inv_type, 
+                                             water_cost, sewer_cost, service_charge)
                                      VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
-                                             '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
+                                             '$cust_id', '$acc_id', '$trans_id', '$inv_type',
+                                             '$cost', '$sewer_cost', '$service_charge')";
 
         $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
 
@@ -187,12 +189,16 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
 
         // Generating invoices
         $inv_no++;
+        $water_cost = 0;
+        $service_charge = 0;
 
         $query_invoice_water = "INSERT INTO invoice
                                         (inv_no, invoicing_date, created_date,
-                                        cust_id, acc_id, trans_id, inv_type, cost)
+                                        cust_id, acc_id, trans_id, inv_type, 
+                                        water_cost, sewer_cost, service_charge)
                                  VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
-                                                 '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
+                                         $cust_id', '$acc_id', '$trans_id', '$inv_type',
+                                         '$water_cost', '$cost', '$service_charge')";
 
         $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
 
@@ -210,7 +216,7 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
         // Generating Invoices for Clean water
         $query_transaction_water = "INSERT INTO transaction
                                                     (trans_date, description)
-                                             VALUES (CURRENT_TIMESTAMP(), 'Water Billing')";
+                                             VALUES (CURRENT_TIMESTAMP(), 'Water and Sewer Billing')";
 
         $result_transaction_water = mysql_query($query_transaction_water) or die(mysql_error());
 
@@ -272,50 +278,20 @@ while ($row_reading = mysql_fetch_array($result_readings)) {
             $cost = $row_reading['wt_flat_rate'];
         }
 
-        // Generating invoices
-        $inv_no++;
-
-        $query_invoice_water = "INSERT INTO invoice
-                                        (inv_no, invoicing_date, created_date,
-                                        cust_id, acc_id, trans_id, inv_type, cost)
-                                 VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
-                                                 '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
-
-        $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
-
-        //Inserting debits in aging analysis
-        $curr_debit = $row_reading['aging_debit'];
-        $new_debit = $curr_debit + $cost;
-
-        $query_age_analysis = "INSERT INTO aging_analysis
-                                       (aging_date, cust_id, aging_debit)
-                                VALUES (CURRENT_DATE(), '$cust_id', '$new_debit')";
-
-        $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
-
-        // Making Sewer Billing transaction
-        $query_transaction_sewer = "INSERT INTO transaction
-                                                    (trans_date, description)
-                                             VALUES (CURRENT_TIMESTAMP(), 'Sewer Billing')";
-
-        $result_transaction_sewer = mysql_query($query_transaction_sewer) or die(mysql_error());
-
-        $trans_id = mysql_insert_id();
-        $cust_id = $row_reading['cust_id'];
-        $acc_id = $row_reading['acc_id'];
-        $inv_type = "Actual";
-
         //Calculating sewer costs
-        $cost = $row_reading['s_flat_rate'];
+        $sewer_cost = $row_reading['s_flat_rate'];
 
-        // Generating invoices
+        // Generating invoice
         $inv_no++;
+        $service_charge = $row_reading['service_charge'];
 
         $query_invoice_water = "INSERT INTO invoice
                                         (inv_no, invoicing_date, created_date,
-                                        cust_id, acc_id, trans_id, inv_type, cost)
+                                        cust_id, acc_id, trans_id, inv_type,
+                                        water_cost, sewer_cost, service_charge)
                                  VALUES ('$inv_no', '$billing_month', CURRENT_TIMESTAMP(),
-                                                 '$cust_id', '$acc_id', '$trans_id', '$inv_type', '$cost')";
+                                         '$cust_id', '$acc_id', '$trans_id', '$inv_type',
+                                         '$cost', '$sewer_cost', '$service_charge')";
 
         $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
 
