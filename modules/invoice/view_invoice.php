@@ -66,31 +66,10 @@
 
                     $inv_id = clean($_GET['inv_id']);
 
-//                    $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
-//                                             appln_type, billing_areas, acc_no, inv.inv_id,
-//                                             water_cost, sewer_cost, service_charge, aging_date,
-//                                             COALESCE(aging_debit, 0) AS aging_debit,
-//                                             (water_cost + sewer_cost + service_charge  + COALESCE(aging_debit, 0))
-//                                          AS amount_payable
-//                                        FROM invoice inv
-//                                  INNER JOIN customer cust
-//                                          ON inv.cust_id = cust.cust_id
-//                                   LEFT JOIN (SELECT * FROM aging_analysis
-//                                       WHERE aging_date = '2012-01-01') AS b
-//                                          ON cust.cust_id = b.cust_id               
-//                                  INNER JOIN account acc
-//                                          ON cust.cust_id = acc.cust_id
-//                                  INNER JOIN applicant appnt
-//                                          ON cust.appnt_id = appnt.appnt_id
-//                                  INNER JOIN application appln
-//                                          ON appln.appnt_id = appnt.appnt_id
-//                                  INNER JOIN billing_area ba
-//                                          ON appnt.ba_id = ba.ba_id
-//                                       WHERE invoicing_date = '2012-02-01'
-//                                       WHERE inv.inv_id = '$inv_id'";
-                    
                     $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
-                                             appln_type, billing_areas, acc_no, inv.inv_id,
+                                             appln_type, billing_areas, acc_no, inv.inv_id, reading_date,
+                                             reading, consumption, plot_no, block_no, living_area,
+                                             met_number, appnt_types, inv_type,
                                              water_cost, sewer_cost, service_charge, aging_date,
                                              COALESCE(aging_debit, 0) AS aging_debit,
                                              (water_cost + sewer_cost + service_charge  + COALESCE(aging_debit, 0))
@@ -102,19 +81,21 @@
                                           ON inv.inv_id = inre.inv_id
                                    LEFT JOIN meter_reading mred
                                           ON inre.mred_id = mred.mred_id
-                                   LEFT JOIN (SELECT * FROM aging_analysis
-                                             WHERE aging_date = '2011-12-01') AS b
-                                          ON inv.inv_id = b.inv_id
+                                   LEFT JOIN meter met
+                                          ON mred.met_id = met.met_id
+                                   LEFT JOIN aging_analysis age
+                                          ON inv.inv_id-(SELECT COUNT(*) FROM customer) = age.inv_id
                                   INNER JOIN account acc
                                           ON cust.cust_id = acc.cust_id
                                   INNER JOIN applicant appnt
                                           ON cust.appnt_id = appnt.appnt_id
+                                  INNER JOIN appnt_type appty
+                                          ON appnt.appnt_type_id = appty.appnt_type_id
                                   INNER JOIN application appln
                                           ON appln.appnt_id = appnt.appnt_id
                                   INNER JOIN billing_area ba
                                           ON appnt.ba_id = ba.ba_id
-                                       WHERE invoicing_date = '2012-01-01'
-                                         AND inv.inv_id = '$inv_id'";
+                                       WHERE inv.inv_id = '$inv_id'";
 
                     $result_invoice = mysql_query($query_invoice) or die(mysql_error());
 
@@ -154,9 +135,9 @@
                                         <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
                                     </div>
                                     <ul class="inv-list" style="width: 230px; padding-right: 0 !important; position: absolute; top: 0; right: 0">
-                                        <li>Phone: <span style="float: right"><?php echo $row_settings['phone']; ?></span></li>
-                                        <li>Fax: <span style="float: right"><?php echo $row_settings['fax']; ?></span></li>
-                                        <li>E-mail: <span style="float: right"><?php echo $row_settings['email']; ?></span></li>
+                                        <li>Phone: <span style="clear: both; float: right"><?php echo $row_settings['phone']; ?></span></li>
+                                        <li>Fax: <span style="clear: both; float: right"><?php echo $row_settings['fax']; ?></span></li>
+                                        <li>E-mail: <span style="clear: both; float: right"><?php echo $row_settings['email']; ?></span></li>
                                     </ul>
                                 </div>
                                 <div class="customer-header">
@@ -189,7 +170,7 @@
                                         <tr class="tr-line">
                                             <td bgcolor="#f1f1f1">Open Balance</td>
                                             <td colspan="7"><span style="font-weight: normal">Amount before charging </span></td>
-                                            <td align="right" style="font-weight: normal" ><?php echo $row_invoice['aging_debit'] ?></td>
+                                            <td align="right" style="font-weight: normal" ><?php echo number_format($row_invoice['aging_debit'], 2, '.', ',') ?></td>
                                         </tr>
                                         <tr height="10"></tr>
                                         <tr class="tr-line">
@@ -212,11 +193,11 @@
                                             <td><?php echo $from; ?></td>
                                             <td><?php echo $row_invoice['reading'] ?></td>
                                             <td><?php echo $row_invoice['consumption'] ?></td>
-                                            <td align="right"><?php echo $row_invoice['water_cost'] ?></td>
+                                            <td align="right"><?php echo number_format($row_invoice['water_cost'], 2, '.', ',') ?></td>
                                         </tr>
                                         <tr>
                                             <td colspan="8">Service Charge</td>
-                                            <td align="right"><?php echo $row_invoice['service_charge'] ?></td>
+                                            <td align="right"><?php echo number_format($row_invoice['service_charge'], 2, '.', ','); ?></td>
                                         </tr>
                                         <tr>
                                             <td colspan="8">Sewer</td>
@@ -231,7 +212,7 @@
                                                 <strong>NOTE:</strong> <?php echo $row_settings['terms_conds']; ?>
                                             </td>
                                             <td rowspan="2">&nbsp;</td>
-                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS <?php echo $row_invoice['amount_payable'] ?></span></strong></td>
+                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS <?php echo number_format($row_invoice['amount_payable'], 2, '.', ',')  ?></span></strong></td>
                                         </tr>
                                         <tr><td></td></tr>
                                     </table>
