@@ -19,13 +19,15 @@
 require '../../config/config.php';
 
 $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
-                         appln_type, billing_areas, acc_no, inv_id,
+                         appln_type, billing_areas, acc_no, inv.inv_id,
                          water_cost, sewer_cost, service_charge, aging_debit,
                          (water_cost + sewer_cost + service_charge + aging_debit)
                       AS amount_payable
                     FROM invoice inv
               INNER JOIN customer cust
                       ON inv.cust_id = cust.cust_id
+              INNER JOIN aging_analysis age
+                      ON inv.inv_id = age.inv_id
               INNER JOIN account acc
                       ON cust.cust_id = acc.cust_id
               INNER JOIN applicant appnt

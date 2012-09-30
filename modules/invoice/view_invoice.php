@@ -80,19 +80,21 @@
                                           ON cust.appnt_id = appnt.appnt_id
                                   INNER JOIN appnt_type apty
                                           ON appnt.appnt_type_id = apty.appnt_type_id
-                                   LEFT JOIN meter_customer mecu
-                                          ON cust.cust_id = mecu.cust_id 
+                                   LEFT JOIN invoice_reading inred
+                                          ON inv.inv_id = inred.inv_id
                                    LEFT JOIN meter_reading mred
-                                          ON mecu.cust_id = mred.cust_id
+                                          ON inred.mred_id = mred.mred_id
+                                   LEFT JOIN meter_customer mecu
+                                          ON cust.cust_id = mecu.cust_id
                                    LEFT JOIN meter met
                                           ON mecu.met_id = met.met_id
                                   INNER JOIN billing_area ba
                                           ON appnt.ba_id = ba.ba_id
                                   INNER JOIN account acc
                                           ON acc.acc_id = inv.acc_id
-                                   LEFT JOIN aging_analysis age
-                                          ON mred.billing_date = age.aging_date
-                                       WHERE inv_id = '$inv_id'";
+                                  INNER JOIN aging_analysis age
+                                          ON inv.inv_id = age.inv_id
+                                       WHERE inv.inv_id = '$inv_id'";
 
                     $result_invoice = mysql_query($query_invoice) or die(mysql_error());
 

@@ -41,8 +41,8 @@ if ($num_month <= 0) {
     $query_readings = "SELECT premise_status, appln_type,  appnt_fullname,
                           billing_date, service, cust_status, consumption,
                           level, wt_from, wt_to, wt_rate, wt_flat_rate, 
-                          cust.cust_id, s_flat_rate, acc_id, appnt.appnt_type_id,
-                          aging_date, aging_debit, service_charge
+                          cust.cust_id, s_flat_rate, acc.acc_id, appnt.appnt_type_id,
+                          aging_date, aging_debit, age.inv_id, wt.service_charge, mred_id
                      FROM customer cust
                INNER JOIN application appln
                        ON cust.appln_id = appln.appln_id
@@ -50,6 +50,8 @@ if ($num_month <= 0) {
                        ON cust.cust_id = mred.cust_id
                 LEFT JOIN aging_analysis age
                        ON cust.cust_id = age.cust_id
+                LEFT JOIN invoice inv
+                       ON  age.inv_id = inv.inv_id
                INNER JOIN applicant appnt
                        ON cust.appnt_id = appnt.appnt_id
                INNER JOIN service_nature sn
@@ -184,14 +186,26 @@ if ($num_month <= 0) {
             $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
 
             //Inserting debits in aging analysis
+            $inv_id = mysql_insert_id();
             $curr_debit = $row_reading['aging_debit'];
             $new_debit = $curr_debit + $cost;
 
+
             $query_age_analysis = "INSERT INTO aging_analysis
-                                       (aging_date, cust_id, aging_debit)
-                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
+                                       (aging_date, cust_id, inv_id, aging_debit)
+                                VALUES ('$billing_month', '$cust_id', '$inv_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
+
+            if ($row_reading['premise_status'] === 'Metered') {
+
+                $mred_id = $row_reading['mred_id'];
+
+                $query_inv_read = "INSERT INTO invoice_reading
+                                               (inv_id, mred_id)
+                                        VALUES ('$inv_id', '$mred_id')";
+                $result_inv_read = mysql_query($query_inv_read) or die(mysql_error());
+            }
         } elseif ($row_reading['appln_type'] === 'Sewer') {
 
             // Making Sewer Billing transaction
@@ -225,12 +239,13 @@ if ($num_month <= 0) {
             $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
 
             //Inserting debits in aging analysis
+            $inv_id = mysql_insert_id();
             $curr_debit = $row_reading['aging_debit'];
             $new_debit = $curr_debit + $cost;
 
             $query_age_analysis = "INSERT INTO aging_analysis
-                                       (aging_date, cust_id, aging_debit)
-                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
+                                       (aging_date, cust_id, inv_id, aging_debit)
+                                VALUES ('$billing_month', '$cust_id', '$inv_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
         } elseif ($row_reading['appln_type'] === 'Water and Sewer') {
@@ -318,14 +333,25 @@ if ($num_month <= 0) {
             $result_invoice_water = mysql_query($query_invoice_water) or die(mysql_error());
 
             //Inserting debits in aging analysis
+            $inv_id = mysql_insert_id();
             $curr_debit = $row_reading['aging_debit'];
             $new_debit = $curr_debit + $cost;
 
             $query_age_analysis = "INSERT INTO aging_analysis
-                                       (aging_date, cust_id, aging_debit)
-                                VALUES ('$billing_month', '$cust_id', '$new_debit')";
+                                       (aging_date, cust_id, inv_id, aging_debit)
+                                VALUES ('$billing_month', '$cust_id', '$inv_id', '$new_debit')";
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
+
+            if ($row_reading['premise_status'] === 'Metered') {
+
+                $mred_id = $row_reading['mred_id'];
+
+                $query_inv_read = "INSERT INTO invoice_reading
+                                               (inv_id, mred_id)
+                                        VALUES ('$inv_id', '$mred_id')";
+                $result_inv_read = mysql_query($query_inv_read) or die(mysql_error());
+            }
         }
     }
 
