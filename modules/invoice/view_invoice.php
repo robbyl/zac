@@ -66,35 +66,55 @@
 
                     $inv_id = clean($_GET['inv_id']);
 
-                    $query_invoice = "SELECT inv_no, inv_type, invoicing_date, acc_no, appnt_fullname,
-                                             appnt_post_addr, block_no, plot_no, living_town,
-                                             billing_areas, living_area, consumption, reading_date,
-                                             reading, met_number, appnt_types, reading_date,
-                                             water_cost, sewer_cost, service_charge, aging_debit,
-                                             (water_cost + sewer_cost + service_charge + aging_debit)
+//                    $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
+//                                             appln_type, billing_areas, acc_no, inv.inv_id,
+//                                             water_cost, sewer_cost, service_charge, aging_date,
+//                                             COALESCE(aging_debit, 0) AS aging_debit,
+//                                             (water_cost + sewer_cost + service_charge  + COALESCE(aging_debit, 0))
+//                                          AS amount_payable
+//                                        FROM invoice inv
+//                                  INNER JOIN customer cust
+//                                          ON inv.cust_id = cust.cust_id
+//                                   LEFT JOIN (SELECT * FROM aging_analysis
+//                                       WHERE aging_date = '2012-01-01') AS b
+//                                          ON cust.cust_id = b.cust_id               
+//                                  INNER JOIN account acc
+//                                          ON cust.cust_id = acc.cust_id
+//                                  INNER JOIN applicant appnt
+//                                          ON cust.appnt_id = appnt.appnt_id
+//                                  INNER JOIN application appln
+//                                          ON appln.appnt_id = appnt.appnt_id
+//                                  INNER JOIN billing_area ba
+//                                          ON appnt.ba_id = ba.ba_id
+//                                       WHERE invoicing_date = '2012-02-01'
+//                                       WHERE inv.inv_id = '$inv_id'";
+                    
+                    $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
+                                             appln_type, billing_areas, acc_no, inv.inv_id,
+                                             water_cost, sewer_cost, service_charge, aging_date,
+                                             COALESCE(aging_debit, 0) AS aging_debit,
+                                             (water_cost + sewer_cost + service_charge  + COALESCE(aging_debit, 0))
                                           AS amount_payable
                                         FROM invoice inv
                                   INNER JOIN customer cust
                                           ON inv.cust_id = cust.cust_id
+                                   LEFT JOIN invoice_reading inre
+                                          ON inv.inv_id = inre.inv_id
+                                   LEFT JOIN meter_reading mred
+                                          ON inre.mred_id = mred.mred_id
+                                   LEFT JOIN (SELECT * FROM aging_analysis
+                                             WHERE aging_date = '2011-12-01') AS b
+                                          ON inv.inv_id = b.inv_id
+                                  INNER JOIN account acc
+                                          ON cust.cust_id = acc.cust_id
                                   INNER JOIN applicant appnt
                                           ON cust.appnt_id = appnt.appnt_id
-                                  INNER JOIN appnt_type apty
-                                          ON appnt.appnt_type_id = apty.appnt_type_id
-                                   LEFT JOIN invoice_reading inred
-                                          ON inv.inv_id = inred.inv_id
-                                   LEFT JOIN meter_reading mred
-                                          ON inred.mred_id = mred.mred_id
-                                   LEFT JOIN meter_customer mecu
-                                          ON cust.cust_id = mecu.cust_id
-                                   LEFT JOIN meter met
-                                          ON mecu.met_id = met.met_id
+                                  INNER JOIN application appln
+                                          ON appln.appnt_id = appnt.appnt_id
                                   INNER JOIN billing_area ba
                                           ON appnt.ba_id = ba.ba_id
-                                  INNER JOIN account acc
-                                          ON acc.acc_id = inv.acc_id
-                                  INNER JOIN aging_analysis age
-                                          ON inv.inv_id = age.inv_id
-                                       WHERE inv.inv_id = '$inv_id'";
+                                       WHERE invoicing_date = '2012-01-01'
+                                         AND inv.inv_id = '$inv_id'";
 
                     $result_invoice = mysql_query($query_invoice) or die(mysql_error());
 
