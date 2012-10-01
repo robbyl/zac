@@ -70,22 +70,13 @@ function printPage(id, css){
     printWin.document.write(html);
     printWin.document.close();
     printWin.focus();
-//printWin.print();
-//printWin.close();
+    printWin.print();
+    printWin.close();
 }
 
-function printTable(id, css, jq, js){
-    var html="<html><head><title></title>";
-    html+="<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\">";
-    html+="<script src="+jq+" type=\"text/javascript\"></script>";
-    html+="<script src="+js+" type=\"text/javascript\"></script>";
-    html+="</head><body>";
-    html+= document.getElementById(id).innerHTML;
-    html+="</body></html>";
+function printTable(url){
 
-    var printWin = window.open('','','left=0,top=0,width=100,height=900,toolbar=no,scrollbars=no,status=no');
-    printWin.document.write(html);
-    printWin.document.close();
+    var printWin = window.open(url,'','left=0,top=0,width=100,height=900,toolbar=no,scrollbars=no,status=no');
     printWin.focus();
 //printWin.print();
 //printWin.close();
