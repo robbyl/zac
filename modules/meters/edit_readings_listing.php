@@ -27,8 +27,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     $query_meter_reading = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number,
                                premise_status, appnt_post_addr, reading, met.met_id,
-                               billing_date, initial_reading, reading_date, billing_areas,
-                               cust_status
+                               billing_date, initial_reading, reading_date, billing_areas
                           FROM customer cust
                      LEFT JOIN meter_reading metr
                             ON cust.cust_id = metr.cust_id
@@ -42,17 +41,13 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             ON appnt.appnt_type_id = apty.appnt_type_id
                     INNER JOIN account acc
                             ON cust.cust_id = acc.cust_id
-                    INNER JOIN meter_customer mecu
-                            ON cust.cust_id = mecu.cust_id
                     INNER JOIN meter met
-                            ON mecu.met_id = met.met_id
+                            ON metr.met_id = met.met_id
                                {$filter}
                          WHERE premise_status = 'Metered'
-                           AND cust_status = 'Connected'
                            AND billing_date = (
                         SELECT MAX(billing_date)
-                          FROM meter_reading)
-                            OR billing_date IS NULL";
+                          FROM meter_reading)";
 
     $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
     ?>
@@ -128,13 +123,13 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 $SN++;
             }
             ?>
-            </tbody>
-        </table>
-        <table width="531">
-            <tr>
-                <td width="307"><button type="submit">Save</button>
-                    <button type="reset">Reset</button></td>
-            </tr>
-        </table>
-    </form>
+        </tbody>
+    </table>
+    <table width="531">
+        <tr>
+            <td width="307"><button type="submit">Save</button>
+                <button type="reset">Reset</button></td>
+        </tr>
+    </table>
+</form>
 <?php } ?>

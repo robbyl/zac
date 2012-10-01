@@ -60,27 +60,9 @@ $row_date = mysql_fetch_array($result_meter_reading);
 
             $(document).ready(function() {
 
-                oTable = $('#dataTable').dataTable({
-                    "bJQueryUI": true,
-                    "bScrollCollapse": true,
-                    "sScrollY": "auto",
-                    "bAutoWidth": true,
-                    "bPaginate": true,
-                    "sPaginationType": "full_numbers", //full_numbers,two_button
-                    "bStateSave": true,
-                    "bInfo": true,
-                    "bFilter": true,
-                    "iDisplayLength": 25,
-                    "bLengthChange": true,
-                    "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
-                });
+                $('#billing_area').change(function(){
 
-                $('.message, .error').hide().slideDown('normal').click(function(){
-                    $(this).slideUp('normal');
-                });
-
-                $('.tooltip').tipTip({
-                    delay: "300"
+                    getContent('edit_readings_listing.php', {filter: $(this).val()});
                 });
             } );
         </script>
@@ -135,7 +117,7 @@ $row_date = mysql_fetch_array($result_meter_reading);
                 // Displaying messages and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Edit Meter Readings</h1>
+                <h1>Enter Meter Readings</h1>
                 <div class="hr-line"></div>
                 <div style="margin-bottom: 15px;">
                     <form>
@@ -163,63 +145,12 @@ $row_date = mysql_fetch_array($result_meter_reading);
                             &nbsp; &nbsp;
                             Billing Month <input type="date" name="billing_date[]" value ="<?php echo $row_date['billing_date'] ?>" max="<?php echo $prev_month ?>" form="readings" required class="text" style="width: 150px;" >
                         </label>
-
+                        
                     </form>
                 </div>
-                <form action="process_meter_reading.php" method="post" name="readings" id="readings" oninput="consumptions()" >
-                    <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
-                        <thead>
-                            <tr>
-                                <th width="23" title="Serial No." class="tooltip">
-                                    SN
-                                </th>
-                                <th title="Account number" class="tooltip">Account No.</th>
-                                <th title="Meter number" class="tooltip">Meter No.</th>
-                                <th>Customer name</th>
-                                <th title="Previous reading date" class="tooltip" >Prev reading date</th>
-                                <th title="Previous reading" class="tooltip">Prev reading</th>
-                                <th title="Current reading" class="tooltip">Curr reading</th>
-                                <th>Consumption</th>
-                                <th>Remarks</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $SN = 1;
-                            while ($row = mysql_fetch_array($result_meter_reading)) {
-                                ?>
-                                <tr>
-                            <input type="hidden" name="cust_id[]" value="<?php echo $row['cust_id'] ?>" >
-                            <input type="hidden" name="met_id[]" value="<?php echo $row['met_id'] ?>" >
-                            <td><?php echo $SN ?></td>
-                            <td><?php echo $row['acc_no'] ?></td>
-                            <td><?php echo $row['met_number'] ?></td>
-                            <td><?php echo $row['appnt_fullname'] ?></td>
-                            <td><?php echo $row['reading_date'] ?></td>
-                            <td>
-                                <input type="text" name="prev_reading[]" value="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>" readonly  class="prev" >
-                            </td>
-                            <td>
-                                <input type="number" name="curr_reading[]" min="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>" required class="number" style="width: 100px;">
-                            </td>
-                            <td><output name="cons[]" ></output></td>
-                            <td>
-                                <input type="text" name="remarks[]" class="text" style="width: 200px;">
-                            </td>
-                            </tr>
-                            <?php
-                            $SN++;
-                        }
-                        ?>
-                        </tbody>
-                    </table>
-                    <table width="531">
-                        <tr>
-                            <td width="307"><button type="submit">Save</button>
-                                <button type="reset">Reset</button></td>
-                        </tr>
-                    </table>
-                </form>
+                <div id="listing">
+
+                    <!-- end #listing --></div>
                 <!-- end .content --></div>
             <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
