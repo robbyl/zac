@@ -26,12 +26,17 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     $filter === 'All' ? $filter = "" : $filter = 'AND billing_areas = ' . "'$filter' ";
 
     $query_meter_reading = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number,
-                               premise_status, appnt_post_addr, reading, met.met_id,
-                               billing_date, initial_reading, plot_no, block_no,
-                               billing_areas
+                               premise_status, appnt_post_addr, prev_reading, reading AS curr_reading, met.met_id,
+                               billing_date, reading_date, billing_areas, initial_reading,
+                               plot_no, block_no
                           FROM customer cust
-                     LEFT JOIN meter_reading metr
+                     LEFT JOIN  meter_reading metr 
                             ON cust.cust_id = metr.cust_id
+                     LEFT JOIN (
+                        SELECT mred_id, reading AS prev_reading
+                          FROM meter_reading
+                                ) AS b 
+                            ON metr.mred_id - (SELECT COUNT(*) FROM meter_customer) = b.mred_id
                     INNER JOIN billing_area ba
                             ON cust.ba_id = ba.ba_id
                     INNER JOIN applicant appnt
@@ -44,11 +49,8 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             ON cust.cust_id = acc.cust_id
                     INNER JOIN meter met
                             ON metr.met_id = met.met_id
-                         WHERE premise_status = 'Metered'
                                {$filter}
-                           AND billing_date = (
-                        SELECT MAX(billing_date)
-                          FROM meter_reading)";
+                         WHERE premise_status = 'Metered'";
 
     $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
     ?>
@@ -73,7 +75,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $('.message, .error').hide().slideDown('normal').click(function(){
             $(this).slideUp('normal');
         });
-                    
+                                
         $('#print-table').click(function(){
             var printWin = window.open('print_meter_sheet.php?filter=All','','left=0,top=0,width=1060,height=900,toolbar=no,scrollbars=no,status=no');
             printWin.document.close();
@@ -120,7 +122,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
             <td><?php echo $row['plot_no'] ?></td>
             <td><?php echo $row['block_no'] ?></td>
             <td>
-                <?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>
+                <?php if (!empty($row['prev_reading'])) echo $row['prev_reading']; else echo $row['initial_reading']; ?>
             </td>
             <td></td>
             <td>
