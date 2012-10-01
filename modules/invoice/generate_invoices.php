@@ -72,7 +72,8 @@ if (!empty($last_billing)) {
                 ?>
                 <h1>Generate Monthly Invoices</h1>
                 <div class="hr-line"></div>
-                <form action="process_invoicing.php" method="post" >
+                <form action="process_invoicing.php" method="post"
+                      onsubmit="return confirm('You are About to Generate Bills for the month ... Are you Sure?')" >
                     <fieldset>
                         <legend>Invoicing details</legend>
                         <table width="" border="0" cellpadding="5">
@@ -93,7 +94,7 @@ if (!empty($last_billing)) {
                     <table width="531">
                         <tr>
                             <td width="212">&nbsp;</td>
-                            <td width="307"><button type="submit">Generate</button>
+                            <td width="307"><button type="submit" >Generate</button>
                                 <button type="reset">Reset</button></td>
                         </tr>
                     </table>

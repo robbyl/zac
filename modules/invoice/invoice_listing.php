@@ -123,7 +123,7 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
                 <td><?php echo $row['created_date'] ?></td>
                 <td><?php echo $row['appnt_fullname'] ?></td>
                 <td><?php echo $row['appln_type'] ?></td>
-                <td align="right"><?php echo $row['amount_payable'] ?></td>
+                <td align="right"><?php echo number_format($row['amount_payable'], '2', '.', ',') ?></td>
             </tr>
             <?php
         }
