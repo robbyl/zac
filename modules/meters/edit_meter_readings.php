@@ -12,11 +12,16 @@ $filter = 'All';
 $filter === 'All' ? $filter = "" : $filter = 'AND billing_areas = ' . "'$filter'";
 
 $query_meter_reading = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number,
-                               premise_status, appnt_post_addr, reading, met.met_id,
-                               billing_date, initial_reading, reading_date, billing_areas
+                               premise_status, appnt_post_addr, prev_reading, reading AS curr_reading, met.met_id,
+                               billing_date, reading_date, billing_areas, initial_reading
                           FROM customer cust
-                     LEFT JOIN meter_reading metr
+                     LEFT JOIN  meter_reading metr 
                             ON cust.cust_id = metr.cust_id
+                     LEFT JOIN (
+                        SELECT mred_id, reading AS prev_reading
+                          FROM meter_reading
+                                ) AS b 
+                            ON metr.mred_id - (SELECT COUNT(*) FROM meter_customer) = b.mred_id
                     INNER JOIN billing_area ba
                             ON cust.ba_id = ba.ba_id
                     INNER JOIN applicant appnt
@@ -30,10 +35,7 @@ $query_meter_reading = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number,
                     INNER JOIN meter met
                             ON metr.met_id = met.met_id
                                {$filter}
-                         WHERE premise_status = 'Metered'
-                           AND billing_date = (
-                        SELECT MAX(billing_date)
-                          FROM meter_reading)";
+                         WHERE premise_status = 'Metered'";
 
 $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
 $row_date = mysql_fetch_array($result_meter_reading);
@@ -190,10 +192,10 @@ $row_date = mysql_fetch_array($result_meter_reading);
                             <td><?php echo $row['appnt_fullname'] ?></td>
                             <td><?php echo $row['reading_date'] ?></td>
                             <td>
-                                <input type="text" name="prev_reading[]" value="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>" readonly  class="prev" >
+                                <input type="text" name="prev_reading[]" value="<?php if (!empty($row['prev_reading'])) echo $row['prev_reading']; else echo $row['initial_reading']; ?>" readonly  class="prev" >
                             </td>
                             <td>
-                                <input type="number" name="curr_reading[]" min="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>" required class="number" style="width: 100px;">
+                                <input type="number" name="curr_reading[]" min="<?php echo $row['prev_reading']; ?>" value="<?php echo $row['curr_reading']; ?>" required class="number" style="width: 100px;">
                             </td>
                             <td><output name="cons[]" ></output></td>
                             <td>
