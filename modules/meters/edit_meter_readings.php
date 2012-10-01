@@ -9,7 +9,7 @@ require '../../functions/general_functions.php';
 //$filter = clean($_GET['filter']);
 $filter = 'All';
 
-$filter === 'All' ? $filter = "" : $filter = 'AND billing_areas = ' . "'$filter' ";
+$filter === 'All' ? $filter = "" : $filter = 'AND billing_areas = ' . "'$filter'";
 
 $query_meter_reading = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number,
                                premise_status, appnt_post_addr, reading, met.met_id,
