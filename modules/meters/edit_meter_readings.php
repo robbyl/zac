@@ -36,6 +36,7 @@ $query_meter_reading = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number,
                           FROM meter_reading)";
 
 $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
+$row_date = mysql_fetch_array($result_meter_reading);
 ?>
 
 <!doctype html>
@@ -139,7 +140,7 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
                 <div style="margin-bottom: 15px;">
                     <form>
                         <label> Billing Area/Zone
-                            <select name="billing_area" class="select" required id="billing_area" >
+                            <select name="billing_area" class="select" value="<?php echo $row_date['billing_area'] ?>" required id="billing_area" >
                                 <option value="">--Select billing area/zone--</option>
                                 <?php
                                 require '../../config/config.php';
@@ -158,9 +159,9 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
                             $prev_month = strtotime('-1 month', strtotime(date('Y-m-d')));
                             $prev_month = date('Y-m-d', $prev_month);
                             ?>
-                            Reading Date <input type="date" name="reading_date" max="<?php echo date('Y-m-d') ?>" form="readings" required class="text" style="width: 150px;" >
+                            Reading Date <input type="date" name="reading_date[]" value ="<?php echo $row_date['reading_date']; ?>" max="<?php echo $prev_month ?>" form="readings" required class="text" style="width: 150px;" >
                             &nbsp; &nbsp;
-                            Billing Month <input type="date" name="billing_date" max="<?php echo $prev_month ?>" form="readings" required class="text" style="width: 150px;" >
+                            Billing Month <input type="date" name="billing_date[]" value ="<?php echo $row_date['billing_date'] ?>" max="<?php echo $prev_month ?>" form="readings" required class="text" style="width: 150px;" >
                         </label>
 
                     </form>

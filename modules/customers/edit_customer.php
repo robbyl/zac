@@ -154,7 +154,7 @@
                                                 while ($row_ba = mysql_fetch_array($result)) {
                                                     ?>
                                                     <option value="<?php echo $row_ba['ba_id'] ?>"
-                                                            <?php if ($row['ba_id'] === $row_ba['ba_id']) echo 'selected'; ?>>
+                                                            <?php if ($row['ba_id'] === $row_ba['ba_id']) echo 'selected'; ?>
                                                                 <?php echo $row_ba['billing_areas'] ?>
                                                     </option>
                                                     <?php
