@@ -105,10 +105,8 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         <button class="edit tooltip" accesskey="E" title="Edit [Alt+Shift+E]" name="action[]"  value="EDIT">Edit</button>
                         <button class="block tooltip" accesskey="B" title="Block [Alt+Shift+B]" name="action[]" value="BLOCK" onClick="return confirm('Are you sure you want to block user(s)?')">Block</button>
                         <button class="activate tooltip" accesskey="I" title="Activate [Alt+Shift+I]" name="action[]" value="ACTIVATE" onClick="return confirm('Are you sure you want to activate user(s)')">Activate</button>
-                        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" name="action[]" value="PRINT">Print</button>
-                        <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
                     </div>
-                    <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
+                 <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
                         <thead>
                             <tr>
                                 <th width="23">
@@ -143,7 +141,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 </form>
 
                 <!-- end .content --></div>
-            <?php include '../../includes/footer.php';  ?>
+            <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
 </html>

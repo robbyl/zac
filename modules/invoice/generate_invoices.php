@@ -1,4 +1,28 @@
 <?php require '../../includes/session_validator.php'; ?>
+
+<?php
+// Getting the last billing month
+require '../../config/config.php';
+require '../../functions/general_functions.php';
+
+$query_billing_moth = "SELECT MAX(invoicing_date) AS last_billing
+                         FROM invoice";
+
+$result_billing_month = mysql_query($query_billing_moth) or die(mysql_error());
+
+$row_last_billing = mysql_fetch_array($result_billing_month);
+
+$last_billing = $row_last_billing['last_billing'];
+
+if (!empty($last_billing)) {
+
+    $min_billing_date = strtotime(date("Y-m-d", strtotime($last_billing)) . "+1 month");
+    $fmin_billing_date = date('Y-m-d', $min_billing_date);
+} else {
+
+    $fmin_billing_date = "";
+}
+?>
 <!doctype html>
 <html>
     <head>
@@ -43,7 +67,7 @@
                 <!-- end .sidebar --></div>
             <div class="content">
                 <?php
-                // Displaying message and errors
+// Displaying message and errors
                 include '../../includes/info.php';
                 ?>
                 <h1>Generate Monthly Invoices</h1>
@@ -62,7 +86,7 @@
     </tr>-->
                             <tr>
                                 <td width="170">Billing Month</td>
-                                <td><input type="date" name="billing_month" class="text" required></td>
+                                <td><input type="date" min="<?php echo $fmin_billing_date; ?>" name="billing_month" class="text" required></td>
                             </tr>
                         </table>
                     </fieldset>
