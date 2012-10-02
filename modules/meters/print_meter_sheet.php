@@ -70,8 +70,9 @@ table {
 <div class="sheet-wraper">
   <div class="sheet-header">
     <div class="page-logo"> <img src="../../images/customer.png" align="middle" height="80"> 
-    <div class="header-title">MBINGA URBAN WATER AUTHORITY</div>
+    
     </div>
+      <div class="header-title">MBINGA URBAN WATER AUTHORITY</div>
   </div>
   <div class="sheet-table">
     <table cellpadding="3" cellspacing="0" border="1" width="100%">
