@@ -61,7 +61,8 @@ function consumptions(){
 // Prints specified part of the page
 function printPage(id, css){
     var html="<html><head><title></title>";
-    html+="<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\"></head><body>";
+    html+="<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\">";
+    html+="</head><body>";
     html+= document.getElementById(id).innerHTML;
     html+="</body></html>";
 
@@ -72,6 +73,15 @@ function printPage(id, css){
     printWin.print();
     printWin.close();
 }
+
+function printTable(url){
+
+    var printWin = window.open(url,'','left=0,top=0,width=1060,height=900,toolbar=no,scrollbars=no,status=no');
+    printWin.focus();
+//printWin.print();
+//printWin.close();
+}
+
 
 function savePDF(id, css){
     var html="<html><head><title></title>";
