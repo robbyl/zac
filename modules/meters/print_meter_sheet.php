@@ -21,6 +21,13 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     require '../../config/config.php';
     require '../../functions/general_functions.php';
 
+    $query_authority = "SELECT aut_name, logo
+                          FROM settings";
+
+    $result_authority = mysql_query($query_authority) or die(mysql_error());
+
+    $row_authority = mysql_fetch_array($result_authority);
+
     $filter = clean($_GET['filter']);
 
     $filter === 'All' ? $filter = "" : $filter = 'AND billing_areas = ' . "'$filter' ";
@@ -53,68 +60,81 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
     ?>
 
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-<title></title>
-<style type="text/css">
-table {
-	border-collapse: collapse;
-}
-</style>
-<link href="../../css/sheet.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="sheet-wraper">
-  <div class="sheet-header">
-    <div class="page-logo"> <img src="../../images/customer.png" align="middle" height="80"> 
-    
-    </div>
-      <div class="header-title">MBINGA URBAN WATER AUTHORITY</div>
-  </div>
-  <div class="sheet-table">
-    <table cellpadding="3" cellspacing="0" border="1" width="100%">
-      <thead>
-        <tr>
-          <th title="Serial No." class="tooltip"> SN </th>
-          <th title="Account number" class="tooltip">Account No.</th>
-          <th title="Meter number" class="tooltip">Meter No.</th>
-          <th>Customer name</th>
-          <th title="Plot number" class="tooltip" >Plot no</th>
-          <th title="Block number" class="tooltip">Block no.</th>
-          <th title="Previous reading" class="tooltip">Pre reading</th>
-          <th title="Current reading" class="tooltip">Curr reading</th>
-          <th>Remarks</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
+    <!doctype html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+            <title></title>
+            <style type="text/css">
+                table {
+                    border-collapse: collapse;
+                }
+            </style>
+            <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
+        </head>
+        <body>
+            <div class="sheet-wraper">
+                <div class="sheet-header">
+
+                    <div class="header-title">
+                        <p><?php echo $row_authority['aut_name'] ?></p> 
+                        <p style="font-size: 18px;">METER READING SHEET</p>
+                        <div class="page-logo">
+                            <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
+                        </div>
+                    </div>
+
+                    <!-- end .sheet-header --></div>
+                <div class="print-details" style="float: right">
+                    <p>Print Date: <span style="font-weight: normal"><?php echo date('Y-m-d') ?></span></p>
+                    <p>Billing Area/Zone: <span style="font-weight: normal">Migongo</span></p>
+                </div>
+                <div class="print-details">
+                    <p>Reading Date: ..................................</p>
+                    <p>Meter Reader: ................................................................</p>
+                    <p>Billing Month: <span style="font-weight: normal"><?php echo date('Y-m-d') ?></span></p>                   
+                </div>
+                <div class="sheet-table">
+                    <table cellpadding="3" cellspacing="0" border="1" width="100%">
+                        <thead>
+                            <tr>
+                                <th title="Serial No." class="tooltip"> SN </th>
+                                <th title="Account number" class="tooltip">Account No.</th>
+                                <th title="Meter number" class="tooltip">Meter No.</th>
+                                <th>Customer name</th>
+                                <th title="Plot number" class="tooltip" >Plot no</th>
+                                <th title="Block number" class="tooltip">Block no.</th>
+                                <th title="Previous reading" class="tooltip">Pre reading</th>
+                                <th title="Current reading" class="tooltip">Curr reading</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                             $SN = 1;
                             while ($row = mysql_fetch_array($result_meter_reading)) {
                                 ?>
-        <tr>
-          <input type="hidden" name="cust_id[]" value="<?php echo $row['cust_id'] ?>" >
-          <input type="hidden" name="met_id[]" value="<?php echo $row['met_id'] ?>" >
-          <td><?php echo $SN ?></td>
-          <td><?php echo $row['acc_no'] ?></td>
-          <td><?php echo $row['met_number'] ?></td>
-          <td><?php echo $row['appnt_fullname'] ?></td>
-          <td><?php echo $row['plot_no'] ?></td>
-          <td><?php echo $row['block_no'] ?></td>
-          <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <?php
-                            $SN++;
-                        }
-                        ?>
-      </tbody>
-    </table>
-  </div>
-  <!--            --></div>
-</body>
-<?php } ?>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <?php
+                                $SN++;
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!--            --></div>
+        </body>
+    <?php } ?>
 </html>

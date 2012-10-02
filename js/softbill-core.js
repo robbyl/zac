@@ -66,7 +66,7 @@ function printPage(id, css){
     html+= document.getElementById(id).innerHTML;
     html+="</body></html>";
 
-    var printWin = window.open('','','left=0,top=0,width=100,height=900,toolbar=no,scrollbars=no,status=no');
+    var printWin = window.open('','','left=0,top=0,width=1060,height=900,toolbar=no,scrollbars=no,status=no');
     printWin.document.write(html);
     printWin.document.close();
     printWin.focus();
@@ -76,7 +76,7 @@ function printPage(id, css){
 
 function printTable(url){
 
-    var printWin = window.open(url,'','left=0,top=0,width=100,height=900,toolbar=no,scrollbars=no,status=no');
+    var printWin = window.open(url,'','left=0,top=0,width=1060,height=900,toolbar=no,scrollbars=no,status=no');
     printWin.focus();
 //printWin.print();
 //printWin.close();

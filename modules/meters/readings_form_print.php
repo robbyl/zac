@@ -73,10 +73,9 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $('.message, .error').hide().slideDown('normal').click(function(){
             $(this).slideUp('normal');
         });
-                    
+                        
         $('#print-table').click(function(){
-            var printWin = window.open('print_meter_sheet.php?filter=All','','left=0,top=0,width=1060,height=900,toolbar=no,scrollbars=no,status=no');
-            printWin.document.close();
+            var printWin = window.open('print_meter_sheet.php?filter=All','','left=0,top=0,width=600,height=600,toolbar=no,scrollbars=yes,status=no');
             printWin.focus();
 //            printWin.print();
 //            printWin.close();    
