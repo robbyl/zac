@@ -39,7 +39,13 @@ if (!empty($last_billing)) {
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.message, .error').hide().slideDown('normal').click(function(){
-                    $(this).slideUp('normal');
+                    $(this).slideUp('normal');  
+                });     
+                
+                $('#invoicing').submit(function(){
+                    var billDate = $('#billing_date').val();
+                    var confirmed = confirm('You are About to Generate Bills for the month ' + billDate + ' Are you Sure?');
+                    return confirmed;
                 });
             });
         </script>
@@ -67,13 +73,12 @@ if (!empty($last_billing)) {
                 <!-- end .sidebar --></div>
             <div class="content">
                 <?php
-// Displaying message and errors
+                // Displaying message and errors
                 include '../../includes/info.php';
                 ?>
                 <h1>Generate Monthly Invoices</h1>
                 <div class="hr-line"></div>
-                <form action="process_invoicing.php" method="post"
-                      onsubmit="return confirm('You are About to Generate Bills for the month ... Are you Sure?')" >
+                <form action="process_invoicing.php" method="post" id="invoicing">
                     <fieldset>
                         <legend>Invoicing details</legend>
                         <table width="" border="0" cellpadding="5">
@@ -87,7 +92,7 @@ if (!empty($last_billing)) {
     </tr>-->
                             <tr>
                                 <td width="170">Billing Month</td>
-                                <td><input type="date" min="<?php echo $fmin_billing_date; ?>" name="billing_month" class="text" required></td>
+                                <td><input type="date" min="<?php echo $fmin_billing_date; ?>" id="billing_date" name="billing_month" class="text" required></td>
                             </tr>
                         </table>
                     </fieldset>
