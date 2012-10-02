@@ -83,6 +83,9 @@ if ($num_month <= 0) {
     $inv_rows = mysql_num_rows($result_inv_no);
 
     $inv_no = ($inv_rows > 0 ? $inv_no = $cur_inv_no : $inv_no = '0');
+    
+    echo $inv_no;
+    exit;
 
     $query_level = "SELECT appnt_type_id, level, wt_rate, wt_from, wt_to 
                   FROM water_tariff wt

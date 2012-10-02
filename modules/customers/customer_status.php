@@ -69,11 +69,11 @@
                         <legend>Customer Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="170">acc no</td>
+                                <td width="170">Account No</td>
                                 <td><input type="text" name="fullname" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="170">customer status</td>
+                                <td width="170">Customer Status</td>
                                 <td>
                                     <select name="cust_status" class="select" required>
                                         <option value="">--select customer status--</option>

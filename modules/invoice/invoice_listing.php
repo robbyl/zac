@@ -20,18 +20,23 @@ require '../../config/config.php';
 
 $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
                          appln_type, billing_areas, acc_no, inv.inv_id,
-                         water_cost, sewer_cost, service_charge, aging_debit,
-                         (water_cost + sewer_cost + service_charge + aging_debit)
+                         water_cost, sewer_cost, service_charge,
+                         COALESCE(aging_debit, 0) AS aging_debit,
+                         (water_cost + sewer_cost + service_charge + COALESCE(aging_debit, 0))
                       AS amount_payable
                     FROM invoice inv
               INNER JOIN customer cust
                       ON inv.cust_id = cust.cust_id
-              INNER JOIN aging_analysis age
-                      ON inv.inv_id = age.inv_id
+               LEFT JOIN invoice_reading inre
+                      ON inv.inv_id = inre.inv_id
+               LEFT JOIN aging_analysis age
+                      ON inv.inv_id-(SELECT COUNT(*) FROM customer) = age.inv_id
               INNER JOIN account acc
                       ON cust.cust_id = acc.cust_id
               INNER JOIN applicant appnt
                       ON cust.appnt_id = appnt.appnt_id
+              INNER JOIN appnt_type appty
+                      ON appnt.appnt_type_id = appty.appnt_type_id
               INNER JOIN application appln
                       ON appln.appnt_id = appnt.appnt_id
               INNER JOIN billing_area ba
