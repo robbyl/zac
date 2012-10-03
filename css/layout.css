@@ -327,7 +327,7 @@ input[disabled] {
 }
 
 
-.radio{
+.radio {
     outline: none;
 }
 
@@ -541,6 +541,11 @@ textarea:focus {
     text-decoration: underline;
 }
 
+.loading {
+    width: 500px;
+    height: 160px;
+    background: url(../images/loading.gif) no-repeat center center;
+}
 
 /* ~~ data table classes ~~ */
 

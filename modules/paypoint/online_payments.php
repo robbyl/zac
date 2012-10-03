@@ -101,11 +101,11 @@ ob_start();
                         <table width="" border="0" cellpadding="5">
                             <tr>
                                 <td width="170">
-                                    <select name="cust_appnt" class="select">
-                                        <option value="Account No">Account No</option>
-                                        <option value="Appln No">Application No</option>
+                                    <select name="cust_appnt" id="cust-appnt" class="select">
+                                        <option value="customer">Account No</option>
+                                        <option value="applicant">Application No</option>
                                     </select></td>
-                                <td><input type="text" name="number" required autocomplete="off" class="text" ></td>
+                                <td><input type="text" name="number" id="number" required autocomplete="off"  oninput="moreDetails()" class="text" ></td>
                             </tr>
                             <tr>
                                 <td width="170">Payment type</td>
@@ -126,23 +126,10 @@ ob_start();
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
-                                <td width="170">Customer Name</td>
-                                <td><strong>Sebastian Nicas Buhatwa</strong></td>
-                            </tr>
-                            <tr>
-                                <td width="170">P.O.Box</td>
-                                <td><strong>4545 Dar</strong></td>
-                            </tr>
-                            <tr>
-                                <td width="170">Plot No</td>
-                                <td><strong>KND/UBG/UMS 38/24</strong></td>
-                            </tr>
-                            <tr>
-                                <td width="170">Block No</td>
-                                <td><strong>UBUNGO MSEWE</strong></td>
-                            </tr>
                         </table>
+                        <div id="cust-appnt-details">
+
+                        </div>
                     </fieldset>
                     <fieldset style="float: left">
                         <legend>Transaction details</legend>
@@ -176,7 +163,7 @@ ob_start();
                             </tr>
                             <tr>
                                 <td width="170">Total</td>
-                                <td><strong>Tsh 4344.00</strong></td>
+                                <td><strong id="total"></strong></td>
                             </tr>
                             <tr>
                                 <td width="170">Payed Amount</td>

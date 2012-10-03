@@ -93,3 +93,31 @@ function savePDF(id, css){
     $('#html-form').submit();
 
 }
+
+// Displaying customer or applicant more details
+
+function moreDetails(){
+    var type = $('#cust-appnt').val();
+    var number = $('#number').val();
+    
+    $.ajax({
+        url: 'cust_appnt_details.php',
+        type: 'POST',
+        data: {
+            type: type, 
+            number: number
+        },
+        dataType: 'html',
+        beforeSend: function(){
+//            $('#cust-appnt-details').html('<div class="message">Loading...</div>');
+            $('#cust-appnt-details').html('<div class="loading"></div>');
+        },
+        success: function(data){
+            $('#cust-appnt-details').html(data);
+            $('#total').html('Tsh 85,990.84');
+        },
+        error: function(){
+            $('#cust-appnt-details').html('Failed');
+        }
+    });
+}
