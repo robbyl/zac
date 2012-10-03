@@ -186,21 +186,46 @@
                                         </tr>
                                         <tr>
                                             <td>Water</td>
-                                            <td><?php echo $row_invoice['met_number'] ?></td>
-                                            <td><?php echo $row_invoice['appnt_types'] ?></td>
-                                            <td><?php echo $row_invoice['inv_type']; ?></td>
-                                            <td><?php echo $row_invoice['reading_date'] ?></td>
-                                            <td><?php echo $from; ?></td>
-                                            <td><?php echo $row_invoice['reading'] ?></td>
-                                            <td><?php echo $row_invoice['consumption'] ?></td>
-                                            <td align="right"><?php echo number_format($row_invoice['water_cost'], 2, '.', ',') ?></td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['met_number'] ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['appnt_types'] ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['inv_type']; ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['reading_date'] ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $from; ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['reading'] ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['consumption'] ?>
+                                            </td>
+                                            <td align="right">
+                                                <?php echo number_format($row_invoice['water_cost'], 2, '.', ',') ?>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="8">Service Charge</td>
                                             <td align="right"><?php echo number_format($row_invoice['service_charge'], 2, '.', ','); ?></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="8">Sewer</td>
+                                            <td colspan="2">Sewer</td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Sewer' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['appnt_types'] ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($row_invoice['appln_type'] === 'Sewer' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['inv_type']; ?>
+                                            </td>
+                                            <td  colspan="4">
+                                                <?php if ($row_invoice['appln_type'] === 'Sewer' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['reading_date'] ?>
+                                            </td>
                                             <td align="right"><?php echo $row_invoice['sewer_cost'] ?></td>
                                         </tr>
                                     </table>
@@ -212,7 +237,7 @@
                                                 <strong>NOTE:</strong> <?php echo $row_settings['terms_conds']; ?>
                                             </td>
                                             <td rowspan="2">&nbsp;</td>
-                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS <?php echo number_format($row_invoice['amount_payable'], 2, '.', ',')  ?></span></strong></td>
+                                            <td width="47%" rowspan="1" style="background: #e0e0e0" ><strong>Total Amount Payable: <span style="float: right">TZS <?php echo number_format($row_invoice['amount_payable'], 2, '.', ',') ?></span></strong></td>
                                         </tr>
                                         <tr><td></td></tr>
                                     </table>

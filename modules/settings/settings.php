@@ -90,7 +90,7 @@ $row_setting = mysql_fetch_array($result_settings);
                                 <td width="170" style="vertical-align: top">Logo <span class="hint">(Allowed file types jpg, png)</span></td>
                                 <td><?php
                 if (!empty($row_setting['logo'])) {
-                    echo '<img src=logo/' . $row_setting["logo"] . ' ><br>';
+                    echo '<img src="logo/' . $row_setting["logo"] . '" height="150"><br>';
                     echo '<input type="checkbox" id="romove_logo" name="romove_logo" value="REMOVE_AUTH_LOGO" />
 		          <label for="romove_logo">Remove this logo</label> <br>';
                 }
