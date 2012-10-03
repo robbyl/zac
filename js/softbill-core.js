@@ -113,6 +113,7 @@ function moreDetails(){
             $('#cust-appnt-details').html('<div class="loading"></div>');
         },
         success: function(data){
+            
             $('#cust-appnt-details').html(data);
             $('#total').html('Tsh 85,990.84');
         },
