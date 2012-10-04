@@ -78,6 +78,9 @@ if ($cust_appnt === "Account No") {
     }
 }
 
+echo 'passed';
+exit;
+
 // Making receipt transaction
 $query_transaction = "INSERT INTO transaction
                                   (trans_date, description)
@@ -134,10 +137,10 @@ if ($transaction_type === "Cheque") {
 if ($result_transaction && $result_receipt && $result_appln || $result_appnt_payment || $result_cust_payment || $result_cheque) {
 
     info('message', 'Payment accepted successfully!');
-    header('Location: process_online_payment.php');
+    header('Location: online_payments.php');
 } else {
 
     info('error', 'An error occured, Please try again!.');
-    header('Location: process_online_payment.php');
+    header('Location: online_payments.php');
 }
 ?>

@@ -97,7 +97,7 @@ ob_start();
                 <div class="hr-line"></div>
                 <form action="process_online_payment.php" method="post">
                     <fieldset style="float: left">
-                        <legend>Customer/Applicant details</legend>
+                        <legend>Customer/Applicant Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
                                 <td width="170">
@@ -109,7 +109,7 @@ ob_start();
                                 <td><input type="text" name="number" id="number" required autocomplete="off"  oninput="moreDetails()" class="text" ></td>
                             </tr>
                             <tr>
-                                <td width="170">Payment type</td>
+                                <td width="170">Payment Type</td>
                                 <td>
                                     <select name="payment_type" class="select" required>
                                         <option value="">--select payment type--</option>
@@ -133,10 +133,10 @@ ob_start();
                         </div>
                     </fieldset>
                     <fieldset style="float: left">
-                        <legend>Transaction details</legend>
+                        <legend>Transaction Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="170">Transaction type</td>
+                                <td width="170">Transaction Type</td>
                                 <td>
                                     <select name="transaction_type" class="select" id="payment-type" required>
                                         <option value="">--select payment type--</option>
