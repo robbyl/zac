@@ -26,8 +26,8 @@ ob_start();
 
             $(document).ready(function() {
 
-                $('#enter_by').click(function(){
-                    getContent('readings_form_print.php');
+                $('.message, .error').hide().slideDown('normal').click(function(){
+                    $(this).slideUp('normal');
                 });
 
                 $('.close').click(function(){
@@ -103,8 +103,8 @@ ob_start();
                                 <td width="170">
                                     <select name="cust_appnt" id="cust-appnt" required class="select">
                                         <option value="">--select no--</option>
-                                        <option value="customer">Account No</option>
-                                        <option value="applicant">Application No</option>
+                                        <option value="Account No">Account No</option>
+                                        <option value="Appln No">Application No</option>
                                     </select></td>
                                 <td><input type="text" name="number" id="number" required autocomplete="off"  oninput="moreDetails()" class="text" ></td>
                             </tr>

@@ -16,7 +16,7 @@ if (isset($_POST['number']) && isset($_POST['type']) && !empty($_POST['number'])
     switch ($type) {
 
         // Case the payer is customer, display customer details
-        case 'customer':
+        case 'Account No':
 
 
             sleep(2);
@@ -68,7 +68,7 @@ if (isset($_POST['number']) && isset($_POST['type']) && !empty($_POST['number'])
             break;
 
         // Case the payer is applicant, display customer details
-        case 'applicant':
+        case 'Appln No':
 
             echo 'some applicant details';
             break;

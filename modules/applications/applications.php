@@ -43,7 +43,7 @@ ob_start();
         </script>
     </head>
 
-    <body>
+    <body onload="getContent('application_listing.php', {filter: $('#billing_area').val()})">
         <div class="container">
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">

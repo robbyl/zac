@@ -50,7 +50,7 @@ if ($cust_appnt === "Account No") {
     } else {
 
         // If account no does not exist
-        info('error', 'Account No does not exist');
+        info('error', 'Account No does not exist!. Please check for any mistakes and try again');
         header("Location: online_payments.php");
     }
 } elseif ($cust_appnt === "Appln No") {
@@ -73,13 +73,10 @@ if ($cust_appnt === "Account No") {
     } else {
 
         // If application no does not exist
-        info('error', 'Application No. does not exist');
+        info('error', 'Application No. does not exist!. Please check for any mistakes and try again');
         header("Location: online_payments.php");
     }
 }
-
-echo 'passed';
-exit;
 
 // Making receipt transaction
 $query_transaction = "INSERT INTO transaction
