@@ -39,6 +39,7 @@ $living_area = clean($_POST['living_area']);
 $living_town = clean($_POST['living_town']);
 $billing_area = clean($_POST['billing_area']);
 
+// Inserting applicant details
 $query_applnt = "INSERT INTO applicant
                              (appnt_type_id, appnt_fullname, occupants, appnt_tel,
                               appnt_post_addr, appnt_phy_addr, block_no, plot_no,
@@ -51,10 +52,22 @@ $result_applnt = mysql_query($query_applnt) or die(mysql_error());
 
 $appnt_id = mysql_insert_id();
 
+// Inserting application details
+$query_appln_no = "SELECT MAX(appln_no) AS appln_no
+                   FROM application";
+$result_appln_no = mysql_query($query_appln_no) or die(mysql_error());
+
+$row_appln = mysql_fetch_array($result_appln_no);
+$cur_appln_no = $row_appln['appln_no'];
+$appln_rows = mysql_num_rows($result_appln_no);
+
+$appln_no = ($appln_rows > 0 ? $appln_no = $cur_appln_no : $appln_no = '0');
+$appln_no++;
+
 $query_appln = "INSERT INTO application
-                            (appln_date, appln_type, appnt_id, surveyed_date, engeneer_appr,
+                            (appln_no, appln_date, appln_type, appnt_id, surveyed_date, engeneer_appr,
                              approved_date, inspected_by, premise_nature, service_nature_id, status )
-                     VALUES ('$appln_date', '$appln_type', '$appnt_id', '$surveyed_date', '$engeneer_appr',
+                     VALUES ('$appln_no', '$appln_date', '$appln_type', '$appnt_id', '$surveyed_date', '$engeneer_appr',
                              '$approved_date', '$inspected_by', '$premise_nature', '$service_nature', 'Not Paid')";
 
 $result_appln = mysql_query($query_appln) or die(mysql_error());
