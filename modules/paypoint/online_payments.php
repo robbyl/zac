@@ -101,7 +101,7 @@ ob_start();
                         <table width="" border="0" cellpadding="5">
                             <tr>
                                 <td width="170">
-                                    <select name="cust_appnt" id="cust-appnt" class="select">
+                                    <select name="cust_appnt" id="cust-appnt" required class="select">
                                         <option value="">--select no--</option>
                                         <option value="customer">Account No</option>
                                         <option value="applicant">Application No</option>
