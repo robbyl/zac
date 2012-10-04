@@ -102,6 +102,7 @@ ob_start();
                             <tr>
                                 <td width="170">
                                     <select name="cust_appnt" id="cust-appnt" class="select">
+                                        <option value="">--select no--</option>
                                         <option value="customer">Account No</option>
                                         <option value="applicant">Application No</option>
                                     </select></td>

@@ -32,6 +32,29 @@ $user_id = $_SESSION['user_id'];
 
 session_commit();
 
+if ($cust_appnt === "Account No") {
+
+    //Obtainig customer id depending on the provided account no.
+    $query_account = "SELECT acc_no, cust_id
+                        FROM account
+                       WHERE acc_no = '$number'
+                       LIMIT 1";
+    $result_account = mysql_query($query_account) or die(mysql_error());
+    $nun_account = mysql_num_rows($result_account);
+    if ($nun_account >= 1) {
+
+        // If provided account no. exits
+    } else {
+        // If account no does not exist
+        info('error', 'Account No does not exist');
+        header("Location: online_payments.php");
+    }
+    $row_account = mysql_fetch_array($result_account);
+    $cust_id = $row_account['cust_id'];
+} elseif ($cust_appnt === "Appln No") {
+    
+}
+
 // Making receipt transaction
 $query_transaction = "INSERT INTO transaction
                                   (trans_date, description)
@@ -54,8 +77,8 @@ if ($cust_appnt === "Account No") {
 
     // Insert data into customer payment table
     $query_cust_payment = "INSERT INTO cust_payment
-                                    (rec_id, trans_id, cust_id)
-                             VALUES ('$receipt_id', '$transaction_id', '$number')";
+                                       (rec_id, trans_id, cust_id)
+                                VALUES ('$receipt_id', '$transaction_id', '$cust_id')";
 
     $result_cust_payment = mysql_query($query_cust_payment) or die(mysql_error());
 } elseif ($cust_appnt === "Appln No") {

@@ -66,8 +66,8 @@
 
                     $inv_id = clean($_GET['inv_id']);
 
-                    $query_invoice = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
-                                             appln_type, billing_areas, acc_no, inv.inv_id, reading_date,
+                    $query_invoice = "SELECT inv_no, invoicing_date, DATE(created_date) AS charged_date, appnt_fullname,
+                                             appln_type, billing_areas, acc_no, inv.inv_id, 
                                              reading, consumption, plot_no, block_no, living_area,
                                              met_number, appnt_types, inv_type,
                                              water_cost, sewer_cost, service_charge, aging_date,
@@ -196,7 +196,7 @@
                                                 <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['inv_type']; ?>
                                             </td>
                                             <td>
-                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['reading_date'] ?>
+                                                <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['charged_date'] ?>
                                             </td>
                                             <td>
                                                 <?php if ($row_invoice['appln_type'] === 'Clean water' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $from; ?>
@@ -224,7 +224,7 @@
                                                 <?php if ($row_invoice['appln_type'] === 'Sewer' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['inv_type']; ?>
                                             </td>
                                             <td  colspan="4">
-                                                <?php if ($row_invoice['appln_type'] === 'Sewer' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['reading_date'] ?>
+                                                <?php if ($row_invoice['appln_type'] === 'Sewer' || $row_invoice['appln_type'] === 'Clean water and Sewer') echo $row_invoice['charged_date'] ?>
                                             </td>
                                             <td align="right"><?php echo $row_invoice['sewer_cost'] ?></td>
                                         </tr>
