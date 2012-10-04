@@ -22,7 +22,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     $filter = clean($_GET['filter']);
 
-    $filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter' ";
+    $filter = $filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter'";
 
     $query_appln = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number, service,
                            premise_status, appnt_post_addr, billing_areas, appln_type,

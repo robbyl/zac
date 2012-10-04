@@ -41,18 +41,41 @@ if ($cust_appnt === "Account No") {
                        LIMIT 1";
     $result_account = mysql_query($query_account) or die(mysql_error());
     $nun_account = mysql_num_rows($result_account);
+
     if ($nun_account >= 1) {
 
         // If provided account no. exits
+        $row_account = mysql_fetch_array($result_account);
+        $cust_id = $row_account['cust_id'];
     } else {
+
         // If account no does not exist
         info('error', 'Account No does not exist');
         header("Location: online_payments.php");
     }
-    $row_account = mysql_fetch_array($result_account);
-    $cust_id = $row_account['cust_id'];
 } elseif ($cust_appnt === "Appln No") {
-    
+
+    //Obtainig application id depending on the provided application no.
+    $query_appln_no = "SELECT appln_no, appnt.appnt_id
+                         FROM application appn
+                   INNER JOIN applicant appnt
+                           ON appn.appnt_id = appnt.appnt_id
+                        WHERE appln_no = '$number'
+                        LIMIT 1";
+
+    $result_appln_no = mysql_query($query_appln_no) or die(mysql_error());
+    $nun_appn_no = mysql_num_rows($result_appln_no);
+
+    if ($nun_appn_no >= 1) {
+
+        $row_appln_no = mysql_fetch_array($result_appln_no);
+        $appnt_id = $row_appln_no['appnt_id'];
+    } else {
+
+        // If application no does not exist
+        info('error', 'Application No. does not exist');
+        header("Location: online_payments.php");
+    }
 }
 
 // Making receipt transaction
@@ -86,7 +109,7 @@ if ($cust_appnt === "Account No") {
     // Insert data into applicant payment table
     $query_appnt_payment = "INSERT INTO appnt_payment
                                     (rec_id, trans_id, appnt_id)
-                             VALUES ('$receipt_id', '$transaction_id', '$number')";
+                             VALUES ('$receipt_id', '$transaction_id', '$appnt_id')";
 
     $result_appnt_payment = mysql_query($query_appnt_payment) or die(mysql_error());
 
