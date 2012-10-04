@@ -66,6 +66,13 @@ if ($cust_appnt === "Account No") {
                              VALUES ('$receipt_id', '$transaction_id', '$number')";
 
     $result_appnt_payment = mysql_query($query_appnt_payment) or die(mysql_error());
+
+    if ($payment_type === "Application fee") {
+        $query_appnt = "UPDATE application
+                           SET status = 'Paid'
+                         WHERE appln_no = '$number'";
+        $result_appnt = mysql_query($query_appnt) or die(mysql_error());
+    }
 }
 
 if ($transaction_type === "Cheque") {

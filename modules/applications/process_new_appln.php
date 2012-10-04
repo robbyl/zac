@@ -53,9 +53,9 @@ $appnt_id = mysql_insert_id();
 
 $query_appln = "INSERT INTO application
                             (appln_date, appln_type, appnt_id, surveyed_date, engeneer_appr,
-                             approved_date, inspected_by, premise_nature, service_nature_id )
+                             approved_date, inspected_by, premise_nature, service_nature_id, status )
                      VALUES ('$appln_date', '$appln_type', '$appnt_id', '$surveyed_date', '$engeneer_appr',
-                             '$approved_date', '$inspected_by', '$premise_nature', '$service_nature' )";
+                             '$approved_date', '$inspected_by', '$premise_nature', '$service_nature', 'Not Paid')";
 
 $result_appln = mysql_query($query_appln) or die(mysql_error());
 

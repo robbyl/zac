@@ -62,7 +62,13 @@ if (!empty($meter_number)) {
     $result_meter = mysql_query($update_meter) or die(mysql_error());
 }
 
-if ($result_meter || $result_customer && $result_acc || $result_met_cust) {
+$query_appln = "UPDATE application
+                   SET status = 'Processed'
+                 WHERE appln_id = '$appln_id'";
+
+$result_appln = mysql_query($query_appln) or die(mysql_error());
+
+if ($result_meter || $result_customer && $result_acc && $result_appln || $result_met_cust) {
 
     info('message', 'Customer seccessfully added!');
     header('Location: ../applications/applications.php');
