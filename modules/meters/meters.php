@@ -105,8 +105,6 @@ $result_meter = mysql_query($query_meter) or die(mysql_error());
                 <form action="action.php" method="post" onSubmit="">
                     <div class="actions">
                         <button class="edit tooltip" accesskey="E" title="Edit [Alt+Shift+E]" name="action[]"  value="EDIT">Edit</button>
-                        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" name="action[]" value="PRINT">Print</button>
-                        <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
                     </div>
                     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
                         <thead>

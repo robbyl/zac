@@ -22,7 +22,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     $filter = clean($_GET['filter']);
 
-    $filter = $filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter'";
+    $filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter' ";
 
     $query_appln = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number, service,
                            premise_status, appnt_post_addr, billing_areas, appln_type,
@@ -50,8 +50,6 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     <form action="action.php" method="post" onSubmit="">
         <div class="actions" style="top: 212px">
             <button class="edit tooltip" accesskey="E" title="Edit [Alt+Shift+E]" name="action[]"  value="EDIT">Edit</button>
-            <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" name="action[]" value="PRINT">Print</button>
-            <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
         </div>
         <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
             <thead>
