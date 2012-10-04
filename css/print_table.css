@@ -1,0 +1,35 @@
+/* 
+    Document   : print
+    Created on : Sep 25, 2012, 10:59:41 AM
+    Author     : josephmarcel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+table {
+    border: 1px solid black;
+}
+
+#fg-toolbar .ui-toolbar .ui-widget-header .ui-corner-tl .ui-corner-tr .ui-helper-clearfix {
+    background: black !important;
+}
+
+#dataTable_wrapper tr.odd:hover {
+    background-color: #fff;
+    cursor: default;
+}
+
+#dataTable_wrapper tr.even:hover {
+    color: #000;
+    background-color: #f5f5f5;
+    cursor: default;
+}
+
+#dataTable_length {
+    background: black !important;
+    display: none;
+}
+
+.dataTables_scrollHead .ui-state-default {
+    width: 400px !important;
+}
+
