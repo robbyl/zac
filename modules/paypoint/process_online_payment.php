@@ -68,10 +68,10 @@ if ($cust_appnt === "Account No") {
     $result_appnt_payment = mysql_query($query_appnt_payment) or die(mysql_error());
 
     if ($payment_type === "Application fee") {
-        $query_appnt = "UPDATE application
+        $query_appln = "UPDATE application
                            SET status = 'Paid'
                          WHERE appln_no = '$number'";
-        $result_appnt = mysql_query($query_appnt) or die(mysql_error());
+        $result_appln = mysql_query($query_appln) or die(mysql_error());
     }
 }
 
@@ -85,7 +85,7 @@ if ($transaction_type === "Cheque") {
     $result_cheque = mysql_query($query_cheque) or die(mysql_error());
 }
 
-if ($result_transaction && $result_receipt || $result_appnt_payment || $result_cust_payment || $result_cheque) {
+if ($result_transaction && $result_receipt && $result_appln || $result_appnt_payment || $result_cust_payment || $result_cheque) {
 
     info('message', 'Payment accepted successfully!');
     header('Location: process_online_payment.php');
