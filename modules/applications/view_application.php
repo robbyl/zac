@@ -120,7 +120,6 @@
                                 <tr>
                                     <td width="170">Billing Area/Zone:</td>
                                     <td><strong><?php echo $row['billing_areas'] ?></strong></td>
-                                    
                                 </tr>
                             </table>
                         </fieldset>

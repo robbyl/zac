@@ -49,11 +49,11 @@
                         <legend>Financial Reports</legend>
                         <ul class="report-list">
                             <li><a href="#">Cashier Reports</a></li>
-                            <li><a href="#">Customer reports</a></li>
-                            <li><a href="#">Invoice reports</a></li>
-                            <li><a href="#">User reports</a></li>
-                            <li><a href="#">Pay point reports</a></li>
-                            <li><a href="#">Meter Reports</a></li>
+                            <li><a href="#">Cashier Reports</a></li>
+                            <li><a href="#">Cashier Reports</a></li>
+                            <li><a href="#">Cashier Reports</a></li>
+                            <li><a href="#">Cashier Reports</a></li>
+                            <li><a href="#">Cashier Reports</a></li>
                         </ul>
                     </fieldset>
                 </form>
