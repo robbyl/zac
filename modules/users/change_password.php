@@ -71,7 +71,7 @@
                                 <td width="163">Repeat New Password</td>
                                 <td>
                                     <input type="password" name="rep_new_pass" id="rep_new_pass"
-                                    required size="255" oninput="check(this)" class="text" >
+                                           required size="255" oninput="check(this)" class="text" >
                                 </td>
                             </tr>
                             <tr>

@@ -41,7 +41,7 @@ ob_start();
 
                 $('#billing_area').change(function(){
 
-                   getContent('customer_listing.php', {filter: $(this).val()});
+                    getContent('customer_listing.php', {filter: $(this).val()});
 
                 });
 

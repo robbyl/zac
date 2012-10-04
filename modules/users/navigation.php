@@ -111,19 +111,19 @@
                     <li><a href="http://www.javascriptkit.com/cutpastejava.shtml" >General settings</a></li>
                     <li><a href="http://www.javascriptkit.com/javatutors/">Tariffs</a></li>
                 </ul>
-                
+
                 <h3 class="menuheader expandable">Applications</h3>
                 <ul class="categoryitems">
                     <li><a href="http://www.javascriptkit.com/cutpastejava.shtml" >Add application</a></li>
                     <li><a href="http://www.javascriptkit.com/javatutors/">View applications</a></li>
                 </ul>
-                
+
                 <h3 class="menuheader expandable">Customers</h3>
                 <ul class="categoryitems">
                     <li><a href="http://www.javascriptkit.com/cutpastejava.shtml" >View customers</a></li>
                     <li><a href="http://www.javascriptkit.com/cutpastejava.shtml" >Update customer status</a></li>
                 </ul>
-                
+
                 <h3 class="menuheader expandable">Water Meters</h3>
                 <ul class="categoryitems">
                     <li><a href="http://www.javascriptkit.com/cutpastejava.shtml" >Add meter</a></li>
@@ -131,20 +131,20 @@
                     <li><a href="http://www.javascriptkit.com/javatutors/">Enter meter readings</a></li>
                     <li><a href="http://www.javascriptkit.com/javatutors/">Print reading sheets</a></li>
                 </ul>
-                
+
                 <h3 class="menuheader expandable">Invoice</h3>
                 <ul class="categoryitems">
                     <li><a href="http://www.javascriptkit.com/cutpastejava.shtml" >Generate invoices</a></li>
                     <li><a href="http://www.javascriptkit.com/javatutors/">View invoices</a></li>
                 </ul>
-                
+
                 <h3 class="menuheader expandable">Paypoint</h3>
                 <ul class="categoryitems">
                     <li><a href="http://www.javascriptkit.com/cutpastejava.shtml" >Online payments</a></li>
                     <li><a href="http://www.javascriptkit.com/javatutors/">Offlinge payments</a></li>
                     <li><a href="http://www.javascriptkit.com/javatutors/">Transactions</a></li>
                 </ul>
-                
+
                 <h3 class="menuheader expandable">Reports</h3>
                 <ul class="categoryitems">
                     <li><a href="http://www.javascriptkit.com/cutpastejava.shtml" >Generate reports</a></li>

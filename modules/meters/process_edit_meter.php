@@ -1,5 +1,4 @@
 <?php
-
 /*
  * 2012 Softbil
  *
@@ -45,8 +44,7 @@ for ($i = 0; $i < $num_id; $i++) {
                             remarks = '$meter_remarks[$i]'
                       WHERE met_id = '$met_id[$i]'";
 
-    $result_edit_meter = mysql_query($edit_meter ) or die(mysql_error());
-
+    $result_edit_meter = mysql_query($edit_meter) or die(mysql_error());
 }
 
 

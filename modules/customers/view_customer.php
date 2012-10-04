@@ -79,7 +79,7 @@
                     if ($num_row > 0) {
                         ?>
                         <h1><?php echo $row['appnt_fullname'] ?> Customer</h1>
-                        
+
 
                         <div class="hr-line"></div>
                         <fieldset style="float: left">
@@ -93,34 +93,34 @@
                                     <td width="170">Customer Name:</td>
                                     <td><strong><?php echo $row['appnt_fullname'] ?></strong></td>
                                 </tr>
- <tr>
+                                <tr>
                                     <td width="170">Occupants/No of people:</td>
                                     <td><strong><?php echo $row['occupants'] ?></strong></td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td width="170">Phone Number:</td>
                                     <td><strong><?php echo $row['appnt_tel'] ?></strong></td>
-                                    <tr>
+                                <tr>
                                     <td width="170">Post Adress:</td>
                                     <td><strong><?php echo $row['appnt_post_addr'] ?></strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td width="170">Physical Adress:</td>
+                                </tr>
+                                <tr>
+                                    <td width="170">Physical Adress:</td>
                                     <td><strong><?php echo $row['appnt_phy_addr'] ?></strong></td>
-                                    </tr>
-                                 <tr>
-                                        <td width="170">Living Area:</td>
+                                </tr>
+                                <tr>
+                                    <td width="170">Living Area:</td>
                                     <td><strong><?php echo $row['living_area'] ?></strong></td>
-                                    </tr>
-                                    <tr>
+                                </tr>
+                                <tr>
                                     <td width="170">Plot No:</td>
                                     <td><strong><?php echo $row['plot_no'] ?></strong></td>
                                 </tr>
 
-                                    <tr>
-                                        <td width="170">Living Town:</td>
+                                <tr>
+                                    <td width="170">Living Town:</td>
                                     <td><strong><?php echo $row['living_town'] ?></strong></td>
-                                    </tr>
+                                </tr>
                                 <tr>
                                     <td width="170">Service Type:</td>
                                     <td><strong><?php echo $row['appnt_types'] ?></strong></td>
@@ -137,7 +137,7 @@
                                     <td width="170">Meter No:</td>
                                     <td><strong><?php echo $row['met_number'] ?></strong></td>
                                 </tr>
-                                
+
 
                                 <tr>
                                     <td width="170">Billing Area:</td>

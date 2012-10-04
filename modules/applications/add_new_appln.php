@@ -46,7 +46,7 @@
                 <!-- end .sidebar --></div>
             <div class="content">
                 <?php
-               // Displaying message and errors
+                // Displaying message and errors
                 include '../../includes/info.php';
                 require '../../config/config.php';
 

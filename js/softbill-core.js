@@ -109,7 +109,7 @@ function moreDetails(){
         },
         dataType: 'html',
         beforeSend: function(){
-//            $('#cust-appnt-details').html('<div class="message">Loading...</div>');
+            //            $('#cust-appnt-details').html('<div class="message">Loading...</div>');
             $('#cust-appnt-details').html('<div class="loading"></div>');
         },
         success: function(data){

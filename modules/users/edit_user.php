@@ -1,4 +1,4 @@
-<?php require '../../includes/session_validator.php';  ?>
+<?php require '../../includes/session_validator.php'; ?>
 <!doctype html>
 <html>
     <head>
@@ -120,7 +120,7 @@
                 ?>
 
                 <!-- end .content --></div>
-            <?php include '../../includes/footer.php';  ?>
+            <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
 </html>

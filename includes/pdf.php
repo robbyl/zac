@@ -20,7 +20,7 @@ $html = $_POST['html'];
 
 include("../plugins/mpdf/mpdf.php");
 
-$mpdf=new mPDF('s');
+$mpdf = new mPDF('s');
 $mpdf->SetDisplayMode('fullpage');
 
 $mpdf->WriteHTML($html);

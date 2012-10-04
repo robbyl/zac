@@ -106,7 +106,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         <button class="block tooltip" accesskey="B" title="Block [Alt+Shift+B]" name="action[]" value="BLOCK" onClick="return confirm('Are you sure you want to block user(s)?')">Block</button>
                         <button class="activate tooltip" accesskey="I" title="Activate [Alt+Shift+I]" name="action[]" value="ACTIVATE" onClick="return confirm('Are you sure you want to activate user(s)')">Activate</button>
                     </div>
-                 <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
+                    <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
                         <thead>
                             <tr>
                                 <th width="23">

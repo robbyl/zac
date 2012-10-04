@@ -26,7 +26,7 @@ switch ($action) {
     case 'EDIT':
         include 'edit_customer.php';
         break;
-    
+
     case 'PRINT':
         echo 'printing...';
         break;

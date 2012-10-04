@@ -128,7 +128,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
             <?php require '../../includes/header.php'; ?>
             <div class="simple">
                 <iframe src="navigation.php" seamless name="navigation" class="fnavigation" id="fnavigation"></iframe>
-                
+
                 <iframe src="content.php" seamless name="content" class="fcontent" ></iframe> 
             </div>
 

@@ -94,12 +94,12 @@
                                         <td width="170">Meter Size</td>
                                         <td><select name="meter_size[]" required class="select">
                                                 <option value="">--select meter size--</option>
-                                                <option value="0" <?php if($row['met_size'] === '0') echo 'selected' ?> >0</option>
-                                                <option value="1/2" <?php if($row['met_size'] === '1/2') echo 'selected' ?> >1/2</option>
-                                                <option value="1/3" <?php if($row['met_size'] === '1/3') echo 'selected' ?> >1/3</option>
-                                                <option value="1" <?php if($row['met_size'] === '1') echo 'selected' ?> >1</option>
-                                                <option value="2" <?php if($row['met_size'] === '2') echo 'selected' ?> >2</option>
-                                                <option value="3" <?php if($row['met_size'] === '3') echo 'selected' ?> >3</option>
+                                                <option value="0" <?php if ($row['met_size'] === '0') echo 'selected' ?> >0</option>
+                                                <option value="1/2" <?php if ($row['met_size'] === '1/2') echo 'selected' ?> >1/2</option>
+                                                <option value="1/3" <?php if ($row['met_size'] === '1/3') echo 'selected' ?> >1/3</option>
+                                                <option value="1" <?php if ($row['met_size'] === '1') echo 'selected' ?> >1</option>
+                                                <option value="2" <?php if ($row['met_size'] === '2') echo 'selected' ?> >2</option>
+                                                <option value="3" <?php if ($row['met_size'] === '3') echo 'selected' ?> >3</option>
                                             </select></td>
                                     </tr>
                                     <tr>

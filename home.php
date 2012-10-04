@@ -23,7 +23,7 @@ session_commit();
         </style>
         <link href="css/layout.css" rel="stylesheet" type="text/css">
         <link href="css/tooltip.css" rel="stylesheet" type="text/css">
-        
+
         <script src="js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="js/tooltip.js" type="text/javascript"></script>
         <script type="text/javascript">

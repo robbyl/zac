@@ -109,8 +109,8 @@
                                     </tr>
                                     <tr>
                                         <td width="170">Full Name</td>
-                                         <input type="hidden" name="appnt_id[]" value="<?php echo $val ?>" id="appnt_id">
-                                        <td><input type="text" name="appnt_fullname[]" value="<?php echo $row['appnt_fullname'] ?>" required size="255" class="text"></td>
+                                    <input type="hidden" name="appnt_id[]" value="<?php echo $val ?>" id="appnt_id">
+                                    <td><input type="text" name="appnt_fullname[]" value="<?php echo $row['appnt_fullname'] ?>" required size="255" class="text"></td>
                                     </tr>
                                     <tr>
                                         <td width="170">Occupants/No of people</td>
@@ -147,76 +147,76 @@
 
                                     <tr>
                                         <td width="170">Billing Area/Zone</td>
-                                         <td><select name="billing_area" class="select" required>
+                                        <td><select name="billing_area" class="select" required>
                                                 <option value="">--select technical area/zone--</option>
                                                 <?php
                                                 $result = mysql_query("SELECT * FROM billing_area ORDER BY billing_areas ASC") or die(mysql_error());
                                                 while ($row_ba = mysql_fetch_array($result)) {
                                                     ?>
                                                     <option value="<?php echo $row_ba['ba_id'] ?>"
-                                                            <?php if ($row['ba_id'] === $row_ba['ba_id']) echo 'selected'; ?>
-                                                                <?php echo $row_ba['billing_areas'] ?>
-                                                    </option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select></td>
-                                    </tr>
+                                                    <?php if ($row['ba_id'] === $row_ba['ba_id']) echo 'selected'; ?>
+                                                    <?php echo $row_ba['billing_areas'] ?>
+                                                </option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select></td>
+                                </tr>
 
-                          </table>
-                             </fieldset>
+                            </table>
+                        </fieldset>
 
-                            <fieldset style="float: left">
-                                <legend>Service Details</legend>
-                                <table width="" border="0" cellpadding="5">                                 
-                                    <tr>
-                                        <td width="170">Application Type</td>
-                                         <input type="hidden" name="appln_id[]" value="<?php echo $val ?>" id="appln_id">
-                                        <td>
-                                            <label><input type="checkbox" name="appln_type[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water" required class="radio">Clean water</label>&nbsp;&nbsp;
-                                            <label><input type="checkbox" name="appln_type[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" required class="radio">Sewer</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="170">Premises Nature</td>
-                                        <td>
-                                            <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Residential") echo 'checked'; ?> value="Residential" required class="radio">Residential</label>&nbsp;&nbsp;
-                                            <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Institution") echo 'checked'; ?> value="Institution" required class="radio">Institution</label>&nbsp;&nbsp;
-                                            <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Business") echo 'checked'; ?> value="Business" required class="radio">Business</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="170">Service Nature</td>
-                                        <td><span id="service_nature">
-                                                <select name="service_nature" class="select" required >
-                                                    <option value="">--select service nature--</option>
-                                                </select>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </fieldset>
+                        <fieldset style="float: left">
+                            <legend>Service Details</legend>
+                            <table width="" border="0" cellpadding="5">                                 
+                                <tr>
+                                    <td width="170">Application Type</td>
+                                <input type="hidden" name="appln_id[]" value="<?php echo $val ?>" id="appln_id">
+                                <td>
+                                    <label><input type="checkbox" name="appln_type[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water" required class="radio">Clean water</label>&nbsp;&nbsp;
+                                    <label><input type="checkbox" name="appln_type[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" required class="radio">Sewer</label>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <td width="170">Premises Nature</td>
+                                    <td>
+                                        <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Residential") echo 'checked'; ?> value="Residential" required class="radio">Residential</label>&nbsp;&nbsp;
+                                        <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Institution") echo 'checked'; ?> value="Institution" required class="radio">Institution</label>&nbsp;&nbsp;
+                                        <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Business") echo 'checked'; ?> value="Business" required class="radio">Business</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="170">Service Nature</td>
+                                    <td><span id="service_nature">
+                                            <select name="service_nature" class="select" required >
+                                                <option value="">--select service nature--</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
 
-                            <div class="hr-line" style="width: 97%; background: #e0e0e0; margin: 15px 5px; clear: both"></div>
+                        <div class="hr-line" style="width: 97%; background: #e0e0e0; margin: 15px 5px; clear: both"></div>
 
 
-                        <?php } ?>
-                        <table width="531" style="clear: both">
-                            <tr>
-                                <td width="212">&nbsp;</td>
-                                <td width="307"><button type="submit">Save</button>
-                                    <button type="reset">Reset</button></td>
-                            </tr>
-                        </table>
-                    </form>
-                    <?php
-                } else {
-                    info('error', 'Please select customer first');
-                    header('Location: customers.php');
-                }
-                ?>
-                <!-- end .content --></div>
-            <?php include '../../includes/footer.php'; ?>
-            <!-- end .container --></div>
-    </body>
+                    <?php } ?>
+                    <table width="531" style="clear: both">
+                        <tr>
+                            <td width="212">&nbsp;</td>
+                            <td width="307"><button type="submit">Save</button>
+                                <button type="reset">Reset</button></td>
+                        </tr>
+                    </table>
+                </form>
+                <?php
+            } else {
+                info('error', 'Please select customer first');
+                header('Location: customers.php');
+            }
+            ?>
+            <!-- end .content --></div>
+        <?php include '../../includes/footer.php'; ?>
+        <!-- end .container --></div>
+</body>
 </html>

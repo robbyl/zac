@@ -39,7 +39,6 @@ if ($result_user) {
     // Showing success message
     info('message', 'Saved Successfully!');
     header('Location: new_user.php');
-
 } else {
 
     // Showing error message

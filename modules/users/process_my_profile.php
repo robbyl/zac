@@ -36,7 +36,6 @@ if ($result_user) {
     // Showing success message
     info('message', 'Updated successfully!');
     header('Location: ../../modules/users/my_profile.php');
-
 } else {
 
     // Showing error message

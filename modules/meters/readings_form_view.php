@@ -79,7 +79,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $('.tooltip').tipTip({
             delay: "300"
         });
-                
+                    
         $('#select-all').click(function(){
             // Iterate each check box
 
