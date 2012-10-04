@@ -79,17 +79,19 @@ if ($transaction_type === "Cheque") {
 
     // Insert details into cheque
     $query_cheque = "INSERT INTO cheque
-                             (cheq_no, bank, rec_id)
-                      VALUES ('$cheque_no', '$bank', '$receipt_id')";
+                                 (cheq_no, bank, rec_id)
+                          VALUES ('$cheque_no', '$bank', '$receipt_id')";
 
     $result_cheque = mysql_query($query_cheque) or die(mysql_error());
 }
 
 if ($result_transaction && $result_receipt || $result_appnt_payment || $result_cust_payment || $result_cheque) {
 
-    echo 'success';
+    info('message', 'Payment accepted successfully!');
+    header('Location: process_online_payment.php');
 } else {
 
-    echo 'failed';
+    info('error', 'An error occured, Please try again!.');
+    header('Location: process_online_payment.php');
 }
 ?>
