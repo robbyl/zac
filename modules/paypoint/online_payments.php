@@ -31,15 +31,14 @@ ob_start();
                 });
 
                 $('.close').click(function(){
-                    $('.pop-up-wrapper').fadeOut('fast', function(){
-                        
-                    });
+                    $('.pop-up-wrapper').fadeOut('fast');
                 });
 
                 $('#preview').click(function(){
-                    $('#payment-form').submit(function(){
-                        //                        event.preventDefault();
+                    $('#payment-form').submit(function(event){
                         
+                        event.preventDefault();
+        
                         var custName = $('#custName').html();
                         var postAddr = $('#postAddr').html();
                         var plotNo = $('#plotNo').html();
@@ -50,7 +49,7 @@ ob_start();
                         var transType = $('#trans-type').val();
                         var chequeNo = $('#cheque-no').val();
                         var bank = $('#bank').val();
-                    
+        
                         $('#recCustName').html(custName);
                         $('#recPostAddr').html(postAddr);
                         $('#recPlotNo').html(plotNo);
@@ -59,18 +58,21 @@ ob_start();
                         $('#recAmountInWords').html(amountInWords);
                         $('#recPayType').html(payType);
                         $('#recTransType').html(transType);
-                        
+        
                         if(chequeNo != "" && bank != ""){
                             $('#recChequeNo').html('Cheque No ' + chequeNo + ' Bank ' + bank); 
                         } 
-                    
+        
                         $('#receipt').fadeIn('fast');
+                        
                     });       
                 });
 
-                //                $('#save-print').click(function(){
-                //                    printPage('receipt-print', '../../css/pop-up.css');
-                //                });
+                $('#save-print').click(function(){
+ 
+                    $('#payment-form').unbind('submit').submit();
+                    printPage('receipt-print', '../../css/pop-up.css');
+                });
                 
                 //Hide and show cheque details depending on transaction type.
                 $('.cheque-details').hide();
@@ -210,12 +212,11 @@ ob_start();
                     <table width="531" style="clear: both">
                         <tr>
                             <td width="212">&nbsp;</td>
-                            <td width="307"><button type="reset" id="preview">Preview Receipt</button>
+                            <td width="307"><button type="submit" id="preview">Preview Receipt</button>
                                 <button type="reset">Reset</button></td>
                         </tr>
                     </table>
                 </form>
-
                 <!-- end .content --></div>
 
             <!--    ONLINE RECEIPT    -->
@@ -227,7 +228,7 @@ ob_start();
                             <div class="close"></div>
                             <!--  end . form-header --> </div>
 
-                        <form action="" id="receipt-form" method="post" style="padding-top: 30px; margin-bottom: 0" >
+                        <form action="process_online_paymentwww.php" id="receipt-form" method="post" style="padding-top: 30px; margin-bottom: 0" >
                             <div id="receipt-print">
                                 <div class="receipt-header"></div>
                                 <div class="receipt-body">
@@ -299,8 +300,8 @@ ob_start();
                             <table width="100%" class="form-footer">
                                 <tr align="right">
                                     <td width="">
-                                        <button type="submit" id="save-print">Save & Print</button>
-                                        <button type="reset" id="save-print">Cancel</button>
+                                        <button type="submit" form="payment-form" id="save-print">Save & Print</button>
+                                        <button type="reset">Cancel</button>
                                     </td>
                                 </tr>
                             </table>

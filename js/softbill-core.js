@@ -71,7 +71,7 @@ function printPage(id, css){
     printWin.document.close();
     printWin.focus();
     printWin.print();
-    printWin.close();
+    printWin.close();   
 }
 
 function printTable(url){
