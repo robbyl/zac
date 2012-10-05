@@ -1,4 +1,18 @@
 /* CSS Document */
+
+@font-face {
+    font-family: "Segoe UI Light";
+    src: url(fonts/segoeuil.ttf);
+}
+
+body {
+    font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #272727;  
+}
+
 p {
 
     margin: 5px !important;
