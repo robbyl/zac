@@ -2,7 +2,6 @@
 require '../../includes/session_validator.php';
 
 ob_start();
-
 ?>
 
 <!doctype html>
@@ -64,7 +63,9 @@ ob_start();
                     $('#recAmountInWords').html(amountInWords);
                     $('#recPayType').html(payType);
                     $('#recTransType').html(transType);
-                    $('#recChequeNo').html('Cheque No ' + chequeNo + ' Bank ' + bank);
+                    if(chequeNo != "" && bank != ""){
+                        $('#recChequeNo').html('Cheque No ' + chequeNo + ' Bank ' + bank); 
+                    } 
                     
                     $('#receipt').fadeIn('fast'); 
                 });
