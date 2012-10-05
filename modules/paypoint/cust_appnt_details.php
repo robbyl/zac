@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -18,11 +17,10 @@ if (isset($_POST['number']) && isset($_POST['type']) && !empty($_POST['number'])
         // Case the payer is customer, display customer details
         case 'Account No':
 
-
-            sleep(2);
+            sleep(1);
             $query_customer = "SELECT cust.cust_id, appnt_fullname, acc_no, met_number, service,
                                       premise_status, appnt_post_addr, billing_areas, appln_type,
-                                      plot_no, cust_status
+                                      plot_no, block_no, cust_status
                                  FROM customer cust
                             LEFT JOIN applicant appnt
                                    ON cust.appnt_id = appnt.appnt_id
@@ -44,27 +42,27 @@ if (isset($_POST['number']) && isset($_POST['type']) && !empty($_POST['number'])
 
             $row_customer = mysql_fetch_array($result_customer);
             ?>
+
             <table width="" border="0" cellpadding="5">
                 <tr>
                     <td width="170">Customer Name</td>
-                    <td><strong>Sebastian Nicas Buhatwa</strong></td>
+                    <td><strong id="custName"><?php echo $row_customer['appnt_fullname'] ?></strong></td>
                 </tr>
                 <tr>
                     <td width="170">P.O.Box</td>
-                    <td><strong>4545 Dar</strong></td>
+                    <td><strong id="postAddr"><?php echo $row_customer['appnt_post_addr'] ?></strong></td>
                 </tr>
                 <tr>
                     <td width="170">Plot No</td>
-                    <td><strong>KND/UBG/UMS 38/24</strong></td>
+                    <td><strong id="plotNo"><?php echo $row_customer['plot_no'] ?></strong></td>
                 </tr>
                 <tr>
                     <td width="170">Block No</td>
-                    <td><strong>UBUNGO MSEWE</strong></td>
+                    <td><strong id="blockNo"><?php echo $row_customer['block_no'] ?></strong></td>
                 </tr>
             </table>
 
             <?php
-
             break;
 
         // Case the payer is applicant, display customer details

@@ -26,7 +26,7 @@ $payment_type = clean($_POST['payment_type']);
 $transaction_type = clean($_POST['transaction_type']);
 $cheque_no = clean($_POST['cheque_no']);
 $bank = clean($_POST['bank']);
-$payed_amount = clean($_POST['payed_amount']);
+$paid_amount = clean($_POST['paid_amount']);
 $amount_in_words = clean($_POST['amount_in_words']);
 $user_id = $_SESSION['user_id'];
 
@@ -90,7 +90,7 @@ $transaction_id = mysql_insert_id();
 // Inserting receipt details
 $query_receipt = "INSERT INTO receipt
                               (tran_id, payed_amount, amount_in_words, user_id)
-                       VALUES ('$transaction_id', '$payed_amount', '$amount_in_words', '$user_id')";
+                       VALUES ('$transaction_id', '$paid_amount', '$amount_in_words', '$user_id')";
 
 $result_receipt = mysql_query($query_receipt) or die(mysql_error());
 

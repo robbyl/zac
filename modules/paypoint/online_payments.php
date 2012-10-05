@@ -2,6 +2,9 @@
 require '../../includes/session_validator.php';
 
 ob_start();
+
+require '../../config/config.php';
+
 ?>
 
 <!doctype html>
@@ -32,7 +35,7 @@ ob_start();
 
                 $('.close').click(function(){
                     $('.pop-up-wrapper').fadeOut('fast', function(){
-                        $(this).hide();
+                        
                     });
                 });
 
@@ -42,6 +45,26 @@ ob_start();
                 //                       $('#receipt').fadeIn('fast');
                 //                   });       
                 //                });
+                
+                $('#preview').click(function(){
+                    var custName = $('#custName').html();
+                    var postAddr = $('#postAddr').html();
+                    var plotNo = $('#plotNo').html();
+                    var blockNo = $('#blockNo').html();
+                    var paidAmount = $('#paid_amount').val();
+                    var amountInWords = $('#amountInWords').val();
+                    
+                    $('#recCustName').html(custName);
+                    $('#recPostAddr').html(postAddr);
+                    $('#recPlotNo').html(plotNo);
+                    $('#recBlockNo').html(blockNo);
+                    $('#recAmount').html(paidAmount);
+                    $('#recAmountInWords').html(amountInWords);
+                    
+                    $('#receipt').fadeIn('fast');
+                   
+                    
+                });
 
                 $('#save-print').click(function(){
                     printPage('receipt-print', '../../css/pop-up.css');
@@ -169,13 +192,13 @@ ob_start();
                             <tr>
                                 <td width="170">Payed Amount</td>
                                 <td>
-                                    <input type="number" name="payed_amount" class="number" min="0" required style="width: 150px;"> Payed in fully
+                                    <input type="number" name="paid_amount" id="paid_amount" class="number" min="0" step="0.01" required style="width: 150px;"> Payed in fully
                                 </td>
                             </tr>
                             <tr>
                                 <td width="170" style="vertical-align: top">Amount in Words</td>
                                 <td>
-                                    <textarea name="amount_in_words" rows="6" cols="33" placeholder="PAYED AMOUNT IN WORDS:" required></textarea>
+                                    <textarea name="amount_in_words" id="amountInWords" rows="6" cols="33" placeholder="PAYED AMOUNT IN WORDS:" required></textarea>
                                 </td>
                             </tr>
 
@@ -184,13 +207,16 @@ ob_start();
                     <table width="531" style="clear: both">
                         <tr>
                             <td width="212">&nbsp;</td>
-                            <td width="307"><button type="submit" id="preview">Preview Receipt</button>
+                            <td width="307"><button type="reset" id="preview">Preview Receipt</button>
                                 <button type="reset">Reset</button></td>
                         </tr>
                     </table>
                 </form>
 
                 <!-- end .content --></div>
+
+            <!--    ONLINE RECEIPT    -->
+
             <div id="receipt" style="display: none">
                 <div class="pop-up-wrapper">
                     <div class="pop-up-receipt">
@@ -206,7 +232,7 @@ ob_start();
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="receipt-table">
                                         <tr>
                                             <td width="18%">Customer Name:</td>
-                                            <td width="50%">SEBASTIAN NICAS BUHATWA</td>
+                                            <td width="50%" id="recCustName">SEBASTIAN NICAS BUHATWA</td>
                                             <td width="8%">&nbsp;</td>
                                             <td width="23%" align="right"><span style="float: left">Receipt No:</span> 01819894</td>
                                         </tr>
@@ -218,27 +244,27 @@ ob_start();
                                         </tr>
                                         <tr>
                                             <td>Customer Address:</td>
-                                            <td>70383 Dar</td>
+                                            <td id="recPostAddr"></td>
                                             <td>&nbsp;</td>
                                             <td align="right"><span style="float: left">Time:</span><?php echo date('H:i:s') ?></td>
                                         </tr>
                                         <tr>
                                             <td>&nbsp;</td>
-                                            <td>PLOT NO: KND/UBG/UMS 38/24</td>
+                                            <td>PLOT NO: <span id="recPlotNo"></span></td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td>&nbsp;</td>
-                                            <td>BLOCK NO: UBUNGO MSEWE</td>
+                                            <td>BLOCK NO: <span id="recBlockNo"></span></td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Amount in Words:</strong></td>
-                                            <td rowspan="2"><strong>Fifty thousand shillings only qwertyuiosdfghjkl ertyuiotyui retyuio</strong></td>
+                                            <td rowspan="2"><strong id="recAmountInWords"></strong></td>
 
-                                            <td colspan="2"><strong style="float: right">TZS 456789.00</strong></td>
+                                            <td colspan="2"><strong style="float: right">TZS <span id="recAmount"></span></strong></td>
                                         </tr>
                                         <tr>
                                             <td>&nbsp;</td>
