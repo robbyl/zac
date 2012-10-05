@@ -55,7 +55,7 @@
                                            appnt_fullname, appnt_types, billing_areas,
                                            surveyed_date, approved_date, inspected_by,
                                            premise_nature, service, occupants, appnt_tel, appnt_post_addr,
-                                           appnt_phy_addr, block_no, plot_no,living_area, living_town
+                                           appnt_phy_addr, block_no, plot_no,living_area, living_town, status
                                       FROM application appln
                                  LEFt JOIN applicant appnt
                                         ON appln.appnt_id = appnt.appnt_id
@@ -71,7 +71,7 @@
                     $row = mysql_fetch_array($result_appln);
                     $num_row = mysql_num_rows($result_appln);
                     if ($num_row > 0) {
-                        ?>
+                        ?>               
                         <h1><?php echo $row['appnt_fullname'] ?> Application Details</h1>
                         <div class="hr-line"></div>
                         <fieldset style="float: left">
