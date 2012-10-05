@@ -36,43 +36,41 @@ ob_start();
                     });
                 });
 
-                //                $('#preview').click(function(){
-                //                   $('#payment-form').submit(function(event){
-                //                       event.preventDefault();
-                //                       $('#receipt').fadeIn('fast');
-                //                   });       
-                //                });
-                
                 $('#preview').click(function(){
-                    var custName = $('#custName').html();
-                    var postAddr = $('#postAddr').html();
-                    var plotNo = $('#plotNo').html();
-                    var blockNo = $('#blockNo').html();
-                    var paidAmount = $('#paid_amount').val();
-                    var amountInWords = $('#amountInWords').val();
-                    var payType = $('#pay-type').val();
-                    var transType = $('#trans-type').val();
-                    var chequeNo = $('#cheque-no').val();
-                    var bank = $('#bank').val();
+                    $('#payment-form').submit(function(event){
+                        event.preventDefault();
+                        
+                        var custName = $('#custName').html();
+                        var postAddr = $('#postAddr').html();
+                        var plotNo = $('#plotNo').html();
+                        var blockNo = $('#blockNo').html();
+                        var paidAmount = $('#paid_amount').val();
+                        var amountInWords = $('#amountInWords').val();
+                        var payType = $('#pay-type').val();
+                        var transType = $('#trans-type').val();
+                        var chequeNo = $('#cheque-no').val();
+                        var bank = $('#bank').val();
                     
-                    $('#recCustName').html(custName);
-                    $('#recPostAddr').html(postAddr);
-                    $('#recPlotNo').html(plotNo);
-                    $('#recBlockNo').html(blockNo);
-                    $('#recAmount').html(paidAmount);
-                    $('#recAmountInWords').html(amountInWords);
-                    $('#recPayType').html(payType);
-                    $('#recTransType').html(transType);
-                    if(chequeNo != "" && bank != ""){
-                        $('#recChequeNo').html('Cheque No ' + chequeNo + ' Bank ' + bank); 
-                    } 
+                        $('#recCustName').html(custName);
+                        $('#recPostAddr').html(postAddr);
+                        $('#recPlotNo').html(plotNo);
+                        $('#recBlockNo').html(blockNo);
+                        $('#recAmount').html(paidAmount);
+                        $('#recAmountInWords').html(amountInWords);
+                        $('#recPayType').html(payType);
+                        $('#recTransType').html(transType);
+                        
+                        if(chequeNo != "" && bank != ""){
+                            $('#recChequeNo').html('Cheque No ' + chequeNo + ' Bank ' + bank); 
+                        } 
                     
-                    $('#receipt').fadeIn('fast'); 
+                        $('#receipt').fadeIn('fast');
+                    });       
                 });
 
-                $('#save-print').click(function(){
-                    printPage('receipt-print', '../../css/pop-up.css');
-                });
+//                $('#save-print').click(function(){
+//                    printPage('receipt-print', '../../css/pop-up.css');
+//                });
                 
                 //Hide and show cheque details depending on transaction type.
                 $('.cheque-details').hide();
