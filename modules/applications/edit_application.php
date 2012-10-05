@@ -66,7 +66,7 @@
                         require '../../config/config.php';
 
                         $i = 0;
-                        
+
                         while (list($key, $val) = each($_POST['checkbox'])) {
 
                             // Getting applicantion data form the database
@@ -214,9 +214,9 @@
                                     <tr>
                                         <td width="170">Premises Nature</td>
                                         <td>
-                                            <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Residential") echo 'checked'; ?> value="Residential" required class="radio">Residential</label>&nbsp;&nbsp;
-                                            <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Institution") echo 'checked'; ?> value="Institution" required class="radio">Institution</label>&nbsp;&nbsp;
-                                            <label><input type="radio" name="premise_nature[]" <?php if ($row['premise_nature'] === "Business") echo 'checked'; ?> value="Business" required class="radio">Business</label>
+                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . '][]' ?>" <?php if ($row['premise_nature'] === "Residential") echo 'checked'; ?> value="Residential" required class="radio">Residential</label>&nbsp;&nbsp;
+                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . '][]' ?>" <?php if ($row['premise_nature'] === "Institution") echo 'checked'; ?> value="Institution" required class="radio">Institution</label>&nbsp;&nbsp;
+                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . '][]' ?>" <?php if ($row['premise_nature'] === "Business") echo 'checked'; ?> value="Business" required class="radio">Business</label>
                                         </td>
                                     </tr>
                                     <tr>
