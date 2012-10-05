@@ -37,8 +37,8 @@ ob_start();
                 });
 
                 $('#preview').click(function(){
-                    $('#payment-form').submit(function(event){
-                        event.preventDefault();
+                    $('#payment-form').submit(function(){
+                        //                        event.preventDefault();
                         
                         var custName = $('#custName').html();
                         var postAddr = $('#postAddr').html();
@@ -68,9 +68,9 @@ ob_start();
                     });       
                 });
 
-//                $('#save-print').click(function(){
-//                    printPage('receipt-print', '../../css/pop-up.css');
-//                });
+                //                $('#save-print').click(function(){
+                //                    printPage('receipt-print', '../../css/pop-up.css');
+                //                });
                 
                 //Hide and show cheque details depending on transaction type.
                 $('.cheque-details').hide();
@@ -120,7 +120,8 @@ ob_start();
                 ?>
                 <h1>Accept Payments</h1>
                 <div class="hr-line"></div>
-                <form action="process_online_payment.php" method="post">
+
+                <form action="process_online_payment.php" id="payment-form" method="post">
                     <fieldset style="float: left">
                         <legend>Customer/Applicant Details</legend>
                         <table width="" border="0" cellpadding="5">
@@ -226,7 +227,7 @@ ob_start();
                             <div class="close"></div>
                             <!--  end . form-header --> </div>
 
-                        <form action="" id="payment-form" method="post" style="padding-top: 30px; margin-bottom: 0" >
+                        <form action="" id="receipt-form" method="post" style="padding-top: 30px; margin-bottom: 0" >
                             <div id="receipt-print">
                                 <div class="receipt-header"></div>
                                 <div class="receipt-body">
