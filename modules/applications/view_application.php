@@ -7,14 +7,31 @@
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
         <title>SOFTBILL | EDIT APPLICATION</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
+
+        <style>
+
+            #fieldset tr:nth-child(even){
+                background: #f2f2f2;
+            }
+
+
+        </style>
+
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.message, .error').hide().slideDown('normal').click(function(){
                     $(this).slideUp('normal');
                 });
+                
+                $('#view-application').click(function(){
+                    var id = $('#appln_id').val();
+                    var printWin = window.open('print_application.php?id='+id,'','left=0,top=0,width=852,height=800,toolbar=no,scrollbars=no,status=no');
+                    printWin.focus();    
+                });
             });
         </script>
+
     </head>
 
     <body>
@@ -72,98 +89,101 @@
                     $num_row = mysql_num_rows($result_appln);
                     if ($num_row > 0) {
                         ?>
+                        <div class="actions" style="top: 150px">
+                            <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" id="view-application">Print</button>
+                            <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
+                        </div>
                         <h1><?php echo $row['appnt_fullname'] ?> Application Details</h1>
                         <div class="hr-line"></div>
-                        <fieldset style="float: left">
-                            <legend>Applicant Details</legend>
-                            <table width="" border="0" cellpadding="5" cellspacing="0">
-                                <tr>
-                                    <td width="170">Applicant Type:</td>
-                                    <td><strong><?php echo $row['appnt_types'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Full Name:</td>
-                                    <td><strong><?php echo $row['appnt_fullname'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Occupants/No of people:</td>
-                                    <td><strong><?php echo $row['occupants'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Phone Number:</td>
-                                    <td><strong><?php echo $row['appnt_tel'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Postal Address:</td>
-                                    <td><strong><?php echo $row['appnt_post_addr'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Physical Address:</td>
-                                    <td><strong><?php echo $row['appnt_phy_addr'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Block Number:</td>
-                                    <td><strong><?php echo $row['block_no'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Plot Number:</td>
-                                    <td><strong><?php echo $row['plot_no'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Living Area:</td>
-                                    <td><strong><?php echo $row['living_area'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Living Town:</td>
-                                    <td><strong><?php echo $row['living_town'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Billing Area/Zone:</td>
-                                    <td><strong><?php echo $row['billing_areas'] ?></strong></td>
-                                </tr>
-                            </table>
-                        </fieldset>
-                        <fieldset style="float: left">
-                            <legend>Application Details</legend>
-                            <table width="" border="0" cellpadding="5" cellspacing="0">
-                                <tr>
-                                    <td width="170">Application Date:</td>
-                                    <td>
-                                        <strong><?php echo date('Y-m-d'); ?></strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Application Type:</td>
-                                    <td><strong><?php echo $row['appln_type'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Inspected By:</td>
-                                    <td><strong><?php echo $row['inspected_by'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Surveyed Date:</td>
-                                    <td><strong><?php echo $row['surveyed_date'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Engineer Approval:</td>
-                                    <td>
-                                        <strong><?php echo $row['engeneer_appr']; ?></strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Approved Date:</td>
-                                    <td><strong><?php echo $row['approved_date'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Premises Nature:</td>
-                                    <td><strong><?php echo $row['premise_nature'] ?></strong></td>
-                                </tr>
-                                <tr>
-                                    <td width="170">Service Nature:</td>
-                                    <td><strong><?php echo $row['service'] ?></strong></td>
-                                </tr>
-                            </table>
-                        </fieldset>
+                        <div id="fieldset">
+                            <fieldset style="float: left">
+                                <legend>Applicant Details</legend>
+                                <input type="hidden" value="<?php echo $id; ?>" id="appln_id">
+                                <table width="" border="0" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <td width="170">Applicant Type:</td>
+                                        <td><strong><?php echo $row['appnt_types'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Full Name:</td>
+                                        <td><strong><?php echo $row['appnt_fullname'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Occupants/No of people:</td>
+                                        <td><strong><?php echo $row['occupants'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Phone Number:</td>
+                                        <td><strong><?php echo $row['appnt_tel'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Postal Address:</td>
+                                        <td><strong><?php echo $row['appnt_post_addr'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Physical Address:</td>
+                                        <td><strong><?php echo $row['appnt_phy_addr'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Block Number:</td>
+                                        <td><strong><?php echo $row['block_no'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Plot Number:</td>
+                                        <td><strong><?php echo $row['plot_no'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Living Area:</td>
+                                        <td><strong><?php echo $row['living_area'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Living Town:</td>
+                                        <td><strong><?php echo $row['living_town'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Billing Area/Zone:</td>
+                                        <td><strong><?php echo $row['billing_areas'] ?></strong></td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <fieldset style="float: left">
+                                <legend>Application Details</legend>
+                                <table width="" border="0" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <td width="170">Application Date:</td>
+                                        <td><strong><?php echo date('Y-m-d'); ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Application Type:</td>
+                                        <td><strong><?php echo $row['appln_type'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Inspected By:</td>
+                                        <td><strong><?php echo $row['inspected_by'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Surveyed Date:</td>
+                                        <td><strong><?php echo $row['surveyed_date'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Engineer Approval:</td>
+                                        <td><strong><?php echo $row['engeneer_appr']; ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Approved Date:</td>
+                                        <td><strong><?php echo $row['approved_date'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Premises Nature:</td>
+                                        <td><strong><?php echo $row['premise_nature'] ?></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="170">Service Nature:</td>
+                                        <td><strong><?php echo $row['service'] ?></strong></td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                        </div>
                         <?php
                     } else {
                         info('error', 'No records for this appln');
@@ -176,6 +196,7 @@
                 ?>
                 <!-- end .content --></div>
             <?php include '../../includes/footer.php'; ?>
-            <!-- end .container --></div>
+            <!-- end .container -->
+        </div>
     </body>
 </html>
