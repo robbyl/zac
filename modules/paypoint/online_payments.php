@@ -3,8 +3,6 @@ require '../../includes/session_validator.php';
 
 ob_start();
 
-require '../../config/config.php';
-
 ?>
 
 <!doctype html>
@@ -53,6 +51,10 @@ require '../../config/config.php';
                     var blockNo = $('#blockNo').html();
                     var paidAmount = $('#paid_amount').val();
                     var amountInWords = $('#amountInWords').val();
+                    var payType = $('#pay-type').val();
+                    var transType = $('#trans-type').val();
+                    var chequeNo = $('#cheque-no').val();
+                    var bank = $('#bank').val();
                     
                     $('#recCustName').html(custName);
                     $('#recPostAddr').html(postAddr);
@@ -60,10 +62,11 @@ require '../../config/config.php';
                     $('#recBlockNo').html(blockNo);
                     $('#recAmount').html(paidAmount);
                     $('#recAmountInWords').html(amountInWords);
+                    $('#recPayType').html(payType);
+                    $('#recTransType').html(transType);
+                    $('#recChequeNo').html('Cheque No ' + chequeNo + ' Bank ' + bank);
                     
-                    $('#receipt').fadeIn('fast');
-                   
-                    
+                    $('#receipt').fadeIn('fast'); 
                 });
 
                 $('#save-print').click(function(){
@@ -72,7 +75,7 @@ require '../../config/config.php';
                 
                 //Hide and show cheque details depending on transaction type.
                 $('.cheque-details').hide();
-                $('#payment-type').change(function(){
+                $('#trans-type').change(function(){
                     
                     var payType = $(this).val();
                     
@@ -134,7 +137,7 @@ require '../../config/config.php';
                             <tr>
                                 <td width="170">Payment Type</td>
                                 <td>
-                                    <select name="payment_type" class="select" required>
+                                    <select name="payment_type" id="pay-type" class="select" required>
                                         <option value="">--select payment type--</option>
                                         <option value="Water Payment">Water Payment</option>
                                         <option value="Other Payment">Other Payment</option>
@@ -161,7 +164,7 @@ require '../../config/config.php';
                             <tr>
                                 <td width="170">Transaction Type</td>
                                 <td>
-                                    <select name="transaction_type" class="select" id="payment-type" required>
+                                    <select name="transaction_type" class="select" id="trans-type" required>
                                         <option value="">--select payment type--</option>
                                         <option value="Cash">Cash</option>
                                         <option value="Cheque">Cheque</option>
@@ -171,7 +174,7 @@ require '../../config/config.php';
                             <tr class="cheque-details">
                                 <td width="170">Cheque Number</td>
                                 <td>
-                                    <input type="text" name="cheque_no" class="text" required id="cheque">
+                                    <input type="text" name="cheque_no" id="cheque-no" class="text" required id="cheque">
                                 </td>
                             </tr>
                             <tr class="cheque-details" style="display: none">
@@ -232,7 +235,7 @@ require '../../config/config.php';
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="receipt-table">
                                         <tr>
                                             <td width="18%">Customer Name:</td>
-                                            <td width="50%" id="recCustName">SEBASTIAN NICAS BUHATWA</td>
+                                            <td width="50%" id="recCustName"></td>
                                             <td width="8%">&nbsp;</td>
                                             <td width="23%" align="right"><span style="float: left">Receipt No:</span> 01819894</td>
                                         </tr>
@@ -274,19 +277,19 @@ require '../../config/config.php';
                                         </tr>
                                         <tr>
                                             <td>Receipt Type:</td>
-                                            <td>Receipting Consumption</td>
+                                            <td id="recPayType"></td>
                                             <td>Cashier:</td>
                                             <td>ROBERT ANDREA LONDO</td>
                                         </tr>
                                         <tr>
                                             <td>Payment Type:</td>
-                                            <td>Cash</td>
+                                            <td id="recTransType"></td>
                                             <td>Station:</td>
                                             <td>Kimara Area Station</td>
                                         </tr>
                                         <tr>
                                             <td>Cheque Details:</td>
-                                            <td>&nbsp;</td>
+                                            <td id="recChequeNo">&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
