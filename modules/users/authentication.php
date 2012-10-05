@@ -41,6 +41,7 @@ if ($num_row === 1 && $row_user['status'] === 'ACTIVE') {
     mysql_close($conn);
     session_start();
     $_SESSION['username'] = $row_user['username'];
+    $_SESSION['user_full_name'] = $row_user['user_full_name'];
     $_SESSION['user_id'] = $row_user['user_id'];
     $_SESSION['password'] = $row_user['password'];
     session_commit();

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 04, 2012 at 09:08 AM
+-- Generation Time: Oct 05, 2012 at 10:41 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `account`
 --
 
-DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `acc_id` int(11) NOT NULL AUTO_INCREMENT,
   `acc_no` varchar(255) NOT NULL,
@@ -37,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   PRIMARY KEY (`acc_id`),
   UNIQUE KEY `acc_no` (`acc_no`),
   KEY `cust_id` (`cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `account`
@@ -55,7 +54,6 @@ INSERT INTO `account` (`acc_id`, `acc_no`, `cust_id`, `credit`, `debit`, `balanc
 -- Table structure for table `aging_analysis`
 --
 
-DROP TABLE IF EXISTS `aging_analysis`;
 CREATE TABLE IF NOT EXISTS `aging_analysis` (
   `aging_id` int(11) NOT NULL AUTO_INCREMENT,
   `aging_date` date NOT NULL,
@@ -65,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `aging_analysis` (
   PRIMARY KEY (`aging_id`),
   KEY `cust_id` (`cust_id`),
   KEY `inv_id` (`inv_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=140 ;
 
 --
 -- Dumping data for table `aging_analysis`
@@ -89,7 +87,6 @@ INSERT INTO `aging_analysis` (`aging_id`, `aging_date`, `inv_id`, `cust_id`, `ag
 -- Table structure for table `applicant`
 --
 
-DROP TABLE IF EXISTS `applicant`;
 CREATE TABLE IF NOT EXISTS `applicant` (
   `appnt_id` int(11) NOT NULL AUTO_INCREMENT,
   `appnt_type_id` int(11) NOT NULL,
@@ -106,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `applicant` (
   PRIMARY KEY (`appnt_id`),
   KEY `appnt_type_id` (`appnt_type_id`),
   KEY `ba_id` (`ba_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `applicant`
@@ -128,7 +125,6 @@ INSERT INTO `applicant` (`appnt_id`, `appnt_type_id`, `appnt_fullname`, `occupan
 -- Table structure for table `application`
 --
 
-DROP TABLE IF EXISTS `application`;
 CREATE TABLE IF NOT EXISTS `application` (
   `appln_id` int(11) NOT NULL AUTO_INCREMENT,
   `appln_no` int(11) NOT NULL,
@@ -145,21 +141,21 @@ CREATE TABLE IF NOT EXISTS `application` (
   PRIMARY KEY (`appln_id`),
   KEY `service_nature_id` (`service_nature_id`),
   KEY `appnt_id` (`appnt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `application`
 --
 
 INSERT INTO `application` (`appln_id`, `appln_no`, `appln_date`, `appln_type`, `surveyed_date`, `engeneer_appr`, `approved_date`, `inspected_by`, `premise_nature`, `service_nature_id`, `appnt_id`, `status`) VALUES
-(2, 0, '2012-08-07', 'Clean water', '2012-08-09', 'Yes', '2012-08-17', 'Mkumbo', 'Residential', 2, 2, ''),
-(3, 0, '2012-08-19', 'Clean water', '2012-08-01', 'Yes', '2012-07-03', 'Mkumbo', 'Residential', 3, 3, ''),
-(4, 0, '2012-08-21', 'Clean water', '2012-06-18', 'Yes', '2012-06-28', 'Mkumbo', 'Residential', 3, 4, ''),
-(5, 0, '2012-08-21', 'Clean water', '2012-04-17', 'Yes', '2012-05-14', 'Mkumbo', 'Institution', 1, 5, ''),
-(6, 0, '2012-08-21', 'Clean water', '2012-06-20', 'Yes', '2012-06-11', 'Juma Shabaani', 'Business', 5, 6, ''),
-(7, 0, '2012-08-21', 'Sewer', '2011-10-17', 'Yes', '2011-11-24', 'Juma Shabaani', 'Residential', 6, 7, ''),
-(8, 0, '2012-08-29', 'Clean water', '2012-08-21', 'Yes', '2012-08-28', 'Juma Shabaani', 'Residential', 2, 8, ''),
-(9, 0, '2012-09-27', 'Clean water', '2012-09-11', 'Yes', '2012-09-20', 'Mashaka Kitundu', 'Residential', 3, 9, '');
+(2, 2, '2012-08-07', 'Clean water', '2012-08-09', 'Yes', '2012-08-17', 'Mkumbo', 'Residential', 2, 2, 'Paid'),
+(3, 3, '2012-08-19', 'Clean water', '2012-08-01', 'Yes', '2012-07-03', 'Mkumbo', 'Residential', 3, 3, ''),
+(4, 4, '2012-08-21', 'Clean water', '2012-06-18', 'Yes', '2012-06-28', 'Mkumbo', 'Residential', 3, 4, ''),
+(5, 5, '2012-08-21', 'Clean water', '2012-04-17', 'Yes', '2012-05-14', 'Mkumbo', 'Institution', 1, 5, ''),
+(6, 6, '2012-08-21', 'Clean water', '2012-06-20', 'Yes', '2012-06-11', 'Juma Shabaani', 'Business', 5, 6, ''),
+(7, 7, '2012-08-21', 'Sewer', '2011-10-17', 'Yes', '2011-11-24', 'Juma Shabaani', 'Residential', 6, 7, ''),
+(8, 8, '2012-08-29', 'Clean water', '2012-08-21', 'Yes', '2012-08-28', 'Juma Shabaani', 'Residential', 2, 8, ''),
+(9, 9, '2012-09-27', 'Clean water', '2012-09-11', 'Yes', '2012-09-20', 'Mashaka Kitundu', 'Residential', 3, 9, '');
 
 -- --------------------------------------------------------
 
@@ -167,7 +163,6 @@ INSERT INTO `application` (`appln_id`, `appln_no`, `appln_date`, `appln_type`, `
 -- Table structure for table `appnt_payment`
 --
 
-DROP TABLE IF EXISTS `appnt_payment`;
 CREATE TABLE IF NOT EXISTS `appnt_payment` (
   `appntp_id` int(11) NOT NULL AUTO_INCREMENT,
   `rec_id` int(11) NOT NULL,
@@ -177,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `appnt_payment` (
   KEY `rec_id` (`rec_id`),
   KEY `trans_id` (`trans_id`),
   KEY `appnt_id` (`appnt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `appnt_payment`
@@ -186,7 +181,8 @@ CREATE TABLE IF NOT EXISTS `appnt_payment` (
 INSERT INTO `appnt_payment` (`appntp_id`, `rec_id`, `trans_id`, `appnt_id`) VALUES
 (1, 1, 1651, 9),
 (2, 2, 1652, 7),
-(3, 3, 1653, 5);
+(3, 3, 1653, 5),
+(4, 25, 1815, 2);
 
 -- --------------------------------------------------------
 
@@ -194,12 +190,11 @@ INSERT INTO `appnt_payment` (`appntp_id`, `rec_id`, `trans_id`, `appnt_id`) VALU
 -- Table structure for table `appnt_type`
 --
 
-DROP TABLE IF EXISTS `appnt_type`;
 CREATE TABLE IF NOT EXISTS `appnt_type` (
   `appnt_type_id` int(11) NOT NULL AUTO_INCREMENT,
   `appnt_types` varchar(255) NOT NULL,
   PRIMARY KEY (`appnt_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `appnt_type`
@@ -219,12 +214,11 @@ INSERT INTO `appnt_type` (`appnt_type_id`, `appnt_types`) VALUES
 -- Table structure for table `billing_area`
 --
 
-DROP TABLE IF EXISTS `billing_area`;
 CREATE TABLE IF NOT EXISTS `billing_area` (
   `ba_id` int(11) NOT NULL AUTO_INCREMENT,
   `billing_areas` varchar(255) NOT NULL,
   PRIMARY KEY (`ba_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `billing_area`
@@ -241,7 +235,6 @@ INSERT INTO `billing_area` (`ba_id`, `billing_areas`) VALUES
 -- Table structure for table `cheque`
 --
 
-DROP TABLE IF EXISTS `cheque`;
 CREATE TABLE IF NOT EXISTS `cheque` (
   `cheq_id` int(11) NOT NULL AUTO_INCREMENT,
   `cheq_no` varchar(255) NOT NULL,
@@ -249,7 +242,7 @@ CREATE TABLE IF NOT EXISTS `cheque` (
   `rec_id` int(11) NOT NULL,
   PRIMARY KEY (`cheq_id`),
   KEY `rec_id` (`rec_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `cheque`
@@ -264,7 +257,6 @@ INSERT INTO `cheque` (`cheq_id`, `cheq_no`, `bank`, `rec_id`) VALUES
 -- Table structure for table `customer`
 --
 
-DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
   `cust_id` int(11) NOT NULL AUTO_INCREMENT,
   `added_date` datetime NOT NULL,
@@ -281,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   KEY `added_by` (`added_by`),
   KEY `appnt_id` (`appnt_id`),
   KEY `ba_id` (`ba_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `customer`
@@ -299,7 +291,6 @@ INSERT INTO `customer` (`cust_id`, `added_date`, `appln_id`, `pay_center`, `ba_i
 -- Table structure for table `cust_payment`
 --
 
-DROP TABLE IF EXISTS `cust_payment`;
 CREATE TABLE IF NOT EXISTS `cust_payment` (
   `custp_id` int(11) NOT NULL AUTO_INCREMENT,
   `rec_id` int(11) NOT NULL,
@@ -309,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `cust_payment` (
   KEY `rec_id` (`rec_id`),
   KEY `cust_id` (`cust_id`),
   KEY `trans_id` (`trans_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -317,7 +308,6 @@ CREATE TABLE IF NOT EXISTS `cust_payment` (
 -- Table structure for table `invoice`
 --
 
-DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE IF NOT EXISTS `invoice` (
   `inv_id` int(11) NOT NULL AUTO_INCREMENT,
   `inv_no` int(255) NOT NULL,
@@ -334,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   KEY `cust_id` (`cust_id`),
   KEY `acc_id` (`acc_id`),
   KEY `trans_id` (`trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=139 ;
 
 --
 -- Dumping data for table `invoice`
@@ -358,7 +348,6 @@ INSERT INTO `invoice` (`inv_id`, `inv_no`, `inv_type`, `invoicing_date`, `create
 -- Table structure for table `invoice_reading`
 --
 
-DROP TABLE IF EXISTS `invoice_reading`;
 CREATE TABLE IF NOT EXISTS `invoice_reading` (
   `inv_read_id` int(11) NOT NULL AUTO_INCREMENT,
   `mred_id` int(11) NOT NULL,
@@ -366,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `invoice_reading` (
   PRIMARY KEY (`inv_read_id`),
   KEY `mred_id` (`mred_id`),
   KEY `inv_id` (`inv_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `invoice_reading`
@@ -382,7 +371,6 @@ INSERT INTO `invoice_reading` (`inv_read_id`, `mred_id`, `inv_id`) VALUES
 -- Table structure for table `meter`
 --
 
-DROP TABLE IF EXISTS `meter`;
 CREATE TABLE IF NOT EXISTS `meter` (
   `met_id` int(11) NOT NULL AUTO_INCREMENT,
   `met_number` varchar(255) NOT NULL,
@@ -395,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `meter` (
   `availability` varchar(255) NOT NULL DEFAULT 'AVAILABLE',
   `remarks` text NOT NULL,
   PRIMARY KEY (`met_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `meter`
@@ -415,7 +403,6 @@ INSERT INTO `meter` (`met_id`, `met_number`, `met_type`, `met_status_id`, `met_s
 -- Table structure for table `meter_customer`
 --
 
-DROP TABLE IF EXISTS `meter_customer`;
 CREATE TABLE IF NOT EXISTS `meter_customer` (
   `mecu_id` int(11) NOT NULL AUTO_INCREMENT,
   `met_id` int(11) NOT NULL,
@@ -423,7 +410,7 @@ CREATE TABLE IF NOT EXISTS `meter_customer` (
   PRIMARY KEY (`mecu_id`),
   KEY `met_id` (`met_id`),
   KEY `cust_id` (`cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `meter_customer`
@@ -439,7 +426,6 @@ INSERT INTO `meter_customer` (`mecu_id`, `met_id`, `cust_id`) VALUES
 -- Table structure for table `meter_reading`
 --
 
-DROP TABLE IF EXISTS `meter_reading`;
 CREATE TABLE IF NOT EXISTS `meter_reading` (
   `mred_id` int(11) NOT NULL AUTO_INCREMENT,
   `billing_date` date NOT NULL,
@@ -453,7 +439,7 @@ CREATE TABLE IF NOT EXISTS `meter_reading` (
   PRIMARY KEY (`mred_id`),
   KEY `met_id` (`met_id`),
   KEY `cust_id` (`cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=625 ;
 
 --
 -- Dumping data for table `meter_reading`
@@ -471,7 +457,6 @@ INSERT INTO `meter_reading` (`mred_id`, `billing_date`, `reading_date`, `entered
 -- Table structure for table `payment_type`
 --
 
-DROP TABLE IF EXISTS `payment_type`;
 CREATE TABLE IF NOT EXISTS `payment_type` (
   `paytype_id` int(11) NOT NULL AUTO_INCREMENT,
   `payment` varchar(255) NOT NULL,
@@ -479,7 +464,7 @@ CREATE TABLE IF NOT EXISTS `payment_type` (
   `amount_in_words` varchar(500) NOT NULL,
   PRIMARY KEY (`paytype_id`),
   KEY `paytype_id` (`paytype_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -487,12 +472,11 @@ CREATE TABLE IF NOT EXISTS `payment_type` (
 -- Table structure for table `pay_center`
 --
 
-DROP TABLE IF EXISTS `pay_center`;
 CREATE TABLE IF NOT EXISTS `pay_center` (
   `pac_id` int(11) NOT NULL AUTO_INCREMENT,
   `pay_center` varchar(255) NOT NULL,
   PRIMARY KEY (`pac_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `pay_center`
@@ -509,7 +493,6 @@ INSERT INTO `pay_center` (`pac_id`, `pay_center`) VALUES
 -- Table structure for table `receipt`
 --
 
-DROP TABLE IF EXISTS `receipt`;
 CREATE TABLE IF NOT EXISTS `receipt` (
   `rec_id` int(11) NOT NULL AUTO_INCREMENT,
   `tran_id` int(11) NOT NULL,
@@ -519,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `receipt` (
   PRIMARY KEY (`rec_id`),
   KEY `tran_id` (`tran_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `receipt`
@@ -528,7 +511,9 @@ CREATE TABLE IF NOT EXISTS `receipt` (
 INSERT INTO `receipt` (`rec_id`, `tran_id`, `payed_amount`, `amount_in_words`, `user_id`) VALUES
 (1, 1651, 7500.00, 'Seven thousand and five hundred shillings only', 1),
 (2, 1652, 8000.00, 'Eight thousands', 1),
-(3, 1653, 9000.00, 'Nine thousands', 1);
+(3, 1653, 9000.00, 'Nine thousands', 1),
+(4, 1794, 4000.00, 'Four thousands', 1),
+(25, 1815, 5000.00, 'Five thousands', 1);
 
 -- --------------------------------------------------------
 
@@ -536,14 +521,13 @@ INSERT INTO `receipt` (`rec_id`, `tran_id`, `payed_amount`, `amount_in_words`, `
 -- Table structure for table `service_nature`
 --
 
-DROP TABLE IF EXISTS `service_nature`;
 CREATE TABLE IF NOT EXISTS `service_nature` (
   `service_nature_id` int(11) NOT NULL AUTO_INCREMENT,
   `service` varchar(255) NOT NULL,
   `appnt_type_id` int(11) NOT NULL,
   PRIMARY KEY (`service_nature_id`),
   KEY `appnt_type_id` (`appnt_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `service_nature`
@@ -565,7 +549,6 @@ INSERT INTO `service_nature` (`service_nature_id`, `service`, `appnt_type_id`) V
 -- Table structure for table `settings`
 --
 
-DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `set_id` int(10) NOT NULL AUTO_INCREMENT,
   `aut_name` varchar(255) NOT NULL,
@@ -581,7 +564,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `page_orientation` varchar(255) NOT NULL,
   `terms_conds` text NOT NULL,
   PRIMARY KEY (`set_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `settings`
@@ -596,14 +579,13 @@ INSERT INTO `settings` (`set_id`, `aut_name`, `address`, `phone`, `fax`, `email`
 -- Table structure for table `sewer_tariff`
 --
 
-DROP TABLE IF EXISTS `sewer_tariff`;
 CREATE TABLE IF NOT EXISTS `sewer_tariff` (
   `st_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_nature_id` int(11) NOT NULL,
   `s_flat_rate` decimal(10,2) NOT NULL,
   KEY `st_id` (`st_id`),
   KEY `service_nature_id` (`service_nature_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `sewer_tariff`
@@ -625,13 +607,12 @@ INSERT INTO `sewer_tariff` (`st_id`, `service_nature_id`, `s_flat_rate`) VALUES
 -- Table structure for table `transaction`
 --
 
-DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE IF NOT EXISTS `transaction` (
   `trans_id` int(11) NOT NULL AUTO_INCREMENT,
   `trans_date` datetime NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1816 ;
 
 --
 -- Dumping data for table `transaction`
@@ -650,7 +631,9 @@ INSERT INTO `transaction` (`trans_id`, `trans_date`, `description`) VALUES
 (1790, '2012-10-01 21:57:34', 'Sewer Billing'),
 (1791, '2012-10-01 21:57:34', 'Water Billing'),
 (1792, '2012-10-01 21:58:29', 'Sewer Billing'),
-(1793, '2012-10-01 21:58:29', 'Water Billing');
+(1793, '2012-10-01 21:58:29', 'Water Billing'),
+(1794, '2012-10-04 17:49:35', 'Application fee'),
+(1815, '2012-10-04 18:22:52', 'Application fee');
 
 -- --------------------------------------------------------
 
@@ -658,10 +641,9 @@ INSERT INTO `transaction` (`trans_id`, `trans_date`, `description`) VALUES
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(10) NOT NULL AUTO_INCREMENT,
-  `user_full_name` varchar(255) NOT NULL,
+  `usr_fname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -669,13 +651,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `status` varchar(10) NOT NULL DEFAULT 'ACTIVE',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_full_name`, `email`, `username`, `password`, `role`, `status`) VALUES
+INSERT INTO `users` (`user_id`, `usr_fname`, `email`, `username`, `password`, `role`, `status`) VALUES
 (1, 'Admin Admin', 'admin@localhost', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'ROOT', 'ACTIVE'),
 (2, 'user1', 'user1@localhost.com', 'user1', 'b3daa77b4c04a9551b8781d03191fe098f325e67', 'ROOT', 'BLOCKED'),
 (3, 'user2', 'user2@localhost.com', 'user2', 'a1881c06eec96db9901c7bbfe41c42a3f08e9cb4', 'ROOT', 'BLOCKED'),
@@ -696,7 +678,6 @@ INSERT INTO `users` (`user_id`, `user_full_name`, `email`, `username`, `password
 -- Table structure for table `water_tariff`
 --
 
-DROP TABLE IF EXISTS `water_tariff`;
 CREATE TABLE IF NOT EXISTS `water_tariff` (
   `wt_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_nature_id` int(11) NOT NULL,
@@ -708,7 +689,7 @@ CREATE TABLE IF NOT EXISTS `water_tariff` (
   `service_charge` decimal(10,2) NOT NULL,
   KEY `wt_id` (`wt_id`),
   KEY `service_nature_id` (`service_nature_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `water_tariff`
