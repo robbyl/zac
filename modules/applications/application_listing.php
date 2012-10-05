@@ -98,7 +98,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     <th title="Engeneer approval" class="tooltip">Approved</th>
                     <th>Applicant name</th>
                     <th>Applicant type</th>
-                    <th title="Customer Status" class="tooltip">Status</th>
+                    <th title="Application Status" class="tooltip">Status</th>
                     <th>Billing area/zone</th>
                   <th>Action</th>
                 </tr>
