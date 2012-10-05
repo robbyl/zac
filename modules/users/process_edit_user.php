@@ -20,23 +20,20 @@ require '../../config/config.php';
 require '../../functions/general_functions.php';
 
 // Getting form data
-$user_id = $_POST['user_id'];
-$user_full_name = $_POST['fullname'];
-$email = $_POST['email'];
-$role = $_POST['role'];
+$user_id = clean_arr($_POST['user_id']);
+$usr_fname = clean_arr($_POST['usr_fname']);
+$usr_lname = clean_arr($_POST['usr_lname']);
+$email = clean_arr($_POST['email']);
+$role = clean_arr($_POST['role']);
 
 $num_id = count($user_id);
 
 for ($i = 0; $i < $num_id; $i++) {
 
-    $user_id[$i] = clean($user_id[$i]);
-    $user_full_name[$i] = clean($user_full_name[$i]);
-    $email[$i] = clean($email[$i]);
-    $role[$i] = clean($role[$i]);
-
     // Inserting form data to the database
     $query_user = "UPDATE users
-                      SET user_full_name = '$user_full_name[$i]',
+                      SET usr_fname = '$usr_fname[$i]',
+                          usr_lname = '$usr_lname[$i]',
                           email = '$email[$i]', role = '$role[$i]'
                     WHERE user_id = '$user_id[$i]' ";
 

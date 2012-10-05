@@ -112,7 +112,8 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                                 <th width="23">
                                     <input type="checkbox" id="select-all" accesskey="A" title="Select all [Alt+Shift+A]" class="tooltip">
                                 </th>
-                                <th>Full name</th>
+                                <th>First name</th>
+                                <th>Last name</th>
                                 <th>E-mail</th>
                                 <th>Username</th>
                                 <th>Role</th>
@@ -127,7 +128,8 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                                     <td>
                                         <input type="checkbox" name="checkbox[]" value="<?php echo $row['user_id'] ?>" id="<?php echo $row['user_id'] ?>">
                                     </td>
-                                    <td><?php echo $row['user_full_name'] ?></td>
+                                    <td><?php echo $row['usr_fname'] ?></td>
+                                    <td><?php echo $row['usr_lname'] ?></td>
                                     <td><?php echo $row['email'] ?></td>
                                     <td><?php echo $row['username'] ?></td>
                                     <td><?php echo $row['role'] ?></td>

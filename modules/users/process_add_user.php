@@ -21,7 +21,8 @@ require '../../config/config.php';
 require '../../functions/general_functions.php';
 
 // Getting form data
-$user_full_name = clean($_POST['fullname']);
+$usr_fname = clean($_POST['usr_fname']);
+$usr_lname = clean($_POST['usr_lname']);
 $email = clean($_POST['email']);
 $username = clean($_POST['username']);
 $password = sha1($_POST['password']);
@@ -29,8 +30,8 @@ $role = clean($_POST['role']);
 
 // Inserting form data to the database
 $query_user = "INSERT INTO users
-                           (user_full_name, email, username, password, role)
-                     VALUES('$user_full_name', '$email', '$username', '$password', '$role')";
+                           (usr_fname, usr_lname, email, username, password, role)
+                     VALUES('$usr_fname','$usr_lname', '$email', '$username', '$password', '$role')";
 
 $result_user = mysql_query($query_user) or die(mysql_error());
 

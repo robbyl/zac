@@ -48,8 +48,12 @@
                         <legend>User Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="100">Full Name</td>
-                                <td><input type="text" name="fullname" required size="255" class="text"></td>
+                                <td width="100">First Name</td>
+                                <td><input type="text" name="usr_fname" required size="255" class="text"></td>
+                            </tr>
+                             <tr>
+                                <td width="100">Last Name</td>
+                                <td><input type="text" name="usr_lname" required size="255" class="text"></td>
                             </tr>
                             <tr>
                                 <td width="100">E-mail</td>

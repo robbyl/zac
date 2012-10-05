@@ -65,8 +65,12 @@
                                 <table width="" border="0" cellpadding="5">
                                     <input name="user_id[]" value="<?php echo $row['user_id'] ?>" type="hidden" />
                                     <tr>
-                                        <td width="100">Full Name</td>
-                                        <td><input type="text" name="fullname[]" value="<?php echo $row['user_full_name'] ?>" required size="255" class="text"></td>
+                                        <td width="100">Fist Name</td>
+                                        <td><input type="text" name="usr_fname[]" value="<?php echo $row['usr_fname'] ?>" required size="255" class="text"></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="100">Last Name</td>
+                                        <td><input type="text" name="usr_lname[]" value="<?php echo $row['usr_lname'] ?>" required size="255" class="text"></td>
                                     </tr>
                                     <tr>
                                         <td width="100">E-mail</td>
