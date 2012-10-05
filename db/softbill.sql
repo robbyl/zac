@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2012 at 10:41 AM
+-- Generation Time: Oct 05, 2012 at 03:00 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -644,6 +644,7 @@ INSERT INTO `transaction` (`trans_id`, `trans_date`, `description`) VALUES
 CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(10) NOT NULL AUTO_INCREMENT,
   `usr_fname` varchar(255) NOT NULL,
+  `usr_lname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -651,26 +652,30 @@ CREATE TABLE IF NOT EXISTS `users` (
   `status` varchar(10) NOT NULL DEFAULT 'ACTIVE',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `usr_fname`, `email`, `username`, `password`, `role`, `status`) VALUES
-(1, 'Admin Admin', 'admin@localhost', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'ROOT', 'ACTIVE'),
-(2, 'user1', 'user1@localhost.com', 'user1', 'b3daa77b4c04a9551b8781d03191fe098f325e67', 'ROOT', 'BLOCKED'),
-(3, 'user2', 'user2@localhost.com', 'user2', 'a1881c06eec96db9901c7bbfe41c42a3f08e9cb4', 'ROOT', 'BLOCKED'),
-(7, 'user30', 'user3@localhost.com', 'user3', 'bff5c0d86f525bb86ade3e19bbe2cf8a23cbddfc', 'ROOT', 'ACTIVE'),
-(8, 'user4', 'user4@localhost.com', 'user4', '06e6eef6adf2e5f54ea6c43c376d6d36605f810e', 'ROOT', 'BLOCKED'),
-(9, 'user5', 'user5@localhost.com', 'user5', '7d112681b8dd80723871a87ff506286613fa9cf6', 'ROOT', 'BLOCKED'),
-(10, 'user10', 'user10@localhost.com', 'user10', 'd089da97b9e447158a0466d15fe291f2c43b982e', 'ROOT', 'ACTIVE'),
-(11, 'demo', 'demo@localhost.com', 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91', 'ROOT', 'BLOCKED'),
-(12, 'user11', 'user11@localhost.com', 'user11', '3d5cbfed48ce23d2f0dc0a0baa3ec2ee93867b2b', 'ROOT', 'ACTIVE'),
-(13, 'user12', 'user12@localhost.com', 'user12', 'e45ed40f34005e1636649ab18bbd16ada02cb251', 'ROOT', 'BLOCKED'),
-(14, 'user13', 'user13@localhost.com', 'user13', 'd6fa2beb1c302491b40f447d8784fc0bcce1ca8e', 'ROOT', 'ACTIVE'),
-(15, 'cashier', 'cashier@localhost', 'cashier', 'a5b42198e3fb950b5ab0d0067cbe077a41da1245', 'CASHIER', 'BLOCKED'),
-(16, 'gffhg', 'info@zanzibar.com', 'robbyl', '3421ecde2a5de6543b48460b867cf323b018bc22', 'CASHIER', 'BLOCKED');
+INSERT INTO `users` (`user_id`, `usr_fname`, `usr_lname`, `email`, `username`, `password`, `role`, `status`) VALUES
+(1, 'Admin Admin', '', 'admin@localhost', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'ROOT', 'ACTIVE'),
+(2, 'user1', '', 'user1@localhost.com', 'user1', 'b3daa77b4c04a9551b8781d03191fe098f325e67', 'ROOT', 'BLOCKED'),
+(3, 'user2', '', 'user2@localhost.com', 'user2', 'a1881c06eec96db9901c7bbfe41c42a3f08e9cb4', 'ROOT', 'BLOCKED'),
+(7, 'user30', '', 'user3@localhost.com', 'user3', 'bff5c0d86f525bb86ade3e19bbe2cf8a23cbddfc', 'ROOT', 'ACTIVE'),
+(8, 'user4', '', 'user4@localhost.com', 'user4', '06e6eef6adf2e5f54ea6c43c376d6d36605f810e', 'ROOT', 'BLOCKED'),
+(9, 'user5', '', 'user5@localhost.com', 'user5', '7d112681b8dd80723871a87ff506286613fa9cf6', 'ROOT', 'BLOCKED'),
+(10, 'user10', '', 'user10@localhost.com', 'user10', 'd089da97b9e447158a0466d15fe291f2c43b982e', 'ROOT', 'ACTIVE'),
+(11, 'demo', '', 'demo@localhost.com', 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91', 'ROOT', 'BLOCKED'),
+(12, 'user11', '', 'user11@localhost.com', 'user11', '3d5cbfed48ce23d2f0dc0a0baa3ec2ee93867b2b', 'ROOT', 'ACTIVE'),
+(13, 'user12', '', 'user12@localhost.com', 'user12', 'e45ed40f34005e1636649ab18bbd16ada02cb251', 'ROOT', 'BLOCKED'),
+(14, 'user13', '', 'user13@localhost.com', 'user13', 'd6fa2beb1c302491b40f447d8784fc0bcce1ca8e', 'ROOT', 'ACTIVE'),
+(15, 'cashier', '', 'cashier@localhost', 'cashier', 'a5b42198e3fb950b5ab0d0067cbe077a41da1245', 'CASHIER', 'BLOCKED'),
+(16, 'gffhg', '', 'info@zanzibar.com', 'robbyl', '3421ecde2a5de6543b48460b867cf323b018bc22', 'CASHIER', 'BLOCKED'),
+(17, '', 'Chahe', '', '', '', '', 'ACTIVE'),
+(18, '', '', 'carringtonchahe@yahoo.com', 'carrington', '154197b685dd2b833f122e11370c090e90a39a8c', 'ROOT', 'ACTIVE'),
+(20, '', '', 'carringtonchahe@yahoo.com', 'carringtonfau', '80b0225d8e1fe6c3fae611101ad0a16e7dd63f8b', 'ACCOUNTANT', 'ACTIVE'),
+(61, 'Kimambo', 'Kimaro', 'kimaro@yahoo.com', 'kimambo', '053a8f17c2731d33f77e2626b0697fa9443d8e36', 'CASHIER', 'ACTIVE');
 
 -- --------------------------------------------------------
 
