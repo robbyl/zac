@@ -27,7 +27,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     $filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter' ";
 
     $query_appln = "SELECT appln.appln_id, appln_type, appnt.appnt_id, appln_date, engeneer_appr,
-                       appnt_fullname, appnt_types, billing_areas, description, cust.appnt_id AS is_customer
+                       appnt_fullname, appnt_types, billing_areas, description, cust.appnt_id AS is_customer, status
                   FROM application appln
              LEFT JOIN applicant appnt
                     ON appln.appnt_id = appnt.appnt_id
@@ -95,11 +95,12 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     </th>
                     <th>Application type</th>
                     <th>Application date</th>
-                    <th title="Engeneer approved" class="tooltip">Approved</th>
+                    <th title="Engeneer approval" class="tooltip">Approved</th>
                     <th>Applicant name</th>
                     <th>Applicant type</th>
+                    <th title="Customer Status" class="tooltip">Status</th>
                     <th>Billing area/zone</th>
-                    <th>Action</th>
+                  <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -115,7 +116,8 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <td><?php echo $row['engeneer_appr'] ?></td>
                         <td><?php echo $row['appnt_fullname'] ?></td>
                         <td><?php echo $row['appnt_types'] ?></td>
-                        <td><?php echo $row['billing_areas'] ?></td>
+                        <td><?php echo $row['status'] ?></td>
+                         <td><?php echo $row['billing_areas'] ?></td>
                         <td>
                             <?php
                             if ($row['description'] === "Application fee" && $row['is_customer'] == "") {
