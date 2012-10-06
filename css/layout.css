@@ -484,7 +484,7 @@ textarea:focus {
     background: blueviolet;
 }
 
-.actions button {
+.actions button, .add-customer, .add-customer:hover {
     margin: 0;
     padding-left: 25px !important;
     border: none;
@@ -518,6 +518,19 @@ textarea:focus {
 .pdf {
     background: url(../images/pdf.png) no-repeat 5px 6px;
     background-size: 16px;
+}
+
+.add-customer {
+    background: url(../images/add-customers.png) no-repeat center center;
+    background-size: contain;
+    height: 20px;
+    width: 100%;
+    padding: 0 5px;
+    cursor: default;
+}
+
+.disabled {
+    opacity: 0.3;
 }
 
 .report-list {
@@ -571,8 +584,8 @@ textarea:focus {
 
 .selected {
     background-color: #fff4c4 !important;
-/*    background-color: #2599CF !important;
-    color: #fff;*/
+    /*    background-color: #2599CF !important;
+        color: #fff;*/
 }
 /*.selected:hover {
     color: #fff !important;

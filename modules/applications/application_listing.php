@@ -78,7 +78,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 });
             }
         });
-                                
+                                                                        
         // Putting backgoround color to the tr for checked checkbox 
         $('.checkbox').click(function(event) {
             event.stopPropagation();
@@ -89,7 +89,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 });
             }
         });
-                          
+                                                                  
         $('.tooltip').tipTip({
             delay: "300"
         });
@@ -151,7 +151,11 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             <?php
                             if ($row['description'] === "Application fee" && $row['is_customer'] == "") {
                                 ?>
-                                <button type="reset" class="add-customer" value="<?php echo 'appln_id=' . $row["appln_id"] . '&appnt_id=' . $row["appnt_id"] ?>"></button>
+                                <button type="reset" class="add-customer tooltip" title="Add customer from this application" value="<?php echo 'appln_id=' . $row["appln_id"] . '&appnt_id=' . $row["appnt_id"] ?>"></button>
+                                <?php
+                            } else {
+                                ?>
+                                <button type="reset" class="add-customer disabled" disabled></button>
                                 <?php
                             }
                             ?>

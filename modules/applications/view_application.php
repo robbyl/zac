@@ -7,6 +7,7 @@
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
         <title>SOFTBILL | EDIT APPLICATION</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
+        <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
 
         <style>
 
@@ -18,6 +19,7 @@
         </style>
 
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/tooltip.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.message, .error').hide().slideDown('normal').click(function(){
@@ -28,6 +30,10 @@
                     var id = $('#appln_id').val();
                     var printWin = window.open('print_application.php?id='+id,'','left=0,top=0,width=852,height=800,toolbar=no,scrollbars=no,status=no');
                     printWin.focus();    
+                });
+                
+                $('.tooltip').tipTip({
+                    delay: "300"
                 });
             });
         </script>
