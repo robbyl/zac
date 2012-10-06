@@ -66,26 +66,38 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
             // Iterate each check box
 
             if(this.checked){
-                $(':checkbox').each(function(){
+                $('.checkbox').each(function(){
                     this.checked = true;
+                    $(this).closest('tr').addClass('selected');
                 });
+
             } else {
-                $(':checkbox').each(function(){
+                $('.checkbox').each(function(){
                     this.checked = false;
+                    $(this, '.checkbox').closest('tr').removeClass('selected');
                 });
             }
         });
-            
-        $('.checkbox').click(function(event){
+                                
+        // Putting backgoround color to the tr for checked checkbox 
+        $('.checkbox').click(function(event) {
             event.stopPropagation();
+            $(this).closest('tr').toggleClass('selected');
+            if (event.target.type !== 'checkbox') {
+                $(':checkbox', this).attr('checked', function() {
+                    return !this.checked;
+                });
+            }
         });
-
+                          
         $('.tooltip').tipTip({
             delay: "300"
         });
 
-        $('.add-customer').click(function(){
+        $('.add-customer').click(function(event){
 
+            // Display add customer form as pop-up
+            event.stopPropagation();
             getPopForm('../customers/add_customer.php', $(this).val());
         });
     </script>
@@ -114,7 +126,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 while ($row = mysql_fetch_array($result_appln)) {
                     ?>
 
-                    <tr onClick="nav('view_application.php?id=<?php echo $row['appln_id'] ?>')">
+                    <tr onClick="nav('view_application.php?id=<?php echo $row['appln_id'] ?>')" title="Click for more details" class="tooltip">
                         <td><input type="checkbox" name="checkbox[]" class="checkbox tooltip" value="<?php echo $row['appln_id'] ?>"
                                    id="<?php echo $row['appln_id'] ?>" title="Select this application"></td>
                         <td><?php echo sprintf('%08d', $row['appln_no']) ?></td>

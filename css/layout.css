@@ -569,6 +569,15 @@ textarea:focus {
     color: #fff;
 }
 
+.selected {
+    background-color: #fff4c4 !important;
+/*    background-color: #2599CF !important;
+    color: #fff;*/
+}
+/*.selected:hover {
+    color: #fff !important;
+}*/
+
 /* ~~ data table classes ~~ */
 
 .data-listing {
