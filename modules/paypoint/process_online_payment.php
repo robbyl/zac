@@ -16,9 +16,6 @@
  *  @version  Release: 1.0.0
  */
 
-echo 'reached';
-exit;
-
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 session_start();

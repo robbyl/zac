@@ -89,11 +89,11 @@
                     $num_row = mysql_num_rows($result_appln);
                     if ($num_row > 0) {
                         ?>
-                        <div class="actions" style="top: 150px">
+                        <h1><?php echo $row['appnt_fullname'] ?> Application Details</h1>
+                        <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0">
                             <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" id="view-application">Print</button>
                             <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
                         </div>
-                        <h1><?php echo $row['appnt_fullname'] ?> Application Details</h1>
                         <div class="hr-line"></div>
                         <div id="fieldset">
                             <fieldset style="float: left">

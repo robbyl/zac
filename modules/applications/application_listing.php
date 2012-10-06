@@ -26,22 +26,23 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     $filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter' ";
 
-    $query_appln = "SELECT appln.appln_id, appln_type, appnt.appnt_id, appln_date, engeneer_appr,
-                       appnt_fullname, appnt_types, billing_areas, description, cust.appnt_id AS is_customer, status
-                  FROM application appln
-             LEFT JOIN applicant appnt
-                    ON appln.appnt_id = appnt.appnt_id
-             LEFT JOIN customer cust
-                    ON appnt.appnt_id = cust.appnt_id
-             LEFT JOIN appnt_payment appntp
-                    ON appnt.appnt_id = appntp.appnt_id
-             LEFT JOIN transaction trans
-                    ON appntp.trans_id = trans.trans_id
-             LEFT JOIN appnt_type apnty
-                    ON appnt.appnt_type_id = apnty.appnt_type_id
-             LEFT JOIN billing_area ba
-                    ON appnt.ba_id = ba.ba_id
-                    {$filter}";
+    $query_appln = "SELECT appln.appln_id, appln_no, appln_type, appnt.appnt_id, appln_date,
+                           engeneer_appr,appnt_fullname, appnt_types, billing_areas,
+                           description, cust.appnt_id AS is_customer, status
+                      FROM application appln
+                 LEFT JOIN applicant appnt
+                        ON appln.appnt_id = appnt.appnt_id
+                 LEFT JOIN customer cust
+                        ON appnt.appnt_id = cust.appnt_id
+                 LEFT JOIN appnt_payment appntp
+                        ON appnt.appnt_id = appntp.appnt_id
+                 LEFT JOIN transaction trans
+                        ON appntp.trans_id = trans.trans_id
+                 LEFT JOIN appnt_type apnty
+                        ON appnt.appnt_type_id = apnty.appnt_type_id
+                 LEFT JOIN billing_area ba
+                        ON appnt.ba_id = ba.ba_id
+                           {$filter}";
 
     $result_appln = mysql_query($query_appln) or die(mysql_error());
     ?>
@@ -93,6 +94,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 <tr>
                     <th width="23"> <input type="checkbox" id="select-all" accesskey="A" title="Select all [Alt+Shift+A]" class="tooltip">
                     </th>
+                    <th title="Application number" class="tooltip">Application No</th>
                     <th>Application type</th>
                     <th>Application date</th>
                     <th title="Engeneer approval" class="tooltip">Approved</th>
@@ -111,6 +113,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     <tr onClick="nav('view_application.php?id=<?php echo $row['appln_id'] ?>')">
                         <td><input type="checkbox" name="checkbox[]" value="<?php echo $row['appln_id'] ?>"
                                    id="<?php echo $row['appln_id'] ?>" ></td>
+                        <td><?php echo sprintf('%08d', $row['appln_no']) ?></td>
                         <td><?php echo $row['appln_type'] ?></td>
                         <td><?php echo $row['appln_date'] ?></td>
                         <td><?php echo $row['engeneer_appr'] ?></td>
