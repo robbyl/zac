@@ -102,7 +102,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     <th>Applicant type</th>
                     <th title="Application Status" class="tooltip">Status</th>
                     <th>Billing area/zone</th>
-                  <th>Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -119,8 +119,18 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <td><?php echo $row['engeneer_appr'] ?></td>
                         <td><?php echo $row['appnt_fullname'] ?></td>
                         <td><?php echo $row['appnt_types'] ?></td>
-                        <td><?php echo $row['status'] ?></td>
-                         <td><?php echo $row['billing_areas'] ?></td>
+                        <td>
+                            <?php
+                            if ($row['status'] === "Paid") {
+                                echo '<span class="status paid">' . $row['status'] . '</span>';
+                            } elseif ($row['status'] === 'Not Paid') {
+                                echo '<span class="status not-paid">' . $row['status'] . '</span>';
+                            } elseif ($row['status'] === 'Processed') {
+                                echo '<span class="status processed">' . $row['status'] . '</span>';
+                            }
+                            ?>
+                        </td>
+                        <td><?php echo $row['billing_areas'] ?></td>
                         <td>
                             <?php
                             if ($row['description'] === "Application fee" && $row['is_customer'] == "") {

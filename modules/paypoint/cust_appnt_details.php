@@ -68,7 +68,44 @@ if (isset($_POST['number']) && isset($_POST['type']) && !empty($_POST['number'])
         // Case the payer is applicant, display customer details
         case 'Appln No':
 
-            echo 'some applicant details';
+            sleep(1);
+            $query_appln = "SELECT appln_no, appln_id, appln_type,
+                                      appnt_fullname, appnt_types,
+                                      appnt_post_addr, block_no, plot_no
+                                 FROM application appln
+                            LEFt JOIN applicant appnt
+                                   ON appln.appnt_id = appnt.appnt_id
+                            LEFT JOIN appnt_type apnty
+                                   ON appnt.appnt_type_id = apnty.appnt_type_id
+                            LEFT JOIN service_nature sev
+                                   ON appln.service_nature_id = sev.service_nature_id
+                                WHERE appln_no = '$number'";
+
+            $result_appln = mysql_query($query_appln) or die(mysql_error());
+
+            $row_appln = mysql_fetch_array($result_appln);
+            ?>
+
+            <table width="" border="0" cellpadding="5">
+                <tr>
+                    <td width="170">Customer Name</td>
+                    <td><strong id="custName"><?php echo $row_appln['appnt_fullname'] ?></strong></td>
+                </tr>
+                <tr>
+                    <td width="170">P.O.Box</td>
+                    <td><strong id="postAddr"><?php echo $row_appln['appnt_post_addr'] ?></strong></td>
+                </tr>
+                <tr>
+                    <td width="170">Plot No</td>
+                    <td><strong id="plotNo"><?php echo $row_appln['plot_no'] ?></strong></td>
+                </tr>
+                <tr>
+                    <td width="170">Block No</td>
+                    <td><strong id="blockNo"><?php echo $row_appln['block_no'] ?></strong></td>
+                </tr>
+            </table>
+
+            <?php
             break;
 
         default:

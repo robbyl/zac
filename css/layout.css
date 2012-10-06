@@ -277,7 +277,7 @@ ul.nav ul a, ul.nav ul a:visited {
     margin-bottom: 0;
 }
 
-/* ~~ miscellaneous float/clear classes ~~ */
+/* ~~ miscellaneous classes ~~ */
 
 .fltrt {
     float: right;
@@ -465,8 +465,6 @@ textarea:focus {
     text-align: center;
 }
 
-/* ~~ miscellaneous classes ~~ */
-
 .actions {
     position: absolute;
     top: 170px;
@@ -545,6 +543,30 @@ textarea:focus {
     width: 500px;
     height: 160px;
     background: url(../images/loading.gif) no-repeat center center;
+}
+
+.status {
+    display: block;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.paid {
+    background-color: #fadc76;
+    border: 1px solid #d8b256;
+    color: #9b7720;
+}
+
+.not-paid {
+    background-color: #C4452D;
+    border: 1px solid #b12f17;
+    color: #fff;
+}
+
+.processed {
+    background-color: #8dc361;
+    border: 1px solid #489e00;
+    color: #fff;
 }
 
 /* ~~ data table classes ~~ */
