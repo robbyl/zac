@@ -75,6 +75,10 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 });
             }
         });
+            
+        $('.checkbox').click(function(event){
+            event.stopPropagation();
+        });
 
         $('.tooltip').tipTip({
             delay: "300"
@@ -111,8 +115,8 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     ?>
 
                     <tr onClick="nav('view_application.php?id=<?php echo $row['appln_id'] ?>')">
-                        <td><input type="checkbox" name="checkbox[]" value="<?php echo $row['appln_id'] ?>"
-                                   id="<?php echo $row['appln_id'] ?>" ></td>
+                        <td><input type="checkbox" name="checkbox[]" class="checkbox tooltip" value="<?php echo $row['appln_id'] ?>"
+                                   id="<?php echo $row['appln_id'] ?>" title="Select this application"></td>
                         <td><?php echo sprintf('%08d', $row['appln_no']) ?></td>
                         <td><?php echo $row['appln_type'] ?></td>
                         <td><?php echo $row['appln_date'] ?></td>
