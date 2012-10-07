@@ -2,6 +2,15 @@
 require '../../includes/session_validator.php';
 
 ob_start();
+session_start();
+
+// Obtaining chashier first name and last name from session.
+$cashier_fname = strtoupper($_SESSION['usr_fname']);
+$cashier_lname = strtoupper($_SESSION['usr_lname']);
+
+session_commit();
+
+$cashier_full_name = $cashier_fname . " " . $cashier_lname;
 ?>
 
 <!doctype html>
@@ -25,20 +34,25 @@ ob_start();
         <script type="text/javascript">
 
             $(document).ready(function() {
-
+                
+                // Display and hide system messages and errors.
                 $('.message, .error').hide().slideDown('normal').click(function(){
                     $(this).slideUp('normal');
                 });
 
+                // Close receipt preview
                 $('.close').click(function(){
                     $('.pop-up-wrapper').fadeOut('fast');
                 });
 
+                // Populating some of the receipt details
                 $('#preview').click(function(){
                     $('#payment-form').submit(function(event){
                         
                         event.preventDefault();
-        
+                        
+                        var payer = $('#cust-appnt').val();
+                        var payerNo = $('#number').val();
                         var custName = $('#custName').html();
                         var postAddr = $('#postAddr').html();
                         var plotNo = $('#plotNo').html();
@@ -49,7 +63,20 @@ ob_start();
                         var transType = $('#trans-type').val();
                         var chequeNo = $('#cheque-no').val();
                         var bank = $('#bank').val();
-        
+                        
+                        if(payer === "Account No"){
+                            $('#payer-no-type').html('Account No:');
+                            $('#payer-name').html('Customer Name:');
+                            $('#payer-addr').html('Customer Address:');
+                            
+                        }
+                        if(payer === "Appln No"){
+                            $('#payer-no-type').html('Application No:');
+                            $('#payer-name').html('Applicant Name:');
+                            $('#payer-addr').html('Applicant Address:');
+                        }
+                        
+                        $('#payer-no').html(payerNo);
                         $('#recCustName').html(custName);
                         $('#recPostAddr').html(postAddr);
                         $('#recPlotNo').html(plotNo);
@@ -68,6 +95,7 @@ ob_start();
                     });       
                 });
 
+                // Submitting payments to the databse and print receipt.
                 $('#save-print').click(function(){
  
                     $('#payment-form').unbind('submit').submit();
@@ -75,18 +103,18 @@ ob_start();
                 });
                 
                 //Hide and show cheque details depending on transaction type.
-                $('.cheque-details').hide();
+                $('.cheque-details').css('display', 'none');
                 $('#trans-type').change(function(){
                     
                     var payType = $(this).val();
                     
                     if(payType == 'Cheque'){
-                        $('#cheque, #bank').attr("required", "required");
+                        $('#cheque-no, #bank').attr("required", "required");
                         $('.cheque-details').show();
                     }
                     if(payType == 'Cash'){
-                        $('#cheque, #bank').removeAttr('required');
-                        $('.cheque-details').hide();
+                        $('#cheque-no, #bank').val("").removeAttr('required');
+                        $('.cheque-details').css("display", "none");
                     }
                 });
             });
@@ -156,9 +184,7 @@ ob_start();
                                 </td>
                             </tr>
                         </table>
-                        <div id="cust-appnt-details">
-
-                        </div>
+                        <div id="cust-appnt-details"></div>
                     </fieldset>
                     <fieldset style="float: left">
                         <legend>Transaction Details</legend>
@@ -176,7 +202,7 @@ ob_start();
                             <tr class="cheque-details">
                                 <td width="170">Cheque Number</td>
                                 <td>
-                                    <input type="text" name="cheque_no" id="cheque-no" class="text" required id="cheque">
+                                    <input type="text" name="cheque_no" autocomplete="off" id="cheque-no" class="text" required>
                                 </td>
                             </tr>
                             <tr class="cheque-details" style="display: none">
@@ -235,19 +261,19 @@ ob_start();
 
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="receipt-table">
                                         <tr>
-                                            <td width="18%">Customer Name:</td>
+                                            <td width="18%" id="payer-name"></td>
                                             <td width="50%" id="recCustName"></td>
                                             <td width="8%">&nbsp;</td>
                                             <td width="23%" align="right"><span style="float: left">Receipt No:</span> 01819894</td>
                                         </tr>
                                         <tr>
-                                            <td>Account No:</td>
-                                            <td>90015030</td>
+                                            <td id="payer-no-type"></td>
+                                            <td id="payer-no"></td>
                                             <td>&nbsp;</td>
                                             <td align="right"><span style="float: left">Date:</span><?php echo date('d M, Y') ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Customer Address:</td>
+                                            <td id="payer-addr"></td>
                                             <td id="recPostAddr"></td>
                                             <td>&nbsp;</td>
                                             <td align="right"><span style="float: left">Time:</span><?php echo date('H:i:s') ?></td>
@@ -280,7 +306,7 @@ ob_start();
                                             <td>Receipt Type:</td>
                                             <td id="recPayType"></td>
                                             <td>Cashier:</td>
-                                            <td>ROBERT ANDREA LONDO</td>
+                                            <td><?php echo $cashier_full_name; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Payment Type:</td>

@@ -24,6 +24,8 @@ $row_setting = mysql_fetch_array($result_settings);
         </style>
         <script type="text/javascript">
             $(document).ready(function(){
+                
+                // Display and hide system messages and errors.
                 $('.message, .error').hide().slideDown('normal').click(function(){
                     $(this).slideUp('normal');
                 });
