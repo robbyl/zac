@@ -87,10 +87,23 @@ $result_transaction = mysql_query($query_transaction) or die(mysql_error());
 
 $transaction_id = mysql_insert_id();
 
+// Obtaining the last receipt number
+$query_receipt_no = "SELECT MAX(rec_no) AS cur_rec_no
+                       FROM receipt";
+$result_receipt_no = mysql_query($query_receipt_no) or die(mysql_error());
+
+$row_rec = mysql_fetch_array($result_receipt_no);
+$cur_rec_no = $row_rec['cur_rec_no'];
+$rec_rows = mysql_num_rows($result_receipt_no);
+
+$rec_no = ($rec_rows > 0 ? $rec_no = $cur_rec_no : $rec_no = '0');
+
+$rec_no++;
+
 // Inserting receipt details
 $query_receipt = "INSERT INTO receipt
-                              (tran_id, payed_amount, amount_in_words, user_id)
-                       VALUES ('$transaction_id', '$paid_amount', '$amount_in_words', '$user_id')";
+                              (rec_no, tran_id, payed_amount, amount_in_words, user_id)
+                       VALUES ('$rec_no', '$transaction_id', '$paid_amount', '$amount_in_words', '$user_id')";
 
 $result_receipt = mysql_query($query_receipt) or die(mysql_error());
 

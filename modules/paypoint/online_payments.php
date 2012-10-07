@@ -1,5 +1,6 @@
 <?php
 require '../../includes/session_validator.php';
+require '../../config/config.php';
 
 ob_start();
 session_start();
@@ -11,6 +12,19 @@ $cashier_lname = strtoupper($_SESSION['usr_lname']);
 session_commit();
 
 $cashier_full_name = $cashier_fname . " " . $cashier_lname;
+
+// Obtaining the last receipt number
+$query_receipt_no = "SELECT MAX(rec_no) AS cur_rec_no
+                       FROM receipt";
+$result_receipt_no = mysql_query($query_receipt_no) or die(mysql_error());
+
+$row_rec = mysql_fetch_array($result_receipt_no);
+$cur_rec_no = $row_rec['cur_rec_no'];
+$rec_rows = mysql_num_rows($result_receipt_no);
+
+$rec_no = ($rec_rows > 0 ? $rec_no = $cur_rec_no : $rec_no = '0');
+
+$rec_no++;
 ?>
 
 <!doctype html>
@@ -264,7 +278,7 @@ $cashier_full_name = $cashier_fname . " " . $cashier_lname;
                                             <td width="18%" id="payer-name"></td>
                                             <td width="50%" id="recCustName"></td>
                                             <td width="8%">&nbsp;</td>
-                                            <td width="23%" align="right"><span style="float: left">Receipt No:</span> 01819894</td>
+                                            <td width="23%" align="right"><span style="float: left">Receipt No:</span> <?php echo sprintf('%08d', $rec_no); ?></td>
                                         </tr>
                                         <tr>
                                             <td id="payer-no-type"></td>
