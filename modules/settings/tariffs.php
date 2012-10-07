@@ -2,7 +2,8 @@
 require '../../includes/session_validator.php';
 require '../../config/config.php';
 
-$query_p_tariff = "SELECT service, wt_rate, wt_flat_rate, wt_id, wt_from, wt_to
+$query_p_tariff = "SELECT service, wt_rate, wt_flat_rate, wt_id, wt_from, wt_to,
+                          service_charge
                      FROM service_nature s
                 LEFT JOIN water_tariff wt
                        ON s.service_nature_id = wt.service_nature_id
@@ -75,8 +76,9 @@ $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
                             <tr>
                                 <td width="170" bgcolor="#f1f1e1">Tariff Name</td>
                                 <td width="100" colspan="4" align="center" bgcolor="#f1f1e1">Consumption Range</td>
-                                <td width="100" align="right" bgcolor="#f1f1e1">Metered Rate</td>
-                                <td width="100" align="right" bgcolor="#f1f1e1">Flat Rate</td>
+                                <td width="100" align="center" bgcolor="#f1f1e1">Metered Rate</td>
+                                <td width="100" align="center" bgcolor="#f1f1e1">Flat Rate</td>
+                                <td width="100" align="center" bgcolor="#f1f1e1">Service Charge</td>
                             </tr>
                             <?php
                             while ($p_row = mysql_fetch_array($result_p_tariff)) {
@@ -103,6 +105,10 @@ $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
                                     <input name="wt_flat_rate[]" value="<?php echo $p_row['wt_flat_rate'] ?>"
                                            type="number" min="0" step="0.01" class="number" style="width: 150px;" >
                                 </td>
+                                <td align="right">
+                                    <input name="service_charge[]" value="<?php echo $p_row['service_charge'] ?>"
+                                           type="number" min="0" step="0.01" class="number" style="width: 100px;" >
+                                </td>
                                 </tr>
                             <?php } ?>
                         </table>
@@ -112,7 +118,7 @@ $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
                         <table width="" border="0" cellpadding="5">
                             <tr>
                                 <td width="170" bgcolor="#f1f1e1">Tariff Name</td>
-                                <td  width="100" align="right" bgcolor="#f1f1e1">Flat Rate</td>
+                                <td  width="100" align="center" bgcolor="#f1f1e1">Flat Rate</td>
                             </tr>
                             <?php
                             while ($s_row = mysql_fetch_array($result_s_tariff)) {
