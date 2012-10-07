@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 
-if (isset($_POST['number']) && isset($_POST['type']) && !empty($_POST['number']) && !empty($_POST['type'])) {
+require '../../functions/general_functions.php';
+
+$number = clean($_POST['number']);
+$type = clean($_POST['type']);
+
+if (isset($number) && isset($type) && !empty($number) && !empty($type) && strlen($number) >= 8) {
 
     require '../../config/config.php';
-    require '../../functions/general_functions.php';
-
-    $number = clean($_POST['number']);
-    $type = clean($_POST['type']);
 
     switch ($type) {
 
@@ -41,28 +42,37 @@ if (isset($_POST['number']) && isset($_POST['type']) && !empty($_POST['number'])
             $result_customer = mysql_query($query_customer) or die(mysql_error());
 
             $row_customer = mysql_fetch_array($result_customer);
-            ?>
+            $num_cust = mysql_num_rows($result_customer);
 
-            <table width="" border="0" cellpadding="5">
-                <tr>
-                    <td width="170">Customer Name</td>
-                    <td><strong id="custName"><?php echo $row_customer['appnt_fullname'] ?></strong></td>
-                </tr>
-                <tr>
-                    <td width="170">P.O.Box</td>
-                    <td><strong id="postAddr"><?php echo $row_customer['appnt_post_addr'] ?></strong></td>
-                </tr>
-                <tr>
-                    <td width="170">Plot No</td>
-                    <td><strong id="plotNo"><?php echo $row_customer['plot_no'] ?></strong></td>
-                </tr>
-                <tr>
-                    <td width="170">Block No</td>
-                    <td><strong id="blockNo"><?php echo $row_customer['block_no'] ?></strong></td>
-                </tr>
-            </table>
+            if ($num_cust > 0) {
+                ?>
 
-            <?php
+                <table width="" border="0" cellpadding="5">
+                    <tr>
+                        <td width="170">Customer Name</td>
+                        <td><strong id="custName"><?php echo $row_customer['appnt_fullname'] ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td width="170">P.O.Box</td>
+                        <td><strong id="postAddr"><?php echo $row_customer['appnt_post_addr'] ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td width="170">Plot No</td>
+                        <td><strong id="plotNo"><?php echo $row_customer['plot_no'] ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td width="170">Block No</td>
+                        <td><strong id="blockNo"><?php echo $row_customer['block_no'] ?></strong></td>
+                    </tr>
+                </table>
+                <div class="validity correct"></div>
+
+                <?php
+            } else {
+
+                echo '<div class="status">The Provided Account No is not correct!</div>';
+                echo '<div class="validity incorrect"></div>';
+            }
             break;
 
         // Case the payer is applicant, display customer details
@@ -84,28 +94,37 @@ if (isset($_POST['number']) && isset($_POST['type']) && !empty($_POST['number'])
             $result_appln = mysql_query($query_appln) or die(mysql_error());
 
             $row_appln = mysql_fetch_array($result_appln);
-            ?>
+            $num_appln = mysql_num_rows($result_appln);
 
-            <table width="" border="0" cellpadding="5">
-                <tr>
-                    <td width="170">Customer Name</td>
-                    <td><strong id="custName"><?php echo $row_appln['appnt_fullname'] ?></strong></td>
-                </tr>
-                <tr>
-                    <td width="170">P.O.Box</td>
-                    <td><strong id="postAddr"><?php echo $row_appln['appnt_post_addr'] ?></strong></td>
-                </tr>
-                <tr>
-                    <td width="170">Plot No</td>
-                    <td><strong id="plotNo"><?php echo $row_appln['plot_no'] ?></strong></td>
-                </tr>
-                <tr>
-                    <td width="170">Block No</td>
-                    <td><strong id="blockNo"><?php echo $row_appln['block_no'] ?></strong></td>
-                </tr>
-            </table>
+            if ($num_appln > 0) {
+                ?>
 
-            <?php
+                <table width="" border="0" cellpadding="5">
+                    <tr>
+                        <td width="170">Applicant Name</td>
+                        <td><strong id="custName"><?php echo $row_appln['appnt_fullname'] ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td width="170">P.O.Box</td>
+                        <td><strong id="postAddr"><?php echo $row_appln['appnt_post_addr'] ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td width="170">Plot No</td>
+                        <td><strong id="plotNo"><?php echo $row_appln['plot_no'] ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td width="170">Block No</td>
+                        <td><strong id="blockNo"><?php echo $row_appln['block_no'] ?></strong></td>
+                    </tr>
+                </table>
+                <div class="validity correct"></div>
+
+                <?php
+            } else {
+
+                echo '<div class="status">The Provided Application No is not correct!</div>';
+                echo '<div class="validity incorrect"></div>';
+            }
             break;
 
         default:

@@ -34,20 +34,18 @@ $rec_no++;
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
         <title>SOFTBILL | ONLINE PAYMENTS</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
-        <link href="../../css/data_table.css" rel="stylesheet" type="text/css">
-        <link href="../../css/jquery.ui.theme.css" rel="stylesheet" type="text/css">
-        <link href="../../css/ui_darkness.css" rel="stylesheet" type="text/css">
         <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
         <link href="../../css/pop-up.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
-        <script src="../../js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="../../js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
-        <script src="../../js/jquery.dataTables.pagination.js" type="text/javascript"></script>
         <script src="../../js/tooltip.js" type="text/javascript"></script>
         <script src="../../js/softbill-core.js" type="text/javascript"></script>
         <script type="text/javascript">
 
             $(document).ready(function() {
+                
+                $('.tooltip').tipTip({
+                    delay: "300"
+                });
                 
                 // Display and hide system messages and errors.
                 $('.message, .error').hide().slideDown('normal').click(function(){
@@ -164,6 +162,8 @@ $rec_no++;
                 ?>
                 <h1>Accept Payments</h1>
                 <div class="hr-line"></div>
+                
+<!--                <div class="validity">X</div>-->
 
                 <form action="process_online_payment.php" id="payment-form" method="post">
                     <fieldset style="float: left">
@@ -176,7 +176,9 @@ $rec_no++;
                                         <option value="Account No">Account No</option>
                                         <option value="Appln No">Application No</option>
                                     </select></td>
-                                <td><input type="text" name="number" id="number" required autocomplete="off"  oninput="moreDetails()" class="text" ></td>
+                                <td>
+                                    <input type="text" name="number" id="number" required autocomplete="off" pattern=".{8,}" title="Minimum 8 characters"  oninput="moreDetails()" class="text tooltip" >
+                                </td>
                             </tr>
                             <tr>
                                 <td width="170">Payment Type</td>
@@ -268,7 +270,7 @@ $rec_no++;
                             <div class="close"></div>
                             <!--  end . form-header --> </div>
 
-                        <form action="process_online_paymentwww.php" id="receipt-form" method="post" style="padding-top: 30px; margin-bottom: 0" >
+                        <form action="" id="receipt-form" method="post" style="padding-top: 30px; margin-bottom: 0" >
                             <div id="receipt-print">
                                 <div class="receipt-header"></div>
                                 <div class="receipt-body">
