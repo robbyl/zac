@@ -183,8 +183,8 @@
                                     <tr>
                                         <td width="170">Application Type</td>
                                         <td>
-                                            <label><input type="checkbox" name="water[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water" required class="checkbox">Clean water</label>&nbsp;&nbsp;
-                                            <label><input type="checkbox" name="water[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" required class="checkbox">Sewer</label>
+                                            <label><input type="checkbox" name="water[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water" >Clean water</label>&nbsp;&nbsp;
+                                            <label><input type="checkbox" name="water[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" >Sewer</label>
                                         </td>
                                     </tr>
 

@@ -19,11 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `softbill`
 --
-DROP DATABASE softbill
-
-CREATE DATASE sofbill
-
-USER softill
 -- --------------------------------------------------------
 
 --
