@@ -93,6 +93,10 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
     $('.tooltip').tipTip({
         delay: "300"
     });
+    
+    function nav(url){
+        document.location.href = url;
+    }
 </script>
 
 <div class="actions" style="top: 212px">
