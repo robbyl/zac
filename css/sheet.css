@@ -6,6 +6,7 @@
 }
 
 body {
+    -webkit-print-color-adjust: exact;
     font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
     margin: 0;
     padding: 0;
