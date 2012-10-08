@@ -94,7 +94,7 @@
 
                             <fieldset style="float: left">
                                 <legend>Applicant Details</legend>
-                                <input type="hidden" name="appnt_id" value="<?php echo $val ?>" id="appnt_id">
+                                <input type="hidden" name="appnt_id[]" value="<?php echo $val ?>" id="appnt_id">
                                 <table width="" border="0" cellpadding="5">
                                     <tr>
                                         <td width="170">Applicant Type</td>
@@ -183,8 +183,8 @@
                                     <tr>
                                         <td width="170">Application Type</td>
                                         <td>
-                                            <label><input type="checkbox" name="water[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water" required class="checkbox">Clean water</label>&nbsp;&nbsp;
-                                            <label><input type="checkbox" name="water[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer" required class="checkbox">Sewer</label>
+                                            <label><input type="checkbox" name="water[]" <?php if ($row['appln_type'] === "Clean water") echo 'checked'; ?> value="Clean water">Clean water</label>&nbsp;&nbsp;
+                                            <label><input type="checkbox" name="water[]" <?php if ($row['appln_type'] === "Sewer") echo 'checked'; ?> value="Sewer">Sewer</label>
                                         </td>
                                     </tr>
 
@@ -201,8 +201,8 @@
                                     <tr>
                                         <td width="170">Engineer Approval</td>
                                         <td>
-                                            <label><input type="radio" <?php if ($row['engeneer_appr'] === "Yes") echo 'checked' ?> name="<?php echo 'engeneer_appr[' . $i . '][]' ?>" value="Yes">Yes</label>&nbsp;&nbsp;
-                                            <label><input type="radio" <?php if ($row['engeneer_appr'] === "No") echo 'checked' ?> name="<?php echo 'engeneer_appr[' . $i . '][]' ?>" value="No">No</label>
+                                            <label><input type="radio" <?php if ($row['engeneer_appr'] === "Yes") echo 'checked' ?> name="<?php echo 'engeneer_appr[' . $i . ']' ?>" value="Yes">Yes</label>&nbsp;&nbsp;
+                                            <label><input type="radio" <?php if ($row['engeneer_appr'] === "No") echo 'checked' ?> name="<?php echo 'engeneer_appr[' . $i . ']' ?>" value="No">No</label>
                                         </td>
                                     </tr>
                                     <tr>
@@ -214,9 +214,9 @@
                                     <tr>
                                         <td width="170">Premises Nature</td>
                                         <td>
-                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . '][]' ?>" <?php if ($row['premise_nature'] === "Residential") echo 'checked'; ?> value="Residential" required class="radio">Residential</label>&nbsp;&nbsp;
-                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . '][]' ?>" <?php if ($row['premise_nature'] === "Institution") echo 'checked'; ?> value="Institution" required class="radio">Institution</label>&nbsp;&nbsp;
-                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . '][]' ?>" <?php if ($row['premise_nature'] === "Business") echo 'checked'; ?> value="Business" required class="radio">Business</label>
+                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . ']' ?>" <?php if ($row['premise_nature'] === "Residential") echo 'checked'; ?> value="Residential" required class="radio">Residential</label>&nbsp;&nbsp;
+                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . ']' ?>" <?php if ($row['premise_nature'] === "Institution") echo 'checked'; ?> value="Institution" required class="radio">Institution</label>&nbsp;&nbsp;
+                                            <label><input type="radio" name="<?php echo 'premise_nature[' . $i . ']' ?>" <?php if ($row['premise_nature'] === "Business") echo 'checked'; ?> value="Business" required class="radio">Business</label>
                                         </td>
                                     </tr>
                                     <tr>
