@@ -13,7 +13,7 @@
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
     </head>
 
-    <body onload="window.print(); window.close();">
+    <body onload="window.print(); window.close();" style="font-size: 80%; background: #fff;">
         <div class="container">
 
             <?php

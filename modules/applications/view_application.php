@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | EDIT APPLICATION</title>
+        <title>SOFTBILL | VIEW APPLICATION</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
 

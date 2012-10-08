@@ -179,9 +179,9 @@
                                             <td>Category</td>
                                             <td>Billing Type</td>
                                             <td>Charged Date</td>
-                                            <td>From<span style="font-weight: normal">(m<sup>3</sup>)</span></td>
-                                            <td>To<span style="font-weight: normal">(m<sup>3</sup>)</span></td>
-                                            <td>Consm<span style="font-weight: normal">(m<sup>3</sup>)</span></td>
+                                            <td>From<span style="font-weight: normal; font-size: 80%">(m<sup>3</sup>)</span></td>
+                                            <td>To<span style="font-weight: normal; font-size: 80%">(m<sup>3</sup>)</span></td>
+                                            <td>Consm<span style="font-weight: normal; font-size: 80%">(m<sup>3</sup>)</span></td>
                                             <td align="right"></td>
                                         </tr>
                                         <tr>

@@ -73,7 +73,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
             </style>
             <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
         </head>
-        <body onload="window.print(); window.close();">
+        <body onload="window.print(); window.close();" style="font-size: 80%;">
             <div class="sheet-wraper">
                 <div class="sheet-header">
 

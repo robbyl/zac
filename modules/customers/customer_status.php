@@ -22,7 +22,7 @@
             <div class="sidebar">
                 <ul class="nav">
                     <li><a href="../../home.php" class="home">Home</a></li>
-                    <li> <a href="users.php" class="users">Manage Users</a></li>
+                    <li> <a href="../users/users.php" class="users">Manage Users</a></li>
                     <li> <a href="../settings/settings.php" class="settings">Settings</a> </li>
                     <li> <a href="../applications/applications.php" class="applications">Applications</a> </li>
                     <li> <a href="../customers/customers.php" class="customers">Customers</a>
