@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 08, 2012 at 08:53 AM
+-- Generation Time: Oct 08, 2012 at 10:36 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `softbill`
 --
+
 -- --------------------------------------------------------
 
 --
@@ -461,54 +462,6 @@ INSERT INTO `meter_reading` (`mred_id`, `billing_date`, `reading_date`, `entered
 -- --------------------------------------------------------
 
 --
--- Table structure for table `offline_receipt`
---
-
-CREATE TABLE IF NOT EXISTS `offline_receipt` (
-  `rec_id` int(11) NOT NULL AUTO_INCREMENT,
-  `rec_no` int(11) NOT NULL,
-  `tran_id` int(11) NOT NULL,
-  `payed_amount` decimal(15,2) NOT NULL,
-  `amount_in_words` varchar(500) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`rec_id`),
-  KEY `tran_id` (`tran_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `online_receipt`
---
-
-CREATE TABLE IF NOT EXISTS `online_receipt` (
-  `rec_id` int(11) NOT NULL AUTO_INCREMENT,
-  `rec_no` int(11) NOT NULL,
-  `tran_id` int(11) NOT NULL,
-  `payed_amount` decimal(15,2) NOT NULL,
-  `amount_in_words` varchar(500) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`rec_id`),
-  KEY `tran_id` (`tran_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
-
---
--- Dumping data for table `online_receipt`
---
-
-INSERT INTO `online_receipt` (`rec_id`, `rec_no`, `tran_id`, `payed_amount`, `amount_in_words`, `user_id`) VALUES
-(1, 1, 1651, 7500.00, 'Seven thousand and five hundred shillings only', 1),
-(2, 2, 1652, 8000.00, 'Eight thousands', 1),
-(3, 3, 1653, 9000.00, 'Nine thousands', 1),
-(4, 4, 1794, 4000.00, 'Four thousands', 1),
-(25, 25, 1815, 5000.00, 'Five thousands', 1),
-(26, 26, 1816, 7000.00, 'Seven thousands only', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `payment_type`
 --
 
@@ -541,6 +494,37 @@ INSERT INTO `pay_center` (`pac_id`, `pay_center`) VALUES
 (1, 'Masasi'),
 (2, 'Ubungo'),
 (3, 'Kimara');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receipt`
+--
+
+CREATE TABLE IF NOT EXISTS `receipt` (
+  `rec_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rec_no` int(11) NOT NULL,
+  `rec_type` varchar(255) NOT NULL,
+  `tran_id` int(11) NOT NULL,
+  `payed_amount` decimal(15,2) NOT NULL,
+  `amount_in_words` varchar(500) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`rec_id`),
+  KEY `tran_id` (`tran_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+
+--
+-- Dumping data for table `receipt`
+--
+
+INSERT INTO `receipt` (`rec_id`, `rec_no`, `rec_type`, `tran_id`, `payed_amount`, `amount_in_words`, `user_id`) VALUES
+(1, 1, '', 1651, 7500.00, 'Seven thousand and five hundred shillings only', 1),
+(2, 2, '', 1652, 8000.00, 'Eight thousands', 1),
+(3, 3, '', 1653, 9000.00, 'Nine thousands', 1),
+(4, 4, '', 1794, 4000.00, 'Four thousands', 1),
+(25, 25, '', 1815, 5000.00, 'Five thousands', 1),
+(26, 26, '', 1816, 7000.00, 'Seven thousands only', 1);
 
 -- --------------------------------------------------------
 
@@ -773,7 +757,7 @@ ALTER TABLE `application`
 -- Constraints for table `appnt_payment`
 --
 ALTER TABLE `appnt_payment`
-  ADD CONSTRAINT `appnt_payment_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `online_receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appnt_payment_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appnt_payment_ibfk_2` FOREIGN KEY (`trans_id`) REFERENCES `transaction` (`trans_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appnt_payment_ibfk_3` FOREIGN KEY (`appnt_id`) REFERENCES `applicant` (`appnt_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -781,7 +765,7 @@ ALTER TABLE `appnt_payment`
 -- Constraints for table `cheque`
 --
 ALTER TABLE `cheque`
-  ADD CONSTRAINT `cheque_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `online_receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cheque_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `customer`
@@ -797,7 +781,7 @@ ALTER TABLE `customer`
 -- Constraints for table `cust_payment`
 --
 ALTER TABLE `cust_payment`
-  ADD CONSTRAINT `cust_payment_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `online_receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cust_payment_ibfk_1` FOREIGN KEY (`rec_id`) REFERENCES `receipt` (`rec_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cust_payment_ibfk_2` FOREIGN KEY (`trans_id`) REFERENCES `transaction` (`trans_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cust_payment_ibfk_3` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -830,11 +814,11 @@ ALTER TABLE `meter_reading`
   ADD CONSTRAINT `meter_reading_ibfk_2` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `online_receipt`
+-- Constraints for table `receipt`
 --
-ALTER TABLE `online_receipt`
-  ADD CONSTRAINT `online_receipt_ibfk_1` FOREIGN KEY (`tran_id`) REFERENCES `transaction` (`trans_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `online_receipt_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `receipt`
+  ADD CONSTRAINT `receipt_ibfk_1` FOREIGN KEY (`tran_id`) REFERENCES `transaction` (`trans_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `receipt_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `service_nature`
