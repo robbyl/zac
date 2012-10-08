@@ -34,6 +34,11 @@ $cashier_full_name = $cashier_fname . " " . $cashier_lname;
                     delay: "300"
                 });
                 
+                $('.tooltip-right').tipTip({
+                    delay: "300",
+                    defaultPosition: "right"
+                });
+                
                 // Display and hide system messages and errors.
                 $('.message, .error').hide().slideDown('normal').click(function(){
                     $(this).slideUp('normal');
@@ -166,7 +171,7 @@ $cashier_full_name = $cashier_fname . " " . $cashier_lname;
                                         <option value="Appln No">Application No</option>
                                     </select></td>
                                 <td>
-                                    <input type="text" name="number" id="number" required autocomplete="off" pattern=".{8,}" title="Minimum 8 characters"  oninput="moreDetails()" class="text tooltip" >
+                                    <input type="text" name="number" id="number" required autocomplete="off" pattern=".{8,}" title="Minimum 8 characters"  oninput="moreDetails()" class="text tooltip-right" >
                                 </td>
                             </tr>
                             <tr>

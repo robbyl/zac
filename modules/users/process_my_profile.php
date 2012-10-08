@@ -21,12 +21,13 @@ require '../../functions/general_functions.php';
 
 // Getting form data
 $user_id = clean($_POST['user_id']);
-$user_full_name = clean($_POST['fullname']);
+$usr_fname = clean($_POST['fname']);
+$usr_lname = clean($_POST['lname']);
 $email = clean($_POST['email']);
 
 // Inserting form data to the database
 $query_user = "UPDATE users
-                  SET user_full_name = '$user_full_name', email = '$email'
+                  SET usr_fname = '$usr_fname',usr_lname = '$usr_lname', email = '$email'
                 WHERE user_id = '$user_id' ";
 
 $result_user = mysql_query($query_user) or die(mysql_error());

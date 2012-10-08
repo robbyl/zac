@@ -102,17 +102,17 @@
                         </div>
                         <div class="hr-line"></div>
                         <div id="fieldset">
-                            <fieldset style="float: left">
+                            <fieldset>
                                 <legend>Applicant Details</legend>
                                 <input type="hidden" value="<?php echo $id; ?>" id="appln_id">
                                 <table width="" border="0" cellpadding="5" cellspacing="0">
                                     <tr>
-                                        <td width="170">Applicant Type:</td>
-                                        <td><strong><?php echo $row['appnt_types'] ?></strong></td>
+                                        <td width="300">Applicant Type:</td>
+                                        <td width="500"><strong><?php echo $row['appnt_types'] ?></strong></td>
                                     </tr>
                                     <tr>
-                                        <td width="170">Full Name:</td>
-                                        <td><strong><?php echo $row['appnt_fullname'] ?></strong></td>
+                                        <td width="170" style="vertical-align: top">Full Name:</td>
+                                        <td width="300"><strong><?php echo $row['appnt_fullname'] ?></strong></td>
                                     </tr>
                                     <tr>
                                         <td width="170">Occupants/No of people:</td>
@@ -152,12 +152,12 @@
                                     </tr>
                                 </table>
                             </fieldset>
-                            <fieldset style="float: left">
+                            <fieldset>
                                 <legend>Application Details</legend>
                                 <table width="" border="0" cellpadding="5" cellspacing="0">
                                     <tr>
-                                        <td width="170">Application Date:</td>
-                                        <td><strong><?php echo date('Y-m-d'); ?></strong></td>
+                                        <td width="300">Application Date:</td>
+                                        <td width="500"><strong><?php echo date('Y-m-d'); ?></strong></td>
                                     </tr>
                                     <tr>
                                         <td width="170">Application Type:</td>
