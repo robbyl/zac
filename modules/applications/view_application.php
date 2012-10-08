@@ -7,6 +7,7 @@
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
         <title>SOFTBILL | EDIT APPLICATION</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
+        <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
 
         <style>
 
@@ -18,6 +19,7 @@
         </style>
 
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/tooltip.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.message, .error').hide().slideDown('normal').click(function(){
@@ -28,6 +30,10 @@
                     var id = $('#appln_id').val();
                     var printWin = window.open('print_application.php?id='+id,'','left=0,top=0,width=852,height=800,toolbar=no,scrollbars=no,status=no');
                     printWin.focus();    
+                });
+                
+                $('.tooltip').tipTip({
+                    delay: "300"
                 });
             });
         </script>
@@ -89,11 +95,11 @@
                     $num_row = mysql_num_rows($result_appln);
                     if ($num_row > 0) {
                         ?>
-                        <div class="actions" style="top: 150px">
+                        <h1><?php echo $row['appnt_fullname'] ?> Application Details</h1>
+                        <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0">
                             <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" id="view-application">Print</button>
                             <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
                         </div>
-                        <h1><?php echo $row['appnt_fullname'] ?> Application Details</h1>
                         <div class="hr-line"></div>
                         <div id="fieldset">
                             <fieldset style="float: left">

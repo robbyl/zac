@@ -87,10 +87,24 @@ $result_transaction = mysql_query($query_transaction) or die(mysql_error());
 
 $transaction_id = mysql_insert_id();
 
+// Obtaining the last receipt number
+$query_receipt_no = "SELECT MAX(rec_no) AS cur_rec_no
+                       FROM receipt
+                      WHERE rec_type = 'Online'";
+$result_receipt_no = mysql_query($query_receipt_no) or die(mysql_error());
+
+$row_rec = mysql_fetch_array($result_receipt_no);
+$cur_rec_no = $row_rec['cur_rec_no'];
+$rec_rows = mysql_num_rows($result_receipt_no);
+
+$rec_no = ($rec_rows > 0 ? $rec_no = $cur_rec_no : $rec_no = '0');
+
+$rec_no++;
+
 // Inserting receipt details
 $query_receipt = "INSERT INTO receipt
-                              (tran_id, payed_amount, amount_in_words, user_id)
-                       VALUES ('$transaction_id', '$paid_amount', '$amount_in_words', '$user_id')";
+                              (rec_no, rec_type, tran_id, payed_amount, amount_in_words, user_id)
+                       VALUES ('$rec_no', 'Online', '$transaction_id', '$paid_amount', '$amount_in_words', '$user_id')";
 
 $result_receipt = mysql_query($query_receipt) or die(mysql_error());
 
@@ -98,15 +112,27 @@ $receipt_id = mysql_insert_id();
 
 if ($cust_appnt === "Account No") {
 
-    // Insert data into customer payment table
+    // Accepting customer payments
     $query_cust_payment = "INSERT INTO cust_payment
                                        (rec_id, trans_id, cust_id)
                                 VALUES ('$receipt_id', '$transaction_id', '$cust_id')";
 
     $result_cust_payment = mysql_query($query_cust_payment) or die(mysql_error());
+
+    // If payment is for sewer or water deduct customer debit
+    if ($payment_type === "Water Payment" || $payment_type === "Sewer Payment") {
+
+        $query_aging = "UPDATE aging_analysis
+                           SET aging_debit = aging_debit - '$paid_amount'
+                         WHERE cust_id = '$cust_id'
+                      ORDER BY aging_date DESC
+                         LIMIT 1";
+
+        $result_aging = mysql_query($query_aging) or die(mysql_error());
+    }
 } elseif ($cust_appnt === "Appln No") {
 
-    // Insert data into applicant payment table
+    // Accepting applicant payments
     $query_appnt_payment = "INSERT INTO appnt_payment
                                     (rec_id, trans_id, appnt_id)
                              VALUES ('$receipt_id', '$transaction_id', '$appnt_id')";

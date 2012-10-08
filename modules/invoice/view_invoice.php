@@ -114,11 +114,11 @@
                     $from = $reading - $consumption;
                     ?>
                     <h1>Invoice for <?php echo $row_invoice['appnt_fullname'] ?></h1>
-                    <div class="hr-line"></div>
-                    <div class="actions" style="position: relative; top: 0; margin: 0 0 5px 0;" >
+                    <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                         <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('invoice', '../../css/invoice.css')">Print</button>
                         <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
                     </div>
+                    <div class="hr-line"></div>
                     <form action="../../includes/pdf.php" method="post" id="html-form">
                         <input type="hidden" name="html" id="html">
                     </form>

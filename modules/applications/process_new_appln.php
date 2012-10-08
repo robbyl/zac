@@ -78,7 +78,7 @@ if ($result_appln && $result_applnt) {
     header('Location: add_new_appln.php');
 } else {
 
-    info('error', 'Cannot save, Please try again.');
+    info('error', 'Cannot save, Please try again!.');
     header('Location: add_new_appln.php');
 }
 ?>

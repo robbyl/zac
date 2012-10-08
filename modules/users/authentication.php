@@ -26,7 +26,8 @@ $password = sha1($_POST['password']);
 
 // checkig if username and password are valid
 
-$query_user = "SELECT user_id, username, password, role, password, status
+$query_user = "SELECT user_id, usr_fname, usr_lname, username, 
+                      password, role, password, status
                  FROM users
                 WHERE username = '$username' AND password = '$password' ";
 
@@ -41,7 +42,8 @@ if ($num_row === 1 && $row_user['status'] === 'ACTIVE') {
     mysql_close($conn);
     session_start();
     $_SESSION['username'] = $row_user['username'];
-    $_SESSION['user_full_name'] = $row_user['user_full_name'];
+    $_SESSION['usr_fname'] = $row_user['usr_fname'];
+    $_SESSION['usr_lname'] = $row_user['usr_lname'];
     $_SESSION['user_id'] = $row_user['user_id'];
     $_SESSION['password'] = $row_user['password'];
     session_commit();

@@ -50,13 +50,25 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                     // Iterate each check box
 
                     if(this.checked){
-                        $(':checkbox').each(function(){
+                        $('.checkbox').each(function(){
                             this.checked = true;
+                            $(this).closest('tr').addClass('selected');
                         });
 
                     } else {
-                        $(':checkbox').each(function(){
+                        $('.checkbox').each(function(){
                             this.checked = false;
+                            $(this, '.checkbox').closest('tr').removeClass('selected');
+                        });
+                    }
+                });
+                
+                // Putting backgoround color to the tr for checked checkbox 
+                $('.checkbox').click(function(event) {
+                    $(this).closest('tr').toggleClass('selected');
+                    if (event.target.type !== 'checkbox') {
+                        $(':checkbox', this).attr('checked', function() {
+                            return !this.checked;
                         });
                     }
                 });
@@ -68,7 +80,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 $('.tooltip').tipTip({
                     delay: "300"
                 });
-
+                
             } );
         </script>
     </head>
@@ -126,7 +138,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                                 ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="checkbox[]" value="<?php echo $row['user_id'] ?>" id="<?php echo $row['user_id'] ?>">
+                                        <input type="checkbox" name="checkbox[]" title="Select this user" class="checkbox tooltip" value="<?php echo $row['user_id'] ?>" id="<?php echo $row['user_id'] ?>">
                                     </td>
                                     <td><?php echo $row['usr_fname'] ?></td>
                                     <td><?php echo $row['usr_lname'] ?></td>

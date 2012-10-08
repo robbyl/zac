@@ -120,6 +120,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 h1 {
     color: #0ca696;
+    padding-left: 0;
 }
 
 a img {
@@ -276,7 +277,7 @@ ul.nav ul a, ul.nav ul a:visited {
     margin-bottom: 0;
 }
 
-/* ~~ miscellaneous float/clear classes ~~ */
+/* ~~ miscellaneous classes ~~ */
 
 .fltrt {
     float: right;
@@ -464,8 +465,6 @@ textarea:focus {
     text-align: center;
 }
 
-/* ~~ miscellaneous classes ~~ */
-
 .actions {
     position: absolute;
     top: 170px;
@@ -485,7 +484,7 @@ textarea:focus {
     background: blueviolet;
 }
 
-.actions button {
+.actions button, .add-customer, .add-customer:hover {
     margin: 0;
     padding-left: 25px !important;
     border: none;
@@ -521,6 +520,38 @@ textarea:focus {
     background-size: 16px;
 }
 
+.add-customer {
+    background: url(../images/add-customers.png) no-repeat center center;
+    background-size: contain;
+    height: 20px;
+    width: 100%;
+    padding: 0 5px;
+    cursor: default;
+}
+
+.disabled {
+    opacity: 0.3;
+}
+
+.validity {
+    position: absolute;
+    top: 206px;
+    left: 720px;
+    width: 25px;
+    height: 20px;
+    background: pink;
+}
+
+.correct {
+    background: url(../images/correct.png) no-repeat center center;
+    background-size: contain;
+}
+
+.incorrect {
+    background: url(../images/incorrect.png) no-repeat center center;
+    background-size: contain;
+}
+
 .report-list {
     width: 200px;
     list-style: none;
@@ -545,6 +576,39 @@ textarea:focus {
     height: 160px;
     background: url(../images/loading.gif) no-repeat center center;
 }
+
+.status {
+    display: block;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.paid {
+    background-color: #fadc76;
+    border: 1px solid #d8b256;
+    color: #9b7720;
+}
+
+.not-paid {
+    background-color: #C4452D;
+    border: 1px solid #b12f17;
+    color: #fff;
+}
+
+.processed {
+    background-color: #8dc361;
+    border: 1px solid #489e00;
+    color: #fff;
+}
+
+.selected {
+    background-color: #fff4c4 !important;
+    /*    background-color: #2599CF !important;
+        color: #fff;*/
+}
+/*.selected:hover {
+    color: #fff !important;
+}*/
 
 /* ~~ data table classes ~~ */
 

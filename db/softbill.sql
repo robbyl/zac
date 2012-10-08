@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2012 at 03:00 PM
+-- Generation Time: Oct 08, 2012 at 10:36 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -78,7 +78,7 @@ INSERT INTO `aging_analysis` (`aging_id`, `aging_date`, `inv_id`, `cust_id`, `ag
 (135, '2012-02-01', 134, 17, 12000.00),
 (136, '2012-03-01', 135, 14, 1979.97),
 (137, '2012-03-01', 136, 17, 18000.00),
-(138, '2012-04-01', 137, 14, 2639.96),
+(138, '2012-04-01', 137, 14, -1360.04),
 (139, '2012-04-01', 138, 17, 24000.00);
 
 -- --------------------------------------------------------
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `applicant` (
   PRIMARY KEY (`appnt_id`),
   KEY `appnt_type_id` (`appnt_type_id`),
   KEY `ba_id` (`ba_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `applicant`
@@ -117,7 +117,10 @@ INSERT INTO `applicant` (`appnt_id`, `appnt_type_id`, `appnt_fullname`, `occupan
 (6, 3, 'Chechelu Mnyagatwa', 39, '0713 332 112', '789 Dar', 'Magomeni', 'MGM', 'MGM/USA/393', 'Magomeni', 'Dar es salaam', 2),
 (7, 4, 'Chem & Cotex Ltd.', 1323, '22 545 322', '63353 Dar', 'Mwenge', 'MWN', 'MWN/MIK/892', 'Mwenge', 'Dar es salaam', 3),
 (8, 1, 'Warda Abdallah Said', 8, '0717 567 890', '672 Dar', 'Malapa', 'ILL/89', 'ILL/UOY/899', 'Buguruni', 'Dar es salaam', 1),
-(9, 1, 'Khadija Hamis', 4, '0713 576 872', '736583 Dar', 'Ubungo', 'UB/MSW', 'UB/MSW/893U', 'Ubungo Msewe', 'Dar es Salaam', 1);
+(9, 1, 'Khadija Hamis', 4, '0713 576 872', '736583 Dar', 'Ubungo', 'UB/MSW', 'UB/MSW/893U', 'Ubungo Msewe', 'Dar es Salaam', 1),
+(10, 1, 'Samweli Kiangio', 8, '0786 346 512', '8723 Dar', 'Kijitonyama', 'KND/KJN', 'KND/KJN/982', 'Kijitonyama', 'Dar es Salaam', 2),
+(11, 2, 'Kampala University', 2323, '0713 576 873', '732 Dar', 'Mbagala', 'TMK/KJN', 'TMK/KJN/982', 'Mbagala', 'Dar es Salaam', 1),
+(12, 6, 'Sai Bodi', 1, '0786 346 892', '7365 Dar', 'Ubungo', 'UB/MSW', 'UB/MSW/899U', 'Ubungo Msewe', 'Dar es Salaam', 3);
 
 -- --------------------------------------------------------
 
@@ -141,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `application` (
   PRIMARY KEY (`appln_id`),
   KEY `service_nature_id` (`service_nature_id`),
   KEY `appnt_id` (`appnt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `application`
@@ -151,11 +154,14 @@ INSERT INTO `application` (`appln_id`, `appln_no`, `appln_date`, `appln_type`, `
 (2, 2, '2012-08-07', 'Clean water', '2012-08-09', 'Yes', '2012-08-17', 'Mkumbo', 'Residential', 2, 2, 'Paid'),
 (3, 3, '2012-08-19', 'Clean water', '2012-08-01', 'Yes', '2012-07-03', 'Mkumbo', 'Residential', 3, 3, ''),
 (4, 4, '2012-08-21', 'Clean water', '2012-06-18', 'Yes', '2012-06-28', 'Mkumbo', 'Residential', 3, 4, ''),
-(5, 5, '2012-08-21', 'Clean water', '2012-04-17', 'Yes', '2012-05-14', 'Mkumbo', 'Institution', 1, 5, ''),
+(5, 5, '2012-08-21', 'Clean water', '2012-04-17', 'Yes', '2012-05-14', 'Mkumbo', 'Institution', 1, 5, 'Processed'),
 (6, 6, '2012-08-21', 'Clean water', '2012-06-20', 'Yes', '2012-06-11', 'Juma Shabaani', 'Business', 5, 6, ''),
 (7, 7, '2012-08-21', 'Sewer', '2011-10-17', 'Yes', '2011-11-24', 'Juma Shabaani', 'Residential', 6, 7, ''),
 (8, 8, '2012-08-29', 'Clean water', '2012-08-21', 'Yes', '2012-08-28', 'Juma Shabaani', 'Residential', 2, 8, ''),
-(9, 9, '2012-09-27', 'Clean water', '2012-09-11', 'Yes', '2012-09-20', 'Mashaka Kitundu', 'Residential', 3, 9, '');
+(9, 9, '2012-09-27', 'Clean water', '2012-09-11', 'Yes', '2012-09-20', 'Mashaka Kitundu', 'Residential', 3, 9, ''),
+(10, 10, '2012-10-06', '', '2012-06-11', 'Yes', '2012-07-18', 'Mwamundela John', 'Residential', 3, 10, 'Paid'),
+(11, 11, '2012-10-06', '', '2012-04-03', 'Yes', '2012-06-12', 'Mwamundela John', 'Institution', 1, 11, 'Not Paid'),
+(12, 12, '2012-10-08', '', '2012-04-09', 'Yes', '2012-05-17', 'Mwamundela John', 'Business', 8, 12, 'Not Paid');
 
 -- --------------------------------------------------------
 
@@ -172,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `appnt_payment` (
   KEY `rec_id` (`rec_id`),
   KEY `trans_id` (`trans_id`),
   KEY `appnt_id` (`appnt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `appnt_payment`
@@ -182,7 +188,8 @@ INSERT INTO `appnt_payment` (`appntp_id`, `rec_id`, `trans_id`, `appnt_id`) VALU
 (1, 1, 1651, 9),
 (2, 2, 1652, 7),
 (3, 3, 1653, 5),
-(4, 25, 1815, 2);
+(4, 25, 1815, 2),
+(5, 26, 1816, 10);
 
 -- --------------------------------------------------------
 
@@ -242,14 +249,15 @@ CREATE TABLE IF NOT EXISTS `cheque` (
   `rec_id` int(11) NOT NULL,
   PRIMARY KEY (`cheq_id`),
   KEY `rec_id` (`rec_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `cheque`
 --
 
 INSERT INTO `cheque` (`cheq_id`, `cheq_no`, `bank`, `rec_id`) VALUES
-(1, 'Q89898E', 'CRDB', 1);
+(1, 'Q89898E', 'CRDB', 1),
+(2, '76545', 'NMB', 26);
 
 -- --------------------------------------------------------
 
@@ -495,6 +503,8 @@ INSERT INTO `pay_center` (`pac_id`, `pay_center`) VALUES
 
 CREATE TABLE IF NOT EXISTS `receipt` (
   `rec_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rec_no` int(11) NOT NULL,
+  `rec_type` varchar(255) NOT NULL,
   `tran_id` int(11) NOT NULL,
   `payed_amount` decimal(15,2) NOT NULL,
   `amount_in_words` varchar(500) NOT NULL,
@@ -502,18 +512,19 @@ CREATE TABLE IF NOT EXISTS `receipt` (
   PRIMARY KEY (`rec_id`),
   KEY `tran_id` (`tran_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `receipt`
 --
 
-INSERT INTO `receipt` (`rec_id`, `tran_id`, `payed_amount`, `amount_in_words`, `user_id`) VALUES
-(1, 1651, 7500.00, 'Seven thousand and five hundred shillings only', 1),
-(2, 1652, 8000.00, 'Eight thousands', 1),
-(3, 1653, 9000.00, 'Nine thousands', 1),
-(4, 1794, 4000.00, 'Four thousands', 1),
-(25, 1815, 5000.00, 'Five thousands', 1);
+INSERT INTO `receipt` (`rec_id`, `rec_no`, `rec_type`, `tran_id`, `payed_amount`, `amount_in_words`, `user_id`) VALUES
+(1, 1, '', 1651, 7500.00, 'Seven thousand and five hundred shillings only', 1),
+(2, 2, '', 1652, 8000.00, 'Eight thousands', 1),
+(3, 3, '', 1653, 9000.00, 'Nine thousands', 1),
+(4, 4, '', 1794, 4000.00, 'Four thousands', 1),
+(25, 25, '', 1815, 5000.00, 'Five thousands', 1),
+(26, 26, '', 1816, 7000.00, 'Seven thousands only', 1);
 
 -- --------------------------------------------------------
 
@@ -612,7 +623,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `trans_date` datetime NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1816 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1817 ;
 
 --
 -- Dumping data for table `transaction`
@@ -633,7 +644,8 @@ INSERT INTO `transaction` (`trans_id`, `trans_date`, `description`) VALUES
 (1792, '2012-10-01 21:58:29', 'Sewer Billing'),
 (1793, '2012-10-01 21:58:29', 'Water Billing'),
 (1794, '2012-10-04 17:49:35', 'Application fee'),
-(1815, '2012-10-04 18:22:52', 'Application fee');
+(1815, '2012-10-04 18:22:52', 'Application fee'),
+(1816, '2012-10-06 13:27:30', 'Application fee');
 
 -- --------------------------------------------------------
 
@@ -659,9 +671,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `usr_fname`, `usr_lname`, `email`, `username`, `password`, `role`, `status`) VALUES
-(1, 'Admin Admin', '', 'admin@localhost', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'ROOT', 'ACTIVE'),
+(1, 'Admin', 'Admin', 'admin@localhost', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'ROOT', 'ACTIVE'),
 (2, 'user1', '', 'user1@localhost.com', 'user1', 'b3daa77b4c04a9551b8781d03191fe098f325e67', 'ROOT', 'BLOCKED'),
-(3, 'user2', '', 'user2@localhost.com', 'user2', 'a1881c06eec96db9901c7bbfe41c42a3f08e9cb4', 'ROOT', 'BLOCKED'),
+(3, 'user2', 'user2', 'user2@localhost.com', 'user2', 'a1881c06eec96db9901c7bbfe41c42a3f08e9cb4', 'ROOT', 'BLOCKED'),
 (7, 'user30', '', 'user3@localhost.com', 'user3', 'bff5c0d86f525bb86ade3e19bbe2cf8a23cbddfc', 'ROOT', 'ACTIVE'),
 (8, 'user4', '', 'user4@localhost.com', 'user4', '06e6eef6adf2e5f54ea6c43c376d6d36605f810e', 'ROOT', 'BLOCKED'),
 (9, 'user5', '', 'user5@localhost.com', 'user5', '7d112681b8dd80723871a87ff506286613fa9cf6', 'ROOT', 'BLOCKED'),
