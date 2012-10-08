@@ -47,6 +47,56 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     $result_appln = mysql_query($query_appln) or die(mysql_error());
     ?>
 
+    <script type="text/javascript">
+        oTable = $('#dataTable').dataTable({
+            "bJQueryUI": true,
+            "bScrollCollapse": true,
+            "sScrollY": "600px",
+            "bAutoWidth": false,
+            "bPaginate": true,
+            "sPaginationType": "full_numbers", //full_numbers,two_button
+            "bStateSave": true,
+            "bInfo": true,
+            "bFilter": true,
+            "iDisplayLength": 25,
+            "bLengthChange": true,
+            "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+        });
+            
+        $('#select-all').click(function(){
+            // Iterate each check box
+
+            if(this.checked){
+                $('.checkbox').each(function(){
+                    this.checked = true;
+                    $(this).closest('tr').addClass('selected');
+                });
+
+            } else {
+                $('.checkbox').each(function(){
+                    this.checked = false;
+                    $(this, '.checkbox').closest('tr').removeClass('selected');
+                });
+            }
+        });
+                                                                            
+        // Putting backgoround color to the tr for checked checkbox 
+        $('.checkbox').click(function(event) {
+            event.stopPropagation();
+            $(this).closest('tr').toggleClass('selected');
+            if (event.target.type !== 'checkbox') {
+                $(':checkbox', this).attr('checked', function() {
+                    return !this.checked;
+                });
+            }
+        });
+
+        $('.tooltip').tipTip({
+            delay: "300"
+        });
+
+    </script>
+
     <form action="action.php" method="post" onSubmit="">
         <div class="actions" style="top: 212px">
             <button class="edit tooltip" accesskey="E" title="Edit [Alt+Shift+E]" name="action[]"  value="EDIT">Edit</button>
@@ -72,7 +122,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 while ($row = mysql_fetch_array($result_appln)) {
                     ?>
                     <tr onClick="nav('view_customer.php?id=<?php echo $row['cust_id'] ?>')">
-                        <td><input type="checkbox" name="checkbox[]" value="<?php echo $row['cust_id'] ?>"
+                        <td><input type="checkbox" class="checkbox" name="checkbox[]" value="<?php echo $row['cust_id'] ?>"
                                    id="<?php echo $row['cust_id'] ?>" ></td>
                         <td><?php echo $row['acc_no'] ?></td>
                         <td><?php echo $row['appnt_fullname'] ?></td>
@@ -90,27 +140,5 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
             </tbody>
         </table>
     </form>
-
-    <script type="text/javascript">
-        oTable = $('#dataTable').dataTable({
-            "bJQueryUI": true,
-            "bScrollCollapse": true,
-            "sScrollY": "600px",
-            "bAutoWidth": false,
-            "bPaginate": true,
-            "sPaginationType": "full_numbers", //full_numbers,two_button
-            "bStateSave": true,
-            "bInfo": true,
-            "bFilter": true,
-            "iDisplayLength": 25,
-            "bLengthChange": true,
-            "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
-        });
-
-        $('.tooltip').tipTip({
-            delay: "300"
-        });
-
-    </script>
 
 <?php } ?>

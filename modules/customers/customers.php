@@ -25,20 +25,6 @@ ob_start();
 
             $(document).ready(function() { 
 
-                $('#select-all').click(function(){
-                    // Iterate each check box
-
-                    if(this.checked){
-                        $(':checkbox').each(function(){
-                            this.checked = true;
-                        });
-                    } else {
-                        $(':checkbox').each(function(){
-                            this.checked = false;
-                        });
-                    }
-                });
-
                 $('#billing_area').change(function(){
 
                     getContent('customer_listing.php', {filter: $(this).val()});

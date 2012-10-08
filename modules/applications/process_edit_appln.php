@@ -49,11 +49,10 @@ for ($i = 0; $i < $appln_no; $i++) {
                            appln_date = '$appln_date[$i]',
                            appln_type = '$appln_type[$i]',
                            surveyed_date = '$surveyed_date[$i]',
-                           engeneer_appr = '$engeneer_appr[$i][$i]',
+                           engeneer_appr = '$engeneer_appr[$i]',
                            approved_date = '$approved_date[$i]',
                            inspected_by = '$inspected_by[$i]',
-                           premise_nature = '$premise_nature[$i]',
-                           service_nature_id = '$service_nature[$i]'
+                           premise_nature = '$premise_nature[$i]'
                      WHERE appln_id = '$appln_id[$i]'";
 
     $result_appln = mysql_query($query_appln) or die(mysql_error());

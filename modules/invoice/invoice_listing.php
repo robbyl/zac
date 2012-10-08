@@ -50,8 +50,8 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
     oTable = $('#dataTable').dataTable({
         "bJQueryUI": true,
         "bScrollCollapse": true,
-        "sScrollY": "auto",
-        "bAutoWidth": true,
+        "sScrollY": "600px",
+        "bAutoWidth": false,
         "bPaginate": true,
         "sPaginationType": "full_numbers", //full_numbers,two_button
         "bStateSave": true,
@@ -61,32 +61,37 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
         "bLengthChange": true,
         "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
     });
-
-    $('.message, .error').hide().slideDown('normal').click(function(){
-        $(this).slideUp('normal');
-    });
-
-    function nav(url){
-        document.location.href = url;
-    }
-
-    $('.tooltip').tipTip({
-        delay: "300"
-    });
-
+            
     $('#select-all').click(function(){
         // Iterate each check box
 
         if(this.checked){
-            $(':checkbox').each(function(){
+            $('.checkbox').each(function(){
                 this.checked = true;
+                $(this).closest('tr').addClass('selected');
             });
 
         } else {
-            $(':checkbox').each(function(){
+            $('.checkbox').each(function(){
                 this.checked = false;
+                $(this, '.checkbox').closest('tr').removeClass('selected');
             });
         }
+    });
+                                                                            
+    // Putting backgoround color to the tr for checked checkbox 
+    $('.checkbox').click(function(event) {
+        event.stopPropagation();
+        $(this).closest('tr').toggleClass('selected');
+        if (event.target.type !== 'checkbox') {
+            $(':checkbox', this).attr('checked', function() {
+                return !this.checked;
+            });
+        }
+    });
+
+    $('.tooltip').tipTip({
+        delay: "300"
     });
 </script>
 
@@ -115,7 +120,7 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
             ?>
             <tr onClick="nav('view_invoice.php?inv_id=<?php echo $row['inv_id'] ?>')">
                 <td>
-                    <input type="checkbox" name="checkbox[]" value="<?php echo $row['inv_id'] ?>" id="<?php echo $row['inv_id'] ?>">
+                    <input type="checkbox" name="checkbox[]" class="checkbox" value="<?php echo $row['inv_id'] ?>" id="<?php echo $row['inv_id'] ?>">
                 </td>
                 <td><?php echo sprintf('%08d', $row['inv_no']) ?></td>
                 <td><?php echo $row['acc_no'] ?></td>
