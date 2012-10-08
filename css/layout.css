@@ -266,10 +266,11 @@ ul.nav ul a, ul.nav ul a:visited {
     bottom: 0;
     padding: 10px 15%;
     background-color: #fff;
+    background-color: #eeeeee;
     clear: both;
     font-size: 14px;
     border-top: 1px solid #e0e0e0;
-    color: #a0a0a0;
+    color: #909090;
 }
 
 .footer p {
