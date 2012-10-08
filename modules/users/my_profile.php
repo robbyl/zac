@@ -65,8 +65,14 @@ $row = mysql_fetch_array($result_user);
                         <table width="" border="0" cellpadding="5">
                             <input name="user_id" value="<?php echo $row['user_id'] ?>" type="hidden" />
                             <tr>
-                                <td width="100">Full Name</td>
-                                <td><input type="text" name="fullname" value="<?php echo $row['user_full_name'] ?>" required size="255" class="text"></td>
+                                <td width="100">First Name</td>
+                                <td><input type="text" name="fname" value="<?php echo $row['usr_fname'] ?>" required size="255" class="text"></td>
+                                
+                            </tr>
+                            <tr>
+                                <td width="100">Last Name</td>
+                                <td><input type="text" name="lname" value="<?php echo $row['usr_lname'] ?>" required size="255" class="text"></td>
+                                
                             </tr>
                             <tr>
                                 <td width="100">E-mail</td>
