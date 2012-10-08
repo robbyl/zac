@@ -15,7 +15,7 @@ $cashier_full_name = $cashier_fname . " " . $cashier_lname;
 
 // Obtaining the last receipt number
 $query_receipt_no = "SELECT MAX(rec_no) AS cur_rec_no
-                       FROM receipt";
+                       FROM online_receipt";
 $result_receipt_no = mysql_query($query_receipt_no) or die(mysql_error());
 
 $row_rec = mysql_fetch_array($result_receipt_no);
