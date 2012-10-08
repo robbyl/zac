@@ -89,7 +89,8 @@ $transaction_id = mysql_insert_id();
 
 // Obtaining the last receipt number
 $query_receipt_no = "SELECT MAX(rec_no) AS cur_rec_no
-                       FROM online_receipt";
+                       FROM receipt
+                      WHERE rec_type = 'Online'";
 $result_receipt_no = mysql_query($query_receipt_no) or die(mysql_error());
 
 $row_rec = mysql_fetch_array($result_receipt_no);
@@ -101,9 +102,9 @@ $rec_no = ($rec_rows > 0 ? $rec_no = $cur_rec_no : $rec_no = '0');
 $rec_no++;
 
 // Inserting receipt details
-$query_receipt = "INSERT INTO online_receipt
-                              (rec_no, tran_id, payed_amount, amount_in_words, user_id)
-                       VALUES ('$rec_no', '$transaction_id', '$paid_amount', '$amount_in_words', '$user_id')";
+$query_receipt = "INSERT INTO receipt
+                              (rec_no, rec_type, tran_id, payed_amount, amount_in_words, user_id)
+                       VALUES ('$rec_no', 'Online', '$transaction_id', '$paid_amount', '$amount_in_words', '$user_id')";
 
 $result_receipt = mysql_query($query_receipt) or die(mysql_error());
 
