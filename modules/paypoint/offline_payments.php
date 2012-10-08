@@ -12,20 +12,6 @@ $cashier_lname = strtoupper($_SESSION['usr_lname']);
 session_commit();
 
 $cashier_full_name = $cashier_fname . " " . $cashier_lname;
-
-// Obtaining the last receipt number
-$query_receipt_no = "SELECT MAX(rec_no) AS cur_rec_no
-                       FROM receipt
-                      WHERE rec_type = 'Online'";
-$result_receipt_no = mysql_query($query_receipt_no) or die(mysql_error());
-
-$row_rec = mysql_fetch_array($result_receipt_no);
-$cur_rec_no = $row_rec['cur_rec_no'];
-$rec_rows = mysql_num_rows($result_receipt_no);
-
-$rec_no = ($rec_rows > 0 ? $rec_no = $cur_rec_no : $rec_no = '0');
-
-$rec_no++;
 ?>
 
 <!doctype html>
@@ -33,7 +19,7 @@ $rec_no++;
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | ONLINE PAYMENTS</title>
+        <title>SOFTBILL | OFFLINE PAYMENTS</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
         <link href="../../css/pop-up.css" rel="stylesheet" type="text/css">
@@ -64,6 +50,7 @@ $rec_no++;
                         
                         event.preventDefault();
                         
+                        var recNo = $('#rec-no').val();
                         var payer = $('#cust-appnt').val();
                         var payerNo = $('#number').val();
                         var custName = $('#custName').html();
@@ -89,6 +76,7 @@ $rec_no++;
                             $('#payer-addr').html('Applicant Address:');
                         }
                         
+                        $('#recRecNo').html(recNo);
                         $('#payer-no').html(payerNo);
                         $('#recCustName').html(custName);
                         $('#recPostAddr').html(postAddr);
@@ -108,11 +96,10 @@ $rec_no++;
                     });       
                 });
 
-                // Submitting payments to the databse and print receipt.
+                // Submitting payments to the databse.
                 $('#save-print').click(function(){
  
                     $('#payment-form').unbind('submit').submit();
-                    printPage('receipt-print', '../../css/pop-up.css');
                 });
                 
                 //Hide and show cheque details depending on transaction type.
@@ -148,8 +135,8 @@ $rec_no++;
                     <li> <a href="../invoice/invoices.php" class="invoices">Invoice</a></li>
                     <li> <a href="../paypoint/paypoint.php" class="financial">Pay Point</a>
                         <ul>
-                            <li><a href="#">Online payments</a></li>
-                            <li><a href="offline_payments.php">Offline payments</a></li>
+                            <li><a href="online_payments.php">Online payments</a></li>
+                            <li><a href="#">Offline payments</a></li>
                             <li><a href="transactions.php">Transactions</a></li>
                         </ul>
                     </li>
@@ -161,12 +148,16 @@ $rec_no++;
                 // Displaying messages and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Accept Online Payments</h1>
+                <h1>Accept Offline Payments</h1>
                 <div class="hr-line"></div>
-                <form action="process_online_payment.php" id="payment-form" method="post">
+                <form action="process_offline_payment.php" id="payment-form" method="post">
                     <fieldset style="float: left">
                         <legend>Customer/Applicant Details</legend>
                         <table width="" border="0" cellpadding="5">
+                            <tr>
+                                <td width="170">Receipt No</td>
+                                <td><input type="text" name="receipt_no" id="rec-no" class="text" required /></td>
+                            </tr>
                             <tr>
                                 <td width="170">
                                     <select name="cust_appnt" id="cust-appnt" required class="select">
@@ -278,7 +269,7 @@ $rec_no++;
                                             <td width="18%" id="payer-name"></td>
                                             <td width="50%" id="recCustName"></td>
                                             <td width="8%">&nbsp;</td>
-                                            <td width="23%" align="right"><span style="float: left">Receipt No:</span> <?php echo sprintf('%08d', $rec_no); ?></td>
+                                            <td width="23%" align="right"><span style="float: left">Receipt No:</span><span id="recRecNo"></span></td>
                                         </tr>
                                         <tr>
                                             <td id="payer-no-type"></td>
@@ -340,7 +331,7 @@ $rec_no++;
                             <table width="100%" class="form-footer">
                                 <tr align="right">
                                     <td width="">
-                                        <button type="submit" form="payment-form" id="save-print">Save & Print</button>
+                                        <button type="submit" form="payment-form" id="save-print">Save</button>
                                         <button type="reset">Cancel</button>
                                     </td>
                                 </tr>
