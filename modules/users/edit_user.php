@@ -94,7 +94,12 @@
                                         <td><select name="role[]" class="select" required="required">
                                                 <option value="">-- Select Role --</option>
                                                 <option <?php if ($row['role'] === 'ROOT') echo 'selected="selected"' ?> value="ROOT">Administrator</option>
+                                                <option <?php if ($row['role'] === 'ACCOUNTANT') echo 'selected="selected"' ?> value="CASHIER">Accountant</option>
                                                 <option <?php if ($row['role'] === 'CASHIER') echo 'selected="selected"' ?> value="CASHIER">Cashier</option>
+                                                <option <?php if ($row['role'] === 'CONNECTION OFFICER') echo 'selected="selected"' ?> value="Connection Officer">Connection Officer</option>
+                                                <option <?php if ($row['role'] === 'DATA CLERK') echo 'selected="selected"' ?> value="Data Clerk">Credit Controller</option>
+                                                <option <?php if ($row['role'] === 'MANAGER') echo 'selected="selected"' ?> value="Manager">Manager</option>
+                                                
                                             </select></td>
                                     </tr>
 
