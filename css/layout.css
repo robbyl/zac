@@ -263,6 +263,7 @@ ul.nav ul a, ul.nav ul a:visited {
 .footer {
     position: fixed;
     width: 100%;
+    left: 0;
     bottom: 0;
     padding: 10px 15%;
     background-color: #fff;

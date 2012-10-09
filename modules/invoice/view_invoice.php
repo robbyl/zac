@@ -53,14 +53,13 @@
                 </ul>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <div id="pdf-info">
-                </div>
+
                 <?php
-                // Displaying message and errors
                 include '../../includes/info.php';
                 require '../../functions/general_functions.php';
                 require '../../config/config.php';
                 ?>
+
                 <h1>View Invoice(s)</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                     <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('invoice', '../../css/invoice.css')">Print</button>
@@ -120,7 +119,7 @@
 
                         //getting  invoice header data from the database
                         $query_settings = "SELECT aut_name, address, phone,fax, email, logo,terms_conds
-                                         FROM settings ";
+                                             FROM settings ";
 
                         $result_settings = mysql_query($query_settings) or die(mysql_error());
 
@@ -237,7 +236,7 @@
                                             <td align="right"><?php echo $row_invoice['sewer_cost'] ?></td>
                                         </tr>
                                     </table>
-                                </div>
+                                    <!-- end .invoice-body --></div>
                                 <div class="invoice-footer">
                                     <table border="0" cellspacing="3" cellpadding="5" width="1000">
                                         <tr>
@@ -257,7 +256,7 @@
                         <!-- end #invoice --></div> 
                     <!-- end .invoice-wrapper --></div>
                 <!-- end .content --></div>
+            <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
-        <?php include '../../includes/footer.php'; ?>
     </body>
 </html>

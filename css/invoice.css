@@ -33,7 +33,10 @@ ul {
 }
 .invoice {
     width: 1000px;
-    padding: 10px 30px !important;
+    padding-top: 25px !important;
+    padding-bottom: 10px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
     clear: both;
     border-bottom: 1px dashed #000 !important;
     background-color: #fff;
@@ -96,4 +99,26 @@ ul {
     float: left;
     padding: 0 10px 0 0 !important;
     list-style: none;
+}
+
+@media print {
+    .footer {
+        display: none;
+    }
+}
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+    
+    .invoice {
+        padding-top: 25px;
+        padding-bottom: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        page-break-inside: avoid;
+    }
 }
