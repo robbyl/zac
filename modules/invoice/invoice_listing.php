@@ -98,44 +98,45 @@ $result_invoice = mysql_query($query_invoice) or die(mysql_error());
         document.location.href = url;
     }
 </script>
-
-<div class="actions" style="top: 212px">
-    <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" name="action[]" value="PRINT">Print</button>
-    <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
-</div>
-<table cellpadding="0" cellspacing="0" border="0" id="dataTable">
-    <thead>
-        <tr>
-            <th width="10">
-                <input type="checkbox" id="select-all" accesskey="A" title="Select all [Alt+Shift+A]" class="tooltip">
-            </th>
-            <th title="Invoice number" class="tooltip">Invoice No.</th>
-            <th title="Account number" class="tooltip">Account No.</th>
-            <th>Billing month</th>
-            <th>Created date</th>
-            <th>Customer name</th>
-            <th>Service type</th>
-            <th title="Total amount payable" class="tooltip">Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        while ($row = mysql_fetch_array($result_invoice)) {
-            ?>
-            <tr onClick="nav('view_invoice.php?inv_id=<?php echo $row['inv_id'] ?>')">
-                <td>
-                    <input type="checkbox" name="checkbox[]" class="checkbox" value="<?php echo $row['inv_id'] ?>" id="<?php echo $row['inv_id'] ?>">
-                </td>
-                <td><?php echo sprintf('%08d', $row['inv_no']) ?></td>
-                <td><?php echo $row['acc_no'] ?></td>
-                <td><?php echo $row['invoicing_date'] ?></td>
-                <td><?php echo $row['created_date'] ?></td>
-                <td><?php echo $row['appnt_fullname'] ?></td>
-                <td><?php echo $row['appln_type'] ?></td>
-                <td align="right"><?php echo number_format($row['amount_payable'], '2', '.', ',') ?></td>
+<form action="view_invoice.php" method="post" id="inv-form">
+    <div class="actions" style="top: 212px">
+        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" >Print</button>
+        <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
+    </div>
+    <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
+        <thead>
+            <tr>
+                <th width="10">
+                    <input type="checkbox" id="select-all" accesskey="A" title="Select all [Alt+Shift+A]" class="tooltip">
+                </th>
+                <th title="Invoice number" class="tooltip">Invoice No.</th>
+                <th title="Account number" class="tooltip">Account No.</th>
+                <th>Billing month</th>
+                <th>Created date</th>
+                <th>Customer name</th>
+                <th>Service type</th>
+                <th title="Total amount payable" class="tooltip">Total</th>
             </tr>
+        </thead>
+        <tbody>
             <?php
-        }
-        ?>
-    </tbody>
-</table>
+            while ($row = mysql_fetch_array($result_invoice)) {
+                ?>
+                <tr onClick="nav('view_invoice.php?inv_id[]=<?php echo $row['inv_id'] ?>')">
+                    <td>
+                        <input type="checkbox" name="checkbox[]" class="checkbox" value="<?php echo $row['inv_id'] ?>" id="<?php echo $row['inv_id'] ?>">
+                    </td>
+                    <td><?php echo sprintf('%08d', $row['inv_no']) ?></td>
+                    <td><?php echo $row['acc_no'] ?></td>
+                    <td><?php echo $row['invoicing_date'] ?></td>
+                    <td><?php echo $row['created_date'] ?></td>
+                    <td><?php echo $row['appnt_fullname'] ?></td>
+                    <td><?php echo $row['appln_type'] ?></td>
+                    <td align="right"><?php echo number_format($row['amount_payable'], '2', '.', ',') ?></td>
+                </tr>
+                <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</form>

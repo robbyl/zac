@@ -28,6 +28,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
         <script src="../../js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
         <script src="../../js/jquery.dataTables.pagination.js" type="text/javascript"></script>
         <script src="../../js/tooltip.js" type="text/javascript"></script>
+        
         <script type="text/javascript">
             
             $(document).ready(function() {

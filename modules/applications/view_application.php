@@ -14,7 +14,10 @@
             #fieldset tr:nth-child(even){
                 background: #f2f2f2;
             }
-
+            
+            #fieldset tr:nth-child(odd){
+                background: #fff;
+            }
 
         </style>
 
