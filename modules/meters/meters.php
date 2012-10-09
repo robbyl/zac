@@ -46,27 +46,37 @@ $result_meter = mysql_query($query_meter) or die(mysql_error());
                     "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
                 });
 
-                $('#select-all').click(function(){
-                    // Iterate each check box
+                 $('#select-all').click(function(){
+        // Iterate each check box
 
-                    if(this.checked){
-                        $(':checkbox').each(function(){
-                            this.checked = true;
-                        });
-                    } else {
-                        $(':checkbox').each(function(){
-                            this.checked = false;
-                        });
-                    }
-                });
+        if(this.checked){
+            $('.checkbox').each(function(){
+                this.checked = true;
+                $(this).closest('tr').addClass('selected');
+            });
 
-                $('.message, .error').hide().slideDown('normal').click(function(){
-                    $(this).slideUp('normal');
-                });
+        } else {
+            $('.checkbox').each(function(){
+                this.checked = false;
+                $(this, '.checkbox').closest('tr').removeClass('selected');
+            });
+        }
+    });
+                                                                            
+    // Putting backgoround color to the tr for checked checkbox 
+    $('.checkbox').click(function(event) {
+        event.stopPropagation();
+        $(this).closest('tr').toggleClass('selected');
+        if (event.target.type !== 'checkbox') {
+            $(':checkbox', this).attr('checked', function() {
+                return !this.checked;
+            });
+        }
+    });
 
-                $('.tooltip').tipTip({
-                    delay: "300"
-                });
+    $('.tooltip').tipTip({
+        delay: "300"
+    });
 
             } );
         </script>
@@ -129,7 +139,7 @@ $result_meter = mysql_query($query_meter) or die(mysql_error());
                                 ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="checkbox[]" value="<?php echo $row['met_id'] ?>" id="<?php echo $row['met_id'] ?>">
+                                        <input type="checkbox" name="checkbox[]" class="checkbox" value="<?php echo $row['met_id'] ?>" id="<?php echo $row['met_id'] ?>">
                                     </td>
                                     <td><?php echo $row['met_number'] ?></td>
                                     <td><?php echo $row['met_type'] ?></td>
