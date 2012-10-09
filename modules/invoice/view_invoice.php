@@ -66,9 +66,6 @@
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
                 </div>
                 <div class="hr-line"></div>
-                <form action="../../includes/pdf.php" method="post" id="html-form">
-                    <input type="hidden" name="html" id="html">
-                </form>
                 <div class="invoice-wrapper">
 
                     <?php
@@ -128,7 +125,11 @@
                         $reading = $row_invoice['reading'];
                         $consumption = $row_invoice['consumption'];
                         $from = $reading - $consumption;
-                        ?>   
+                        ?>
+
+                    <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
+                            <input type="hidden" name="html" id="html">
+                        </form>
 
                         <div id="invoice">
                             <div class="invoice">
@@ -142,9 +143,9 @@
                                         <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
                                     </div>
                                     <ul class="inv-list" style="width: 230px; padding-right: 0 !important; position: absolute; top: 0; right: 0">
-                                        <li>Phone: <span style="clear: both; float: right"><?php echo $row_settings['phone']; ?></span></li>
-                                        <li>Fax: <span style="clear: both; float: right"><?php echo $row_settings['fax']; ?></span></li>
-                                        <li>E-mail: <span style="clear: both; float: right"><?php echo $row_settings['email']; ?></span></li>
+                                        <li>Phone: <span style="float: right"><?php echo $row_settings['phone']; ?></span></li>
+                                        <li>Fax: <span style="float: right"><?php echo $row_settings['fax']; ?></span></li>
+                                        <li>E-mail: <span style="float: right"><?php echo $row_settings['email']; ?></span></li>
                                     </ul>
                                 </div>
                                 <div class="customer-header">
