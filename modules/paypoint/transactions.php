@@ -2,6 +2,15 @@
 require '../../includes/session_validator.php';
 
 ob_start();
+
+require '../../config/config.php';
+
+$query_transaction = "SELECT rec_id, trans_id, trans_date,description, rec_no,rec_type, payed_amount,
+                                      amount_in_words, user_id 
+                               FROM  receipt rcpt
+                               INNER JOIN transaction trans
+                                      ON rcpt.tran_id = trans.trans_id";
+$result_transaction = mysql_query($query_transaction) or die(mysql_error());
 ?>
 
 <!doctype html>
@@ -15,24 +24,70 @@ ob_start();
         <link href="../../css/jquery.ui.theme.css" rel="stylesheet" type="text/css">
         <link href="../../css/ui_darkness.css" rel="stylesheet" type="text/css">
         <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
+
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="../../js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
         <script src="../../js/jquery.dataTables.pagination.js" type="text/javascript"></script>
         <script src="../../js/tooltip.js" type="text/javascript"></script>
         <script src="../../js/softbill-core.js" type="text/javascript"></script>
+
         <script type="text/javascript">
-
-            $(document).ready(function() {
-
-                $('#enter_by').click(function(){
-                    getContent('invoices.php');
+            
+            $(document).ready(function(){
+                oTable = $('#dataTable').dataTable({
+                    "bJQueryUI": true,
+                    "bScrollCollapse": true,
+                    "sScrollY": "600px",
+                    "bAutoWidth": false,
+                    "bPaginate": true,
+                    "sPaginationType": "full_numbers", //full_numbers,two_button
+                    "bStateSave": true,
+                    "bInfo": true,
+                    "bFilter": true,
+                    "iDisplayLength": 25,
+                    "bLengthChange": true,
+                    "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
                 });
-            } );
+
+                $('#select-all').click(function(){
+                    // Iterate each check box
+
+                    if(this.checked){
+                        $('.checkbox').each(function(){
+                            this.checked = true;
+                            $(this).closest('tr').addClass('selected');
+                        });
+
+                    } else {
+                        $('.checkbox').each(function(){
+                            this.checked = false;
+                            $(this, '.checkbox').closest('tr').removeClass('selected');
+                        });
+                    }
+                });
+                                                                            
+                // Putting backgoround color to the tr for checked checkbox 
+                $('.checkbox').click(function(event) {
+                    event.stopPropagation();
+                    $(this).closest('tr').toggleClass('selected');
+                    if (event.target.type !== 'checkbox') {
+                        $(':checkbox', this).attr('checked', function() {
+                            return !this.checked;
+                        });
+                    }
+                });
+                                                                      
+                $('.tooltip').tipTip({
+                    delay: "300"
+                });
+                
+            });
+                  
         </script>
     </head>
 
-    <body>
+    <body>  
         <div class="container">
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
@@ -80,6 +135,33 @@ ob_start();
                 <div id="listing">
 
                     <!-- end #listing --></div>
+
+
+                <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th width="23"> 
+                                <input type="checkbox" id="select-all" accesskey="A" title="Select all [Alt+Shift+A]" class="tooltip">
+                            </th>
+                            <th>transation date</th>
+                            <th>description </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($row = mysql_fetch_array($result_transaction)) {
+                            ?>
+                            <tr>
+                                <td><input type="checkbox" name="checkbox[]" class="checkbox tooltip" value="<?php echo $row['trans_id'] ?>"
+                                           id="<?php echo $row['trans_id'] ?>" title="Select this application"></td>
+                                <td><?php echo $row['trans_date']; ?></td>
+                                <td><?php echo $row['description']; ?></td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
                 <!-- end .content --></div>
             <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
