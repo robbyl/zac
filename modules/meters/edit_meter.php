@@ -59,6 +59,8 @@
                     if (!empty($_POST['checkbox'])) {
 
                         require '../../config/config.php';
+                        
+                        $i=0;
 
                         while (list($key, $val) = each($_POST['checkbox'])) {
                             $query_meter = "SELECT *
@@ -80,8 +82,11 @@
                                     <tr>
                                         <td width="170">Meter Type</td>
                                         <td>
-                                            <label><input type="radio" name="meter_type[]" value="Tameng" <?php if ($row['met_type'] === 'Tameng') echo 'checked'; ?> required class="radio" >Tameng</label>&nbsp;&nbsp;
-                                            <label><input type="radio" name="meter_type[]" value="Metscant" <?php if ($row['met_type'] === 'Metscant') echo 'checked'; ?> required class="radio" >Metscant</label>
+                          
+                                            
+                                            <label><input type="radio" <?php if ($row['met_type'] === "Tameng") echo 'checked' ?> name="<?php echo 'meter_type[' . $i . ']' ?>" value="Tameng">Tameng</label>&nbsp;&nbsp;                                                                  
+                                            
+                                            <label><input type="radio" <?php if ($row['met_type'] === "Metscant") echo 'checked' ?> name="<?php echo 'meter_type[' . $i . ']' ?>" value="Metscant">Metscant</label>&nbsp;&nbsp;
                                         </td>
                                     </tr>
                                     <tr>
@@ -119,6 +124,7 @@
                             </fieldset>
                             <div class="hr-line" style="width: 50%; background: #e0e0e0; margin: 10px 5px"></div>
                             <?php
+                             $i++;
                         }
                         ?>
                         <table width="531" style="clear: both">
