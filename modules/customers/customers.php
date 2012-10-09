@@ -8,7 +8,7 @@ ob_start();
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | CUSTOMERS</title>
+        <title>SOFTBILL | VIEW CUSTOMERS</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/data_table.css" rel="stylesheet" type="text/css">
         <link href="../../css/jquery.ui.theme.css" rel="stylesheet" type="text/css">
@@ -24,20 +24,6 @@ ob_start();
         <script type="text/javascript">
 
             $(document).ready(function() { 
-
-                $('#select-all').click(function(){
-                    // Iterate each check box
-
-                    if(this.checked){
-                        $(':checkbox').each(function(){
-                            this.checked = true;
-                        });
-                    } else {
-                        $(':checkbox').each(function(){
-                            this.checked = false;
-                        });
-                    }
-                });
 
                 $('#billing_area').change(function(){
 
@@ -83,7 +69,7 @@ ob_start();
                 // Displaying messages and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Customers</h1>
+                <h1>View Customers</h1>
                 <div class="hr-line"></div>
                 <div style="margin-bottom: 15px;">
                     <label> Billing Area/Zone &nbsp;

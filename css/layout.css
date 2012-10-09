@@ -6,11 +6,12 @@
 }
 
 body {
+    -webkit-print-color-adjust: exact;
     font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
-    color: #272727;  
+    background: url(../images/pattern_bg.jpg) transparent;
+    color: #272727;
 }
 
 .logo {
@@ -146,7 +147,6 @@ a:hover, a:active, a:focus {
 
 .container {
     width: 100%;
-    background-color: #fff;
 }
 
 .header {
@@ -163,7 +163,6 @@ a:hover, a:active, a:focus {
     float: left;
     width: 14%;
     position: fixed;
-    background-color: #ffffff;
     padding-bottom: 10px;
     margin-top: 80px;
 }
@@ -173,6 +172,7 @@ a:hover, a:active, a:focus {
     width: 86%;
     float: left;
     margin-left: 14%;
+    background: transparent;
 }
 
 /* ~~ This grouped selector gives the lists in the .content area space ~~ */
@@ -196,7 +196,6 @@ ul.nav a, ul.nav a:visited {
     padding: 5px 5px 5px 35px;
     display: block;
     text-decoration: none;
-    background-color: #FFF;
     color: #000;
 }
 
@@ -264,13 +263,15 @@ ul.nav ul a, ul.nav ul a:visited {
 .footer {
     position: fixed;
     width: 100%;
+    left: 0;
     bottom: 0;
     padding: 10px 15%;
     background-color: #fff;
+    background-color: #eeeeee;
     clear: both;
     font-size: 14px;
     border-top: 1px solid #e0e0e0;
-    color: #a0a0a0;
+    color: #909090;
 }
 
 .footer p {
@@ -417,7 +418,7 @@ textarea:focus {
 .home-icon {
     width: 180px;
     height: 150px;
-    border: 1px #ffffff solid;
+    border: 1px transparent solid;
     margin: 40px 50px 0px 50px;
 }
 
@@ -606,9 +607,10 @@ textarea:focus {
     /*    background-color: #2599CF !important;
         color: #fff;*/
 }
-/*.selected:hover {
-    color: #fff !important;
-}*/
+
+.current {
+    background-color: #f1eded;
+}
 
 /* ~~ data table classes ~~ */
 

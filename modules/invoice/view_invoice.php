@@ -53,20 +53,37 @@
                 </ul>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <div id="pdf-info">
-                </div>
+
                 <?php
-                // Displaying message and errors
                 include '../../includes/info.php';
+                require '../../functions/general_functions.php';
+                require '../../config/config.php';
+                ?>
 
-                if (!empty($_GET['inv_id']) && isset($_GET['inv_id'])) {
+                <h1>View Invoice(s)</h1>
+                <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
+                    <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('invoice', '../../css/invoice.css')">Print</button>
+                    <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
+                </div>
+                <div class="hr-line"></div>
+                <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
+                    <input type="hidden" name="html" id="html">
+                </form>
+                <div class="invoice-wrapper">
+                    <div id="invoice">
 
-                    require '../../functions/general_functions.php';
-                    require '../../config/config.php';
+                        <?php
+                        if (!empty($_POST['checkbox'])) {
+                            $checkbox = $_POST['checkbox'];
+                        }
 
-                    $inv_id = clean($_GET['inv_id']);
+                        if (!empty($_GET['inv_id'])) {
+                            $checkbox = $_GET['inv_id'];
+                        }
 
-                    $query_invoice = "SELECT inv_no, invoicing_date, DATE(created_date) AS charged_date, appnt_fullname,
+                        while (list($key, $val) = each($checkbox)) {
+
+                            $query_invoice = "SELECT inv_no, invoicing_date, DATE(created_date) AS charged_date, appnt_fullname,
                                              appln_type, billing_areas, acc_no, inv.inv_id, 
                                              reading, consumption, plot_no, block_no, living_area,
                                              met_number, appnt_types, inv_type,
@@ -95,35 +112,26 @@
                                           ON appln.appnt_id = appnt.appnt_id
                                   INNER JOIN billing_area ba
                                           ON appnt.ba_id = ba.ba_id
-                                       WHERE inv.inv_id = '$inv_id'";
+                                       WHERE inv.inv_id = '$val'";
 
-                    $result_invoice = mysql_query($query_invoice) or die(mysql_error());
+                            $result_invoice = mysql_query($query_invoice) or die(mysql_error());
 
-                    $row_invoice = mysql_fetch_array($result_invoice);
+                            $row_invoice = mysql_fetch_array($result_invoice);
 
-                    //getting  invoice header data from the database
-                    $query_settings = "SELECT aut_name, address, phone,fax, email, logo,terms_conds
-                                         FROM settings ";
+                            //getting  invoice header data from the database
+                            $query_settings = "SELECT aut_name, address, phone,fax, email, logo,terms_conds
+                                             FROM settings ";
 
-                    $result_settings = mysql_query($query_settings) or die(mysql_error());
+                            $result_settings = mysql_query($query_settings) or die(mysql_error());
 
-                    $row_settings = mysql_fetch_array($result_settings);
+                            $row_settings = mysql_fetch_array($result_settings);
 
-                    $reading = $row_invoice['reading'];
-                    $consumption = $row_invoice['consumption'];
-                    $from = $reading - $consumption;
-                    ?>
-                    <h1>Invoice for <?php echo $row_invoice['appnt_fullname'] ?></h1>
-                    <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
-                        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('invoice', '../../css/invoice.css')">Print</button>
-                        <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
-                    </div>
-                    <div class="hr-line"></div>
-                    <form action="../../includes/pdf.php" method="post" id="html-form">
-                        <input type="hidden" name="html" id="html">
-                    </form>
-                    <div class="invoice-wrapper">
-                        <div id="invoice">
+                            $reading = $row_invoice['reading'];
+                            $consumption = $row_invoice['consumption'];
+                            $from = $reading - $consumption;
+                            ?>
+
+
                             <div class="invoice">
                                 <div class="company-header">
                                     <ul class="inv-list" style="width: 500px; position: absolute; top: 0; left: 0;">
@@ -135,9 +143,9 @@
                                         <img src="../settings/logo/UDSM.jpg" align="middle"  height="80">
                                     </div>
                                     <ul class="inv-list" style="width: 230px; padding-right: 0 !important; position: absolute; top: 0; right: 0">
-                                        <li>Phone: <span style="clear: both; float: right"><?php echo $row_settings['phone']; ?></span></li>
-                                        <li>Fax: <span style="clear: both; float: right"><?php echo $row_settings['fax']; ?></span></li>
-                                        <li>E-mail: <span style="clear: both; float: right"><?php echo $row_settings['email']; ?></span></li>
+                                        <li>Phone: <span style="float: right"><?php echo $row_settings['phone']; ?></span></li>
+                                        <li>Fax: <span style="float: right"><?php echo $row_settings['fax']; ?></span></li>
+                                        <li>E-mail: <span style="float: right"><?php echo $row_settings['email']; ?></span></li>
                                     </ul>
                                 </div>
                                 <div class="customer-header">
@@ -179,9 +187,9 @@
                                             <td>Category</td>
                                             <td>Billing Type</td>
                                             <td>Charged Date</td>
-                                            <td>From</td>
-                                            <td>To</td>
-                                            <td>Consm</td>
+                                            <td>From<span style="font-weight: normal; font-size: 80%">(m<sup>3</sup>)</span></td>
+                                            <td>To<span style="font-weight: normal; font-size: 80%">(m<sup>3</sup>)</span></td>
+                                            <td>Consm<span style="font-weight: normal; font-size: 80%">(m<sup>3</sup>)</span></td>
                                             <td align="right"></td>
                                         </tr>
                                         <tr>
@@ -229,7 +237,7 @@
                                             <td align="right"><?php echo $row_invoice['sewer_cost'] ?></td>
                                         </tr>
                                     </table>
-                                </div>
+                                    <!-- end .invoice-body --></div>
                                 <div class="invoice-footer">
                                     <table border="0" cellspacing="3" cellpadding="5" width="1000">
                                         <tr>
@@ -242,12 +250,12 @@
                                         <tr><td></td></tr>
                                     </table>
                                 </div>
-                                <!-- end .invoice --></div>
-                            <!-- end #invoice --></div> 
-                        <!-- end .invoice-wrapper --></div>
-                    <?php
-                }
-                ?>
+                                <!-- end .invoice --></div>   
+                            <?php
+                        }
+                        ?>
+                        <!-- end #invoice --></div> 
+                    <!-- end .invoice-wrapper --></div>
                 <!-- end .content --></div>
             <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>

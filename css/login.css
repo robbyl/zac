@@ -16,6 +16,7 @@ body {
     font-family: "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif" !important;
     background: #fafafa;
     background: #e8e8e8;
+    background: url(../images/pattern_bg.jpg) transparent;
     font-weight: normal;
     color: #272727;
 }
@@ -25,9 +26,9 @@ body {
     height: 320px;
     background: #fff;
     font-size: 20px;
-    *border: 1px solid #d9d9d9;
-    box-shadow: 0px 1px 5px rgba(0,0,0, 0.447);
-    z-index: 1;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0px 1px 2px 4px rgba(0,0,0, 0.08);
+    border-radius: 1px;
 }
 
 .main-wrapper {

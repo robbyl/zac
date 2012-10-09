@@ -6,6 +6,7 @@
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
         <title>SOFTBILL | EDIT APPLICATION</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
+        <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script type="text/javascript">
             
@@ -36,21 +37,21 @@
 
                 $id = clean($_GET['id']);
 
-                $query_appln = "SELECT appln_id, appln_type, appln_date, engeneer_appr,
-                                           appnt_fullname, appnt_types, billing_areas,
-                                           surveyed_date, approved_date, inspected_by,
-                                           premise_nature, service, occupants, appnt_tel, appnt_post_addr,
-                                           appnt_phy_addr, block_no, plot_no,living_area, living_town
-                                      FROM application appln
-                                 LEFt JOIN applicant appnt
-                                        ON appln.appnt_id = appnt.appnt_id
-                                 LEFT JOIN appnt_type apnty
-                                        ON appnt.appnt_type_id = apnty.appnt_type_id
-                                 LEFT JOIN service_nature sev
-                                        ON appln.service_nature_id = sev.service_nature_id
-                                 LEFT JOIN billing_area ba
-                                        ON appnt.ba_id = ba.ba_id
-                                     WHERE appln_id = '$id'";
+                $query_appln = "SELECT appln_id, appln_no, appln_type, appln_date, engeneer_appr,
+                                       appnt_fullname, appnt_types, billing_areas,
+                                       surveyed_date, approved_date, inspected_by,
+                                       premise_nature, service, occupants, appnt_tel, appnt_post_addr,
+                                       appnt_phy_addr, block_no, plot_no,living_area, living_town
+                                  FROM application appln
+                             LEFt JOIN applicant appnt
+                                    ON appln.appnt_id = appnt.appnt_id
+                             LEFT JOIN appnt_type apnty
+                                    ON appnt.appnt_type_id = apnty.appnt_type_id
+                             LEFT JOIN service_nature sev
+                                    ON appln.service_nature_id = sev.service_nature_id
+                             LEFT JOIN billing_area ba
+                                    ON appnt.ba_id = ba.ba_id
+                                 WHERE appln_id = '$id'";
 
                 $result_appln = mysql_query($query_appln) or die(mysql_error());
                 $row = mysql_fetch_array($result_appln);
@@ -61,30 +62,32 @@
                     <div class="sheet-header">
 
                         <div class="header-title">
-                            <p><?php echo $row_authority['aut_name'] ?></p> 
-                            <p style="font-size: 18px;">APPLICATION DETAIL</p>
+                            <p><strong><?php echo $row_authority['aut_name'] ?></strong></p> 
+                            <p style="font-size: 18px;"><strong>APPLICATION DETAILS</strong></p>
                             <div class="page-logo">
                                 <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                             </div>
                         </div>
 
                         <!-- end .sheet-header --></div>
-                    <div class="print-details">
-                        <p>Print Date: <span style="font-weight: normal"><?php echo date('Y-m-d') ?></span></p>                  
+                    <div class="print-details" style="float: right;">
+                        <p>Appn No: <span style="font-weight: bold; line-height: 25px; font-size: 1.5em"><?php echo sprintf('%08d', $row['appln_no']) ?></span></p>
                     </div>
-
-                    <div class="sheet-table" style="width: 850px; margin: 0 auto">
-                        <div class="hr-line"></div>
-                        <fieldset style="float: left">
+                    <div class="print-details">
+                        <p>Print Date: <span style="font-weight: normal; line-height: 25px;"><?php echo date('Y-m-d') ?></span></p>                  
+                    </div>
+                    <div class="black-separator"></div>
+                    <div class="sheet-table" style="width: 100%; margin: 0 auto">
+                        <fieldset>
                             <legend>Applicant Details</legend>
-                            <table width="" border="0" cellpadding="5" cellspacing="0">
+                            <table width="100%" border="0" cellpadding="5" cellspacing="0">
                                 <tr>
-                                    <td width="170">Applicant Type:</td>
-                                    <td><strong><?php echo $row['appnt_types'] ?></strong></td>
+                                    <td width="300">Applicant Type:</td>
+                                    <td width="500"><strong><?php echo $row['appnt_types'] ?></strong></td>
                                 </tr>
                                 <tr>
-                                    <td width="170">Full Name:</td>
-                                    <td><strong><?php echo $row['appnt_fullname'] ?></strong></td>
+                                    <td width="170" style="vertical-align: top">Full Name:</td>
+                                    <td width="300"><strong><?php echo $row['appnt_fullname'] ?></strong></td>
                                 </tr>
                                 <tr>
                                     <td width="170">Occupants/No of people:</td>
@@ -124,12 +127,12 @@
                                 </tr>
                             </table>
                         </fieldset>
-                        <fieldset style="float: right">
+                        <fieldset>
                             <legend>Application Details</legend>
-                            <table width="" border="0" cellpadding="5" cellspacing="0">
+                            <table width="100%" border="0" cellpadding="5" cellspacing="0">
                                 <tr>
-                                    <td width="170">Application Date:</td>
-                                    <td><strong><?php echo date('Y-m-d'); ?></strong></td>
+                                    <td width="300">Application Date:</td>
+                                    <td width="500"><strong><?php echo date('Y-m-d'); ?></strong></td>
                                 </tr>
                                 <tr>
                                     <td width="170">Application Type:</td>

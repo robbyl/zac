@@ -53,7 +53,7 @@
                             <li><a href="#">Invoice reports</a></li>
                             <li><a href="#">User reports</a></li>
                             <li><a href="#">Pay point reports</a></li>
-                            <li><a href="#">Application</a></li>
+                            <li><a href="#">Cashier Reports</a></li>
                         </ul>
                     </fieldset>
                 </form>

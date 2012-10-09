@@ -28,6 +28,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
         <script src="../../js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
         <script src="../../js/jquery.dataTables.pagination.js" type="text/javascript"></script>
         <script src="../../js/tooltip.js" type="text/javascript"></script>
+        
         <script type="text/javascript">
             
             $(document).ready(function() {
@@ -91,7 +92,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
             <div class="sidebar">
                 <ul class="nav">
                     <li><a href="../../home.php" class="home">Home</a></li>
-                    <li> <a href="#" class="users">Manage Users</a>
+                    <li> <a href="#" class="users current">Manage Users</a>
                         <ul>
                             <li><a href="new_user.php">Add new user</a></li>
                         </ul>
