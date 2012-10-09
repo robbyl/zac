@@ -14,6 +14,10 @@ body {
     color: #272727;
 }
 
+table {
+    border-collapse: collapse;
+}
+
 p {
 
     margin: 5px !important;
@@ -61,4 +65,19 @@ p {
 
 .sheet-table tr:nth-child(odd){
     background: #fff;
+}
+
+@page {
+    size: A4 portrait;
+    margin: 10mm 5mm;
+}
+
+@media print {
+    body {
+        font-size: 80%;
+    }
+
+    table {
+        page-break-after: avoid;
+    }
 }

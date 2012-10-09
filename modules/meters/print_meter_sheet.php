@@ -67,13 +67,11 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
             <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
             <title></title>
             <style type="text/css">
-                table {
-                    border-collapse: collapse;
-                }
+                
             </style>
             <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
         </head>
-        <body onload="window.print(); window.close();" style="font-size: 80%;">
+        <body onload="window.print(); window.close();">
             <div class="sheet-wraper">
                 <div class="sheet-header">
 
@@ -127,6 +125,126 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                 </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+
+                                    <td><?php echo $SN ?></td>
+                                    <td><?php echo $row['acc_no'] ?></td>
+                                    <td><?php echo $row['met_number'] ?></td>
+                                    <td><?php echo $row['appnt_fullname'] ?></td>
+                                    <td><?php echo $row['plot_no'] ?></td>
+                                    <td><?php echo $row['block_no'] ?></td>
+                                    <td><?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
                                 <?php
                                 $SN++;
                             }
@@ -134,7 +252,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         </tbody>
                     </table>
                 </div>
-                <!--            --></div>
+                <!--   --></div>
         </body>
     <?php } ?>
 </html>
