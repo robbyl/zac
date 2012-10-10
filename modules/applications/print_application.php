@@ -6,6 +6,7 @@
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
         <title>SOFTBILL | EDIT APPLICATION</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
+        <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script type="text/javascript">
             
@@ -13,7 +14,7 @@
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
     </head>
 
-    <body onload="window.print(); window.close();" style="font-size: 80%; background: #fff;">
+    <body onload="window.print(); window.close();">
         <div class="container">
 
             <?php
@@ -61,8 +62,8 @@
                     <div class="sheet-header">
 
                         <div class="header-title">
-                            <p><?php echo $row_authority['aut_name'] ?></p> 
-                            <p style="font-size: 18px;">APPLICATION DETAIL</p>
+                            <p><strong><?php echo $row_authority['aut_name'] ?></strong></p> 
+                            <p style="font-size: 18px;"><strong>APPLICATION DETAILS</strong></p>
                             <div class="page-logo">
                                 <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                             </div>
@@ -70,17 +71,16 @@
 
                         <!-- end .sheet-header --></div>
                     <div class="print-details" style="float: right;">
-                        <p>Appn No: <span style="font-weight: bold; font-size: 1.5em"><?php echo sprintf('%08d', $row['appln_no']) ?></span></p>
+                        <p>Appn No: <span style="font-weight: bold; line-height: 25px; font-size: 1.5em"><?php echo sprintf('%08d', $row['appln_no']) ?></span></p>
                     </div>
                     <div class="print-details">
-                        <p>Print Date: <span style="font-weight: normal; line-height: 45px;"><?php echo date('Y-m-d') ?></span></p>                  
+                        <p>Print Date: <span style="font-weight: normal; line-height: 25px;"><?php echo date('Y-m-d') ?></span></p>                  
                     </div>
-
-                    <div class="sheet-table" style="width: 850px; margin: 0 auto">
-                        <div class="hr-line"></div>
+                    <div class="black-separator"></div>
+                    <div class="sheet-table" style="width: 100%; margin: 0 auto">
                         <fieldset>
                             <legend>Applicant Details</legend>
-                            <table width="" border="0" cellpadding="5" cellspacing="0">
+                            <table width="100%" border="0" cellpadding="5" cellspacing="0">
                                 <tr>
                                     <td width="300">Applicant Type:</td>
                                     <td width="500"><strong><?php echo $row['appnt_types'] ?></strong></td>
@@ -129,7 +129,7 @@
                         </fieldset>
                         <fieldset>
                             <legend>Application Details</legend>
-                            <table width="" border="0" cellpadding="5" cellspacing="0">
+                            <table width="100%" border="0" cellpadding="5" cellspacing="0">
                                 <tr>
                                     <td width="300">Application Date:</td>
                                     <td width="500"><strong><?php echo date('Y-m-d'); ?></strong></td>

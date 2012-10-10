@@ -65,10 +65,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         <head>
             <meta charset="utf-8">
             <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-            <title></title>
-            <style type="text/css">
-                
-            </style>
+            <title>SOFTBILL PRINT METER SHEET</title>
             <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
         </head>
         <body onload="window.print(); window.close();">
@@ -93,6 +90,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     <p>Meter Reader: ................................................................</p>
                     <p>Billing Month: <span style="font-weight: normal"><?php echo date('Y-m-d') ?></span></p>                   
                 </div>
+                <div class="black-separator"></div>
                 <div class="sheet-table">
                     <table cellpadding="3" cellspacing="0" border="1" width="100%">
                         <thead>
