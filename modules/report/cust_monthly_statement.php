@@ -74,9 +74,27 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+
         <title>SOFTBILL PRINT METER SHEET</title>
+
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
+        <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
+        <link href="../../css/invoice.css" rel="stylesheet" type="text/css">
+
+        <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/tooltip.js" type="text/javascript"></script>
+        <script src="../../js/softbill-core.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                
+                $('.tooltip').tipTip({
+                    delay: "300"
+                });  
+            });
+            
+        </script>
     </head>
     <body>
         <div class="container">
@@ -101,7 +119,7 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
             <div class="content">
                 <h1>View Invoice(s)</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
-                    <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('invoice', '../../css/invoice.css')">Print</button>
+                    <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
                 </div>
                 <div class="hr-line"></div>
@@ -126,8 +144,8 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
                                 <p>Billing Area/Zone: <span style="font-weight: normal">Migongo</span></p>
                             </div>
                             <div class="print-details">
-                                <p>Reading Date: ..................................</p>
-                                <p>Meter Reader: ................................................................</p>
+                                <p>Account No: <span style="font-weight: bold; font-size: 1.5em;"><?php echo $row['acc_no'] ?></span></p>
+                                <p>Customer name: ................................................................</p>
                                 <p>Billing Month: <span style="font-weight: normal"><?php echo date('Y-m-d') ?></span></p>                   
                             </div>
                             <div class="black-separator"></div>
@@ -139,7 +157,7 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
                                             <th title="Serial No." class="tooltip">Reading date</th>
                                             <th title="Account number" class="tooltip">Prev reading</th>
                                             <th title="Meter number" class="tooltip">Curr reading</th>
-                                            <th>Consumption</th>
+                                            <th>Cons</th>
                                             <th title="Plot number" class="tooltip" >Open balance</th>
                                             <th title="Block number" class="tooltip">Water charge</th>
                                             <th title="Previous reading" class="tooltip">Service charge</th>
@@ -156,14 +174,14 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
 
                                                 <td><?php echo $row['invoicing_date'] ?></td>
                                                 <td><?php echo $row['reading_date'] ?></td>
-                                                <td><?php echo $row['prev_reading'] ?></td>
-                                                <td><?php echo $row['reading'] ?></td>
-                                                <td><?php echo $row['consumption'] ?></td>
-                                                <td><?php echo $row['aging_debit'] ?></td>
-                                                <td><?php echo $row['water_cost'] ?></td>
-                                                <td><?php echo $row['service_charge'] ?></td>
-                                                <td><?php echo $row['sewer_cost'] ?></td>    
-                                                <td><?php echo $row['amount_payable'] ?></td>    
+                                                <td align="right"><?php echo $row['prev_reading'] ?></td>
+                                                <td align="right"><?php echo $row['reading'] ?></td>
+                                                <td align="right"><?php echo $row['consumption'] ?></td>
+                                                <td align="right"><?php echo $row['aging_debit'] ?></td>
+                                                <td align="right"><?php echo $row['water_cost'] ?></td>
+                                                <td align="right"><?php echo $row['service_charge'] ?></td>
+                                                <td align="right"><?php echo $row['sewer_cost'] ?></td>    
+                                                <td align="right"><?php echo $row['amount_payable'] ?></td>    
                                             </tr>
                                             <?php
                                             $SN++;

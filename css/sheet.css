@@ -22,6 +22,11 @@ p {
 
     margin: 5px !important; 
 }
+
+.sheet-wraper {
+    background-color: #fff;
+}
+
 .sheet-header {
     width: 100%;
     height: 150px;
@@ -47,7 +52,6 @@ p {
     text-align: center;
     font-size: 23px;
     font-weight: bold;
-
 }
 
 .print-details {
@@ -86,6 +90,10 @@ p {
         background: #fff;
     }
 
+    table {
+        font-size: 12px;
+    }
+    
     tr {
         page-break-inside: avoid;
     }
