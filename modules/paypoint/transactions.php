@@ -5,11 +5,17 @@ ob_start();
 
 require '../../config/config.php';
 
-$query_transaction = "SELECT rec_id, trans_id, trans_date,description, rec_no,rec_type, payed_amount,
-                                      amount_in_words, user_id 
-                               FROM  receipt rcpt
-                               INNER JOIN transaction trans
-                                      ON rcpt.tran_id = trans.trans_id";
+$query_transaction = "SELECT rcpt.rec_id, trans.trans_id, trans_date,description, rec_no,rec_type, payed_amount,
+                                      amount_in_words, rcpt.user_id, cheq_no, bank, inv_no, invoicing_date
+                               FROM transaction trans 
+                               LEFT JOIN receipt rcpt
+                                      ON rcpt.tran_id = trans.trans_id
+                               LEFT JOIN cheque chq
+                                      ON  chq.rec_id = rcpt.rec_id
+                               LEFT JOIN invoice inv
+                                      ON inv.trans_id = trans.trans_id
+                               LEFT JOIN users urs
+                                      ON urs.user_id = rcpt.user_id";
 $result_transaction = mysql_query($query_transaction) or die(mysql_error());
 ?>
 
@@ -145,6 +151,12 @@ $result_transaction = mysql_query($query_transaction) or die(mysql_error());
                             </th>
                             <th>transation date</th>
                             <th>description </th>
+                            <th>recept number </th>
+                            <th>cheq no </th>
+                            <th>bank</th>
+                            <th>inv_no</th>
+                            <th>invoicing_date</th>
+                            <th>username</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -156,6 +168,12 @@ $result_transaction = mysql_query($query_transaction) or die(mysql_error());
                                            id="<?php echo $row['trans_id'] ?>" title="Select this application"></td>
                                 <td><?php echo $row['trans_date']; ?></td>
                                 <td><?php echo $row['description']; ?></td>
+                                <td><?php echo $row['rec_no']; ?></td>
+                                <td><?php echo $row['cheq_no']; ?></td>
+                                <td><?php echo $row['bank']; ?></td>
+                                <td><?php echo $row['inv_no']; ?></td>
+                                <td><?php echo $row['invoicing_date']; ?></td>
+                                <td><?php echo $row['usr_fname']."".$row['usr_lname']; ?></td>
                             </tr>
                             <?php
                         }
