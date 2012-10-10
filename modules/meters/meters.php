@@ -46,39 +46,43 @@ $result_meter = mysql_query($query_meter) or die(mysql_error());
                     "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
                 });
 
-                 $('#select-all').click(function(){
-        // Iterate each check box
+                $('#select-all').click(function(){
+                    // Iterate each check box
 
-        if(this.checked){
-            $('.checkbox').each(function(){
-                this.checked = true;
-                $(this).closest('tr').addClass('selected');
-            });
+                    if(this.checked){
+                        $('.checkbox').each(function(){
+                            this.checked = true;
+                            $(this).closest('tr').addClass('selected');
+                        });
 
-        } else {
-            $('.checkbox').each(function(){
-                this.checked = false;
-                $(this, '.checkbox').closest('tr').removeClass('selected');
-            });
-        }
-    });
+                    } else {
+                        $('.checkbox').each(function(){
+                            this.checked = false;
+                            $(this, '.checkbox').closest('tr').removeClass('selected');
+                        });
+                    }
+                });
                                                                             
-    // Putting backgoround color to the tr for checked checkbox 
-    $('.checkbox').click(function(event) {
-        event.stopPropagation();
-        $(this).closest('tr').toggleClass('selected');
-        if (event.target.type !== 'checkbox') {
-            $(':checkbox', this).attr('checked', function() {
-                return !this.checked;
+                // Putting backgoround color to the tr for checked checkbox 
+                $('.checkbox').click(function(event) {
+                    event.stopPropagation();
+                    $(this).closest('tr').toggleClass('selected');
+                    if (event.target.type !== 'checkbox') {
+                        $(':checkbox', this).attr('checked', function() {
+                            return !this.checked;
+                        });
+                    }
+                });
+
+                $('.tooltip').tipTip({
+                    delay: "300"
+                });
+                
+                $('.message, .error').hide().slideDown('normal').click(function(){
+                    $(this).slideUp('normal');
+                });
+
             });
-        }
-    });
-
-    $('.tooltip').tipTip({
-        delay: "300"
-    });
-
-            } );
         </script>
     </head>
 

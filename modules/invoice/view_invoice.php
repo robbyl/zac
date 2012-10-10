@@ -66,20 +66,24 @@
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
                 </div>
                 <div class="hr-line"></div>
+                <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
+                    <input type="hidden" name="html" id="html">
+                </form>
                 <div class="invoice-wrapper">
+                    <div id="invoice">
 
-                    <?php
-                    if (!empty($_POST['checkbox'])) {
-                        $checkbox = $_POST['checkbox'];
-                    }
+                        <?php
+                        if (!empty($_POST['checkbox'])) {
+                            $checkbox = $_POST['checkbox'];
+                        }
 
-                    if (!empty($_GET['inv_id'])) {
-                        $checkbox = $_GET['inv_id'];
-                    }
+                        if (!empty($_GET['inv_id'])) {
+                            $checkbox = $_GET['inv_id'];
+                        }
 
-                    while (list($key, $val) = each($checkbox)) {
+                        while (list($key, $val) = each($checkbox)) {
 
-                        $query_invoice = "SELECT inv_no, invoicing_date, DATE(created_date) AS charged_date, appnt_fullname,
+                            $query_invoice = "SELECT inv_no, invoicing_date, DATE(created_date) AS charged_date, appnt_fullname,
                                              appln_type, billing_areas, acc_no, inv.inv_id, 
                                              reading, consumption, plot_no, block_no, living_area,
                                              met_number, appnt_types, inv_type,
@@ -110,28 +114,24 @@
                                           ON appnt.ba_id = ba.ba_id
                                        WHERE inv.inv_id = '$val'";
 
-                        $result_invoice = mysql_query($query_invoice) or die(mysql_error());
+                            $result_invoice = mysql_query($query_invoice) or die(mysql_error());
 
-                        $row_invoice = mysql_fetch_array($result_invoice);
+                            $row_invoice = mysql_fetch_array($result_invoice);
 
-                        //getting  invoice header data from the database
-                        $query_settings = "SELECT aut_name, address, phone,fax, email, logo,terms_conds
+                            //getting  invoice header data from the database
+                            $query_settings = "SELECT aut_name, address, phone,fax, email, logo,terms_conds
                                              FROM settings ";
 
-                        $result_settings = mysql_query($query_settings) or die(mysql_error());
+                            $result_settings = mysql_query($query_settings) or die(mysql_error());
 
-                        $row_settings = mysql_fetch_array($result_settings);
+                            $row_settings = mysql_fetch_array($result_settings);
 
-                        $reading = $row_invoice['reading'];
-                        $consumption = $row_invoice['consumption'];
-                        $from = $reading - $consumption;
-                        ?>
+                            $reading = $row_invoice['reading'];
+                            $consumption = $row_invoice['consumption'];
+                            $from = $reading - $consumption;
+                            ?>
 
-                    <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
-                            <input type="hidden" name="html" id="html">
-                        </form>
 
-                        <div id="invoice">
                             <div class="invoice">
                                 <div class="company-header">
                                     <ul class="inv-list" style="width: 500px; position: absolute; top: 0; left: 0;">
