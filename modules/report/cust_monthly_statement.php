@@ -16,6 +16,7 @@
  */
 ?>
 <?php
+require '../../includes/session_validator.php';
 //if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
 require '../../config/config.php';
@@ -34,7 +35,7 @@ $filter = "All";
 
 $filter === 'All' ? $filter = "" : $filter = 'AND billing_areas = ' . "'$filter' ";
 
-$query_meter_reading = "SELECT invoicing_date, reading_date, appnt_fullname,
+$query_meter_reading = "SELECT invoicing_date, reading_date, acc_no, appnt_fullname,
                                appln_type, billing_areas, acc_no, inv.inv_id, 
                                reading, consumption, (reading - consumption) AS prev_reading,
                                plot_no, block_no, living_area,
@@ -67,6 +68,7 @@ $query_meter_reading = "SELECT invoicing_date, reading_date, appnt_fullname,
                       ORDER BY invoicing_date ASC";
 
 $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
+$row_header = mysql_fetch_array($result_meter_reading)
 ?>
 
 <!doctype html>
@@ -75,7 +77,7 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL PRINT METER SHEET</title>
+        <title>SOFTBILL CUSTOMER MONTHLY STATEMENT</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
@@ -92,7 +94,14 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
                 $('.tooltip').tipTip({
                     delay: "300"
                 });  
+                
+                $('#pdf').click(function(){
+                    
+                    savePDF('report', '../../css/sheet.css');
+                });
             });
+            
+            
             
         </script>
     </head>
@@ -132,7 +141,7 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
                             <div class="sheet-header">
                                 <div class="header-title">
                                     <p><?php echo $row_authority['aut_name'] ?></p> 
-                                    <p style="font-size: 18px;">METER READING SHEET</p>
+                                    <p style="font-size: 18px;">CUSTOMER MONTHLY STATEMENT</p>
                                     <div class="page-logo">
                                         <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                                     </div>
@@ -140,13 +149,14 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
 
                                 <!-- end .sheet-header --></div>
                             <div class="print-details" style="float: right">
-                                <p>Print Date: <span style="font-weight: normal"><?php echo date('Y-m-d') ?></span></p>
-                                <p>Billing Area/Zone: <span style="font-weight: normal">Migongo</span></p>
+                                <p><strong>Print Date: </strong><span style="float: right"><?php echo date('Y-m-d') ?></span></p>
+                                <p><strong>Billing Area/Zone: </strong><span>Migongo</span></p>
+                                <p><strong>Street: </strong> <span style="float: right">Migongo</span><div style="clear: both"></div></p>
                             </div>
                             <div class="print-details">
-                                <p>Account No: <span style="font-weight: bold; font-size: 1.5em;"><?php echo $row['acc_no'] ?></span></p>
-                                <p>Customer name: ................................................................</p>
-                                <p>Billing Month: <span style="font-weight: normal"><?php echo date('Y-m-d') ?></span></p>                   
+                                <p><strong>Account No:</strong> <span style="font-weight: bold; font-size: 1.5em;"><?php echo $row_header['acc_no'] ?></span></p>
+                                <p><strong>Customer name:</strong> <?php echo $row_header['appnt_fullname'] ?></p>
+                                <p><strong>Meter No:</strong> <?php echo $row_header['met_number'] ?></p>                   
                             </div>
                             <div class="black-separator"></div>
                             <div class="sheet-table">
@@ -171,23 +181,22 @@ $result_meter_reading = mysql_query($query_meter_reading) or die(mysql_error());
                                         while ($row = mysql_fetch_array($result_meter_reading)) {
                                             ?>
                                             <tr>
-
                                                 <td><?php echo $row['invoicing_date'] ?></td>
                                                 <td><?php echo $row['reading_date'] ?></td>
                                                 <td align="right"><?php echo $row['prev_reading'] ?></td>
                                                 <td align="right"><?php echo $row['reading'] ?></td>
                                                 <td align="right"><?php echo $row['consumption'] ?></td>
-                                                <td align="right"><?php echo $row['aging_debit'] ?></td>
-                                                <td align="right"><?php echo $row['water_cost'] ?></td>
-                                                <td align="right"><?php echo $row['service_charge'] ?></td>
-                                                <td align="right"><?php echo $row['sewer_cost'] ?></td>    
-                                                <td align="right"><?php echo $row['amount_payable'] ?></td>    
+                                                <td align="right"><?php echo number_format($row['aging_debit'], '2', '.', ',') ?></td>
+                                                <td align="right"><?php echo number_format($row['water_cost'], '2', '.', ',') ?></td>
+                                                <td align="right"><?php echo number_format($row['service_charge'], '2', '.', ',') ?></td>
+                                                <td align="right"><?php echo number_format($row['sewer_cost'], '2', '.', ',') ?></td>    
+                                                <td align="right"><?php echo number_format($row['amount_payable'], '2', '.', ',') ?></td>    
                                             </tr>
                                             <?php
                                             $SN++;
                                         }
                                         ?>
-                                        <tr><td colspan="8"></td><td>Total due</td><td>34535</td></tr>
+                                        <tr><td colspan="8"></td><td>Total Due</td><td>34523235</td></tr>
                                     </tbody>
                                 </table>
                             </div>

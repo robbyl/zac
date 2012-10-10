@@ -19,8 +19,8 @@ table {
 }
 
 p {
-
-    margin: 5px !important; 
+    margin: 5px 0 !important;
+    padding: 0;
 }
 
 .sheet-wraper {
@@ -93,7 +93,7 @@ p {
     table {
         font-size: 12px;
     }
-    
+
     tr {
         page-break-inside: avoid;
     }
