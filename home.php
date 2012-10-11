@@ -102,7 +102,7 @@ session_commit();
                 </a>
                 <a href="modules/report/reports.php" class="tooltip fltlft" title="View more details on flight" >
                     <div class="home-icon report-icon">
-                        <div class="icon-label">Reports</div>
+                        <div class="icon-label">Report Manager</div>
                     </div>
                 </a>
 

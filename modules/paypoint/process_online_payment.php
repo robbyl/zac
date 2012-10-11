@@ -112,17 +112,23 @@ $receipt_id = mysql_insert_id();
 
 if ($cust_appnt === "Account No") {
 
-    // Accepting customer payments
-    $query_cust_payment = "INSERT INTO cust_payment
-                                       (rec_id, trans_id, cust_id)
-                                VALUES ('$receipt_id', '$transaction_id', '$cust_id')";
-
-    $result_cust_payment = mysql_query($query_cust_payment) or die(mysql_error());
-
+    // Accepting customer payments  
     // If payment is for sewer or water deduct customer debit
+    $cust_open_balance = "";
+
     if ($payment_type === "Water Payment" || $payment_type === "Sewer Payment") {
 
-        $query_aging = "UPDATE aging_analysis
+        $query_debit = "SELECT aging_debit
+                          FROM aging_analysis
+                         WHERE cust_id = '$cust_id'
+                      ORDER BY aging_date DESC
+                         LIMIT 1";
+
+        $result_debit = mysql_query($query_debit) or die(mysql_error());
+        $row_bebit = mysql_fetch_array($result_debit);
+        $cust_open_balance = $row_bebit['aging_debit'];
+
+        $query_aging = "UPDATE aging_analysis age
                            SET aging_debit = aging_debit - '$paid_amount'
                          WHERE cust_id = '$cust_id'
                       ORDER BY aging_date DESC
@@ -130,6 +136,12 @@ if ($cust_appnt === "Account No") {
 
         $result_aging = mysql_query($query_aging) or die(mysql_error());
     }
+
+    $query_cust_payment = "INSERT INTO cust_payment
+                                       (rec_id, trans_id, cust_id, cust_open_balance)
+                                VALUES ('$receipt_id', '$transaction_id', '$cust_id', '$cust_open_balance')";
+
+    $result_cust_payment = mysql_query($query_cust_payment) or die(mysql_error());
 } elseif ($cust_appnt === "Appln No") {
 
     // Accepting applicant payments
