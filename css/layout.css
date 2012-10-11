@@ -200,7 +200,6 @@ ul.nav a, ul.nav a:visited {
 }
 
 ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
-    background-color: #DFE6FF;
     background-color: #f1f1f1;
     color: #000;
 }
@@ -281,7 +280,7 @@ ul.nav ul a, ul.nav ul a:visited {
 
 
 .arrowlistmenu ul{ /*CSS for UL of each sub menu*/
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0 0 0 10px;
     /*    margin-bottom: 8px; bottom spacing between each UL and rest of content*/
