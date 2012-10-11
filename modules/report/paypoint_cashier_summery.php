@@ -35,40 +35,19 @@ $filter = "All";
 
 $filter === 'All' ? $filter = "" : $filter = 'AND billing_areas = ' . "'$filter' ";
 
-$query_payments = "SELECT trans_date, rec_no, acc_no, appnt_fullname,
-                          appln_type, billing_areas, acc_no, cheq_no, bank,
-                          plot_no, block_no, living_area,
-                          met_number, appnt_types, payed_amount,
-                          COALESCE(cust_open_balance, 0) AS open_balance,
-                          (COALESCE(cust_open_balance, 0) - payed_amount) AS closing_balance
-                          FROM cust_payment custp
-               INNER JOIN `transaction` trans
-                       ON custp.trans_id = trans.trans_id
-               INNER JOIN receipt rec
-                       ON custp.rec_id = rec.rec_id
-                LEFT JOIN cheque chq
-                       ON chq.rec_id = rec.rec_id
-               INNER JOIN customer cust
-                       ON custp.cust_id = cust.cust_id
-                LEFT JOIN meter_customer mecu
-                       ON mecu.cust_id = cust.cust_id
-                LEFT JOIN meter met
-                       ON mecu.met_id = met.met_id
-               INNER JOIN account acc
-                       ON cust.cust_id = acc.cust_id
-               INNER JOIN applicant appnt
-                       ON cust.appnt_id = appnt.appnt_id
-               INNER JOIN appnt_type appty
-                       ON appnt.appnt_type_id = appty.appnt_type_id
-               INNER JOIN application appln
-                       ON appln.appnt_id = appnt.appnt_id
-               INNER JOIN billing_area ba
-                       ON appnt.ba_id = ba.ba_id
-                 ORDER BY trans_date ASC";
+$query_cashier = "SELECT trans_date, rec_no, rec_type, payed_amount, amount_in_words,
+                         usr_fname, usr_lname, cheq_no, bank
+                    FROM receipt rec
+               LEFT JOIN cheque chq
+                      ON chq.rec_id = rec.rec_id
+              INNER JOIN `transaction` trans
+                      ON rec.tran_id = trans.trans_id
+              INNER JOIN users usr
+                      ON usr.user_id = rec.user_id";
 
-$result_payments = mysql_query($query_payments) or die(mysql_error());
+$result_cashier = mysql_query($query_cashier) or die(mysql_error());
 
-$row_header = mysql_fetch_array($result_payments);
+$row_cashier = mysql_fetch_array($result_cashier);
 ?>
 
 <!doctype html>
@@ -77,7 +56,7 @@ $row_header = mysql_fetch_array($result_payments);
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL CUSTOMER PAYMENTS TREND</title>
+        <title>SOFTBILL CASHIER SUMMERY</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
@@ -126,7 +105,7 @@ $row_header = mysql_fetch_array($result_payments);
                 </ul>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <h1>View Invoice(s)</h1>
+                <h1>View and Print Cashier Summery</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                     <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
@@ -141,21 +120,18 @@ $row_header = mysql_fetch_array($result_payments);
                             <div class="sheet-header">
                                 <div class="header-title">
                                     <p style="font-weight: bold"><?php echo $row_authority['aut_name'] ?></p> 
-                                    <p style="font-size: 18px; font-weight: bold">CUSTOMER PAYMENTS TREND</p>
+                                    <p style="font-size: 18px; font-weight: bold">CASHIER SUMMERY</p>
                                     <div class="page-logo">
                                         <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                                     </div>
                                 </div>
                                 <!-- end .sheet-header --></div>
                             <div class="print-details" style="float: right">
-                                <p><strong>Print Date: </strong><span style="font-weight: normal; float: right"><?php echo date('d M, Y') ?></span></p>
-                                <p><strong>Billing Area/Zone: </strong><span style="font-weight: normal;">Migongo</span></p>
-                                <p><strong>Street: </strong> <span style="font-weight: normal; float: right">Migongo</span><div style="clear: both"></div></p>
+                                <p><strong>Print Date: </strong><span style="font-weight: normal;"><?php echo date('d M, Y') ?></span></p>
                             </div>
-                            <div class="print-details">
-                                <p><strong>Account No:</strong> <span style="font-weight: normal; font-weight: bold; font-size: 1.5em;"><?php echo $row_header['acc_no'] ?></span></p>
-                                <p><strong>Customer name:</strong><span style="font-weight: normal;"> <?php echo $row_header['appnt_fullname'] ?></span></p>
-                                <p><strong>Meter No:</strong><span style="font-weight: normal;"> <?php echo $row_header['met_number'] ?></span></p>                   
+                            <div class="print-details">                        
+                                <p><strong>Cashier:</strong><span style="font-weight: normal;"> <?php echo $row_cashier['usr_fname'] ?></span></p>                  
+                                <p><strong>Pay Station:</strong><span style="font-weight: normal;"> <?php echo $row_cashier['usr_fname'] ?></span></p>                  
                             </div>
                             <div class="black-separator"></div>
                             <div class="sheet-table">
@@ -164,32 +140,30 @@ $row_header = mysql_fetch_array($result_payments);
                                         <tr>
                                             <th>Receipt date</th>
                                             <th>Receipt No</th>
+                                            <th>Receipt type</th>
                                             <th>Cheque No</th>
                                             <th>Bank</th>
-                                            <th>Cashier</th>
-                                            <th>Opening balance</th>
-                                            <th>Amount payed</th>
-                                            <th>Closing balance</th>
+                                            <th>Payed amount</th>
+                                            <th>Amount in words</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        while ($row = mysql_fetch_array($result_payments)) {
+                                        while ($row = mysql_fetch_array($result_cashier)) {
                                             ?>
                                             <tr>
                                                 <td><?php echo $row['trans_date'] ?></td>
                                                 <td align="right"><?php echo sprintf("%08d", $row['rec_no']) ?></td>
+                                                <td><?php echo $row['rec_type'] ?></td>
                                                 <td align="right"><?php echo $row['cheq_no'] ?></td>
                                                 <td align="right"><?php echo $row['bank'] ?></td>
-                                                <td align="right"><?php echo $row['bank'] ?></td>
-                                                <td align="right"><?php echo number_format($row['open_balance'], '2', '.', ',') ?></td>
                                                 <td align="right"><?php echo number_format($row['payed_amount'], '2', '.', ',') ?></td>
-                                                <td align="right"><?php echo number_format($row['closing_balance'], '2', '.', ',') ?></td>   
+                                                <td><?php echo $row['amount_in_words'] ?></td>   
                                             </tr>
                                             <?php
                                         }
                                         ?>
-                                        <tr><td colspan="6"></td><td>Total Due</td><td>34523235</td></tr>
+                                            <tr><td colspan="4"></td><td>Total Due</td><td align="right">34523235</td><td></td></tr>
                                     </tbody>
                                 </table>
                             </div>

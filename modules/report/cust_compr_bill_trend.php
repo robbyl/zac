@@ -127,7 +127,7 @@ $row_header = mysql_fetch_array($result_meter_reading)
                 </ul>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <h1>View Invoice(s)</h1>
+                <h1>View and Print Customer Comprehensive Billing Trend</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                     <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
