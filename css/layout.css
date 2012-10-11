@@ -258,6 +258,53 @@ ul.nav ul a, ul.nav ul a:visited {
     background-size: 20px;
 }
 
+.arrowlistmenu {
+    margin: 15px 0;
+    padding-right: 10px; 
+}
+.arrowlistmenu .openheader{ /*CSS class to apply to expandable header when it's expanded*/
+
+}
+
+.arrowlistmenu h3{
+    padding: 5px 5px 5px 35px !important;
+    color: #000;
+    margin: 0;
+    font-size: 100%;
+    cursor: pointer;
+}
+
+.arrowlistmenu a:hover, .arrowlistmenu a:active, .arrowlistmenu a:focus {
+    background-color: #f1f1f1;
+    color: #000; 
+}
+
+
+.arrowlistmenu ul{ /*CSS for UL of each sub menu*/
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+    /*    margin-bottom: 8px; bottom spacing between each UL and rest of content*/
+}
+
+/*.arrowlistmenu ul li{
+    padding-bottom: 2px; bottom spacing between menu items
+}*/
+
+.arrowlistmenu ul li a, .arrowlistmenu ul li a:visited {
+    background: url(../images/list_image.png)  no-repeat 25px center;
+    font-size: 90% !important;
+    font-style: italic;
+    padding: 5px 5px 5px 35px !important;
+    display: block;
+    text-decoration: none;
+}
+
+.arrowlistmenu ul li a:hover{ /*hover state CSS*/
+    color: #000;
+    background-color: #F3F3F3;
+}
+
 /* ~~ The footer ~~ */
 
 .footer {
