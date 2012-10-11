@@ -153,14 +153,14 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         <li><a href="../../modules/invoice/invoices.php">View invoices</a></li>
                     </ul>
 
-                    <h3 class="menuheader expandable financial">Paypoint</h3>
+                    <h3 class="menuheader expandable financial">Pay Point</h3>
                     <ul class="categoryitems">
                         <li><a href="../../modules/paypoint/online_payments.php" >Online payments</a></li>
                         <li><a href="../../modules/paypoint/offline_payments.php">Offline payments</a></li>
                         <li><a href="../../modules/paypoint/transactions.php">Transactions</a></li>
                     </ul>
 
-                    <h3 class="menuheader expandable reports">Reports</h3>
+                    <h3 class="menuheader expandable reports">Report Manager</h3>
                     <ul class="categoryitems">
                         <li><a href="../../modules/report/reports.php" >Generate reports</a></li>
                     </ul>
