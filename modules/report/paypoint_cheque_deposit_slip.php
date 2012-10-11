@@ -35,16 +35,15 @@ $filter = "All";
 
 $filter === 'All' ? $filter = "" : $filter = 'AND billing_areas = ' . "'$filter' ";
 
-$query_cash = "SELECT trans_date, rec_no, rec_type, payed_amount, amount_in_words,
-                         usr_fname, usr_lname, cheq_id
-                    FROM receipt rec
-               LEFT JOIN cheque chq
-                      ON chq.rec_id = rec.rec_id
-              INNER JOIN `transaction` trans
-                      ON rec.tran_id = trans.trans_id
-              INNER JOIN users usr
-                      ON usr.user_id = rec.user_id
-                   WHERE cheq_id IS NULL";
+$query_cash = "SELECT trans_date, cheq_no, bank, rec_no, rec_type, payed_amount, amount_in_words,
+                      usr_fname, usr_lname
+                 FROM receipt rec
+           INNER JOIN cheque chq
+                   ON chq.rec_id = rec.rec_id
+           INNER JOIN `transaction` trans
+                   ON rec.tran_id = trans.trans_id
+           INNER JOIN users usr
+                   ON usr.user_id = rec.user_id";
 
 $result_cash = mysql_query($query_cash) or die(mysql_error());
 ?>
@@ -55,7 +54,7 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL CASH DEPOSIT SLIP</title>
+        <title>SOFTBILL CHEQUE DEPOSIT SLIP</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
@@ -77,10 +76,7 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
                     
                     savePDF('report', '../../css/sheet.css');
                 });
-            });
-            
-            
-            
+            });         
         </script>
     </head>
     <body>
@@ -104,7 +100,7 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
                 </ul>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <h1>View and Print Cash Deposit</h1>
+                <h1>View and Print Cheque Deposit</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                     <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
@@ -119,7 +115,7 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
                             <div class="sheet-header">
                                 <div class="header-title">
                                     <p style="font-weight: bold"><?php echo $row_authority['aut_name'] ?></p> 
-                                    <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
+                                    <p style="font-size: 18px; font-weight: bold">CHEQUE DEPOSIT SLIP</p>
                                     <div class="page-logo">
                                         <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                                     </div>
@@ -134,9 +130,11 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
                                     <thead>
                                         <tr>
                                             <th>Receipt date</th>
+                                            <th>Cheque No</th>
+                                            <th>Bank</th>
                                             <th>Receipt No</th>
                                             <th>Receipt type</th>
-                                            <th>Payed amount</th>
+                                            <th>Amount</th>
                                             <th>Amount in words</th>
                                             <th>Cashier</th>
                                         </tr>
@@ -147,6 +145,8 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
                                             ?>
                                             <tr>
                                                 <td><?php echo $row['trans_date'] ?></td>
+                                                <td aling="right"><?php echo $row['cheq_no'] ?></td>
+                                                <td aling="right"><?php echo $row['bank'] ?></td>
                                                 <td align="right"><?php echo sprintf("%08d", $row['rec_no']) ?></td>
                                                 <td><?php echo $row['rec_type'] ?></td>
                                                 <td align="right"><?php echo number_format($row['payed_amount'], '2', '.', ',') ?></td>
@@ -156,7 +156,7 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
                                             <?php
                                         }
                                         ?>
-                                            <tr><td colspan="2"></td><td>Total Due</td><td align="right">34523235</td><td></td><td></td></tr>
+                                        <tr><td colspan="4"></td><td>Total Due</td><td align="right">34523235</td><td></td><td></td></tr>
                                     </tbody>
                                 </table>
                             </div>
