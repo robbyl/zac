@@ -140,8 +140,8 @@ $row_header = mysql_fetch_array($result_meter_reading)
                         <div class="sheet-wraper">
                             <div class="sheet-header">
                                 <div class="header-title">
-                                    <p><?php echo $row_authority['aut_name'] ?></p> 
-                                    <p style="font-size: 18px;">CUSTOMER MONTHLY STATEMENT</p>
+                                    <p style="font-weight: bold"><?php echo $row_authority['aut_name'] ?></p> 
+                                    <p style="font-size: 18px; font-weight: bold">CUSTOMER MONTHLY STATEMENT</p>
                                     <div class="page-logo">
                                         <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                                     </div>
@@ -149,14 +149,14 @@ $row_header = mysql_fetch_array($result_meter_reading)
 
                                 <!-- end .sheet-header --></div>
                             <div class="print-details" style="float: right">
-                                <p><strong>Print Date: </strong><span style="float: right"><?php echo date('Y-m-d') ?></span></p>
-                                <p><strong>Billing Area/Zone: </strong><span>Migongo</span></p>
-                                <p><strong>Street: </strong> <span style="float: right">Migongo</span><div style="clear: both"></div></p>
+                                <p><strong>Print Date: </strong><span style="font-weight: normal; float: right"><?php echo date('Y-m-d') ?></span></p>
+                                <p><strong>Billing Area/Zone: </strong><span style="font-weight: normal;">Migongo</span></p>
+                                <p><strong>Street: </strong> <span style="font-weight: normal; float: right">Migongo</span><div style="clear: both"></div></p>
                             </div>
                             <div class="print-details">
-                                <p><strong>Account No:</strong> <span style="font-weight: bold; font-size: 1.5em;"><?php echo $row_header['acc_no'] ?></span></p>
-                                <p><strong>Customer name:</strong> <?php echo $row_header['appnt_fullname'] ?></p>
-                                <p><strong>Meter No:</strong> <?php echo $row_header['met_number'] ?></p>                   
+                                <p><strong>Account No:</strong> <span style="font-weight: normal; font-weight: bold; font-size: 1.5em;"><?php echo $row_header['acc_no'] ?></span></p>
+                                <p><strong>Customer name:</strong><span style="font-weight: normal;"> <?php echo $row_header['appnt_fullname'] ?></span></p>
+                                <p><strong>Meter No:</strong><span style="font-weight: normal;"> <?php echo $row_header['met_number'] ?></span></p>                   
                             </div>
                             <div class="black-separator"></div>
                             <div class="sheet-table">
