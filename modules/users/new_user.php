@@ -51,7 +51,7 @@
                                 <td width="100">First Name</td>
                                 <td><input type="text" name="usr_fname" required size="255" class="text"></td>
                             </tr>
-                             <tr>
+                            <tr>
                                 <td width="100">Last Name</td>
                                 <td><input type="text" name="usr_lname" required size="255" class="text"></td>
                             </tr>
@@ -74,7 +74,8 @@
                             </tr>
                             <tr>
                                 <td width="100">Role</td>
-                                <td><select name="role" class="select" required="required">
+                                <td>
+                                    <select name="role" class="select" required="required">
                                         <option value="">-- Select role --</option>
                                         <option value="ROOT">Administrator</option>
                                         <option value="ACCOUNTANT">Accountant</option>
@@ -83,9 +84,8 @@
                                         <option value="CREDIT CONTROLLER">Credit Controller</option>
                                         <option value="DATA CLERK">Data Clerk</option>
                                         <option value="MANAGER">Manager</option>
-
-
-                                    </select></td>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
