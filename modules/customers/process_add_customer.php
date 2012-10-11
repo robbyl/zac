@@ -42,7 +42,19 @@ $query_customer = "INSERT INTO customer
 $result_customer = mysql_query($query_customer) or die(mysql_error());
 
 $cust_id = mysql_insert_id();
-$acc_no = strtoupper(substr(uniqid(), 3));
+
+// Obtaining the last account number
+$query_acc_no = "SELECT MAX(acc_no) AS curr_acc_no
+                   FROM account";
+$result_acc_no = mysql_query($query_acc_no) or die(mysql_error());
+
+$row_acc = mysql_fetch_array($result_acc_no);
+$cur_acc_no = $row_acc['curr_acc_no'];
+$acc_rows = mysql_num_rows($result_acc_no);
+
+$acc_no = ($acc_rows > 0 ? $acc_no = $cur_acc_no : $acc_no = '0');
+
+$acc_no++;
 
 $query_acc = "INSERT INTO account
                           (acc_no, cust_id)

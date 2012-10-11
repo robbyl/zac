@@ -73,7 +73,8 @@ if ($num_month <= 0) {
                       AND aging_date IS NULL";
 
     $result_readings = mysql_query($query_readings) or die(mysql_error());
-
+    
+    // Obtaining the last invoice number
     $query_inv_no = "SELECT MAX(inv_no) AS cur_inv_no
                    FROM invoice";
     $result_inv_no = mysql_query($query_inv_no) or die(mysql_error());
