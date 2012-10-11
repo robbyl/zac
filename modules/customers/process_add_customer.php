@@ -23,10 +23,10 @@ session_start();
 $user_id = $_SESSION['user_id'];
 session_commit();
 
+// Getting data from submited form
 $appln_id = clean($_POST['appln_id']);
 $appnt_id = clean($_POST['appnt_id']);
 $ba_id = clean($_POST['ba_id']);
-
 $meter_number = clean($_POST['meter_number']);
 $premise_status = clean($_POST['premise_status']);
 $pay_center = clean($_POST['pay_center']);
@@ -56,6 +56,7 @@ $acc_no = ($acc_rows > 0 ? $acc_no = $cur_acc_no : $acc_no = '0');
 
 $acc_no++;
 
+// Creating customer account
 $query_acc = "INSERT INTO account
                           (acc_no, cust_id)
                    VALUES ('$acc_no', '$cust_id')";
@@ -63,17 +64,20 @@ $result_acc = mysql_query($query_acc) or die(mysql_error());
 
 if (!empty($meter_number)) {
 
+    // If is metered customer assign customer meter
     $met_met_cust = "INSERT INTO meter_customer
                              (met_id, cust_id)
                       VALUES ('$meter_number', '$cust_id')";
     $result_met_cust = mysql_query($met_met_cust) or die(mysql_error());
 
+    // Updating meter status to usued.
     $update_meter = "UPDATE meter
                         SET availability = 'ISSUED'
                       WHERE met_id = '$meter_number'";
     $result_meter = mysql_query($update_meter) or die(mysql_error());
 }
 
+// Updating application status to processed
 $query_appln = "UPDATE application
                    SET status = 'Processed'
                  WHERE appln_id = '$appln_id'";
