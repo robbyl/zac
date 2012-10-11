@@ -123,46 +123,46 @@ $result_user = mysql_query($query_user) or die(mysql_error());
 
                     <h3 class="menuheader expandable settings">Settings</h3>
                     <ul class="categoryitems">
-                        <li><a href="#" >General settings</a></li>
-                        <li><a href="#">Tariffs</a></li>
+                        <li><a href="../../modules/settings/settings.php" >General settings</a></li>
+                        <li><a href="../../modules/settings/tariffs.php">Tariffs</a></li>
                     </ul>
 
                     <h3 class="menuheader expandable applications">Applications</h3>
                     <ul class="categoryitems">
-                        <li><a href="#" >Add application</a></li>
-                        <li><a href="#">View applications</a></li>
+                        <li><a href="../../modules/applications/add_new_appln.php" >Add application</a></li>
+                        <li><a href="../../modules/applications/view_application.php">View applications</a></li>
                     </ul>
 
                     <h3 class="menuheader expandable customers">Customers</h3>
                     <ul class="categoryitems">
-                        <li><a href="#" >View customers</a></li>
-                        <li><a href="#" >Customer status</a></li>
+                        <li><a href="../../modules/customers/customers.php" >View customers</a></li>
+                        <li><a href="../../modules/customers/customer_status.php" >Customer status</a></li>
                     </ul>
 
                     <h3 class="menuheader expandable meters">Water Meters</h3>
                     <ul class="categoryitems">
-                        <li><a href="#" >Add meter</a></li>
-                        <li><a href="#">View meter readings</a></li>
-                        <li><a href="#">Enter meter readings</a></li>
-                        <li><a href="#">Print reading sheets</a></li>
+                        <li><a href="../../modules/meters/add_meter.php" >Add meter</a></li>
+                        <li><a href="../../modules/meters/meter_readings.php">View meter readings</a></li>
+                        <li><a href="../../modules/meters/enter_meter_readings.php">Enter meter readings</a></li>
+                        <li><a href="../../modules/meters/meter_sheet.php">Print reading sheets</a></li>
                     </ul>
 
-                    <h3 class="menuheader expandable invoices">Invoice</h3>
+                    <h3 class="menuheader expandable invoices">Sales</h3>
                     <ul class="categoryitems">
-                        <li><a href="#" >Generate invoices</a></li>
-                        <li><a href="#">View invoices</a></li>
+                        <li><a href="../../modules/invoice/generate_invoices.php" >Generate invoices</a></li>
+                        <li><a href="../../modules/invoice/invoices.php">View invoices</a></li>
                     </ul>
 
                     <h3 class="menuheader expandable financial">Paypoint</h3>
                     <ul class="categoryitems">
-                        <li><a href="#" >Online payments</a></li>
-                        <li><a href="#">Offline payments</a></li>
-                        <li><a href="#">Transactions</a></li>
+                        <li><a href="../../modules/paypoint/online_payments.php" >Online payments</a></li>
+                        <li><a href="../../modules/paypoint/offline_payments.php">Offline payments</a></li>
+                        <li><a href="../../modules/paypoint/transactions.php">Transactions</a></li>
                     </ul>
 
                     <h3 class="menuheader expandable reports">Reports</h3>
                     <ul class="categoryitems">
-                        <li><a href="#" >Generate reports</a></li>
+                        <li><a href="../../modules/report/generate_reports.php" >Generate reports</a></li>
                     </ul>
                 </div>
                 <!-- end .sidebar --></div>
