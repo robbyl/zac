@@ -16,7 +16,9 @@ $result_user = mysql_query($query_user) or die(mysql_error());
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+
         <title>SOFTBILL | USERS</title>
+
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/data_table.css" rel="stylesheet" type="text/css">
         <link href="../../css/jquery.ui.theme.css" rel="stylesheet" type="text/css">
