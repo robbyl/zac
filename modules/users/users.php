@@ -113,12 +113,12 @@ $result_user = mysql_query($query_user) or die(mysql_error());
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
                 <div class="arrowlistmenu">
-                    <h3 class="menuheader home">Home</h3>
+                    <a href="../../home.php"><h3 class="menuheader home">Home</h3></a>
 
                     <h3 class="menuheader expandable users">Manage Users</h3>
                     <ul class="categoryitems">
-                        <li><a href="#">Add new user</a></li>
-                        <li><a href="#">View users</a></li>
+                        <li><a href="../../modules/users/new_user.php">Add new user</a></li>
+                        <li><a href="../../modules/users/users.php">View users</a></li>
                     </ul>
 
                     <h3 class="menuheader expandable settings">Settings</h3>

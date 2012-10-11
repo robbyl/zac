@@ -265,7 +265,7 @@ ul.nav ul a, ul.nav ul a:visited {
 
 }
 
-.arrowlistmenu h3{
+.arrowlistmenu h3 {
     padding: 5px 5px 5px 35px !important;
     color: #000;
     margin: 0;
@@ -273,9 +273,18 @@ ul.nav ul a, ul.nav ul a:visited {
     cursor: pointer;
 }
 
+.arrowlistmenu a {
+    text-decoration: none !important;
+}
+
+.arrowlistmenu h3:hover {
+    color: #000;
+    background-color: #f1f1f1;
+}
+
 .arrowlistmenu a:hover, .arrowlistmenu a:active, .arrowlistmenu a:focus {
     background-color: #f1f1f1;
-    color: #000; 
+    color: #000;
 }
 
 
@@ -301,7 +310,7 @@ ul.nav ul a, ul.nav ul a:visited {
 
 .arrowlistmenu ul li a:hover{ /*hover state CSS*/
     color: #000;
-    background-color: #F3F3F3;
+    background-color: #f1f1f1;
 }
 
 /* ~~ The footer ~~ */
