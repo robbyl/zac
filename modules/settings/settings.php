@@ -103,7 +103,7 @@ $row_setting = mysql_fetch_array($result_settings);
                     </fieldset>
                     <fieldset style="float: left; width: 200px;">
                         <legend>Legal texts</legend>
-                        <div style="padding-left: 15px"> Terms & Conditions
+                        <div style="padding-left: 15px">Invoice Terms & Conditions
                             <textarea name="terms_conds" rows="10" cols="50" placeholder="INVOICE TERMS:"><?php echo $row_setting['terms_conds'] ?></textarea>
                         </div>
                     </fieldset>
