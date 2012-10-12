@@ -109,7 +109,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 <input type="hidden" name="cust_id[]" value="<?php echo $row['cust_id'] ?>" >
                 <input type="hidden" name="met_id[]" value="<?php echo $row['met_id'] ?>" >
                 <td><?php echo $SN ?></td>
-                <td><?php echo $row['acc_no'] ?></td>
+                <td><?php echo sprintf('%08d',$row['acc_no']) ?></td>
                 <td><?php echo $row['met_number'] ?></td>
                 <td><?php echo $row['appnt_fullname'] ?></td>
                 <td><?php echo $row['reading_date'] ?></td>

@@ -154,7 +154,7 @@ $row_header = mysql_fetch_array($result_meter_reading)
                                 <p><strong>Street: </strong> <span style="font-weight: normal; float: right">Migongo</span><div style="clear: both"></div></p>
                             </div>
                             <div class="print-details">
-                                <p><strong>Account No:</strong> <span style="font-weight: normal; font-weight: bold; font-size: 1.5em;"><?php echo $row_header['acc_no'] ?></span></p>
+                                <p><strong>Account No:</strong> <span style="font-weight: normal; font-weight: bold; font-size: 1.5em;"><?php echo sprintf('%08d',$row_header['acc_no']) ?></span></p>
                                 <p><strong>Customer name:</strong><span style="font-weight: normal;"> <?php echo $row_header['appnt_fullname'] ?></span></p>
                                 <p><strong>Meter No:</strong><span style="font-weight: normal;"> <?php echo $row_header['met_number'] ?></span></p>                   
                             </div>

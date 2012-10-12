@@ -162,7 +162,7 @@
                                         <li>Street: <span style="float: right"><?php echo $row_invoice['living_area']; ?></span></li>
                                     </ul>
                                     <ul class="inv-list" style="width: 230px; float:  right; padding-right:  0 !important;">
-                                        <li><strong>Account No:<span style="float: right"><?php echo $row_invoice['acc_no']; ?></span></strong></li>
+                                        <li><strong>Account No:<span style="float: right"><?php echo sprintf('%08d',$row_invoice['acc_no']); ?></span></strong></li>
                                         <li>Billing Period: <span style="float: right"><?php echo $row_invoice['invoicing_date']; ?></span></li>
                                         <li>Invoice Number: <span style="float: right"><?php echo sprintf('%08d', $row_invoice['inv_no']); ?></span></li>
                                         <li>&nbsp;</li>
