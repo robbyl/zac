@@ -124,7 +124,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     <tr onClick="nav('view_customer.php?id=<?php echo $row['cust_id'] ?>')">
                         <td><input type="checkbox" class="checkbox" name="checkbox[]" value="<?php echo $row['cust_id'] ?>"
                                    id="<?php echo $row['cust_id'] ?>" ></td>
-                        <td><?php echo $row['acc_no'] ?></td>
+                        <td><?php echo sprintf('%08d',$row['acc_no']) ?></td>
                         <td><?php echo $row['appnt_fullname'] ?></td>
                         <td><?php echo $row['appln_type'] ?></td>
                         <td><?php echo $row['service'] ?></td>

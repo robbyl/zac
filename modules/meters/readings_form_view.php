@@ -139,7 +139,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <td>
                             <input type="checkbox" name="checkbox[]" class="checkbox" value="<?php echo $row['mred_id'] ?>" id="<?php echo $row['mred_id'] ?>">
                         </td>
-                        <td><?php echo $row['acc_no'] ?></td>
+                        <td><?php echo sprintf('%08d',$row['acc_no']) ?></td>
                         <td><?php echo $row['met_number'] ?></td>
                         <td><?php echo $row['appnt_fullname'] ?></td>
                         <td><?php echo $row['billing_date'] ?></td>
