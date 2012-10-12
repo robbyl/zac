@@ -209,8 +209,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
 
                         <h3 class="menuheader expandable adjustment">Adjustments</h3>
                         <ul class="categoryitems">
-                            <li><a href="" >Online payments</a></li>
-                            <li><a href="">Offline payments</a></li>
+                            <li><a href="" >Perform adjustments</a></li>
                         </ul>
                     <?php } ?>
 
