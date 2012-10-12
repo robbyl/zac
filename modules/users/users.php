@@ -38,7 +38,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 oTable = $('#dataTable').dataTable({
                     "bJQueryUI": true,
                     "bScrollCollapse": true,
-                    "sScrollY": "600px",
+                    "sScrollY": "auto",
                     "bAutoWidth": false,
                     "bPaginate": true,
                     "sPaginationType": "full_numbers", //full_numbers,two_button
