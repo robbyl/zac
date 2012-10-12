@@ -136,7 +136,8 @@ session_commit();
                 }
                 if (
                         $_SESSION['role'] === "ROOT" ||
-                        $_SESSION['role'] === "CREDIT CONTROLLER"
+                        $_SESSION['role'] === "CREDIT CONTROLLER" ||
+                        $_SESSION['role'] === "ACCOUNTANT"
                 ) {
                     ?>
 
