@@ -82,7 +82,6 @@
                                         <option value="CASHIER">Cashier</option>
                                         <option value="CONNECTION OFFICER">Connection Officer</option>
                                         <option value="CREDIT CONTROLLER">Credit Controller</option>
-                                        <option value="DATA CLERK">Data Clerk</option>
                                         <option value="MANAGER">Manager</option>
 
 

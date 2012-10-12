@@ -100,7 +100,6 @@
                                                 <option <?php if ($row['role'] === 'CASHIER') echo 'selected' ?> value="CASHIER">Cashier</option>
                                                 <option <?php if ($row['role'] === 'CONNECTION OFFICER') echo 'selected' ?> value="CONNECTION OFFICER">Connection Officer</option>
                                                 <option <?php if ($row['role'] === 'CREDIT CONTROLLER') echo 'selected=' ?> value="CREDIT CONTROLLER">Credit Controller</option>
-                                                <option <?php if ($row['role'] === 'DATA CLERK') echo 'selected=' ?> value="DATA CLERK">Data Clerk</option>
                                                 <option <?php if ($row['role'] === 'MANAGER') echo 'selected' ?> value="MANAGER">Manager</option>    
                                             </select>
                                         </td>

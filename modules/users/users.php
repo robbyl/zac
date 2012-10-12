@@ -119,6 +119,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                     <a href="../../home.php"><h3 class="menuheader home">Home</h3></a>
                     <?php
                     if (
+                    // Manage users and settings access
                             $_SESSION['role'] === "ROOT"
                     ) {
                         ?>
@@ -137,6 +138,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                     }
 
                     if (
+                    // Application access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "CONNECTION OFFICER"
                     ) {
@@ -162,6 +164,15 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                             <li><a href="../../modules/customers/customer_status.php" >Customer status</a></li>
                         </ul>
 
+                        <?php
+                    }
+                    if (
+                    // Water meter access.
+                            $_SESSION['role'] === "ROOT" ||
+                            $_SESSION['role'] === "BILLING OFFICER"
+                    ) {
+                        ?>
+
                         <h3 class="menuheader expandable meters">Water Meters</h3>
                         <ul class="categoryitems">
                             <li><a href="../../modules/meters/add_meter.php" >Add meter</a></li>
@@ -173,8 +184,10 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         <?php
                     }
                     if (
+                    // Sales access
                             $_SESSION['role'] === "ROOT" ||
-                            $_SESSION['role'] === "BILLING OFFICER"
+                            $_SESSION['role'] === "BILLING OFFICER" ||
+                            $_SESSION['role'] === "ACCOUNTANT"
                     ) {
                         ?>
 
@@ -201,9 +214,11 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         <?php
                     }
                     if (
+                    // Adjustments access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "CREDIT CONTROLLER" ||
-                            $_SESSION['role'] === "ACCOUNTANT"
+                            $_SESSION['role'] === "ACCOUNTANT" ||
+                            $_SESSION['role'] === "BILLING OFFICER"
                     ) {
                         ?>
 
