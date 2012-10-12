@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 09, 2012 at 11:14 PM
+-- Generation Time: Oct 12, 2012 at 11:28 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `account` (
   `acc_id` int(11) NOT NULL AUTO_INCREMENT,
-  `acc_no` varchar(255) NOT NULL,
+  `acc_no` int(15) NOT NULL,
   `cust_id` int(11) NOT NULL,
   `credit` decimal(15,2) NOT NULL,
   `debit` decimal(15,2) NOT NULL,
@@ -43,10 +43,10 @@ CREATE TABLE IF NOT EXISTS `account` (
 --
 
 INSERT INTO `account` (`acc_id`, `acc_no`, `cust_id`, `credit`, `debit`, `balance`) VALUES
-(9, '6DAF003A67', 14, 0.00, 0.00, 0.00),
-(10, '6DB2F8E661', 15, 0.00, 0.00, 0.00),
-(11, '6E28E0BA50', 16, 0.00, 0.00, 0.00),
-(12, '706E47B7B9', 17, 0.00, 0.00, 0.00);
+(9, 1, 14, 0.00, 0.00, 0.00),
+(10, 2, 15, 0.00, 0.00, 0.00),
+(11, 3, 16, 0.00, 0.00, 0.00),
+(12, 4, 17, 0.00, 0.00, 0.00);
 
 -- --------------------------------------------------------
 
@@ -63,23 +63,37 @@ CREATE TABLE IF NOT EXISTS `aging_analysis` (
   PRIMARY KEY (`aging_id`),
   KEY `cust_id` (`cust_id`),
   KEY `inv_id` (`inv_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=140 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=164 ;
 
 --
 -- Dumping data for table `aging_analysis`
 --
 
 INSERT INTO `aging_analysis` (`aging_id`, `aging_date`, `inv_id`, `cust_id`, `aging_debit`) VALUES
-(130, '2012-01-01', 129, 14, 659.99),
-(131, '2012-01-01', 130, 15, 5060.00),
-(132, '2012-01-01', 131, 16, 11400.00),
-(133, '2012-01-01', 132, 17, 6000.00),
-(134, '2012-02-01', 133, 14, 1319.98),
-(135, '2012-02-01', 134, 17, 12000.00),
-(136, '2012-03-01', 135, 14, 1979.97),
-(137, '2012-03-01', 136, 17, 18000.00),
-(138, '2012-04-01', 137, 14, -1360.04),
-(139, '2012-04-01', 138, 17, 24000.00);
+(140, '2012-01-01', 139, 14, 159.99),
+(141, '2012-01-01', 140, 15, 7360.00),
+(142, '2012-01-01', 141, 16, -1000.00),
+(143, '2012-01-01', 142, 17, 6000.00),
+(144, '2012-02-01', 143, 14, 819.98),
+(145, '2012-02-01', 144, 15, 11500.00),
+(146, '2012-02-01', 145, 16, 5000.00),
+(147, '2012-02-01', 146, 17, 12000.00),
+(148, '2012-03-01', 147, 14, 1479.97),
+(149, '2012-03-01', 148, 15, 19320.00),
+(150, '2012-03-01', 149, 16, 0.00),
+(151, '2012-03-01', 150, 17, 18000.00),
+(152, '2012-04-01', 151, 14, 2139.96),
+(153, '2012-04-01', 152, 15, 25070.00),
+(154, '2012-04-01', 153, 16, 8400.00),
+(155, '2012-04-01', 154, 17, 24000.00),
+(156, '2012-05-01', 155, 14, 2799.95),
+(157, '2012-05-01', 156, 15, 25070.00),
+(158, '2012-05-01', 157, 16, 23100.00),
+(159, '2012-05-01', 158, 17, 30000.00),
+(160, '2012-06-01', 159, 14, 3459.94),
+(161, '2012-06-01', 160, 15, 36110.00),
+(162, '2012-06-01', 161, 16, 40800.00),
+(163, '2012-06-01', 162, 17, 36000.00);
 
 -- --------------------------------------------------------
 
@@ -249,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `cheque` (
   `rec_id` int(11) NOT NULL,
   PRIMARY KEY (`cheq_id`),
   KEY `rec_id` (`rec_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `cheque`
@@ -257,7 +271,8 @@ CREATE TABLE IF NOT EXISTS `cheque` (
 
 INSERT INTO `cheque` (`cheq_id`, `cheq_no`, `bank`, `rec_id`) VALUES
 (1, 'Q89898E', 'CRDB', 1),
-(2, '76545', 'NMB', 26);
+(2, '76545', 'NMB', 26),
+(3, '4444444', 'NBC', 29);
 
 -- --------------------------------------------------------
 
@@ -304,11 +319,21 @@ CREATE TABLE IF NOT EXISTS `cust_payment` (
   `rec_id` int(11) NOT NULL,
   `trans_id` int(11) NOT NULL,
   `cust_id` int(11) NOT NULL,
+  `cust_open_balance` decimal(15,2) NOT NULL,
   PRIMARY KEY (`custp_id`),
   KEY `rec_id` (`rec_id`),
   KEY `cust_id` (`cust_id`),
   KEY `trans_id` (`trans_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `cust_payment`
+--
+
+INSERT INTO `cust_payment` (`custp_id`, `rec_id`, `trans_id`, `cust_id`, `cust_open_balance`) VALUES
+(1, 27, 1821, 16, -1500.00),
+(2, 28, 1822, 14, 0.00),
+(3, 29, 1831, 16, -1500.00);
 
 -- --------------------------------------------------------
 
@@ -332,23 +357,37 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   KEY `cust_id` (`cust_id`),
   KEY `acc_id` (`acc_id`),
   KEY `trans_id` (`trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=139 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=163 ;
 
 --
 -- Dumping data for table `invoice`
 --
 
 INSERT INTO `invoice` (`inv_id`, `inv_no`, `inv_type`, `invoicing_date`, `created_date`, `cust_id`, `acc_id`, `trans_id`, `water_cost`, `sewer_cost`, `service_charge`) VALUES
-(129, 1, 'Actual', '2012-01-01', '2012-10-01 21:46:11', 14, 9, 1784, 0.00, 659.99, 0.00),
-(130, 2, 'Actual', '2012-01-01', '2012-10-01 21:46:11', 15, 10, 1785, 5060.00, 0.00, 600.00),
-(131, 3, 'Actual', '2012-01-01', '2012-10-01 21:46:11', 16, 11, 1786, 11400.00, 0.00, 300.00),
-(132, 4, 'Estimate', '2012-01-01', '2012-10-01 21:46:11', 17, 12, 1787, 6000.00, 0.00, 600.00),
-(133, 5, 'Actual', '2012-02-01', '2012-10-01 21:51:15', 14, 9, 1788, 0.00, 659.99, 0.00),
-(134, 6, 'Estimate', '2012-02-01', '2012-10-01 21:51:15', 17, 12, 1789, 6000.00, 0.00, 600.00),
-(135, 7, 'Actual', '2012-03-01', '2012-10-01 21:57:34', 14, 9, 1790, 0.00, 659.99, 0.00),
-(136, 8, 'Estimate', '2012-03-01', '2012-10-01 21:57:34', 17, 12, 1791, 6000.00, 0.00, 600.00),
-(137, 9, 'Actual', '2012-04-01', '2012-10-01 21:58:29', 14, 9, 1792, 0.00, 659.99, 0.00),
-(138, 10, 'Estimate', '2012-04-01', '2012-10-01 21:58:29', 17, 12, 1793, 6000.00, 0.00, 600.00);
+(139, 1, 'Actual', '2012-01-01', '2012-10-10 00:21:02', 14, 9, 1817, 0.00, 659.99, 0.00),
+(140, 2, 'Actual', '2012-01-01', '2012-10-10 00:21:02', 15, 10, 1818, 7360.00, 0.00, 600.00),
+(141, 3, 'Actual', '2012-01-01', '2012-10-10 00:21:02', 16, 11, 1819, 6000.00, 0.00, 300.00),
+(142, 4, 'Estimate', '2012-01-01', '2012-10-10 00:21:02', 17, 12, 1820, 6000.00, 0.00, 600.00),
+(143, 5, 'Actual', '2012-02-01', '2012-10-10 00:41:47', 14, 9, 1823, 0.00, 659.99, 0.00),
+(144, 6, 'Actual', '2012-02-01', '2012-10-10 00:41:47', 15, 10, 1824, 4140.00, 0.00, 600.00),
+(145, 7, 'Actual', '2012-02-01', '2012-10-10 00:41:47', 16, 11, 1825, 6000.00, 0.00, 300.00),
+(146, 8, 'Estimate', '2012-02-01', '2012-10-10 00:41:47', 17, 12, 1826, 6000.00, 0.00, 600.00),
+(147, 9, 'Actual', '2012-03-01', '2012-10-10 00:47:58', 14, 9, 1827, 0.00, 659.99, 0.00),
+(148, 10, 'Actual', '2012-03-01', '2012-10-10 00:47:58', 15, 10, 1828, 7820.00, 0.00, 600.00),
+(149, 11, 'Actual', '2012-03-01', '2012-10-10 00:47:58', 16, 11, 1829, 3000.00, 0.00, 300.00),
+(150, 12, 'Estimate', '2012-03-01', '2012-10-10 00:47:59', 17, 12, 1830, 6000.00, 0.00, 600.00),
+(151, 13, 'Actual', '2012-04-01', '2012-10-10 09:31:07', 14, 9, 1832, 0.00, 659.99, 0.00),
+(152, 14, 'Actual', '2012-04-01', '2012-10-10 09:31:07', 15, 10, 1833, 5750.00, 0.00, 600.00),
+(153, 15, 'Actual', '2012-04-01', '2012-10-10 09:31:07', 16, 11, 1834, 8400.00, 0.00, 300.00),
+(154, 16, 'Estimate', '2012-04-01', '2012-10-10 09:31:08', 17, 12, 1835, 6000.00, 0.00, 600.00),
+(155, 17, 'Actual', '2012-05-01', '2012-10-10 09:45:17', 14, 9, 1836, 0.00, 659.99, 0.00),
+(156, 18, 'Actual', '2012-05-01', '2012-10-10 09:45:17', 15, 10, 1837, 0.00, 0.00, 600.00),
+(157, 19, 'Actual', '2012-05-01', '2012-10-10 09:45:17', 16, 11, 1838, 14700.00, 0.00, 300.00),
+(158, 20, 'Estimate', '2012-05-01', '2012-10-10 09:45:17', 17, 12, 1839, 6000.00, 0.00, 600.00),
+(159, 21, 'Actual', '2012-06-01', '2012-10-10 11:22:53', 14, 9, 1840, 0.00, 659.99, 0.00),
+(160, 22, 'Actual', '2012-06-01', '2012-10-10 11:22:53', 15, 10, 1841, 11040.00, 0.00, 600.00),
+(161, 23, 'Actual', '2012-06-01', '2012-10-10 11:22:53', 16, 11, 1842, 17700.00, 0.00, 300.00),
+(162, 24, 'Estimate', '2012-06-01', '2012-10-10 11:22:53', 17, 12, 1843, 6000.00, 0.00, 600.00);
 
 -- --------------------------------------------------------
 
@@ -363,15 +402,25 @@ CREATE TABLE IF NOT EXISTS `invoice_reading` (
   PRIMARY KEY (`inv_read_id`),
   KEY `mred_id` (`mred_id`),
   KEY `inv_id` (`inv_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `invoice_reading`
 --
 
 INSERT INTO `invoice_reading` (`inv_read_id`, `mred_id`, `inv_id`) VALUES
-(21, 621, 130),
-(22, 622, 131);
+(23, 625, 140),
+(24, 626, 141),
+(25, 627, 144),
+(26, 628, 145),
+(27, 629, 148),
+(28, 630, 149),
+(29, 631, 152),
+(30, 632, 153),
+(31, 633, 156),
+(32, 634, 157),
+(33, 635, 160),
+(34, 636, 161);
 
 -- --------------------------------------------------------
 
@@ -447,17 +496,25 @@ CREATE TABLE IF NOT EXISTS `meter_reading` (
   PRIMARY KEY (`mred_id`),
   KEY `met_id` (`met_id`),
   KEY `cust_id` (`cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=625 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=637 ;
 
 --
 -- Dumping data for table `meter_reading`
 --
 
 INSERT INTO `meter_reading` (`mred_id`, `billing_date`, `reading_date`, `entered_date`, `reading`, `consumption`, `met_id`, `cust_id`, `remarks`) VALUES
-(621, '2012-01-01', '2011-12-01', '2012-10-01 21:37:46', 52, 22, 6, 15, ''),
-(622, '2012-01-01', '2011-12-01', '2012-10-01 21:37:46', 38, 38, 4, 16, ''),
-(623, '2012-01-01', '2012-02-01', '2012-10-01 21:50:54', 61, 9, 6, 15, ''),
-(624, '2012-01-01', '2012-02-01', '2012-10-01 21:50:54', 53, 15, 4, 16, '');
+(625, '2012-01-01', '2012-02-01', '2012-10-10 00:18:43', 62, 32, 6, 15, ''),
+(626, '2012-01-01', '2012-02-01', '2012-10-10 00:18:43', 20, 20, 4, 16, ''),
+(627, '2012-02-01', '2012-03-01', '2012-10-10 00:40:17', 80, 18, 6, 15, ''),
+(628, '2012-02-01', '2012-03-01', '2012-10-10 00:40:17', 40, 20, 4, 16, ''),
+(629, '2012-03-01', '2012-04-01', '2012-10-10 00:45:56', 114, 34, 6, 15, ''),
+(630, '2012-03-01', '2012-04-01', '2012-10-10 00:45:56', 50, 10, 4, 16, ''),
+(631, '2012-04-01', '2012-05-01', '2012-10-10 00:52:01', 139, 25, 6, 15, ''),
+(632, '2012-04-01', '2012-05-01', '2012-10-10 00:52:01', 78, 28, 4, 16, ''),
+(633, '2012-05-01', '2012-06-01', '2012-10-10 09:43:06', 139, 0, 6, 15, ''),
+(634, '2012-05-01', '2012-06-01', '2012-10-10 09:43:06', 127, 49, 4, 16, ''),
+(635, '2012-06-01', '2012-07-01', '2012-10-10 11:22:21', 187, 48, 6, 15, ''),
+(636, '2012-06-01', '2012-07-01', '2012-10-10 11:22:21', 186, 59, 4, 16, '');
 
 -- --------------------------------------------------------
 
@@ -512,19 +569,22 @@ CREATE TABLE IF NOT EXISTS `receipt` (
   PRIMARY KEY (`rec_id`),
   KEY `tran_id` (`tran_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `receipt`
 --
 
 INSERT INTO `receipt` (`rec_id`, `rec_no`, `rec_type`, `tran_id`, `payed_amount`, `amount_in_words`, `user_id`) VALUES
-(1, 1, '', 1651, 7500.00, 'Seven thousand and five hundred shillings only', 1),
-(2, 2, '', 1652, 8000.00, 'Eight thousands', 1),
-(3, 3, '', 1653, 9000.00, 'Nine thousands', 1),
-(4, 4, '', 1794, 4000.00, 'Four thousands', 1),
-(25, 25, '', 1815, 5000.00, 'Five thousands', 1),
-(26, 26, '', 1816, 7000.00, 'Seven thousands only', 1);
+(1, 1, 'Online', 1651, 7500.00, 'Seven thousand and five hundred shillings only', 1),
+(2, 2, 'Online', 1652, 8000.00, 'Eight thousands', 1),
+(3, 3, 'Online', 1653, 9000.00, 'Nine thousands', 1),
+(4, 4, 'Online', 1794, 4000.00, 'Four thousands', 1),
+(25, 25, 'Online', 1815, 5000.00, 'Five thousands', 1),
+(26, 26, 'Online', 1816, 7000.00, 'Seven thousands only', 1),
+(27, 27, 'Online', 1821, 7000.00, 'seven thousands', 1),
+(28, 28, 'Online', 1822, 500.00, 'Five hundred shilings', 1),
+(29, 29, 'Online', 1831, 8000.00, 'Eight thousand shillings only', 1);
 
 -- --------------------------------------------------------
 
@@ -623,7 +683,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `trans_date` datetime NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1817 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1844 ;
 
 --
 -- Dumping data for table `transaction`
@@ -633,19 +693,36 @@ INSERT INTO `transaction` (`trans_id`, `trans_date`, `description`) VALUES
 (1651, '2012-09-27 18:01:43', 'Application fee'),
 (1652, '2012-09-27 18:20:23', 'Application fee'),
 (1653, '2012-09-29 14:58:39', 'Application fee'),
-(1784, '2012-10-01 21:46:11', 'Sewer Billing'),
-(1785, '2012-10-01 21:46:11', 'Water Billing'),
-(1786, '2012-10-01 21:46:11', 'Water Billing'),
-(1787, '2012-10-01 21:46:11', 'Water Billing'),
-(1788, '2012-10-01 21:51:15', 'Sewer Billing'),
-(1789, '2012-10-01 21:51:15', 'Water Billing'),
-(1790, '2012-10-01 21:57:34', 'Sewer Billing'),
-(1791, '2012-10-01 21:57:34', 'Water Billing'),
-(1792, '2012-10-01 21:58:29', 'Sewer Billing'),
-(1793, '2012-10-01 21:58:29', 'Water Billing'),
 (1794, '2012-10-04 17:49:35', 'Application fee'),
 (1815, '2012-10-04 18:22:52', 'Application fee'),
-(1816, '2012-10-06 13:27:30', 'Application fee');
+(1816, '2012-10-06 13:27:30', 'Application fee'),
+(1817, '2012-10-10 00:21:02', 'Sewer Billing'),
+(1818, '2012-10-10 00:21:02', 'Water Billing'),
+(1819, '2012-10-10 00:21:02', 'Water Billing'),
+(1820, '2012-10-10 00:21:02', 'Water Billing'),
+(1821, '2012-10-10 00:28:54', 'Water Payment'),
+(1822, '2012-10-10 00:39:21', 'Sewer Payment'),
+(1823, '2012-10-10 00:41:47', 'Sewer Billing'),
+(1824, '2012-10-10 00:41:47', 'Water Billing'),
+(1825, '2012-10-10 00:41:47', 'Water Billing'),
+(1826, '2012-10-10 00:41:47', 'Water Billing'),
+(1827, '2012-10-10 00:47:58', 'Sewer Billing'),
+(1828, '2012-10-10 00:47:58', 'Water Billing'),
+(1829, '2012-10-10 00:47:58', 'Water Billing'),
+(1830, '2012-10-10 00:47:59', 'Water Billing'),
+(1831, '2012-10-10 00:50:05', 'Water Payment'),
+(1832, '2012-10-10 09:31:07', 'Sewer Billing'),
+(1833, '2012-10-10 09:31:07', 'Water Billing'),
+(1834, '2012-10-10 09:31:07', 'Water Billing'),
+(1835, '2012-10-10 09:31:08', 'Water Billing'),
+(1836, '2012-10-10 09:45:17', 'Sewer Billing'),
+(1837, '2012-10-10 09:45:17', 'Water Billing'),
+(1838, '2012-10-10 09:45:17', 'Water Billing'),
+(1839, '2012-10-10 09:45:17', 'Water Billing'),
+(1840, '2012-10-10 11:22:53', 'Sewer Billing'),
+(1841, '2012-10-10 11:22:53', 'Water Billing'),
+(1842, '2012-10-10 11:22:53', 'Water Billing'),
+(1843, '2012-10-10 11:22:53', 'Water Billing');
 
 -- --------------------------------------------------------
 
@@ -658,13 +735,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `usr_fname` varchar(255) NOT NULL,
   `usr_lname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
   `status` varchar(10) NOT NULL DEFAULT 'ACTIVE',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
 
 --
 -- Dumping data for table `users`
@@ -674,7 +751,7 @@ INSERT INTO `users` (`user_id`, `usr_fname`, `usr_lname`, `email`, `username`, `
 (1, 'Admin', 'Admin', 'admin@localhost', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'ROOT', 'ACTIVE'),
 (2, 'user1', 'user1', 'user1@localhost.com', 'user1', 'b3daa77b4c04a9551b8781d03191fe098f325e67', 'ROOT', 'BLOCKED'),
 (3, 'user2', 'user2', 'user2@localhost.com', 'user2', 'a1881c06eec96db9901c7bbfe41c42a3f08e9cb4', 'ROOT', 'BLOCKED'),
-(7, 'user30', '', 'user3@localhost.com', 'user3', 'bff5c0d86f525bb86ade3e19bbe2cf8a23cbddfc', 'ROOT', 'ACTIVE'),
+(7, 'user30', 'user30', 'user3@localhost.com', 'user3', 'bff5c0d86f525bb86ade3e19bbe2cf8a23cbddfc', 'ROOT', 'ACTIVE'),
 (8, 'user4', '', 'user4@localhost.com', 'user4', '06e6eef6adf2e5f54ea6c43c376d6d36605f810e', 'ROOT', 'BLOCKED'),
 (9, 'user5', '', 'user5@localhost.com', 'user5', '7d112681b8dd80723871a87ff506286613fa9cf6', 'ROOT', 'BLOCKED'),
 (10, 'user10', '', 'user10@localhost.com', 'user10', 'd089da97b9e447158a0466d15fe291f2c43b982e', 'ROOT', 'ACTIVE'),
@@ -682,12 +759,18 @@ INSERT INTO `users` (`user_id`, `usr_fname`, `usr_lname`, `email`, `username`, `
 (12, 'user11', '', 'user11@localhost.com', 'user11', '3d5cbfed48ce23d2f0dc0a0baa3ec2ee93867b2b', 'ROOT', 'ACTIVE'),
 (13, 'user12', '', 'user12@localhost.com', 'user12', 'e45ed40f34005e1636649ab18bbd16ada02cb251', 'ROOT', 'BLOCKED'),
 (14, 'user13', '', 'user13@localhost.com', 'user13', 'd6fa2beb1c302491b40f447d8784fc0bcce1ca8e', 'ROOT', 'ACTIVE'),
-(15, 'cashier', '', 'cashier@localhost', 'cashier', 'a5b42198e3fb950b5ab0d0067cbe077a41da1245', 'CASHIER', 'BLOCKED'),
+(15, 'cashier', '', 'cashier@localhost', 'cashier', 'a5b42198e3fb950b5ab0d0067cbe077a41da1245', 'CASHIER', 'ACTIVE'),
 (16, 'gffhg', '', 'info@zanzibar.com', 'robbyl', '3421ecde2a5de6543b48460b867cf323b018bc22', 'CASHIER', 'BLOCKED'),
 (17, '', 'Chahe', '', '', '', '', 'ACTIVE'),
 (18, '', '', 'carringtonchahe@yahoo.com', 'carrington', '154197b685dd2b833f122e11370c090e90a39a8c', 'ROOT', 'ACTIVE'),
 (20, '', '', 'carringtonchahe@yahoo.com', 'carringtonfau', '80b0225d8e1fe6c3fae611101ad0a16e7dd63f8b', 'ACCOUNTANT', 'ACTIVE'),
-(61, 'Kimambo', 'Kimaro', 'kimaro@yahoo.com', 'kimambo', '053a8f17c2731d33f77e2626b0697fa9443d8e36', 'CASHIER', 'ACTIVE');
+(61, 'Kimambo', 'Kimaro', 'kimaro@yahoo.com', 'kimambo', '053a8f17c2731d33f77e2626b0697fa9443d8e36', 'CASHIER', 'ACTIVE'),
+(62, 'Manager', 'Manager', 'manager@localhost.com', 'manager', '1a8565a9dc72048ba03b4156be3e569f22771f23', 'MANAGER', 'ACTIVE'),
+(63, 'Data', 'Data', 'data@localhost.com', 'data', 'a17c9aaa61e80a1bf71d0d850af4e5baa9800bbd', 'DATA CLERK', 'ACTIVE'),
+(64, 'Credit', 'Credit', 'credit@localhost.com', 'credit', '9cf5e7cd8fcf394934688710870f7642ee7eede5', 'CREDIT CONTROLLER', 'ACTIVE'),
+(65, 'Billing', 'Billing', 'billing@localhost.com', 'billing', 'acd14c7a6c04c1dd6dc6c2d66d487a28667c0ad6', 'BILLING OFFICER', 'ACTIVE'),
+(66, 'accountant', 'accountant', 'accountant@localhost.com', 'accountant', '4cd5edcd9aa8e3aed333a5dccda30a3b4a7eeeb7', 'ACCOUNTANT', 'ACTIVE'),
+(67, 'connection', 'connection', 'connection@localhost.com', 'connection', '814605c64a5c1c3c2d3c2c332153f0e425e92653', 'CONNECTION OFFICER', 'ACTIVE');
 
 -- --------------------------------------------------------
 

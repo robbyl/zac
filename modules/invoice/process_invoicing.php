@@ -73,7 +73,8 @@ if ($num_month <= 0) {
                       AND aging_date IS NULL";
 
     $result_readings = mysql_query($query_readings) or die(mysql_error());
-
+    
+    // Obtaining the last invoice number
     $query_inv_no = "SELECT MAX(inv_no) AS cur_inv_no
                    FROM invoice";
     $result_inv_no = mysql_query($query_inv_no) or die(mysql_error());
@@ -161,19 +162,22 @@ if ($num_month <= 0) {
                     }
                 }
 
+                // Charging service charge for metered customers
+                $service_charge = $row_reading['service_charge'];
+
                 //If water customer and premise status metered
             } elseif ($row_reading['premise_status'] === 'Un metered') {
 
                 // If water customer and premise status un metered use
-                // water flat rate as water cost
+                // water flat rate as water cost and don't charges service charge
                 $inv_type = "Estimate";
                 $cost = $row_reading['wt_flat_rate'];
+                $service_charge = 0;
             }
 
-            // Generating water invoices
+            // Generating water invoices and do not charge sewer charges.
             $inv_no++;
             $sewer_cost = 0;
-            $service_charge = $row_reading['service_charge'];
 
             $query_invoice_water = "INSERT INTO invoice
                                             (inv_no, invoicing_date, created_date,
@@ -187,8 +191,8 @@ if ($num_month <= 0) {
 
             //Inserting debits in aging analysis
             $inv_id = mysql_insert_id();
-            $curr_debit = $row_reading['aging_debit'];
-            $new_debit = $curr_debit + $cost;
+            $curr_debit = $row_reading['aging_debit']; // Open ballance
+            $new_debit = $curr_debit + $cost + $service_charge; // Current total charge
 
 
             $query_age_analysis = "INSERT INTO aging_analysis
@@ -197,6 +201,7 @@ if ($num_month <= 0) {
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
 
+            // Preventing billed meter readigs to re-bill
             if ($row_reading['premise_status'] === 'Metered') {
 
                 $mred_id = $row_reading['mred_id'];
@@ -223,7 +228,7 @@ if ($num_month <= 0) {
             //Calculating sewer costs
             $cost = $row_reading['s_flat_rate'];
 
-            // Generating invoices
+            // Generating invoices and don't charge water and service charges.
             $inv_no++;
             $water_cost = 0;
             $service_charge = 0;
@@ -240,8 +245,8 @@ if ($num_month <= 0) {
 
             //Inserting debits in aging analysis
             $inv_id = mysql_insert_id();
-            $curr_debit = $row_reading['aging_debit'];
-            $new_debit = $curr_debit + $cost;
+            $curr_debit = $row_reading['aging_debit']; // Customer Open Balance
+            $new_debit = $curr_debit + $cost; // Current Toatal charge
 
             $query_age_analysis = "INSERT INTO aging_analysis
                                        (aging_date, cust_id, inv_id, aging_debit)
@@ -250,7 +255,7 @@ if ($num_month <= 0) {
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
         } elseif ($row_reading['appln_type'] === 'Water and Sewer') {
 
-            // Generating Invoices for Clean water
+            // Generating Invoices for Clean water and Sewer
             $query_transaction_water = "INSERT INTO transaction
                                                     (trans_date, description)
                                              VALUES (CURRENT_TIMESTAMP(), 'Water and Sewer Billing')";
@@ -306,13 +311,15 @@ if ($num_month <= 0) {
                     }
                 }
 
-                //If water customer and premise status metered
+                // Charging service charge.
+                $service_charge = $row_reading['service_charge'];
             } elseif ($row_reading['premise_status'] === 'Un metered') {
 
                 // If water customer and premise status un metered use
-                // water flat rate as water cost
+                // water flat rate as water cost and don't charge service charges.
                 $inv_type = "Estimate";
                 $cost = $row_reading['wt_flat_rate'];
+                $service_charge = 0;
             }
 
             //Calculating sewer costs
@@ -320,7 +327,6 @@ if ($num_month <= 0) {
 
             // Generating invoice
             $inv_no++;
-            $service_charge = $row_reading['service_charge'];
 
             $query_invoice_water = "INSERT INTO invoice
                                         (inv_no, invoicing_date, created_date,
@@ -334,8 +340,8 @@ if ($num_month <= 0) {
 
             //Inserting debits in aging analysis
             $inv_id = mysql_insert_id();
-            $curr_debit = $row_reading['aging_debit'];
-            $new_debit = $curr_debit + $cost;
+            $curr_debit = $row_reading['aging_debit']; // Customer Open Balance
+            $new_debit = $curr_debit + $cost + $sewer_cost + $service_charge; // Current total charge
 
             $query_age_analysis = "INSERT INTO aging_analysis
                                        (aging_date, cust_id, inv_id, aging_debit)
@@ -343,6 +349,7 @@ if ($num_month <= 0) {
 
             $result_age_analysis = mysql_query($query_age_analysis) or die(mysql_error());
 
+            // Preventing billed meter readings for re-bill.
             if ($row_reading['premise_status'] === 'Metered') {
 
                 $mred_id = $row_reading['mred_id'];

@@ -50,8 +50,7 @@ for ($i = 0; $i < $cust_no; $i++) {
 
     $query_appnt = "UPDATE applicant
                        SET appnt_type_id = '$appnt_type[$i]',
-                           appnt_fullname = '$appnt_fullname[$i]',     
-                           appnt_tel = '$appnt_tel[$i]',
+                           appnt_fullname = '$appnt_fullname[$i]',                           appnt_tel = '$appnt_tel[$i]',
                            appnt_post_addr = '$appnt_post_addr[$i]',
                            appnt_phy_addr = '$appnt_phy_addr[$i]',
                            block_no = '$block_no[$i]',

@@ -28,13 +28,15 @@ $result_user = mysql_query($query_user) or die(mysql_error());
         <script src="../../js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
         <script src="../../js/jquery.dataTables.pagination.js" type="text/javascript"></script>
         <script src="../../js/tooltip.js" type="text/javascript"></script>
+        <script src="../../js/accordion.js" type="text/javascript"></script>
+        
         <script type="text/javascript">
-
+            
             $(document).ready(function() {
                 oTable = $('#dataTable').dataTable({
                     "bJQueryUI": true,
-                    "bScrollCollapse": false,
-                    "sScrollY": "auto",
+                    "bScrollCollapse": true,
+                    "sScrollY": "600px",
                     "bAutoWidth": false,
                     "bPaginate": true,
                     "sPaginationType": "full_numbers", //full_numbers,two_button
@@ -50,13 +52,25 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                     // Iterate each check box
 
                     if(this.checked){
-                        $(':checkbox').each(function(){
+                        $('.checkbox').each(function(){
                             this.checked = true;
+                            $(this).closest('tr').addClass('selected');
                         });
 
                     } else {
-                        $(':checkbox').each(function(){
+                        $('.checkbox').each(function(){
                             this.checked = false;
+                            $(this, '.checkbox').closest('tr').removeClass('selected');
+                        });
+                    }
+                });
+                
+                // Putting backgoround color to the tr for checked checkbox 
+                $('.checkbox').click(function(event) {
+                    $(this).closest('tr').toggleClass('selected');
+                    if (event.target.type !== 'checkbox') {
+                        $(':checkbox', this).attr('checked', function() {
+                            return !this.checked;
                         });
                     }
                 });
@@ -68,15 +82,32 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 $('.tooltip').tipTip({
                     delay: "300"
                 });
-
+                
             } );
         </script>
     </head>
 
     <body>
         <div class="container">
-
-            <div class="content" style="width: 100%; margin: 0">
+            <?php require '../../includes/header.php'; ?>
+            <div class="sidebar">
+                <ul class="nav">
+                    <li><a href="../../home.php" class="home">Home</a></li>
+                    <li> <a href="#" class="users current">Manage Users</a>
+                        <ul>
+                            <li><a href="new_user.php">Add new user</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="../settings/settings.php" class="settings">Settings</a> </li>
+                    <li> <a href="../applications/applications.php" class="applications">Applications</a> </li>
+                    <li> <a href="../customers/customers.php" class="customers">Customers</a></li>
+                    <li> <a href="../meters/meters.php" class="meters">Water Meters</a></li>
+                    <li> <a href="../invoice/invoices.php" class="invoices">Invoice</a></li>
+                    <li> <a href="../paypoint/paypoint.php" class="financial">Pay Point</a></li>
+                    <li> <a href="../report/reports.php" class="reports">Reports</a></li>
+                </ul>
+                <!-- end .sidebar --></div>
+            <div class="content">
                 <?php
                 // Displaying messages and errors
                 include '../../includes/info.php';
@@ -88,8 +119,6 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         <button class="edit tooltip" accesskey="E" title="Edit [Alt+Shift+E]" name="action[]"  value="EDIT">Edit</button>
                         <button class="block tooltip" accesskey="B" title="Block [Alt+Shift+B]" name="action[]" value="BLOCK" onClick="return confirm('Are you sure you want to block user(s)?')">Block</button>
                         <button class="activate tooltip" accesskey="I" title="Activate [Alt+Shift+I]" name="action[]" value="ACTIVATE" onClick="return confirm('Are you sure you want to activate user(s)')">Activate</button>
-                        <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" name="action[]" value="PRINT">Print</button>
-                        <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" name="action[]" value="PDF">PDF</button>
                     </div>
                     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
                         <thead>
@@ -97,7 +126,8 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                                 <th width="23">
                                     <input type="checkbox" id="select-all" accesskey="A" title="Select all [Alt+Shift+A]" class="tooltip">
                                 </th>
-                                <th>Full name</th>
+                                <th>First name</th>
+                                <th>Last name</th>
                                 <th>E-mail</th>
                                 <th>Username</th>
                                 <th>Role</th>
@@ -110,9 +140,10 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                                 ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="checkbox[]" value="<?php echo $row['user_id'] ?>" id="<?php echo $row['user_id'] ?>">
+                                        <input type="checkbox" name="checkbox[]" title="Select this user" class="checkbox tooltip" value="<?php echo $row['user_id'] ?>" id="<?php echo $row['user_id'] ?>">
                                     </td>
-                                    <td><?php echo $row['user_full_name'] ?></td>
+                                    <td><?php echo $row['usr_fname'] ?></td>
+                                    <td><?php echo $row['usr_lname'] ?></td>
                                     <td><?php echo $row['email'] ?></td>
                                     <td><?php echo $row['username'] ?></td>
                                     <td><?php echo $row['role'] ?></td>
@@ -126,6 +157,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 </form>
 
                 <!-- end .content --></div>
+            <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
 </html>

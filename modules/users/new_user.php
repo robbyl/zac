@@ -77,6 +77,7 @@
                                 <td><select name="role" class="select" required="required">
                                         <option value="">-- Select role --</option>
                                         <option value="ROOT">Administrator</option>
+                                        <option value="BILLING OFFICER">Billing Officer</option>
                                         <option value="ACCOUNTANT">Accountant</option>
                                         <option value="CASHIER">Cashier</option>
                                         <option value="CONNECTION OFFICER">Connection Officer</option>

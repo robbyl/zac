@@ -67,7 +67,7 @@ var ddaccordion={
             if (ajaxinfo.status!="complete"){
                 setTimeout(function(){
                     handlecontent(ajaxinfo.cacheddata)
-                    }, 100) //call handlecontent() again until ajax content has loaded (ajaxinfo.cacheddata contains data)
+                }, 100) //call handlecontent() again until ajax content has loaded (ajaxinfo.cacheddata contains data)
             }
         } //end nested function
 
@@ -96,7 +96,7 @@ var ddaccordion={
             if (ajaxinfo.status=="none" || ajaxinfo.status=="loading")
                 this.ajaxloadcontent($targetHeader, $targetContent, config, function(){
                     ddaccordion.expandit($targetHeader, $targetContent, config, useractivated, directclick)
-                    })
+                })
             else if (ajaxinfo.status=="cached"){
                 $targetContent.html(ajaxinfo.cacheddata)
                 ajaxinfo.cacheddata=null
@@ -111,14 +111,14 @@ var ddaccordion={
                 clearTimeout(config.sthtimer)
                 config.sthtimer=setTimeout(function(){
                     ddaccordion.scrollToHeader($targetHeader)
-                    }, sthdelay)
+                }, sthdelay)
             }
             if (config.postreveal=="gotourl" && directclick){ //if revealtype is "Go to Header URL upon click", and this is a direct click on the header
                 var targetLink=($targetHeader.is("a"))? $targetHeader.get(0) : $targetHeader.find('a:eq(0)').get(0)
                 if (targetLink) //if this header is a link
                     setTimeout(function(){
                         location=targetLink.href
-                        }, 200 + (scrolltoheader? 400+sthdelay : 0) ) //ignore link target, as window.open(targetLink, targetLink.target) doesn't work in FF if popup blocker enabled
+                    }, 200 + (scrolltoheader? 400+sthdelay : 0) ) //ignore link target, as window.open(targetLink, targetLink.target) doesn't work in FF if popup blocker enabled
             }
         })
     },
@@ -126,14 +126,14 @@ var ddaccordion={
     scrollToHeader:function($targetHeader){
         ddaccordion.$docbody.stop().animate({
             scrollTop: $targetHeader.offset().top
-            }, 400)
+        }, 400)
     },
 
     collapseit:function($targetHeader, $targetContent, config, isuseractivated){
         this.transformHeader($targetHeader, config, "collapse")
         $targetContent.slideUp(config.animatespeed, function(){
             config.onopenclose($targetHeader.get(0), parseInt($targetHeader.attr('headerindex')), $targetContent.css('display'), isuseractivated)
-            })
+        })
     },
 
     transformHeader:function($targetHeader, config, state){
@@ -183,7 +183,7 @@ var ddaccordion={
             config.cssclass={
                 collapse: config.toggleclass[0], 
                 expand: config.toggleclass[1]
-                } //store expand and contract CSS classes as object properties
+            } //store expand and contract CSS classes as object properties
             config.revealtype=config.revealtype || "click"
             config.revealtype=config.revealtype.replace(/mouseover/i, "mouseenter")
             if (config.revealtype=="clickgo"){
@@ -199,7 +199,7 @@ var ddaccordion={
                     location: config.togglehtml[0], 
                     collapse: config.togglehtml[1], 
                     expand: config.togglehtml[2]
-                    } //store HTML settings as object properties
+                } //store HTML settings as object properties
             config.oninit=(typeof config.oninit=="undefined")? function(){} : config.oninit //attach custom "oninit" event handler
             config.onopenclose=(typeof config.onopenclose=="undefined")? function(){} : config.onopenclose //attach custom "onopenclose" event handler
             var lastexpanded={} //object to hold reference to last expanded header and content (jquery objects)
@@ -267,7 +267,7 @@ var ddaccordion={
                     var headerindex=parseInt($(this).attr("headerindex"))
                     config.revealdelay=setTimeout(function(){
                         ddaccordion.expandone(config["headerclass"], headerindex, config.scrolltoheader)
-                        }, config.mouseoverdelay || 0)
+                    }, config.mouseoverdelay || 0)
                 }
                 else{
                     $(this).trigger("evt_accordion", [true, config.scrolltoheader]) //last parameter indicates this is a direct click on the header

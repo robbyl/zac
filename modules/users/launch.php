@@ -63,7 +63,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 background: #cab;
                 cursor: e-resize;	/* in case col-resize isn't supported */
                 cursor: col-resize;
-                z-index: 9 !important;
+                z-index: 0 !important;
                 border-left: 2px solid #fff;
                 border-right: 2px solid #fff;
             }
@@ -74,8 +74,8 @@ $result_user = mysql_query($query_user) or die(mysql_error());
             $(document).ready(function() {
                 oTable = $('#dataTable').dataTable({
                     "bJQueryUI": true,
-                    "bScrollCollapse": true,
-                    "sScrollY": "600px",
+                    "bScrollCollapse": false,
+                    "sScrollY": "auto",
                     "bAutoWidth": false,
                     "bPaginate": true,
                     "sPaginationType": "full_numbers", //full_numbers,two_button
