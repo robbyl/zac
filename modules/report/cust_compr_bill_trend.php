@@ -125,7 +125,8 @@ $row_header = mysql_fetch_array($result_meter_reading)
                     <li> <a href="../paypoint/paypoint.php" class="financial">Pay Point</a></li>
                     <li> <a href="../report/reports.php" class="reports">Reports</a></li>
                 </ul>
-                <!-- end .sidebar --></div>
+                <!-- end .sidebar -->
+            </div>
             <div class="content">
                 <h1>View and Print Customer Comprehensive Billing Trend</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
