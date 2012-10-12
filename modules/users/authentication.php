@@ -39,6 +39,8 @@ $num_row = mysql_num_rows($result_user);
 if ($num_row === 1 && $row_user['status'] === 'ACTIVE') {
 
     // Login successfully
+    
+    // Login out any un-logged user first.
     mysql_close($conn);
     session_start();
     $_SESSION['username'] = $row_user['username'];
@@ -46,6 +48,7 @@ if ($num_row === 1 && $row_user['status'] === 'ACTIVE') {
     $_SESSION['usr_lname'] = $row_user['usr_lname'];
     $_SESSION['user_id'] = $row_user['user_id'];
     $_SESSION['password'] = $row_user['password'];
+    $_SESSION['role'] = $row_user['role'];
     session_commit();
 
     header('Location: ../../home.php');

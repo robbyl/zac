@@ -114,20 +114,26 @@ $result_user = mysql_query($query_user) or die(mysql_error());
         <div class="container">
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
+                <?php session_start(); ?>
                 <div class="arrowlistmenu">
                     <a href="../../home.php"><h3 class="menuheader home">Home</h3></a>
+                    <?php
+                    if ($_SESSION['role'] === "ROOT") {
+                        ?>
+                        <h3 class="menuheader expandable users">Manage Users</h3>
+                        <ul class="categoryitems">
+                            <li><a href="../../modules/users/new_user.php">Add new user</a></li>
+                            <li><a href="../../modules/users/users.php">View users</a></li>
+                        </ul>
 
-                    <h3 class="menuheader expandable users">Manage Users</h3>
-                    <ul class="categoryitems">
-                        <li><a href="../../modules/users/new_user.php">Add new user</a></li>
-                        <li><a href="../../modules/users/users.php">View users</a></li>
-                    </ul>
-
-                    <h3 class="menuheader expandable settings">Settings</h3>
-                    <ul class="categoryitems">
-                        <li><a href="../../modules/settings/settings.php" >General settings</a></li>
-                        <li><a href="../../modules/settings/tariffs.php">Tariffs</a></li>
-                    </ul>
+                        <h3 class="menuheader expandable settings">Settings</h3>
+                        <ul class="categoryitems">
+                            <li><a href="../../modules/settings/settings.php" >General settings</a></li>
+                            <li><a href="../../modules/settings/tariffs.php">Tariffs</a></li>
+                        </ul>
+                        <?php
+                    }
+                    ?>
 
                     <h3 class="menuheader expandable applications">Applications</h3>
                     <ul class="categoryitems">
@@ -167,6 +173,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         <li><a href="../../modules/report/reports.php" >Generate reports</a></li>
                     </ul>
                 </div>
+                <?php session_commit(); ?>
                 <!-- end .sidebar --></div>
             <div class="content">
                 <?php
