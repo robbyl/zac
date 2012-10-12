@@ -62,66 +62,96 @@ session_commit();
                 <?php session_start(); ?>
                 <h1 style="margin-left: 50px;">Welcome!, let's begin.</h1>
                 <?php
-                if ($_SESSION['role'] === "ROOT") {
+                if (
+                        $_SESSION['role'] === "ROOT"
+                ) {
                     ?>
                     <a href="modules/users/new_user.php" class="tooltip fltlft" title="Create, edit... user accounts">
                         <div class="home-icon user-icon">
                             <div class="icon-label">Manage Users</div>
                         </div>
                     </a>
-
                     <a href="modules/settings/settings.php" class="tooltip fltlft" title="Set, edit... system settings">
                         <div class="home-icon settings-icon">
                             <div class="icon-label">Settings</div>
                         </div>
                     </a>
+                    <?php
+                }
 
-                <?php } ?>
+                if (
+                        $_SESSION['role'] === "ROOT" ||
+                        $_SESSION['role'] === "CONNECTION OFFICER"
+                ) {
+                    ?>
+                    <a href="modules/applications/add_new_appln.php" class="tooltip fltlft" title="View, add, edit.. customer applns">
+                        <div class="home-icon applications-icon">
+                            <div class="icon-label">Applications</div>
+                        </div>
+                    </a>
+                    <?php
+                }
 
-                <a href="modules/applications/add_new_appln.php" class="tooltip fltlft" title="View, add, edit.. customer applns">
-                    <div class="home-icon applications-icon">
-                        <div class="icon-label">Applications</div>
-                    </div>
-                </a>
+                if (
+                        $_SESSION['role'] === "ROOT" ||
+                        $_SESSION['role'] === "DATA CLERK"
+                ) {
+                    ?>
+                    <a href="modules/customers/customers.php" class="tooltip fltlft" title="View, add, edit.. customer details">
+                        <div class="home-icon customers-icon">
+                            <div class="icon-label">Customers</div>
+                        </div>
+                    </a>
 
-                <a href="modules/customers/customers.php" class="tooltip fltlft" title="View, add, edit.. customer details">
-                    <div class="home-icon customers-icon">
-                        <div class="icon-label">Customers</div>
-                    </div>
-                </a>
-
-                <a href="modules/meters/add_meter.php" class="tooltip fltlft" title="View, add, edit.. meter details">
-                    <div class="home-icon water-meter-icon">
-                        <div class="icon-label">Water Meters</div>
-                    </div>
-                </a>
-
-                <a href="modules/invoice/generate_invoices.php" class="tooltip fltlft" title="View,generate... invoices" >
-                    <div class="home-icon invoice-icon">
-                        <div class="icon-label">Sales</div>
-                    </div>
-                </a>
-
-                <?php if ($_SESSION['role'] === "ROOT" || $_SESSION['role'] == "CASHIER") { ?>
+                    <a href="modules/meters/add_meter.php" class="tooltip fltlft" title="View, add, edit.. meter details">
+                        <div class="home-icon water-meter-icon">
+                            <div class="icon-label">Water Meters</div>
+                        </div>
+                    </a>
+                    <?php
+                }
+                if (
+                        $_SESSION['role'] === "ROOT" ||
+                        $_SESSION['role'] === "BILLING OFFICER"
+                ) {
+                    ?>
+                    <a href="modules/invoice/generate_invoices.php" class="tooltip fltlft" title="View,generate... invoices" >
+                        <div class="home-icon invoice-icon">
+                            <div class="icon-label">Sales</div>
+                        </div>
+                    </a>
+                    <?php
+                }
+                if (
+                        $_SESSION['role'] === "ROOT" ||
+                        $_SESSION['role'] == "CASHIER"
+                ) {
+                    ?>
                     <a href="modules/paypoint/online_payments.php" class="tooltip fltlft" title="Accept payments.., provide receipts" >
                         <div class="home-icon financials-icon">
                             <div class="icon-label">Pay Point</div>
                         </div>
                     </a>
-                <?php } ?>
+                    <?php
+                }
+                if (
+                        $_SESSION['role'] === "ROOT" ||
+                        $_SESSION['role'] === "CREDIT CONTROLLER"
+                ) {
+                    ?>
 
-                <a href="modules/report/reports.php" class="tooltip fltlft" title="Correct or modify accounts" >
-                    <div class="home-icon report-icon">
-                        <div class="icon-label">Adjustments</div>
-                    </div>
-                </a>
+                    <a href="modules/report/reports.php" class="tooltip fltlft" title="Correct or modify accounts" >
+                        <div class="home-icon report-icon">
+                            <div class="icon-label">Adjustments</div>
+                        </div>
+                    </a>
+                <?php } ?>
 
                 <a href="modules/report/reports.php" class="tooltip fltlft" title="Generate and view various reports" >
                     <div class="home-icon report-icon">
                         <div class="icon-label">Report Manager</div>
                     </div>
                 </a>
-
                 <div class="clearfloat"></div>
 
                 <?php session_commit(); ?>
