@@ -1,0 +1,624 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: "Segoe UI Light";
+    src: url(fonts/segoeuil.ttf);
+}
+
+body {
+    -webkit-print-color-adjust: exact;
+    font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
+    margin: 0;
+    padding: 0;
+    background: url(../images/pattern_bg.jpg) transparent;
+    color: #272727;
+}
+
+.logo {
+    width: 300px;
+    height: 50px;
+    background: url(../images/softbill_logo.png) no-repeat 10px center;
+    overflow: hidden;
+}
+
+ul.user-details {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    list-style: none;
+}
+
+.username {
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0, 0.07);
+    font-weight: bold;
+    background: url(../images/user_name.png) no-repeat 0px center;
+    background-size: 18px;
+    cursor: pointer;
+}
+
+.date {
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0, 0.07);
+    font-weight: bold;
+    background: url(../images/calendar.png) 0px center no-repeat;
+    background-size: 20px;
+}
+
+ul.user-details li {
+    display: inline-block;
+    float: right;
+    line-height: 50px;
+    padding: 0 25px;
+}
+
+.user-sub {
+    position: absolute;
+    right: 0;
+}
+
+ul.user-details ul {
+    width: 200px;
+    background: #fff;
+    padding: 15px 0;
+    border: 1px solid #e0e0e0;
+    z-index: 0;
+    display: none;
+    box-shadow: 0 1px 5px rgba(0,0,0, 0.1);
+}
+
+ul.user-details ul li {
+    float: none;
+    padding: 0;
+    display: block;
+    line-height: normal;
+}
+ul.user-details ul li a {
+    padding: 5px 20px;
+    display: block;
+    text-decoration: none;
+    text-shadow: none;
+    font-weight: normal;
+}
+
+ul.user-details ul li a:hover {
+    background: #f5f5f5;
+    color: #000;
+}
+
+ul.user-details li.username:hover ul {
+    display: block;
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    font-size: 110% !important;
+    color: #0ca696;   
+}
+
+fieldset table {
+    margin: 0 15px;
+}
+
+
+/* ~~ Element/tag selectors ~~ */
+
+ul, ol, dl {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-weight: normal !important;
+}
+
+h1 {
+    color: #0ca696;
+    padding-left: 0;
+}
+
+a img {
+    border: none;
+}
+
+a:link {
+    color: #414958;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #4E5869;
+    text-decoration: underline;
+}
+
+a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+
+.container {
+    width: 100%;
+}
+
+.header {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    background-color: #ffc28b;
+    border-bottom: 1px solid #ffaa1e;
+    box-shadow: 0 2px 5px rgba(0,0,0, 0.25);
+    z-index: 50;
+}
+
+.sidebar {
+    float: left;
+    width: 14%;
+    position: fixed;
+    padding-bottom: 10px;
+    margin-top: 80px;
+}
+
+.content {
+    padding: 80px 0;
+    width: 86%;
+    float: left;
+    margin-left: 14%;
+    background: transparent;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+
+.content ul, .content ol {
+    padding: 0 15px 15px 40px;
+}
+
+/* ~~ The navigation list styles ~~ */
+
+ul.nav {
+    margin: 15px 0;
+    padding-right: 10px;
+}
+
+.nav li ul li a {
+    background: url(../images/list_image.png)  no-repeat 25px center;
+}
+
+ul.nav a, ul.nav a:visited {
+    padding: 5px 5px 5px 35px;
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
+    background-color: #DFE6FF;
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+ul.nav ul {
+    padding-left: 10px;
+    list-style: none;
+}
+
+ul.nav ul a, ul.nav ul a:visited {
+    font-size: 90% !important;
+    font-style: italic;
+}
+
+.home {
+    background: url(../images/home.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+
+.users {
+    background: url(../images/user.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+
+.settings {
+    background: url(../images/config.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+
+.applications {
+    background: url(../images/appln.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+
+.customers {
+    background: url(../images/customers.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+
+.meters {
+    background: url(../images/icon-meter.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+
+.financial {
+    background: url(../images/coins.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+.invoices {
+    background: url(../images/invoices.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+.reports {
+    background: url(../images/charts.png) no-repeat 10px 5px;
+    background-size: 20px;
+}
+
+/* ~~ The footer ~~ */
+
+.footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 10px 15%;
+    background-color: #fff;
+    background-color: #eeeeee;
+    clear: both;
+    font-size: 14px;
+    border-top: 1px solid #e0e0e0;
+    color: #909090;
+}
+
+.footer p {
+    margin-bottom: 0;
+}
+
+/* ~~ miscellaneous classes ~~ */
+
+.fltrt {
+    float: right;
+    margin-left: 8px;
+}
+
+.fltlft {
+    float: left;
+    margin-right: 8px;
+}
+
+.clearfloat {
+    clear: both;
+    height: 0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
+/* ~~ widget classes ~~ */
+
+.hr-line {
+    background: #e0e0e0;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 90%;
+    margin-right: 15px;
+    margin-top: 15px;
+    border: 1px solid #d0d0d0;
+    background-color: #efefef;
+    box-shadow: 0px 0 3px rgba(0,0,0, 0.1) inset;
+    cursor: pointer;
+    color: #606060;
+    border-radius: 2px;
+}
+
+button:hover {
+    border: 1px solid #bfbfbf;
+}
+
+input[disabled] {
+    background: #fff;
+    color: #a0a0a0;
+}
+
+
+.radio {
+    outline: none;
+}
+
+.text, .number {
+    border: 1px solid #bfbfbf;
+    height: 23px;
+    width: 300px;
+    outline: none;
+    padding: 0 5px;
+    font-size: 100%;
+}
+.number {
+    text-align: right;
+}
+
+textarea {
+    border: 1px solid #bfbfbf;
+    outline: none;
+    padding: 0 5px;
+    font-family: inherit;
+    font-size:  100%;
+}
+
+textarea:focus {
+    background: aliceblue;
+}
+
+.text {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.text:focus {
+    border: 1px solid #272727;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: aliceblue;
+}
+
+.select {
+    border: 1px solid #bfbfbf;
+    outline: none;
+    padding: 2px 2px 2px 3px;
+    height: 26px;
+    font-size: 100%;
+}
+
+.message {
+    position: fixed;
+    top: 0;
+    width: 300px;
+    margin-left: 50%;
+    left: -160px;
+    background: #ffffe0;
+    border: 1px #f5df01 solid;
+    padding: 0px 10px 5px 10px;
+    word-wrap: break-word;
+    box-shadow: 0 2px 2px rgba(0,0,0, 0.2);
+    border-radius: 2px;
+    z-index: 100;
+}
+
+.error {
+    position: fixed;
+    top: 0;
+    width: 300px;
+    margin-left: 50%;
+    left: -160px;
+    background: #ffebe8;
+    border: 1px #cd7171 solid;
+    padding: 0px 10px 5px 10px;
+    word-wrap: break-word;
+    box-shadow: 0 2px 2px rgba(0,0,0, 0.2);
+    border-radius: 2px;
+    z-index: 100;
+}
+
+.hint {
+    color: #a0a0a0;
+    font-size: 80%;
+}
+
+/* ~~ Home icons ~~ */
+
+.home-icon {
+    width: 180px;
+    height: 150px;
+    border: 1px transparent solid;
+    margin: 40px 50px 0px 50px;
+}
+
+.home-icon:hover {
+    border: 1px #d4d4d4 solid;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) inset;
+    color: #000;
+}
+
+.user-icon {
+    background: url(../images/users.png) no-repeat 26px 0;
+}
+
+.settings-icon {
+    background: url(../images/settings.png) no-repeat 26px 0;
+}
+
+.applications-icon {
+    background: url(../images/application.png) no-repeat 26px 0;
+}
+
+.customers-icon {
+    background: url(../images/customer.png) no-repeat 26px 0;
+}
+
+.water-meter-icon {
+    background: url(../images/watermeter.png) no-repeat 26px 0;
+}
+
+.financials-icon {
+    background: url(../images/financials.png) no-repeat 26px 0;
+}
+
+.invoice-icon {
+    background: url(../images/invoice.png) no-repeat 26px 0;
+}
+.report-icon {
+    background: url(../images/report.png) no-repeat 26px 0;
+}
+
+.icon-label {
+    position: relative;
+    top: 120px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.actions {
+    position: absolute;
+    top: 170px;
+    width: 500px;
+    margin-left: 190px;
+    z-index: 5;
+}
+
+.actions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.actions ul li {
+    display: inline-block;
+    background: blueviolet;
+}
+
+.actions button, .add-customer, .add-customer:hover {
+    margin: 0;
+    padding-left: 25px !important;
+    border: none;
+    box-shadow: none;
+}
+
+.actions button:hover {
+    text-decoration: underline;
+}
+
+.print {
+    background: url(../images/print.png) no-repeat 5px 6px;
+    background-size: 16px;
+}
+
+.edit {
+    background: url(../images/pencil.png) no-repeat 5px 6px;
+    background-size: 16px;
+}
+
+.block {
+    background: url(../images/block.png) no-repeat 5px 6px;
+    background-size: 16px;
+}
+
+.activate {
+    background: url(../images/activate.png) no-repeat 5px 6px;
+    background-size: 16px;
+}
+
+.pdf {
+    background: url(../images/pdf.png) no-repeat 5px 6px;
+    background-size: 16px;
+}
+
+.add-customer {
+    background: url(../images/add-customers.png) no-repeat center center;
+    background-size: contain;
+    height: 20px;
+    width: 100%;
+    padding: 0 5px;
+    cursor: default;
+}
+
+.disabled {
+    opacity: 0.3;
+}
+
+.validity {
+    position: absolute;
+    top: 206px;
+    left: 720px;
+    width: 25px;
+    height: 20px;
+    background: pink;
+}
+
+.correct {
+    background: url(../images/correct.png) no-repeat center center;
+    background-size: contain;
+}
+
+.incorrect {
+    background: url(../images/incorrect.png) no-repeat center center;
+    background-size: contain;
+}
+
+.report-list {
+    width: 200px;
+    list-style: none;
+    *list-style-image: url(../images/list_image.png);
+    padding-left: 20px !important;
+    *background-color: pink;
+}
+
+.report-list li a {
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    background: url(../images/list_image.png) no-repeat 0 center;
+}
+
+.report-list li a:hover {
+    text-decoration: underline;
+}
+
+.loading {
+    width: 500px;
+    height: 160px;
+    background: url(../images/loading.gif) no-repeat center center;
+}
+
+.status {
+    display: block;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.paid {
+    background-color: #fadc76;
+    border: 1px solid #d8b256;
+    color: #9b7720;
+}
+
+.not-paid {
+    background-color: #C4452D;
+    border: 1px solid #b12f17;
+    color: #fff;
+}
+
+.processed {
+    background-color: #8dc361;
+    border: 1px solid #489e00;
+    color: #fff;
+}
+
+.selected {
+    background-color: #fff4c4 !important;
+    /*    background-color: #2599CF !important;
+        color: #fff;*/
+}
+
+.current {
+    background-color: #f1eded;
+}
+
+/* ~~ data table classes ~~ */
+
+.data-listing {
+    border-collapse: collapse;
+    border: 1px solid #d4d4d4;
+}
+
+.data-listing td, .data-listing th {
+    border: 1px solid #d4d4d4;
+}
