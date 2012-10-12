@@ -118,7 +118,9 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 <div class="arrowlistmenu">
                     <a href="../../home.php"><h3 class="menuheader home">Home</h3></a>
                     <?php
-                    if ($_SESSION['role'] === "ROOT") {
+                    if (
+                            $_SESSION['role'] === "ROOT"
+                    ) {
                         ?>
                         <h3 class="menuheader expandable users">Manage Users</h3>
                         <ul class="categoryitems">
@@ -133,40 +135,84 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         </ul>
                         <?php
                     }
-                    ?>
 
-                    <h3 class="menuheader expandable applications">Applications</h3>
-                    <ul class="categoryitems">
-                        <li><a href="../../modules/applications/add_new_appln.php" >Add application</a></li>
-                        <li><a href="../../modules/applications/view_application.php">View applications</a></li>
-                    </ul>
+                    if (
+                            $_SESSION['role'] === "ROOT" ||
+                            $_SESSION['role'] === "CONNECTION OFFICER"
+                    ) {
+                        ?>
 
-                    <h3 class="menuheader expandable customers">Customers</h3>
-                    <ul class="categoryitems">
-                        <li><a href="../../modules/customers/customers.php" >View customers</a></li>
-                        <li><a href="../../modules/customers/customer_status.php" >Customer status</a></li>
-                    </ul>
+                        <h3 class="menuheader expandable applications">Applications</h3>
+                        <ul class="categoryitems">
+                            <li><a href="../../modules/applications/add_new_appln.php" >Add application</a></li>
+                            <li><a href="../../modules/applications/view_application.php">View applications</a></li>
+                        </ul>
+                        <?php
+                    }
 
-                    <h3 class="menuheader expandable meters">Water Meters</h3>
-                    <ul class="categoryitems">
-                        <li><a href="../../modules/meters/add_meter.php" >Add meter</a></li>
-                        <li><a href="../../modules/meters/meter_readings.php">View meter readings</a></li>
-                        <li><a href="../../modules/meters/enter_meter_readings.php">Enter meter readings</a></li>
-                        <li><a href="../../modules/meters/meter_sheet.php">Print reading sheets</a></li>
-                    </ul>
+                    if (
+                            $_SESSION['role'] === "ROOT" ||
+                            $_SESSION['role'] === "DATA CLERK"
+                    ) {
+                        ?>
 
-                    <h3 class="menuheader expandable invoices">Sales</h3>
-                    <ul class="categoryitems">
-                        <li><a href="../../modules/invoice/generate_invoices.php" >Generate invoices</a></li>
-                        <li><a href="../../modules/invoice/invoices.php">View invoices</a></li>
-                    </ul>
+                        <h3 class="menuheader expandable customers">Customers</h3>
+                        <ul class="categoryitems">
+                            <li><a href="../../modules/customers/customers.php" >View customers</a></li>
+                            <li><a href="../../modules/customers/customer_status.php" >Customer status</a></li>
+                        </ul>
 
-                    <h3 class="menuheader expandable financial">Pay Point</h3>
-                    <ul class="categoryitems">
-                        <li><a href="../../modules/paypoint/online_payments.php" >Online payments</a></li>
-                        <li><a href="../../modules/paypoint/offline_payments.php">Offline payments</a></li>
-                        <li><a href="../../modules/paypoint/transactions.php">Transactions</a></li>
-                    </ul>
+                        <h3 class="menuheader expandable meters">Water Meters</h3>
+                        <ul class="categoryitems">
+                            <li><a href="../../modules/meters/add_meter.php" >Add meter</a></li>
+                            <li><a href="../../modules/meters/meter_readings.php">View meter readings</a></li>
+                            <li><a href="../../modules/meters/enter_meter_readings.php">Enter meter readings</a></li>
+                            <li><a href="../../modules/meters/meter_sheet.php">Print reading sheets</a></li>
+                        </ul>
+
+                        <?php
+                    }
+                    if (
+                            $_SESSION['role'] === "ROOT" ||
+                            $_SESSION['role'] === "BILLING OFFICER"
+                    ) {
+                        ?>
+
+                        <h3 class="menuheader expandable invoices">Sales</h3>
+                        <ul class="categoryitems">
+                            <li><a href="../../modules/invoice/generate_invoices.php" >Generate invoices</a></li>
+                            <li><a href="../../modules/invoice/invoices.php">View invoices</a></li>
+                        </ul>
+                        <?php
+                    }
+                    if (
+                            $_SESSION['role'] === "ROOT" ||
+                            $_SESSION['role'] == "CASHIER"
+                    ) {
+                        ?>
+
+                        <h3 class="menuheader expandable financial">Pay Point</h3>
+                        <ul class="categoryitems">
+                            <li><a href="../../modules/paypoint/online_payments.php" >Online payments</a></li>
+                            <li><a href="../../modules/paypoint/offline_payments.php">Offline payments</a></li>
+                            <li><a href="../../modules/paypoint/transactions.php">Transactions</a></li>
+                        </ul>
+
+                        <?php
+                    }
+                    if (
+                            $_SESSION['role'] === "ROOT" ||
+                            $_SESSION['role'] === "CREDIT CONTROLLER" ||
+                            $_SESSION['role'] === "ACCOUNTANT"
+                    ) {
+                        ?>
+
+                        <h3 class="menuheader expandable adjustment">Adjustments</h3>
+                        <ul class="categoryitems">
+                            <li><a href="" >Online payments</a></li>
+                            <li><a href="">Offline payments</a></li>
+                        </ul>
+                    <?php } ?>
 
                     <h3 class="menuheader expandable reports">Report Manager</h3>
                     <ul class="categoryitems">
