@@ -176,7 +176,7 @@ $result_transaction = mysql_query($query_transaction) or die(mysql_error());
                                 <td><?php echo $row['rec_no']; ?></td>
                                 <td><?php echo $row['cheq_no']; ?></td>
                                 <td><?php echo $row['bank']; ?></td>
-                                <td><?php echo $row['inv_no']; ?></td>
+                                <td><?php echo sprintf('%08d',$row['inv_no']); ?></td>
                                 
                                 <td><?php echo $row['usr_fname'] . "  " . $row['usr_lname']; ?></td>
                                 <td><?php echo $row['appnt_fullname']; ?></td>
