@@ -82,14 +82,6 @@ if (!empty($last_billing)) {
                     <fieldset>
                         <legend>Invoicing details</legend>
                         <table width="" border="0" cellpadding="5">
-<!--                            <tr>
-        <td width="170">Charge Date</td>
-        <td><input type="date" name="charge_date" class="text" required></td>
-    </tr>
-    <tr>
-        <td width="170">Last Receipting Date</td>
-        <td><input type="date" name="last_receipting_date" class="text" required></td>
-    </tr>-->
                             <tr>
                                 <td width="170">Billing Month</td>
                                 <td><input type="date" min="<?php echo $fmin_billing_date; ?>" id="billing_date" name="billing_month" class="text" required></td>
