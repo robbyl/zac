@@ -170,5 +170,5 @@ function translateToWords($number)
     return $string;    
 }
 
-echo translateToWords(903222);
+echo translateToWords(12);
 ?>
