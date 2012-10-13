@@ -63,6 +63,7 @@ session_commit();
                 <h1 style="margin-left: 50px;">Welcome!, let's begin.</h1>
                 <?php
                 if (
+                // Manage user and settings access
                         $_SESSION['role'] === "ROOT"
                 ) {
                     ?>
@@ -80,6 +81,7 @@ session_commit();
                 }
 
                 if (
+                // application access
                         $_SESSION['role'] === "ROOT" ||
                         $_SESSION['role'] === "CONNECTION OFFICER"
                 ) {
@@ -93,8 +95,11 @@ session_commit();
                 }
 
                 if (
-                        $_SESSION['role'] === "ROOT" ||
-                        $_SESSION['role'] === "DATA CLERK"
+                // Customer and water meter access.
+                $_SESSION['role'] === "ROOT" ||
+                $_SESSION['role'] === "ACCOUNTANT" ||
+                $_SESSION['role'] === "BILLING OFFICER" ||
+                $_SESSION['role'] === "CREDIT CONTROLLER"
                 ) {
                     ?>
                     <a href="modules/customers/customers.php" class="tooltip fltlft" title="View, add, edit.. customer details">
@@ -102,6 +107,14 @@ session_commit();
                             <div class="icon-label">Customers</div>
                         </div>
                     </a>
+                    <?php
+                }
+                if (
+                // Water meter access.
+                        $_SESSION['role'] === "ROOT" ||
+                        $_SESSION['role'] === "BILLING OFFICER"
+                ) {
+                    ?>
 
                     <a href="modules/meters/add_meter.php" class="tooltip fltlft" title="View, add, edit.. meter details">
                         <div class="home-icon water-meter-icon">
@@ -111,8 +124,10 @@ session_commit();
                     <?php
                 }
                 if (
+                // Sales access
                         $_SESSION['role'] === "ROOT" ||
-                        $_SESSION['role'] === "BILLING OFFICER"
+                        $_SESSION['role'] === "BILLING OFFICER" ||
+                        $_SESSION['role'] === "ACCOUNTANT"
                 ) {
                     ?>
                     <a href="modules/invoice/generate_invoices.php" class="tooltip fltlft" title="View,generate... invoices" >
@@ -123,6 +138,7 @@ session_commit();
                     <?php
                 }
                 if (
+                // Paypoint access.
                         $_SESSION['role'] === "ROOT" ||
                         $_SESSION['role'] == "CASHIER"
                 ) {
@@ -135,9 +151,11 @@ session_commit();
                     <?php
                 }
                 if (
+                // Adjustments access.
                         $_SESSION['role'] === "ROOT" ||
                         $_SESSION['role'] === "CREDIT CONTROLLER" ||
-                        $_SESSION['role'] === "ACCOUNTANT"
+                        $_SESSION['role'] === "ACCOUNTANT" ||
+                        $_SESSION['role'] === "BILLING OFFICER"
                 ) {
                     ?>
 
