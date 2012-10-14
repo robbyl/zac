@@ -227,7 +227,8 @@ $result_user = mysql_query($query_user) or die(mysql_error());
 
                         <h3 class="menuheader expandable adjustment">Adjustments</h3>
                         <ul class="categoryitems">
-                            <li><a href="" >Perform adjustments</a></li>
+                            <li><a href="../../modules/adjustments/perform_adjustments.php">Perform adjustments</a></li>
+                            <li><a href="../../modules/adjustments/view_adjustments.php" >View adjustments</a></li>
                         </ul>
                     <?php } ?>
 
