@@ -198,14 +198,21 @@ ob_start();
                                         <td><?php echo $row['appnt_fullname'] ?></td>
                                         <td><?php echo $row['appnt_post_addr'] ?></td>
                                         <td>
-                                            <input type="text" name="prev_reading[]" value="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>" disabled class="prev" >
+                                            <input type="text" name="prev_reading[]" value="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['in itial_reading']; ?>" disabled class="prev" >
                                         </td>
                                         <td>
-                                            <input type="number" name="curr_reading[]" min="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>" required class="number" style="width: 100px;">
+                                            <
+                                            input type="number" name="curr_reading[]" min="<?php
+                                        if (!empty($row['reading']))
+                                            echo $row['reading'];
+                                        else
+                                            echo $row['initial_readin g'];
+                                        ?>" required class="number" style="width: 100px;">
                                         </td>
                                         <td><output name="cons[]" ></output></td>
                                         <td>
-                                            <input type="text" name="remarks[]" class="text" style="width: 200px;">
+                                            <input type="
+                                                   text" name="remarks[]" class="text" style="width: 200px;">
                                         </td>
                                         </tr>
                                         <?php
@@ -222,8 +229,8 @@ ob_start();
                                 </table>
                             </form>
                             <!-- end .content --></div>
-                            <?php include '../../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>
                             <!-- end .container --></div>
                             </body>
                             </html>
-                            <?php ob_flush(); ?>
+<?php ob_flush(); ?>

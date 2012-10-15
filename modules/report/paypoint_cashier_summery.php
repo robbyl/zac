@@ -157,13 +157,13 @@ $row_cashier = mysql_fetch_array($result_cashier);
                                                 <td><?php echo $row['rec_type'] ?></td>
                                                 <td align="right"><?php echo $row['cheq_no'] ?></td>
                                                 <td align="right"><?php echo $row['bank'] ?></td>
-                                                <td align="right"><?php echo number_format($row['payed_amount'], '2', '.', ',') ?></td>
+                                                <td align="right"><?php echo number_format($row['payed_amount'], '2', '.', ',') ?>   </td>
                                                 <td><?php echo $row['amount_in_words'] ?></td>   
                                             </tr>
                                             <?php
                                         }
                                         ?>
-                                            <tr><td colspan="4"></td><td>Total Due</td><td align="right">34523235</td><td></td></tr>
+                                        <tr><td colspan="4"></td><td>Total Due</td><td align="right">34523235</td><td></td></tr>
                                     </tbody>
                                 </table>
                             </div>

@@ -5,10 +5,8 @@
  * and open the template in the editor.
  */
 
-
-function translateToWords($number) 
-{
-/*****
+function translateToWords($number) {
+    /*     * ***
      * A recursive function to turn digits into words
      * Numbers must be integers from -999,999,999,999 to 999,999,999,999 inclussive.    
      *
@@ -27,16 +25,15 @@ function translateToWords($number)
      *
      */
     // zero is a special case, it cause problems even with typecasting if we don't deal with it here
-    $max_size = pow(10,18);
-    if (!$number) return "zero";
-    if (is_int($number) && $number < abs($max_size)) 
-    {            
-        switch ($number) 
-        {
+    $max_size = pow(10, 18);
+    if (!$number)
+        return "zero";
+    if (is_int($number) && $number < abs($max_size)) {
+        switch ($number) {
             // set up some rules for converting digits to words
             case $number < 0:
                 $prefix = "negative";
-                $suffix = translateToWords(-1*$number);
+                $suffix = translateToWords(-1 * $number);
                 $string = $prefix . " " . $suffix;
                 break;
             case 1:
@@ -48,7 +45,7 @@ function translateToWords($number)
             case 3:
                 $string = "three";
                 break;
-            case 4: 
+            case 4:
                 $string = "four";
                 break;
             case 5:
@@ -65,109 +62,112 @@ function translateToWords($number)
                 break;
             case 9:
                 $string = "nine";
-                break;                
+                break;
             case 10:
                 $string = "ten";
-                break;            
+                break;
             case 11:
                 $string = "eleven";
-                break;            
+                break;
             case 12:
                 $string = "twelve";
-                break;            
+                break;
             case 13:
                 $string = "thirteen";
-                break;            
+                break;
             // fourteen handled later
             case 15:
                 $string = "fifteen";
-                break;            
+                break;
             case $number < 20:
-                $string = translateToWords($number%10);
+                $string = translateToWords($number % 10);
                 // eighteen only has one "t"
-                if ($number == 18)
-                {
-                $suffix = "een";
-                } else 
-                {
-                $suffix = "teen";
+                if ($number == 18) {
+                    $suffix = "een";
+                } else {
+                    $suffix = "teen";
                 }
                 $string .= $suffix;
-                break;            
+                break;
             case 20:
                 $string = "twenty";
-                break;            
+                break;
             case 30:
                 $string = "thirty";
-                break;            
+                break;
             case 40:
                 $string = "forty";
-                break;            
+                break;
             case 50:
                 $string = "fifty";
-                break;            
+                break;
             case 60:
                 $string = "sixty";
-                break;            
+                break;
             case 70:
                 $string = "seventy";
-                break;            
+                break;
             case 80:
                 $string = "eighty";
-                break;            
+                break;
             case 90:
                 $string = "ninety";
-                break;                
+                break;
             case $number < 100:
-                $prefix = translateToWords($number-$number%10);
-                $suffix = translateToWords($number%10);
+                $prefix = translateToWords($number - $number % 10);
+                $suffix = translateToWords($number % 10);
                 $string = $prefix . "-" . $suffix;
                 break;
             // handles all number 100 to 999
-            case $number < pow(10,3):                    
+            case $number < pow(10, 3):
                 // floor return a float not an integer
-                $prefix = translateToWords(intval(floor($number/pow(10,2)))) . " hundred";
-                if ($number%pow(10,2)) $suffix = " and " . translateToWords($number%pow(10,2));
+                $prefix = translateToWords(intval(floor($number / pow(10, 2)))) . " hundred";
+                if ($number % pow(10, 2))
+                    $suffix = " and " . translateToWords($number % pow(10, 2));
                 $string = $prefix . $suffix;
                 break;
-            case $number < pow(10,6):
+            case $number < pow(10, 6):
                 // floor return a float not an integer
-                $prefix = translateToWords(intval(floor($number/pow(10,3)))) . " thousand";
-                if ($number%pow(10,3)) $suffix = translateToWords($number%pow(10,3));
+                $prefix = translateToWords(intval(floor($number / pow(10, 3)))) . " thousand";
+                if ($number % pow(10, 3))
+                    $suffix = translateToWords($number % pow(10, 3));
                 $string = $prefix . " " . $suffix;
                 break;
-            case $number < pow(10,9):
+            case $number < pow(10, 9):
                 // floor return a float not an integer
-                $prefix = translateToWords(intval(floor($number/pow(10,6)))) . " million";
-                if ($number%pow(10,6)) $suffix = translateToWords($number%pow(10,6));
+                $prefix = translateToWords(intval(floor($number / pow(10, 6)))) . " million";
+                if ($number % pow(10, 6))
+                    $suffix = translateToWords($number % pow(10, 6));
                 $string = $prefix . " " . $suffix;
-                break;                    
-            case $number < pow(10,12):
-                // floor return a float not an integer
-                $prefix = translateToWords(intval(floor($number/pow(10,9)))) . " billion";
-                if ($number%pow(10,9)) $suffix = translateToWords($number%pow(10,9));
-                $string = $prefix . " " . $suffix;    
                 break;
-            case $number < pow(10,15):
+            case $number < pow(10, 12):
                 // floor return a float not an integer
-                $prefix = translateToWords(intval(floor($number/pow(10,12)))) . " trillion";
-                if ($number%pow(10,12)) $suffix = translateToWords($number%pow(10,12));
-                $string = $prefix . " " . $suffix;    
-                break;        
+                $prefix = translateToWords(intval(floor($number / pow(10, 9)))) . " billion";
+                if ($number % pow(10, 9))
+                    $suffix = translateToWords($number % pow(10, 9));
+                $string = $prefix . " " . $suffix;
+                break;
+            case $number < pow(10, 15):
+                // floor return a float not an integer
+                $prefix = translateToWords(intval(floor($number / pow(10, 12)))) . " trillion";
+                if ($number % pow(10, 12))
+                    $suffix = translateToWords($number % pow(10, 12));
+                $string = $prefix . " " . $suffix;
+                break;
             // Be careful not to pass default formatted numbers in the quadrillions+ into this function
             // Default formatting is float and causes errors
-            case $number < pow(10,18):
+            case $number < pow(10, 18):
                 // floor return a float not an integer
-                $prefix = translateToWords(intval(floor($number/pow(10,15)))) . " quadrillion";
-                if ($number%pow(10,15)) $suffix = translateToWords($number%pow(10,15));
-                $string = $prefix . " " . $suffix;    
-                break;                    
+                $prefix = translateToWords(intval(floor($number / pow(10, 15)))) . " quadrillion";
+                if ($number % pow(10, 15))
+                    $suffix = translateToWords($number % pow(10, 15));
+                $string = $prefix . " " . $suffix;
+                break;
         }
-    } else
-    {
+    } else {
         echo "ERROR with - $number<br/> Number must be an integer between -" . number_format($max_size, 0, ".", ",") . " and " . number_format($max_size, 0, ".", ",") . " exclussive.";
     }
-    return $string;    
+    return $string;
 }
 
 echo translateToWords(12);

@@ -173,9 +173,9 @@ $result_payments = mysql_query($query_payments) or die(mysql_error());
                                                 <td align="right"><?php echo $row['cheq_no'] ?></td>
                                                 <td align="right"><?php echo $row['bank'] ?></td>
                                                 <td align="right"><?php echo $row['bank'] ?></td>
-                                                <td align="right"><?php echo number_format($row['open_balance'], '2', '.', ',') ?></td>
-                                                <td align="right"><?php echo number_format($row['payed_amount'], '2', '.', ',') ?></td>
-                                                <td align="right"><?php echo number_format($row['closing_balance'], '2', '.', ',') ?></td>   
+                                                <td align="right"><?php echo number_format($row['open_balance'], '2', '.', ',') ?>   </td>
+                                                <td align="right"><?php echo number_format($row['payed_amount'], '2', '.', ',') ?>   </td>
+                                                <td align="right"><?php echo number_format($row['closing_balance'], '2', '.', ',') ?>   </td>   
                                             </tr>
                                             <?php
                                         }

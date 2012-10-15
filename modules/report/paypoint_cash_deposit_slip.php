@@ -156,7 +156,7 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
                                             <?php
                                         }
                                         ?>
-                                            <tr><td colspan="2"></td><td>Total Due</td><td align="right">34523235</td><td></td><td></td></tr>
+                                        <tr><td colspan="2"></td><td>Total Due</td><td align="right">34523235</td><td></td><td></td></tr>
                                     </tbody>
                                 </table>
                             </div>

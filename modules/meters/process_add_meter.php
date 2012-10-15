@@ -35,15 +35,13 @@ $query_meter = "INSERT INTO meter
 
 $result_meter = mysql_query($query_meter) or die(mysql_error());
 
-if($result_meter){
+if ($result_meter) {
 
     info('message', 'Meter successully added');
     header('Location: add_meter.php');
-}  else {
+} else {
 
     info('error', 'Cannot add meter. Try again');
     header('Location: add_meter.php');
 }
-
-
 ?>

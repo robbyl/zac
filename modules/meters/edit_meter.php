@@ -59,8 +59,8 @@
                     if (!empty($_POST['checkbox'])) {
 
                         require '../../config/config.php';
-                        
-                        $i=0;
+
+                        $i = 0;
 
                         while (list($key, $val) = each($_POST['checkbox'])) {
                             $query_meter = "SELECT *
@@ -82,15 +82,17 @@
                                     <tr>
                                         <td width="170">Meter Type</td>
                                         <td>
-                          
-                                            
-                                            <label><input type="radio" <?php if ($row['met_type'] === "Tameng") echo 'checked' ?> name="<?php echo 'meter_type[' . $i . ']' ?>" value="Tameng">Tameng</label>&nbsp;&nbsp;                                                                  
-                                            
+
+
+                                            <label><input type="radio" <?php if ($row['met_type'] === "Tameng") echo 'checked' ?> name="<?php echo 'meter_type[' . $i . ']' ?>" value="Tameng">Tameng</label>&nbsp;&nbsp;               
+
+
                                             <label><input type="radio" <?php if ($row['met_type'] === "Metscant") echo 'checked' ?> name="<?php echo 'meter_type[' . $i . ']' ?>" value="Metscant">Metscant</label>&nbsp;&nbsp;
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td width="170">Meter Status</td>
+                                        <td width
+                                            ="170">Meter Status</td>
                                         <td><select name="meter_status[]"  class="select">
                                                 <option value="">--select meter status--</option>
                                             </select></td>
@@ -101,15 +103,18 @@
                                                 <option value="">--select meter size--</option>
                                                 <option value="0" <?php if ($row['met_size'] === '0') echo 'selected' ?> >0</option>
                                                 <option value="1/2" <?php if ($row['met_size'] === '1/2') echo 'selected' ?> >1/2</option>
-                                                <option value="1/3" <?php if ($row['met_size'] === '1/3') echo 'selected' ?> >1/3</option>
-                                                <option value="1" <?php if ($row['met_size'] === '1') echo 'selected' ?> >1</option>
+                                                <option value=
+                                                        "1/3" <?php if ($row['met_size'] === '1/3') echo 'selected' ?> >1/3</option>
+                                                <option value="1" <? php if ($row['met_size'] === '1') echo 'selected' ?> >1</option>
                                                 <option value="2" <?php if ($row['met_size'] === '2') echo 'selected' ?> >2</option>
                                                 <option value="3" <?php if ($row['met_size'] === '3') echo 'selected' ?> >3</option>
                                             </select></td>
                                     </tr>
                                     <tr>
+
                                         <td width="170">Number of Digits</td>
-                                        <td><input type="number" name="no_digits[]" value="<?php echo $row['no_digits']; ?>" class="number" min="1" required style="width: 70px;"></td>
+                                        <td><
+                                            input type="number" name="no_digits[]" value="<?php echo $row['no_digits']; ?>" class="number" min="1" required style="width: 70px;"></td>
                                     </tr>
                                     <tr>
                                         <td width="170">Initial Reading <span class="hint">(m<sup>3</sup>)</span></td>
@@ -124,7 +129,7 @@
                             </fieldset>
                             <div class="hr-line" style="width: 50%; background: #e0e0e0; margin: 10px 5px"></div>
                             <?php
-                             $i++;
+                            $i++;
                         }
                         ?>
                         <table width="531" style="clear: both">
@@ -144,7 +149,7 @@
 
                 </form>
                 <!-- end .content --></div>
-            <?php include '../../includes/footer.php'; ?>
+            <?php include '../../includes/footer.php'; ?> 
             <!-- end .container --></div>
     </body>
 </html>

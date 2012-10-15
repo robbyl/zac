@@ -96,10 +96,10 @@ session_commit();
 
                 if (
                 // Customer and water meter access.
-                $_SESSION['role'] === "ROOT" ||
-                $_SESSION['role'] === "ACCOUNTANT" ||
-                $_SESSION['role'] === "BILLING OFFICER" ||
-                $_SESSION['role'] === "CREDIT CONTROLLER"
+                        $_SESSION['role'] === "ROOT" ||
+                        $_SESSION['role'] === "ACCOUNTANT" ||
+                        $_SESSION['role'] === "BILLING OFFICER" ||
+                        $_SESSION['role'] === "CREDIT CONTROLLER"
                 ) {
                     ?>
                     <a href="modules/customers/customers.php" class="tooltip fltlft" title="View, add, edit.. customer details">

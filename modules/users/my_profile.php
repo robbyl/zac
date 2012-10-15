@@ -67,12 +67,12 @@ $row = mysql_fetch_array($result_user);
                             <tr>
                                 <td width="100">First Name</td>
                                 <td><input type="text" name="fname" value="<?php echo $row['usr_fname'] ?>" required size="255" class="text"></td>
-                                
+
                             </tr>
                             <tr>
                                 <td width="100">Last Name</td>
                                 <td><input type="text" name="lname" value="<?php echo $row['usr_lname'] ?>" required size="255" class="text"></td>
-                                
+
                             </tr>
                             <tr>
                                 <td width="100">E-mail</td>

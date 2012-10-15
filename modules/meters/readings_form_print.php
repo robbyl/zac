@@ -73,7 +73,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $('.message, .error').hide().slideDown('normal').click(function(){
             $(this).slideUp('normal');
         });
-                            
+                                            
         $('#print-table').click(function(){
             var printWin = window.open('print_meter_sheet.php?filter=All','','left=0,top=0,width=1000,height=600,toolbar=no,scrollbars=yes,status=no');
             printWin.focus();   
@@ -111,7 +111,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
             <input type="hidden" name="cust_id[]" value="<?php echo $row['cust_id'] ?>" >
             <input type="hidden" name="met_id[]" value="<?php echo $row['met_id'] ?>" >
             <td><?php echo $SN ?></td>
-            <td><?php echo sprintf('%08d',$row['acc_no']) ?></td>
+            <td><?php echo sprintf('%08d', $row['acc_no']) ?></td>
             <td><?php echo $row['met_number'] ?></td>
             <td><?php echo $row['appnt_fullname'] ?></td>
             <td><?php echo $row['plot_no'] ?></td>

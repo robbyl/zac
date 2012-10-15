@@ -153,7 +153,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                     }
 
                     if (
-                            // Customer access.
+                    // Customer access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "ACCOUNTANT" ||
                             $_SESSION['role'] === "BILLING OFFICER" ||

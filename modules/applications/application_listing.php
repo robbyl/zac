@@ -78,7 +78,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 });
             }
         });
-                                                                            
+                                                                                            
         // Putting backgoround color to the tr for checked checkbox 
         $('.checkbox').click(function(event) {
             event.stopPropagation();
@@ -89,11 +89,11 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 });
             }
         });
-                                                                      
+                                                                                      
         $('.tooltip').tipTip({
             delay: "300"
         });
-            
+                            
         $('.tooltip-left').tipTip({
             delay: "300",
             defaltPositon: "left"

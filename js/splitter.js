@@ -155,7 +155,7 @@
                 accessKey: opts.accessKey, 
                 tabIndex: opts.tabIndex, 
                 title: opts.splitbarClass
-                })
+            })
             .bind($.browser.opera?"click":"focus", function(){
                 this.focus();
                 bar.addClass(opts.activeClass)
@@ -217,7 +217,7 @@
                     $.cookie(opts.cookie, state, {
                         expires: opts.cookieExpires || 365, 
                         path: opts.cookiePath || document.location.pathname
-                        });
+                    });
                 });
             }
             if ( isNaN(initPos) )	// King Solomon's algorithm

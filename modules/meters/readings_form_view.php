@@ -77,36 +77,36 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         });
 
         $('#select-all').click(function(){
-        // Iterate each check box
+            // Iterate each check box
 
-        if(this.checked){
-            $('.checkbox').each(function(){
-                this.checked = true;
-                $(this).closest('tr').addClass('selected');
-            });
+            if(this.checked){
+                $('.checkbox').each(function(){
+                    this.checked = true;
+                    $(this).closest('tr').addClass('selected');
+                });
 
-        } else {
-            $('.checkbox').each(function(){
-                this.checked = false;
-                $(this, '.checkbox').closest('tr').removeClass('selected');
-            });
-        }
-    });
-                                                                            
-    // Putting backgoround color to the tr for checked checkbox 
-    $('.checkbox').click(function(event) {
-        event.stopPropagation();
-        $(this).closest('tr').toggleClass('selected');
-        if (event.target.type !== 'checkbox') {
-            $(':checkbox', this).attr('checked', function() {
-                return !this.checked;
-            });
-        }
-    });
+            } else {
+                $('.checkbox').each(function(){
+                    this.checked = false;
+                    $(this, '.checkbox').closest('tr').removeClass('selected');
+                });
+            }
+        });
+                                                                                            
+        // Putting backgoround color to the tr for checked checkbox 
+        $('.checkbox').click(function(event) {
+            event.stopPropagation();
+            $(this).closest('tr').toggleClass('selected');
+            if (event.target.type !== 'checkbox') {
+                $(':checkbox', this).attr('checked', function() {
+                    return !this.checked;
+                });
+            }
+        });
 
-    $('.tooltip').tipTip({
-        delay: "300"
-    });
+        $('.tooltip').tipTip({
+            delay: "300"
+        });
     </script>
     <form action="action.php" method="post" onSubmit="">
         <div class="actions" style="top: 212px">
@@ -139,7 +139,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <td>
                             <input type="checkbox" name="checkbox[]" class="checkbox" value="<?php echo $row['mred_id'] ?>" id="<?php echo $row['mred_id'] ?>">
                         </td>
-                        <td><?php echo sprintf('%08d',$row['acc_no']) ?></td>
+                        <td><?php echo sprintf('%08d', $row['acc_no']) ?></td>
                         <td><?php echo $row['met_number'] ?></td>
                         <td><?php echo $row['appnt_fullname'] ?></td>
                         <td><?php echo $row['billing_date'] ?></td>

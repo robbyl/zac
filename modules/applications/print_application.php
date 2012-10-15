@@ -74,7 +74,7 @@
                         <p>Appn No: <span style="font-weight: bold; line-height: 25px; font-size: 1.5em"><?php echo sprintf('%08d', $row['appln_no']) ?></span></p>
                     </div>
                     <div class="print-details">
-                        <p>Print Date: <span style="font-weight: normal; line-height: 25px;"><?php echo date('Y-m-d') ?></span></p>                  
+                        <p>Print Date: <span style="font-weight: normal; line-height: 25px;"> <?php echo date('Y-m-d') ?></span></p>                  
                     </div>
                     <div class="black-separator"></div>
                     <div class="sheet-table" style="width: 100%; margin: 0 auto">

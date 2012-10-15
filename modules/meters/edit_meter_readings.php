@@ -152,7 +152,7 @@ $row_date = mysql_fetch_array($result_meter_reading);
                             </select> &nbsp; &nbsp;
                             <?php
                             $prev_month = strtotime('-1 month', strtotime(date('Y-m-d')));
-                            $prev_month = date('Y-m-d', $prev_month);
+                                            $prev_month = date('Y-m-d', $prev_month);
                             ?>
                             Reading Date <input type="date" name="reading_date[]" value ="<?php echo $row_date['reading_date']; ?>" max="<?php echo $prev_month ?>" form="readings" required class="text" style="width: 150px;" >
                             &nbsp; &nbsp;
@@ -182,28 +182,30 @@ $row_date = mysql_fetch_array($result_meter_reading);
                             <?php
                             $SN = 1;
                             while ($row = mysql_fetch_array($result_meter_reading)) {
-                                ?>
-                                <tr>
-                            <input type="hidden" name="cust_id[]" value="<?php echo $row['cust_id'] ?>" >
-                            <input type="hidden" name="met_id[]" value="<?php echo $row['met_id'] ?>" >
-                            <td><?php echo $SN ?></td>
-                            <td><?php echo $row['acc_no'] ?></td>
-                            <td><?php echo $row['met_number'] ?></td>
-                            <td><?php echo $row['appnt_fullname'] ?></td>
-                            <td><?php echo $row['reading_date'] ?></td>
-                            <td>
-                                <input type="text" name="prev_reading[]" value="<?php if (!empty($row['prev_reading'])) echo $row['prev_reading']; else echo $row['initial_reading']; ?>" readonly  class="prev" >
-                            </td>
-                            <td>
-                                <input type="number" name="curr_reading[]" min="<?php echo $row['prev_reading']; ?>" value="<?php echo $row['curr_reading']; ?>" required class="number" style="width: 100px;">
-                            </td>
-                            <td><output name="cons[]" ></output></td>
-                            <td>
-                                <input type="text" name="remarks[]" class="text" style="width: 200px;">
-                            </td>
-                            </tr>
-                            <?php
-                            $SN++;
+                            ?>
+                            <tr>
+                        <input type="hidden" name="cust_id[]" value="<?php echo $row['cust_id'] ?>" >
+                        <input type="hidden" name="met_id[]" value="<?php echo $row['met_id'] ?>" >
+                        <td><?php echo $SN ?></td>
+                        <td><?php echo $row['acc_no'] ?></td>
+                        <td><?php echo $row['met_number'] ?></td>
+                        <td><?php echo $row['appnt_fullname'] ?></td>
+                        <td><?php echo $row['reading_date'] ?></td>
+                        <td>
+                            <input type="text" name="prev_reading[]" value="<?php if (!empty($row['prev_reading'])) echo $row['prev_reading'];
+                                            else echo $row[ 'initial_reading']; ?>" readonly  class="prev" >
+                        </td>
+                        <td>
+                            <
+                                input type="number" name="curr_reading[]" min="<?php echo $row['prev_reading']; ?>" value="<?php echo $row['curr_reading']; ?>" required class="number" style="width: 100px;">
+                        </td>
+                        <td><output name="cons[]" ></output></td>
+                        <td>
+                            <input type="text" name="remarks[]" class="text" style="width: 200px;">
+                        </td>
+                        </tr>
+                        <?php
+                        $SN++;
                         }
                         ?>
                         </tbody>
@@ -216,8 +218,8 @@ $row_date = mysql_fetch_array($result_meter_reading);
                     </table>
                 </form>
                 <!-- end .content --></div>
-            <?php include '../../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
 </html>
-<?php ob_flush(); ?>
+        <?php ob_flush(); ?>

@@ -109,27 +109,38 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 <td><?php echo $row['appnt_fullname'] ?></td>
                 <td><?php echo $row['reading_date'] ?></td>
                 <td>
-                    <input type="text" name="prev_reading[]" value="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>" readonly  class="prev" >
+                    <input type="text" name="prev_reading[]" value="<?php if (!empty($row['reading']))
+                echo $row['reading'];
+            else
+                echo $row['initial_reading'];
+            ?>" readonly  class="prev" >
                 </td>
                 <td>
-                    <input type="number" name="curr_reading[]" min="<?php if (!empty($row['reading'])) echo $row['reading']; else echo $row['initial_reading']; ?>" required class="number" style="width: 100px;">
+                    <input type="number" name="curr_reading[]" min="<?php if (!empty($row['reading']))
+                echo $row['reading'];
+            else
+                echo $row['initial_reading'];
+            ?>
+                           " required class="number" style="width: 100px;">
                 </td>
                 <td><output name="cons[]" ></output></td>
                 <td>
-                    <input type="text" name="remarks[]" class="text" style="width: 200px;">
+                    <input type="text" name="remar
+                           ks[]" class="text" style="width: 200px;">
+
                 </td>
                 </tr>
-                <?php
-                $SN++;
-            }
-            ?>
-        </tbody>
-    </table>
-    <table width="531">
-        <tr>
-            <td width="307"><button type="submit">Save</button>
-                <button type="reset">Reset</button></td>
-        </tr>
-    </table>
-</form>
+        <?php
+        $SN++;
+    }
+    ?>
+            </tbody>
+        </table>
+        <table width="531">
+            <tr>
+                <td width="307"><button type="submit">Save</button>
+                    <button type="reset">Reset</button></td>
+            </tr>
+        </table>
+    </form>
 <?php } ?>

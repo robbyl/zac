@@ -39,7 +39,6 @@ $num_row = mysql_num_rows($result_user);
 if ($num_row === 1 && $row_user['status'] === 'ACTIVE') {
 
     // Login successfully
-    
     // Login out any un-logged user first.
     mysql_close($conn);
     session_start();
