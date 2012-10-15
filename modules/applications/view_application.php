@@ -1,5 +1,6 @@
-<?php require '../../includes/session_validator.php'; 
- ob_start();
+<?php
+require '../../includes/session_validator.php';
+ob_start();
 ?>
 
 <!doctype html>
@@ -55,7 +56,7 @@
                 revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
                 mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
                 collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
-                defaultexpanded: [0], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
+                defaultexpanded: [2], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
                 onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
                 animatedefault: true, //Should contents open by default be animated into view?
                 persiststate: false, //persist state of opened contents within browser session?
@@ -75,9 +76,9 @@
 
     <body>
         <div class="container">
-            <?php require '../../includes/header.php'; ?>
+                <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
-                <?php session_start(); ?>
+<?php session_start(); ?>
                 <div class="arrowlistmenu">
                     <a href="../../home.php"><h3 class="menuheader home">Home</h3></a>
                     <?php
@@ -193,14 +194,14 @@
                             <li><a href="../../modules/adjustments/perform_adjustments.php">Perform adjustments</a></li>
                             <li><a href="../../modules/adjustments/view_adjustments.php" >View adjustments</a></li>
                         </ul>
-                    <?php } ?>
+<?php } ?>
 
                     <h3 class="menuheader expandable reports">Report Manager</h3>
                     <ul class="categoryitems">
                         <li><a href="../../modules/report/reports.php" >Generate reports</a></li>
                     </ul>
                 </div>
-                <?php session_commit(); ?>
+<?php session_commit(); ?>
                 <!-- end .sidebar --></div>
             <div class="content">
                 <?php
@@ -350,7 +351,7 @@
                 }
                 ?>
                 <!-- end .content --></div>
-            <?php include '../../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>
             <!-- end .container -->
         </div>
     </body>
