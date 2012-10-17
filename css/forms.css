@@ -1,0 +1,14 @@
+/* 
+    Document   : forms
+    Created on : Oct 18, 2012, 12:13:10 AM
+    Author     : robby
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.data-form-wapper {
+    width: 80%;
+    height: 700px;
+    background: pink;
+}
+
