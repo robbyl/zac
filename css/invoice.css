@@ -1,0 +1,125 @@
+/*
+    Document   : invoice
+    Created on : Aug 25, 2012, 1:09:34 PM
+    Author     : Robbyl
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* ~~ Invoice styles ~~ */
+
+@font-face {
+    font-family: "Segoe UI Light";
+    src: url(fonts/segoeuil.ttf);
+}
+
+body {
+    -webkit-print-color-adjust: exact;
+    font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #272727;
+}
+
+ul {
+    margin: 0;
+}
+
+.invoice-wrapper {
+    width: 1060px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0, 0.15); 
+}
+.invoice {
+    width: 1000px;
+    padding-top: 25px !important;
+    padding-bottom: 10px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    clear: both;
+    border-bottom: 1px dashed #000 !important;
+    background-color: #fff;
+}
+
+.company-header {
+    position: relative;
+    width: 1000px;
+    height: 83px;
+}
+
+.authority-logo {
+    clear: both;
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    height: 80px;
+}
+
+.authority-logo img {
+    display: table-cell;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.customer-header {
+    position: relative;
+    width: 1000px;
+    height: 120px;
+    border-top: 3px solid #cd7171;
+    clear: both;
+}
+
+.invoice-body {
+    position: relative;
+    width: 1000px;
+    min-height: 175px;
+}
+
+.invoice-footer {
+
+}
+
+.invoice-table {
+    width: 1000px;
+    margin:  0 auto;
+    border-collapse: collapse;
+    clear: both;
+}
+.invoice-table td {
+    padding: 0 5px !important;
+}
+
+.tr-line {
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: bold;
+}
+
+.inv-list {
+    float: left;
+    padding: 0 10px 0 0 !important;
+    list-style: none;
+}
+
+@media print {
+    .footer {
+        display: none;
+    }
+}
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+
+    .invoice {
+        padding-top: 25px;
+        padding-bottom: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        page-break-inside: avoid;
+    }
+}
