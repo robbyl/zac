@@ -69,7 +69,11 @@
                                     <td><input type="text" name="usr_fname[]" value="<?php echo $row['usr_fname'] ?>" required size="255" class="text"></td>
                                 </tr>
                                 <tr>
-                                    <td width="100">Last Name</td>
+                                <td width="100">Middle Name</td>
+                                <td><input type="text" name="usr_lname" required size="255" class="text"></td>
+                            </tr>
+                                <tr>
+                                    <td width="100">Sir Name</td>
                                     <td><input type="text" name="usr_lname[]" value="<?php echo $row['usr_lname'] ?>" required size="255" class="text"></td>
                                 </tr>
                                 <tr>

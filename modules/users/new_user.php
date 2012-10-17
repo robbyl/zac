@@ -52,8 +52,20 @@
                                 <td><input type="text" name="usr_fname" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="100">Last Name</td>
+                                <td width="100">Middle Name</td>
                                 <td><input type="text" name="usr_lname" required size="255" class="text"></td>
+                            </tr>
+                            <tr>
+                                <td width="100">Sir Name</td>
+                                <td><input type="text" name="sir_name" required size="255" class="text"></td>
+                            </tr>
+                            <tr>
+                                <td width="100">Phone</td>
+                                <td><input type="tel" name="phone" required size="255" class="text"></td>
+                            </tr>
+                            <tr>
+                                <td width="100">Fax</td>
+                                <td><input type="tel" name="fax" required size="255" class="text"></td>
                             </tr>
                             <tr>
                                 <td width="100">E-mail</td>
@@ -83,8 +95,6 @@
                                         <option value="CONNECTION OFFICER">Connection Officer</option>
                                         <option value="CREDIT CONTROLLER">Credit Controller</option>
                                         <option value="MANAGER">Manager</option>
-
-
                                     </select></td>
                             </tr>
                             <tr>
