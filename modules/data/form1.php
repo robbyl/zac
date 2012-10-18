@@ -656,131 +656,133 @@
                             <td>&nbsp;</td>
                         </tr>
                     </table>
+                </div>
 
-                    <div class="section">
-                        <h3>F: MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS</h3>
-                        <table width="100%" border="1" cellspacing="0">
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td width="60">MC1</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td colspan="2">&nbsp;</td>
-                                <td width="60">MC2</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td width="60">MC3</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td colspan="2">&nbsp;</td>
-                                <td width="60">MC4</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td width="60">MC5</td>
-                            </tr>
-                        </table>
-
-
-                        <table width="100%" border="1" cellspacing="0">
-                            <tr>
-                                <td colspan="2">&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td rowspan="9" width="60">MC6</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="8">&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </table>
-
-                        <table width="100%" border="1" cellspacing="0">
-                            <tr>
-                                <td rowspan="2">&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td rowspan="2" width="60">ME1</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </table>
-
-                        <div class="form-footer">
-                            <table width="100%" border="1" cellspacing="0">
-                                <tr>
-                                    <td>Completed by</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>Positon in organisation</td>
-                                    <td>&nbsp;</td>
-                                    <td>Date:</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>Approved by:</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>Position in organisation:</td>
-                                    <td>&nbsp;</td>
-                                    <td>Date:</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                            </table>
-
-                        </div>
+                <div class="section">
+                    <h3>F: MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS</h3>
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td width="60">MC1</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td colspan="2">&nbsp;</td>
+                            <td width="60">MC2</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td width="60">MC3</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td colspan="2">&nbsp;</td>
+                            <td width="60">MC4</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td width="60">MC5</td>
+                        </tr>
+                    </table>
 
 
-                        <!-- end .section --></div>
-                    <!-- end .section --></div>
-                <!-- end .data-form-wrapper  -->  </div>
-        </form>
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td rowspan="9" width="60">MC6</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="8">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td rowspan="2">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td rowspan="2" width="60">ME1</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="form-footer">
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td>Completed by</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Positon in organisation</td>
+                            <td>&nbsp;</td>
+                            <td>Date:</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Approved by:</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Position in organisation:</td>
+                            <td>&nbsp;</td>
+                            <td>Date:</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                </div>
 
 
-    </body>
+                <!-- end .section --></div>
+            <!-- end .section --></div>
+        <!-- end .data-form-wrapper  -->  </div>
+</form>
+
+
+</body>
 </html>
