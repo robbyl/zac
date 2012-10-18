@@ -390,13 +390,19 @@ input[disabled] {
 .text, .number {
     border: 1px solid #bfbfbf;
     height: 23px;
-    width: 300px;
     outline: none;
     padding: 0 5px;
     font-size: 100%;
 }
+
+.text {
+    width: 300px;
+}
+
 .number {
     text-align: right;
+    width: auto !important;
+    border: none;
 }
 
 textarea {

@@ -24,9 +24,18 @@ body {
     padding: 0;
 }
 
+h2 h5 {
+    font-weight: bold;
+}
+
 table {
     border-collapse: collapse;
     border: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+.section {
+    margin: 15px 0;
 }
 
 .data-form-wapper {
@@ -44,9 +53,17 @@ table {
 }
 
 .data-group {
-    background-color: #e0e0e0;
+    background-color: #ad343d;
     color: #fff;
     font-weight: bold;
     text-align: center;
+}
+
+.data-form-wapper td {
+    padding: 2px;
+}
+
+.data-form-wapper .text {
+    
 }
 

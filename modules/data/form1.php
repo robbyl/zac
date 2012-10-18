@@ -10,6 +10,7 @@
     <head>
         <link rel="icon" href="./favicon.ico" type="image/x-icon" />
         <title>FORM 1</title>
+        <link rel="stylesheet" type="text/css" href="../../css/layout.css" />
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="js/jquery-1.7.2.js" type="text/javascript"></script>
 
@@ -31,7 +32,11 @@
                     <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                         <tr>
                             <td colspan="2">&nbsp;</td>
-                            <td colspan="3">&nbsp;</td>
+                            <td colspan="3">
+                            <select class="select">
+                            <option></option>
+                            </select>
+                            </td>
                             <td width="60" class="data-group">CD1</td>
                         </tr>
                         <tr>
@@ -133,55 +138,57 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td>
+                            <input type="number" name="hp1_male_younger[]" min="0" class="number">
+                            </td>
+                            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                     </table>
@@ -207,50 +214,50 @@
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>
+                            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">&nbsp;</td>
+                            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
+                            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                     </table>
@@ -265,8 +272,8 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp3_radio_hrs" min="0" class="number"></td>
+                            <td><input type="number" name="hp3_radio_hrs" min="0" class="number"></td>
                         </tr>
                     </table>
 
@@ -287,11 +294,11 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="hp4_male_peer" min="0" class="number"></td>
+                            <td><input type="number" name="hp4_female_peer" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp4_male_community" min="0" class="number"></td>
+                            <td><input type="number" name="hp4_female_community" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                     </table>
@@ -313,11 +320,11 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="hp5_male_peer" min="0" class="number"></td>
+                            <td><input type="number" name="hp5_female_peer" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp5_male_community" min="0" class="number"></td>
+                            <td><input type="number" name="hp5_female_community" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                     </table>
@@ -332,9 +339,9 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp6_booklets" min="0" class="number"></td>
+                            <td><input type="number" name="hp6_posters" min="0" class="number"></td>
+                            <td><input type="text" name="hp6_others"  class="text"></td>
                         </tr>
                     </table>
 
@@ -347,8 +354,8 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp7_male_condoms" min="0" class="number"></td>
+                            <td><input type="number" name="hp7_female_condoms" min="0" class="number"></td>
                         </tr>
                     </table>
 
@@ -362,8 +369,8 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp8_pep_male" min="0" class="number"></td>
+                            <td><input type="number" name="hp8_pep_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                     </table>
@@ -379,8 +386,8 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="hp9_wkpl_male" min="0" class="number"></td>
+                            <td><input type="number" name="hp9_wkpl_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                     </table>
