@@ -9,7 +9,7 @@
 <html>
     <head>
         <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-        <title>FORM 2</title>
+        <title>FORM 1</title>
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="js/jquery-1.7.2.js" type="text/javascript"></script>
 
