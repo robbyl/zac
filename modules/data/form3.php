@@ -133,7 +133,7 @@
                             <td>&nbsp;</td>
                         </tr>
                     </table>
-                    
+
                     <h5>HIV PREVENTION AMONGST GENERAL POPULATION</h5>
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
@@ -195,7 +195,7 @@
                             <td>&nbsp;</td>
                         </tr>
                     </table>
-                    
+
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td>RADIO AND TV</td>
@@ -209,7 +209,7 @@
                             <td>&nbsp;</td>
                         </tr>
                     </table>
-                    
+
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td rowspan="2">EDUCATORS</td>
@@ -229,6 +229,94 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td rowspan="2">EDUCATORS</td>
+                            <td colspan="3">&nbsp;</td>
+                            <td colspan="3">&nbsp;</td>
+                            <td rowspan="3"  width="60">HP5</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td>RADIO AND TV</td>
+                            <td>Hours of airtime</td>
+                            <td>&nbsp;</td>
+                            <td>Hours of airtime</td>
+                            <td rowspan="2"  width="60">HP6</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td>RADIO AND TV</td>
+                            <td>Hours of airtime</td>
+                            <td>Hours of airtime</td>
+                            <td rowspan="2"  width="60">HP7</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td>RADIO AND TV</td>
+                            <td>Hours of airtime</td>
+                            <td>&nbsp;</td>
+                            <td>Hours of airtime</td>
+                            <td rowspan="2"  width="60">HP8</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                    <table width="100%" border="1" cellspacing="0">
+                        <tr>
+                            <td>RADIO AND TV</td>
+                            <td>Hours of air time</td>
+                            <td>&nbsp;</td>
+                            <td>Hours of air time</td>
+                            <td rowspan="2"  width="60">HP9</td>
+                        </tr>
+                        <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
