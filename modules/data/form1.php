@@ -261,7 +261,7 @@
                             <td>RADIO AND TV</td>
                             <td>Hours of airtime</td>
                             <td>Hours of airtime</td>
-                            <td rowspan="2" width="60">&nbsp;</td>
+                            <td rowspan="2" width="60">HP3</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>

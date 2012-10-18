@@ -6,9 +6,27 @@
         Purpose of the stylesheet follows.
 */
 
+@charset "utf-8";
+
+@font-face {
+    font-family: "Segoe UI Light";
+    src: url(fonts/segoeuil.ttf);
+}
+
+body {
+    -webkit-print-color-adjust: exact;
+    font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
+    color: #272727;
+}
+
 * {
     margin: 0;
     padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #000;
 }
 
 .data-form-wapper {
