@@ -506,7 +506,6 @@
                             <td><input type="number" name="cs2_person_visit" min="0" class="number"></td>
                         </tr>
                     </table>
-
                 </div>
 
                 <div class="section">
@@ -531,7 +530,7 @@
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
+                            <td>1. <input type="text" name="tc1_topic[]" class="text"></td>
                             <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
                             <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
@@ -543,113 +542,114 @@
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
+                            <td>2. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
+                            <td>3. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
+                            <td>4. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
+                            <td>5. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
+                            <td>6. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
+                        <tr>
+                            <td>7. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>8. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>9. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>10. <input type="text" name="tc1_topic[]" class="text"></td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                            <td>&nbsp;</td>
+                        </tr>
+
                     </table>
 
                     <table width="100%" border="1" cellspacing="0">
@@ -660,7 +660,7 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc2_community" class="number"></td>
                         </tr>
                     </table>
                 </div>
@@ -670,30 +670,30 @@
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><label for="mc1_yes"><input type="radio" name="mc1_yes" id="mc1_yes">Yes</label></td>
+                            <td><label for="mc1_no"><input type="radio" name="mc1_yes" id="mc1_no">No</label></td>
                             <td width="60" class="data-group">MC1</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
+                            <td colspan="2">TSH<input type="number" step="0.01" name="mc2_tshs" class="number"></td>
                             <td width="60" class="data-group">MC2</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><label for="mc3_yes"><input type="radio" name="mc3_yes" id="mc3_yes">Yes</label></td>
+                            <td><label for="mc3_no"><input type="radio" name="mc3_yes" id="mc3_no">No</label></td>
                             <td width="60" class="data-group">MC3</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
+                            <td colspan="2">TSH<input type="number" step="0.01" name="mc4_tshs" class="number"></td>
                             <td width="60" class="data-group">MC4</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><label for="mc5_yes"><input type="radio" name="mc5_yes" id="mc5_yes">Yes</label></td>
+                            <td><label for="mc5_no"><input type="radio" name="mc5_yes" id="mc5_no">No</label></td>
                             <td width="60" class="data-group">MC5</td>
                         </tr>
                     </table>
@@ -702,40 +702,36 @@
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td colspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
                             <td rowspan="9" width="60" class="data-group">MC6</td>
                         </tr>
                         <tr>
                             <td rowspan="8">&nbsp;</td>
                             <td>&nbsp;</td>
+                            <td><input type="checkbox" name="mc6_revention"></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><input type="checkbox" name="mc6_treatment"></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><input type="checkbox" name="mc6_mitigation"></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td rowspan="5"><input type="checkbox" name="mc6_more"></td>
+                        </tr>
+                        <tr>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                     </table>
@@ -743,22 +739,22 @@
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td rowspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><label for="me1_yes"><input type="radio" name="me1_yes" id="me1_yes">Yes</label></td>
+                            <td><input type="date" name="me1_workshop_date" class="text"></td>
                             <td rowspan="2" width="60" class="data-group">ME1</td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><label for="me1_no"><input type="radio" name="me1_yes" id="me1_no">No</label></td>
+                            <td><input type="text" name="mc1_reason" class="text"></td>
                         </tr>
                     </table>
                 </div>
 
                 <div class="form-footer">
-                    <table width="100%" border="1" cellspacing="0">
+                    <table width="100%" border="0" cellspacing="0" style="border: none !important">
                         <tr>
                             <td>Completed by</td>
-                            <td>&nbsp;</td>
+                            <td><select name="" class="select"><option></option></select></td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
@@ -766,7 +762,7 @@
                             <td>Positon in organisation</td>
                             <td>&nbsp;</td>
                             <td>Date:</td>
-                            <td>&nbsp;</td>
+                            <td><input type="date" name="" class="text"></td>
                         </tr>
                         <tr>
                             <td>Approved by:</td>
@@ -778,18 +774,15 @@
                             <td>Position in organisation:</td>
                             <td>&nbsp;</td>
                             <td>Date:</td>
-                            <td>&nbsp;</td>
+                            <td><input type="date" name="" class="text"></td>
                         </tr>
                     </table>
-
                 </div>
 
-
-                <!-- end .section --></div>
-            <!-- end .section --></div>
-        <!-- end .data-form-wrapper  -->  </div>
-</form>
-
-
-</body>
+                <table border="0" cellpadding="0" cellspacing="0" style="border: none">
+                    <tr><td></td><td><button type="submit">Save</button><button type="reset">Reset</button></td></tr>
+                </table>
+                <!-- end .data-form-wrapper  -->  </div>
+        </form>
+    </body>
 </html>

@@ -396,15 +396,15 @@ input[disabled] {
 }
 
 .text {
-    width: 300px;
-    font-weight: bold;
+    width: 150px;
+    /*    font-weight: bold;*/
 }
 
 .number {
     text-align: right;
     width: 100px !important;
     border: none;
-    font-weight: bold;
+    /*    font-weight: bold;*/
     float: right;
 }
 
@@ -421,16 +421,11 @@ textarea:focus {
 }
 
 .text {
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    border: none;
 }
 
 .text:focus {
-    border: 1px solid #272727;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    border: none;
     background: aliceblue;
 }
 
