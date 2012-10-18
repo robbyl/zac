@@ -6,9 +6,20 @@
         Purpose of the stylesheet follows.
 */
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .data-form-wapper {
     width: 80%;
     height: 700px;
     background: pink;
+}
+
+.form-header {
+    width: 100%;
+    height: 200px;
+    background: paleturquoise;
 }
 
