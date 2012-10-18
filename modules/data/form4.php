@@ -9,7 +9,7 @@
 <html>
     <head>
         <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-        <title>FORM 1</title>
+        <title>FORM 4</title>
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="js/jquery-1.7.2.js" type="text/javascript"></script>
 
@@ -27,92 +27,52 @@
 
                     <!-- end .form-header --></div>
                 <div class="section">
-                    <h3>A. INFORMATION ABOUT YOUR ORGANISATION</h3>
-                    <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
+                    <h3>A. INFORMATION ABOUT YOUR SHEHIA</h3>
+                    <table width="100%" border="1" cellspacing="0" cellpadding="5">
                         <tr>
                             <td colspan="2">&nbsp;</td>
                             <td colspan="3">&nbsp;</td>
-                            <td width="60" class="data-group">CD1</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="3">&nbsp;</td>
-                            <td class="data-group">CD2</td>
+                            <td width="60">A1</td>
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>
                             <td colspan="3">&nbsp;</td>
-                            <td class="data-group">CD3</td>
+                            <td>A2</td>
                         </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>
                             <td colspan="3">&nbsp;</td>
-                            <td class="data-group">CD4</td>
+                            <td>A3</td>
                         </tr>
                         <tr>
-                            <td colspan="2" rowspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td rowspan="2" class="data-group">CD5</td>
+                            <td colspan="2" rowspan="2">Contact details of the ZHAPMos</td>
+                            <td>Telephone</td>
+                            <td colspan="2">Fax</td>
+                            <td>A4</td>
                         </tr>
                         <tr>
+                            <td colspan="3">Email</td>
+                            <td>A5</td>
+                        </tr>
 
-                            <td colspan="3">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="3">&nbsp;</td>
-                            <td class="data-group">CD6</td>
-                        </tr>
                         <tr>
                             <td colspan="2">&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="data-group">CD7</td>
-                        </tr>
-                        <tr>
                             <td colspan="2">&nbsp;</td>
-                            <td colspan="3">&nbsp;</td>
-                            <td class="data-group">CD8</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>males</td>
-                            <td>females</td>
-                            <td>total</td>
-                            <td rowspan="3" class="data-group">CD9</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="data-group">CD10</td>
+                            <td>A6</td>
                         </tr>
                     </table>
                     <!-- end .section  --></div>
+
                 <div class="section">
-                    <h3>B. HIV PREVENTION SERVICES</h3>
+                    <h3>B: HIV PREVENTION SERVICES</h3>
+
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td>Type of HIV intervention</td>
+                            <td>Most at risk population targeted</td>
                             <td colspan="5">Number of persons reached</td>
-                            <td rowspan="9"  width="60" class="data-group">HP1</td>
+                            <td rowspan="9"  width="60">HP1</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -129,24 +89,6 @@
                             <td>Male</td>
                             <td>Female</td>
                             <td>Total</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -189,16 +131,21 @@
                     <h5>HIV PREVENTION AMONGST GENERAL POPULATION</h5>
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
-                            <td colspan="2" rowspan="3">Type of intervation</td>
+                            <td>Type of HIV intervention</td>
+                            <td>Most at risk population targeted</td>
                             <td colspan="5">Number of persons reached</td>
-                            <td rowspan="9"  width="60" class="data-group">HP2</td>
+                            <td rowspan="9"  width="60">HP2</td>
                         </tr>
                         <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                             <td>Male</td>
                             <td>Female</td>
                             <td>Male</td>
@@ -206,15 +153,8 @@
                             <td>Total</td>
                         </tr>
                         <tr>
-                            <td colspan="2">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -222,15 +162,8 @@
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td colspan="2">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -238,7 +171,8 @@
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td colspan="2">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -246,7 +180,8 @@
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td colspan="2">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -255,13 +190,12 @@
                         </tr>
                     </table>
 
-
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td>RADIO AND TV</td>
                             <td>Hours of airtime</td>
                             <td>Hours of airtime</td>
-                            <td rowspan="2" width="60" class="data-group">HP3</td>
+                            <td rowspan="2" width="60">HP3</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -275,7 +209,7 @@
                             <td rowspan="2">EDUCATORS</td>
                             <td colspan="3">&nbsp;</td>
                             <td colspan="3">&nbsp;</td>
-                            <td rowspan="3"  width="60" class="data-group">HP4</td>
+                            <td rowspan="3"  width="60">HP4</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -301,7 +235,7 @@
                             <td rowspan="2">EDUCATORS</td>
                             <td colspan="3">&nbsp;</td>
                             <td colspan="3">&nbsp;</td>
-                            <td rowspan="3"  width="60" class="data-group">HP5</td>
+                            <td rowspan="3"  width="60">HP5</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -328,7 +262,7 @@
                             <td>Hours of airtime</td>
                             <td>&nbsp;</td>
                             <td>Hours of airtime</td>
-                            <td rowspan="2"  width="60" class="data-group">HP6</td>
+                            <td rowspan="2"  width="60">HP6</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -343,7 +277,7 @@
                             <td>RADIO AND TV</td>
                             <td>Hours of airtime</td>
                             <td>Hours of airtime</td>
-                            <td rowspan="2"  width="60" class="data-group">HP7</td>
+                            <td rowspan="2"  width="60">HP7</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -358,7 +292,7 @@
                             <td>Hours of airtime</td>
                             <td>&nbsp;</td>
                             <td>Hours of airtime</td>
-                            <td rowspan="2"  width="60" class="data-group">HP8</td>
+                            <td rowspan="2"  width="60">HP8</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -367,7 +301,6 @@
                             <td>&nbsp;</td>
                         </tr>
                     </table>
-
 
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
@@ -375,7 +308,7 @@
                             <td>Hours of air time</td>
                             <td>&nbsp;</td>
                             <td>Hours of air time</td>
-                            <td rowspan="2"  width="60" class="data-group">HP9</td>
+                            <td rowspan="2"  width="60">HP9</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -385,7 +318,7 @@
                         </tr>
                     </table>
                 </div>
-
+                
                 <div class="section">
                     <h3>C. HIV IMPACT MITIGATION SERVICES</h3>
                     <table width="100%" border="1" cellspacing="0">
@@ -396,7 +329,7 @@
                             <td rowspan="2">&nbsp;</td>
                             <td rowspan="2">&nbsp;</td>
                             <td rowspan="2">&nbsp;</td>
-                            <td rowspan="7"  width="60" class="data-group">M1</td>
+                            <td rowspan="7"  width="60">M1</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -469,7 +402,7 @@
                         </tr>
                     </table>
                 </div>
-
+                
                 <div class="section">
                     <h3>D. HIV & AIDS CARE AND SUPPORT SERVICES</h3>
                     <table width="100%" border="1" cellspacing="0">
@@ -478,7 +411,7 @@
                             <td>Hours of airtime</td>
                             <td>&nbsp;</td>
                             <td>Hours of airtime</td>
-                            <td rowspan="2"  width="60" class="data-group">CS1</td>
+                            <td rowspan="2"  width="60">CS1</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -492,7 +425,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td rowspan="2" width="60" class="data-group">CS2</td>
+                            <td rowspan="2" width="60">CS2</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -501,16 +434,16 @@
                     </table>
 
                 </div>
-
+                
                 <div class="section">
-                    <h3>E. TRAINING AND CAPACITY BUILDING FOR HIV</h3>
+                    <h3>E: TRAINING AND CAPACITY BUILDING FOR HIV</h3>
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td rowspan="2">&nbsp;</td>
                             <td colspan="3">&nbsp;</td>
                             <td colspan="3">&nbsp;</td>
                             <td colspan="3">&nbsp;</td>
-                            <td rowspan="12" width="60" class="data-group">TC1</td>
+                            <td rowspan="12" width="60">TC1</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -649,7 +582,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td rowspan="2" width="60" class="data-group">TC2</td>
+                            <td rowspan="2" width="60">TC2</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -657,7 +590,7 @@
                         </tr>
                     </table>
                 </div>
-
+                
                 <div class="section">
                     <h3>F: MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS</h3>
                     <table width="100%" border="1" cellspacing="0">
@@ -665,29 +598,29 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td width="60" class="data-group">MC1</td>
+                            <td width="60">MC1</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
-                            <td width="60" class="data-group">MC2</td>
+                            <td width="60">MC2</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td width="60" class="data-group">MC3</td>
+                            <td width="60">MC3</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
-                            <td width="60" class="data-group">MC4</td>
+                            <td width="60">MC4</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td width="60" class="data-group">MC5</td>
+                            <td width="60">MC5</td>
                         </tr>
                     </table>
 
@@ -696,7 +629,7 @@
                         <tr>
                             <td colspan="2">&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td rowspan="9" width="60" class="data-group">MC6</td>
+                            <td rowspan="9" width="60">MC6</td>
                         </tr>
                         <tr>
                             <td rowspan="8">&nbsp;</td>
@@ -738,7 +671,7 @@
                             <td rowspan="2">&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td rowspan="2" width="60" class="data-group">ME1</td>
+                            <td rowspan="2" width="60">ME1</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -746,6 +679,8 @@
                         </tr>
                     </table>
                 </div>
+                
+                
 
                 <div class="form-footer">
                     <table width="100%" border="1" cellspacing="0">
@@ -775,9 +710,7 @@
                         </tr>
                     </table>
 
-                </div>
-
-
+                    <!-- end .form-footer --> </div>
                 <!-- end .section --></div>
             <!-- end .section --></div>
         <!-- end .data-form-wrapper  -->  </div>
