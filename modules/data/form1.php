@@ -33,9 +33,9 @@
                         <tr>
                             <td colspan="2">&nbsp;</td>
                             <td colspan="3">
-                            <select class="select">
-                            <option></option>
-                            </select>
+                                <select class="select">
+                                    <option></option>
+                                </select>
                             </td>
                             <td width="60" class="data-group">CD1</td>
                         </tr>
@@ -139,7 +139,7 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>
-                            <input type="number" name="hp1_male_younger[]" min="0" class="number">
+                                <input type="number" name="hp1_male_younger[]" min="0" class="number">
                             </td>
                             <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
                             <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
@@ -416,56 +416,56 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="m1_health_chldn_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_health_chldn_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="m1_health_elderly_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_health_elderly_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="m1_health_widows" min="0" class="number"></td>
+                            <td><input type="number" name="m1_health_vulnerable" min="0" class="number"></td>
+                            <td><input type="number" name="m1_health_other" min="0" class="number"></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="m1_emotional_chldn_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_emotional_chldn_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="m1_emotional_elderly_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_emotional_elderly_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="m1_emotional_widows" min="0" class="number"></td>
+                            <td><input type="number" name="m1_emotional_vulnerable" min="0" class="number"></td>
+                            <td><input type="number" name="m1_emotional_other" min="0" class="number"></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="m1_nutrition_chldn_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_nutrition_chldn_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="m1_nutrition_elderly_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_nutrition_elderly_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="m1_nutrition_widows" min="0" class="number"></td>
+                            <td><input type="number" name="m1_nutrition_vulnerable" min="0" class="number"></td>
+                            <td><input type="number" name="m1_nutrition_other" min="0" class="number"></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="m1_financial_chldn_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_financial_chldn_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="m1_financial_elderyl_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_financial_elderyl_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="m1_financial_widows" min="0" class="number"></td>
+                            <td><input type="number" name="m1_financial_vulnerable" min="0" class="number"></td>
+                            <td><input type="number" name="m1_financial_other" min="0" class="number"></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="m1_school_chldn_male" min="0" class="number"></td>
+                            <td><input type="number" name="m1_school_chldn_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>

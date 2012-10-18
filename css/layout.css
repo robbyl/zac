@@ -397,12 +397,15 @@ input[disabled] {
 
 .text {
     width: 300px;
+    font-weight: bold;
 }
 
 .number {
     text-align: right;
-    width: auto !important;
+    width: 100px !important;
     border: none;
+    font-weight: bold;
+    float: right;
 }
 
 textarea {
