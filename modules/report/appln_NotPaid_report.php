@@ -1,54 +1,91 @@
 <?php
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+?>
+<?php
 require '../../includes/session_validator.php';
-ob_start();
+require '../../config/config.php';
+require '../../functions/general_functions.php';
+
+
+$query_authority = "SELECT aut_name,logo 
+                      FROM settings";
+$result_authority = mysql_query($query_authority) or die(mysql_error());
+$row_authority = mysql_fetch_array($result_authority);
+
+//  $filter = clean($_GET['filter']);
+
+
+$status = "paid";
+
+$filter = "All";
+
+$filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter' ";
+
+$query_appln = "SELECT appln.appln_id, appln_no, appln_type, appnt.appnt_id, appln_date,
+                           engeneer_appr,appnt_fullname, appnt_types, billing_areas,
+                           description, cust.appnt_id AS is_customer, status ,service ,
+                           surveyed_date, approved_date, inspected_by, premise_nature
+                      FROM application appln
+                 LEFT JOIN applicant appnt
+                        ON appln.appnt_id = appnt.appnt_id
+                 LEFT JOIN customer cust
+                        ON appnt.appnt_id = cust.appnt_id
+                 LEFT JOIN appnt_payment appntp
+                        ON appnt.appnt_id = appntp.appnt_id
+                 LEFT JOIN transaction trans
+                        ON appntp.trans_id = trans.trans_id
+                 LEFT JOIN appnt_type apnty
+                        ON appnt.appnt_type_id = apnty.appnt_type_id
+                 LEFT JOIN billing_area ba
+                        ON appnt.ba_id = ba.ba_id
+                 LEFT JOIN service_nature sn
+                        ON appln.service_nature_id = sn.service_nature_id
+                           WHERE status = 'Not Paid'";
+
+$result_appln = mysql_query($query_appln) or die(mysql_error());
+$row_header = mysql_fetch_array($result_appln);
 ?>
 
-<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | VIEW CUSTOMERS</title>
+
+        <title>APPLICATION REPORT WITH PAID STATUS</title>
+
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
-        <link href="../../css/data_table.css" rel="stylesheet" type="text/css">
-        <link href="../../css/jquery.ui.theme.css" rel="stylesheet" type="text/css">
-        <link href="../../css/ui_darkness.css" rel="stylesheet" type="text/css">
+        <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
         <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
+        <link href="../../css/invoice.css" rel="stylesheet" type="text/css">
+
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
-        <script src="../../js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="../../js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
-        <script src="../../js/jquery.dataTables.pagination.js" type="text/javascript"></script>
         <script src="../../js/tooltip.js" type="text/javascript"></script>
         <script src="../../js/softbill-core.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-
-            $(document).ready(function() { 
-
-                $('#billing_area').change(function(){
-
-                    getContent('customer_listing.php', {filter: $(this).val()});
-
+            $(document).ready(function(){
+                
+                $('.tooltip').tipTip({
+                    delay: "300"
+                });  
+                
+                $('#pdf').click(function(){
+                    
+                    savePDF('report', '../../css/sheet.css');
                 });
-
-                $('.message, .error').hide().slideDown('normal').click(function(){
-                    $(this).slideUp('normal');
-                });
-
-            } );
-
-            function nav(url){
-                //document.location.href = url;
-            }
-            
+            });
+      
             ddaccordion.init({
                 headerclass: "expandable", //Shared CSS class name of headers group that are expandable
                 contentclass: "categoryitems", //Shared CSS class name of contents group
                 revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
                 mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
                 collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
-                defaultexpanded: [3], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
+                defaultexpanded: [7], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
                 onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
                 animatedefault: true, //Should contents open by default be animated into view?
                 persiststate: false, //persist state of opened contents within browser session?
@@ -62,7 +99,7 @@ ob_start();
                     //do nothing
                 }
             })
-
+      
         </script>
     </head>
 
@@ -75,7 +112,7 @@ ob_start();
                     <a href="../../home.php"><h3 class="menuheader home">Home</h3></a>
                     <?php
                     if (
-                    // Manage users and settings access
+// Manage users and settings access
                             $_SESSION['role'] === "ROOT"
                     ) {
                         ?>
@@ -94,7 +131,7 @@ ob_start();
                     }
 
                     if (
-                    // Application access.
+// Application access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "CONNECTION OFFICER"
                     ) {
@@ -109,7 +146,7 @@ ob_start();
                     }
 
                     if (
-                    // Customer access.
+// Customer access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "ACCOUNTANT" ||
                             $_SESSION['role'] === "BILLING OFFICER" ||
@@ -126,7 +163,7 @@ ob_start();
                         <?php
                     }
                     if (
-                    // Water meter access.
+// Water meter access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "BILLING OFFICER"
                     ) {
@@ -143,7 +180,7 @@ ob_start();
                         <?php
                     }
                     if (
-                    // Sales access
+// Sales access
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "BILLING OFFICER" ||
                             $_SESSION['role'] === "ACCOUNTANT"
@@ -173,7 +210,7 @@ ob_start();
                         <?php
                     }
                     if (
-                    // Adjustments access.
+// Adjustments access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "CREDIT CONTROLLER" ||
                             $_SESSION['role'] === "ACCOUNTANT" ||
@@ -195,36 +232,92 @@ ob_start();
                 </div>
                 <?php session_commit(); ?>
                 <!-- end .sidebar --></div>
-            <div class="content">
-                <?php
-                // Displaying messages and errors
-                include '../../includes/info.php';
-                ?>
-                <h1>View Customers</h1>
-                <div class="hr-line"></div>
-                <div style="margin-bottom: 15px;">
-                    <label> Billing Area/Zone &nbsp;
-                        <select name="billing_area" class="select" required id="billing_area" >
-                            <option value="">--Select billing area/zone--</option>
-                            <?php
-                            require '../../config/config.php';
-                            $query = "SELECT billing_areas FROM billing_area ORDER BY billing_areas ASC";
-                            $result = mysql_query($query) or die(mysql_error());
-                            while ($row = mysql_fetch_array($result)) {
-                                ?>
-                                <option value="<?php echo $row['billing_areas'] ?>"><?php echo $row['billing_areas'] ?></option>
-                                <?php
-                            }
-                            mysql_close($conn);
-                            ?>
-                            <option value="All">All</option>
-                        </select>
-                    </label>
-                </div>
-                <div id="listing"></div>
-                <!-- end .content --></div>
-            <?php include '../../includes/footer.php'; ?>
-            <!-- end .container --></div>
-    </body>
+        </div>
+        <div class="content">
+            <h1>View and Print Application with Not Paid status</h1>
+            <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
+                <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
+                <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
+            </div>
+            <div class="hr-line"></div>
+            <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
+                <input type="hidden" name="html" id="html">
+            </form>
+            <div class="report-wrapper">
+                <div id="report">
+                    <div class="sheet-wraper">
+                        <div class="sheet-header">
+                            <div class="header-title">
+                                <p style="font-weight: bold"><?php echo $row_authority['aut_name'] ?></p> 
+                                <p style="font-size: 18px; font-weight: bold">APPLICATION REPORT WITH PAID STATUS</p>
+                                <div class="page-logo">
+                                    <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
+                                </div>
+                            </div>
+
+                            <!-- end .sheet-header --></div>
+                        <div class="print-details" style="float: right">
+                            <p><strong>Print Date: </strong><span style="font-weight: normal; float: right"><?php echo date('Y-m-d') ?></span></p>
+                            <p><strong>Billing Area/Zone: </strong><span style="font-weight: normal;">Migongo</span></p>
+                            <p><strong>Street: </strong> <span style="font-weight: normal; float: right">Migongo</span><div style="clear: both"></div></p>
+                        </div>
+                        <div class="print-details">
+                            <p><strong>Application No:</strong> <span style="font-weight: normal; font-weight: bold; font-size: 1.5em;"><?php echo sprintf('%08d', $row_header['appln_no']) ?></span></p>
+                            <p><strong>Applicant name:</strong><span style="font-weight: normal;"> <?php echo $row_header['appnt_fullname'] ?></span></p>
+
+                        </div>
+                        <div class="black-separator"></div>
+                        <div class="sheet-table">
+                            <table cellpadding="3" cellspacing="0" border="1" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Application No</th>
+                                        <th>Applicant Fullname</th>
+                                        <th>Application Type</th>
+                                        <th>Application Date</th>
+                                        <th>Billing Area</th>
+                                        <th>Surveyed Date</th>
+                                        <th>Engeneer Approval</th>
+                                        <th>Approval Date</th>
+                                        <th>Inspected By</th>
+                                        <th>Premise Nature</th>
+                                        <th>Service Nature</th>
+                                        <th>Status</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $SN = 1;
+                                    while ($row = mysql_fetch_array($result_appln)) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo sprintf('%08d', $row_header['appln_no']) ?></td>
+                                            <td><?php echo $row['appnt_fullname'] ?></td>
+                                            <td><?php echo $row['appln_type'] ?></td>
+                                            <td><?php echo $row['appln_date'] ?></td>
+                                            <td><?php echo $row['billing_areas'] ?></td>
+                                            <td><?php echo $row['surveyed_date'] ?></td>
+                                            <td><?php echo $row['engeneer_appr'] ?></td>
+                                            <td><?php echo $row['approved_date'] ?></td>
+                                            <td><?php echo $row['inspected_by'] ?></td>
+                                            <td><?php echo $row['premise_nature'] ?></td>
+                                            <td><?php echo $row['service'] ?></td>
+                                            <td><?php echo $row['status'] ?></td>
+                                        </tr>
+                                        <?php
+                                        $SN++;
+                                    }
+                                    ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end sheet-wrapper  --></div>
+                    <!-- end #report --></div>
+                <!-- end .report-wrapper --></div>
+            <!-- end .content --></div>
+        <?php include '../../includes/footer.php'; ?>
+        <!-- end .container --></div>
+</body>
 </html>
-<?php ob_flush(); ?>
