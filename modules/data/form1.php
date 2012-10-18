@@ -489,9 +489,9 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="cs1_males" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="cs1_females" min="0" class="number"></td>
                         </tr>
                     </table>
 
@@ -503,7 +503,7 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="cs2_person_visit" min="0" class="number"></td>
                         </tr>
                     </table>
 
@@ -532,14 +532,14 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
