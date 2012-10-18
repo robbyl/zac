@@ -60,7 +60,7 @@ table {
 }
 
 .data-form-wapper td {
-    padding: 2px;
+    padding: 2px !important;
 }
 
 .data-form-wapper .text {
