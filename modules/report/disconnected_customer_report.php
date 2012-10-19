@@ -299,14 +299,14 @@ $row_header = mysql_fetch_array($result_meter_reading)
                         <div class="sheet-table">
                             <table cellpadding="3" cellspacing="0" border="1" width="100%">
                                 <thead>
-                                     <th>Account No.</th>
-                                       <th>Customer name</th>
-                                         <th>Service nature</th>
-                                          <th>Premise status</th>
-                                          <th>Customer status</th>
-                                          <th>Meter No.</th>
-                                           <th>Plot No.</th>
-                                           <th>Billing area/zone</th>
+                                <th>Account No.</th>
+                                <th>Customer name</th>
+                                <th>Service nature</th>
+                                <th>Premise status</th>
+                                <th>Customer status</th>
+                                <th>Meter No.</th>
+                                <th>Plot No.</th>
+                                <th>Billing area/zone</th>
                                 </thead>
                                 <tbody>
                                     <?php
@@ -314,7 +314,7 @@ $row_header = mysql_fetch_array($result_meter_reading)
                                     while ($row = mysql_fetch_array($result_meter_reading)) {
                                         ?>
                                         <tr>
-                                            <td><?php echo sprintf('%08d', $row['acc_no'])?></td>
+                                            <td><?php echo sprintf('%08d', $row['acc_no']) ?></td>
                                             <td><?php echo $row['appnt_fullname'] ?></td>
                                             <td><?php echo $row['service'] ?></td>
                                             <td><?php echo $row['premise_status'] ?></td>
@@ -327,7 +327,7 @@ $row_header = mysql_fetch_array($result_meter_reading)
                                         $SN++;
                                     }
                                     ?>
-                                    
+
                                 </tbody>
                             </table>
                         </div>
