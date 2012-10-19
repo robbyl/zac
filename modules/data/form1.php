@@ -3,6 +3,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
+require '../../config/config.php';
+require '../../functions/general_functions.php';
+
+$query_en_qns = "SELECT ";
 ?>
 
 <!DOCTYPE html>
@@ -111,6 +116,13 @@
                     </table>
                     <!-- end .section  --></div>
                 <div class="section">
+                    
+                    <?php 
+                    $query_HP = "SELECT *
+                                   FROM tblzhasetupfigures
+                             INNER JOIN ";
+                    ?>
+                    
                     <h3>B. HIV PREVENTION SERVICES</h3>
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
@@ -778,10 +790,11 @@
                         </tr>
                     </table>
                 </div>
-
-                <table border="0" cellpadding="0" cellspacing="0" style="border: none">
-                    <tr><td></td><td><button type="submit">Save</button><button type="reset">Reset</button></td></tr>
-                </table>
+                <dv class="data-form-buttons">
+                    <table border="0" cellpadding="0" cellspacing="0" style="border: none">
+                        <tr><td></td><td><button type="submit">Save</button><button type="reset">Reset</button></td></tr>
+                    </table>
+                    <!-- .end data-form-buttons --></dv>
                 <!-- end .data-form-wrapper  -->  </div>
         </form>
     </body>
