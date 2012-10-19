@@ -234,7 +234,7 @@ $row_header = mysql_fetch_array($result_appln);
                 <!-- end .sidebar --></div>
         </div>
         <div class="content">
-            <h1>View and Print Application with Not Paid status</h1>
+            <h1>View and Print Applications which are Not Paid</h1>
             <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                 <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
                 <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
@@ -249,7 +249,7 @@ $row_header = mysql_fetch_array($result_appln);
                         <div class="sheet-header">
                             <div class="header-title">
                                 <p style="font-weight: bold"><?php echo $row_authority['aut_name'] ?></p> 
-                                <p style="font-size: 18px; font-weight: bold">APPLICATION REPORT WITH PAID STATUS</p>
+                                <p style="font-size: 18px; font-weight: bold">NOT PAID APPLICATIONS</p>
                                 <div class="page-logo">
                                     <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                                 </div>
@@ -258,13 +258,11 @@ $row_header = mysql_fetch_array($result_appln);
                             <!-- end .sheet-header --></div>
                         <div class="print-details" style="float: right">
                             <p><strong>Print Date: </strong><span style="font-weight: normal; float: right"><?php echo date('Y-m-d') ?></span></p>
-                            <p><strong>Billing Area/Zone: </strong><span style="font-weight: normal;">Migongo</span></p>
-                            <p><strong>Street: </strong> <span style="font-weight: normal; float: right">Migongo</span><div style="clear: both"></div></p>
+                            <p><strong>Billing Area/Zone: </strong><span style="font-weight: normal;">ALL</span></p>
+                            <p><strong>Street: </strong> <span style="font-weight: normal; float: right">ALL</span><div style="clear: both"></div></p>
                         </div>
                         <div class="print-details">
-                            <p><strong>Application No:</strong> <span style="font-weight: normal; font-weight: bold; font-size: 1.5em;"><?php echo sprintf('%08d', $row_header['appln_no']) ?></span></p>
-                            <p><strong>Applicant name:</strong><span style="font-weight: normal;"> <?php echo $row_header['appnt_fullname'] ?></span></p>
-
+                
                         </div>
                         <div class="black-separator"></div>
                         <div class="sheet-table">
