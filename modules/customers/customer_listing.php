@@ -41,8 +41,8 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                  LEFT JOIN billing_area ba
                         ON cust.ba_id = ba.ba_id
                  LEFT JOIN account acc
-                        ON cust.cust_id = acc.cust_id                 
-                          {$filter}";
+                        ON cust.cust_id = acc.cust_id
+                  {$filter}";
 
     $result_appln = mysql_query($query_appln) or die(mysql_error());
     ?>
