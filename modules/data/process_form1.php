@@ -5,31 +5,27 @@ require '../../functions/general_functions.php';
 
 // Geting form-data for data-section A data-set CD
 //$some = clean($_POST['some']);
-
 // Geting form-data for data-section B data-set HP
 $hp1_male_younger = clean_arr($_POST['hp1_male_younger']);
 $hp1_female_younger = clean_arr($_POST['hp1_female_younger']);
 $hp1_male_older = clean_arr($_POST['hp1_male_older']);
 $hp1_female_older = clean_arr($_POST['hp1_female_older']);
 $num_hp1 = count($hp1_female_younger);
+
 $hp2_male_younger = clean_arr($_POST['hp2_male_younger']);
 $hp2_female_younger = clean_arr($_POST['hp2_female_younger']);
 $hp2_male_older = clean_arr($_POST['hp2_male_older']);
 $hp2_female_older = clean_arr($_POST['hp2_female_older']);
 $num_hp2 = count($hp2_female_younger);
 
-echo $hp1_male_younger[0] . '<br>';
-echo $hp1_female_younger[0] . '<br>';
-echo $hp1_male_older[0] . '<br>';
-echo $hp1_female_older[0] . '<br>';
-echo $num_hp1 . '<br>';
-echo $hp2_male_younger[0] . '<br>';
-echo $hp2_female_younger[0] . '<br>';
-echo $hp2_male_older[0] . '<br>';
-echo $hp2_female_older[0] . '<br>';
-echo $num_hp2 . '<br>';
+$hp3_radio_hrs = clean($_POST['hp3_radio_hrs']);
+$hp3_tv_hrs = clean($_POST['hp3_tv_hrs']);
 
-exit;
+$hp4_male_peer = clean($_POST['hp4_male_peer']);
+$hp4_female_peer = clean($_POST['hp4_female_peer']);
+$hp4_male_community = clean($_POST['hp4_male_community']);
+$hp4_female_community = clean($_POST['hp4_female_community']);
+
 
 
 

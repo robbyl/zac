@@ -416,7 +416,7 @@ mysql_close($conn);
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["HP3"][0]; ?></td>
                                     <td><input type="number" name="hp3_radio_hrs" min="0" class="number"></td>
-                                    <td><input type="number" name="hp3_radio_hrs" min="0" class="number"></td>
+                                    <td><input type="number" name="hp3_tv_hrs" min="0" class="number"></td>
                                 </tr>
                             </table>
 
