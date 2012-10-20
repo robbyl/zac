@@ -46,6 +46,7 @@ $hp9_wkpl_female = clean($_POST['hp9_wkpl_female']);
 
 /* ########################### END SECTION B ############################### */
 
+
 // Geting form-data for data-section C data-set M
 $m1_health_chldn_male = clean($_POST['m1_health_chldn_male']);
 $m1_health_chldn_female = clean($_POST['m1_health_chldn_female']);
@@ -75,6 +76,8 @@ $m1_financial_vulnerable = clean($_POST['m1_financial_vulnerable']);
 $m1_financial_other = clean($_POST['m1_financial_other']);
 $m1_school_chldn_male = clean($_POST['m1_school_chldn_male']);
 $m1_school_chldn_female = clean($_POST['m1_school_chldn_female']);
+
+/* ########################### END SECTION C ############################### */
 
 // Geting form-data for data-section D data-set CS
 $some = clean($_POST['some']);
