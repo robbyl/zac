@@ -7,7 +7,32 @@
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
-$query_en_qns = "SELECT ";
+$query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionEnglish`,
+                          typ1.`BreakdownTypeDescription` AS BreakdownTypeDescription1,
+                          typ2.`BreakdownTypeDescription` AS BreakdownTypeDescription2,
+                          typ3.`BreakdownTypeDescription` AS BreakdownTypeDescription3,
+                          typ4.`BreakdownTypeDescription` AS BreakdownTypeDescription4
+                     FROM tblzhasetupfigures fig
+                LEFT JOIN tblzhasetupfigurebreakdowntypes typ1
+                       ON fig.`BreakdownCategoryID1` = typ1.`BreakdownCategoryID`
+                LEFT JOIN tblzhasetupfigurebreakdowntypes typ2
+                       ON fig.`BreakdownCategoryID2` = typ2.`BreakdownCategoryID`
+                LEFT JOIN tblzhasetupfigurebreakdowntypes typ3
+                       ON fig.`BreakdownCategoryID3` = typ3.`BreakdownCategoryID`
+                LEFT JOIN tblzhasetupfigurebreakdowntypes typ4
+                       ON fig.`BreakdownCategoryID4` = typ4.`BreakdownCategoryID`";
+
+$result_section = mysql_query($query_section) or die(mysql_error());
+
+while ($section = mysql_fetch_array($result_section)) {
+    $ZhaFigureDescription[$section['ZhaFigureCode']][] = $section['ZhaFigureDescriptionEnglish'];
+    $BreakdownTypeDescription1[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription1'];
+    $BreakdownTypeDescription2[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription2'];
+    $BreakdownTypeDescription3[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription3'];
+    $BreakdownTypeDescription4[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription4'];
+}
+
+mysql_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -116,34 +141,6 @@ $query_en_qns = "SELECT ";
                     </table>
                     <!-- end .section  --></div>
                 <div class="section">
-
-                    <?php
-                    $query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionEnglish`,
-                                              typ1.`BreakdownTypeDescription` AS BreakdownTypeDescription1,
-                                              typ2.`BreakdownTypeDescription` AS BreakdownTypeDescription2,
-                                              typ3.`BreakdownTypeDescription` AS BreakdownTypeDescription3,
-                                              typ4.`BreakdownTypeDescription` AS BreakdownTypeDescription4
-                                         FROM tblzhasetupfigures fig
-                                    LEFT JOIN tblzhasetupfigurebreakdowntypes typ1
-                                           ON fig.`BreakdownCategoryID1` = typ1.`BreakdownCategoryID`
-                                    LEFT JOIN tblzhasetupfigurebreakdowntypes typ2
-                                           ON fig.`BreakdownCategoryID2` = typ2.`BreakdownCategoryID`
-                                    LEFT JOIN tblzhasetupfigurebreakdowntypes typ3
-                                           ON fig.`BreakdownCategoryID3` = typ3.`BreakdownCategoryID`
-                                    LEFT JOIN tblzhasetupfigurebreakdowntypes typ4
-                                           ON fig.`BreakdownCategoryID4` = typ4.`BreakdownCategoryID`";
-
-                    $result_section = mysql_query($query_section) or die(mysql_error());
-
-                    while ($section = mysql_fetch_array($result_section)) {
-                        $ZhaFigureDescription[$section['ZhaFigureCode']][] = $section['ZhaFigureDescriptionEnglish'];
-                        $BreakdownTypeDescription1[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription1'];
-                        $BreakdownTypeDescription2[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription2'];
-                        $BreakdownTypeDescription3[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription3'];
-                        $BreakdownTypeDescription4[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription4'];
-                    }
-                    ?>
-
                     <h3>B. HIV PREVENTION SERVICES</h3>
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
@@ -395,9 +392,9 @@ $query_en_qns = "SELECT ";
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td>RADIO AND TV</td>
-                            <td><?php echo $BreakdownTypeDescription1["HP8"][1]?></td>
-                            <td><?php echo $BreakdownTypeDescription1["HP8"][0]?></td>
-                            <td><?php echo $BreakdownTypeDescription1["HP8"][2]?></td>
+                            <td><?php echo $BreakdownTypeDescription1["HP8"][1] ?></td>
+                            <td><?php echo $BreakdownTypeDescription1["HP8"][0] ?></td>
+                            <td><?php echo $BreakdownTypeDescription1["HP8"][2] ?></td>
                             <td rowspan="2"  width="60" class="data-group">HP8</td>
                         </tr>
                         <tr>
@@ -412,13 +409,13 @@ $query_en_qns = "SELECT ";
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td>RADIO AND TV</td>
-                            <td>Hours of air time</td>
-                            <td>&nbsp;</td>
-                            <td>Hours of air time</td>
+                            <td><?php echo $BreakdownTypeDescription1["HP9"][1] ?></td>
+                            <td><?php echo $BreakdownTypeDescription1["HP9"][0] ?></td>
+                            <td><?php echo $BreakdownTypeDescription1["HP9"][2] ?></td>
                             <td rowspan="2"  width="60" class="data-group">HP9</td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
+                            <td><?php echo $ZhaFigureDescription["HP9"][0] ?></td>
                             <td><input type="number" name="hp9_wkpl_male" min="0" class="number"></td>
                             <td><input type="number" name="hp9_wkpl_female" min="0" class="number"></td>
                             <td>&nbsp;</td>
