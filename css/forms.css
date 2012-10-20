@@ -44,17 +44,28 @@ h2 h5 {
 }
 
 .data-form-wapper {
-    width: 80%;
+    width: 95%;
     padding: 20px;
     border: 1px solid #e0e0e0;
     box-shadow: 0 1px 3px 1px rgba(0,0,0, 0.15); 
     background: #fff;
 }
 
+.not-editable {
+    background-color: #fafafa;
+}
+
 .form-header {
     width: 100%;
-    height: 200px;
-    background: paleturquoise;
+    border-bottom: 2px solid #999999;
+}
+
+.form-heading {
+    width: 60%;
+    font-size: 2em;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
 }
 
 .data-group {
