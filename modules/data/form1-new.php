@@ -137,7 +137,7 @@ mysql_close($conn);
                 ?>
                 <h1>Add New ZHAPMoS Form 1</h1>
                 <div class="hr-line"></div>
-                <form action="" method="post">
+                <form action="process_form1.php" method="post">
                     <div class="data-form-wapper">
                         <div class="form-header">
                             <div class="zanz-logo"></div>
