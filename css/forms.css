@@ -28,9 +28,9 @@ h2 h5 {
     font-weight: bold;
 }
 
-table {
+.data-form-wapper table {
     border-collapse: collapse;
-    border: 1px solid #000;
+    border: 1px solid #d0d0d0;
     margin-bottom: 10px;
 }
 
@@ -62,14 +62,22 @@ table {
     color: #fff;
     font-weight: bold;
     text-align: center;
+    width: 45px;
 }
 
 .data-form-wapper td {
     padding: 2px !important;
+    border-color: #d0d0d0;
+}
+
+.data-form-wapper  th {
+    background-color: #f1f1f1;
+    font-weight: normal;
+    border-color: #c0c0d0;
 }
 
 .data-form-wapper .text {
-    
+
 }
 
 .data-form-buttons {
