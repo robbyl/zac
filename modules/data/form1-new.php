@@ -835,8 +835,8 @@ mysql_close($conn);
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescriptionqn["MC5"][0] ?></td>
-                                    <td><label for="mc5_yes"><input type="radio" name="mc5_activity" id="mc5_yes" value="Yes" required>Yes</label></td>
-                                    <td><label for="mc5_no"><input type="radio" name="mc5_activity" id="mc5_no" value="No" required>No</label></td>
+                                    <td><label for="mc5_yes"><input type="radio" name="mc5_activity" id="mc5_yes" value="Yes" required> Yes</label></td>
+                                    <td><label for="mc5_no"><input type="radio" name="mc5_activity" id="mc5_no" value="No" required> No</label></td>
                                     <td width="60" class="data-group">MC5</td>
                                 </tr>
                             </table>
