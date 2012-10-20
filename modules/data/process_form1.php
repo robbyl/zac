@@ -26,7 +26,17 @@ $hp4_female_peer = clean($_POST['hp4_female_peer']);
 $hp4_male_community = clean($_POST['hp4_male_community']);
 $hp4_female_community = clean($_POST['hp4_female_community']);
 
+$hp5_male_peer = clean($_POST['hp5_male_peer']);
+$hp5_female_peer = clean($_POST['hp5_female_peer']);
+$hp5_male_community = clean($_POST['hp5_male_community']);
+$hp5_female_community = clean($_POST['hp5_female_community']);
 
+echo $hp5_male_peer . '<br>';
+echo $hp5_female_peer . '<br>';
+echo $hp5_male_community . '<br>';
+echo $hp5_female_community . '<br>';
+
+exit;
 
 
 // Geting form-data for data-section C data-set M
