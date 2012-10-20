@@ -38,6 +38,11 @@ table {
     margin: 15px 0;
 }
 
+.section h3, .section h4 {
+    color: #ad343d;
+    font-weight: bolder;
+}
+
 .data-form-wapper {
     width: 80%;
     padding: 20px;

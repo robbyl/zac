@@ -38,6 +38,11 @@ if (!empty($lang) && isset($lang)) {
                 $BreakdownTypeDescription4[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription4'];
             }
 
+            $query_setup_qns = "SELECT `ZhaQuestionCode`, `ZhaQuestionDescriptionEnglish`
+                                  FROM tblzhasetupquestions";
+
+
+
             break;
 
         case "sw": // In case selected language is Kiswahili, load Kiswahili version form.
@@ -70,7 +75,7 @@ if (!empty($lang) && isset($lang)) {
             break;
 
         default:
-
+            exit(0);
             break;
     }
 }
