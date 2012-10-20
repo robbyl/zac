@@ -31,13 +31,20 @@ $hp5_female_peer = clean($_POST['hp5_female_peer']);
 $hp5_male_community = clean($_POST['hp5_male_community']);
 $hp5_female_community = clean($_POST['hp5_female_community']);
 
-echo $hp5_male_peer . '<br>';
-echo $hp5_female_peer . '<br>';
-echo $hp5_male_community . '<br>';
-echo $hp5_female_community . '<br>';
+$hp6_booklets = clean($_POST['hp6_booklets']);
+$hp6_posters = clean($_POST['hp6_posters']);
+$hp6_others = clean($_POST['hp6_others']);
 
-exit;
+$hp7_male_condoms = clean($_POST['hp7_male_condoms']);
+$hp7_female_condoms = clean($_POST['hp7_female_condoms']);
 
+$hp8_pep_male = clean($_POST['hp8_pep_male']);
+$hp8_pep_female = clean($_POST['hp8_pep_female']);
+
+$hp9_wkpl_male = clean($_POST['hp9_wkpl_male']);
+$hp9_wkpl_female = clean($_POST['hp9_wkpl_female']);
+
+/* ########################### END SECTION B ############################### */
 
 // Geting form-data for data-section C data-set M
 $some = clean($_POST['some']);
