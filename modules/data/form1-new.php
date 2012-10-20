@@ -633,8 +633,8 @@ mysql_close($conn);
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["CS1"][0]; ?></td>
                                     <td><input type="number" name="cs1_males" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
                                     <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td></td>
                                 </tr>
                             </table>
 
@@ -813,8 +813,8 @@ mysql_close($conn);
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td><?php echo $ZhaFigureDescriptionqn["MC1"][0] ?></td>
-                                    <td><label for="mc1_yes"><input type="radio" name="mc1_yes" id="mc1_yes">Yes</label></td>
-                                    <td><label for="mc1_no"><input type="radio" name="mc1_yes" id="mc1_no">No</label></td>
+                                    <td><label for="mc1_yes"><input type="radio" name="mc1_mngmnt" id="mc1_yes" value="Yes" required> Yes</label></td>
+                                    <td><label for="mc1_no"><input type="radio" name="mc1_mngmnt" id="mc1_no" value="No"> No</label></td>
                                     <td width="60" class="data-group">MC1</td>
                                 </tr>
                                 <tr>
@@ -824,8 +824,8 @@ mysql_close($conn);
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescriptionqn["MC3"][0] ?></td>
-                                    <td><label for="mc3_yes"><input type="radio" name="mc3_yes" id="mc3_yes">Yes</label></td>
-                                    <td><label for="mc3_no"><input type="radio" name="mc3_yes" id="mc3_no">No</label></td>
+                                    <td><label for="mc3_yes"><input type="radio" name="mc3_money" id="mc3_yes" value="Yes" required> Yes</label></td>
+                                    <td><label for="mc3_no"><input type="radio" name="mc3_money" id="mc3_no" value="No" required> No</label></td>
                                     <td width="60" class="data-group">MC3</td>
                                 </tr>
                                 <tr>
@@ -835,8 +835,8 @@ mysql_close($conn);
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescriptionqn["MC5"][0] ?></td>
-                                    <td><label for="mc5_yes"><input type="radio" name="mc5_yes" id="mc5_yes">Yes</label></td>
-                                    <td><label for="mc5_no"><input type="radio" name="mc5_yes" id="mc5_no">No</label></td>
+                                    <td><label for="mc5_yes"><input type="radio" name="mc5_activity" id="mc5_yes" value="Yes" required>Yes</label></td>
+                                    <td><label for="mc5_no"><input type="radio" name="mc5_activity" id="mc5_no" value="No" required>No</label></td>
                                     <td width="60" class="data-group">MC5</td>
                                 </tr>
                             </table>

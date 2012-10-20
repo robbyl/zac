@@ -79,15 +79,43 @@ $m1_school_chldn_female = clean($_POST['m1_school_chldn_female']);
 
 /* ########################### END SECTION C ############################### */
 
+
 // Geting form-data for data-section D data-set CS
-$some = clean($_POST['some']);
+$cs1_males = clean($_POST['cs1_males']);
+$cs1_females = clean($_POST['cs1_females']);
+
+$cs2_person_visit = clean($_POST['cs2_person_visit']);
+
+/* ########################### END SECTION D ############################### */
+
 
 // Geting form-data for data-section E data-set TC
-$some = clean($_POST['some']);
+$tc1_topic = clean_arr($_POST['tc1_topic']);
+$tc1_volunteers_male = clean_arr($_POST['tc1_volunteers_male']);
+$tc1_volunteers_female = clean_arr($_POST['tc1_volunteers_female']);
+$tc1_staff_male = clean_arr($_POST['tc1_staff_male']);
+$tc1_staff_female = clean_arr($_POST['tc1_staff_female']);
+$tc1_employees_male = clean_arr($_POST['tc1_employees_male']);
+$tc1_employees_female = clean_arr($_POST['tc1_employees_female']);
+
+$tc2_community = clean($_POST['tc2_community']);
+
+/* ########################### END SECTION E ############################### */
+
 
 // Geting form-data for data-section F data-set MC
-$some = clean($_POST['some']);
+$mc1_mngmnt = $_POST['mc1_mngmnt'];
 
-// Geting form-data for data-section F data-set ME
+$mc2_tshs = $_POST['mc2_tshs'];
+
+$mc3_money = $_POST['mc3_money'];
+
+$mc4_tshs = $_POST['mc4_tshs'];
+
+$mc5_activity = $_POST['mc5_activity'];
+
+/* ########################### END SECTION F ############################### */
+
+// Geting form approval details
 $some = clean($_POST['some']);
 ?>
