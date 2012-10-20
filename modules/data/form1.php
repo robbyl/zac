@@ -7,7 +7,13 @@
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
-$query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionEnglish`,
+$lang = clean($_GET['lang']);
+
+if (!empty($lang) && isset($lang)) {
+    switch ($lang) {
+        case "en": // In case selected language is English, load English version form.
+
+            $query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionEnglish`,
                           typ1.`BreakdownTypeDescription` AS BreakdownTypeDescription1,
                           typ2.`BreakdownTypeDescription` AS BreakdownTypeDescription2,
                           typ3.`BreakdownTypeDescription` AS BreakdownTypeDescription3,
@@ -22,15 +28,54 @@ $query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionEnglish`,
                 LEFT JOIN tblzhasetupfigurebreakdowntypes typ4
                        ON fig.`BreakdownCategoryID4` = typ4.`BreakdownCategoryID`";
 
-$result_section = mysql_query($query_section) or die(mysql_error());
+            $result_section = mysql_query($query_section) or die(mysql_error());
 
-while ($section = mysql_fetch_array($result_section)) {
-    $ZhaFigureDescription[$section['ZhaFigureCode']][] = $section['ZhaFigureDescriptionEnglish'];
-    $BreakdownTypeDescription1[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription1'];
-    $BreakdownTypeDescription2[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription2'];
-    $BreakdownTypeDescription3[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription3'];
-    $BreakdownTypeDescription4[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription4'];
+            while ($section = mysql_fetch_array($result_section)) {
+                $ZhaFigureDescription[$section['ZhaFigureCode']][] = $section['ZhaFigureDescriptionEnglish'];
+                $BreakdownTypeDescription1[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription1'];
+                $BreakdownTypeDescription2[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription2'];
+                $BreakdownTypeDescription3[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription3'];
+                $BreakdownTypeDescription4[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription4'];
+            }
+
+            break;
+
+        case "sw": // In case selected language is Kiswahili, load Kiswahili version form.
+
+            $query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionSwahili`,
+                          typ1.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription1,
+                          typ2.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription2,
+                          typ3.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription3,
+                          typ4.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription4
+                     FROM tblzhasetupfigures fig
+                LEFT JOIN tblzhasetupfigurebreakdowntypes typ1
+                       ON fig.`BreakdownCategoryID1` = typ1.`BreakdownCategoryID`
+                LEFT JOIN tblzhasetupfigurebreakdowntypes typ2
+                       ON fig.`BreakdownCategoryID2` = typ2.`BreakdownCategoryID`
+                LEFT JOIN tblzhasetupfigurebreakdowntypes typ3
+                       ON fig.`BreakdownCategoryID3` = typ3.`BreakdownCategoryID`
+                LEFT JOIN tblzhasetupfigurebreakdowntypes typ4
+                       ON fig.`BreakdownCategoryID4` = typ4.`BreakdownCategoryID`";
+
+            $result_section = mysql_query($query_section) or die(mysql_error());
+
+            while ($section = mysql_fetch_array($result_section)) {
+                $ZhaFigureDescription[$section['ZhaFigureCode']][] = $section['ZhaFigureDescriptionSwahili'];
+                $BreakdownTypeDescription1[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription1'];
+                $BreakdownTypeDescription2[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription2'];
+                $BreakdownTypeDescription3[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription3'];
+                $BreakdownTypeDescription4[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription4'];
+            }
+
+            break;
+
+        default:
+
+            break;
+    }
 }
+
+
 
 mysql_close($conn);
 ?>
@@ -512,13 +557,13 @@ mysql_close($conn);
                     <table width="100%" border="1" cellspacing="0">
                         <tr>
                             <td>RADIO AND TV</td>
-                            <td>Hours of airtime</td>
-                            <td>&nbsp;</td>
-                            <td>Hours of airtime</td>
+                            <td><?php echo $BreakdownTypeDescription1["CS1"][1] ?></td>
+                            <td><?php echo $BreakdownTypeDescription1["CS1"][0] ?></td>
+                            <td><?php echo $BreakdownTypeDescription1["CS1"][2] ?></td>
                             <td rowspan="2"  width="60" class="data-group">CS1</td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
+                            <td><?php echo $ZhaFigureDescription["CS1"][0]; ?></td>
                             <td><input type="number" name="cs1_males" min="0" class="number"></td>
                             <td>&nbsp;</td>
                             <td><input type="number" name="cs1_females" min="0" class="number"></td>
@@ -532,7 +577,7 @@ mysql_close($conn);
                             <td rowspan="2" width="60" class="data-group">CS2</td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
+                            <td><?php echo $ZhaFigureDescription["CS2"][0] ?></td>
                             <td><input type="number" name="cs2_person_visit" min="0" class="number"></td>
                         </tr>
                     </table>
