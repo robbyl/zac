@@ -47,7 +47,34 @@ $hp9_wkpl_female = clean($_POST['hp9_wkpl_female']);
 /* ########################### END SECTION B ############################### */
 
 // Geting form-data for data-section C data-set M
-$some = clean($_POST['some']);
+$m1_health_chldn_male = clean($_POST['m1_health_chldn_male']);
+$m1_health_chldn_female = clean($_POST['m1_health_chldn_female']);
+$m1_health_elderly_male = clean($_POST['m1_health_elderly_male']);
+$m1_health_elderly_female = clean($_POST['m1_health_elderly_female']);
+$m1_health_widows = clean($_POST['m1_health_widows']);
+$m1_health_vulnerable = clean($_POST['m1_health_vulnerable']);
+$m1_emotional_chldn_male = clean($_POST['m1_emotional_chldn_male']);
+$m1_emotional_chldn_female = clean($_POST['m1_emotional_chldn_female']);
+$m1_emotional_elderly_male = clean($_POST['m1_emotional_elderly_male']);
+$m1_emotional_elderly_female = clean($_POST['m1_emotional_elderly_female']);
+$m1_emotional_widows = clean($_POST['m1_emotional_widows']);
+$m1_emotional_vulnerable = clean($_POST['m1_emotional_vulnerable']);
+$m1_emotional_other = clean($_POST['m1_emotional_other']);
+$m1_nutrition_chldn_male = clean($_POST['m1_nutrition_chldn_male']);
+$m1_nutrition_chldn_female = clean($_POST['m1_nutrition_chldn_female']);
+$m1_nutrition_elderly_male = clean($_POST['m1_nutrition_elderly_male']);
+$m1_nutrition_elderly_female = clean($_POST['m1_nutrition_elderly_female']);
+$m1_nutrition_widows = clean($_POST['m1_nutrition_widows']);
+$m1_nutrition_vulnerable = clean($_POST['m1_nutrition_vulnerable']);
+$m1_financial_chldn_male = clean($_POST['m1_financial_chldn_male']);
+$m1_financial_chldn_female = clean($_POST['m1_financial_chldn_female']);
+$m1_financial_elderyl_male = clean($_POST['m1_financial_elderyl_male']);
+$m1_financial_elderyl_female = clean($_POST['m1_financial_elderyl_female']);
+$m1_financial_widows = clean($_POST['m1_financial_widows']);
+$m1_financial_vulnerable = clean($_POST['m1_financial_vulnerable']);
+$m1_financial_other = clean($_POST['m1_financial_other']);
+$m1_school_chldn_male = clean($_POST['m1_school_chldn_male']);
+$m1_school_chldn_female = clean($_POST['m1_school_chldn_female']);
 
 // Geting form-data for data-section D data-set CS
 $some = clean($_POST['some']);
