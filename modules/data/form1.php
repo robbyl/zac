@@ -41,6 +41,12 @@ if (!empty($lang) && isset($lang)) {
             $query_setup_qns = "SELECT `ZhaQuestionCode`, `ZhaQuestionDescriptionEnglish`
                                   FROM tblzhasetupquestions";
 
+            $result_setup_qns = mysql_query($query_setup_qns) or die(mysql_error());
+
+            while ($sectionqn = mysql_fetch_array($result_setup_qns)) {
+                $ZhaFigureDescriptionqn[$sectionqn['ZhaFigureCode']][] = $sectionqn['ZhaQuestionDescriptionEnglish'];
+            }
+
 
 
             break;
