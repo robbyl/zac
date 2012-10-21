@@ -184,6 +184,28 @@ $query_ans = "INSERT INTO tblzhafigures
 <?php if(!empty($hp5_female_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'RAA', 'PRE', 'FEM', '', '" .$hp5_female_peer. "')";  } ?>
 <?php if(!empty($hp5_male_community)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'RAA', 'CME', 'MAL', '', '" .$hp5_male_community. "')";  } ?>
 <?php if(!empty($hp5_female_community)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'RAA', 'CME', 'FEM', '', '" .$hp5_female_community. "')";  } ?>
+
+<?php if(!empty($hp6_booklets)){ $query_ans .= ",('" . $form_no . "', 'HP6', 'BKL', '', '', '', '" .$hp6_booklets. "')";  } ?>
+<?php if(!empty($hp6_posters)){ $query_ans .= ",('" . $form_no . "', 'HP6', 'POS', '', '', '', '" .$hp6_posters. "')";  } ?>
+<?php // if(!empty($hp6_others)){ $query_ans .= ",('" . $form_no . "', 'HP6', 'RAA', '', '', '', '" .$hp6_others. "')";  } ?>
+
+<?php if(!empty($hp7_male_condoms)){ $query_ans .= ",('" . $form_no . "', 'HP7', 'MCD', '', '', '', '" .$hp7_male_condoms. "')";  } ?>
+<?php if(!empty($hp7_female_condoms)){ $query_ans .= ",('" . $form_no . "', 'HP7', 'FCD', '', '', '', '" .$hp7_female_condoms. "')";  } ?>
+
+<?php if(!empty($hp8_pep_male)){ $query_ans .= ",('" . $form_no . "', 'HP8', 'MAL', '', '', '', '" .$hp8_pep_male. "')";  } ?>
+<?php if(!empty($hp8_pep_female)){ $query_ans .= ",('" . $form_no . "', 'HP8', 'FEM', '', '', '', '" .$hp8_pep_female. "')";  } ?>
+
+<?php if(!empty($hp9_wkpl_male)){ $query_ans .= ",('" . $form_no . "', 'HP9', 'MAL', '', '', '', '" .$hp9_wkpl_male. "')";  } ?>
+<?php if(!empty($hp9_wkpl_female)){ $query_ans .= ",('" . $form_no . "', 'HP9', 'FEM', '', '', '', '" .$hp9_wkpl_female. "')";  } ?>
+
+
+<?php // FOR M1  ?>
+
+
+
+<?php if(!empty($cs1_males)){ $query_ans .= ",('" . $form_no . "', 'CS1', 'MAL', '', '', '', '" .$cs1_males. "')";  } ?>
+<?php if(!empty($cs1_females)){ $query_ans .= ",('" . $form_no . "', 'CS1', 'FEM', '', '', '', '" .$cs1_females. "')";  } ?>
                          
-                           
+<?php if(!empty($cs2_person_visit)){ $query_ans .= ",('" . $form_no . "', 'CS2', '', '', '', '', '" .$cs2_person_visit. "')";  } ?>
+
 <?php echo $query_ans ?>
