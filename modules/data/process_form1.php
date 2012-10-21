@@ -231,12 +231,6 @@ $query_ans = "INSERT INTO tblzhafigures
 <?php if(!empty($m1_school_chldn_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'SCH', 'MVC', 'MAL', '', '" .$m1_school_chldn_male. "')";  } ?>
 <?php if(!empty($m1_school_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'SCH', 'MVC', 'FEM', '', '" .$m1_school_chldn_female. "')";  } ?>
 
-
-
-
-
-
-
 <?php if(!empty($cs1_males)){ $query_ans .= ",('" . $form_no . "', 'CS1', 'MAL', '', '', '', '" .$cs1_males. "')";  } ?>
 <?php if(!empty($cs1_females)){ $query_ans .= ",('" . $form_no . "', 'CS1', 'FEM', '', '', '', '" .$cs1_females. "')";  } ?>
                          
@@ -298,7 +292,5 @@ $query_ans = "INSERT INTO tblzhafigures
 <?php if(!empty($tc1_employees_female[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[8]. "')";  } ?>
 
 <?php if(!empty($tc2_community)){ $query_ans .= ",('" . $form_no . "', 'TC2', '', '', '', '', '" .$tc2_community. "')";  } ?>
-
-
 
 <?php echo $query_ans ?>

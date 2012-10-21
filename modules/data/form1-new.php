@@ -173,7 +173,7 @@ mysql_close($conn);
                             </div>
                             <!-- end .form-header --></div>
                         <div class="section">
-                            <h3>A. INFORMATION ABOUT YOUR ORGANISATION</h3>
+                            <h3><strong>A. INFORMATION ABOUT YOUR ORGANISATION</strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
                                     <td colspan="2">&nbsp;</td>
@@ -256,7 +256,8 @@ mysql_close($conn);
                             </table>
                             <!-- end .section  --></div>
                         <div class="section">
-                            <h3>B. HIV PREVENTION SERVICES</h3>
+                            <h3><strong>B. HIV PREVENTION SERVICES</strong></h3>
+                            <p style="font-weight: bold"><?php echo $ZhaFigureDescription["HP1"][0] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <th>&nbsp;</th>
@@ -438,7 +439,7 @@ mysql_close($conn);
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][8] ?></th>
                                 </tr>
                                 <tr>
-                                    <td><?php echo $ZhaFigureDescription["HP4"][0]; ?></td>
+                                    <td><?php echo $ZhaFigureDescription["HP4"][6]; ?></td>
                                     <td><input type="number" name="hp4_male_peer" min="0" class="number"></td>
                                     <td><input type="number" name="hp4_female_peer" min="0" class="number"></td>
                                     <td>&nbsp;</td>
@@ -451,20 +452,20 @@ mysql_close($conn);
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td rowspan="2">EDUCATORS</td>
-                                    <th colspan="3">&nbsp;</th>
-                                    <th colspan="3">&nbsp;</th>
+                                    <th colspan="3"><?php echo $BreakdownTypeDescription2["HP4"][3] ?></th>
+                                    <th colspan="3"><?php echo $BreakdownTypeDescription2["HP4"][0] ?></th>
                                     <td rowspan="3"  width="60" class="data-group">HP5</td>
                                 </tr>
                                 <tr>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
+                                    <th><?php echo $BreakdownTypeDescription3["HP4"][4] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["HP4"][3] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["HP4"][5] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["HP4"][1] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["HP4"][0] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["HP4"][2] ?></th>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
+                                    <td><?php echo $ZhaFigureDescription["HP4"][0]; ?></td>
                                     <td><input type="number" name="hp5_male_peer" min="0" class="number"></td>
                                     <td><input type="number" name="hp5_female_peer" min="0" class="number"></td>
                                     <td>&nbsp;</td>
@@ -539,28 +540,29 @@ mysql_close($conn);
                         </div>
 
                         <div class="section">
-                            <h3>C. HIV IMPACT MITIGATION SERVICES</h3>
+                            <h3><strong>C. HIV IMPACT MITIGATION SERVICES</strong></h3>
+                            <p style="font-weight: bold"><?php echo $ZhaFigureDescription["M01"][0] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <th>&nbsp;</th>
-                                    <th colspan="3">&nbsp;</th>
-                                    <th colspan="3">&nbsp;</th>
-                                    <th rowspan="2">&nbsp;</th>
-                                    <th rowspan="2">&nbsp;</th>
-                                    <th rowspan="2">&nbsp;</th>
+                                    <th colspan="3"><?php echo $BreakdownTypeDescription2["M01"][3] ?></th>
+                                    <th colspan="3"><?php echo $BreakdownTypeDescription2["M01"][0] ?></th>
+                                    <th rowspan="2"><?php echo $BreakdownTypeDescription2["M01"][13] ?></th>
+                                    <th rowspan="2"><?php echo $BreakdownTypeDescription2["M01"][10] ?></th>
+                                    <th rowspan="2"><?php echo $BreakdownTypeDescription2["M01"][6] ?></th>
                                     <td rowspan="7"  width="60" class="data-group">M1</td>
                                 </tr>
                                 <tr>
                                     <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
+                                    <th><?php echo $BreakdownTypeDescription3["M01"][19] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["M01"][18] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["M01"][20] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["M01"][1]; ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["M01"][0] ?></th>
+                                    <th><?php echo $BreakdownTypeDescription3["M01"][2] ?></th>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
+                                    <td><?php echo $BreakdownTypeDescription1['M01'][30] ?></td>
                                     <td><input type="number" name="m1_health_chldn_male" min="0" class="number"></td>
                                     <td><input type="number" name="m1_health_chldn_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
@@ -572,7 +574,7 @@ mysql_close($conn);
                                     <td><input type="number" name="m1_health_other" min="0" class="number"></td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
+                                    <td><?php echo $BreakdownTypeDescription1['M01'][0] ?></td>
                                     <td><input type="number" name="m1_emotional_chldn_male" min="0" class="number"></td>
                                     <td><input type="number" name="m1_emotional_chldn_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
@@ -584,7 +586,7 @@ mysql_close($conn);
                                     <td><input type="number" name="m1_emotional_other" min="0" class="number"></td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
+                                    <td><?php echo $BreakdownTypeDescription1['M01'][45] ?></td>
                                     <td><input type="number" name="m1_nutrition_chldn_male" min="0" class="number"></td>
                                     <td><input type="number" name="m1_nutrition_chldn_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
@@ -596,7 +598,7 @@ mysql_close($conn);
                                     <td><input type="number" name="m1_nutrition_other" min="0" class="number"></td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
+                                    <td><?php echo $BreakdownTypeDescription1['M01'][15] ?></td>
                                     <td><input type="number" name="m1_financial_chldn_male" min="0" class="number"></td>
                                     <td><input type="number" name="m1_financial_chldn_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
@@ -608,7 +610,7 @@ mysql_close($conn);
                                     <td><input type="number" name="m1_financial_other" min="0" class="number"></td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
+                                    <td><?php echo $BreakdownTypeDescription1['M01'][60] ?></td>
                                     <td><input type="number" name="m1_school_chldn_male" min="0" class="number"></td>
                                     <td><input type="number" name="m1_school_chldn_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
@@ -623,7 +625,7 @@ mysql_close($conn);
                         </div>
 
                         <div class="section">
-                            <h3>D. HIV & AIDS CARE AND SUPPORT SERVICES</h3>
+                            <h3><strong>D. HIV & AIDS CARE AND SUPPORT SERVICES</strong></h3>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td>RADIO AND TV</td>
@@ -654,7 +656,7 @@ mysql_close($conn);
                         </div>
 
                         <div class="section">
-                            <h3>E. TRAINING AND CAPACITY BUILDING FOR HIV</h3>
+                            <h3><strong> E. TRAINING AND CAPACITY BUILDING FOR HIV </strong></h3>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td rowspan="2">&nbsp;</td>
@@ -811,7 +813,7 @@ mysql_close($conn);
                         </div>
 
                         <div class="section">
-                            <h3>F: MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS</h3>
+                            <h3><strong>F: MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS</strong></h3>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td><?php echo $ZhaFigureDescriptionqn["MC1"][0] ?></td>
