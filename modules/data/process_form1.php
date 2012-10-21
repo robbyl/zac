@@ -293,4 +293,10 @@ $query_ans = "INSERT INTO tblzhafigures
 
 <?php if(!empty($tc2_community)){ $query_ans .= ",('" . $form_no . "', 'TC2', '', '', '', '', '" .$tc2_community. "')";  } ?>
 
+<?php
+$query_ansm = "INSERT INTO tblzhaanswers
+                           ()
+                    VALUES ()";
+
+?>
 <?php echo $query_ans ?>
