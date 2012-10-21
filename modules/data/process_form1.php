@@ -106,11 +106,11 @@ $tc2_community = clean($_POST['tc2_community']);
 // Geting form-data for data-section F data-set MC
 $mc1_mngmnt = $_POST['mc1_mngmnt'];
 
-$mc2_tshs = $_POST['mc2_tshs'];
+$mc2_tshs = clean($_POST['mc2_tshs']);
 
 $mc3_money = $_POST['mc3_money'];
 
-$mc4_tshs = $_POST['mc4_tshs'];
+$mc4_tshs = clean($_POST['mc4_tshs']);
 
 $mc5_activity = $_POST['mc5_activity'];
 
