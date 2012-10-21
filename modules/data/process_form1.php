@@ -3,6 +3,8 @@
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
+$form_no = clean($_POST['form_no']);
+
 // Geting form-data for data-section A data-set CD
 //$some = clean($_POST['some']);
 // Geting form-data for data-section B data-set HP
@@ -118,4 +120,15 @@ $mc5_activity = $_POST['mc5_activity'];
 
 // Geting form approval details
 $some = clean($_POST['some']);
+
+
+$query_ans = "INSERT INTO tblzhafigures
+                          (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
+                          `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
+                          `ZhaFigureValue`)
+                   VALUES ('$form_no', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '$hp1_male_younger'),
+                          ('$form_no', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '$hp1_male_younger'),
+                         
+                           
+";
 ?>

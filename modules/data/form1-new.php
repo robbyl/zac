@@ -165,7 +165,7 @@ mysql_close($conn);
                                         <td>&nbsp;</td>
                                         <td align="right">Form No:</td>
                                         <td align="right">
-                                        <input type="text" value="F1-605004" required style="font-size: 1.5em; width: 120px; border: none">
+                                        <input type="text" value="F1-605004" name="form_no" required style="font-size: 1.5em; width: 120px; border: none">
                                         </td>
                                     </tr>
                                 </table>
