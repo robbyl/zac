@@ -208,4 +208,13 @@ $query_ans = "INSERT INTO tblzhafigures
                          
 <?php if(!empty($cs2_person_visit)){ $query_ans .= ",('" . $form_no . "', 'CS2', '', '', '', '', '" .$cs2_person_visit. "')";  } ?>
 
+<?php if(!empty($tc1_volunteers_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[0]. "')";  } ?>
+<?php if(!empty($tc1_volunteers_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[0]. "')";  } ?>
+<?php if(!empty($tc1_staff_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[0]. "')";  } ?>
+<?php if(!empty($tc1_staff_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[0]. "')";  } ?>
+<?php if(!empty($tc1_employees_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[0]. "')";  } ?>
+<?php if(!empty($tc1_employees_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[0]. "')";  } ?>
+
+
+
 <?php echo $query_ans ?>
