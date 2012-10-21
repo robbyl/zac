@@ -126,9 +126,12 @@ $query_ans = "INSERT INTO tblzhafigures
                           (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`)
-                   VALUES ('$form_no', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '$hp1_male_younger'),
-                          ('$form_no', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '$hp1_male_younger'),
+                         
+                   VALUES ('$form_no', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '$hp1_male_younger[0]')";
+?>
+<?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } ?>
+<?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'OY2', 'FEM', '" .$hp1_male_older[0]. "')";  } ?>
+<?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'OY2', 'FEM', '" .$hp1_female_older[0]. "')";  } ?>
                          
                            
-";
-?>
+<?php echo $query_ans ?>
