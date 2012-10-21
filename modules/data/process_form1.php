@@ -130,11 +130,11 @@ $query_ans = "INSERT INTO tblzhafigures
                    VALUES ('$form_no', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '$hp1_male_younger[0]')";
 ?>
 <?php if(!empty($hp1_female_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } ?>
-<?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } ?>
-<?php if(!empty($hp1_male_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  } ?>
+<?php if(!empty($hp1_male_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } ?>
+<?php if(!empty($hp1_female_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  } ?>
 <?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[1]. "')";  } ?>
 <?php if(!empty($hp1_female_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[1]. "')";  } ?>
-<?php if(!empty($hp1_female_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_female_older[1]. "')";  } ?>
+<?php if(!empty($hp1_male_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[1]. "')";  } ?>
 <?php if(!empty($hp1_female_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[1]. "')";  } ?>
 <?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[2]. "')";  } ?>
 <?php if(!empty($hp1_female_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[2]. "')";  } ?>
