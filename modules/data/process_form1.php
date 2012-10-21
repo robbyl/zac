@@ -129,25 +129,50 @@ $query_ans = "INSERT INTO tblzhafigures
                          
                    VALUES ('$form_no', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '$hp1_male_younger[0]')";
 ?>
-<?php if(!empty($hp1_female_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } ?>
-<?php if(!empty($hp1_male_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } ?>
-<?php if(!empty($hp1_female_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  } ?>
-<?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[1]. "')";  } ?>
-<?php if(!empty($hp1_female_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[1]. "')";  } ?>
-<?php if(!empty($hp1_male_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[1]. "')";  } ?>
-<?php if(!empty($hp1_female_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[1]. "')";  } ?>
-<?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[2]. "')";  } ?>
-<?php if(!empty($hp1_female_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[2]. "')";  } ?>
-<?php if(!empty($hp1_male_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[2]. "')";  } ?>
-<?php if(!empty($hp1_female_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[2]. "')";  } ?>
-<?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[3]. "')";  } ?>
-<?php if(!empty($hp1_female_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[3]. "')";  } ?>
-<?php if(!empty($hp1_male_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[3]. "')";  } ?>
-<?php if(!empty($hp1_female_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[3]. "')";  } ?>
-<?php if(!empty($hp1_male_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[4]. "')";  } ?>
-<?php if(!empty($hp1_female_younger)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[4]. "')";  } ?>
-<?php if(!empty($hp1_male_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[4]. "')";  } ?>
-<?php if(!empty($hp1_female_older)){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[4]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } ?>
+<?php if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } ?>
+<?php if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[1]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[1]. "')";  } ?>
+<?php if(!empty($hp1_male_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[1]. "')";  } ?>
+<?php if(!empty($hp1_female_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[1]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[2]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[2]. "')";  } ?>
+<?php if(!empty($hp1_male_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[2]. "')";  } ?>
+<?php if(!empty($hp1_female_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[2]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[3]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[3]. "')";  } ?>
+<?php if(!empty($hp1_male_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[3]. "')";  } ?>
+<?php if(!empty($hp1_female_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[3]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[4]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[4]. "')";  } ?>
+<?php if(!empty($hp1_male_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[4]. "')";  } ?>
+<?php if(!empty($hp1_female_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[4]. "')";  } ?>
+
+<?php if(!empty($hp1_male_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[0]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } ?>
+<?php if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } ?>
+<?php if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[1]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[1]. "')";  } ?>
+<?php if(!empty($hp1_male_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[1]. "')";  } ?>
+<?php if(!empty($hp1_female_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[1]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[2]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[2]. "')";  } ?>
+<?php if(!empty($hp1_male_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[2]. "')";  } ?>
+<?php if(!empty($hp1_female_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[2]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[3]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[3]. "')";  } ?>
+<?php if(!empty($hp1_male_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[3]. "')";  } ?>
+<?php if(!empty($hp1_female_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[3]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[4]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[4]. "')";  } ?>
+<?php if(!empty($hp1_male_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[4]. "')";  } ?>
+<?php if(!empty($hp1_female_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[4]. "')";  } ?>
+<?php if(!empty($hp1_male_younger[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[5]. "')";  } ?>
+<?php if(!empty($hp1_female_younger[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[5]. "')";  } ?>
+<?php if(!empty($hp1_male_older[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[5]. "')";  } ?>
+<?php if(!empty($hp1_female_older[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[5]. "')";  } ?>
                          
                            
 <?php echo $query_ans ?>
