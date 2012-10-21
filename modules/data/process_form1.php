@@ -12,13 +12,11 @@ $hp1_male_younger = clean_arr($_POST['hp1_male_younger']);
 $hp1_female_younger = clean_arr($_POST['hp1_female_younger']);
 $hp1_male_older = clean_arr($_POST['hp1_male_older']);
 $hp1_female_older = clean_arr($_POST['hp1_female_older']);
-$num_hp1 = count($hp1_female_younger);
 
 $hp2_male_younger = clean_arr($_POST['hp2_male_younger']);
 $hp2_female_younger = clean_arr($_POST['hp2_female_younger']);
 $hp2_male_older = clean_arr($_POST['hp2_male_older']);
 $hp2_female_older = clean_arr($_POST['hp2_female_older']);
-$num_hp2 = count($hp2_female_younger);
 
 $hp3_radio_hrs = clean($_POST['hp3_radio_hrs']);
 $hp3_tv_hrs = clean($_POST['hp3_tv_hrs']);
