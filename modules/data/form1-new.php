@@ -148,9 +148,9 @@ mysql_close($conn);
                                     <tr>
                                         <td width="6%">&nbsp;</td>
                                         <td width="6%">&nbsp;</td>
-                                        <td width="65%">&nbsp;</td>
-                                        <td width="9%"></td>
-                                        <td width="14%"></td>
+                                        <td width="63%">&nbsp;</td>
+                                        <td width="10%"></td>
+                                        <td width="15%"></td>
                                     </tr>
                                     <tr>
                                         <td>&nbsp;</td>
@@ -164,7 +164,9 @@ mysql_close($conn);
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                         <td align="right">Form No:</td>
-                                        <td align="right"><span style="font-size: 1.5em; font-weight: bold">F1-605004</span></td>
+                                        <td align="right">
+                                        <input type="text" value="F1-605004" required style="font-size: 1.5em; width: 120px; border: none">
+                                        </td>
                                     </tr>
                                 </table>
 
