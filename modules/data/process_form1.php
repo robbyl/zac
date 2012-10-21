@@ -291,13 +291,15 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($tc1_employees_male[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[8]. "')";  } 
  if(!empty($tc1_employees_female[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[8]. "')";  } 
 
- if(!empty($tc2_community)){ $query_ans .= ",('" . $form_no . "', 'TC2', '', '', '', '', '" .$tc2_community. "')";  } 
+ if(!empty($tc2_community)){ $query_ans .= ",('" . $form_no . "', 'TC2', '', '', '', '', '" .$tc2_community. "')"; } 
 
 
 $query_ansm = "INSERT INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
                     VALUES ('$form_no', 'MC1', '$mc1_mngmnt', '', '')";
 
- if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '$mc3_money', '', '')";  } 
+ if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '$mc3_money', '', '')"; }
+ 
+ if(!empty($mc5_activity)){ $query_ansm .= ",('" . $form_no . "', 'MC5', '$mc5_activity', '', '')"; } 
  ?>
 <?php echo $query_ans ?>
