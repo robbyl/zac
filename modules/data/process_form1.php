@@ -211,23 +211,25 @@ $query_ans = "INSERT INTO tblzhafigures
 <?php if(!empty($m1_emotional_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'EMP', 'MVC', 'FEM', '', '" .$m1_emotional_chldn_female. "')";  } ?>
 <?php if(!empty($m1_emotional_elderly_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'EMP', 'ELD', 'MAL', '', '" .$m1_emotional_elderly_male. "')";  } ?>
 <?php if(!empty($m1_emotional_elderly_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'EMP', 'ELD', 'FEM', '', '" .$m1_emotional_elderly_female. "')";  } ?>
-<?php if(!empty($m1_emotional_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'EMP', 'TOT', '', '" .$m1_emotional_widows. "')";  } ?>
+<?php if(!empty($m1_emotional_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'EMP', 'WID', 'TOT', '', '" .$m1_emotional_widows. "')";  } ?>
 <?php if(!empty($m1_emotional_vulnerable)){ $query_ans .= ",('" . $form_no . "', 'M01', 'EMP', 'VLH', 'TOT', '', '" .$m1_emotional_vulnerable. "')";  } ?>
-<?php if(!empty($m1_emotional_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'EMP', 'TOT', '', '" .$m1_emotional_other. "')";  } ?>
+<?php if(!empty($m1_emotional_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'EMP', 'OVG', 'TOT', '', '" .$m1_emotional_other. "')";  } ?>
 <?php if(!empty($m1_nutrition_chldn_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'MVC', 'MAL', '', '" .$m1_nutrition_chldn_male. "')";  } ?>
 <?php if(!empty($m1_nutrition_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'MVC', 'FEM', '', '" .$m1_nutrition_chldn_female. "')";  } ?>
 <?php if(!empty($m1_nutrition_elderly_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'ELD', 'MAL', '', '" .$m1_nutrition_elderly_male. "')";  } ?>
 <?php if(!empty($m1_nutrition_elderly_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'ELD', 'FEM', '', '" .$m1_nutrition_elderly_female. "')";  } ?>
-<?php if(!empty($m1_nutrition_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'NUT', 'TOT', '', '" .$m1_nutrition_widows. "')";  } ?>
+<?php if(!empty($m1_nutrition_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'WID', 'TOT', '', '" .$m1_nutrition_widows. "')";  } ?>
 <?php if(!empty($m1_nutrition_vulnerable)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'VLH', 'TOT', '', '" .$m1_nutrition_vulnerable. "')";  } ?>
-<?php if(!empty($m1_nutrition_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'NUT', 'TOT', '', '" .$m1_nutrition_other. "')";  } ?>
+<?php if(!empty($m1_nutrition_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'OVG', 'TOT', '', '" .$m1_nutrition_other. "')";  } ?>
 <?php if(!empty($m1_financial_chldn_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'MVC', 'MAL', '', '" .$m1_nutrition_chldn_male. "')";  } ?>
 <?php if(!empty($m1_financial_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'MVC', 'FEM', '', '" .$m1_nutrition_chldn_female. "')";  } ?>
 <?php if(!empty($m1_financial_elderly_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'ELD', 'MAL', '', '" .$m1_nutrition_elderly_male. "')";  } ?>
 <?php if(!empty($m1_financial_elderly_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'ELD', 'FEM', '', '" .$m1_nutrition_elderly_female. "')";  } ?>
-<?php if(!empty($m1_financial_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'FIN', 'TOT', '', '" .$m1_nutrition_widows. "')";  } ?>
+<?php if(!empty($m1_financial_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'WID', 'TOT', '', '" .$m1_nutrition_widows. "')";  } ?>
 <?php if(!empty($m1_financial_vulnerable)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'VLH', 'TOT', '', '" .$m1_nutrition_vulnerable. "')";  } ?>
-<?php if(!empty($m1_financial_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'FIN', 'TOT', '', '" .$m1_nutrition_other. "')";  } ?>
+<?php if(!empty($m1_financial_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'OVG', 'TOT', '', '" .$m1_nutrition_other. "')";  } ?>
+<?php if(!empty($m1_school_chldn_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'SCH', 'MVC', 'MAL', '', '" .$m1_school_chldn_male. "')";  } ?>
+<?php if(!empty($m1_school_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'SCH', 'MVC', 'FEM', '', '" .$m1_school_chldn_female. "')";  } ?>
 
 
 
