@@ -180,10 +180,10 @@ $query_ans = "INSERT INTO tblzhafigures
 <?php if(!empty($hp4_male_community)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'CME', 'MAL', '', '" .$hp4_male_community. "')";  } ?>
 <?php if(!empty($hp4_female_community)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'CME', 'FEM', '', '" .$hp4_female_community. "')";  } ?>
 
-<?php if(!empty($hp5_male_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'PRE', 'MAL', '', '" .$hp5_male_peer. "')";  } ?>
-<?php if(!empty($hp5_female_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'PRE', 'FEM', '', '" .$hp5_female_peer. "')";  } ?>
-<?php if(!empty($hp5_male_community)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'CME', 'MAL', '', '" .$hp5_male_community. "')";  } ?>
-<?php if(!empty($hp5_female_community)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'CME', 'FEM', '', '" .$hp5_female_community. "')";  } ?>
+<?php if(!empty($hp5_male_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'RAA', 'PRE', 'MAL', '', '" .$hp5_male_peer. "')";  } ?>
+<?php if(!empty($hp5_female_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'RAA', 'PRE', 'FEM', '', '" .$hp5_female_peer. "')";  } ?>
+<?php if(!empty($hp5_male_community)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'RAA', 'CME', 'MAL', '', '" .$hp5_male_community. "')";  } ?>
+<?php if(!empty($hp5_female_community)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'RAA', 'CME', 'FEM', '', '" .$hp5_female_community. "')";  } ?>
                          
                            
 <?php echo $query_ans ?>
