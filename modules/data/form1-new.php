@@ -600,8 +600,8 @@ mysql_close($conn);
                                     <td><input type="number" name="m1_financial_chldn_male" min="0" class="number"></td>
                                     <td><input type="number" name="m1_financial_chldn_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
-                                    <td><input type="number" name="m1_financial_elderyl_male" min="0" class="number"></td>
-                                    <td><input type="number" name="m1_financial_elderyl_female" min="0" class="number"></td>
+                                    <td><input type="number" name="m1_financial_elderly_male" min="0" class="number"></td>
+                                    <td><input type="number" name="m1_financial_elderly_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
                                     <td><input type="number" name="m1_financial_widows" min="0" class="number"></td>
                                     <td><input type="number" name="m1_financial_vulnerable" min="0" class="number"></td>
