@@ -198,10 +198,12 @@ $query_ans = "INSERT INTO tblzhafigures
 <?php if(!empty($hp9_wkpl_male)){ $query_ans .= ",('" . $form_no . "', 'HP9', 'MAL', '', '', '', '" .$hp9_wkpl_male. "')";  } ?>
 <?php if(!empty($hp9_wkpl_female)){ $query_ans .= ",('" . $form_no . "', 'HP9', 'FEM', '', '', '', '" .$hp9_wkpl_female. "')";  } ?>
 
-
-<?php // FOR M1  ?>
-
-
+<?php if(!empty($m1_health_chldn_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'MVC', 'MAL', '', '" .$m1_health_chldn_male. "')";  } ?>
+<?php if(!empty($m1_health_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'MVC', 'FEM', '', '" .$m1_health_chldn_female. "')";  } ?>
+<?php if(!empty($m1_health_elderly_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'ELD', 'MAL', '', '" .$m1_health_elderly_male. "')";  } ?>
+<?php if(!empty($m1_health_elderly_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'ELD', 'FEM', '', '" .$m1_health_elderly_female. "')";  } ?>
+<?php if(!empty($m1_health_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'WID', 'TOT', '', '" .$m1_health_widows. "')";  } ?>
+<?php if(!empty($m1_health_vulnerable)){ $query_ans .= ",('" . $form_no . "', 'M01', 'HCS', 'VLH', 'TOT', '', '" .$m1_health_vulnerable. "')";  } ?>
 
 <?php if(!empty($cs1_males)){ $query_ans .= ",('" . $form_no . "', 'CS1', 'MAL', '', '', '', '" .$cs1_males. "')";  } ?>
 <?php if(!empty($cs1_females)){ $query_ans .= ",('" . $form_no . "', 'CS1', 'FEM', '', '', '', '" .$cs1_females. "')";  } ?>
@@ -262,6 +264,8 @@ $query_ans = "INSERT INTO tblzhafigures
 <?php if(!empty($tc1_staff_female[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[8]. "')";  } ?>
 <?php if(!empty($tc1_employees_male[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[8]. "')";  } ?>
 <?php if(!empty($tc1_employees_female[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[8]. "')";  } ?>
+
+<?php if(!empty($tc2_community)){ $query_ans .= ",('" . $form_no . "', 'TC2', '', '', '', '', '" .$tc2_community. "')";  } ?>
 
 
 
