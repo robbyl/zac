@@ -328,8 +328,8 @@ $row_date = mysql_fetch_array($result_meter_reading);
                             ?>" readonly  class="prev" >
                             </td>
                             <td>
-                                <
-                                input type="number" name="curr_reading[]" min="<?php echo $row['prev_reading']; ?>" value="<?php echo $row['curr_reading']; ?>" required class="number" style="width: 100px;">
+                                
+                             <input type="number" name="curr_reading[]" min="<?php echo $row['prev_reading']; ?>" value="<?php echo $row['curr_reading']; ?>" required class="number" style="width: 100px;">
                             </td>
                             <td><output name="cons[]" ></output></td>
                             <td>
