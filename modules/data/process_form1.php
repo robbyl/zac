@@ -278,18 +278,6 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($tc1_staff_female[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[6]. "')";  } 
  if(!empty($tc1_employees_male[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[6]. "')";  } 
  if(!empty($tc1_employees_female[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[6]. "')";  } 
- if(!empty($tc1_volunteers_male[7])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[7]. "')";  } 
- if(!empty($tc1_volunteers_female[7])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[7]. "')";  } 
- if(!empty($tc1_staff_male[7])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[7]. "')";  } 
- if(!empty($tc1_staff_female[7])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[7]. "')";  } 
- if(!empty($tc1_employees_male[7])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[7]. "')";  } 
- if(!empty($tc1_employees_female[7])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[7]. "')";  } 
- if(!empty($tc1_volunteers_male[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[8]. "')";  } 
- if(!empty($tc1_volunteers_female[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[8]. "')";  } 
- if(!empty($tc1_staff_male[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[8]. "')";  } 
- if(!empty($tc1_staff_female[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[8]. "')";  } 
- if(!empty($tc1_employees_male[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[8]. "')";  } 
- if(!empty($tc1_employees_female[8])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[8]. "')";  } 
 
  if(!empty($tc2_community)){ $query_ans .= ",('" . $form_no . "', 'TC2', '', '', '', '', '" .$tc2_community. "')"; }
  
@@ -305,7 +293,7 @@ $query_ansm = "INSERT INTO tblzhaanswers
  
  if(!empty($mc5_activity)){ $query_ansm .= ",('" . $form_no . "', 'MC5', '" . $mc5_activity . "', '', '')"; } 
  
- echo $query_ansm;
+ echo $query_ans;
  exit;
  ?>
 <?php echo $query_ans ?>

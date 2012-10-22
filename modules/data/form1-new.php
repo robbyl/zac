@@ -230,7 +230,7 @@ if (!empty($lang) && isset($lang)) {
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
                                     <td colspan="3">
-                                        <select class="select" name="organisation" style="width: 100%;">
+                                        <select class="select" name="organisation" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
                                             $query_org = "SELECT `OrganisationCode`, `OrganisationName` FROM tblgenorganisations ORDER BY `OrganisationName` ASC";
@@ -301,14 +301,14 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["SECT_LABEL_FTM"]; ?></td>
-                                    <td><input type="number" name="full_male" id="full_male" class="number"></td>
-                                    <td><input type="number" name="full_female" id="full_female" class="number"></td>
+                                    <td><input type="number" name="full_male" id="full_male" min="0" class="number"></td>
+                                    <td><input type="number" name="full_female" id="full_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["SECT_LABEL_PTM"]; ?></td>
-                                    <td><input type="number" name="part_male" id="part_male" class="number"></td>
-                                    <td><input type="number" name="part_female" id="part_female" class="number"></td>
+                                    <td><input type="number" name="part_male" id="part_male" min="0" class="number"></td>
+                                    <td><input type="number" name="part_female" id="part_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
@@ -1118,48 +1118,48 @@ if (!empty($lang) && isset($lang)) {
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td rowspan="2"><?php echo $ZhaFigureDescriptionqn["ME1a"][0] ?></td>
-                                    <td><label for="me1_yes"><input type="radio" name="me1_yes" id="me1_yes">Yes</label></td>
+                                    <td width="100"><label for="me1_yes"><input type="radio" name="me1_yes" id="me1_yes"> Yes</label></td>
                                     <td><?php echo $ZhaFigureDescriptionqn["ME1b"][0] ?>  <br><input type="date" name="me1_workshop_date" class="text"></td>
                                     <td rowspan="2" width="60" class="data-group">ME1</td>
                                 </tr>
                                 <tr>
-                                    <td><label for="me1_no"><input type="radio" name="me1_yes" id="me1_no">No</label></td>
+                                    <td><label for="me1_no"><input type="radio" name="me1_yes" id="me1_no"> No</label></td>
                                     <td><?php echo $ZhaFigureDescriptionqn["ME1c"][0] ?><br> <input type="text" name="mc1_reason" class="text"></td>
                                 </tr>
                             </table>
                         </div>
 
                         <div class="form-footer">
-                            <table width="100%" border="0" cellspacing="0" style="border: none !important">
+                            <table width="120%" border="0" cellspacing="0" style="border: none !important">
                                 <tr>
-                                    <td>Completed by</td>
-                                    <td><select name="" class="select"><option></option></select></td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td width="17%"><?php echo $text["FORM_FOOTER_COMP_BY"] ?></td>
+                                    <td width="30%"><select name="" class="select" style="width: 90%"><option></option></select></td>
+                                    <td width="14%"><?php echo $text["FORM_FOOTER_DATE_COMP"] ?></td>
+                                    <td width="39%"><input type="date" name="" class="text"></td>
                                 </tr>
                                 <tr>
-                                    <td>Positon in organisation</td>
+                                    <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $text["FORM_FOOTER_APR_BY"] ?></td>
                                     <td>&nbsp;</td>
-                                    <td>Date:</td>
+                                    <td><?php echo $text["FORM_FOOTER_DATE_APR"] ?></td>
                                     <td><input type="date" name="" class="text"></td>
                                 </tr>
                                 <tr>
-                                    <td>Approved by:</td>
+                                    <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
                                     <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>Position in organisation:</td>
-                                    <td>&nbsp;</td>
-                                    <td>Date:</td>
-                                    <td><input type="date" name="" class="text"></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </table>
                         </div>
                         <dv class="data-form-buttons">
                             <table border="0" cellpadding="0" cellspacing="0" style="border: none">
-                                <tr><td></td><td><button type="submit">Save</button><button type="reset">Reset</button></td></tr>
+                                <tr><td width="10"></td><td width="394"><button type="submit">Save</button><button type="reset">Reset</button></td></tr>
                             </table>
                             <!-- .end data-form-buttons --></dv>
                         <!-- end .data-form-wrapper  -->  </div>

@@ -43,4 +43,11 @@ $text["SECT_SUB_HEAD_CS1"] = "Watoaji huduma za majumbani wa kujitolea";
 $text["SECT_SUB_HEAD_TC1"] = "Idadi ya wafanyakazi na wanaojitolea wamepata mafunzo";
 $text["SECT_SUB_HEAD_TC2"] = "Mafunzo ya taasisi ngazi ya jamii";
 $text["SECT_SUB_HEAD_MC6"] = "Maeneo yaliyoingizwa kwenye mpango wa kazi";
+
+$text["FORM_FOOTER_COMP_BY"] = "Imejazwa na:";
+$text["FORM_FOOTER_DATE_COMP"] = "Tarehe ya kujazwa:";
+$text["FORM_FOOTER_APR_BY"] = "Imethibitishwa na:";
+$text["FORM_FOOTER_DATE_APR"] = "Tarehe ya kuthibitishwa:";
+$text["FORM_FOOTER_POS"] = "Wadhifa katika taasisi:";
+$text["FORM_FOOTER_VER_BY"] = "Verified by:";
 ?>
