@@ -27,9 +27,6 @@ $text["FORM_FOOTER_DATE_COMP"] = "Date Completed:";
 $text["FORM_FOOTER_APR_BY"] = "Approved by:";
 $text["FORM_FOOTER_DATE_APR"] = "Date Approved:";
 $text["FORM_FOOTER_POS"] = "Position in organisation";
-$text["FORM_FOOTER_DATE_REC"] = "Date Received:";
 $text["FORM_FOOTER_VER_BY"] = "Verified by:";
-$text["FORM_FOOTER_DATE_VER"] = "Date Verified by:";
-$text["FORM_FOOTER_DATE_FLD"] = "Date Filed:";
 
 ?>
