@@ -1130,12 +1130,12 @@ if (!empty($lang) && isset($lang)) {
                         </div>
 
                         <div class="form-footer">
-                            <table width="120%" border="0" cellspacing="0" style="border: none !important">
+                            <table border="0" cellspacing="0" style="border: none !important" width="100%">
                                 <tr>
-                                    <td width="17%"><?php echo $text["FORM_FOOTER_COMP_BY"] ?></td>
-                                    <td width="30%"><select name="" class="select" style="width: 90%"><option></option></select></td>
-                                    <td width="14%"><?php echo $text["FORM_FOOTER_DATE_COMP"] ?></td>
-                                    <td width="39%"><input type="date" name="" class="text"></td>
+                                    <td width="18%"><?php echo $text["FORM_FOOTER_COMP_BY"] ?></td>
+                                    <td width="28%"><select name="" class="select" style="width: 90%"><option></option></select></td>
+                                    <td width="18%"><?php echo $text["FORM_FOOTER_DATE_COMP"] ?></td>
+                                    <td width="36%"><input type="date" name="" class="text"></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
@@ -1156,6 +1156,7 @@ if (!empty($lang) && isset($lang)) {
                                     <td></td>
                                 </tr>
                             </table>
+                            <?php mysql_close($conn); ?>
                         </div>
                         <dv class="data-form-buttons">
                             <table border="0" cellpadding="0" cellspacing="0" style="border: none">
