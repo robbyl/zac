@@ -202,6 +202,11 @@
                                 <td width="170">Meter Status</td>
                                 <td><select name="meter_status" class="select">
                                         <option value="">--select meter status--</option>
+                                        <option  value="Working">Working</option>
+                                        <option  value="Damaged">Damaged</option>
+                                        <option  value="No meter">No meter</option>
+                                        <option  value="Stopped_working">Stopped Working</option>
+                                        <option  value="Dirty meter">Dirty meter</option>
                                     </select></td>
                             </tr>
                             <tr>
