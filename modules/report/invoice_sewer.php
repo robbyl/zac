@@ -24,26 +24,29 @@ $filter = "All";
 
 $filter === 'All' ? $filter = ";" : $filter = 'WHERE billing_areas = ' . "'$filter' ";
 
-$query_appln = "SELECT appln.appln_id, appln_no, appln_type, appnt.appnt_id, appln_date,
-                           engeneer_appr,appnt_fullname, appnt_types, billing_areas,
-                           description, cust.appnt_id AS is_customer, status ,service ,
-                           surveyed_date, approved_date, inspected_by, premise_nature
-                      FROM application appln
-                 LEFT JOIN applicant appnt
-                        ON appln.appnt_id = appnt.appnt_id
-                 LEFT JOIN customer cust
-                        ON appnt.appnt_id = cust.appnt_id
-                 LEFT JOIN appnt_payment appntp
-                        ON appnt.appnt_id = appntp.appnt_id
-                 LEFT JOIN transaction trans
-                        ON appntp.trans_id = trans.trans_id
-                 LEFT JOIN appnt_type apnty
-                        ON appnt.appnt_type_id = apnty.appnt_type_id
-                 LEFT JOIN billing_area ba
-                        ON appnt.ba_id = ba.ba_id
-                 LEFT JOIN service_nature sn
-                        ON appln.service_nature_id = sn.service_nature_id
-                           WHERE billing_areas = 'Mkuti'";
+$query_appln = "SELECT inv_no, invoicing_date, created_date, appnt_fullname,
+                         appln_type, billing_areas, acc_no, inv.inv_id,
+                         water_cost, sewer_cost, service_charge,
+                         COALESCE(aging_debit, 0) AS aging_debit,
+                         (water_cost + sewer_cost + service_charge + COALESCE(aging_debit, 0))
+                      AS amount_payable
+                    FROM invoice inv
+              INNER JOIN customer cust
+                      ON inv.cust_id = cust.cust_id
+               LEFT JOIN invoice_reading inre
+                      ON inv.inv_id = inre.inv_id
+               LEFT JOIN aging_analysis age
+                      ON inv.inv_id-(SELECT COUNT(*) FROM customer) = age.inv_id
+              INNER JOIN account acc
+                      ON cust.cust_id = acc.cust_id
+              INNER JOIN applicant appnt
+                      ON cust.appnt_id = appnt.appnt_id
+              INNER JOIN appnt_type appty
+                      ON appnt.appnt_type_id = appty.appnt_type_id
+              INNER JOIN application appln
+                      ON appln.appnt_id = appnt.appnt_id
+              INNER JOIN billing_area ba
+                      ON appnt.ba_id = ba.ba_id";
 
 $result_appln = mysql_query($query_appln) or die(mysql_error());
 $row_header = mysql_fetch_array($result_appln);
@@ -54,7 +57,7 @@ $row_header = mysql_fetch_array($result_appln);
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>APPLICATION REPORT WITH FOR MKUTI</title>
+        <title>INVOICES FOR SEWER</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
@@ -234,7 +237,7 @@ $row_header = mysql_fetch_array($result_appln);
                 <!-- end .sidebar --></div>
         </div>
         <div class="content">
-            <h1>View and Print Application For Mkuti</h1>
+            <h1>View and Print Invoices For Sewer</h1>
             <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                 <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
                 <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
@@ -249,7 +252,7 @@ $row_header = mysql_fetch_array($result_appln);
                         <div class="sheet-header">
                             <div class="header-title">
                                 <p style="font-weight: bold"><?php echo $row_authority['aut_name'] ?></p> 
-                                <p style="font-size: 18px; font-weight: bold"> MKUTI APPLICATIONS</p>
+                                <p style="font-size: 18px; font-weight: bold"> SEWER INVO</p>
                                 <div class="page-logo">
                                     <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                                 </div>
@@ -262,7 +265,7 @@ $row_header = mysql_fetch_array($result_appln);
                             <p><strong>Street: </strong> <span style="font-weight: normal; float: right">Mkuti</span><div style="clear: both"></div></p>
                         </div>
                         <div class="print-details">
-                            
+
 
                         </div>
                         <div class="black-separator"></div>
@@ -270,19 +273,12 @@ $row_header = mysql_fetch_array($result_appln);
                             <table cellpadding="3" cellspacing="0" border="1" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Application No</th>
-                                        <th>Applicant Fullname</th>
-                                        <th>Application Type</th>
-                                        <th>Application Date</th>
-                                        <th>Billing Area</th>
-                                        <th>Surveyed Date</th>
-                                        <th>Engeneer Approval</th>
-                                        <th>Approval Date</th>
-                                        <th>Inspected By</th>
-                                        <th>Premise Nature</th>
-                                        <th>Service Nature</th>
-                                        <th>Status</th>
-
+                                        <th>Invoice No.</th>
+                                        <th>Account No.</th>
+                                        <th>Billing Month</th>
+                                        <th>Created Date</th>
+                                        <th>Customer Name</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -291,18 +287,12 @@ $row_header = mysql_fetch_array($result_appln);
                                     while ($row = mysql_fetch_array($result_appln)) {
                                         ?>
                                         <tr>
-                                            <td><?php echo sprintf('%08d', $row_header['appln_no']) ?></td>
+                                            <td><?php echo sprintf('%08d', $row['inv_no']) ?></td>
+                                            <td><?php echo sprintf('%08d', $row['acc_no']) ?></td>
+                                            <td><?php echo $row['invoicing_date'] ?></td>
+                                            <td><?php echo $row['created_date'] ?></td>
                                             <td><?php echo $row['appnt_fullname'] ?></td>
-                                            <td><?php echo $row['appln_type'] ?></td>
-                                            <td><?php echo $row['appln_date'] ?></td>
-                                            <td><?php echo $row['billing_areas'] ?></td>
-                                            <td><?php echo $row['surveyed_date'] ?></td>
-                                            <td><?php echo $row['engeneer_appr'] ?></td>
-                                            <td><?php echo $row['approved_date'] ?></td>
-                                            <td><?php echo $row['inspected_by'] ?></td>
-                                            <td><?php echo $row['premise_nature'] ?></td>
-                                            <td><?php echo $row['service'] ?></td>
-                                            <td><?php echo $row['status'] ?></td>
+                                            <td><?php echo number_format($row['amount_payable'], '2', '.', ',') ?></td>
                                         </tr>
                                         <?php
                                         $SN++;
