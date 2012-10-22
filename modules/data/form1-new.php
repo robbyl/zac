@@ -9,6 +9,8 @@ if (!empty($lang) && isset($lang)) {
     switch ($lang) {
         case "en": // In case selected language is English, load English version form.
 
+            include 'lang/en.php';
+
             $query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionEnglish`,
                           typ1.`BreakdownTypeDescription` AS BreakdownTypeDescription1,
                           typ2.`BreakdownTypeDescription` AS BreakdownTypeDescription2,
@@ -67,6 +69,8 @@ if (!empty($lang) && isset($lang)) {
             break;
 
         case "sw": // In case selected language is Kiswahili, load Kiswahili version form.
+
+            include 'lang/sw.php';
 
             $query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionSwahili`,
                           typ1.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription1,
@@ -223,7 +227,7 @@ mysql_close($conn);
                             </div>
                             <!-- end .form-header --></div>
                         <div class="section">
-                            <h3><strong>A. INFORMATION ABOUT YOUR ORGANISATION</strong></h3>
+                            <h3><strong>A. <?php echo $text["SECT_HEAD_A"]; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
                                     <td colspan="2">&nbsp;</td>
@@ -306,30 +310,26 @@ mysql_close($conn);
                             </table>
                             <!-- end .section  --></div>
                         <div class="section">
-                            <h3><strong>B. HIV PREVENTION SERVICES</strong></h3>
-                            <p style="font-weight: bold"><?php echo $ZhaFigureDescription["HP1"][0] ?></p>
+                            <h3><strong>B. <?php echo $text["SECT_HEAD_B"]; ?></strong></h3>
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_HP1"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
+                                    <th rowspan="3">&nbsp;</th>
+                                    <th rowspan="3">&nbsp;</th>
                                     <th colspan="5">Number of persons reached</th>
                                     <td rowspan="9"  width="47" class="data-group">HP1</td>
                                 </tr>
                                 <tr>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
                                     <th colspan="2">&nbsp;</th>
                                     <th colspan="2">&nbsp;</th>
                                     <th>&nbsp;</th>
                                 </tr>
                                 <tr>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
                                     <th>Male</th>
                                     <th>Female</th>
                                     <th>Male</th>
                                     <th>Female</th>
-                                    <th>Total</th>
+                                    <th width="110">Total</th>
                                 </tr>
                                 <tr>
                                     <td>
@@ -471,10 +471,10 @@ mysql_close($conn);
                                 </tr>
                             </table>
 
-                            <h4>HIV PREVENTION AMONGST GENERAL POPULATION</h4>
+                            <p style="font-weight: bold;"><?php echo $text["SECT_SUB_HEAD_HP2"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td colspan="2" rowspan="3">Type of intervation</td>
+                                    <th colspan="2" rowspan="3">Type of intervation</th>
                                     <th colspan="5">Number of persons reached</th>
                                     <td rowspan="9"  width="60" class="data-group">HP2</td>
                                 </tr>
@@ -488,7 +488,7 @@ mysql_close($conn);
                                     <th>Female</th>
                                     <th>Male</th>
                                     <th>Female</th>
-                                    <th>Total</th>
+                                    <th width="110">Total</th>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
@@ -582,10 +582,10 @@ mysql_close($conn);
                                 </tr>
                             </table>
 
-
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_HP3"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td>RADIO AND TV</td>
+                                    <td></td>
                                     <th><?php echo $BreakdownTypeDescription1["HP3"][0] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["HP3"][1] ?></th>
                                     <td rowspan="2" width="60" class="data-group">HP3</td>
@@ -597,9 +597,10 @@ mysql_close($conn);
                                 </tr>
                             </table>
 
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_HP4"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td rowspan="2">EDUCATORS</td>
+                                    <td rowspan="2"></td>
                                     <th colspan="3"><?php echo $BreakdownTypeDescription2["HP4"][9] ?></th>
                                     <th colspan="3"><?php echo $BreakdownTypeDescription2["HP4"][8] ?></th>
                                     <td rowspan="3"  width="60" class="data-group">HP4</td>
@@ -607,10 +608,10 @@ mysql_close($conn);
                                 <tr>
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][10] ?></th>
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][9] ?></th>
-                                    <th><?php echo $BreakdownTypeDescription3["HP4"][11] ?></th>
+                                    <th width="110"><?php echo $BreakdownTypeDescription3["HP4"][11] ?></th>
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][7] ?></th>
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][6] ?></th>
-                                    <th><?php echo $BreakdownTypeDescription3["HP4"][8] ?></th>
+                                    <th width="110"><?php echo $BreakdownTypeDescription3["HP4"][8] ?></th>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["HP4"][6]; ?></td>
@@ -623,9 +624,10 @@ mysql_close($conn);
                                 </tr>
                             </table>
 
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_HP5"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td rowspan="2">EDUCATORS</td>
+                                    <td rowspan="2">&nbsp;</td>
                                     <th colspan="3"><?php echo $BreakdownTypeDescription2["HP4"][3] ?></th>
                                     <th colspan="3"><?php echo $BreakdownTypeDescription2["HP4"][0] ?></th>
                                     <td rowspan="3"  width="60" class="data-group">HP5</td>
@@ -633,10 +635,10 @@ mysql_close($conn);
                                 <tr>
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][4] ?></th>
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][3] ?></th>
-                                    <th><?php echo $BreakdownTypeDescription3["HP4"][5] ?></th>
+                                    <th width="110"><?php echo $BreakdownTypeDescription3["HP4"][5] ?></th>
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][1] ?></th>
                                     <th><?php echo $BreakdownTypeDescription3["HP4"][0] ?></th>
-                                    <th><?php echo $BreakdownTypeDescription3["HP4"][2] ?></th>
+                                    <th width="110"><?php echo $BreakdownTypeDescription3["HP4"][2] ?></th>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["HP4"][0]; ?></td>
@@ -649,9 +651,10 @@ mysql_close($conn);
                                 </tr>
                             </table>
 
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_HP6"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td>RADIO AND TV</td>
+                                    <td></td>
                                     <th><?php echo $BreakdownTypeDescription1["HP6"][0] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["HP6"][1] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["HP6"][2] ?></th>
@@ -665,9 +668,10 @@ mysql_close($conn);
                                 </tr>
                             </table>
 
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_HP7"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td>RADIO AND TV</td>
+                                    <td></td>
                                     <th><?php echo $BreakdownTypeDescription1["HP7"][1] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["HP7"][0] ?></th>
                                     <td rowspan="2"  width="60" class="data-group">HP7</td>
@@ -679,9 +683,10 @@ mysql_close($conn);
                                 </tr>
                             </table>
 
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_HP8"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td>RADIO AND TV</td>
+                                    <td></td>
                                     <th><?php echo $BreakdownTypeDescription1["HP8"][1] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["HP8"][0] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["HP8"][2] ?></th>
@@ -695,10 +700,10 @@ mysql_close($conn);
                                 </tr>
                             </table>
 
-
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_HP9"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td>RADIO AND TV</td>
+                                    <td></td>
                                     <th><?php echo $BreakdownTypeDescription1["HP9"][1] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["HP9"][0] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["HP9"][2] ?></th>
@@ -714,8 +719,8 @@ mysql_close($conn);
                         </div>
 
                         <div class="section">
-                            <h3><strong>C. HIV IMPACT MITIGATION SERVICES</strong></h3>
-                            <p style="font-weight: bold"><?php echo $ZhaFigureDescription["M01"][0] ?></p>
+                            <h3><strong>C. <?php echo $text["SECT_HEAD_C"]; ?></strong></h3>
+                            <p style="font-weight: bold"><?php echo $text["SECT_SUB_HEAD_M1"] ?></p>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <th>&nbsp;</th>
@@ -799,10 +804,10 @@ mysql_close($conn);
                         </div>
 
                         <div class="section">
-                            <h3><strong>D. HIV & AIDS CARE AND SUPPORT SERVICES</strong></h3>
+                            <h3><strong>D. <?php echo $text["SECT_HEAD_D"]; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td>RADIO AND TV</td>
+                                    <td></td>
                                     <th><?php echo $BreakdownTypeDescription1["CS1"][1] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["CS1"][0] ?></th>
                                     <th><?php echo $BreakdownTypeDescription1["CS1"][2] ?></th>
@@ -830,7 +835,7 @@ mysql_close($conn);
                         </div>
 
                         <div class="section">
-                            <h3><strong> E. TRAINING AND CAPACITY BUILDING FOR HIV </strong></h3>
+                            <h3><strong> E. <?php echo $text["SECT_HEAD_E"]; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td rowspan="2">&nbsp;</td>
@@ -1043,7 +1048,7 @@ mysql_close($conn);
                         </div>
 
                         <div class="section">
-                            <h3><strong>F: MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS</strong></h3>
+                            <h3><strong>F:  <?php echo $text["SECT_HEAD_F"]; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td><?php echo $ZhaFigureDescriptionqn["MC1"][0] ?></td>

@@ -402,7 +402,7 @@ input[disabled] {
 
 .number {
     text-align: right;
-    width: 100px !important;
+    width: 90px !important;
     border: none;
     /*    font-weight: bold;*/
     float: right;

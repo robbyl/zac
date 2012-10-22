@@ -28,6 +28,9 @@ h2 h5 {
     font-weight: bold;
 }
 
+.data-form-wapper p, .data-form-wapper h3 {
+    padding: 0 !important;
+}
 .data-form-wapper table {
     border-collapse: collapse;
     border: 1px solid #d0d0d0;
