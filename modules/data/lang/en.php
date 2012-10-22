@@ -7,6 +7,28 @@ $text["SECT_HEAD_D"] = "HIV and AIDS CARE AND SUPPORT SERVICES";
 $text["SECT_HEAD_E"] = "TRAINING AND CAPACITY BUILDING FOR HIV";
 $text["SECT_HEAD_F"] = "MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS";
 
+$text["SECT_LABEL_NOG"] = "Name of your organisation";
+$text["SECT_LABEL_PHY"] = "Physical Address of your Organisation";
+$text["SECT_LABEL_POS"] = "Postal Address of Organisation";
+$text["SECT_LABEL_FOP"] = "Name of ZHAPMoS Focal Person";
+$text["SECT_LABEL_CFP"] = "Contact Details of ZHAPMoS Focal Person";
+$text["SECT_LABEL_TEL"] = "Telephone";
+$text["SECT_LABEL_FAX"] = "Fax";
+$text["SECT_LABEL_EML"] = "Email Address";
+$text["SECT_LABEL_REG"] = "ZAC Registration Code";
+$text["SECT_LABEL_UMB"] = "Is your organisation a member of an umbrella organisation or network?";
+$text["SECT_LABEL_NUM"] = "If Yes, name umbrella organisation or network";
+$text["SECT_LABEL_DAT"] = "When did your organisation start operating";
+$text["SECT_LABEL_PTS"] = "How many full time or part time staff does your organisation have?";
+$text["SECT_LABEL_FTM"] = "Full time";
+$text["SECT_LABEL_PTM"] = "Part time";
+$text["SECT_LABEL_NOD"] = "Name of District Reported on";
+$text["SECT_LABEL_MAL"] = "Males";
+$text["SECT_LABEL_FEM"] = "Females";
+$text["SECT_LABEL_TOT"] = "Total";
+$text["SECT_LABEL_YES"] = "Yes";
+$text["SECT_LABEL_NO"] = "No";
+
 $text["SECT_SUB_HEAD_HP1"] = "HIV Prevention amongst vulnerable and high risk groups";
 $text["SECT_SUB_HEAD_HP2"] = "HIV Prevention amongst general population";
 $text["SECT_SUB_HEAD_HP3"] = "Radio and TV";
@@ -28,5 +50,4 @@ $text["FORM_FOOTER_APR_BY"] = "Approved by:";
 $text["FORM_FOOTER_DATE_APR"] = "Date Approved:";
 $text["FORM_FOOTER_POS"] = "Position in organisation";
 $text["FORM_FOOTER_VER_BY"] = "Verified by:";
-
 ?>
