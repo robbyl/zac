@@ -43,7 +43,7 @@ $query_appln = "SELECT appln.appln_id, appln_no, appln_type, appnt.appnt_id, app
                         ON appnt.ba_id = ba.ba_id
                  LEFT JOIN service_nature sn
                         ON appln.service_nature_id = sn.service_nature_id
-                           WHERE billing_areas = 'Nyasa'";
+                           WHERE engeneer_appr = 'No'";
 
 $result_appln = mysql_query($query_appln) or die(mysql_error());
 $row_header = mysql_fetch_array($result_appln);
@@ -54,7 +54,7 @@ $row_header = mysql_fetch_array($result_appln);
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>APPLICATION REPORT WITH FOR NYASA</title>
+        <title>NOT APPROVED APPLICATIONS </title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
@@ -234,7 +234,7 @@ $row_header = mysql_fetch_array($result_appln);
                 <!-- end .sidebar --></div>
         </div>
         <div class="content">
-            <h1>View and Print Application For Nyasa</h1>
+            <h1>View and Print Not approved Applications</h1>
             <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                 <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
                 <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
@@ -249,7 +249,7 @@ $row_header = mysql_fetch_array($result_appln);
                         <div class="sheet-header">
                             <div class="header-title">
                                 <p style="font-weight: bold"><?php echo $row_authority['aut_name'] ?></p> 
-                                <p style="font-size: 18px; font-weight: bold"> NYASA APPLICATIONS</p>
+                                <p style="font-size: 18px; font-weight: bold"> NOT APPROVED APPLICATIONS </p>
                                 <div class="page-logo">
                                     <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
                                 </div>
@@ -258,8 +258,8 @@ $row_header = mysql_fetch_array($result_appln);
                             <!-- end .sheet-header --></div>
                         <div class="print-details" style="float: right">
                             <p><strong>Print Date: </strong><span style="font-weight: normal; float: right"><?php echo date('Y-m-d') ?></span></p>
-                            <p><strong>Billing Area/Zone: </strong><span style="font-weight: normal;">Nyasa</span></p>
-                            <p><strong>Street: </strong> <span style="font-weight: normal; float: right">Nyasa</span><div style="clear: both"></div></p>
+                            <p><strong>Billing Area/Zone: </strong><span style="font-weight: normal;">Migongo</span></p>
+                            <p><strong>Street: </strong> <span style="font-weight: normal; float: right">Migongo</span><div style="clear: both"></div></p>
                         </div>
                         <div class="print-details">
 

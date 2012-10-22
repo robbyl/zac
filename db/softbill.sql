@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 12, 2012 at 11:28 AM
+-- Generation Time: Oct 22, 2012 at 12:40 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `appnt_payment` (
   KEY `rec_id` (`rec_id`),
   KEY `trans_id` (`trans_id`),
   KEY `appnt_id` (`appnt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `appnt_payment`
@@ -203,7 +203,8 @@ INSERT INTO `appnt_payment` (`appntp_id`, `rec_id`, `trans_id`, `appnt_id`) VALU
 (2, 2, 1652, 7),
 (3, 3, 1653, 5),
 (4, 25, 1815, 2),
-(5, 26, 1816, 10);
+(5, 26, 1816, 10),
+(6, 30, 1844, 2);
 
 -- --------------------------------------------------------
 
@@ -263,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `cheque` (
   `rec_id` int(11) NOT NULL,
   PRIMARY KEY (`cheq_id`),
   KEY `rec_id` (`rec_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `cheque`
@@ -272,7 +273,8 @@ CREATE TABLE IF NOT EXISTS `cheque` (
 INSERT INTO `cheque` (`cheq_id`, `cheq_no`, `bank`, `rec_id`) VALUES
 (1, 'Q89898E', 'CRDB', 1),
 (2, '76545', 'NMB', 26),
-(3, '4444444', 'NBC', 29);
+(3, '4444444', 'NBC', 29),
+(4, '55', 'CRDB', 30);
 
 -- --------------------------------------------------------
 
@@ -432,27 +434,28 @@ CREATE TABLE IF NOT EXISTS `meter` (
   `met_id` int(11) NOT NULL AUTO_INCREMENT,
   `met_number` varchar(255) NOT NULL,
   `met_type` enum('Tameng','Metscant') NOT NULL,
-  `met_status_id` int(11) NOT NULL,
   `met_size` varchar(255) NOT NULL,
+  `met_status_id` int(11) NOT NULL,
   `no_digits` int(11) NOT NULL,
   `initial_reading` int(11) NOT NULL,
   `added_date` date NOT NULL,
   `availability` varchar(255) NOT NULL DEFAULT 'AVAILABLE',
   `remarks` text NOT NULL,
-  PRIMARY KEY (`met_id`)
+  PRIMARY KEY (`met_id`),
+  KEY `met_status_id` (`met_status_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `meter`
 --
 
-INSERT INTO `meter` (`met_id`, `met_number`, `met_type`, `met_status_id`, `met_size`, `no_digits`, `initial_reading`, `added_date`, `availability`, `remarks`) VALUES
-(1, '32422', 'Metscant', 0, '0', 8, 0, '2012-08-16', 'AVAILABLE', 'some'),
-(2, '88yyy090', 'Metscant', 0, '0', 9, 0, '2012-08-16', 'AVAILABLE', 'k'),
-(3, 'OD-20C899', 'Metscant', 0, '1/3', 10, 0, '2012-08-21', 'AVAILABLE', ''),
-(4, 'OC-20A490', 'Tameng', 0, '0', 10, 0, '2012-08-21', 'ISSUED', ''),
-(5, 'OA-600090', 'Tameng', 1, '0', 10, 0, '2012-08-21', 'AVAILABLE', ''),
-(6, 'OC-205W90', 'Metscant', 1, '0', 10, 30, '2012-08-21', 'ISSUED', '');
+INSERT INTO `meter` (`met_id`, `met_number`, `met_type`, `met_size`, `met_status_id`, `no_digits`, `initial_reading`, `added_date`, `availability`, `remarks`) VALUES
+(1, '32422', 'Metscant', '0', 1, 8, 0, '2012-08-16', 'AVAILABLE', 'some'),
+(2, '88yyy090', 'Metscant', '0', 0, 9, 0, '2012-08-16', 'AVAILABLE', 'k'),
+(3, 'OD-20C899', 'Metscant', '1/3', 0, 10, 0, '2012-08-21', 'AVAILABLE', ''),
+(4, 'OC-20A490', 'Tameng', '0', 0, 10, 0, '2012-08-21', 'ISSUED', ''),
+(5, 'OA-600090', 'Tameng', '0', 0, 10, 0, '2012-08-21', 'AVAILABLE', ''),
+(6, 'OC-205W90', 'Metscant', '0', 0, 10, 30, '2012-08-21', 'ISSUED', '');
 
 -- --------------------------------------------------------
 
@@ -519,6 +522,32 @@ INSERT INTO `meter_reading` (`mred_id`, `billing_date`, `reading_date`, `entered
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `meter_status`
+--
+
+CREATE TABLE IF NOT EXISTS `meter_status` (
+  `met_status_id` int(11) NOT NULL AUTO_INCREMENT,
+  `met_status` varchar(255) NOT NULL,
+  PRIMARY KEY (`met_status_id`),
+  KEY `met_status_id` (`met_status_id`),
+  KEY `met_status` (`met_status`),
+  KEY `met_status_2` (`met_status`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `meter_status`
+--
+
+INSERT INTO `meter_status` (`met_status_id`, `met_status`) VALUES
+(2, 'Damaged'),
+(5, 'Dirty meter'),
+(4, 'No meter/pipe'),
+(3, 'Stoped_working'),
+(1, 'working');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payment_type`
 --
 
@@ -569,7 +598,7 @@ CREATE TABLE IF NOT EXISTS `receipt` (
   PRIMARY KEY (`rec_id`),
   KEY `tran_id` (`tran_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `receipt`
@@ -584,7 +613,8 @@ INSERT INTO `receipt` (`rec_id`, `rec_no`, `rec_type`, `tran_id`, `payed_amount`
 (26, 26, 'Online', 1816, 7000.00, 'Seven thousands only', 1),
 (27, 27, 'Online', 1821, 7000.00, 'seven thousands', 1),
 (28, 28, 'Online', 1822, 500.00, 'Five hundred shilings', 1),
-(29, 29, 'Online', 1831, 8000.00, 'Eight thousand shillings only', 1);
+(29, 29, 'Online', 1831, 8000.00, 'Eight thousand shillings only', 1),
+(30, 30, 'Online', 1844, 777.00, 'afsjdklsf', 1);
 
 -- --------------------------------------------------------
 
@@ -683,7 +713,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `trans_date` datetime NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1844 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1845 ;
 
 --
 -- Dumping data for table `transaction`
@@ -722,7 +752,8 @@ INSERT INTO `transaction` (`trans_id`, `trans_date`, `description`) VALUES
 (1840, '2012-10-10 11:22:53', 'Sewer Billing'),
 (1841, '2012-10-10 11:22:53', 'Water Billing'),
 (1842, '2012-10-10 11:22:53', 'Water Billing'),
-(1843, '2012-10-10 11:22:53', 'Water Billing');
+(1843, '2012-10-10 11:22:53', 'Water Billing'),
+(1844, '2012-10-18 16:12:48', 'Other Sewer');
 
 -- --------------------------------------------------------
 
@@ -895,6 +926,12 @@ ALTER TABLE `meter_customer`
 --
 ALTER TABLE `meter_reading`
   ADD CONSTRAINT `meter_reading_ibfk_2` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `meter_status`
+--
+ALTER TABLE `meter_status`
+  ADD CONSTRAINT `meter_status_ibfk_1` FOREIGN KEY (`met_status_id`) REFERENCES `meter` (`met_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `receipt`
