@@ -43,6 +43,27 @@ if (!empty($lang) && isset($lang)) {
                 $ZhaFigureDescriptionqn[$sectionqn['ZhaQuestionCode']][] = $sectionqn['ZhaQuestionDescriptionEnglish'];
             }
 
+            $query_hiv_intv = "SELECT `BreakdownTypeID`, `BreakdownTypeDescription` AS breakdown
+                                 FROM `tblzhasetupfigurebreakdowntypes`
+                                WHERE `BreakdownCategoryID` = 'HVI'
+                             ORDER BY `BreakdownTypeDescription` ASC";
+
+            $result_hiv_intv = mysql_query($query_hiv_intv) or die(mysql_error());
+
+            $query_risk = "SELECT `BreakdownTypeID`, `BreakdownTypeDescription` AS breakdownrisk
+                             FROM `tblzhasetupfigurebreakdowntypes`
+                            WHERE `BreakdownCategoryID` = 'MRV'
+                         ORDER BY `BreakdownTypeDescription` ASC";
+
+            $result_risk = mysql_query($query_risk) or die(mysql_error());
+
+            $query_training = "SELECT `BreakdownTypeID`, `BreakdownTypeDescription` AS breakdowntraining
+                                 FROM `tblzhasetupfigurebreakdowntypes`
+                                WHERE `BreakdownCategoryID` = 'TRG'
+                             ORDER BY `BreakdownTypeDescription` ASC";
+
+            $result_training = mysql_query($query_training) or die(mysql_error());
+
             break;
 
         case "sw": // In case selected language is Kiswahili, load Kiswahili version form.
@@ -81,6 +102,27 @@ if (!empty($lang) && isset($lang)) {
                 $ZhaFigureDescriptionqn[$sectionqn['ZhaQuestionCode']][] = $sectionqn['ZhaQuestionDescriptionSwahili'];
             }
 
+            $query_hiv_intv = "SELECT `BreakdownTypeID`, `BreakdownTypeDescriptionSwahili` AS breakdown
+                                 FROM `tblzhasetupfigurebreakdowntypes`
+                                WHERE `BreakdownCategoryID` = 'HVI'
+                             ORDER BY `BreakdownTypeDescriptionSwahili` ASC";
+
+            $result_hiv_intv = mysql_query($query_hiv_intv) or die(mysql_error());
+
+            $query_risk = "SELECT `BreakdownTypeID`, `BreakdownTypeDescriptionSwahili` AS breakdownrisk
+                             FROM `tblzhasetupfigurebreakdowntypes`
+                            WHERE `BreakdownCategoryID` = 'MRV'
+                         ORDER BY `BreakdownTypeDescriptionSwahili` ASC";
+
+            $result_risk = mysql_query($query_risk) or die(mysql_error());
+
+            $query_training = "SELECT `BreakdownTypeID`, `BreakdownTypeDescriptionSwahili` AS breakdowntraining
+                                 FROM `tblzhasetupfigurebreakdowntypes`
+                                WHERE `BreakdownCategoryID` = 'TRG'
+                             ORDER BY `BreakdownTypeDescriptionSwahili` ASC";
+
+            $result_training = mysql_query($query_training) or die(mysql_error());
+
             break;
 
         default:
@@ -105,6 +147,14 @@ mysql_close($conn);
             $(document).ready(function() {
                 $('.message, .error').hide().slideDown('normal').click(function() {
                     $(this).slideUp('normal');
+                });
+
+                $('tr').click(function() {
+                    var total = 0;
+                    $(this).children().find('.number').each(function() {
+                        total += $(this).val() * 1;
+                    });
+                    $(this).children('.total').html(total);
                 });
             });
         </script>
@@ -165,7 +215,7 @@ mysql_close($conn);
                                         <td>&nbsp;</td>
                                         <td align="right">Form No:</td>
                                         <td align="right">
-                                        <input type="text" value="F1-605004" name="form_no" required style="font-size: 1.5em; width: 120px; border: none">
+                                            <input type="text" value="F1-605004" name="form_no" required style="font-size: 1.5em; width: 120px; border: none">
                                         </td>
                                     </tr>
                                 </table>
@@ -282,19 +332,45 @@ mysql_close($conn);
                                     <th>Total</th>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
+                                                <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
+                                            <?php } mysql_data_seek($result_risk, 0) ?>
+                                        </select>
+                                    </td>
                                     <td>
                                         <input type="number" name="hp1_male_younger[]" min="0" class="number">
                                     </td>
                                     <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
+                                    <td align="center" class="total"></td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td><select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
+                                                <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
+                                            <?php } mysql_data_seek($result_risk, 0) ?>
+                                        </select></td>
                                     <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
@@ -302,8 +378,22 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
+                                                <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
+                                            <?php } mysql_data_seek($result_risk, 0) ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
@@ -311,8 +401,22 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
+                                                <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
+                                            <?php } mysql_data_seek($result_risk, 0) ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
@@ -320,8 +424,22 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
+                                                <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
+                                            <?php } mysql_data_seek($result_risk, 0) ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
@@ -329,8 +447,22 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
+                                                <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
+                                            <?php } mysql_data_seek($result_risk, 0) ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
@@ -359,7 +491,14 @@ mysql_close($conn);
                                     <th>Total</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
+                                    <td colspan="2">
+                                        <select name="" class="select" style="width: 500px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
@@ -367,7 +506,14 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
+                                    <td colspan="2">
+                                        <select name="" class="select" style="width: 500px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
@@ -375,7 +521,14 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
+                                    <td colspan="2">
+                                        <select name="" class="select" style="width: 500px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
@@ -383,7 +536,14 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
+                                    <td colspan="2">
+                                        <select name="" class="select" style="width: 500px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
@@ -391,7 +551,14 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
+                                    <td colspan="2">
+                                        <select name="" class="select" style="width: 500px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
@@ -399,7 +566,14 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
+                                    <td colspan="2">
+                                        <select name="" class="select" style="width: 500px;">
+                                            <option value=""></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
@@ -677,7 +851,14 @@ mysql_close($conn);
                                     <th>&nbsp;</th>
                                 </tr>
                                 <tr>
-                                    <td>1. <input type="text" name="tc1_topic[]" class="text"></td>
+                                    <td>
+                                    <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
+                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                                            <?php } mysql_data_seek($result_training, 0); ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
                                     <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                                     <td>&nbsp;</td>
@@ -689,7 +870,14 @@ mysql_close($conn);
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>2. <input type="text" name="tc1_topic[]" class="text"></td>
+                                    <td>
+                                    <select name="" class="select" style="width: 250px;">
+                                            <option value=""></option>
+                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
+                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                                            <?php } mysql_data_seek($result_training, 0); ?>
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
                                     <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
                                     <td>&nbsp;</td>
