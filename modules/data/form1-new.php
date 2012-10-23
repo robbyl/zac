@@ -194,7 +194,7 @@ if (!empty($lang) && isset($lang)) {
                         <div class="form-header">
                             <div class="zanz-logo"></div>
                             <div class="zac-logo"></div>
-                            <p class="form-heading">ZHAPMoS FORM FOR CIVIL SOCIETY AND PRIVATE SECTOR</p>
+                            <p class="form-heading"><?php echo $text["FORM_1_HEAD"]; ?></p>
                             <div>
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: none; margin-bottom: 0">
                                     <tr>
