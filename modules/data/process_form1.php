@@ -162,6 +162,8 @@ $filed_date = clean($_POST['filed_date']);
 $comments = clean($_POST['comments']);
 $comments_zac = clean($_POST['comments_zac']);
 
+/* ########################### END FORM APPROVAL ############################### */
+
 $query_ans = "INSERT INTO tblzhafigures
                           (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
@@ -343,6 +345,8 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($mc6f)){ $query_ansm .= ",('" . $form_no . "', 'MC6f', '" . $mc6f . "', '', '')"; } 
  if(!empty($mc6g)){ $query_ansm .= ",('" . $form_no . "', 'MC6g', '" . $mc6g . "', '', '')"; } 
  if(!empty($mc6h)){ $query_ansm .= ",('" . $form_no . "', 'MC6h', '" . $mc6h . "', '', '')"; } 
+ 
+// $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  
  echo $query_ans;
  exit;

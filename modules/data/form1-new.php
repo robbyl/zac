@@ -574,7 +574,7 @@ if (!empty($lang) && isset($lang)) {
                                             <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                                         </select>
                                     </td>
-                                    <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
+                                    <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
                                     <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
