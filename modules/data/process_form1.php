@@ -162,29 +162,12 @@ $filed_date = clean($_POST['filed_date']);
 $comments = clean($_POST['comments']);
 $comments_zac = clean($_POST['comments_zac']);
 
-echo $completed_by . '<br>';
-echo $approved_by . '<br>';
-echo $completed_date . '<br>';
-echo $approved_date . '<br>';
-echo $received_date . '<br>';
-echo $captured_by . '<br>';
-echo $captured_date . '<br>';
-echo $verified_date . '<br>';
-echo $verified_by . '<br>';
-echo $filed_date . '<br>';
-echo $comments . '<br>';
-echo $comments_zac . '<br>';
-
-exit;
-
-
 $query_ans = "INSERT INTO tblzhafigures
                           (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`)
-                         
-                   VALUES ('$form_no', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '$hp1_male_younger[0]')";
-
+                   VALUES (";
+ if(!empty($hp1_male_younger[0])){ $query_ans .= "'" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; }
  if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
  if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  }
@@ -340,10 +323,13 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($mc2_tshs)){ $query_ans .= ",('" . $form_no . "', 'MC2', '', '', '', '', '" .$mc2_tshs. "')"; } 
  
  if(!empty($mc4_tshs)){ $query_ans .= ",('" . $form_no . "', 'MC4', '', '', '', '', '" .$mc4_tshs. "')"; } 
+ 
+ // $result_ans = mysql_query($query_ans) or die(mysql_error());
 
-$query_ansm = "INSERT INTO tblzhaanswers
+ $query_ansm = "INSERT INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
-                    VALUES ('$form_no', 'MC1', '$mc1_mngmnt', '', '')";
+                    VALUES (";
+ if(!empty($$mc1_mngmnt)){ $query_ansm .= "'$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
 
  if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
  

@@ -1076,7 +1076,7 @@ if (!empty($lang) && isset($lang)) {
 
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td width="379" rowspan="8"><?php echo $text["SECT_SUB_HEAD_MC_HIV"] ?></td>
+                                    <td width="300" rowspan="8"><?php echo $text["SECT_SUB_HEAD_MC_HIV"] ?></td>
                                     <td><?php echo $ZhaFigureDescriptionqn["MC6a"][0] ?></td>
                                     <td  width="200"><label for="mc6a_yes" style="margin-right: 50px"><input type="radio" name="mc6a" id="mc6a_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
                                         <label for="mc6a_no"><input type="radio" name="mc6a" id="mc6a_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
