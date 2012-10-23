@@ -137,10 +137,45 @@ $mc4_tshs = clean($_POST['mc4_tshs']);
 
 $mc5_activity = $_POST['mc5_activity'];
 
+$mc6a = $_POST['mc6a'];
+$mc6b = $_POST['mc6b'];
+$mc6c = $_POST['mc6c'];
+$mc6d = $_POST['mc6d'];
+$mc6e = $_POST['mc6e'];
+$mc6f = $_POST['mc6f'];
+$mc6g = $_POST['mc6g'];
+$mc6h = $_POST['mc6h'];
+
 /* ########################### END SECTION F ############################### */
 
 // Geting form approval details
-$some = clean($_POST['some']);
+$completed_by = clean($_POST['completed_by']);
+$approved_by = clean($_POST['approved_by']);
+$completed_date = clean($_POST['completed_date']);
+$approved_date = clean($_POST['approved_date']);
+$received_date = clean($_POST['received_date']);
+$captured_date = clean($_POST['captured_date']);
+$captured_by = clean($_POST['captured_by']);
+$verified_date = clean($_POST['verified_date']);
+$verified_by = clean($_POST['verified_by']);
+$filed_date = clean($_POST['filed_date']);
+$comments = clean($_POST['comments']);
+$comments_zac = clean($_POST['comments_zac']);
+
+echo $completed_by . '<br>';
+echo $approved_by . '<br>';
+echo $completed_date . '<br>';
+echo $approved_date . '<br>';
+echo $received_date . '<br>';
+echo $captured_by . '<br>';
+echo $captured_date . '<br>';
+echo $verified_date . '<br>';
+echo $verified_by . '<br>';
+echo $filed_date . '<br>';
+echo $comments . '<br>';
+echo $comments_zac . '<br>';
+
+exit;
 
 
 $query_ans = "INSERT INTO tblzhafigures
@@ -148,7 +183,7 @@ $query_ans = "INSERT INTO tblzhafigures
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`)
                          
-                   VALUES ('$form_no', 'HP1', ''$hiv_type[0]', '$most_risk[0]'', 'Y25', 'MAL', '$hp1_male_younger[0]')";
+                   VALUES ('$form_no', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '$hp1_male_younger[0]')";
 
  if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
@@ -156,7 +191,7 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($hp1_male_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[1]', '$most_risk[1]', 'Y25', 'MAL', '" .$hp1_male_younger[1]. "')";  }
  if(!empty($hp1_female_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[1]', '$most_risk[1]', 'Y25', 'FEM', '" .$hp1_female_younger[1]. "')"; } 
  if(!empty($hp1_male_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[1]', '$most_risk[1]', '25O', 'MAL', '" .$hp1_male_older[1]. "')";  }
- if(!empty($hp1_female_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', ''$hiv_type[1]', '$most_risk[1]', '25O', 'FEM', '" .$hp1_female_older[1]. "')";  }
+ if(!empty($hp1_female_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[1]', '$most_risk[1]', '25O', 'FEM', '" .$hp1_female_older[1]. "')";  }
  if(!empty($hp1_male_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[2]', '$most_risk[2]', 'Y25', 'MAL', '" .$hp1_male_younger[2]. "')";  }
  if(!empty($hp1_female_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[2]', '$most_risk[2]', 'Y25', 'FEM', '" .$hp1_female_younger[2]. "')";} 
  if(!empty($hp1_male_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[2]', '$most_risk[2]', '25O', 'MAL', '" .$hp1_male_older[2]. "')";  } 
@@ -313,6 +348,15 @@ $query_ansm = "INSERT INTO tblzhaanswers
  if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
  
  if(!empty($mc5_activity)){ $query_ansm .= ",('" . $form_no . "', 'MC5', '" . $mc5_activity . "', '', '')"; } 
+ 
+ if(!empty($mc6a)){ $query_ansm .= ",('" . $form_no . "', 'MC6a', '" . $mc6a . "', '', '')"; } 
+ if(!empty($mc6b)){ $query_ansm .= ",('" . $form_no . "', 'MC6b', '" . $mc6b . "', '', '')"; } 
+ if(!empty($mc6c)){ $query_ansm .= ",('" . $form_no . "', 'MC6c', '" . $mc6c . "', '', '')"; } 
+ if(!empty($mc6d)){ $query_ansm .= ",('" . $form_no . "', 'MC6d', '" . $mc6d . "', '', '')"; } 
+ if(!empty($mc6e)){ $query_ansm .= ",('" . $form_no . "', 'MC6e', '" . $mc6e . "', '', '')"; } 
+ if(!empty($mc6f)){ $query_ansm .= ",('" . $form_no . "', 'MC6f', '" . $mc6f . "', '', '')"; } 
+ if(!empty($mc6g)){ $query_ansm .= ",('" . $form_no . "', 'MC6g', '" . $mc6g . "', '', '')"; } 
+ if(!empty($mc6h)){ $query_ansm .= ",('" . $form_no . "', 'MC6h', '" . $mc6h . "', '', '')"; } 
  
  echo $query_ans;
  exit;

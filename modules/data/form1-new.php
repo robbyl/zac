@@ -1122,13 +1122,13 @@ if (!empty($lang) && isset($lang)) {
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td rowspan="2"><?php echo $ZhaFigureDescriptionqn["ME1a"][0] ?></td>
-                                    <td width="100"><label for="me1_yes"><input type="radio" name="me1_yes" id="me1_yes"> Yes</label></td>
+                                    <td width="100"><label for="me1_yes"><input type="radio" name="me1_yes" id="me1_yes"> <?php echo $text["SECT_LABEL_YES"] ?></label></td>
                                     <td><?php echo $ZhaFigureDescriptionqn["ME1b"][0] ?>  <br><input type="date" name="me1_workshop_date" class="text"></td>
                                     <td rowspan="2" width="60" class="data-group">ME1</td>
                                 </tr>
                                 <tr>
-                                    <td><label for="me1_no"><input type="radio" name="me1_yes" id="me1_no"> No</label></td>
-                                    <td><?php echo $ZhaFigureDescriptionqn["ME1c"][0] ?><br> <input type="text" name="mc1_reason" class="text"></td>
+                                    <td><label for="me1_no"><input type="radio" name="me1_yes" id="me1_no"> <?php echo $text["SECT_LABEL_NO"] ?></label></td>
+                                    <td><?php echo $ZhaFigureDescriptionqn["ME1c"][0] ?><br> <input type="text" name="mc1_reason" class="text" style="width: 90%"></td>
                                 </tr>
                             </table>
                         </div>
@@ -1138,13 +1138,13 @@ if (!empty($lang) && isset($lang)) {
                                 <tr>
                                     <td width="18%"><?php echo $text["FORM_FOOTER_COMP_BY"] ?></td>
                                     <td width="28%">
-                                        <select class="select" name="organisation" required style="width: 90%;">
+                                        <select class="select" name="completed_by" required style="width: 90%;">
                                             <option value=""></option>
                                             <span class="org_person"></span>
                                         </select>
                                     </td>
                                     <td width="18%"><?php echo $text["FORM_FOOTER_DATE_COMP"] ?></td>
-                                    <td width="36%"><input type="date" name="" class="text" style="width: 67%"></td>
+                                    <td width="36%"><input type="date" name="completed_date" class="text" style="width: 67%"></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
@@ -1154,12 +1154,12 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["FORM_FOOTER_APR_BY"] ?></td>
-                                    <td><select class="select" name="organisation" required style="width: 90%;">
+                                    <td><select class="select" name="approved_by" required style="width: 90%;">
                                             <option value=""></option>
                                             <span class="org_person"></span>
                                         </select></td>
                                     <td><?php echo $text["FORM_FOOTER_DATE_APR"] ?></td>
-                                    <td><input type="date" name="" class="text" style="width: 67%"></td>
+                                    <td><input type="date" name="approved_date" class="text" style="width: 67%"></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
@@ -1212,6 +1212,10 @@ if (!empty($lang) && isset($lang)) {
                                         </select></td>
                                     <td>Date Filed:</td>
                                     <td><input type="date" name="filed_date" value="<?php echo date('Y-m-d') ?>" class="text" style="width: 67%"></td>
+                                </tr>
+                                <tr>
+                                <td>Additional comments</td><td><textarea name="comments" cols="31"></textarea></td>
+                                <td>Aditional comments by zac</td><td><textarea name="comments_zac" cols="31"></textarea></td>
                                 </tr>
                             </table>
                             <?php mysql_close($conn); ?>

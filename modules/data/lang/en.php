@@ -67,6 +67,6 @@ $text["FORM_FOOTER_COMP_BY"] = "Completed by:";
 $text["FORM_FOOTER_DATE_COMP"] = "Date Completed:";
 $text["FORM_FOOTER_APR_BY"] = "Approved by:";
 $text["FORM_FOOTER_DATE_APR"] = "Date Approved:";
-$text["FORM_FOOTER_POS"] = "Position in organisation";
+$text["FORM_FOOTER_POS"] = "Position in organisation:";
 $text["FORM_FOOTER_VER_BY"] = "Verified by:";
 ?>
