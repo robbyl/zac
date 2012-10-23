@@ -348,6 +348,10 @@ $query_ans = "INSERT INTO tblzhafigures
  
 // $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  
+ $query_submitted = "INSERT INTO tblzhaformssubmitted
+                                 ()
+                          VALUES ()";
+ 
  echo $query_ans;
  exit;
  ?>
