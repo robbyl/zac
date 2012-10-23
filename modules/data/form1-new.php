@@ -348,7 +348,7 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="hiv_type[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
@@ -356,7 +356,7 @@ if (!empty($lang) && isset($lang)) {
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="most_risk[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
                                                 <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
@@ -373,14 +373,14 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="hiv_type[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
                                             <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                                         </select>
                                     </td>
-                                    <td><select name="" class="select" style="width: 240px;">
+                                    <td><select name="most_risk[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
                                                 <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
@@ -394,7 +394,7 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="hiv_type[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
@@ -402,7 +402,7 @@ if (!empty($lang) && isset($lang)) {
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="most_risk[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
                                                 <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
@@ -417,7 +417,7 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="hiv_type[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
@@ -425,7 +425,7 @@ if (!empty($lang) && isset($lang)) {
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="most_risk[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
                                                 <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
@@ -440,7 +440,7 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="hiv_type[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
@@ -448,7 +448,7 @@ if (!empty($lang) && isset($lang)) {
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="most_risk[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
                                                 <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
@@ -463,7 +463,7 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="hiv_type[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
@@ -471,7 +471,7 @@ if (!empty($lang) && isset($lang)) {
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="most_risk[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
                                                 <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
@@ -507,7 +507,7 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <select name="" class="select" style="width: 480px;">
+                                        <select name="hiv_inter[]" class="select" style="width: 480px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
@@ -523,7 +523,7 @@ if (!empty($lang) && isset($lang)) {
                                 <tr>
                                     <td colspan="2">
                                         <select name="" class="select" style="width: 480px;">
-                                            <option value=""></option>
+                                            <option value="hiv_inter[]"></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
                                             <?php } mysql_data_seek($result_hiv_intv, 0); ?>
@@ -538,6 +538,21 @@ if (!empty($lang) && isset($lang)) {
                                 <tr>
                                     <td colspan="2">
                                         <select name="" class="select" style="width: 480px;">
+                                            <option value="hiv_inter[]"></option>
+                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
+                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
+                                    <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
+                                    <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
+                                    <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <select name="hiv_inter[]" class="select" style="width: 480px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
@@ -552,22 +567,7 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <select name="" class="select" style="width: 480px;">
-                                            <option value=""></option>
-                                            <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
-                                                <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
-                                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
-                                        </select>
-                                    </td>
-                                    <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-                                    <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-                                    <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-                                    <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <select name="" class="select" style="width: 480px;">
+                                        <select name="hiv_inter[]" class="select" style="width: 480px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
@@ -582,7 +582,7 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <select name="" class="select" style="width: 480px;">
+                                        <select name="hiv_inter[]" class="select" style="width: 480px;">
                                             <option value=""></option>
                                             <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                                                 <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>

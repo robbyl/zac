@@ -26,11 +26,14 @@ $district = clean($_POST['district']);
 /* ########################### END SECTION A ############################### */
 
 // Geting form-data for data-section B data-set HP
+$hiv_type = clean_arr($_POST['hiv_type']);
+$most_risk = clean_arr($_POST['most_risk']);
 $hp1_male_younger = clean_arr($_POST['hp1_male_younger']);
 $hp1_female_younger = clean_arr($_POST['hp1_female_younger']);
 $hp1_male_older = clean_arr($_POST['hp1_male_older']);
 $hp1_female_older = clean_arr($_POST['hp1_female_older']);
 
+$hiv_inter = clean_arr($_POST['hiv_inter']);
 $hp2_male_younger = clean_arr($_POST['hp2_male_younger']);
 $hp2_female_younger = clean_arr($_POST['hp2_female_younger']);
 $hp2_male_older = clean_arr($_POST['hp2_male_older']);
@@ -145,52 +148,52 @@ $query_ans = "INSERT INTO tblzhafigures
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`)
                          
-                   VALUES ('$form_no', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '$hp1_male_younger[0]')";
+                   VALUES ('$form_no', 'HP1', ''$hiv_type[0]', '$most_risk[0]'', 'Y25', 'MAL', '$hp1_male_younger[0]')";
 
- if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
- if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
- if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  }
- if(!empty($hp1_male_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[1]. "')";  }
- if(!empty($hp1_female_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[1]. "')"; } 
- if(!empty($hp1_male_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[1]. "')";  }
- if(!empty($hp1_female_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[1]. "')";  }
- if(!empty($hp1_male_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[2]. "')";  }
- if(!empty($hp1_female_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[2]. "')";} 
- if(!empty($hp1_male_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[2]. "')";  } 
- if(!empty($hp1_female_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[2]. "')";  } 
- if(!empty($hp1_male_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[3]. "')";  } 
- if(!empty($hp1_female_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[3]. "')";  } 
- if(!empty($hp1_male_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[3]. "')";  } 
- if(!empty($hp1_female_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[3]. "')";  } 
- if(!empty($hp1_male_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp1_male_younger[4]. "')";  } 
- if(!empty($hp1_female_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp1_female_younger[4]. "')";  } 
- if(!empty($hp1_male_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'MAL', '" .$hp1_male_older[4]. "')";  } 
- if(!empty($hp1_female_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', 'EHP', 'OSC', '25O', 'FEM', '" .$hp1_female_older[4]. "')";  } 
+ if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
+ if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
+ if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  }
+ if(!empty($hp1_male_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[1]', '$most_risk[1]', 'Y25', 'MAL', '" .$hp1_male_younger[1]. "')";  }
+ if(!empty($hp1_female_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[1]', '$most_risk[1]', 'Y25', 'FEM', '" .$hp1_female_younger[1]. "')"; } 
+ if(!empty($hp1_male_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[1]', '$most_risk[1]', '25O', 'MAL', '" .$hp1_male_older[1]. "')";  }
+ if(!empty($hp1_female_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP1', ''$hiv_type[1]', '$most_risk[1]', '25O', 'FEM', '" .$hp1_female_older[1]. "')";  }
+ if(!empty($hp1_male_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[2]', '$most_risk[2]', 'Y25', 'MAL', '" .$hp1_male_younger[2]. "')";  }
+ if(!empty($hp1_female_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[2]', '$most_risk[2]', 'Y25', 'FEM', '" .$hp1_female_younger[2]. "')";} 
+ if(!empty($hp1_male_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[2]', '$most_risk[2]', '25O', 'MAL', '" .$hp1_male_older[2]. "')";  } 
+ if(!empty($hp1_female_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[2]', '$most_risk[2]', '25O', 'FEM', '" .$hp1_female_older[2]. "')";  } 
+ if(!empty($hp1_male_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[3]', '$most_risk[3]', 'Y25', 'MAL', '" .$hp1_male_younger[3]. "')";  } 
+ if(!empty($hp1_female_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[3]', '$most_risk[3]', 'Y25', 'FEM', '" .$hp1_female_younger[3]. "')";  } 
+ if(!empty($hp1_male_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[3]', '$most_risk[3]', '25O', 'MAL', '" .$hp1_male_older[3]. "')";  } 
+ if(!empty($hp1_female_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[3]', '$most_risk[3]', '25O', 'FEM', '" .$hp1_female_older[3]. "')";  } 
+ if(!empty($hp1_male_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[4]', '$most_risk[4]', 'Y25', 'MAL', '" .$hp1_male_younger[4]. "')";  } 
+ if(!empty($hp1_female_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[4]', '$most_risk[4]', 'Y25', 'FEM', '" .$hp1_female_younger[4]. "')";  } 
+ if(!empty($hp1_male_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[4]', '$most_risk[4]', '25O', 'MAL', '" .$hp1_male_older[4]. "')";  } 
+ if(!empty($hp1_female_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[4]', '$most_risk[4]', '25O', 'FEM', '" .$hp1_female_older[4]. "')";  } 
 
- if(!empty($hp2_male_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp2_male_younger[0]. "')";  } 
- if(!empty($hp2_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp2_female_younger[0]. "')";  } 
- if(!empty($hp2_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp2_male_older[0]. "')";  } 
- if(!empty($hp2_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp2_female_older[0]. "')";  } 
- if(!empty($hp2_male_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp2_male_younger[1]. "')";  } 
- if(!empty($hp2_female_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp2_female_younger[1]. "')";  } 
- if(!empty($hp2_male_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp2_male_older[1]. "')";  } 
- if(!empty($hp2_female_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp2_female_older[1]. "')";  } 
- if(!empty($hp2_male_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp2_male_younger[2]. "')";  } 
- if(!empty($hp2_female_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp2_female_younger[2]. "')";  } 
- if(!empty($hp2_male_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp2_male_older[2]. "')";  } 
- if(!empty($hp2_female_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp2_female_older[2]. "')";  } 
- if(!empty($hp2_male_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp2_male_younger[3]. "')";  } 
- if(!empty($hp2_female_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp2_female_younger[3]. "')";  } 
- if(!empty($hp2_male_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp2_male_older[3]. "')";  } 
- if(!empty($hp2_female_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp2_female_older[3]. "')";  } 
- if(!empty($hp2_male_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp2_male_younger[4]. "')";  } 
- if(!empty($hp2_female_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp2_female_younger[4]. "')";  } 
- if(!empty($hp2_male_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp2_male_older[4]. "')";  } 
- if(!empty($hp2_female_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp2_female_older[4]. "')";  } 
- if(!empty($hp2_male_younger[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'MAL', '" .$hp2_male_younger[5]. "')";  } 
- if(!empty($hp2_female_younger[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', 'Y25', 'FEM', '" .$hp2_female_younger[5]. "')";  } 
- if(!empty($hp2_male_older[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'MAL', '" .$hp2_male_older[5]. "')";  } 
- if(!empty($hp2_female_older[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', 'EHP', 'OSC', '25O', 'FEM', '" .$hp2_female_older[5]. "')";  } 
+ if(!empty($hp2_male_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[0]', 'Y25', 'MAL', '', '" .$hp2_male_younger[0]. "')";  } 
+ if(!empty($hp2_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[0]', 'Y25', 'FEM', '', '" .$hp2_female_younger[0]. "')";  } 
+ if(!empty($hp2_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[0]', '25O', 'MAL', '', '" .$hp2_male_older[0]. "')";  } 
+ if(!empty($hp2_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[0]', '25O', 'FEM', '', '" .$hp2_female_older[0]. "')";  } 
+ if(!empty($hp2_male_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[1]', 'Y25', 'MAL', '', '" .$hp2_male_younger[1]. "')";  } 
+ if(!empty($hp2_female_younger[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[1]', 'Y25', 'FEM', '', '" .$hp2_female_younger[1]. "')";  } 
+ if(!empty($hp2_male_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[1]', '25O', 'MAL', '', '" .$hp2_male_older[1]. "')";  } 
+ if(!empty($hp2_female_older[1])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[1]', '25O', 'FEM', '', '" .$hp2_female_older[1]. "')";  } 
+ if(!empty($hp2_male_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[2]', 'Y25', 'MAL', '', '" .$hp2_male_younger[2]. "')";  } 
+ if(!empty($hp2_female_younger[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[2]', 'Y25', 'FEM', '', '" .$hp2_female_younger[2]. "')";  } 
+ if(!empty($hp2_male_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[2]', '25O', 'MAL', '', '" .$hp2_male_older[2]. "')";  } 
+ if(!empty($hp2_female_older[2])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[2]', '25O', 'FEM', '', '" .$hp2_female_older[2]. "')";  } 
+ if(!empty($hp2_male_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[3]', 'Y25', 'MAL', '', '" .$hp2_male_younger[3]. "')";  } 
+ if(!empty($hp2_female_younger[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[3]', 'Y25', 'FEM', '', '" .$hp2_female_younger[3]. "')";  } 
+ if(!empty($hp2_male_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[3]', '25O', 'MAL', '', '" .$hp2_male_older[3]. "')";  } 
+ if(!empty($hp2_female_older[3])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[3]', '25O', 'FEM', '', '" .$hp2_female_older[3]. "')";  } 
+ if(!empty($hp2_male_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[4]', 'Y25', 'MAL', '', '" .$hp2_male_younger[4]. "')";  } 
+ if(!empty($hp2_female_younger[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[4]', 'Y25', 'FEM', '', '" .$hp2_female_younger[4]. "')";  } 
+ if(!empty($hp2_male_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[4]', '25O', 'MAL', '', '" .$hp2_male_older[4]. "')";  } 
+ if(!empty($hp2_female_older[4])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[4]', '25O', 'FEM', '', '" .$hp2_female_older[4]. "')";  } 
+ if(!empty($hp2_male_younger[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[5]', 'Y25', 'MAL', '', '" .$hp2_male_younger[5]. "')";  } 
+ if(!empty($hp2_female_younger[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[5]', 'Y25', 'FEM', '', '" .$hp2_female_younger[5]. "')";  } 
+ if(!empty($hp2_male_older[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[5]', '25O', 'MAL', '', '" .$hp2_male_older[5]. "')";  } 
+ if(!empty($hp2_female_older[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[5]', '25O', 'FEM', '', '" .$hp2_female_older[5]. "')";  } 
 
  if(!empty($hp3_radio_hrs)){ $query_ans .= ",('" . $form_no . "', 'HP3', 'RAD', '', '', '', '" .$hp3_radio_hrs. "')";  } 
  if(!empty($hp3_tv_hrs)){ $query_ans .= ",('" . $form_no . "', 'HP3', 'TV', '', '', '', '" .$hp3_tv_hrs. "')";  } 
