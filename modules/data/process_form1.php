@@ -365,9 +365,11 @@ $query_ans = "INSERT INTO tblzhafigures
  $result_submitted = mysql_query($query_submitted) or die(mysql_error());
  
  if($result_ans && $result_ansm && $result_submitted){
-     echo 'submitted';
+     info('message', 'Form saved successully!');
+     header("Location: ");
  }  else {
-     echo 'error!';
+     info('error', 'Cannot save. Please try again!');
+     header("Location: ");
 }
  
  ?>
