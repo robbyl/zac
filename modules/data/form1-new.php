@@ -189,7 +189,7 @@ if (!empty($lang) && isset($lang)) {
                 ?>
                 <h1>Add New ZHAPMoS Form 1</h1>
                 <div class="hr-line"></div>
-                <form action="process_form1.php" method="post">
+                <form action="process_form1.php" method="post" novalidate>
                     <div class="data-form-wapper">
                         <div class="form-header">
                             <div class="zanz-logo"></div>
@@ -223,7 +223,7 @@ if (!empty($lang) && isset($lang)) {
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
                                     <td colspan="3">
-                                        <select class="select" name="organisation" required style="width: 100%;">
+                                        <select class="select" name="org_name" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
                                             $query_org = "SELECT `OrganisationCode`, `OrganisationName` FROM tblgenorganisations ORDER BY `OrganisationName` ASC";
@@ -872,7 +872,121 @@ if (!empty($lang) && isset($lang)) {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <select name="" class="select" style="width: 240px;">
+                                        <select name="tc1_topic[]" class="select" style="width: 240px;">
+                                            <option value=""></option>
+                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
+                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                                            <?php } mysql_data_seek($result_training, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="tc1_topic[]" class="select" style="width: 240px;">
+                                            <option value=""></option>
+                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
+                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                                            <?php } mysql_data_seek($result_training, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="tc1_topic[]" class="select" style="width: 240px;">
+                                            <option value=""></option>
+                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
+                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                                            <?php } mysql_data_seek($result_training, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="tc1_topic[]" class="select" style="width: 240px;">
+                                            <option value=""></option>
+                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
+                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                                            <?php } mysql_data_seek($result_training, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="tc1_topic[]" class="select" style="width: 240px;">
+                                            <option value=""></option>
+                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
+                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                                            <?php } mysql_data_seek($result_training, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="tc1_topic[]" class="select" style="width: 240px;">
+                                            <option value=""></option>
+                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
+                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                                            <?php } mysql_data_seek($result_training, 0); ?>
+                                        </select>
+                                    </td>
+                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
+                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="tc1_topic[]" class="select" style="width: 240px;">
                                             <option value=""></option>
                                             <?php while ($training = mysql_fetch_array($result_training)) { ?>
                                                 <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
@@ -892,121 +1006,7 @@ if (!empty($lang) && isset($lang)) {
                                 <tr>
                                     <td>
                                         <select name="" class="select" style="width: 240px;">
-                                            <option value=""></option>
-                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
-                                            <?php } mysql_data_seek($result_training, 0); ?>
-                                        </select>
-                                    </td>
-                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select name="" class="select" style="width: 240px;">
-                                            <option value=""></option>
-                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
-                                            <?php } mysql_data_seek($result_training, 0); ?>
-                                        </select>
-                                    </td>
-                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select name="" class="select" style="width: 240px;">
-                                            <option value=""></option>
-                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
-                                            <?php } mysql_data_seek($result_training, 0); ?>
-                                        </select>
-                                    </td>
-                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select name="" class="select" style="width: 240px;">
-                                            <option value=""></option>
-                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
-                                            <?php } mysql_data_seek($result_training, 0); ?>
-                                        </select>
-                                    </td>
-                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select name="" class="select" style="width: 240px;">
-                                            <option value=""></option>
-                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
-                                            <?php } mysql_data_seek($result_training, 0); ?>
-                                        </select>
-                                    </td>
-                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select name="" class="select" style="width: 240px;">
-                                            <option value=""></option>
-                                            <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                                                <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
-                                            <?php } mysql_data_seek($result_training, 0); ?>
-                                        </select>
-                                    </td>
-                                    <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                    <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-                                    <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select name="" class="select" style="width: 240px;">
-                                            <option value=""></option>
+                                            <option value="tc1_topic[]"></option>
                                             <?php while ($training = mysql_fetch_array($result_training)) { ?>
                                                 <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
                                             <?php } mysql_data_seek($result_training, 0); ?>

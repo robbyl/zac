@@ -6,7 +6,25 @@ require '../../functions/general_functions.php';
 $form_no = clean($_POST['form_no']);
 
 // Geting form-data for data-section A data-set CD
-//$some = clean($_POST['some']);
+$org_name = clean($_POST['org_name']);
+$phy_addr = clean($_POST['phy_addr']);
+$post_addr = clean($_POST['post_addr']);
+$focal_per = clean($_POST['focal_per']);
+$focal_tel = clean($_POST['focal_tel']);
+$focal_fax = clean($_POST['focal_fax']);
+$focal_email = clean($_POST['focal_email']);
+$reg_no = clean($_POST['reg_no']);
+$is_umbrella = clean($_POST['is_umbrella']);
+$umbrella = clean($_POST['umbrella']);
+$org_date = clean($_POST['org_date']);
+$full_male = clean($_POST['full_male']);
+$full_female = clean($_POST['full_female']);
+$part_male = clean($_POST['part_male']);
+$part_female = clean($_POST['part_female']);
+$district = clean($_POST['district']);
+
+/* ########################### END SECTION A ############################### */
+
 // Geting form-data for data-section B data-set HP
 $hp1_male_younger = clean_arr($_POST['hp1_male_younger']);
 $hp1_female_younger = clean_arr($_POST['hp1_female_younger']);
@@ -189,7 +207,7 @@ $query_ans = "INSERT INTO tblzhafigures
 
  if(!empty($hp6_booklets)){ $query_ans .= ",('" . $form_no . "', 'HP6', 'BKL', '', '', '', '" .$hp6_booklets. "')";  } 
  if(!empty($hp6_posters)){ $query_ans .= ",('" . $form_no . "', 'HP6', 'POS', '', '', '', '" .$hp6_posters. "')";  } 
- // if(!empty($hp6_others)){ $query_ans .= ",('" . $form_no . "', 'HP6', 'RAA', '', '', '', '" .$hp6_others. "')";  } 
+ if(!empty($hp6_others)){ $query_ans .= ",('" . $form_no . "', 'HP6', 'RAA', '', '', '', '" .$hp6_others. "')";  } 
 
  if(!empty($hp7_male_condoms)){ $query_ans .= ",('" . $form_no . "', 'HP7', 'MCD', '', '', '', '" .$hp7_male_condoms. "')";  } 
  if(!empty($hp7_female_condoms)){ $query_ans .= ",('" . $form_no . "', 'HP7', 'FCD', '', '', '', '" .$hp7_female_condoms. "')";  } 
@@ -236,48 +254,48 @@ $query_ans = "INSERT INTO tblzhafigures
                     
  if(!empty($cs2_person_visit)){ $query_ans .= ",('" . $form_no . "', 'CS2', '', '', '', '', '" .$cs2_person_visit. "')";  } 
 
- if(!empty($tc1_volunteers_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[0]. "')";  } 
- if(!empty($tc1_volunteers_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[0]. "')";  } 
- if(!empty($tc1_staff_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[0]. "')";  } 
- if(!empty($tc1_staff_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[0]. "')";  } 
- if(!empty($tc1_employees_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[0]. "')";  } 
- if(!empty($tc1_employees_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[0]. "')";  } 
- if(!empty($tc1_volunteers_male[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[1]. "')";  } 
- if(!empty($tc1_volunteers_female[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[1]. "')";  } 
- if(!empty($tc1_staff_male[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[1]. "')";  } 
- if(!empty($tc1_staff_female[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[1]. "')";  } 
- if(!empty($tc1_employees_male[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[1]. "')";  } 
- if(!empty($tc1_employees_female[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[1]. "')";  } 
- if(!empty($tc1_volunteers_male[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[2]. "')";  } 
- if(!empty($tc1_volunteers_female[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[2]. "')";  } 
- if(!empty($tc1_staff_male[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[2]. "')";  } 
- if(!empty($tc1_staff_female[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[2]. "')";  } 
- if(!empty($tc1_employees_male[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[2]. "')";  } 
- if(!empty($tc1_employees_female[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[2]. "')";  } 
- if(!empty($tc1_volunteers_male[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[3]. "')";  } 
- if(!empty($tc1_volunteers_female[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[3]. "')";  } 
- if(!empty($tc1_staff_male[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[3]. "')";  } 
- if(!empty($tc1_staff_female[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[3]. "')";  } 
- if(!empty($tc1_employees_male[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[3]. "')";  } 
- if(!empty($tc1_employees_female[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[3]. "')";  } 
- if(!empty($tc1_volunteers_male[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[4]. "')";  } 
- if(!empty($tc1_volunteers_female[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[4]. "')";  } 
- if(!empty($tc1_staff_male[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[4]. "')";  } 
- if(!empty($tc1_staff_female[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[4]. "')";  } 
- if(!empty($tc1_employees_male[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[4]. "')";  } 
- if(!empty($tc1_employees_female[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[4]. "')";  } 
- if(!empty($tc1_volunteers_male[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[5]. "')";  } 
- if(!empty($tc1_volunteers_female[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[5]. "')";  } 
- if(!empty($tc1_staff_male[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[5]. "')";  } 
- if(!empty($tc1_staff_female[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[5]. "')";  } 
- if(!empty($tc1_employees_male[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[5]. "')";  } 
- if(!empty($tc1_employees_female[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[5]. "')";  } 
- if(!empty($tc1_volunteers_male[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[6]. "')";  } 
- if(!empty($tc1_volunteers_female[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[6]. "')";  } 
- if(!empty($tc1_staff_male[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'MAL', '', '" .$tc1_staff_male[6]. "')";  } 
- if(!empty($tc1_staff_female[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'PSF', 'FEM', '', '" .$tc1_staff_female[6]. "')";  } 
- if(!empty($tc1_employees_male[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'MAL', '', '" .$tc1_employees_male[6]. "')";  } 
- if(!empty($tc1_employees_female[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '', 'NSF', 'FEM', '', '" .$tc1_employees_female[6]. "')";  } 
+ if(!empty($tc1_volunteers_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[0]', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[0]. "')";  } 
+ if(!empty($tc1_volunteers_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[0]', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[0]. "')";  } 
+ if(!empty($tc1_staff_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[0]', 'PSF', 'MAL', '', '" .$tc1_staff_male[0]. "')";  } 
+ if(!empty($tc1_staff_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[0]', 'PSF', 'FEM', '', '" .$tc1_staff_female[0]. "')";  } 
+ if(!empty($tc1_employees_male[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[0]', 'NSF', 'MAL', '', '" .$tc1_employees_male[0]. "')";  } 
+ if(!empty($tc1_employees_female[0])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[0]', 'NSF', 'FEM', '', '" .$tc1_employees_female[0]. "')";  } 
+ if(!empty($tc1_volunteers_male[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[1]', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[1]. "')";  } 
+ if(!empty($tc1_volunteers_female[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[1]', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[1]. "')";  } 
+ if(!empty($tc1_staff_male[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[1]', 'PSF', 'MAL', '', '" .$tc1_staff_male[1]. "')";  } 
+ if(!empty($tc1_staff_female[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[1]', 'PSF', 'FEM', '', '" .$tc1_staff_female[1]. "')";  } 
+ if(!empty($tc1_employees_male[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[1]', 'NSF', 'MAL', '', '" .$tc1_employees_male[1]. "')";  } 
+ if(!empty($tc1_employees_female[1])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[1]', 'NSF', 'FEM', '', '" .$tc1_employees_female[1]. "')";  } 
+ if(!empty($tc1_volunteers_male[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[2]', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[2]. "')";  } 
+ if(!empty($tc1_volunteers_female[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[2]', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[2]. "')";  } 
+ if(!empty($tc1_staff_male[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[2]', 'PSF', 'MAL', '', '" .$tc1_staff_male[2]. "')";  } 
+ if(!empty($tc1_staff_female[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[2]', 'PSF', 'FEM', '', '" .$tc1_staff_female[2]. "')";  } 
+ if(!empty($tc1_employees_male[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[2]', 'NSF', 'MAL', '', '" .$tc1_employees_male[2]. "')";  } 
+ if(!empty($tc1_employees_female[2])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[2]', 'NSF', 'FEM', '', '" .$tc1_employees_female[2]. "')";  } 
+ if(!empty($tc1_volunteers_male[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[3]', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[3]. "')";  } 
+ if(!empty($tc1_volunteers_female[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[3]', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[3]. "')";  } 
+ if(!empty($tc1_staff_male[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[3]', 'PSF', 'MAL', '', '" .$tc1_staff_male[3]. "')";  } 
+ if(!empty($tc1_staff_female[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[3]', 'PSF', 'FEM', '', '" .$tc1_staff_female[3]. "')";  } 
+ if(!empty($tc1_employees_male[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[3]', 'NSF', 'MAL', '', '" .$tc1_employees_male[3]. "')";  } 
+ if(!empty($tc1_employees_female[3])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[3]', 'NSF', 'FEM', '', '" .$tc1_employees_female[3]. "')";  } 
+ if(!empty($tc1_volunteers_male[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[4]', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[4]. "')";  } 
+ if(!empty($tc1_volunteers_female[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[4]', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[4]. "')";  } 
+ if(!empty($tc1_staff_male[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[4]', 'PSF', 'MAL', '', '" .$tc1_staff_male[4]. "')";  } 
+ if(!empty($tc1_staff_female[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[4]', 'PSF', 'FEM', '', '" .$tc1_staff_female[4]. "')";  } 
+ if(!empty($tc1_employees_male[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[4]', 'NSF', 'MAL', '', '" .$tc1_employees_male[4]. "')";  } 
+ if(!empty($tc1_employees_female[4])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[4]', 'NSF', 'FEM', '', '" .$tc1_employees_female[4]. "')";  } 
+ if(!empty($tc1_volunteers_male[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[5]', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[5]. "')";  } 
+ if(!empty($tc1_volunteers_female[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[5]', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[5]. "')";  } 
+ if(!empty($tc1_staff_male[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[5]', 'PSF', 'MAL', '', '" .$tc1_staff_male[5]. "')";  } 
+ if(!empty($tc1_staff_female[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[5]', 'PSF', 'FEM', '', '" .$tc1_staff_female[5]. "')";  } 
+ if(!empty($tc1_employees_male[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[5]', 'NSF', 'MAL', '', '" .$tc1_employees_male[5]. "')";  } 
+ if(!empty($tc1_employees_female[5])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[5]', 'NSF', 'FEM', '', '" .$tc1_employees_female[5]. "')";  } 
+ if(!empty($tc1_volunteers_male[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[6]', 'VOL', 'MAL', '', '" .$tc1_volunteers_male[6]. "')";  } 
+ if(!empty($tc1_volunteers_female[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[6]', 'VOL', 'FEM', '', '" .$tc1_volunteers_female[6]. "')";  } 
+ if(!empty($tc1_staff_male[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[6]', 'PSF', 'MAL', '', '" .$tc1_staff_male[6]. "')";  } 
+ if(!empty($tc1_staff_female[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[6]', 'PSF', 'FEM', '', '" .$tc1_staff_female[6]. "')";  } 
+ if(!empty($tc1_employees_male[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[6]', 'NSF', 'MAL', '', '" .$tc1_employees_male[6]. "')";  } 
+ if(!empty($tc1_employees_female[6])){ $query_ans .= ",('" . $form_no . "', 'TC1', '$tc1_topic[6]', 'NSF', 'FEM', '', '" .$tc1_employees_female[6]. "')";  } 
 
  if(!empty($tc2_community)){ $query_ans .= ",('" . $form_no . "', 'TC2', '', '', '', '', '" .$tc2_community. "')"; }
  
