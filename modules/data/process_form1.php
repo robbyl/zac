@@ -326,16 +326,16 @@ $query_ans = "INSERT INTO tblzhafigures
  
  if(!empty($mc4_tshs)){ $query_ans .= ",('" . $form_no . "', 'MC4', '', '', '', '', '" .$mc4_tshs. "')"; } 
  
- // $result_ans = mysql_query($query_ans) or die(mysql_error());
+  $result_ans = mysql_query($query_ans) or die(mysql_error());
 
  $query_ansm = "INSERT INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
                     VALUES (";
- if(!empty($$mc1_mngmnt)){ $query_ansm .= "'$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
+ if(!empty($mc1_mngmnt)){ $query_ansm .= "'$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
 
  if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
  
- if(!empty($mc5_activity)){ $query_ansm .= ",('" . $form_no . "', 'MC5', '" . $mc5_activity . "', '', '')"; } 
+ if(!empty($mc5_activity)){ $query_ansm .= ",('" .$form_no . "', 'MC5', '" . $mc5_activity . "', '', '')"; } 
  
  if(!empty($mc6a)){ $query_ansm .= ",('" . $form_no . "', 'MC6a', '" . $mc6a . "', '', '')"; } 
  if(!empty($mc6b)){ $query_ansm .= ",('" . $form_no . "', 'MC6b', '" . $mc6b . "', '', '')"; } 
@@ -346,21 +346,28 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($mc6g)){ $query_ansm .= ",('" . $form_no . "', 'MC6g', '" . $mc6g . "', '', '')"; } 
  if(!empty($mc6h)){ $query_ansm .= ",('" . $form_no . "', 'MC6h', '" . $mc6h . "', '', '')"; } 
  
-// $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+ $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  
+ $period_from = '2008-01-01';
+ $period_to = '2008-03-31';
  $query_submitted = "INSERT INTO tblzhaformssubmitted
                                  (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
                                   `PeriodFrom`, `PeriodTo`, `CompletedByPersonID`, `DateCompleted`,
                                   `ApprovedByPersonID`, `DateApproved`, `DateReceived`, `DateCaptured`,
-                                  `CapturedByUserID`, `DateFiled`, `NotesWrittenOnForm`, `DataEntryNotes`)
+                                  `CapturedByUserID`, `DateFiled`, `VerifiedByUserID`, `DateVerified`,
+                                  `NotesWrittenOnForm`, `DataEntryNotes`)
                           VALUES ('$form_no', '$reg_no', '$district',
                                   '$period_from', '$period_to', '$completed_by', '$completed_date',
                                   '$approved_by', '$approved_date', '$received_date', '$captured_date',
-                                  '$captured_by', '$filed_date', '$comments', '$comments_zac')";
+                                  '$captured_by', '$filed_date', '$verified_by', '$verified_date',
+                                  '$comments', '$comments_zac')";
  
  $result_submitted = mysql_query($query_submitted) or die(mysql_error());
  
- echo $query_ans;
- exit;
+ if($result_ans && $result_ansm && $result_submitted){
+     echo 'submitted';
+ }  else {
+     echo 'error!';
+}
+ 
  ?>
-<?php echo $query_ans ?>
