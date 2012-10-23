@@ -349,8 +349,16 @@ $query_ans = "INSERT INTO tblzhafigures
 // $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  
  $query_submitted = "INSERT INTO tblzhaformssubmitted
-                                 ()
-                          VALUES ()";
+                                 (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
+                                  `PeriodFrom`, `PeriodTo`, `CompletedByPersonID`, `DateCompleted`,
+                                  `ApprovedByPersonID`, `DateApproved`, `DateReceived`, `DateCaptured`,
+                                  `CapturedByUserID`, `DateFiled`, `NotesWrittenOnForm`, `DataEntryNotes`)
+                          VALUES ('$form_no', '$reg_no', '$district',
+                                  '$period_from', '$period_to', '$completed_by', '$completed_date',
+                                  '$approved_by', '$approved_date', '$received_date', '$captured_date',
+                                  '$captured_by', '$filed_date', '$comments', '$comments_zac')";
+ 
+ $result_submitted = mysql_query($query_submitted) or die(mysql_error());
  
  echo $query_ans;
  exit;
