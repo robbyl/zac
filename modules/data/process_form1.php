@@ -3,6 +3,7 @@
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
+$lang = clean($_POST['lang']);
 $form_no = clean($_POST['form_no']);
 
 // Geting form-data for data-section A data-set CD
@@ -366,10 +367,10 @@ $query_ans = "INSERT INTO tblzhafigures
  
  if($result_ans && $result_ansm && $result_submitted){
      info('message', 'Form saved successully!');
-     header("Location: ");
+     header("Location: form1.php?lang=" . $lang);
  }  else {
      info('error', 'Cannot save. Please try again!');
-     header("Location: ");
+     header("Location: form1.php?lang=" . $lang);
 }
  
  ?>

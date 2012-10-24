@@ -190,6 +190,7 @@ if (!empty($lang) && isset($lang)) {
                 <h1>Add New ZHAPMoS Form 1</h1>
                 <div class="hr-line"></div>
                 <form action="process_form1.php" method="post" novalidate>
+                    <input type="hidden" name="lang" value="<?php echo $lang ?>">
                     <div class="data-form-wapper">
                         <div class="form-header">
                             <div class="zanz-logo"></div>
