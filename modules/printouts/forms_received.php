@@ -3,154 +3,31 @@
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
-// Getting last form serial number
-$query_form_id = "SELECT MAX(`FormSerialNumber`) AS last_serial
-                    FROM tblzhaformssubmitted
-                   WHERE `FormSerialNumber`
-                    LIKE 'F1-%'";
+$query_received = "SELECT `FormSerialNumber`, `OrganisationName`, dis.`District`,
+                          DATE(`PeriodFrom`) AS PeriodFrom, DATE(`PeriodTo`) AS PeriodTo
+                     FROM tblzhaformssubmitted sub
+                LEFT JOIN tblgenorganisations org
+                       ON sub.`OrganisationCode` = org.`OrganisationCode`
+                LEFT JOIN tblgensetupdistricts dis
+                       ON sub.`DistrictCode` = dis.`DistrictCode`
+                 GROUP BY FormSerialNumber
+                 ORDER BY `FormSerialNumber` ASC,`PeriodFrom`";
 
-$result_form_id = mysql_query($query_form_id) or die(mysql_error());
-
-$last_serial = mysql_fetch_array($result_form_id);
-
-$form_serial_no = $last_serial['last_serial'];
-
-$no = explode("-", $form_serial_no);
-$expl_no = $no[1];
-$expl_no++;
-$form_serial_no = 'F1-' . $expl_no;
-
-$lang = clean($_GET['lang']);
-
-if (!empty($lang) && isset($lang)) {
-    switch ($lang) {
-        case "en": // In case selected language is English, load English version form.
-
-            include 'lang/en.php';
-
-            $query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionEnglish`,
-                          typ1.`BreakdownTypeDescription` AS BreakdownTypeDescription1,
-                          typ2.`BreakdownTypeDescription` AS BreakdownTypeDescription2,
-                          typ3.`BreakdownTypeDescription` AS BreakdownTypeDescription3,
-                          typ4.`BreakdownTypeDescription` AS BreakdownTypeDescription4
-                     FROM tblzhasetupfigures fig
-                LEFT JOIN tblzhasetupfigurebreakdowntypes typ1
-                       ON fig.`BreakdownCategoryID1` = typ1.`BreakdownCategoryID`
-                LEFT JOIN tblzhasetupfigurebreakdowntypes typ2
-                       ON fig.`BreakdownCategoryID2` = typ2.`BreakdownCategoryID`
-                LEFT JOIN tblzhasetupfigurebreakdowntypes typ3
-                       ON fig.`BreakdownCategoryID3` = typ3.`BreakdownCategoryID`
-                LEFT JOIN tblzhasetupfigurebreakdowntypes typ4
-                       ON fig.`BreakdownCategoryID4` = typ4.`BreakdownCategoryID`";
-
-            $result_section = mysql_query($query_section) or die(mysql_error());
-
-            while ($section = mysql_fetch_array($result_section)) {
-                $ZhaFigureDescription[$section['ZhaFigureCode']][] = $section['ZhaFigureDescriptionEnglish'];
-                $BreakdownTypeDescription1[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription1'];
-                $BreakdownTypeDescription2[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription2'];
-                $BreakdownTypeDescription3[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription3'];
-                $BreakdownTypeDescription4[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription4'];
-            }
-
-            $query_setup_qns = "SELECT `ZhaQuestionCode`, `ZhaQuestionDescriptionEnglish`
-                                  FROM tblzhasetupquestions";
-
-            $result_setup_qns = mysql_query($query_setup_qns) or die(mysql_error());
-
-            while ($sectionqn = mysql_fetch_array($result_setup_qns)) {
-                $ZhaFigureDescriptionqn[$sectionqn['ZhaQuestionCode']][] = $sectionqn['ZhaQuestionDescriptionEnglish'];
-            }
-
-            $query_hiv_intv = "SELECT `BreakdownTypeID`, `BreakdownTypeDescription` AS breakdown
-                                 FROM `tblzhasetupfigurebreakdowntypes`
-                                WHERE `BreakdownCategoryID` = 'HVI'
-                             ORDER BY `BreakdownTypeDescription` ASC";
-
-            $result_hiv_intv = mysql_query($query_hiv_intv) or die(mysql_error());
-
-            $query_risk = "SELECT `BreakdownTypeID`, `BreakdownTypeDescription` AS breakdownrisk
-                             FROM `tblzhasetupfigurebreakdowntypes`
-                            WHERE `BreakdownCategoryID` = 'MRV'
-                         ORDER BY `BreakdownTypeDescription` ASC";
-
-            $result_risk = mysql_query($query_risk) or die(mysql_error());
-
-            $query_training = "SELECT `BreakdownTypeID`, `BreakdownTypeDescription` AS breakdowntraining
-                                 FROM `tblzhasetupfigurebreakdowntypes`
-                                WHERE `BreakdownCategoryID` = 'TRG'
-                             ORDER BY `BreakdownTypeDescription` ASC";
-
-            $result_training = mysql_query($query_training) or die(mysql_error());
-
-            break;
-
-        case "sw": // In case selected language is Kiswahili, load Kiswahili version form.
-
-            include 'lang/sw.php';
-
-            $query_section = "SELECT `ZhaFigureCode`, `ZhaFigureDescriptionSwahili`,
-                          typ1.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription1,
-                          typ2.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription2,
-                          typ3.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription3,
-                          typ4.`BreakdownTypeDescriptionSwahili` AS BreakdownTypeDescription4
-                     FROM tblzhasetupfigures fig
-                LEFT JOIN tblzhasetupfigurebreakdowntypes typ1
-                       ON fig.`BreakdownCategoryID1` = typ1.`BreakdownCategoryID`
-                LEFT JOIN tblzhasetupfigurebreakdowntypes typ2
-                       ON fig.`BreakdownCategoryID2` = typ2.`BreakdownCategoryID`
-                LEFT JOIN tblzhasetupfigurebreakdowntypes typ3
-                       ON fig.`BreakdownCategoryID3` = typ3.`BreakdownCategoryID`
-                LEFT JOIN tblzhasetupfigurebreakdowntypes typ4
-                       ON fig.`BreakdownCategoryID4` = typ4.`BreakdownCategoryID`";
-
-            $result_section = mysql_query($query_section) or die(mysql_error());
-
-            while ($section = mysql_fetch_array($result_section)) {
-                $ZhaFigureDescription[$section['ZhaFigureCode']][] = $section['ZhaFigureDescriptionSwahili'];
-                $BreakdownTypeDescription1[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription1'];
-                $BreakdownTypeDescription2[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription2'];
-                $BreakdownTypeDescription3[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription3'];
-                $BreakdownTypeDescription4[$section['ZhaFigureCode']][] = $section['BreakdownTypeDescription4'];
-            }
-
-            $query_setup_qns = "SELECT `ZhaQuestionCode`, `ZhaQuestionDescriptionSwahili`
-                                  FROM tblzhasetupquestions";
-
-            $result_setup_qns = mysql_query($query_setup_qns) or die(mysql_error());
-
-            while ($sectionqn = mysql_fetch_array($result_setup_qns)) {
-                $ZhaFigureDescriptionqn[$sectionqn['ZhaQuestionCode']][] = $sectionqn['ZhaQuestionDescriptionSwahili'];
-            }
-
-            $query_hiv_intv = "SELECT `BreakdownTypeID`, `BreakdownTypeDescriptionSwahili` AS breakdown
-                                 FROM `tblzhasetupfigurebreakdowntypes`
-                                WHERE `BreakdownCategoryID` = 'HVI'
-                             ORDER BY `BreakdownTypeDescriptionSwahili` ASC";
-
-            $result_hiv_intv = mysql_query($query_hiv_intv) or die(mysql_error());
-
-            $query_risk = "SELECT `BreakdownTypeID`, `BreakdownTypeDescriptionSwahili` AS breakdownrisk
-                             FROM `tblzhasetupfigurebreakdowntypes`
-                            WHERE `BreakdownCategoryID` = 'MRV'
-                         ORDER BY `BreakdownTypeDescriptionSwahili` ASC";
-
-            $result_risk = mysql_query($query_risk) or die(mysql_error());
-
-            $query_training = "SELECT `BreakdownTypeID`, `BreakdownTypeDescriptionSwahili` AS breakdowntraining
-                                 FROM `tblzhasetupfigurebreakdowntypes`
-                                WHERE `BreakdownCategoryID` = 'TRG'
-                             ORDER BY `BreakdownTypeDescriptionSwahili` ASC";
-
-            $result_training = mysql_query($query_training) or die(mysql_error());
-
-            break;
-
-        default:
-            exit(0);
-            break;
-    }
+$result = mysql_query($query_received) or die(mysql_error());
+$forms = array();
+while ($data = mysql_fetch_assoc($result)) {
+    $forms[$data['PeriodFrom']][] = $data;
 }
+foreach ($forms as $PeriodFrom => $FormSerialNumber) {
+    echo '<p>' . $PeriodFrom . '</p>';
+    echo '<ul>';
+    foreach ($FormSerialNumber as $rec_forms) {
+        echo '<li>' . $rec_forms['FormSerialNumber'] . '<li>'; 
+    }
+    echo '</ul>';
+}
+
+exit;
 ?>
 <!doctype html>
 <html>
@@ -225,14 +102,14 @@ if (!empty($lang) && isset($lang)) {
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td>
-                                        <p>
-                                        <select name="" class="select">
-                                        <option></option>
-                                        </select>
-                                        <select name="" class="select">
-                                        <option></option>
-                                        </select>
-                                        </p>
+                                            <p>
+                                                <select name="" class="select">
+                                                    <option></option>
+                                                </select>
+                                                <select name="" class="select">
+                                                    <option></option>
+                                                </select>
+                                            </p>
                                         </td>
                                         <td>&nbsp;</td>
                                         <td align="right">Form No:</td>
