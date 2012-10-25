@@ -60,15 +60,15 @@
                         <legend>Account Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="163">Current Password</td>
+                                <td width="200">Current Password</td>
                                 <td width="300"><input type="password" name="curr_pass" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="163">New Password</td>
+                                <td>New Password</td>
                                 <td><input type="password" name="new_pass" id="new_pass" required size="255" class="text" ></td>
                             </tr>
                             <tr>
-                                <td width="163">Repeat New Password</td>
+                                <td>Repeat New Password</td>
                                 <td>
                                     <input type="password" name="rep_new_pass" id="rep_new_pass"
                                            required size="255" oninput="check(this)" class="text" >

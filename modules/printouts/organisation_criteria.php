@@ -103,7 +103,7 @@
                 <!-- end .form-body --></div>
             <table width="100%" class="form-footer">
                 <tr align="right">
-                    <td width=""><button type="submit">Save</button>
+                    <td width=""><button type="submit">Generate</button>
                         <button type="reset" id="clear" style="margin-right: 0">Reset</button></td>
                 </tr>
             </table>

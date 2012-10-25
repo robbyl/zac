@@ -411,7 +411,7 @@ input[disabled] {
 }
 
 .text {
-    width: 150px;
+    width: 300px;
     text-align: left;
     /*    font-weight: bold;*/
 }

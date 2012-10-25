@@ -10,6 +10,11 @@ require '../../config/config.php';
         <title>SOFTBILL | ADD USER</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <style type="text/css">
+            .text {
+                width: auto;
+            }
+        </style>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.message, .error').hide().slideDown('normal').click(function() {

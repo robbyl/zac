@@ -7,6 +7,7 @@
         <title>SOFTBILL | ADD USER</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.message, .error').hide().slideDown('normal').click(function(){
@@ -48,27 +49,27 @@
                         <legend>User Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="100">First Name</td>
+                                <td width="200">First Name</td>
                                 <td><input type="text" name="usr_fname" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="100">Middle Name</td>
+                                <td>Middle Name</td>
                                 <td><input type="text" name="usr_lname" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="100">Sir Name</td>
+                                <td>Sir Name</td>
                                 <td><input type="text" name="sir_name" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="100">Phone</td>
+                                <td>Phone</td>
                                 <td><input type="tel" name="phone" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="100">Fax</td>
+                                <td>Fax</td>
                                 <td><input type="tel" name="fax" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="100">E-mail</td>
+                                <td>E-mail</td>
                                 <td><input type="email" name="email" required size="255" class="text"></td>
                             </tr>
                         </table>
@@ -77,15 +78,15 @@
                         <legend>Account Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="100">User Name</td>
+                                <td width="200">User Name</td>
                                 <td><input type="text" name="username" required size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="100">Password</td>
+                                <td>Password</td>
                                 <td><input type="password" name="password" required size="255" class="text" ></td>
                             </tr>
                             <tr>
-                                <td width="100">Role</td>
+                                <td>Role</td>
                                 <td><select name="role" class="select" required="required">
                                         <option value="">-- Select role --</option>
                                         <option value="ROOT">Administrator</option>

@@ -65,17 +65,17 @@ $row = mysql_fetch_array($result_user);
                         <table width="" border="0" cellpadding="5">
                             <input name="user_id" value="<?php echo $row['user_id'] ?>" type="hidden" />
                             <tr>
-                                <td width="100">First Name</td>
+                                <td width="200">First Name</td>
                                 <td><input type="text" name="fname" value="<?php echo $row['usr_fname'] ?>" required size="255" class="text"></td>
 
                             </tr>
                             <tr>
-                                <td width="100">Last Name</td>
+                                <td>Last Name</td>
                                 <td><input type="text" name="lname" value="<?php echo $row['usr_lname'] ?>" required size="255" class="text"></td>
 
                             </tr>
                             <tr>
-                                <td width="100">E-mail</td>
+                                <td>E-mail</td>
                                 <td><input type="email" name="email"  value="<?php echo $row['email'] ?>" required size="255" class="text"></td>
                             </tr>
                         </table>
@@ -84,25 +84,25 @@ $row = mysql_fetch_array($result_user);
                         <legend>Account Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="100">User Name</td>
+                                <td width="200">User Name</td>
                                 <td><input type="text" name="username" value="<?php echo $row['username'] ?>" disabled="disabled" size="255" class="text"></td>
                             </tr>
                             <tr>
-                                <td width="100">Password</td>
+                                <td>Password</td>
                                 <td><input type="password" name="password" value="*********" disabled="disabled" size="255" class="text" ></td>
                             </tr>
                             <tr>
-                                <td width="100">Role</td>
+                                <td>Role</td>
                                 <td><input type="text" value="<?php echo $row['role'] ?>" class="text" disabled="disabled" /></td>
                             </tr>
 
                         </table>
 
                     </fieldset>
-                    <table width="372">
+                    <table width="616" border="0" cellpadding="5">
                         <tr>
-                            <td width="143">&nbsp;</td>
-                            <td width="217"><button type="submit" style="margin-top: 0px;">Update</button>
+                            <td width="228">&nbsp;</td>
+                            <td width="362"><button type="submit" style="margin-top: 0px;">Update</button>
                                 <button type="reset" style="margin-top: 0px;">Reset</button></td>
                         </tr>
                     </table>
