@@ -11,6 +11,7 @@ ob_start();
         <title>SOFTBILL | GENERATE INVOICES</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/zanhid-core.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
         <style type="text/css">
             textarea {
@@ -18,9 +19,15 @@ ob_start();
             }
         </style>
         <script type="text/javascript">
-            $(document).ready(function(){
-                $('.message, .error').hide().slideDown('normal').click(function(){
+            $(document).ready(function() {
+                $('.message, .error').hide().slideDown('normal').click(function() {
                     $(this).slideUp('normal');
+                });
+
+                $('#org-list').click(function() {
+ 
+                    // Display form category and language as pop-up
+                    getPopForm('organisation_criteria.php', '');
                 });
             });
             ddaccordion.init({
@@ -36,20 +43,21 @@ ob_start();
                 toggleclass: ["", "openheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
                 togglehtml: ["prefix", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
                 animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
-                oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
+                oninit: function(headers, expandedindices) { //custom code to run when headers have initalized
                     //do nothing
                 },
-                onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+                onopenclose: function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
                     //do nothing
                 }
             })
-            
+
         </script>
     </head>
 
     <body>
         <div class="container">
             <?php require '../../includes/header.php'; ?>
+            <div id="pop-up"></div>
             <div class="sidebar">
                 <?php session_start(); ?>
                 <div class="arrowlistmenu">
@@ -187,7 +195,7 @@ ob_start();
                     <fieldset>
                         <legend>Financial Reports</legend>
                         <ul class="report-list">
-                            <li><a href="#">Organisation list and Contacts Details</a></li>
+                            <li><a href="#" id="org-list">Organisation list and Contacts Details</a></li>
                             <li><a href="#">ZHAPMoS Forms Received</a></li>
                             <li><a href="#">ZHAPMoS Forms Submission Records</a></li>
                             <li><a href="#">ZAC and District Staff List</a></li>
