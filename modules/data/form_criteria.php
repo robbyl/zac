@@ -1,9 +1,25 @@
 <link href="../../css/layout.css" rel="stylesheet" type="text/css">
 <link href="../../css/pop-up.css" rel="stylesheet" type="text/css">
+<link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
+
 <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
 <script src="../../js/zanhid-core.js" type="text/javascript"></script>
+<script src="../../js/tooltip.js" type="text/javascript"></script>
+
+<style type="text/css">
+    .form-body {
+        height: 200px;
+    }
+    .pop-up-form {
+        height: auto;
+    }
+</style>
 <script type="text/javascript">
     $(document).ready(function() {
+
+        $('.tooltip').tipTip({
+            delay: "300"
+        });
 
         $('.close').click(function() {
             $('.pop-up-wrapper').fadeOut('fast', function() {
@@ -11,14 +27,14 @@
                 $('body').css('overflow', 'visible');
             });
         });
-        
-        
+
+
         $('#form-type').submit(function(event) {
             event.preventDefault();
 
             var form = $('#select-form').val();
             var lang = $('input[name=language]:checked').val();
-            
+
             switch (form) {
                 case "1" :
                     nav("form1.php?lang=" + lang);
@@ -82,8 +98,8 @@
                     <tr>
                         <td width="170">Language</td>
                         <td>
-                            <div class="lang en"><input type="radio" name="language" value="en" required=""></div>
-                            <div class="lang sw"><input type="radio" name="language" value="sw" required=""></div></td>
+                            <label class="lang en tooltip" title="English"><input type="radio" name="language" value="en" required=""></label>
+                            <label class="lang sw tooltip" title="Kiswahili"><input type="radio" name="language" value="sw" required=""></label></td>
                     </tr>
                 </table>
                 <!-- end .form-body --></div>

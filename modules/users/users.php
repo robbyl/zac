@@ -84,6 +84,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 $('.tooltip').tipTip({
                     delay: "300"
                 });
+                
                 var num = $('.current').parentsUntil(this).length;
                 alert(num);
             } );

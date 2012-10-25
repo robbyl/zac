@@ -57,8 +57,9 @@ ob_start();
 
     <body>
         <div class="container">
-            <div id="pop-up"></div>
+            
             <?php require '../../includes/header.php'; ?>
+            <div id="pop-up"></div>
             <div class="sidebar">
                 <?php session_start(); ?>
                 <div class="arrowlistmenu">
