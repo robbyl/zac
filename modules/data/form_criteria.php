@@ -1,3 +1,4 @@
+
 <link href="../../css/layout.css" rel="stylesheet" type="text/css">
 <link href="../../css/pop-up.css" rel="stylesheet" type="text/css">
 <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
@@ -19,6 +20,11 @@
 
         $('.tooltip').tipTip({
             delay: "300"
+        });
+
+        $('.tip_left').tipTip({
+            delay: 300,
+            defaultPosition: "left"
         });
 
         $('.close').click(function() {
@@ -67,7 +73,7 @@
         include '../../includes/info.php';
         ?>
         <div class="form-header">
-            <div class="close"></div><h1>ZHAPMoS Form Type</h1>
+            <div class="close tip_left "title="Close"></div><h1>ZHAPMoS Form Type</h1>
             <div class="hr-line"></div>
             <!-- end . form-header --></div>
 
