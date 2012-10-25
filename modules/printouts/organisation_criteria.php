@@ -17,6 +17,32 @@
             defaultPosition: "left"
         });
 
+        $('.close').click(function() {
+            $('.pop-up-wrapper').fadeOut('fast', function() {
+                $(this).hide();
+                $('body').css('overflow', 'visible');
+            });
+        });
+
+        $('#by_category').change(function() {
+
+            if (this.checked) {
+                $('#org_cat').attr('required', 'required');
+                $('#org-category').show();
+            }
+        });
+
+        $('#not-by-cat1, #not-by-cat2, #clear').click(function() {
+            $('#org_cat').val("").removeAttr('required');
+            $('#org-category').css('display', 'none');
+        });
+
+        $('#form-org-creteria').submit(function(event) {
+  
+             event.preventDefault();
+             nav('print_organisations.php');
+        });
+
     });
 </script>
 <div class="pop-up-wrapper">
@@ -26,55 +52,59 @@
         include '../../includes/info.php';
         ?>
         <div class="form-header">
-            <div class="close tip_left" title="Close" ></div><h1>Add Customer</h1>
+            <div class="close tip_left" title="Close" ></div>
+            <h1>Organisation Criteria</h1>
             <div class="hr-line"></div>
             <!-- end . form-header --></div>
 
-        <form action="../customers/process_add_customer.php" method="post" >
+        <form action="#" method="post" id="form-org-creteria" >
             <div class="form-body">
                 <table width="" border="0" cellpadding="5">
                     <tr>
-                        <td><label><input type="radio" name="" value="" required> All Organisations</label></td>
+                        <td><label><input type="radio" name="org_creteria1" value="" id="not-by-cat1"  required> All Organisations</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="" value="" required=""> ZHAPMos Reporting organisations</label></td>
-                    </tr>
-                    <tr>
-                        <td><label><input type="radio" name="" value="" required=""> Particular Category of Organisations</label></td>
-                    </tr>
-                    <tr class="org-category">
                         <td>
-                    <select name="org_cat" class="select" required="" style="width: 390px;">
-                        <option></option> 
-                        <?php
-                        require '../../config/config.php';
-                        $query_cat = "SELECT `OrganisationCategoryID`, `OrganisationCategoryDescription`
+                            <label>
+                                <input type="radio" name="org_creteria1" value="" required="" id="not-by-cat2"> ZHAPMos Reporting organisations</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="org_creteria1" value="" required="" id="by_category"> Particular Category of Organisations</label></td>
+                    </tr>
+                    <tr id="org-category" style="display: none">
+                        <td>
+                            <select name="org_cat" id="org_cat" class="select" required="" style="width: 390px; margin-left: 25px">
+                                <option value=""></option> 
+                                <?php
+                                require '../../config/config.php';
+                                $query_cat = "SELECT `OrganisationCategoryID`, `OrganisationCategoryDescription`
                                                             FROM tblgensetuporganisationcategories
                                                         ORDER BY `OrganisationCategoryDescription` ASC";
-                        $result_cat = mysql_query($query_cat) or die(mysql_error());
-                        while ($cat = mysql_fetch_array($result_cat)) {
-                            ?>
-                            <option value="<?php echo $cat['OrganisationCategoryID'] ?>"><?php echo $cat['OrganisationCategoryDescription'] ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
+                                $result_cat = mysql_query($query_cat) or die(mysql_error());
+                                while ($cat = mysql_fetch_array($result_cat)) {
+                                    ?>
+                                    <option value="<?php echo $cat['OrganisationCategoryID'] ?>"><?php echo $cat['OrganisationCategoryDescription'] ?></option>
+                                    <?php
+                                }
+                                mysql_close($conn);
+                                ?>
+                            </select>
                         </td>
                     </tr>
                 </table>
                 <table width="" border="0" cellpadding="5" style="margin-top: 50px;">
                     <tr>
-                        <td><label><input type="radio" name="" value="" required=""> Organisation Details Only</label></td>
+                        <td><label><input type="radio" name="org_creteria2" value="" required=""> Organisation Details Only</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="" value="" required=""> Organisation and People Details</label></td>
+                        <td><label><input type="radio" name="org_creteria2" value="" required=""> Organisation and People Details</label></td>
                     </tr>
                 </table>
                 <!-- end .form-body --></div>
             <table width="100%" class="form-footer">
                 <tr align="right">
                     <td width=""><button type="submit">Save</button>
-                        <button type="reset" style="margin-right: 0">Reset</button></td>
+                        <button type="reset" id="clear" style="margin-right: 0">Reset</button></td>
                 </tr>
             </table>
         </form>
