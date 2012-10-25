@@ -34,19 +34,19 @@
             <div class="form-body">
                 <table width="" border="0" cellpadding="5">
                     <tr>
-                        <td><label><input type="radio" name="" value="" required=""> All Organisations</label></td>
+                        <td><label><input type="radio" name="" value="" required> All Organisations</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="" value="" required=""> ZHAPMos reporting organisations</label></td>
+                        <td><label><input type="radio" name="" value="" required=""> ZHAPMos Reporting organisations</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="" value="" required="">Particular catercory of organisations</label></td>
+                        <td><label><input type="radio" name="" value="" required=""> Particular Category of Organisations</label></td>
                     </tr>
                     <tr>
-                        <td<label><input type="radio" name="" value="" required="">>Organisation details only</label></td>
+                        <td><label><input type="radio" name="" value="" required=""> Organisation Details Only</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="" value="" required="">organisation and people details</label></td>
+                        <td><label><input type="radio" name="" value="" required=""> Organisation and People Details</label></td>
                     </tr>
                 </table>
                 <!-- end .form-body --></div>
