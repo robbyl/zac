@@ -42,6 +42,27 @@
                     <tr>
                         <td><label><input type="radio" name="" value="" required=""> Particular Category of Organisations</label></td>
                     </tr>
+                    <tr class="org-category">
+                        <td>
+                    <select name="org_cat" class="select" required="" style="width: 390px;">
+                        <option></option> 
+                        <?php
+                        require '../../config/config.php';
+                        $query_cat = "SELECT `OrganisationCategoryID`, `OrganisationCategoryDescription`
+                                                            FROM tblgensetuporganisationcategories
+                                                        ORDER BY `OrganisationCategoryDescription` ASC";
+                        $result_cat = mysql_query($query_cat) or die(mysql_error());
+                        while ($cat = mysql_fetch_array($result_cat)) {
+                            ?>
+                            <option value="<?php echo $cat['OrganisationCategoryID'] ?>"><?php echo $cat['OrganisationCategoryDescription'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                        </td>
+                    </tr>
+                </table>
+                <table width="" border="0" cellpadding="5" style="margin-top: 50px;">
                     <tr>
                         <td><label><input type="radio" name="" value="" required=""> Organisation Details Only</label></td>
                     </tr>
