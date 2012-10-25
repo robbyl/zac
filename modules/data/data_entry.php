@@ -191,20 +191,16 @@ ob_start();
                 // Displaying message and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Generate Reports</h1>
+                <h1>Data Entry</h1>
                 <div class="hr-line"></div>
                 <form action="" method="post" >
                     <fieldset>
-                        <legend>Financial Reports</legend>
+                        <legend>Data Entry Options</legend>
                         <ul class="report-list">
                             <li><a href="new_organisation.php">Add Orangisations and People</a></li>
                             <li><a href="organisations.php">View Organisations</a></li>
                             <li><a href="#" id="form-creteria">Add ZHAPMoS Form</a></li>
                             <li><a href="forms.php">View Received ZHAPMoS Forms</a></li>
-                            <li><a href="#">Invoice reports</a></li>
-                            <li><a href="#">User reports</a></li>
-                            <li><a href="#">Pay point reports</a></li>
-                            <li><a href="#">Cashier Reports</a></li>
                         </ul>
                     </fieldset>
                 </form>
