@@ -314,19 +314,18 @@ ul.nav ul a, ul.nav ul a:visited {
 }
 
 .lang {
-    background: pink;
-    width: 40px;
+    width: 60px;
     height: 20px;
     float: left;
     margin-right: 20px;
 }
 
 .en {
-    
+    background: url(../images/US.png) no-repeat 25px center;
 }
 
 .sw {
-    
+    background: url(../images/tz.png) no-repeat 25px center;
 }
 
 /* ~~ The footer ~~ */
