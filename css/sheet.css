@@ -1,0 +1,105 @@
+/* CSS Document */
+
+@font-face {
+    font-family: "Segoe UI Light";
+    src: url(fonts/segoeuil.ttf);
+}
+
+body {
+    -webkit-print-color-adjust: exact;
+    font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #272727;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.content p {
+    margin: 5px 0 !important;
+    padding: 0;
+}
+
+.sheet-wraper {
+    background-color: #fff;
+}
+
+.sheet-header {
+    width: 100%;
+    height: 150px;
+}
+.page-logo {
+    width: 200px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.page-logo img {
+    display: table-cell;
+    vertical-align: central;
+    margin: 0 auto;
+}
+
+.header-title{
+    width: 100%;
+}
+
+.header-title p {
+    margin: auto;
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.print-details {
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.black-separator {
+    width: 100%;
+    height: 2px;
+    background: #000;
+    margin-bottom: 15px;
+    clear: both;
+}
+
+.sheet-table {
+    clear: both;
+}
+
+.sheet-table tr:nth-child(even){
+    background: #fafafa;
+}
+
+.sheet-table tr:nth-child(odd){
+    background: #fff;
+}
+
+@page {
+    size: A4 portrait;
+    margin: 10mm 5mm;
+}
+
+@media print {
+    body {
+        font-size: 12px !important;
+        background: #fff;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    tr {
+        page-break-inside: avoid;
+    }
+
+    legend {
+        color: #000;
+        font-weight: bold;
+    }
+}
