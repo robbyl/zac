@@ -60,7 +60,7 @@ exit;
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | FORM-1</title>
+        <title>ZANHID | FORM-1</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>

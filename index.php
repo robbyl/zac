@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL</title>
+        <title>ZANHID</title>
         <link rel="stylesheet" type="text/css" href="css/login.css" />
         <script src="js/jquery-1.7.2.js" type="text/javascript"></script>
 

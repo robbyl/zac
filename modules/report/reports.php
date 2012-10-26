@@ -8,7 +8,7 @@ ob_start();
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | GENERATE INVOICES</title>
+        <title>ZANHID | GENERATE INVOICES</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>

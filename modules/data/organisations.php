@@ -18,7 +18,7 @@ $result_org = mysql_query($query_org) or die(mysql_error());
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL | FORMS</title>
+        <title>ZANHID | FORMS</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/data_table.css" rel="stylesheet" type="text/css">

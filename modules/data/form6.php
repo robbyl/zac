@@ -27,7 +27,7 @@ require 'sections/lang_section.php';
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | FORM-1</title>
+        <title>ZANHID | FORM-6</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
@@ -79,7 +79,7 @@ require 'sections/lang_section.php';
                 // Displaying message and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Add New ZHAPMoS Form 1</h1>
+                <h1>Add New ZHAPMoS Form 6</h1>
                 <div class="hr-line"></div>
                 <form action="process_form1.php" method="post" novalidate>
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">

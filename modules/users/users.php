@@ -17,7 +17,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL | USERS</title>
+        <title>ZANHID | USERS</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/data_table.css" rel="stylesheet" type="text/css">

@@ -25,7 +25,7 @@ $result_s_tariff = mysql_query($query_s_tariff) or die(mysql_error());
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | TARIFFS</title>
+        <title>ZANHID | TARIFFS</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <style type="text/css">

@@ -20,7 +20,7 @@ $row = mysql_fetch_array($result_user);
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | MY PROFILE</title>
+        <title>ZANHID | MY PROFILE</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script type="text/javascript">

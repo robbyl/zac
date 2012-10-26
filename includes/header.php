@@ -1,6 +1,6 @@
 <?php
 /*
- * 2012 softbill
+ * 2012 zanhid
  *
  * NOTICE OF LICENSE
  *
@@ -11,7 +11,7 @@
  * Do not edit or add to this file.
  *
  *  @author Robert Londo <robbyl@ovi.com>
- *  @copyright  2012 softbill
+ *  @copyright  2012 zanhid
  *  @version  Release: 1.0.0
  */
 ?>

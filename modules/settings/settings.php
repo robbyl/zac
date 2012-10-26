@@ -14,7 +14,7 @@ $row_setting = mysql_fetch_array($result_settings);
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | SETTINGS</title>
+        <title>ZANHID | SETTINGS</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <style type="text/css">

@@ -11,7 +11,7 @@ session_commit();
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-        <title>SOFTBILL | HOME</title>
+        <title>ZANHID | HOME</title>
         <style type="text/css">
             .fltlft a {
                 text-decoration: none !important;

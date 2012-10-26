@@ -1,6 +1,6 @@
 <?php
 /*
- * 2012 softbill
+ * 2012 zanhid
  *
  * NOTICE OF LICENSE
  *
@@ -55,7 +55,7 @@ $result_cash = mysql_query($query_cash) or die(mysql_error());
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL CASH DEPOSIT SLIP</title>
+        <title>ZANHID CASH DEPOSIT SLIP</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">

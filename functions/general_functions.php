@@ -12,7 +12,7 @@
  * Do not edit or add to this file.
  *
  *  @author Robert Loondo <robbyl@ovi.com>
- *  @copyright  2012 softbill
+ *  @copyright  2012 zanhid
  *  @version  Release: $Revision: 1.0.0 $
  */
 

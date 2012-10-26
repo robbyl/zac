@@ -1,6 +1,6 @@
 <?php
 /*
- * 2012 softbill
+ * 2012 zanhid
  *
  * NOTICE OF LICENSE
  *
@@ -80,7 +80,7 @@ $row_header = mysql_fetch_array($result_meter_reading)
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL CUSTOMER COMPREHENSIVE BILLING TREND</title>
+        <title>ZANHID CUSTOMER COMPREHENSIVE BILLING TREND</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">

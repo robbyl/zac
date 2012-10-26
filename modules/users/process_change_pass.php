@@ -1,7 +1,7 @@
 <?php
 
 /*
- * 2012 softbill
+ * 2012 zanhid
  *
  * NOTICE OF LICENSE
  *

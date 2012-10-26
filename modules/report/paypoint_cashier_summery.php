@@ -1,6 +1,6 @@
 <?php
 /*
- * 2012 softbill
+ * 2012 zanhid
  *
  * NOTICE OF LICENSE
  *
@@ -56,7 +56,7 @@ $row_cashier = mysql_fetch_array($result_cashier);
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL CASHIER SUMMERY</title>
+        <title>ZANHID CASHIER SUMMERY</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
