@@ -56,6 +56,7 @@ require 'sections/lang_section.php';
 
     <body>
         <div class="container">
+           <?php $heading = $text["FORM_1_HEAD"]; ?>
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
                 <ul class="nav">
@@ -84,41 +85,7 @@ require 'sections/lang_section.php';
                 <form action="process_form1.php" method="post" novalidate>
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">
                     <div class="data-form-wapper">
-                        <div class="form-header">
-                            <div class="zanz-logo"></div>
-                            <div class="zac-logo"></div>
-                            <p class="form-heading"><?php echo $text["FORM_1_HEAD"]; ?></p>
-                            <div>
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: none; margin-bottom: 0">
-                                    <tr>
-                                        <td width="6%">&nbsp;</td>
-                                        <td width="6%">&nbsp;</td>
-                                        <td width="61%">&nbsp;</td>
-                                        <td width="10%"></td>
-                                        <td width="17%"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>&nbsp;</td>
-                                        <td>
-                                            <p>
-                                                <select name="" class="select">
-                                                    <option></option>
-                                                </select>
-                                                <select name="" class="select">
-                                                    <option></option>
-                                                </select>
-                                            </p>
-                                        </td>
-                                        <td>&nbsp;</td>
-                                        <td align="right">Form No:</td>
-                                        <td align="right">
-                                            <input type="text" value="<?php echo $form_serial_no ?>" name="form_no" required class="text" style="font-size: 1.5em; width: 150px; text-align: right">
-                                        </td>
-                                    </tr>
-                                </table>
-
-                            </div>
-                            <!-- end .form-header --></div>
+                       <?php require 'sections/head_section.php'; ?>
                         <div class="section">
                             <h3><strong>A. <?php echo $text["SECT_HEAD_A"]; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">

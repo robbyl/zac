@@ -4,21 +4,6 @@ require '../../config/config.php';
 require '../../functions/general_functions.php';
 
 // Getting last form serial number
-$query_form_id = "SELECT MAX(`FormSerialNumber`) AS last_serial
-                    FROM tblzhaformssubmitted
-                   WHERE `FormSerialNumber`
-                    LIKE 'F1-%'";
-
-$result_form_id = mysql_query($query_form_id) or die(mysql_error());
-
-$last_serial = mysql_fetch_array($result_form_id);
-
-$form_serial_no = $last_serial['last_serial'];
-
-$no = explode("-", $form_serial_no);
-$expl_no = $no[1];
-$expl_no++;
-$form_serial_no = 'F1-' . $expl_no;
 
 require 'sections/lang_section.php';
 ?>
@@ -87,32 +72,26 @@ require 'sections/lang_section.php';
                         <div class="form-header">
                             <div class="zanz-logo"></div>
                             <div class="zac-logo"></div>
-                            <p class="form-heading"><?php echo $text["FORM_1_HEAD"]; ?></p>
+                            <p class="form-heading"><?php echo $text["FORM_6_HEAD"]; ?></p>
                             <div>
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: none; margin-bottom: 0">
                                     <tr>
                                         <td width="6%">&nbsp;</td>
-                                        <td width="6%">&nbsp;</td>
-                                        <td width="61%">&nbsp;</td>
+                                        <td width="12%">&nbsp;</td>
+                                        <td width="55%">&nbsp;</td>
                                         <td width="10%"></td>
                                         <td width="17%"></td>
                                     </tr>
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td>
-                                            <p>
-                                                <select name="" class="select">
-                                                    <option></option>
-                                                </select>
-                                                <select name="" class="select">
-                                                    <option></option>
-                                                </select>
-                                            </p>
                                         </td>
                                         <td>&nbsp;</td>
-                                        <td align="right">Form No:</td>
+                                        <td align="right">Year:</td>
                                         <td align="right">
-                                            <input type="text" value="<?php echo $form_serial_no ?>" name="form_no" required class="text" style="font-size: 1.5em; width: 150px; text-align: right">
+                                            <select name="year" class="select" style="font-size: 1.5em; width: 150px; text-align: right">
+                                            <option></option>
+                                            </select>
                                         </td>
                                     </tr>
                                 </table>
@@ -138,61 +117,34 @@ require 'sections/lang_section.php';
                                             ?>
                                         </select>
                                     </td>
-                                    <td width="39" class="data-group">CD1</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_PHY"]; ?></td>
                                     <td colspan="3"><input type="text" name="phy_addr" id="phy_addr" class="text" style="width: 98%"></td>
-                                    <td class="data-group">CD2</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_POS"]; ?></td>
                                     <td colspan="3"><input type="text" name="post_addr" id="post_addr" class="text" style="width: 98%"></td>
-                                    <td class="data-group">CD3</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_FOP"]; ?></td>
                                     <td colspan="3"><input type="text" name="focal_per" id="focal_per" class="text" style="width: 98%"></td>
-                                    <td class="data-group">CD4</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" rowspan="2"><?php echo $text["SECT_LABEL_CFP"]; ?></td>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_TEL"]; ?> <input type="tel" name="focal_tel" id="focal_tel" class="text" style="width: 78%"></td>
-                                    <td width="175"><?php echo $text["SECT_LABEL_FAX"]; ?> <input type="tel" name="focal_fax" id="focal_fax" class="text" style="width: 77%"></td>
-                                    <td rowspan="2" class="data-group">CD5</td>
+                                    <td width="210"><?php echo $text["SECT_LABEL_FAX"]; ?> <input type="tel" name="focal_fax" id="focal_fax" class="text" style="width: 77%"></td>
                                 </tr>
                                 <tr>
 
                                     <td colspan="3"><?php echo $text["SECT_LABEL_EML"]; ?> <input type="email" name="focal_email" id="focal_email" class="text" style="width: 80%"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_REG"]; ?></td>
-                                    <td colspan="3"><input type="text" name="reg_no" id="reg_no" class="text" style="width: 98%"></td>
-                                    <td class="data-group">CD6</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_UMB"]; ?></td>
-                                    <td width="188">
-                                        <label><input type="radio" name="is_umbrella" value="Yes" id="yes_umbrella"> <?php echo $text["SECT_LABEL_YES"] ?></label> &nbsp;
-                                        <label><input type="radio" name="is_umbrella" value="No" id="no_umbrella"> <?php echo $text["SECT_LABEL_NO"] ?></label>
-                                    </td>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_NUM"] ?>
-                                        <input type="text" name="umbrella" id="umbrella" class="text" style="width: 96%">
-                                    </td>
-                                    <td class="data-group">CD7</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_DAT"]; ?></td>
-                                    <td colspan="3"><input type="date" name="org_date" id="org_date" class="text"></td>
-                                    <td class="data-group">CD8</td>
-                                </tr>
-                                <tr>
-                                    <td width="150" rowspan="3"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
-                                    <td width="112">&nbsp;</td>
-                                    <td><?php echo $text["SECT_LABEL_MAL"]; ?></td>
-                                    <td width="156"><?php echo $text["SECT_LABEL_FEM"]; ?></td>
+                                    <td width="144" rowspan="3"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
+                                    <td width="106">&nbsp;</td>
+                                    <td width="213"><?php echo $text["SECT_LABEL_MAL"]; ?></td>
+                                    <td width="109"><?php echo $text["SECT_LABEL_FEM"]; ?></td>
                                     <td><?php echo $text["SECT_LABEL_TOT"]; ?></td>
-                                    <td rowspan="3" class="data-group">CD9</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["SECT_LABEL_FTM"]; ?></td>
@@ -222,7 +174,6 @@ require 'sections/lang_section.php';
                                             ?>
                                         </select>
                                     </td>
-                                    <td class="data-group">CD10</td>
                                 </tr>
                             </table>
                             <!-- end .section  --></div>
