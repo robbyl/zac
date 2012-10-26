@@ -9,6 +9,7 @@ $text["FORM_6_HEAD"] = "ZHAPMoS FORM FOR RESOURCE TRACKING";
 
 $text["SECT_HEAD_A"] = "INFORMATION ABOUT YOUR ORGANISATION";
 $text["SECT_HEAD_A2"] = "INFORMATION ABOUT YOUR SCHOOL";
+$text["SECT_HEAD_A3"] = "INFORMATION ABOUT YOUR MINISTRY";
 $text["SECT_HEAD_B"] = "HIV PREVENTION SERVICES";
 $text["SECT_HEAD_C"] = "HIV IMPACT MITIGATION SERVICES";
 $text["SECT_HEAD_D"] = "HIV and AIDS CARE AND SUPPORT SERVICES";
@@ -17,6 +18,7 @@ $text["SECT_HEAD_F"] = "MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS";
 
 $text["SECT_LABEL_NOG"] = "Name of your Organisation";
 $text["SECT_LABEL_NOS"] = "Name of School";
+$text["SECT_LABEL_NOM"] = "Name of Ministry";
 $text["SECT_LABEL_STY"] = "Type of School";
 $text["SECT_LABEL_SNO"] = "Number of Students in School";
 $text["SECT_LABEL_SOW"] = "Shool Ownership";
@@ -24,6 +26,8 @@ $text["SECT_LABEL_PHY"] = "Physical Address of your Organisation";
 $text["SECT_LABEL_PHS"] = "Physical Address of School";
 $text["SECT_LABEL_POS"] = "Postal Address of Organisation";
 $text["SECT_LABEL_SPO"] = "Postal Address of School";
+$text["SECT_LABEL_MPO"] = "Postal Address of Ministry";
+$text["SECT_LABEL_IFP"] = "Is the ZHAPMoS Focal Person the same as HIV Focal Person?";
 $text["SECT_LABEL_FOP"] = "Name of ZHAPMoS Focal Person";
 $text["SECT_LABEL_CFP"] = "Contact Details of ZHAPMoS Focal Person";
 $text["SECT_LABEL_TEL"] = "Telephone";

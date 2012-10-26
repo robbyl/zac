@@ -9,6 +9,7 @@ $text["FORM_6_HEAD"] = "FOMU YA ZHAPMoS YA UFUATILIAJI FEDHA";
 
 $text["SECT_HEAD_A"] = "TAARIFA KUHUSU TAASISI YAKO";
 $text["SECT_HEAD_A2"] = "TAARIFA KUHUSU SKULI YAKO";
+$text["SECT_HEAD_A3"] = "TAARIFA KUHUSU WIZARA YAKO";
 $text["SECT_HEAD_B"] = "HUDUMA ZA KINGA DHIDI YA UKIMWI";
 $text["SECT_HEAD_C"] = "HUDUMA ZA KUKABILINA NA ATHARI ZA UKIMWI";
 $text["SECT_HEAD_D"] = "HUDUMA ZA MAFUNZO NA MISAADA YA UKIMWI";
@@ -17,6 +18,7 @@ $text["SECT_HEAD_F"] = "UENDESHAJI NA URATIBU WA SHUGHULI ZA UKIMWI";
 
 $text["SECT_LABEL_NOG"] = "Jina la Taasisi";
 $text["SECT_LABEL_NOS"] = "Jina la Skuli";
+$text["SECT_LABEL_NOM"] = "Jina la wizara";
 $text["SECT_LABEL_STY"] = "Aina ya Skuli";
 $text["SECT_LABEL_SNO"] = "Idadi ya Wanafunzi";
 $text["SECT_LABEL_SOW"] = "Umiliki wa Skuli";
@@ -24,6 +26,8 @@ $text["SECT_LABEL_PHY"] = "Pahala ilipo";
 $text["SECT_LABEL_PHS"] = "Pahala ilipo";
 $text["SECT_LABEL_POS"] = "Anuani ya posta ya taasisi";
 $text["SECT_LABEL_SPO"] = "Anuani ya posta";
+$text["SECT_LABEL_MPO"] = "Anuani ya posta ya wizara";
+$text["SECT_LABEL_IFP"] = "Mratibu wa ZHAPMoS ni yule yule Mratibu wa shughuli za Ukimwi?";
 $text["SECT_LABEL_FOP"] = "Jina la mratibu wa ZHAPMoS";
 $text["SECT_LABEL_CFP"] = "Anuani za mratibu wa ZHAPMoS";
 $text["SECT_LABEL_TEL"] = "Simu";

@@ -7,7 +7,7 @@ require '../../functions/general_functions.php';
 $query_form_id = "SELECT MAX(`FormSerialNumber`) AS last_serial
                     FROM tblzhaformssubmitted
                    WHERE `FormSerialNumber`
-                    LIKE 'F1-%'";
+                    LIKE 'F2-%'";
 
 $result_form_id = mysql_query($query_form_id) or die(mysql_error());
 
@@ -18,7 +18,7 @@ $form_serial_no = $last_serial['last_serial'];
 $no = explode("-", $form_serial_no);
 $expl_no = $no[1];
 $expl_no++;
-$form_serial_no = 'F1-' . $expl_no;
+$form_serial_no = 'F2-' . $expl_no;
 
 require 'sections/lang_section.php';
 ?>
@@ -125,7 +125,7 @@ require 'sections/lang_section.php';
                                 <tr>
                                     <td width="272"><?php echo $text["SECT_LABEL_NOS"] ?></td>
                                     <td colspan="3">
-                                        <select class="select" name="org_name" required style="width: 100%;">
+                                        <select class="select" name="sch_name" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
                                             $query_org = "SELECT `OrganisationCode`, `OrganisationName` FROM tblgenorganisations ORDER BY `OrganisationName` ASC";
@@ -202,8 +202,8 @@ require 'sections/lang_section.php';
                               </tr>
                                 <tr>
                                     
-                                    <td><input type="number" name="full_male" id="full_male" min="0" class="number"></td>
-                                    <td><input type="number" name="full_female" id="full_female" min="0" class="number"></td>
+                                    <td><input type="number" name="std_male" id="std_male" min="0" class="number"></td>
+                                    <td><input type="number" name="std_female" id="std_female" min="0" class="number"></td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
