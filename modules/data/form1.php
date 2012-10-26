@@ -21,7 +21,6 @@ $expl_no++;
 $form_serial_no = 'F1-' . $expl_no;
 
 require 'sections/lang_section.php';
-
 ?>
 <!doctype html>
 <html>
@@ -101,14 +100,14 @@ require 'sections/lang_section.php';
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td>
-                                        <p>
-                                        <select name="" class="select">
-                                        <option></option>
-                                        </select>
-                                        <select name="" class="select">
-                                        <option></option>
-                                        </select>
-                                        </p>
+                                            <p>
+                                                <select name="" class="select">
+                                                    <option></option>
+                                                </select>
+                                                <select name="" class="select">
+                                                    <option></option>
+                                                </select>
+                                            </p>
                                         </td>
                                         <td>&nbsp;</td>
                                         <td align="right">Form No:</td>
@@ -228,6 +227,7 @@ require 'sections/lang_section.php';
                             </table>
                             <!-- end .section  --></div>
                         <?php require 'sections/common_section.php'; ?>
+                        <?php require 'sections/footer_section.php'; ?>
                         <!-- end .data-form-wrapper  -->  </div>
                 </form>
                 <!-- end .content --></div>
