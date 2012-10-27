@@ -18,12 +18,15 @@
 
 $html = $_POST['html'];
 
-include("../plugins/mpdf/mpdf.php");
+require_once("../plugins/dompdf/dompdf_config.inc.php");
 
-$mpdf = new mPDF('s');
-$mpdf->SetDisplayMode('fullpage');
+$dompdf = new DOMPDF();
+$dompdf->load_html($html);
 
-$mpdf->WriteHTML($html);
-$mpdf->Output();
-exit;
+$dompdf->render();
+
+$dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
+
+exit(0);
+
 ?>

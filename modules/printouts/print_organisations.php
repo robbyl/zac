@@ -263,10 +263,10 @@ require '../../includes/session_validator.php';
                                 <div class="sheet-wraper">
                                     <div class="sheet-header">
                                         <div class="header-title">
-                                            <p style="font-weight: bold"><?php // echo $row_authority['aut_name']           ?></p> 
+                                            <p style="font-weight: bold"><?php // echo $row_authority['aut_name'] ?></p> 
                                             <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
                                             <div class="page-logo">
-                                                <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
+<!--                                                <img src="../settings/logo/<?php // echo $row_authority['logo'] ?>" height="80">-->
                                             </div>
                                         </div>
                                         <!-- end .sheet-header --></div>
