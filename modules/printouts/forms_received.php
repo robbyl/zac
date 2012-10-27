@@ -18,14 +18,13 @@ $query_received = "SELECT `FormSerialNumber`, sub.`OrganisationCode`, `Organisat
                  ORDER BY `FormSerialNumber` ASC,`PeriodFrom` ASC";
 
 $result = mysql_query($query_received) or die(mysql_error());
-$groups = array();
-$forms = array();
-$periods =  array();
+
 while ($data = mysql_fetch_assoc($result)) {
     $groups[$data['OrganisationGroup']][] = $data;
     $periods[$data['PeriodFrom']][] = $data;
     $forms[$data['OrganisationGroup']][$data['PeriodFrom']][] = $data['FormSerialNumber'];
 }
+
 $total = 0;
 echo '<table border="1">';
 foreach ($groups as $OrganisationGroup => $PeriodFrom) {
@@ -37,15 +36,11 @@ foreach ($groups as $OrganisationGroup => $PeriodFrom) {
 
         $n = count($forms[$OrganisationGroup][$PeriodFrom]);
         
-        
-
         for ($i = 0; $i < $n; $i++) {
             
             echo '<tr><td>' . $forms[$OrganisationGroup][$PeriodFrom][$i] . '</td><tr>';
             $total++;
         }
-
-       
     }
 }
 
