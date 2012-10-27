@@ -58,7 +58,7 @@ function consumptions() {
 
 // Prints specified part of the page
 function printPage(id, css) {
-    var html = "<html><head><title></title>";
+    var html = "<!doctype html><html><head><title></title>";
     html += "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\">";
     html += "</head><body>";
     html += document.getElementById(id).innerHTML;
@@ -82,7 +82,7 @@ function printTable(url) {
 
 
 function savePDF(id, css) {
-    var html = "<html><head><title></title>";
+    var html = "<!doctype html><html><head><title></title>";
     html += "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\"></head><body>";
     html += document.getElementById(id).innerHTML;
     html += "</body></html>";
