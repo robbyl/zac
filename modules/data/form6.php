@@ -3,9 +3,43 @@
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
-// Getting last form serial number
+$lang = clean($_GET['lang']);
 
-require 'sections/lang_section.php';
+if (!empty($lang) && isset($lang)) {
+    switch ($lang) {
+
+        case "en":
+            include 'lang/en.php';
+
+            $query_hiv_intv = "SELECT `BreakdownTypeID`, `BreakdownTypeDescription` AS breakdown
+                                 FROM `tblzhasetupfigurebreakdowntypes`
+                                WHERE `BreakdownCategoryID` = 'SPD'";
+
+            $result_hiv_intv = mysql_query($query_hiv_intv) or die(mysql_error());
+
+            while ($row = mysql_fetch_array($result_hiv_intv)) {
+
+                $figurebreakdowntypes[$row['BreakdownTypeID']] = $row['breakdown'];
+            }
+            break;
+
+        case "sw":
+            include 'lang/sw.php';
+
+            $query_hiv_intv = "SELECT `BreakdownTypeID`, `BreakdownTypeDescriptionSwahili` AS breakdown
+                                 FROM `tblzhasetupfigurebreakdowntypes`
+                                WHERE `BreakdownCategoryID` = 'SPD'";
+
+            $result_hiv_intv = mysql_query($query_hiv_intv) or die(mysql_error());
+
+            while ($row = mysql_fetch_array($result_hiv_intv)) {
+                $figurebreakdowntypes[$row['BreakdownTypeID']] = $row['breakdown'];
+            }
+            break;
+        default :
+            break;
+    }
+}
 ?>
 <!doctype html>
 <html>
@@ -66,7 +100,7 @@ require 'sections/lang_section.php';
                 ?>
                 <h1>Add New ZHAPMoS Form 6</h1>
                 <div class="hr-line"></div>
-                <form action="process_form1.php" method="post" novalidate>
+                <form action="process_form6.php" method="post" novalidate>
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">
                     <div class="data-form-wapper">
                         <div class="form-header">
@@ -90,7 +124,7 @@ require 'sections/lang_section.php';
                                         <td align="right">Year:</td>
                                         <td align="right">
                                             <select name="year" class="select" style="font-size: 1.5em; width: 150px; text-align: right">
-                                            <option></option>
+                                                <option></option>
                                             </select>
                                         </td>
                                     </tr>
@@ -99,7 +133,6 @@ require 'sections/lang_section.php';
                             </div>
                             <!-- end .form-header --></div>
                         <div class="section">
-                            <h3><strong>A. <?php echo $text["SECT_HEAD_A"]; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
@@ -107,7 +140,12 @@ require 'sections/lang_section.php';
                                         <select class="select" name="org_name" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
-                                            $query_org = "SELECT `OrganisationCode`, `OrganisationName` FROM tblgenorganisations ORDER BY `OrganisationName` ASC";
+                                            $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`
+                                                            FROM tblgenorganisations org
+                                                       LEFT JOIN tblzhasetuplinkorgcatformtypes cat
+                                                              ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+                                                           WHERE `ZhaFormNumber` = '6'
+                                                        ORDER BY `OrganisationName` ASC";
                                             $result_org = mysql_query($query_org) or die(mysql_error());
                                             while ($org = mysql_fetch_array($result_org)) {
                                                 ?>
@@ -140,41 +178,72 @@ require 'sections/lang_section.php';
                                     <td colspan="3"><?php echo $text["SECT_LABEL_EML"]; ?> <input type="email" name="focal_email" id="focal_email" class="text" style="width: 80%"></td>
                                 </tr>
                                 <tr>
-                                    <td width="144" rowspan="3"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
-                                    <td width="106">&nbsp;</td>
-                                    <td width="213"><?php echo $text["SECT_LABEL_MAL"]; ?></td>
-                                    <td width="109"><?php echo $text["SECT_LABEL_FEM"]; ?></td>
-                                    <td><?php echo $text["SECT_LABEL_TOT"]; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo $text["SECT_LABEL_FTM"]; ?></td>
-                                    <td><input type="number" name="full_male" id="full_male" min="0" class="number"></td>
-                                    <td><input type="number" name="full_female" id="full_female" min="0" class="number"></td>
+                                    <td width="144" colspan="2" rowspan="5"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
+
+                                    <td width="213" colspan=2>&nbsp;</td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo $text["SECT_LABEL_PTM"]; ?></td>
-                                    <td><input type="number" name="part_male" id="part_male" min="0" class="number"></td>
-                                    <td><input type="number" name="part_female" id="part_female" min="0" class="number"></td>
+                                    <td colspan="2">&nbsp;</td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_NOD"]; ?></td>
-                                    <td colspan="3">
-                                        <select class="select" name="district" id="district" style="width: 100%;">
-                                            <option value=""></option>
-                                            <?php
-                                            $query_district = "SELECT `DistrictCode`, `District` FROM tblgensetupdistricts ORDER BY `District` ASC";
-                                            $result_destrict = mysql_query($query_district) or die(mysql_error());
-                                            while ($district = mysql_fetch_array($result_destrict)) {
-                                                ?>
-                                                <option value="<?php echo $district['DistrictCode'] ?>"><?php echo $district['District'] ?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </td>
+                                    <td colspan="2">&nbsp;</td>
+                                    <td>&nbsp;</td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2">&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td width="144" colspan="2" rowspan="5"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
+
+                                    <td width="213" colspan=2><?php echo $figurebreakdowntypes['PVN']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_prevention" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $figurebreakdowntypes['TCS']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_treatment" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $figurebreakdowntypes['IMM']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_mitigation" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $figurebreakdowntypes['MGT']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_management" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $figurebreakdowntypes['MNE']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_mne" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                <td width="144" colspan="2" rowspan="5"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
+
+                                    <td width="213" colspan=2><?php echo $figurebreakdowntypes['PVN']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_prevention" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $figurebreakdowntypes['TCS']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_treatment" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $figurebreakdowntypes['IMM']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_mitigation" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $figurebreakdowntypes['MGT']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_management" class="number" style="width: 95% !important"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><?php echo $figurebreakdowntypes['MNE']; ?></td>
+                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_mne" class="number" style="width: 95% !important"></td>
+                                </tr>
+                 
                             </table>
                             <!-- end .section  --></div>
                         <?php require 'sections/footer_section.php'; ?>

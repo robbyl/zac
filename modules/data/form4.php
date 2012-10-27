@@ -95,7 +95,12 @@ require 'sections/lang_section.php';
                                         <select class="select" name="shehia_name" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
-                                            $query_org = "SELECT `OrganisationCode`, `OrganisationName` FROM tblgenorganisations ORDER BY `OrganisationName` ASC";
+                                            $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`
+                                                            FROM tblgenorganisations org
+                                                       LEFT JOIN tblzhasetuplinkorgcatformtypes cat
+                                                              ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+                                                           WHERE `ZhaFormNumber` = '4'
+                                                        ORDER BY `OrganisationName` ASC";
                                             $result_org = mysql_query($query_org) or die(mysql_error());
                                             while ($org = mysql_fetch_array($result_org)) {
                                                 ?>
