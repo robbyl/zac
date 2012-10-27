@@ -46,7 +46,7 @@ foreach ($groups as $OrganisationGroup => $PeriodFrom) {
 
 echo '</table>';
 
-echo 'Total formas ' . $total;
+echo 'Total forms ' . $total;
 
 exit;
 ?>
