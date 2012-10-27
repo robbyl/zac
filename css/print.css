@@ -87,6 +87,10 @@ table {
     background: #fff;
 }
 
+td {
+    vertical-align: text-top;
+}
+
 @page {
     size: A4 landscape;
     margin: 10mm 5mm;

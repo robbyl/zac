@@ -58,7 +58,7 @@ require '../../includes/session_validator.php';
                 contentclass: "categoryitems", //Shared CSS class name of contents group
                 revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
                 mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
-                collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
+                collapseprev: true, //Collapse previous content (so only one open at any time)? true/false
                 defaultexpanded: [7], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
                 onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
                 animatedefault: true, //Should contents open by default be animated into view?
@@ -214,6 +214,7 @@ require '../../includes/session_validator.php';
                 <div class="hr-line"></div>
                 <?php
                 require '../../functions/general_functions.php';
+                require '../../config/config.php';
 
                 $creteria = clean($_GET['creteria']);
                 $category = clean($_GET['category']);
@@ -234,15 +235,25 @@ require '../../includes/session_validator.php';
                             break;
 
                         default:
+                            $filter = "";
                             break;
                     }
 
-                    require '../../config/config.php';
+                    if ($details === "all") {
+
+                        $query_people = "SELECT `OrganisationCode`, `FullName`, `Designation`
+                                           FROM tblgenorganisationpeople";
+                        $result_people = mysql_query($query_people) or die(mysql_error());
+
+                        while ($people = mysql_fetch_array($result_people)) {
+                            $person[$people['OrganisationCode']][] = $people;
+                        }
+                    }
 
                     $query_org = "SELECT `OrganisationName`, `OrganisationCode`, `PostalAddress`, `Phone`, `Fax`, `Email`,
                                           DATE(`StartedOperating`) AS StartDAte, `OrganisationGroup`, `OrganisationCategoryDescription`
                                      FROM tblgenorganisations org
-                                LEFT JOIN tblgensetuporganisationcategories cat
+                               INNER JOIN tblgensetuporganisationcategories cat
                                        ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
                                           {$filter}";
 
@@ -263,10 +274,10 @@ require '../../includes/session_validator.php';
                                 <div class="sheet-wraper">
                                     <div class="sheet-header">
                                         <div class="header-title">
-                                            <p style="font-weight: bold"><?php // echo $row_authority['aut_name'] ?></p> 
+                                            <p style="font-weight: bold"><?php // echo $row_authority['aut_name']      ?></p>
                                             <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
                                             <div class="page-logo">
-<!--                                                <img src="../settings/logo/<?php // echo $row_authority['logo'] ?>" height="80">-->
+        <!--                                                <img src="../settings/logo/<?php // echo $row_authority['logo']      ?>" height="80">-->
                                             </div>
                                         </div>
                                         <!-- end .sheet-header --></div>
@@ -297,7 +308,15 @@ require '../../includes/session_validator.php';
 
                                                     echo '<tr>';
                                                     echo '<td>' . $data['OrganisationCode'] . '</td>';
-                                                    echo '<td>' . $data['OrganisationName'] . '</td>';
+                                                    echo '<td>' . $data['OrganisationName'];
+
+                                                    if ($details === "all") {
+                                                        echo '<br> People:';
+                                                        foreach ($person[$data['OrganisationCode']] as $people) {
+                                                            echo '<br>' . $people['FullName'];
+                                                        }
+                                                    }
+                                                    echo '</td>';
                                                     echo '<td>' . $data['PostalAddress'] . '</td>';
                                                     echo '<td> Tel: ' . $data['Phone'] . '<br> Fax: ' . $data['Fax'] . '</td>';
                                                     echo '<td>' . $data['StartDAte'] . '</td>';
