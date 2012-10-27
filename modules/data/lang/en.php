@@ -55,6 +55,13 @@ $text["SECT_LABEL_PRM"] = "Primary";
 $text["SECT_LABEL_SCO"] = "Secondary";
 $text["SECT_LABEL_GOV"] = "Government";
 $text["SECT_LABEL_PRI"] = "Private";
+$text["SECT_LABEL_DVA"] = "Dev Agency";
+$text["SECT_LABEL_NGO"] = "NGO";
+$text["SECT_LABEL_FAI"] = "Faith based";
+$text["SECT_LABEL_OTH"] = "Other";
+$text["SECT_LABEL_SOF"] = "What were the sources of funding for your organisation last year?";
+$text["SECT_LABEL_PHV"] = "How much did you plan to spend on HIV";
+$text["SECT_LABEL_SHV"] = "How much was your actual expenditure on HIV in the last 12 months";
 
 $text["SECT_SUB_HEAD_HP1"] = "HIV Prevention amongst vulnerable and high risk groups";
 $text["SECT_SUB_HEAD_HP2"] = "HIV Prevention amongst general population";

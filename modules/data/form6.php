@@ -135,7 +135,7 @@ if (!empty($lang) && isset($lang)) {
                         <div class="section">
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
+                                    <td width="33%"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
                                     <td colspan="3">
                                         <select class="select" name="org_name" required style="width: 100%;">
                                             <option value=""></option>
@@ -157,91 +157,91 @@ if (!empty($lang) && isset($lang)) {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_PHY"]; ?></td>
+                                    <td><?php echo $text["SECT_LABEL_PHY"]; ?></td>
                                     <td colspan="3"><input type="text" name="phy_addr" id="phy_addr" class="text" style="width: 98%"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_POS"]; ?></td>
+                                    <td><?php echo $text["SECT_LABEL_POS"]; ?></td>
                                     <td colspan="3"><input type="text" name="post_addr" id="post_addr" class="text" style="width: 98%"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_FOP"]; ?></td>
+                                    <td><?php echo $text["SECT_LABEL_FOP"]; ?></td>
                                     <td colspan="3"><input type="text" name="focal_per" id="focal_per" class="text" style="width: 98%"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" rowspan="2"><?php echo $text["SECT_LABEL_CFP"]; ?></td>
+                                    <td rowspan="2"><?php echo $text["SECT_LABEL_CFP"]; ?></td>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_TEL"]; ?> <input type="tel" name="focal_tel" id="focal_tel" class="text" style="width: 78%"></td>
-                                    <td width="210"><?php echo $text["SECT_LABEL_FAX"]; ?> <input type="tel" name="focal_fax" id="focal_fax" class="text" style="width: 77%"></td>
+                                    <td><?php echo $text["SECT_LABEL_FAX"]; ?> <input type="tel" name="focal_fax" id="focal_fax" class="text" style="width: 77%"></td>
                                 </tr>
                                 <tr>
 
                                     <td colspan="3"><?php echo $text["SECT_LABEL_EML"]; ?> <input type="email" name="focal_email" id="focal_email" class="text" style="width: 80%"></td>
                                 </tr>
                                 <tr>
-                                    <td width="144" colspan="2" rowspan="5"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
+                                    <td rowspan="5"><?php echo $text["SECT_LABEL_SOF"] ?></td>
 
-                                    <td width="213" colspan=2>&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td colspan=2><?php echo $text["SECT_LABEL_GOV"]; ?></td>
+                                    <td><input type="checkbox" name="gov" value="Goverment"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td colspan="2"><?php echo $text["SECT_LABEL_DVA"]; ?></td>
+                                    <td><input type="checkbox" name="dev_agency" value="Dev Agency"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td colspan="2"><?php echo $text["SECT_LABEL_NGO"] ?></td>
+                                    <td><input type="checkbox" name="ngo" value="NGO"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td colspan="2"><?php echo $text["SECT_LABEL_FAI"] ?></td>
+                                    <td><input type="checkbox" name="faith" value="Faith based"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">&nbsp;</td>
-                                    <td>&nbsp;</td>
+                                    <td colspan="2"><?php echo $text["SECT_LABEL_OTH"] ?></td>
+                                    <td><input type="checkbox" name="other" value="Other"></td>
                                 </tr>
                                 <tr>
-                                    <td width="144" colspan="2" rowspan="5"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
+                                    <td rowspan="5"><?php echo $text["SECT_LABEL_PHV"] ?></td>
 
-                                    <td width="213" colspan=2><?php echo $figurebreakdowntypes['PVN']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_prevention" class="number" style="width: 95% !important"></td>
+                                    <td colspan=2><?php echo $figurebreakdowntypes['PVN']; ?></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="plan_hiv_prevention" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $figurebreakdowntypes['TCS']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_treatment" class="number" style="width: 95% !important"></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="plan_hiv_treatment" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $figurebreakdowntypes['IMM']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_mitigation" class="number" style="width: 95% !important"></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="plan_hiv_mitigation" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $figurebreakdowntypes['MGT']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_management" class="number" style="width: 95% !important"></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="plan_hiv_management" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $figurebreakdowntypes['MNE']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="plan_hiv_mne" class="number" style="width: 95% !important"></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="plan_hiv_mne" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
-                                <td width="144" colspan="2" rowspan="5"><?php echo $text["SECT_LABEL_PTS"]; ?></td>
+                                <td rowspan="5"><?php echo $text["SECT_LABEL_SHV"]; ?></td>
 
-                                    <td width="213" colspan=2><?php echo $figurebreakdowntypes['PVN']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_prevention" class="number" style="width: 95% !important"></td>
+                                    <td colspan=2><?php echo $figurebreakdowntypes['PVN']; ?></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="actual_hiv_prevention" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $figurebreakdowntypes['TCS']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_treatment" class="number" style="width: 95% !important"></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="actual_hiv_treatment" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $figurebreakdowntypes['IMM']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_mitigation" class="number" style="width: 95% !important"></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="actual_hiv_mitigation" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $figurebreakdowntypes['MGT']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_management" class="number" style="width: 95% !important"></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="actual_hiv_management" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $figurebreakdowntypes['MNE']; ?></td>
-                                    <td><input type="number" min="0" step="0.01" name="actual_hiv_mne" class="number" style="width: 95% !important"></td>
+                                    <td>TSH<input type="number" min="0" step="0.01" name="actual_hiv_mne" class="number" style="width: 80% !important"></td>
                                 </tr>
                  
                             </table>

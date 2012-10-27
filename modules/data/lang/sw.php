@@ -55,6 +55,13 @@ $text["SECT_LABEL_PRM"] = "Msingi";
 $text["SECT_LABEL_SCO"] = "Sekondari";
 $text["SECT_LABEL_GOV"] = "Serikali";
 $text["SECT_LABEL_PRI"] = "Binafsi";
+$text["SECT_LABEL_DVA"] = "Washirika wa maendeleo";
+$text["SECT_LABEL_NGO"] = "Taasisi zisizo za serikali";
+$text["SECT_LABEL_FAI"] = "Taasisi za kidini";
+$text["SECT_LABEL_OTH"] = "Nyenginezo";
+$text["SECT_LABEL_SOF"] = "Vipi vilikuwa ni vyanzo vya fedha kwa taasisi yako kwa mwaka uliopita?";
+$text["SECT_LABEL_PHV"] = "Ulipanga kutumia kiasi gani kwa ajili ya shughuli za Ukimwi mwaka jana?";
+$text["SECT_LABEL_SHV"] = "Kiasi gani kilikuwa ni matumizi halisi kwa ajili ya matumizi ya Ukimwi?";
 
 $text["SECT_SUB_HEAD_HP1"] = "Idadi ya watu waliofikiwa katika kuyakinga makundi yaliyomo katika hatari zaidi ya kuambukizwa";
 $text["SECT_SUB_HEAD_HP2"] = "Idadi ya watu iliyofikiwa katika kuikinga jamii nzima";
