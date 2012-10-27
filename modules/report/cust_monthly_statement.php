@@ -80,7 +80,7 @@ $row_header = mysql_fetch_array($result_meter_reading)
         <title>ZANHID CUSTOMER MONTHLY STATEMENT</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
-        <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
+        <link href="../../css/print.css" rel="stylesheet" type="text/css">
         <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
         <link href="../../css/invoice.css" rel="stylesheet" type="text/css">
 
@@ -98,7 +98,7 @@ $row_header = mysql_fetch_array($result_meter_reading)
                 
                 $('#pdf').click(function(){
                     
-                    savePDF('report', '../../css/sheet.css');
+                    savePDF('report', '../../css/print.css');
                 });
             });
             
@@ -257,7 +257,7 @@ $row_header = mysql_fetch_array($result_meter_reading)
             <div class="content">
                 <h1>View and Print Customer Monthly Statement</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
-                    <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
+                    <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/print.css')">Print</button>
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
                 </div>
                 <div class="hr-line"></div>

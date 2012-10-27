@@ -14,26 +14,8 @@
  *  @copyright  2012 sofbill
  *  @version  Release: 1.0.0
  */
-?>
-<?php
+
 require '../../includes/session_validator.php';
-//if (isset($_GET['filter']) && !empty($_GET['filter'])) {
-
-require '../../config/config.php';
-require '../../functions/general_functions.php';
-
-$query_org = "SELECT `OrganisationName`, `OrganisationCode`, `PostalAddress`, `Phone`, `Fax`, `Email`,
-                     DATE(`StartedOperating`) AS StartDAte, `OrganisationGroup`, `OrganisationCategoryDescription`
-                FROM tblgenorganisations org
-           LEFT JOIN tblgensetuporganisationcategories cat
-                  ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`";
-
-$result_org = mysql_query($query_org) or die(mysql_error());
-
-$groups = array();
-while ($data = mysql_fetch_assoc($result_org)) {
-    $groups[$data['OrganisationCategoryDescription']][] = $data;
-}
 ?>
 
 <!doctype html>
@@ -42,10 +24,10 @@ while ($data = mysql_fetch_assoc($result_org)) {
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>SOFTBILL CASH DEPOSIT SLIP</title>
+        <title>ZANHID ORGANISATION AND PEOPLE PRINTOUT</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
-        <link href="../../css/sheet.css" rel="stylesheet" type="text/css">
+        <link href="../../css/print.css" rel="stylesheet" type="text/css">
         <link href="../../css/tooltip.css" rel="stylesheet" type="text/css">
         <link href="../../css/invoice.css" rel="stylesheet" type="text/css">
 
@@ -57,13 +39,17 @@ while ($data = mysql_fetch_assoc($result_org)) {
         <script type="text/javascript">
             $(document).ready(function() {
 
+                $('.message, .error').hide().slideDown('normal').click(function() {
+                    $(this).slideUp('normal');
+                });
+
                 $('.tooltip').tipTip({
                     delay: "300"
                 });
 
                 $('#pdf').click(function() {
 
-                    savePDF('report', '../../css/sheet.css');
+                    savePDF('report', '../css/print.css');
                 });
             });
 
@@ -99,7 +85,7 @@ while ($data = mysql_fetch_assoc($result_org)) {
                     <a href="../../home.php"><h3 class="menuheader home">Home</h3></a>
                     <?php
                     if (
-                    // Manage users and settings access
+// Manage users and settings access
                             $_SESSION['role'] === "ROOT"
                     ) {
                         ?>
@@ -118,7 +104,7 @@ while ($data = mysql_fetch_assoc($result_org)) {
                     }
 
                     if (
-                    // Application access.
+// Application access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "CONNECTION OFFICER"
                     ) {
@@ -133,7 +119,7 @@ while ($data = mysql_fetch_assoc($result_org)) {
                     }
 
                     if (
-                    // Customer access.
+// Customer access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "ACCOUNTANT" ||
                             $_SESSION['role'] === "BILLING OFFICER" ||
@@ -150,7 +136,7 @@ while ($data = mysql_fetch_assoc($result_org)) {
                         <?php
                     }
                     if (
-                    // Water meter access.
+// Water meter access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "BILLING OFFICER"
                     ) {
@@ -167,7 +153,7 @@ while ($data = mysql_fetch_assoc($result_org)) {
                         <?php
                     }
                     if (
-                    // Sales access
+// Sales access
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "BILLING OFFICER" ||
                             $_SESSION['role'] === "ACCOUNTANT"
@@ -197,7 +183,7 @@ while ($data = mysql_fetch_assoc($result_org)) {
                         <?php
                     }
                     if (
-                    // Adjustments access.
+// Adjustments access.
                             $_SESSION['role'] === "ROOT" ||
                             $_SESSION['role'] === "CREDIT CONTROLLER" ||
                             $_SESSION['role'] === "ACCOUNTANT" ||
@@ -220,76 +206,125 @@ while ($data = mysql_fetch_assoc($result_org)) {
                 <?php session_commit(); ?>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <h1>View and Print Cash Deposit</h1>
+                <h1>Organisation and People Printout</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
-                    <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/sheet.css')">Print</button>
+                    <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/print.css')">Print</button>
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
                 </div>
                 <div class="hr-line"></div>
-                <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
-                    <input type="hidden" name="html" id="html">
-                </form>
-                <div class="report-wrapper">
-                    <div id="report">
-                        <div class="sheet-wraper">
-                            <div class="sheet-header">
-                                <div class="header-title">
-                                    <p style="font-weight: bold"><?php // echo $row_authority['aut_name'] ?></p> 
-                                    <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
-                                    <div class="page-logo">
-                                        <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
+                <?php
+                require '../../functions/general_functions.php';
+
+                $creteria = clean($_GET['creteria']);
+                $category = clean($_GET['category']);
+                $details = clean($_GET['details']);
+
+                if (isset($creteria) && !empty($creteria) && isset($category) &&
+                        !empty($category) && isset($details) && !empty($details)) {
+
+                    switch ($creteria) {
+                        case "all":
+                            $filter = "";
+                            break;
+                        case "reporting":
+                            $filter = "";
+                            break;
+                        case "particular":
+                            $filter = "WHERE org.OrganisationCategoryID = '$category'";
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    require '../../config/config.php';
+
+                    $query_org = "SELECT `OrganisationName`, `OrganisationCode`, `PostalAddress`, `Phone`, `Fax`, `Email`,
+                                          DATE(`StartedOperating`) AS StartDAte, `OrganisationGroup`, `OrganisationCategoryDescription`
+                                     FROM tblgenorganisations org
+                                LEFT JOIN tblgensetuporganisationcategories cat
+                                       ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+                                          {$filter}";
+
+                    $result_org = mysql_query($query_org) or die(mysql_error());
+                    $num_oganisation = mysql_num_rows($result_org);
+
+                    if ($num_oganisation > 0) {
+                        $groups = array();
+                        while ($data = mysql_fetch_assoc($result_org)) {
+                            $groups[$data['OrganisationCategoryDescription']][] = $data;
+                        }
+                        ?>
+                        <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
+                            <input type="hidden" name="html" id="html">
+                        </form>
+                        <div class="report-wrapper">
+                            <div id="report">
+                                <div class="sheet-wraper">
+                                    <div class="sheet-header">
+                                        <div class="header-title">
+                                            <p style="font-weight: bold"><?php // echo $row_authority['aut_name']           ?></p> 
+                                            <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
+                                            <div class="page-logo">
+                                                <img src="../settings/logo/<?php echo $row_authority['logo'] ?>" height="80">
+                                            </div>
+                                        </div>
+                                        <!-- end .sheet-header --></div>
+                                    <div class="print-details" style="float: right">
+                                        <p><strong>Print Date: </strong><span style="font-weight: normal;"><?php echo date('d M, Y') ?></span></p>
                                     </div>
-                                </div>
-                                <!-- end .sheet-header --></div>
-                            <div class="print-details" style="float: right">
-                                <p><strong>Print Date: </strong><span style="font-weight: normal;"><?php echo date('d M, Y') ?></span></p>
-                            </div>
-                            <div class="black-separator"></div>
-                            <div class="sheet-table">
-                                <table cellpadding="3" cellspacing="0" border="1" width="100%">
-                                    <?php
-                                    $total = 0;
+                                    <div class="black-separator"></div>
+                                    <div class="sheet-table">
+                                        <table cellpadding="3" cellspacing="0" border="1" width="100%">
+                                            <?php
+                                            $total = 0;
 
-                                    foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
+                                            foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
 
-                                        echo '<tr><th colspan="6">' . $OrganisationCategoryDescription . '</th></tr>';
-                                        echo '<tr>';
-                                        echo '<th>Code</th>';
-                                        echo '<th>Name</th>';
-                                        echo '<th>Address</th>';
-                                        echo '<th>Contacts</th>';
-                                        echo '<th>Started Operating</th>';
-                                        echo '<th>Umbrella Organisations</th>';
-                                        echo '</tr>';
+                                                echo '<tr><th colspan="6">' . $OrganisationCategoryDescription . '</th></tr>';
+                                                echo '<tr>';
+                                                echo '<th>Code</th>';
+                                                echo '<th>Name</th>';
+                                                echo '<th>Address</th>';
+                                                echo '<th>Contacts</th>';
+                                                echo '<th>Started Operating</th>';
+                                                echo '<th>Umbrella Organisations</th>';
+                                                echo '</tr>';
 
-                                        $num_org = 0;
+                                                $num_org = 0;
 
-                                        foreach ($OrganisationCode as $data) {
+                                                foreach ($OrganisationCode as $data) {
 
-                                            echo '<tr>';
-                                            echo '<td>' . $data['OrganisationCode'] . '</td>';
-                                            echo '<td>' . $data['OrganisationName'] . '</td>';
-                                            echo '<td>' . $data['PostalAddress'] . '</td>';
-                                            echo '<td> Tel: ' . $data['Phone'] . '<br> Fax: ' . $data['Fax'] . '</td>';
-                                            echo '<td>' . $data['StartDAte'] . '</td>';
-                                            echo '<td>' . $data['StartDAte'] . '</td>';
-                                            echo '</tr>';
-                                            $total++;
-                                            $num_org++;
-                                        }
+                                                    echo '<tr>';
+                                                    echo '<td>' . $data['OrganisationCode'] . '</td>';
+                                                    echo '<td>' . $data['OrganisationName'] . '</td>';
+                                                    echo '<td>' . $data['PostalAddress'] . '</td>';
+                                                    echo '<td> Tel: ' . $data['Phone'] . '<br> Fax: ' . $data['Fax'] . '</td>';
+                                                    echo '<td>' . $data['StartDAte'] . '</td>';
+                                                    echo '<td>' . $data['StartDAte'] . '</td>';
+                                                    echo '</tr>';
+                                                    $total++;
+                                                    $num_org++;
+                                                }
 
-                                        echo'<tr><td colspan="6" align="right">organisation total ' . $num_org . '</td><tr>';
-                                    }
-                                    ?>
-                                </table>
-                                <?php echo 'Total Organisations ' . $total; ?>
-                            </div>
-                            <!-- end sheet-wrapper  --></div>
-                        <!-- end #report --></div>
-                    <!-- end .report-wrapper --></div>
+                                                echo'<tr><td colspan="6" align="right">organisation total ' . $num_org . '</td><tr>';
+                                            }
+                                            ?>
+                                        </table>
+                                        <?php echo 'Total Organisations ' . $total; ?>
+
+                                    </div>
+                                    <!-- end sheet-wrapper  --></div>
+                                <!-- end #report --></div>
+                            <!-- end .report-wrapper --></div>
+                        <?php
+                    } else {
+                        echo '<div class="message">no data found!</div>';
+                    }
+                }
+                ?>
                 <!-- end .content --></div>
             <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
-    <?php // }   ?>
 </html>

@@ -38,9 +38,18 @@
         });
 
         $('#form-org-creteria').submit(function(event) {
-  
-             event.preventDefault();
-             nav('print_organisations.php');
+
+            event.preventDefault();
+
+            var creteria = $('input[name=org_creteria1]:checked').val();
+            var details = $('input[name=org_creteria2]:checked').val();
+
+            if (creteria === 'particular') {
+                orgCategory = $('#org_cat').val();
+                nav('print_organisations.php?creteria=' + creteria + '&category=' + orgCategory + '&details=' + details);
+            } else {
+                nav('print_organisations.php?creteria=' + creteria + '&category=none&details=' + details);
+            }
         });
 
     });
@@ -61,20 +70,20 @@
             <div class="form-body">
                 <table width="" border="0" cellpadding="5">
                     <tr>
-                        <td><label><input type="radio" name="org_creteria1" value="" id="not-by-cat1"  required> All Organisations</label></td>
+                        <td><label><input type="radio" name="org_creteria1" value="all" id="not-by-cat1"  required> All Organisations</label></td>
                     </tr>
                     <tr>
                         <td>
                             <label>
-                                <input type="radio" name="org_creteria1" value="" required="" id="not-by-cat2"> ZHAPMos Reporting organisations</label></td>
+                                <input type="radio" name="org_creteria1" value="reporting" required="" id="not-by-cat2"> ZHAPMos Reporting organisations</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="org_creteria1" value="" required="" id="by_category"> Particular Category of Organisations</label></td>
+                        <td><label><input type="radio" name="org_creteria1" value="particular" required="" id="by_category"> Particular Category of Organisations</label></td>
                     </tr>
                     <tr id="org-category" style="display: none">
                         <td>
                             <select name="org_cat" id="org_cat" class="select" required="" style="width: 390px; margin-left: 25px">
-                                <option value=""></option> 
+                                <option value=""></option>
                                 <?php
                                 require '../../config/config.php';
                                 $query_cat = "SELECT `OrganisationCategoryID`, `OrganisationCategoryDescription`
@@ -94,10 +103,10 @@
                 </table>
                 <table width="" border="0" cellpadding="5" style="margin-top: 50px;">
                     <tr>
-                        <td><label><input type="radio" name="org_creteria2" value="" required=""> Organisation Details Only</label></td>
+                        <td><label><input type="radio" name="org_creteria2" value="organisation" required=""> Organisation Details Only</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="org_creteria2" value="" required=""> Organisation and People Details</label></td>
+                        <td><label><input type="radio" name="org_creteria2" value="all" required=""> Organisation and People Details</label></td>
                     </tr>
                 </table>
                 <!-- end .form-body --></div>
