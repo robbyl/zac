@@ -263,7 +263,8 @@ require '../../includes/session_validator.php';
                                        ON org.`ZHAPMoSFocalPersonID` = foc.`OrganisationPersonID`
                                 LEFT JOIN tblgenorganisationpeople hiv
                                        ON org.`HIVFocalPersonID` = hiv.`OrganisationPersonID`
-                                          {$filter}";
+                                          {$filter}
+                                 ORDER BY OrganisationCategoryDescription ASC, OrganisationName ASC";
 
                     $result_org = mysql_query($query_org) or die(mysql_error());
                     $num_oganisation = mysql_num_rows($result_org);

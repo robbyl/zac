@@ -2,11 +2,12 @@
 
 require '../../config/config.php';
 
-$query_org = "SELECT `OrganisationName`, `OrganisationCode`, `PostalAddress`, `Phone`, `Fax`, `Email`,
-                     DATE(`StartedOperating`) AS StartDAte, `OrganisationGroup`, `OrganisationCategoryDescription`
+$query_org = "SELECT `OrganisationName`, `OrganisationCode`, `PhysicalAddress`,
+                     `OrganisationGroup`, `OrganisationCategoryDescription`
                 FROM tblgenorganisations org
-           LEFT JOIN tblgensetuporganisationcategories cat
-                  ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`";
+           INNER JOIN tblgensetuporganisationcategories cat
+                  ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+            ORDER BY OrganisationCategoryDescription ASC, OrganisationName ASC";
 
 $result_org = mysql_query($query_org) or die(mysql_error());
 
@@ -14,8 +15,6 @@ $groups = array();
 while ($data = mysql_fetch_assoc($result_org)) {
     $groups[$data['OrganisationCategoryDescription']][] = $data;
 }
-
-
 
 echo '<table border="1">';
 
@@ -28,9 +27,11 @@ foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
     echo '<th>Code</th>';
     echo '<th>Name</th>';
     echo '<th>Address</th>';
-    echo '<th>Contacts</th>';
-    echo '<th>Started Operating</th>';
-    echo '<th>Umbrella Organisations</th>';
+    echo '<th>Jul-Sep</th>';
+    echo '<th>Oct-Dec</th>';
+    echo '<th>Jan-Mar</th>';
+    echo '<th>Apr-Jun</th>';
+    echo '<th>Jan-Jul</th>';
     echo '</tr>';
 
     $num_org = 0;
@@ -40,11 +41,14 @@ foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
         echo '<tr>';
         echo '<td>' . $data['OrganisationCode'] . '</td>';
         echo '<td>' . $data['OrganisationName'] . '</td>';
-        echo '<td>' . $data['PostalAddress'] . '</td>';
-        echo '<td> Tel: ' . $data['Phone'] . '<br> Fax: ' . $data['Fax'] . '</td>';
-        echo '<td>' . $data['StartDAte'] . '</td>';
-        echo '<td>' . $data['StartDAte'] . '</td>';
+        echo '<td>' . $data['PhysicalAddress'] . '</td>';
+        echo '<td>' . $data['PhysicalAddress'] . '</td>';
+        echo '<td>' . $data['PhysicalAddress'] . '</td>';
+        echo '<td>' . $data['PhysicalAddress'] . '</td>';
+        echo '<td>' . $data['PhysicalAddress'] . '</td>';
+        echo '<td>' . $data['PhysicalAddress'] . '</td>';
         echo '</tr>';
+        
         $total++;
         $num_org++;
     }
