@@ -301,7 +301,7 @@ require '../../includes/session_validator.php';
                                             foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
 
                                                 echo '<tr><th colspan="7">' . $OrganisationCategoryDescription . '</th></tr>';
-                                                echo '<tr class="zebra">';
+                                                echo '<tr>';
                                                 echo '<th>Code</th>';
                                                 echo '<th>Name</th>';
                                                 echo '<th>Address</th>';
@@ -317,28 +317,28 @@ require '../../includes/session_validator.php';
 
                                                 // Desplaying organisation details
                                                 foreach ($OrganisationCode as $data) {
-                                                    echo '<tr class="zebra">';
+                                                    echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
                                                     echo '<td>' . $data['OrganisationCode'] . '</td>';
                                                     echo '<td>' . $data['OrganisationName'] . '</td>';
                                                     echo '<td>' . $data['PostalAddress'] . '<br>' . $data['PhysicalAddress'] . '</td>';
                                                     echo '<td> Tel: ' . $data['Phone'] . '<br> Fax: ' . $data['Fax'] . '</td>';
                                                     echo '<td>' . $data['StartDAte'] . '</td>';
-                                                    echo '<td>Zhapmos: ' . $data['ZHAPMosFocal'] . '<br>HIV: ' . $data['HIVPerson'] . '</td>';
+                                                    echo '<td>Zhapmo: ' . $data['ZHAPMosFocal'] . '<br>HIV: ' . $data['HIVPerson'] . '</td>';
                                                     echo '<td>' . $data['StartDAte'] . '</td>';
                                                     echo '</tr>';
 
                                                     // Deplaying people details
                                                     if ($details === "all") {
 
-                                                        echo '<tr>';
-                                                        echo '<td style="border-bottom: none; !important"></td>';
+                                                        echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
+                                                        echo '<td></td>';
                                                         echo '<td>Paeople:</td>';
                                                         echo '<td>Desingnation</td>';
                                                         echo '<td colspan="4">Contacts</td>';
                                                         echo '</tr>';
 
                                                         foreach ($person[$data['OrganisationCode']] as $people) {
-                                                            echo '<tr>';
+                                                            echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
                                                             echo '<td></td>';
                                                             echo '<td>' . $people['FullName'] . '</td>';
                                                             echo '<td>' . $people['Designation'] . '</td>';

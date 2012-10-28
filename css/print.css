@@ -43,6 +43,10 @@ table.two-groups tr.zebra:nth-child(odd) {
     background: #fff;
 }
 
+table.two-groups tr.odd {
+    background: #fafafa !important;
+}
+
 .content p {
     margin: 5px 0 !important;
     padding: 0;
