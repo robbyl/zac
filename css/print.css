@@ -26,6 +26,23 @@ table {
     border-collapse: collapse;
 }
 
+table.two-groups, th {
+    text-align: left;
+}
+
+table.two-groups td, table.two-groups th {
+    border-left:  none;
+    border-right: none;
+}
+
+table.two-groups tr.zebra:nth-child(even) {
+    background: #fafafa;
+}
+
+table.two-groups tr.zebra:nth-child(odd) {
+    background: #fff;
+}
+
 .content p {
     margin: 5px 0 !important;
     padding: 0;
