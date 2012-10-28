@@ -207,7 +207,7 @@ require '../../includes/session_validator.php';
                 <?php session_commit(); ?>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <h1>Organisation and People Printout</h1>
+                <h1>ZHAPMoS Submission Records Printout</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                     <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/print.css')">Print</button>
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
@@ -267,11 +267,10 @@ require '../../includes/session_validator.php';
                             <div class="sheet-wraper">
                                 <div class="sheet-header">
                                     <div class="header-title">
-                                        <p style="font-weight: bold"><?php // echo $row_authority['aut_name']                    ?></p>
-                                        <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
-                                        <div class="page-logo">
-    <!--                                                <img src="../settings/logo/<?php // echo $row_authority['logo']                    ?>" height="80">-->
-                                        </div>
+                                        <div class="zanz-logo"></div>
+                                        <div class="zac-logo"></div>
+                                        <p style="font-weight: bold"></p>
+                                        <p style="font-size: 18px; font-weight: bold"></p>
                                     </div>
                                     <!-- end .sheet-header --></div>
                                 <div class="print-details" style="float: right">
@@ -279,13 +278,14 @@ require '../../includes/session_validator.php';
                                 </div>
                                 <div class="black-separator"></div>
                                 <div class="sheet-table">
-                                    <table cellpadding="3" cellspacing="0" border="1" width="100%" class="two-groups">
+                                    <table cellpadding="3" cellspacing="0" border="1" width="100%">
                                         <?php
                                         $total = 0;
 
                                         foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
 
-                                            echo '<tr><th colspan="6">' . $OrganisationCategoryDescription . '</th></tr>';
+                                            echo '<tr><th colspan="8">' . $OrganisationCategoryDescription . '</th></tr>';
+                                            echo '<tr><th colspan="3"></th><th colspan="4" style="text-align: center">Forms 1-4</th><th>Form 6</th></tr>';
                                             echo '<tr>';
                                             echo '<th>Code</th>';
                                             echo '<th>Name</th>';
@@ -316,7 +316,7 @@ require '../../includes/session_validator.php';
                                                 $num_org++;
                                             }
 
-                                            echo'<tr><td colspan="6" align="right">organisation total ' . $num_org . '</td><tr>';
+                                            echo'<tr><td colspan="8" align="right">organisation total ' . $num_org . '</td><tr>';
                                         }
                                         ?>
                                     </table>

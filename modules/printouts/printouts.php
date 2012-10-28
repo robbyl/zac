@@ -197,7 +197,7 @@ ob_start();
                         <ul class="report-list">
                             <li><a href="#" id="org-list">Organisation list and Contacts Details</a></li>
                             <li><a href="#">ZHAPMoS Forms Received</a></li>
-                            <li><a href="#">ZHAPMoS Forms Submission Records</a></li>
+                            <li><a href="print_submission_records.php">ZHAPMoS Forms Submission Records</a></li>
                             <li><a href="#">ZAC and District Staff List</a></li>
                         </ul>
                     </fieldset>

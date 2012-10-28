@@ -7,7 +7,8 @@ require '../../config/config.php';
 
 $query_org = "SELECT `OrganisationCode`, `OrganisationName`,
                       `PhysicalAddress`, `PostalAddress`, `Phone`, `Email`
-                FROM tblgenorganisations org";
+                FROM tblgenorganisations org
+            ORDER BY OrganisationName ASC";
 
 $result_org = mysql_query($query_org) or die(mysql_error());
 ?>

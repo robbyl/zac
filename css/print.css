@@ -22,6 +22,22 @@ body {
     color: #272727;
 }
 
+.zanz-logo {
+    position: absolute;
+    width: 180px;
+    height: 80px;
+    background: url(../images/zanzibar.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+.zac-logo {
+    float: right;
+    width: 150px;
+    height: 80px;
+    background: url(../images/zac.jpg) no-repeat center center;
+    background-size: contain;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -63,7 +79,7 @@ table.two-groups .no-border td {
 
 .sheet-header {
     width: 100%;
-    height: 150px;
+    height: 110px;
 }
 .page-logo {
     width: 200px;
@@ -96,7 +112,7 @@ table.two-groups .no-border td {
 .black-separator {
     width: 100%;
     height: 2px;
-    background: #000;
+    background: #999999;
     margin-bottom: 15px;
     clear: both;
 }
@@ -113,8 +129,9 @@ table.two-groups .no-border td {
     background: #fff;
 }
 
-td {
+.sheet-table td, .sheet-table th {
     vertical-align: text-top;
+    border-color: #d9d9d9;
 }
 
 @page {

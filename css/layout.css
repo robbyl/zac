@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Segoe UI Light";
-    src: url(fonts/segoeuil.ttf);
+    src: url('fonts/segoeuil.ttf');
 }
 
 body {
@@ -326,6 +326,22 @@ ul.nav ul a, ul.nav ul a:visited {
 
 .sw {
     background: url(../images/tz.png) no-repeat 25px center;
+}
+
+.zanz-logo {
+    position: absolute;
+    width: 180px;
+    height: 80px;
+    background: url(../images/zanzibar.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+.zac-logo {
+    float: right;
+    width: 150px;
+    height: 80px;
+    background: url(../images/zac.jpg) no-repeat center center;
+    background-size: contain;
 }
 
 /* ~~ The footer ~~ */
