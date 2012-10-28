@@ -217,159 +217,120 @@ require '../../includes/session_validator.php';
                 require '../../functions/general_functions.php';
                 require '../../config/config.php';
 
-                $creteria = clean($_GET['creteria']);
-                $category = clean($_GET['category']);
-                $details = clean($_GET['details']);
+//                $creteria = clean($_GET['creteria']);
+//                $category = clean($_GET['category']);
+//                $details = clean($_GET['details']);
+//
+//                if (isset($creteria) && !empty($creteria) && isset($category) &&
+//                        !empty($category) && isset($details) && !empty($details)) {
 
-                if (isset($creteria) && !empty($creteria) && isset($category) &&
-                        !empty($category) && isset($details) && !empty($details)) {
+                $groups = array();
+                $received = array();
 
-                    switch ($creteria) {
-                        case "all":
-                            $filter = "";
-                            break;
-                        case "reporting":
-                            $filter = "";
-                            break;
-                        case "particular":
-                            $filter = "WHERE org.OrganisationCategoryID = '$category'";
-                            break;
+                $query_org = "SELECT `OrganisationName`, org.`OrganisationCode`, `PhysicalAddress`,
+                                     `OrganisationGroup`, `OrganisationCategoryDescription`
+                                FROM tblgenorganisations org
+                          INNER JOIN tblgensetuporganisationcategories cat
+                                  ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+                            ORDER BY OrganisationCategoryDescription ASC, OrganisationName ASC";
 
-                        default:
-                            $filter = "";
-                            break;
+                $result_org = mysql_query($query_org) or die(mysql_error());
+
+                $no_submitted = mysql_num_rows($result_org);
+
+
+
+                if ($no_submitted > 0) {
+
+                    while ($data = mysql_fetch_assoc($result_org)) {
+                        $groups[$data['OrganisationCategoryDescription']][] = $data;
                     }
 
-                    if ($details === "all") {
+                    $query_submitted = "SELECT  org.`OrganisationCode`, DATE(`PeriodFrom`) AS PeriodFrom,
+                                                DATE(`PeriodTo`) AS PeriodTo, DATE(`DateReceived`) AS DateReceived
+                                          FROM tblgenorganisations org
+                                     LEFT JOIN tblzhaformssubmitted sub
+                                            ON org.`OrganisationCode` = sub.`OrganisationCode`
+                                         WHERE `PeriodFrom` BETWEEN '2007-07-01' AND '2008-07-01'";
 
-                        $person = array();
+                    $result_submitted = mysql_query($query_submitted) or die(mysql_error());
 
-                        $query_people = "SELECT `OrganisationCode`, `FullName`, `Designation`,
-                                                `Phone`, `Email`
-                                           FROM tblgenorganisationpeople
-                                       ORDER BY FullName ASC";
-                        $result_people = mysql_query($query_people) or die(mysql_error());
-
-                        while ($people = mysql_fetch_array($result_people)) {
-                            $person[$people['OrganisationCode']][] = $people;
-                        }
+                    while ($submitted = mysql_fetch_array($result_submitted)) {
+                        $received[$submitted['OrganisationCode']][$submitted['PeriodFrom']] = $submitted['DateReceived'];
                     }
-
-                    $query_org = "SELECT `OrganisationName`, org.`OrganisationCode`, `PostalAddress`, org.`Phone`, org.`Fax`, org.`Email`, `PhysicalAddress`,
-                                          DATE(`StartedOperating`) AS StartDAte, `OrganisationGroup`, `OrganisationCategoryDescription`,
-                                          foc.`FullName` AS ZHAPMosFocal, hiv.`FullName` AS HIVPerson
-                                     FROM tblgenorganisations org
-                               INNER JOIN tblgensetuporganisationcategories cat
-                                       ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
-                                LEFT JOIN tblgenorganisationpeople foc
-                                       ON org.`ZHAPMoSFocalPersonID` = foc.`OrganisationPersonID`
-                                LEFT JOIN tblgenorganisationpeople hiv
-                                       ON org.`HIVFocalPersonID` = hiv.`OrganisationPersonID`
-                                          {$filter}
-                                 ORDER BY OrganisationCategoryDescription ASC, OrganisationName ASC";
-
-                    $result_org = mysql_query($query_org) or die(mysql_error());
-                    $num_oganisation = mysql_num_rows($result_org);
-
-                    if ($num_oganisation > 0) {
-                        $groups = array();
-                        while ($data = mysql_fetch_assoc($result_org)) {
-                            $groups[$data['OrganisationCategoryDescription']][] = $data;
-                        }
-                        ?>
-                        <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
-                            <input type="hidden" name="html" id="html">
-                        </form>
-                        <div class="report-wrapper">
-                            <div id="report">
-                                <div class="sheet-wraper">
-                                    <div class="sheet-header">
-                                        <div class="header-title">
-                                            <p style="font-weight: bold"><?php // echo $row_authority['aut_name']             ?></p>
-                                            <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
-                                            <div class="page-logo">
-        <!--                                                <img src="../settings/logo/<?php // echo $row_authority['logo']             ?>" height="80">-->
-                                            </div>
+                    ?>
+                    <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
+                        <input type="hidden" name="html" id="html">
+                    </form>
+                    <div class="report-wrapper">
+                        <div id="report">
+                            <div class="sheet-wraper">
+                                <div class="sheet-header">
+                                    <div class="header-title">
+                                        <p style="font-weight: bold"><?php // echo $row_authority['aut_name']                    ?></p>
+                                        <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
+                                        <div class="page-logo">
+    <!--                                                <img src="../settings/logo/<?php // echo $row_authority['logo']                    ?>" height="80">-->
                                         </div>
-                                        <!-- end .sheet-header --></div>
-                                    <div class="print-details" style="float: right">
-                                        <p><strong>Print Date: </strong><span style="font-weight: normal;"><?php echo date('d M, Y') ?></span></p>
                                     </div>
-                                    <div class="black-separator"></div>
-                                    <div>
-                                        <table cellpadding="3" cellspacing="0" border="1" width="100%" class="two-groups">
-                                            <?php
-                                            $total = 0;
+                                    <!-- end .sheet-header --></div>
+                                <div class="print-details" style="float: right">
+                                    <p><strong>Print Date: </strong><span style="font-weight: normal;"><?php echo date('d M, Y') ?></span></p>
+                                </div>
+                                <div class="black-separator"></div>
+                                <div class="sheet-table">
+                                    <table cellpadding="3" cellspacing="0" border="1" width="100%" class="two-groups">
+                                        <?php
+                                        $total = 0;
 
-                                            foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
+                                        foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
 
-                                                echo '<tr><th colspan="7">' . $OrganisationCategoryDescription . '</th></tr>';
+                                            echo '<tr><th colspan="6">' . $OrganisationCategoryDescription . '</th></tr>';
+                                            echo '<tr>';
+                                            echo '<th>Code</th>';
+                                            echo '<th>Name</th>';
+                                            echo '<th>Address</th>';
+                                            echo '<th>Jul-Sep</th>';
+                                            echo '<th>Oct-Dec</th>';
+                                            echo '<th>Jan-Mar</th>';
+                                            echo '<th>Apr-Jun</th>';
+                                            echo '<th>Jan-Jul</th>';
+                                            echo '</tr>';
+
+                                            $num_org = 0;
+
+                                            foreach ($OrganisationCode as $data) {
+
                                                 echo '<tr>';
-                                                echo '<th>Code</th>';
-                                                echo '<th>Name</th>';
-                                                echo '<th>Address</th>';
-                                                echo '<th>Contacts</th>';
-                                                echo '<th>Started Operating</th>';
-                                                echo '<th>Focal Person(s)</th>';
-                                                echo '<th>Umbrella Organisations</th>';
+                                                echo '<td>' . $data['OrganisationCode'] . '</td>';
+                                                echo '<td>' . $data['OrganisationName'] . '</td>';
+                                                echo '<td>' . $data['PhysicalAddress'] . '</td>';
+                                                echo '<td>' . $received[$data['OrganisationCode']]['2007-07-01'] . '</td>';
+                                                echo '<td>' . $received[$data['OrganisationCode']]['2007-10-01'] . '</td>';
+                                                echo '<td>' . $received[$data['OrganisationCode']]['2008-01-01'] . '</td>';
+                                                echo '<td>' . $received[$data['OrganisationCode']]['2008-04-01'] . '</td>';
+                                                echo '<td></td>';
                                                 echo '</tr>';
 
-
-
-                                                $num_org = 0;
-
-                                                // Desplaying organisation details
-                                                foreach ($OrganisationCode as $data) {
-                                                    echo '<tr style="border-bottom-color: #e0e0e0;" class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
-                                                    echo '<td>' . $data['OrganisationCode'] . '</td>';
-                                                    echo '<td>' . $data['OrganisationName'] . '</td>';
-                                                    echo '<td>' . $data['PostalAddress'] . '<br>' . $data['PhysicalAddress'] . '</td>';
-                                                    echo '<td> Tel: ' . $data['Phone'] . '<br> Fax: ' . $data['Fax'] . '</td>';
-                                                    echo '<td>' . $data['StartDAte'] . '</td>';
-                                                    echo '<td>Zhapmo: ' . $data['ZHAPMosFocal'] . '<br>HIV: ' . $data['HIVPerson'] . '</td>';
-                                                    echo '<td></td>';
-                                                    echo '</tr>';
-
-                                                    // Deplaying people details
-                                                    if ($details === "all") {
-
-                                                        echo '<tr class="'; if($total % 2 !== 0) echo 'odd no-border'; echo ' no-border">';
-                                                        echo '<td></td>';
-                                                        echo '<td>Paeople:</td>';
-                                                        echo '<td>Desingnation</td>';
-                                                        echo '<td colspan="4">Contacts</td>';
-                                                        echo '</tr>';
-
-                                                        foreach ($person[$data['OrganisationCode']] as $people) {
-                                                            echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo ' no-border">';
-                                                            echo '<td></td>';
-                                                            echo '<td>' . $people['FullName'] . '</td>';
-                                                            echo '<td>' . $people['Designation'] . '</td>';
-                                                            echo '<td colspan="4">Tel: ' . $people['Phone'];
-                                                            echo '<br>Email: ' . $people['Email'];
-                                                            echo '</td>';
-                                                            echo '</tr>';
-                                                        }
-                                                    }
-                                                    $total++;
-                                                    $num_org++;
-                                                }
-
-                                                echo'<tr><td colspan="7" align="right">organisation total ' . $num_org . '</td><tr>';
+                                                $total++;
+                                                $num_org++;
                                             }
-                                            ?>
-                                        </table>
-                                        <?php echo 'Total Organisations ' . $total; ?>
 
-                                    </div>
-                                    <!-- end sheet-wrapper  --></div>
-                                <!-- end #report --></div>
-                            <!-- end .report-wrapper --></div>
-                        <?php
-                    } else {
-                        echo '<div class="message">no data found!</div>';
-                    }
+                                            echo'<tr><td colspan="6" align="right">organisation total ' . $num_org . '</td><tr>';
+                                        }
+                                        ?>
+                                    </table>
+                                    <?php echo 'Total Organisations ' . $total; ?>
+
+                                </div>
+                                <!-- end sheet-wrapper  --></div>
+                            <!-- end #report --></div>
+                        <!-- end .report-wrapper --></div>
+                    <?php
+                } else {
+                    echo '<div class="message">no data found!</div>';
                 }
+//                }
                 ?>
                 <!-- end .content --></div>
             <?php include '../../includes/footer.php'; ?>
