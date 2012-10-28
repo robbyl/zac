@@ -324,7 +324,7 @@ require '../../includes/session_validator.php';
                                                     echo '<td> Tel: ' . $data['Phone'] . '<br> Fax: ' . $data['Fax'] . '</td>';
                                                     echo '<td>' . $data['StartDAte'] . '</td>';
                                                     echo '<td>Zhapmo: ' . $data['ZHAPMosFocal'] . '<br>HIV: ' . $data['HIVPerson'] . '</td>';
-                                                    echo '<td>' . $data['StartDAte'] . '</td>';
+                                                    echo '<td></td>';
                                                     echo '</tr>';
 
                                                     // Deplaying people details
