@@ -317,7 +317,7 @@ require '../../includes/session_validator.php';
 
                                                 // Desplaying organisation details
                                                 foreach ($OrganisationCode as $data) {
-                                                    echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
+                                                    echo '<tr style="border-bottom-color: #e0e0e0;" class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
                                                     echo '<td>' . $data['OrganisationCode'] . '</td>';
                                                     echo '<td>' . $data['OrganisationName'] . '</td>';
                                                     echo '<td>' . $data['PostalAddress'] . '<br>' . $data['PhysicalAddress'] . '</td>';
@@ -330,7 +330,7 @@ require '../../includes/session_validator.php';
                                                     // Deplaying people details
                                                     if ($details === "all") {
 
-                                                        echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
+                                                        echo '<tr class="'; if($total % 2 !== 0) echo 'odd no-border'; echo ' no-border">';
                                                         echo '<td></td>';
                                                         echo '<td>Paeople:</td>';
                                                         echo '<td>Desingnation</td>';
@@ -338,7 +338,7 @@ require '../../includes/session_validator.php';
                                                         echo '</tr>';
 
                                                         foreach ($person[$data['OrganisationCode']] as $people) {
-                                                            echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
+                                                            echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo ' no-border">';
                                                             echo '<td></td>';
                                                             echo '<td>' . $people['FullName'] . '</td>';
                                                             echo '<td>' . $people['Designation'] . '</td>';

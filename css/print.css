@@ -47,6 +47,11 @@ table.two-groups tr.odd {
     background: #fafafa !important;
 }
 
+table.two-groups .no-border td {
+    border: none;
+    
+}
+
 .content p {
     margin: 5px 0 !important;
     padding: 0;
