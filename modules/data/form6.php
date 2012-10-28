@@ -106,7 +106,9 @@ if (!empty($lang) && isset($lang)) {
                         <div class="form-header">
                             <div class="zanz-logo"></div>
                             <div class="zac-logo"></div>
-                            <p class="form-heading"><?php echo $text["FORM_6_HEAD"]; ?></p>
+                            <p class="form-heading">ZANZIBAR AIDS COMMISSION (ZAC)</p>
+                            <p class="form-sub-header"><?php echo $text["FORM_6_HEAD"]; ?></p>
+
                             <div>
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: none; margin-bottom: 0">
                                     <tr>
@@ -222,7 +224,7 @@ if (!empty($lang) && isset($lang)) {
                                     <td>TSH<input type="number" min="0" step="0.01" name="plan_hiv_mne" class="number" style="width: 80% !important"></td>
                                 </tr>
                                 <tr>
-                                <td rowspan="5"><?php echo $text["SECT_LABEL_SHV"]; ?></td>
+                                    <td rowspan="5"><?php echo $text["SECT_LABEL_SHV"]; ?></td>
 
                                     <td colspan=2><?php echo $figurebreakdowntypes['PVN']; ?></td>
                                     <td>TSH<input type="number" min="0" step="0.01" name="actual_hiv_prevention" class="number" style="width: 80% !important"></td>
@@ -243,7 +245,7 @@ if (!empty($lang) && isset($lang)) {
                                     <td colspan="2"><?php echo $figurebreakdowntypes['MNE']; ?></td>
                                     <td>TSH<input type="number" min="0" step="0.01" name="actual_hiv_mne" class="number" style="width: 80% !important"></td>
                                 </tr>
-                 
+
                             </table>
                             <!-- end .section  --></div>
                         <?php require 'sections/footer_section.php'; ?>

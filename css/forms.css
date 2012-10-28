@@ -65,8 +65,15 @@ h2 h5 {
 
 .form-heading {
     width: 60%;
-    height: 80px;
     font-size: 2em;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-sub-header {
+    width: 60%;
+    font-size: 1.5em;
     margin: 0 auto;
     text-align: center;
     font-weight: bold;

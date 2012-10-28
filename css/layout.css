@@ -333,6 +333,7 @@ ul.nav ul a, ul.nav ul a:visited {
     width: 180px;
     height: 80px;
     background: url(../images/zanzibar.jpg) no-repeat center center;
+     background-size: 80px;
     background-size: contain;
 }
 
@@ -341,6 +342,7 @@ ul.nav ul a, ul.nav ul a:visited {
     width: 150px;
     height: 80px;
     background: url(../images/zac.jpg) no-repeat center center;
+     background-size: 80px;
     background-size: contain;
 }
 

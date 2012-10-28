@@ -1,7 +1,8 @@
 <div class="form-header">
     <div class="zanz-logo"></div>
     <div class="zac-logo"></div>
-    <p class="form-heading"><?php echo $heading ?></p>
+    <p class="form-heading">ZANZIBAR AIDS COMMISSION (ZAC)</p>
+    <p class="form-sub-header"><?php echo $heading ?></p>
     <div>
         <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: none; margin-bottom: 0">
             <tr>

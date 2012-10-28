@@ -27,6 +27,7 @@ body {
     width: 180px;
     height: 80px;
     background: url(../images/zanzibar.jpg) no-repeat center center;
+    background-size: 80px;
     background-size: contain;
 }
 
@@ -35,7 +36,24 @@ body {
     width: 150px;
     height: 80px;
     background: url(../images/zac.jpg) no-repeat center center;
+    background-size: 80px;
     background-size: contain;
+}
+
+.form-heading {
+    width: 60%;
+    font-size: 2em;
+    margin: 0 auto !important;
+    text-align: center !important;
+    font-weight: bold;
+}
+
+.form-sub-header {
+    width: 60%;
+    font-size: 1.5em;
+    margin: 0 auto !important;
+    text-align: center;
+    font-weight: bold;
 }
 
 table {
@@ -95,13 +113,6 @@ table.two-groups .no-border td {
 
 .header-title{
     width: 100%;
-}
-
-.header-title p {
-    margin: auto;
-    text-align: center;
-    font-size: 23px;
-    font-weight: bold;
 }
 
 .print-details {

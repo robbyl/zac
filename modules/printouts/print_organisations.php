@@ -285,10 +285,21 @@ require '../../includes/session_validator.php';
                                 <div class="sheet-wraper">
                                     <div class="sheet-header">
                                         <div class="header-title">
-                                            <p style="font-weight: bold"><?php // echo $row_authority['aut_name']             ?></p>
-                                            <p style="font-size: 18px; font-weight: bold">CASH DEPOSIT SLIP</p>
+                                            <div class="zanz-logo"></div>
+                                            <div class="zac-logo"></div>
+                                            <p class="form-heading" style="width: 60%;
+                                               margin: 0 auto !important;
+                                               text-align: center;
+                                               font-weight: bold;" >
+                                                ZANZIBAR AIDS COMMISSION (ZAC)</p>
+                                            <p class="form-sub-header" style="width: 60%;
+                                               font-size: 1.5em;
+                                               margin: 0 auto !important;
+                                               text-align: center;
+                                               font-weight: bold;">
+                                                LIST OF ORGANISATIONS</p>
                                             <div class="page-logo">
-        <!--                                                <img src="../settings/logo/<?php // echo $row_authority['logo']             ?>" height="80">-->
+        <!--                                                <img src="../settings/logo/<?php // echo $row_authority['logo']              ?>" height="80">-->
                                             </div>
                                         </div>
                                         <!-- end .sheet-header --></div>
@@ -320,7 +331,9 @@ require '../../includes/session_validator.php';
 
                                                 // Desplaying organisation details
                                                 foreach ($OrganisationCode as $data) {
-                                                    echo '<tr style="border-bottom-color: #e0e0e0;" class="'; if($total % 2 !== 0) echo 'odd'; echo '">';
+                                                    echo '<tr style="border-bottom-color: #e0e0e0;" class="';
+                                                    if ($total % 2 !== 0)
+                                                        echo 'odd'; echo '">';
                                                     echo '<td>' . $data['OrganisationCode'] . '</td>';
                                                     echo '<td>' . $data['OrganisationName'] . '</td>';
                                                     echo '<td>' . $data['PostalAddress'] . '<br>' . $data['PhysicalAddress'] . '</td>';
@@ -333,7 +346,9 @@ require '../../includes/session_validator.php';
                                                     // Deplaying people details
                                                     if ($details === "all") {
 
-                                                        echo '<tr class="'; if($total % 2 !== 0) echo 'odd no-border'; echo ' no-border">';
+                                                        echo '<tr class="';
+                                                        if ($total % 2 !== 0)
+                                                            echo 'odd no-border'; echo ' no-border">';
                                                         echo '<td></td>';
                                                         echo '<td>Paeople:</td>';
                                                         echo '<td>Desingnation</td>';
@@ -341,7 +356,9 @@ require '../../includes/session_validator.php';
                                                         echo '</tr>';
 
                                                         foreach ($person[$data['OrganisationCode']] as $people) {
-                                                            echo '<tr class="'; if($total % 2 !== 0) echo 'odd'; echo ' no-border">';
+                                                            echo '<tr class="';
+                                                            if ($total % 2 !== 0)
+                                                                echo 'odd'; echo ' no-border">';
                                                             echo '<td></td>';
                                                             echo '<td>' . $people['FullName'] . '</td>';
                                                             echo '<td>' . $people['Designation'] . '</td>';
@@ -359,20 +376,20 @@ require '../../includes/session_validator.php';
                                             }
                                             ?>
                                         </table>
-                                        <?php echo 'Total Organisations ' . $total; ?>
+                        <?php echo 'Total Organisations ' . $total; ?>
 
                                     </div>
                                     <!-- end sheet-wrapper  --></div>
                                 <!-- end #report --></div>
                             <!-- end .report-wrapper --></div>
-                        <?php
-                    } else {
-                        echo '<div class="message">no data found!</div>';
-                    }
+                    <?php
+                } else {
+                    echo '<div class="message">no data found!</div>';
                 }
-                ?>
+            }
+            ?>
                 <!-- end .content --></div>
-            <?php include '../../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
 </html>

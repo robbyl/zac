@@ -269,8 +269,17 @@ require '../../includes/session_validator.php';
                                     <div class="header-title">
                                         <div class="zanz-logo"></div>
                                         <div class="zac-logo"></div>
-                                        <p style="font-weight: bold"></p>
-                                        <p style="font-size: 18px; font-weight: bold"></p>
+                                        <p class="form-heading" style="width: 60%;
+                                           margin: 0 auto !important;
+                                           text-align: center;
+                                           font-weight: bold;" >
+                                            ZANZIBAR AIDS COMMISSION (ZAC)</p>
+                                        <p class="form-sub-header" style="width: 60%;
+                                           font-size: 1.5em;
+                                           margin: 0 auto !important;
+                                           text-align: center;
+                                           font-weight: bold;">
+                                            ZHAPMoS SUBMISSION  RECORDS</p>
                                     </div>
                                     <!-- end .sheet-header --></div>
                                 <div class="print-details" style="float: right">
