@@ -25,9 +25,15 @@ ob_start();
                 });
 
                 $('#org-list').click(function() {
- 
+
                     // Display form category and language as pop-up
                     getPopForm('organisation_criteria.php', '');
+                });
+
+                $('#form-received').click(function() {
+
+                    // Display receive form creteria as pop-up
+                    getPopForm('received_criteria.php', '');
                 });
             });
             ddaccordion.init({
@@ -196,7 +202,7 @@ ob_start();
                         <legend>Financial Reports</legend>
                         <ul class="report-list">
                             <li><a href="#" id="org-list">Organisation list and Contacts Details</a></li>
-                            <li><a href="#">ZHAPMoS Forms Received</a></li>
+                            <li><a href="#" id="form-received">ZHAPMoS Forms Received</a></li>
                             <li><a href="print_submission_records.php">ZHAPMoS Forms Submission Records</a></li>
                             <li><a href="#">ZAC and District Staff List</a></li>
                         </ul>

@@ -57,7 +57,7 @@ ob_start();
 
     <body>
         <div class="container">
-            
+
             <?php require '../../includes/header.php'; ?>
             <div id="pop-up"></div>
             <div class="sidebar">
@@ -198,8 +198,8 @@ ob_start();
                         <legend>Data Entry Options</legend>
                         <ul class="report-list">
                             <li><a href="new_organisation.php">Add Orangisations and People</a></li>
-                            <li><a href="organisations.php">View Organisations</a></li>
                             <li><a href="#" id="form-creteria">Add ZHAPMoS Form</a></li>
+                            <li><a href="organisations.php">View Organisations</a></li>
                             <li><a href="forms.php">View Received ZHAPMoS Forms</a></li>
                         </ul>
                     </fieldset>

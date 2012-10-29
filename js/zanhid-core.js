@@ -20,6 +20,8 @@ function getContent(filename, filter) {
 
 function getPopForm(filename, filter) {
 
+    $('#pop-up').children().remove();
+    
     $.ajax({
         url: filename,
         data: filter,

@@ -6,6 +6,12 @@
 <script src="../../js/zanhid-core.js" type="text/javascript"></script>
 <script src="../../js/tooltip.js" type="text/javascript"></script>
 
+<style type="text/css">
+    .pop-up-form {
+        width: 750px;
+    }
+</style>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('.message, .error').hide().slideDown('normal').click(function() {
@@ -27,8 +33,10 @@
         $('#by_category').change(function() {
 
             if (this.checked) {
-                $('#org_cat').attr('required', 'required');
+
+                $('#org_cat').attr("required", "required");
                 $('#org-category').show();
+
             }
         });
 
@@ -62,53 +70,53 @@
         ?>
         <div class="form-header">
             <div class="close tip_left" title="Close" ></div>
-            <h1>Organisation Criteria</h1>
+            <h1>ZHAPMoS Forms Received Criteria</h1>
             <div class="hr-line"></div>
             <!-- end . form-header --></div>
 
         <form action="#" method="post" id="form-org-creteria" >
             <div class="form-body">
-                <table width="" border="0" cellpadding="5">
-                    <tr>
-                        <td><label><input type="radio" name="org_creteria1" value="all" id="not-by-cat1"  required> All Organisations</label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>
-                                <input type="radio" name="org_creteria1" value="reporting" required="" id="not-by-cat2"> ZHAPMos Reporting organisations</label></td>
-                    </tr>
-                    <tr>
-                        <td><label><input type="radio" name="org_creteria1" value="particular" required="" id="by_category"> Particular Category of Organisations</label></td>
-                    </tr>
-                    <tr id="org-category" style="display: none">
-                        <td>
-                            <select name="org_cat" id="org_cat" class="select" required="" style="width: 390px; margin-left: 25px">
-                                <option value=""></option>
-                                <?php
-                                require '../../config/config.php';
-                                $query_cat = "SELECT `OrganisationCategoryID`, `OrganisationCategoryDescription`
-                                                            FROM tblgensetuporganisationcategories
-                                                        ORDER BY `OrganisationCategoryDescription` ASC";
-                                $result_cat = mysql_query($query_cat) or die(mysql_error());
-                                while ($cat = mysql_fetch_array($result_cat)) {
-                                    ?>
-                                    <option value="<?php echo $cat['OrganisationCategoryID'] ?>"><?php echo $cat['OrganisationCategoryDescription'] ?></option>
+                <fieldset>
+                    <legend>Date Received</legend>
+                    <table width="" border="0" cellpadding="5">
+                        <tr>
+                            <td width="200" style="padding-left: 10px;">From</td><td><input type="date" required="" name="received_form" class="text"></td>
+                        </tr>
+                        <tr>
+                            <td width="200" style="padding-left: 10px;">To</td> <td><input type="date" required="" name="received_to" class="text"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+                <fieldset style="margin-top: 50px;">
+                    <legend>Organisation</legend>
+                    <table width="99%" border="0" cellpadding="5">
+                        <tr>
+                            <td width="200"><label><input type="radio" name="org_creteria1" value="all" id="not-by-cat1"  required> All Organisations</label></td>
+                        </tr>
+                        <tr style="height: 40px;">
+                            <td width="200"><label><input type="radio" name="org_creteria1" value="particular" required="" id="by_category"> Particular Organisation</label></td>
+                            <td id="org-category" style="display: none">
+                                <select name="org_code" id="org_cat" class="select" required="" style="width: 488px;">
+                                    <option value=""></option>
                                     <?php
-                                }
-                                mysql_close($conn);
-                                ?>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-                <table width="" border="0" cellpadding="5" style="margin-top: 50px;">
-                    <tr>
-                        <td><label><input type="radio" name="org_creteria2" value="organisation" required=""> Organisation Details Only</label></td>
-                    </tr>
-                    <tr>
-                        <td><label><input type="radio" name="org_creteria2" value="all" required=""> Organisation and People Details</label></td>
-                    </tr>
-                </table>
+                                    require '../../config/config.php';
+                                    $query_org = "SELECT `OrganisationCode`, `OrganisationName`
+                                                    FROM tblgenorganisations
+                                                ORDER BY `OrganisationName` ASC";
+                                    $result_org = mysql_query($query_org) or die(mysql_error());
+                                    while ($org = mysql_fetch_array($result_org)) {
+                                        ?>
+                                        <option value="<?php echo $org['OrganisationCode'] ?>"><?php echo $org['OrganisationName'] ?></option>
+                                        <?php
+                                    }
+                                    mysql_close($conn);
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
                 <!-- end .form-body --></div>
             <table width="100%" class="form-footer">
                 <tr align="right">
