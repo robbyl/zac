@@ -83,7 +83,7 @@ table.two-groups tr.odd {
 
 table.two-groups .no-border td {
     border: none;
-    
+
 }
 
 .content p {
@@ -132,7 +132,7 @@ table.two-groups .no-border td {
     clear: both;
 }
 
-.sheet-table tr:nth-child(even){
+.sheet-table tr:nth-child(even), .sheet-table tr:nth-child(even) td{
     background: #fafafa;
 }
 
@@ -142,7 +142,7 @@ table.two-groups .no-border td {
 
 .sheet-table td, .sheet-table th {
     vertical-align: text-top;
-    border-color: #d9d9d9;
+    border-color: #a9a9a9;
 }
 
 @page {
