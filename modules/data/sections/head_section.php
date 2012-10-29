@@ -13,14 +13,19 @@
                 <td width="17%"></td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td width="150">Reporting Period</td>
                 <td>
                     <p>
-                        <select name="" class="select">
-                            <option></option>
+                        <select name="month_range" class="select">
+                            <option value=""></option>
+                            <option value="">January - March</option>
+                            <option value="">April - June</option>
+                            <option value="">July - September</option>
+                            <option value="">October - December</option>
                         </select>
-                        <select name="" class="select">
-                            <option></option>
+                        <select name="year" class="select">
+                            <option value="" ></option>
+                           
                         </select>
                     </p>
                 </td>

@@ -8,7 +8,7 @@
 
 <style type="text/css">
     .pop-up-form {
-        width: 750px;
+        width: 600px;
     }
 </style>
 
@@ -76,10 +76,15 @@
                     <legend>Date</legend>
                     <table width="" border="0" cellpadding="5">
                         <tr>
-                            <td width="200" style="padding-left: 10px;">From</td><td><input type="date" required="" name="received_form" class="text"></td>
-                        </tr>
-                        <tr>
-                            <td width="200" style="padding-left: 10px;">To</td> <td><input type="date" required="" name="received_to" class="text"></td>
+                            <td width="200" style="padding-left: 10px;">Financial Year</td>
+                            <td>
+                                <select name="finacial_year" class="select" required="">
+                                    <option value=""></option>
+                                    <?php for($i = 2007; $i <= date('Y'); $i++){
+                                     echo '<option value="">' . $i . '</option>';
+                                    } ?>
+                                </select>
+                            </td>
                         </tr>
                     </table>
                 </fieldset>
