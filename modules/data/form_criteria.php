@@ -68,10 +68,6 @@
 </script>
 <div class="pop-up-wrapper">
     <div class="pop-up-form">
-        <?php
-        // Displaying message and errors
-        include '../../includes/info.php';
-        ?>
         <div class="form-header">
             <div class="close tip_left "title="Close"></div><h1>ZHAPMoS Form Type</h1>
             <div class="hr-line"></div>

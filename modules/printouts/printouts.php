@@ -35,7 +35,14 @@ ob_start();
                     // Display receive form creteria as pop-up
                     getPopForm('received_criteria.php', '');
                 });
+
+                $('#form-submitted').click(function() {
+
+                    // Display receive form creteria as pop-up
+                    getPopForm('submission_criteria.php', '');
+                });
             });
+
             ddaccordion.init({
                 headerclass: "expandable", //Shared CSS class name of headers group that are expandable
                 contentclass: "categoryitems", //Shared CSS class name of contents group
@@ -198,12 +205,21 @@ ob_start();
                 <h1>Generate Reports</h1>
                 <div class="hr-line"></div>
                 <form action="" method="post" >
-                    <fieldset>
-                        <legend>Financial Reports</legend>
+                    <fieldset style="float: left">
+                        <legend>ZHAPMoS Form Printouts</legend>
                         <ul class="report-list">
                             <li><a href="#" id="org-list">Organisation list and Contacts Details</a></li>
                             <li><a href="#" id="form-received">ZHAPMoS Forms Received</a></li>
-                            <li><a href="print_submission_records.php">ZHAPMoS Forms Submission Records</a></li>
+                            <li><a href="#" id="form-submitted">ZHAPMoS Forms Submission Records</a></li>
+                            <li><a href="#">ZAC and District Staff List</a></li>
+                        </ul>
+                    </fieldset>
+                    <fieldset style="float: left">
+                        <legend>ZHAPMoS Supervision Printouts</legend>
+                        <ul class="report-list">
+                            <li><a href="#" id="org-list">ZHAPMoS Supervision List</a></li>
+                            <li><a href="#" id="form-received">ZHAPMoS Supervision Form</a></li>
+                            <li><a href="#">ZHAPMoS Supervision Analysis</a></li>
                             <li><a href="#">ZAC and District Staff List</a></li>
                         </ul>
                     </fieldset>

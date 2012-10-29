@@ -194,13 +194,22 @@ ob_start();
                 <h1>Data Entry</h1>
                 <div class="hr-line"></div>
                 <form action="" method="post" >
-                    <fieldset>
-                        <legend>Data Entry Options</legend>
+                    <fieldset style="float: left">
+                        <legend>ZHAPMoS Forms</legend>
                         <ul class="report-list">
                             <li><a href="new_organisation.php">Add Orangisations and People</a></li>
                             <li><a href="#" id="form-creteria">Add ZHAPMoS Form</a></li>
                             <li><a href="organisations.php">View Organisations</a></li>
                             <li><a href="forms.php">View Received ZHAPMoS Forms</a></li>
+                        </ul>
+                    </fieldset>
+                    <fieldset style="float: left">
+                        <legend>ZHAPMoS Supervision Forms</legend>
+                        <ul class="report-list">
+                            <li><a href="#">Add Orangisations and People</a></li>
+                            <li><a href="#" id="form-creteria">Add ZHAPMoS Form</a></li>
+                            <li><a href="#">View Organisations</a></li>
+                            <li><a href="#">View Received ZHAPMoS Forms</a></li>
                         </ul>
                     </fieldset>
                 </form>
