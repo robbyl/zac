@@ -114,8 +114,8 @@ if (!empty($lang) && isset($lang)) {
                                     <tr>
                                         <td width="6%">&nbsp;</td>
                                         <td width="12%">&nbsp;</td>
-                                        <td width="55%">&nbsp;</td>
-                                        <td width="10%"></td>
+                                        <td width="51%">&nbsp;</td>
+                                        <td width="14%"></td>
                                         <td width="17%"></td>
                                     </tr>
                                     <tr>
@@ -123,10 +123,15 @@ if (!empty($lang) && isset($lang)) {
                                         <td>
                                         </td>
                                         <td>&nbsp;</td>
-                                        <td align="right">Year:</td>
+                                        <td align="right">Reporting period:</td>
                                         <td align="right">
-                                            <select name="year" class="select" style="font-size: 1.5em; width: 150px; text-align: right">
-                                                <option></option>
+                                            <select name="reporting_period" class="select" style="width: 150px;">
+                                                <option value=""></option>
+                                               <?php
+                                    for ($i = 2007; $i <= date('Y'); $i++) {
+                                        echo '<option value="' . $i . '/' . ($i + 1) . '">' . $i . '/' . ($i + 1) . '</option>';
+                                    }
+                                    ?>
                                             </select>
                                         </td>
                                     </tr>

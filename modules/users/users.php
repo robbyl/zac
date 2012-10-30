@@ -33,7 +33,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
         <script src="../../js/accordion.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-            
+
             $(document).ready(function() {
                 oTable = $('#dataTable').dataTable({
                     "bJQueryUI": true,
@@ -50,23 +50,23 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                     "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
                 });
 
-                $('#select-all').click(function(){
+                $('#select-all').click(function() {
                     // Iterate each check box
 
-                    if(this.checked){
-                        $('.checkbox').each(function(){
+                    if (this.checked) {
+                        $('.checkbox').each(function() {
                             this.checked = true;
                             $(this).closest('tr').addClass('selected');
                         });
 
                     } else {
-                        $('.checkbox').each(function(){
+                        $('.checkbox').each(function() {
                             this.checked = false;
                             $(this, '.checkbox').closest('tr').removeClass('selected');
                         });
                     }
                 });
-                
+
                 // Putting backgoround color to the tr for checked checkbox 
                 $('.checkbox').click(function(event) {
                     $(this).closest('tr').toggleClass('selected');
@@ -77,18 +77,17 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                     }
                 });
 
-                $('.message, .error').hide().slideDown('normal').click(function(){
+                $('.message, .error').hide().slideDown('normal').click(function() {
                     $(this).slideUp('normal');
                 });
 
                 $('.tooltip').tipTip({
                     delay: "300"
                 });
-                
-                var num = $('.current').parentsUntil(this).length;
-                alert(num);
-            } );
-            
+
+                alert($('.arrowlistmenu').children('.categoryitems').index('#current'));
+            });
+
             ddaccordion.init({
                 headerclass: "expandable", //Shared CSS class name of headers group that are expandable
                 contentclass: "categoryitems", //Shared CSS class name of contents group
@@ -102,10 +101,10 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                 toggleclass: ["", "openheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
                 togglehtml: ["prefix", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
                 animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
-                oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
+                oninit: function(headers, expandedindices) { //custom code to run when headers have initalized
                     //do nothing
                 },
-                onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+                onopenclose: function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
                     //do nothing
                 }
             })
@@ -125,14 +124,14 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                             $_SESSION['role'] === "ROOT"
                     ) {
                         ?>
-                        <h3 class="menuheader expandable users">Manage Users</h3>
+                        <h3 class="menuheader expandable users" id="current">Manage Users</h3>
                         <ul class="categoryitems">
                             <li><a href="../../modules/users/new_user.php">Add new user</a></li>
                             <li><a href="../../modules/users/users.php">View users</a></li>
                         </ul>
 
                         <h3 class="menuheader expandable settings">Settings</h3>
-                        <ul class="categoryitems current">
+                        <ul class="categoryitems">
                             <li><a href="../../modules/settings/settings.php" >General settings</a></li>
                             <li><a href="../../modules/settings/tariffs.php">Tariffs</a></li>
                         </ul>
@@ -198,7 +197,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
 
                         <h3 class="menuheader expandable invoices">Sales</h3>
                         <ul class="categoryitems">
-                            <li class="current"><a href="../../modules/invoice/generate_invoices.php" >Generate invoices</a></li>
+                            <li><a href="../../modules/invoice/generate_invoices.php" >Generate invoices</a></li>
                             <li><a href="../../modules/invoice/invoices.php">View invoices</a></li>
                         </ul>
                         <?php

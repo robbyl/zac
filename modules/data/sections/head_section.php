@@ -18,10 +18,10 @@
                     <p>
                         <select name="month_range" class="select" required="">
                             <option value=""></option>
-                            <option value="">January - March</option>
-                            <option value="">April - June</option>
-                            <option value="">July - September</option>
-                            <option value="">October - December</option>
+                            <option value="01-01/03-31">January - March</option>
+                            <option value="04-01/06-30">April - June</option>
+                            <option value="07-01/09-30">July - September</option>
+                            <option value="10-01/12-31">October - December</option>
                         </select>
                         <select name="year" class="select" required="">
                             <option value="" ></option>

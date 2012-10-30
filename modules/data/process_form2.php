@@ -5,6 +5,13 @@ require '../../functions/general_functions.php';
 
 $lang = clean($_POST['lang']);
 $form_no = clean($_POST['form_no']);
+$month_range = clean($_POST['month_range']);
+$year = clean($_POST['year']);
+
+$exmonth_range = explode("/", $month_range);
+
+$period_from = $year . '-' . $exmonth_range[0];
+$period_to = $year . '-' . $exmonth_range[1];
 
 // Geting form-data for data-section A data-set A
 $sch_name = clean($_POST['sch_name']);
@@ -40,8 +47,7 @@ $comments_zac = clean($_POST['comments_zac']);
 
 /* ########################### END FORM APPROVAL ############################### */
 
-$period_from = '2008-01-01';
-$period_to = '2008-03-31';
+
 $query_submitted = "INSERT INTO tblzhaformssubmitted
                                  (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
                                   `PeriodFrom`, `PeriodTo`, `CompletedByPersonID`, `DateCompleted`,
@@ -55,4 +61,12 @@ $query_submitted = "INSERT INTO tblzhaformssubmitted
                                   '$comments', '$comments_zac')";
 
 $result_submitted = mysql_query($query_submitted) or die(mysql_error());
+
+if ($result_submitted) {
+    info('message', 'Form saved successully!');
+    header("Location: form2.php?lang=" . $lang);
+} else {
+    info('error', 'Cannot save. Please try again!');
+    header("Location: form2.php?lang=" . $lang);
+}
 ?>

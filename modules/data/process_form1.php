@@ -5,6 +5,13 @@ require '../../functions/general_functions.php';
 
 $lang = clean($_POST['lang']);
 $form_no = clean($_POST['form_no']);
+$month_range = clean($_POST['month_range']);
+$year = clean($_POST['year']);
+
+$exmonth_range = explode("/", $month_range);
+
+$period_from = $year . '-' . $exmonth_range[0];
+$period_to = $year . '-' . $exmonth_range[1];
 
 // Geting form-data for data-section A data-set CD
 $org_name = clean($_POST['org_name']);
@@ -349,8 +356,6 @@ $query_ans = "INSERT INTO tblzhafigures
  
  $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  
- $period_from = '2008-01-01';
- $period_to = '2008-03-31';
  $query_submitted = "INSERT INTO tblzhaformssubmitted
                                  (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
                                   `PeriodFrom`, `PeriodTo`, `CompletedByPersonID`, `DateCompleted`,

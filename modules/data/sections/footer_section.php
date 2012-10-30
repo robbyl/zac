@@ -79,8 +79,8 @@
             <td><input type="date" name="filed_date" value="<?php echo date('Y-m-d') ?>" class="text" style="width: 67%"></td>
         </tr>
         <tr>
-            <td>Additional comments</td><td><textarea name="comments" cols="31"></textarea></td>
-            <td>Aditional comments by zac</td><td><textarea name="comments_zac" cols="31"></textarea></td>
+            <td>Additional Notes</td><td><textarea name="comments" cols="31"></textarea></td>
+            <td>Additional Notes by ZAC</td><td><textarea name="comments_zac" cols="31"></textarea></td>
         </tr>
     </table>
     <?php mysql_close($conn); ?>
