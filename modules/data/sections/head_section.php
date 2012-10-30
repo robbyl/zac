@@ -16,16 +16,20 @@
                 <td width="150">Reporting Period</td>
                 <td>
                     <p>
-                        <select name="month_range" class="select">
+                        <select name="month_range" class="select" required="">
                             <option value=""></option>
                             <option value="">January - March</option>
                             <option value="">April - June</option>
                             <option value="">July - September</option>
                             <option value="">October - December</option>
                         </select>
-                        <select name="year" class="select">
+                        <select name="year" class="select" required="">
                             <option value="" ></option>
-                           
+                            <?php
+                            for ($i = 2007; $i <= date('Y'); $i++) {
+                                echo '<option value="' . $i . '">' . $i . '</option>';
+                            }
+                            ?>
                         </select>
                     </p>
                 </td>

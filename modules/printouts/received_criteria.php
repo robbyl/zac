@@ -54,9 +54,9 @@
 
             if (creteria === 'particular') {
                 orgCategory = $('#org_cat').val();
-                nav('print_organisations.php?creteria=' + creteria + '&category=' + orgCategory + '&details=' + details);
+                nav('forms_received.php?creteria=' + creteria + '&category=' + orgCategory + '&details=' + details);
             } else {
-                nav('print_organisations.php?creteria=' + creteria + '&category=none&details=' + details);
+                nav('forms_received.php?creteria=' + creteria + '&category=none&details=' + details);
             }
         });
 

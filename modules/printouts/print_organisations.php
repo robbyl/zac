@@ -350,7 +350,7 @@ require '../../includes/session_validator.php';
                                                         if ($total % 2 !== 0)
                                                             echo 'odd no-border'; echo ' no-border">';
                                                         echo '<td></td>';
-                                                        echo '<td>Paeople:</td>';
+                                                        echo '<td>People:</td>';
                                                         echo '<td>Desingnation</td>';
                                                         echo '<td colspan="4">Contacts</td>';
                                                         echo '</tr>';

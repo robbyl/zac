@@ -217,129 +217,133 @@ require '../../includes/session_validator.php';
                 require '../../functions/general_functions.php';
                 require '../../config/config.php';
 
-//                $creteria = clean($_GET['creteria']);
-//                $category = clean($_GET['category']);
-//                $details = clean($_GET['details']);
-//
-//                if (isset($creteria) && !empty($creteria) && isset($category) &&
-//                        !empty($category) && isset($details) && !empty($details)) {
+                $year = clean($_GET['year']);
 
-                $groups = array();
-                $received = array();
+                if (isset($year) && !empty($year)) {
 
-                $query_org = "SELECT `OrganisationName`, org.`OrganisationCode`, `PhysicalAddress`,
-                                     `OrganisationGroup`, `OrganisationCategoryDescription`
-                                FROM tblgenorganisations org
-                          INNER JOIN tblgensetuporganisationcategories cat
-                                  ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
-                            ORDER BY OrganisationCategoryDescription ASC, OrganisationName ASC";
+                    $groups = array();
+                    $received = array();
 
-                $result_org = mysql_query($query_org) or die(mysql_error());
+                    $exyear = explode("/", $year);
 
-                $no_submitted = mysql_num_rows($result_org);
+                    $from = $exyear[0] . "-07-01 00:00:00";
+                    $to = $exyear[1] . "-07-01 00:00:00";
+
+                    $query_org = "SELECT `OrganisationName`, org.`OrganisationCode`, `District`,
+                                          `OrganisationGroup`, `OrganisationCategoryDescription`
+                                     FROM tblgenorganisations org
+                               INNER JOIN tblgensetuporganisationcategories cat
+                                       ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+                                LEFT JOIN tblgensetupdistricts dis
+                                       ON SUBSTR(org.`OrganisationCode`, 1, 3) = dis.DistrictAbb
+                                 ORDER BY OrganisationCategoryDescription ASC, OrganisationName ASC";
+
+                    $result_org = mysql_query($query_org) or die(mysql_error());
+
+                    $no_submitted = mysql_num_rows($result_org);
 
 
 
-                if ($no_submitted > 0) {
+                    if ($no_submitted > 0) {
 
-                    while ($data = mysql_fetch_assoc($result_org)) {
-                        $groups[$data['OrganisationCategoryDescription']][] = $data;
-                    }
+                        while ($data = mysql_fetch_assoc($result_org)) {
+                            $groups[$data['OrganisationCategoryDescription']][] = $data;
+                        }
 
-                    $query_submitted = "SELECT  org.`OrganisationCode`, DATE(`PeriodFrom`) AS PeriodFrom,
-                                                DATE(`PeriodTo`) AS PeriodTo, DATE(`DateReceived`) AS DateReceived
-                                          FROM tblgenorganisations org
-                                     LEFT JOIN tblzhaformssubmitted sub
-                                            ON org.`OrganisationCode` = sub.`OrganisationCode`
-                                         WHERE `PeriodFrom` BETWEEN '2007-07-01' AND '2008-07-01'";
+                        $query_submitted = "SELECT org.`OrganisationCode`, DATE(`PeriodFrom`) AS PeriodFrom,
+                                                   DATE(`PeriodTo`) AS PeriodTo, DATE_FORMAT(IFNULL(DATE(`DateReceived`), `DateCaptured`), '%d %b, %Y') AS DateReceived
+                                              FROM tblgenorganisations org
+                                         LEFT JOIN tblzhaformssubmitted sub
+                                                ON org.`OrganisationCode` = sub.`OrganisationCode`
+                                             WHERE `PeriodFrom` BETWEEN '$from' AND '$to'";
 
-                    $result_submitted = mysql_query($query_submitted) or die(mysql_error());
+                        $result_submitted = mysql_query($query_submitted) or die(mysql_error());
 
-                    while ($submitted = mysql_fetch_array($result_submitted)) {
-                        $received[$submitted['OrganisationCode']][$submitted['PeriodFrom']] = $submitted['DateReceived'];
-                    }
-                    ?>
-                    <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
-                        <input type="hidden" name="html" id="html">
-                    </form>
-                    <div class="report-wrapper">
-                        <div id="report">
-                            <div class="sheet-wraper">
-                                <div class="sheet-header">
-                                    <div class="header-title">
-                                        <div class="zanz-logo"></div>
-                                        <div class="zac-logo"></div>
-                                        <p class="form-heading" style="width: 60%;
-                                           margin: 0 auto !important;
-                                           text-align: center;
-                                           font-weight: bold;" >
-                                            ZANZIBAR AIDS COMMISSION (ZAC)</p>
-                                        <p class="form-sub-header" style="width: 60%;
-                                           font-size: 1.5em;
-                                           margin: 0 auto !important;
-                                           text-align: center;
-                                           font-weight: bold;">
-                                            ZHAPMoS SUBMISSION  RECORDS</p>
+                        while ($submitted = mysql_fetch_array($result_submitted)) {
+                            $received[$submitted['OrganisationCode']][$submitted['PeriodFrom']] = $submitted['DateReceived'];
+                        }
+                        ?>
+                        <form action="../../includes/pdf.php" method="post" id="html-form" style="display: none">
+                            <input type="hidden" name="html" id="html">
+                        </form>
+                        <div class="report-wrapper">
+                            <div id="report">
+                                <div class="sheet-wraper">
+                                    <div class="sheet-header">
+                                        <div class="header-title">
+                                            <div class="zanz-logo"></div>
+                                            <div class="zac-logo"></div>
+                                            <p class="form-heading" style="width: 60%;
+                                               margin: 0 auto !important;
+                                               text-align: center;
+                                               font-weight: bold;" >
+                                                ZANZIBAR AIDS COMMISSION (ZAC)</p>
+                                            <p class="form-sub-header" style="width: 60%;
+                                               font-size: 1.5em;
+                                               margin: 0 auto !important;
+                                               text-align: center;
+                                               font-weight: bold;">
+                                                ZHAPMoS SUBMISSION  RECORDS <br>Financial Year <?php echo 'Jul ' . $exyear[0] . ' - Jun ' . $exyear[1]; ?></p>
+                                        </div>
+                                        <!-- end .sheet-header --></div>
+                                    <div class="print-details" style="float: right">
+                                        <p><strong>Print Date: </strong><span style="font-weight: normal;"><?php echo date('d M, Y') ?></span></p>
                                     </div>
-                                    <!-- end .sheet-header --></div>
-                                <div class="print-details" style="float: right">
-                                    <p><strong>Print Date: </strong><span style="font-weight: normal;"><?php echo date('d M, Y') ?></span></p>
-                                </div>
-                                <div class="black-separator"></div>
-                                <div class="sheet-table">
-                                    <table cellpadding="3" cellspacing="0" border="1" width="100%">
-                                        <?php
-                                        $total = 0;
+                                    <div class="black-separator"></div>
+                                    <div class="sheet-table">
+                                        <table cellpadding="3" cellspacing="0" border="1" width="100%">
+                                            <?php
+                                            $total = 0;
 
-                                        foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
+                                            foreach ($groups as $OrganisationCategoryDescription => $OrganisationCode) {
 
-                                            echo '<tr><th colspan="8">' . $OrganisationCategoryDescription . '</th></tr>';
-                                            echo '<tr><th colspan="3"></th><th colspan="4" style="text-align: center">Forms 1-4</th><th>Form 6</th></tr>';
-                                            echo '<tr>';
-                                            echo '<th>Code</th>';
-                                            echo '<th>Name</th>';
-                                            echo '<th>Address</th>';
-                                            echo '<th>Jul-Sep</th>';
-                                            echo '<th>Oct-Dec</th>';
-                                            echo '<th>Jan-Mar</th>';
-                                            echo '<th>Apr-Jun</th>';
-                                            echo '<th>Jan-Jul</th>';
-                                            echo '</tr>';
-
-                                            $num_org = 0;
-
-                                            foreach ($OrganisationCode as $data) {
-
+                                                echo '<tr><th colspan="8">' . $OrganisationCategoryDescription . '</th></tr>';
+                                                echo '<tr><th colspan="3"></th><th colspan="4" style="text-align: center">Forms 1-4</th><th>Form 6</th></tr>';
                                                 echo '<tr>';
-                                                echo '<td>' . $data['OrganisationCode'] . '</td>';
-                                                echo '<td>' . $data['OrganisationName'] . '</td>';
-                                                echo '<td>' . $data['PhysicalAddress'] . '</td>';
-                                                echo '<td>' . $received[$data['OrganisationCode']]['2007-07-01'] . '</td>';
-                                                echo '<td>' . $received[$data['OrganisationCode']]['2007-10-01'] . '</td>';
-                                                echo '<td>' . $received[$data['OrganisationCode']]['2008-01-01'] . '</td>';
-                                                echo '<td>' . $received[$data['OrganisationCode']]['2008-04-01'] . '</td>';
-                                                echo '<td></td>';
+                                                echo '<th>Code</th>';
+                                                echo '<th>Name</th>';
+                                                echo '<th>District</th>';
+                                                echo '<th>Jul-Sep</th>';
+                                                echo '<th>Oct-Dec</th>';
+                                                echo '<th>Jan-Mar</th>';
+                                                echo '<th>Apr-Jun</th>';
+                                                echo '<th>Jan-Jul</th>';
                                                 echo '</tr>';
 
-                                                $total++;
-                                                $num_org++;
+                                                $num_org = 0;
+
+                                                foreach ($OrganisationCode as $data) {
+
+                                                    echo '<tr>';
+                                                    echo '<td>' . $data['OrganisationCode'] . '</td>';
+                                                    echo '<td>' . $data['OrganisationName'] . '</td>';
+                                                    echo '<td>' . $data['District'] . '</td>';
+                                                    echo '<td>' . $received[$data['OrganisationCode']][$exyear[0] . '-07-01'] . '</td>';
+                                                    echo '<td>' . $received[$data['OrganisationCode']][$exyear[0] . '-10-01'] . '</td>';
+                                                    echo '<td>' . $received[$data['OrganisationCode']][$exyear[1] . '-01-01'] . '</td>';
+                                                    echo '<td>' . $received[$data['OrganisationCode']][$exyear[1] . '-04-01'] . '</td>';
+                                                    echo '<td></td>';
+                                                    echo '</tr>';
+
+                                                    $total++;
+                                                    $num_org++;
+                                                }
+
+                                                echo'<tr><td colspan="8" align="right">organisation total ' . $num_org . '</td><tr>';
                                             }
+                                            ?>
+                                        </table>
+                                        <?php echo 'Total Organisations ' . $total; ?>
 
-                                            echo'<tr><td colspan="8" align="right">organisation total ' . $num_org . '</td><tr>';
-                                        }
-                                        ?>
-                                    </table>
-                                    <?php echo 'Total Organisations ' . $total; ?>
-
-                                </div>
-                                <!-- end sheet-wrapper  --></div>
-                            <!-- end #report --></div>
-                        <!-- end .report-wrapper --></div>
-                    <?php
-                } else {
-                    echo '<div class="message">no data found!</div>';
+                                    </div>
+                                    <!-- end sheet-wrapper  --></div>
+                                <!-- end #report --></div>
+                            <!-- end .report-wrapper --></div>
+                        <?php
+                    } else {
+                        echo '<div class="message">no data found!</div>';
+                    }
                 }
-//                }
                 ?>
                 <!-- end .content --></div>
             <?php include '../../includes/footer.php'; ?>

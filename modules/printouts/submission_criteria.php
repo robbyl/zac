@@ -9,14 +9,16 @@
 <style type="text/css">
     .pop-up-form {
         width: 600px;
+        height: 336px;
+    }
+
+    .form-body {
+        height: 200px;
     }
 </style>
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.message, .error').hide().slideDown('normal').click(function() {
-            $(this).slideUp('normal');
-        });
 
         $('.tip_left').tipTip({
             delay: 300,
@@ -30,34 +32,13 @@
             });
         });
 
-        $('#by_category').change(function() {
-
-            if (this.checked) {
-
-                $('#org_cat').attr("required", "required");
-                $('#org-category').show();
-
-            }
-        });
-
-        $('#not-by-cat1, #not-by-cat2, #clear').click(function() {
-            $('#org_cat').val("").removeAttr('required');
-            $('#org-category').css('display', 'none');
-        });
-
-        $('#form-org-creteria').submit(function(event) {
+        $('#financial-year').submit(function(event) {
 
             event.preventDefault();
 
-            var creteria = $('input[name=org_creteria1]:checked').val();
-            var details = $('input[name=org_creteria2]:checked').val();
+            var year = $('#finacial-year').val();
 
-            if (creteria === 'particular') {
-                orgCategory = $('#org_cat').val();
-                nav('print_organisations.php?creteria=' + creteria + '&category=' + orgCategory + '&details=' + details);
-            } else {
-                nav('print_organisations.php?creteria=' + creteria + '&category=none&details=' + details);
-            }
+            nav('print_submission_records.php?year=' + year);
         });
 
     });
@@ -70,7 +51,7 @@
             <div class="hr-line"></div>
             <!-- end . form-header --></div>
 
-        <form action="#" method="post" id="form-org-creteria" >
+        <form action="#" method="post" id="financial-year" >
             <div class="form-body">
                 <fieldset>
                     <legend>Date</legend>
@@ -78,11 +59,13 @@
                         <tr>
                             <td width="200" style="padding-left: 10px;">Financial Year</td>
                             <td>
-                                <select name="finacial_year" class="select" required="">
+                                <select name="finacial_year" class="select" id="finacial-year" required="" style="width: 300px">
                                     <option value=""></option>
-                                    <?php for($i = 2007; $i <= date('Y'); $i++){
-                                     echo '<option value="">' . $i . '</option>';
-                                    } ?>
+                                    <?php
+                                    for ($i = 2007; $i <= date('Y'); $i++) {
+                                        echo '<option value="' . $i . '/' . ($i + 1) . '">' . $i . '/' . ($i + 1) . '</option>';
+                                    }
+                                    ?>
                                 </select>
                             </td>
                         </tr>
