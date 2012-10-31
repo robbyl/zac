@@ -3,42 +3,37 @@
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
-$query_received = "SELECT `FormSerialNumber`, sub.`OrganisationCode`, `OrganisationName`, dis.`District`, `OrganisationGroup`,
+$query_received = "SELECT `FormSerialNumber`, sub.`OrganisationCode`, `OrganisationName`, dis.`District`, `OrganisationCategoryDescription`,
                           DATE(`DateCompleted`) AS DateCompleted, DATE(`DateApproved`) AS DateApproved, 
                           DATE(`DateReceived`) AS DateReceived, DATE(`DateCaptured`) AS DateCaptured,
                           DATE(`PeriodFrom`) AS PeriodFrom, DATE(`PeriodTo`) AS PeriodTo
                      FROM tblzhaformssubmitted sub
-                LEFT JOIN tblgenorganisations org
+                  INNER JOIN tblgenorganisations org
                        ON sub.`OrganisationCode` = org.`OrganisationCode`
                 LEFT JOIN tblgensetupdistricts dis
                        ON sub.`DistrictCode` = dis.`DistrictCode`
                 LEFT JOIN tblgensetuporganisationcategories cat
                        ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
-                 GROUP BY FormSerialNumber 
-                 ORDER BY `FormSerialNumber` ASC,`PeriodFrom` ASC";
+                 ORDER BY `FormSerialNumber` ASC, OrganisationCategoryDescription ASC, `PeriodFrom` ASC";
 
 $result = mysql_query($query_received) or die(mysql_error());
 
+$groups = array();
+$PeriodFrom = array();
+
 while ($data = mysql_fetch_assoc($result)) {
-    $groups[$data['OrganisationGroup']][] = $data;
-    $periods[$data['PeriodFrom']][] = $data;
-    $forms[$data['OrganisationGroup']][$data['PeriodFrom']][] = $data['FormSerialNumber'];
+    $groups[$data['OrganisationCategoryDescription']][] = $data;
+    $received[$data['FormSerialNumber']][$data['OrganisationCategoryDescription']] = $data['FormSerialNumber'];
 }
+
 
 $total = 0;
 echo '<table border="1">';
-foreach ($groups as $OrganisationGroup => $PeriodFrom) {
-    echo '<tr><th>' . $OrganisationGroup . '</th></tr>';
-
-    foreach ($periods as $PeriodFrom => $FormSerialNumber) {
-        echo '<tr><th>' . $PeriodFrom . '</th></tr>';
-       
-
-        $n = count($forms[$OrganisationGroup][$PeriodFrom]);
-        
-        for ($i = 0; $i < $n; $i++) {
-            
-            echo '<tr><td>' . $forms[$OrganisationGroup][$PeriodFrom][$i] . '</td><tr>';
+foreach ($groups as $OrganisationCategoryDescription => $forms) {
+    echo '<tr><th>' . $OrganisationCategoryDescription . '</th></tr>';
+    foreach ($received as $key => $value) {
+        if (!empty($received[$key][$OrganisationCategoryDescription])) {
+            echo '<tr><td>' . $received[$key][$OrganisationCategoryDescription] . '</td></tr>';
             $total++;
         }
     }
@@ -99,7 +94,7 @@ exit;
                 <!-- end .sidebar --></div>
             <div class="content">
                 <?php
-                // Displaying message and errors
+// Displaying message and errors
                 include '../../includes/info.php';
                 ?>
                 <h1>Add New ZHAPMoS Form 1</h1>

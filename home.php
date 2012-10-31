@@ -86,7 +86,7 @@ session_commit();
                         $_SESSION['role'] === "CONNECTION OFFICER"
                 ) {
                     ?>
-                    <a href="modules/applications/add_new_appln.php" class="tooltip fltlft" title="Backup data">
+                <a href="modules/backups/backups.php" class="tooltip fltlft" title="View, make and restore backups">
                         <div class="home-icon applications-icon">
                             <div class="icon-label">Back-up</div>
                         </div>

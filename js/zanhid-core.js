@@ -18,10 +18,29 @@ function getContent(filename, filter) {
     });
 }
 
+function makeBackup(filename, filter) {
+    $.ajax({
+        url: filename,
+        data: filter,
+        type: 'GET',
+        dataType: 'html',
+        beforeSend: function() {
+            $('#backup-info').html('<div class="message">Backingup... please be patient this  may take several minutes</div>');
+        },
+        success: function(data, textStatus, xhr) {
+
+            $('#backup-info').html(data);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            $('#backup-info').html('<div class="error">Connection lost! Try again</div>');
+        }
+    });
+}
+
 function getPopForm(filename, filter) {
 
     $('#pop-up').children().remove();
-    
+
     $.ajax({
         url: filename,
         data: filter,

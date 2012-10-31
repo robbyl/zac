@@ -242,8 +242,6 @@ require '../../includes/session_validator.php';
 
                     $no_submitted = mysql_num_rows($result_org);
 
-
-
                     if ($no_submitted > 0) {
 
                         while ($data = mysql_fetch_assoc($result_org)) {
