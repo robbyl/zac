@@ -30,6 +30,27 @@ $school_owner = clean($_POST['school_owner']);
 
 /* ########################### END SECTION A ############################### */
 
+// Geting form-data for data-section B data-set B
+$b1_males = clean($_POST['b1_males']);
+$b1_females = clean($_POST['b1_females']);
+
+$b2_males = clean($_POST['b2_males']);
+$b2_females = clean($_POST['b2_females']);
+
+$b3_males = clean($_POST['b3_males']);
+$b3_females = clean($_POST['b3_females']);
+
+$b4_males = clean($_POST['b4_males']);
+$b4_females = clean($_POST['b4_females']);
+
+$b5_males = clean($_POST['b5_males']);
+$b5_females = clean($_POST['b5_females']);
+
+$b6_hiv_related = clean($_POST['b6_hiv_related']);
+
+$b7_youth_club = clean($_POST['b7_youth_club']);
+
+/* ########################### END SECTION B ############################### */
 
 // Geting form approval details
 $completed_by = clean($_POST['completed_by']);
@@ -47,6 +68,32 @@ $comments_zac = clean($_POST['comments_zac']);
 
 /* ########################### END FORM APPROVAL ############################### */
 
+
+$query_ans = "INSERT INTO tblzhafigures
+                          (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
+                          `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
+                          `ZhaFigureValue`)
+                   VALUES (";
+ if(!empty($b1_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_males . "')"; }
+ if(!empty($b1_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_females . "')"; }
+ 
+ if(!empty($b2_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b2_males . "')"; }
+ if(!empty($b2_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b2_females . "')"; }
+ 
+ if(!empty($b3_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b3_males . "')"; }
+ if(!empty($b3_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b3_females . "')"; }
+ 
+ if(!empty($b4_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b4_males . "')"; }
+ if(!empty($b4_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b4_females . "')"; }
+ 
+ if(!empty($b5_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b5_males . "')"; }
+ if(!empty($b5_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b5_females . "')"; }
+ 
+ if(!empty($b6_hiv_related)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b6_hiv_related . "')"; }
+ 
+  if(!empty($b7_youth_club)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b7_youth_club . "')"; }
+ 
+ 
 
 $query_submitted = "INSERT INTO tblzhaformssubmitted
                                  (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,

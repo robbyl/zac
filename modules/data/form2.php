@@ -199,36 +199,36 @@ require 'sections/lang_section.php';
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B01"][0]; ?></td>
-                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
-                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td><input type="number" name="b1_males" min="0" class="number"></td>
+                                    <td><input type="number" name="b1_females" min="0" class="number"></td>
                                     <td></td>
                                     <td width="60" class="data-group">B1</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B02"][0]; ?></td>
-                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
-                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td><input type="number" name="b2_males" min="0" class="number"></td>
+                                    <td><input type="number" name="b2_females" min="0" class="number"></td>
                                     <td></td>
                                     <td width="60" class="data-group">B2</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B03"][0]; ?></td>
-                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
-                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td><input type="number" name="b3_males" min="0" class="number"></td>
+                                    <td><input type="number" name="b3_females" min="0" class="number"></td>
                                     <td></td>
                                     <td width="60" class="data-group">B3</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B04"][0]; ?></td>
-                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
-                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td><input type="number" name="b4_males" min="0" class="number"></td>
+                                    <td><input type="number" name="b4_females" min="0" class="number"></td>
                                     <td></td>
                                     <td width="60" class="data-group">B4</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B05"][0]; ?></td>
-                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
-                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td><input type="number" name="b5_males" min="0" class="number"></td>
+                                    <td><input type="number" name="b5_females" min="0" class="number"></td>
                                     <td></td>
                                     <td width="60" class="data-group">B5</td>
                                 </tr>
@@ -237,12 +237,12 @@ require 'sections/lang_section.php';
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B06"][0] ?></td>
-                                    <td width="310"><input type="number" name="cs2_person_visit" min="0" class="number"></td>
+                                    <td width="310"><input type="number" name="b6_hiv_related" min="0" class="number"></td>
                                     <td width="60" class="data-group">B6</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B07"][0] ?></td>
-                                    <td width="310"><input type="number" name="cs2_person_visit" min="0" class="number"></td>
+                                    <td width="310"><input type="number" name="b7_youth_club" min="0" class="number"></td>
                                     <td width="60" class="data-group">B7</td>
                                 </tr>
                             </table>
