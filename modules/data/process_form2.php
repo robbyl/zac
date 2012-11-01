@@ -75,25 +75,25 @@ $query_ans = "INSERT INTO tblzhafigures
                           `ZhaFigureValue`)
                    VALUES (";
  if(!empty($b1_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_males . "')"; }
- if(!empty($b1_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_females . "')"; }
+ if(!empty($b1_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'FEM', '', '', '', '" . $b1_females . "')"; }
  
- if(!empty($b2_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b2_males . "')"; }
- if(!empty($b2_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b2_females . "')"; }
+ if(!empty($b2_males)){ $query_ans .= "'" . $form_no . "', 'B02', 'MAL', '', '', '', '" . $b2_males . "')"; }
+ if(!empty($b2_females)){ $query_ans .= "'" . $form_no . "', 'B02', 'FEM', '', '', '', '" . $b2_females . "')"; }
  
- if(!empty($b3_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b3_males . "')"; }
- if(!empty($b3_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b3_females . "')"; }
+ if(!empty($b3_males)){ $query_ans .= "'" . $form_no . "', 'B03', 'MAL', '', '', '', '" . $b3_males . "')"; }
+ if(!empty($b3_females)){ $query_ans .= "'" . $form_no . "', 'B03', 'FEM', '', '', '', '" . $b3_females . "')"; }
  
- if(!empty($b4_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b4_males . "')"; }
- if(!empty($b4_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b4_females . "')"; }
+ if(!empty($b4_males)){ $query_ans .= "'" . $form_no . "', 'B04', 'MAL', '', '', '', '" . $b4_males . "')"; }
+ if(!empty($b4_females)){ $query_ans .= "'" . $form_no . "', 'B04', 'FEM', '', '', '', '" . $b4_females . "')"; }
  
- if(!empty($b5_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b5_males . "')"; }
- if(!empty($b5_females)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b5_females . "')"; }
+ if(!empty($b5_males)){ $query_ans .= "'" . $form_no . "', 'B05', 'MAL', '', '', '', '" . $b5_males . "')"; }
+ if(!empty($b5_females)){ $query_ans .= "'" . $form_no . "', 'B05', 'FEM', '', '', '', '" . $b5_females . "')"; }
  
- if(!empty($b6_hiv_related)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b6_hiv_related . "')"; }
+ if(!empty($b6_hiv_related)){ $query_ans .= "'" . $form_no . "', 'B06', '', '', '', '', '" . $b6_hiv_related . "')"; }
  
-  if(!empty($b7_youth_club)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b7_youth_club . "')"; }
+  if(!empty($b7_youth_club)){ $query_ans .= "'" . $form_no . "', 'B07', '', '', '', '', '" . $b7_youth_club . "')"; }
  
- 
+ $result_ans = mysql_query($query_ans) or die(mysql_error());
 
 $query_submitted = "INSERT INTO tblzhaformssubmitted
                                  (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
@@ -109,7 +109,7 @@ $query_submitted = "INSERT INTO tblzhaformssubmitted
 
 $result_submitted = mysql_query($query_submitted) or die(mysql_error());
 
-if ($result_submitted) {
+if ($result_submitted && $result_ans) {
     info('message', 'Form saved successully!');
     header("Location: form2.php?lang=" . $lang);
 } else {
