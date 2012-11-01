@@ -101,7 +101,7 @@ $query_submitted = "INSERT INTO tblzhaformssubmitted
                                   `ApprovedByPersonID`, `DateApproved`, `DateReceived`, `DateCaptured`,
                                   `CapturedByUserID`, `DateFiled`, `VerifiedByUserID`, `DateVerified`,
                                   `NotesWrittenOnForm`, `DataEntryNotes`)
-                          VALUES ('$form_no', '$reg_no', '$district',
+                          VALUES ('$form_no', '$sch_name', '$district',
                                   '$period_from', '$period_to', '$completed_by', '$completed_date',
                                   '$approved_by', '$approved_date', '$received_date', '$captured_date',
                                   '$captured_by', '$filed_date', '$verified_by', '$verified_date',
