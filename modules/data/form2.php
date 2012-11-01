@@ -189,32 +189,61 @@ require 'sections/lang_section.php';
                             </table>
                             <!-- end .section  --></div>
                         <div class="section">
-                            <h3><strong>D. <?php echo $text["SECT_HEAD_D"]; ?></strong></h3>
+                            <h3><strong>B. <?php echo $text["SECT_HEAD_B1"] ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
                                     <td></td>
                                     <th width="104"><?php echo $BreakdownTypeDescription1["CS1"][1] ?></th>
                                     <th width="104"><?php echo $BreakdownTypeDescription1["CS1"][0] ?></th>
-                                    <th width="104"><?php echo $BreakdownTypeDescription1["CS1"][2] ?></th>
-                                    <td rowspan="2"  width="60" class="data-group">CS1</td>
+                                    <th width="104"><?php echo $BreakdownTypeDescription1["CS1"][2] ?></th> 
                                 </tr>
                                 <tr>
-                                    <td><?php echo $ZhaFigureDescription["CS1"][0]; ?></td>
+                                    <td><?php echo $ZhaFigureDescription["B01"][0]; ?></td>
                                     <td><input type="number" name="cs1_males" min="0" class="number"></td>
                                     <td><input type="number" name="cs1_females" min="0" class="number"></td>
                                     <td></td>
+                                    <td width="60" class="data-group">B1</td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $ZhaFigureDescription["B02"][0]; ?></td>
+                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
+                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td></td>
+                                    <td width="60" class="data-group">B2</td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $ZhaFigureDescription["B03"][0]; ?></td>
+                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
+                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td></td>
+                                    <td width="60" class="data-group">B3</td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $ZhaFigureDescription["B04"][0]; ?></td>
+                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
+                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td></td>
+                                    <td width="60" class="data-group">B4</td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $ZhaFigureDescription["B05"][0]; ?></td>
+                                    <td><input type="number" name="cs1_males" min="0" class="number"></td>
+                                    <td><input type="number" name="cs1_females" min="0" class="number"></td>
+                                    <td></td>
+                                    <td width="60" class="data-group">B5</td>
                                 </tr>
                             </table>
 
                             <table width="100%" border="1" cellspacing="0">
                                 <tr>
-                                    <td>&nbsp;</td>
-                                    <th width="200"><?php echo $text["SECT_SUB_HEAD_CS_PVI"] ?></th>
-                                    <td rowspan="2" width="47" class="data-group">CS2</td>
+                                    <td><?php echo $ZhaFigureDescription["B06"][0] ?></td>
+                                    <td width="310"><input type="number" name="cs2_person_visit" min="0" class="number"></td>
+                                    <td width="60" class="data-group">B6</td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo $ZhaFigureDescription["CS2"][0] ?></td>
-                                    <td><input type="number" name="cs2_person_visit" min="0" class="number"></td>
+                                    <td><?php echo $ZhaFigureDescription["B07"][0] ?></td>
+                                    <td width="310"><input type="number" name="cs2_person_visit" min="0" class="number"></td>
+                                    <td width="60" class="data-group">B7</td>
                                 </tr>
                             </table>
                         </div>
