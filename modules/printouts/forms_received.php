@@ -14,30 +14,52 @@ $query_received = "SELECT `FormSerialNumber`, sub.`OrganisationCode`, `Organisat
                        ON sub.`DistrictCode` = dis.`DistrictCode`
                 LEFT JOIN tblgensetuporganisationcategories cat
                        ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+                GROUP BY `OrganisationCategoryDescription`, PeriodFrom, FormSerialNumber
                  ORDER BY `FormSerialNumber` ASC, OrganisationCategoryDescription ASC, `PeriodFrom` ASC";
 
 $result = mysql_query($query_received) or die(mysql_error());
 
-$groups = array();
-$PeriodFrom = array();
-
-while ($data = mysql_fetch_assoc($result)) {
-    $groups[$data['OrganisationCategoryDescription']][] = $data;
-    $received[$data['FormSerialNumber']][$data['OrganisationCategoryDescription']] = $data['FormSerialNumber'];
-}
-
-
-$total = 0;
-echo '<table border="1">';
-foreach ($groups as $OrganisationCategoryDescription => $forms) {
-    echo '<tr><th>' . $OrganisationCategoryDescription . '</th></tr>';
-    foreach ($received as $key => $value) {
-        if (!empty($received[$key][$OrganisationCategoryDescription])) {
-            echo '<tr><td>' . $received[$key][$OrganisationCategoryDescription] . '</td></tr>';
-            $total++;
-        }
+$organisation = "";
+$date_from = "";
+echo "<table>";
+while ($row = mysql_fetch_array($result)) {
+    
+    if($row['OrganisationCategoryDescription'] != $organisation){
+        echo '<tr><td>' . $row['OrganisationCategoryDescription'] . '</td></tr>';
+        $organisation = $row['OrganisationCategoryDescription'];
     }
+    
 }
+
+echo "</table>";
+
+exit;
+//$groups = array();
+//$PeriodFrom = array();
+//
+//while ($data = mysql_fetch_assoc($result)) {
+//    $groups[$data['OrganisationCategoryDescription']][] = $data;
+//    $priod[$data['PeriodFrom']] = $data['PeriodFrom'];
+//    $received[$data['FormSerialNumber']][$data['OrganisationCategoryDescription']][$data['PeriodFrom']] = $data['FormSerialNumber'];
+//}
+//
+//
+//$total = 0;
+//echo '<table border="1">';
+//foreach ($groups as $OrganisationCategoryDescription => $forms) {
+//    echo '<tr><th>' . $OrganisationCategoryDescription . '</th></tr>';
+//    foreach ($received as $key => $value) {
+//        foreach ($priod as $periodkey => $periodvalue) {
+//
+//            echo '<tr><td>' . $periodkey . '</td><tr>';
+//
+//            if (!empty($received[$key][$OrganisationCategoryDescription])) {
+//                echo '<tr><td>' . $received[$key][$OrganisationCategoryDescription][$periodkey] . '</td></tr>';
+//                $total++;
+//            }
+//        }
+//    }
+//}
 
 echo '</table>';
 
