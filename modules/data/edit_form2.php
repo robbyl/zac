@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>ZANHID | FORM-2</title>
+        <title>ZANHID | EDIT FORM-2</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
@@ -54,7 +54,7 @@
                 <!-- end .sidebar --></div>
             <div class="content">
 
-                <h1>Add New ZHAPMoS Form 2</h1>
+                <h1>Edit ZHAPMoS Form 2</h1>
                 <div class="hr-line"></div>
                 <?php
                 require '../../config/config.php';
@@ -82,18 +82,27 @@
                         $fig_ans[$ans['ZhaFigureCode']][$ans['BreakdownTypeID1']] = $ans['ZhaFigureValue'];
                     }
 
-                    $query_submitted = "SELECT `FormSerialNumber`, `OrganisationCode`, `DistrictCode`, `PeriodFrom`,
-                                               `PeriodTo`, `CompletedByPersonID`, DATE(`DateCompleted`) AS DateCompleted, `ApprovedByPersonID`,
-                                               DATE(`DateApproved`) AS DateApproved, DATE(`DateReceived`) AS DateReceived, 
+                    $query_submitted = "SELECT `FormSerialNumber`, `OrganisationCode`, `DistrictCode`, DATE(`PeriodFrom`) AS PeriodFrom,
+                                               DATE(`PeriodTo`) AS PeriodTo, `CompletedByPersonID`, DATE(`DateCompleted`) AS DateCompleted,
+                                               `ApprovedByPersonID`, DATE(`DateApproved`) AS DateApproved, DATE(`DateReceived`) AS DateReceived, 
                                                DATE(`DateCaptured`) AS DateCaptured, `CapturedByUserID`,
                                                DATE(`DateVerified`) AS DateVerified, `VerifiedByUserID`, `NotesWrittenOnForm`, 
                                                DATE(`DataEntryNotes`) AS DataEntryNotes
                                           FROM tblzhaformssubmitted
                                          WHERE FormSerialNumber = '$form_id'";
-                    
+
                     $result_submitted = mysql_query($query_submitted) or die(mysql_error());
                     $submitted = mysql_fetch_array($result_submitted);
 
+                    $period_from = $submitted['PeriodFrom'];
+                    $period_to = $submitted['PeriodTo'];
+
+                    $experiod_from = explode("-", $period_from);
+                    $experiod_to = explode("-", $period_to);
+                    $year = $experiod_from[0];
+                    $month_range = $experiod_from[1] . '-' . $experiod_from[2] . '/' . $experiod_to[1] . '-' . $experiod_to[2];
+
+  
                     ?>
                     <form action="process_edit_form2.php" method="post" novalidate>
                         <input type="hidden" name="lang" value="<?php echo $lang ?>">
@@ -118,7 +127,7 @@
                                                 $result_org = mysql_query($query_org) or die(mysql_error());
                                                 while ($org = mysql_fetch_array($result_org)) {
                                                     ?>
-                                                    <option value="<?php echo $org['OrganisationCode'] ?>"><?php echo $org['OrganisationName'] ?></option>
+                                                    <option value="<?php echo $org['OrganisationCode'] ?>" <?php if ($submitted['OrganisationCode'] === $org['OrganisationCode']) echo 'selected'; ?>><?php echo $org['OrganisationName'] ?></option>
                                                     <?php
                                                 }
                                                 ?>

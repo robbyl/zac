@@ -18,16 +18,18 @@
                     <p>
                         <select name="month_range" class="select" required="">
                             <option value=""></option>
-                            <option value="01-01/03-31">January - March</option>
-                            <option value="04-01/06-30">April - June</option>
-                            <option value="07-01/09-30">July - September</option>
-                            <option value="10-01/12-31">October - December</option>
+                            <option value="01-01/03-31" <?php if ($month_range === "01-01/03-31") echo 'selected'; ?>>January - March</option>
+                            <option value="04-01/06-30" <?php if ($month_range === "04-01/06-30") echo 'selected'; ?>>April - June</option>
+                            <option value="07-01/09-30" <?php if ($month_range === "07-01/09-30") echo 'selected'; ?>>July - September</option>
+                            <option value="10-01/12-31" <?php if ($month_range === "10-01/12-31") echo 'selected'; ?>>October - December</option>
                         </select>
                         <select name="year" class="select" required="">
                             <option value="" ></option>
                             <?php
                             for ($i = 2007; $i <= date('Y'); $i++) {
-                                echo '<option value="' . $i . '">' . $i . '</option>';
+                                echo '<option value="' . $i . '" ';
+                                if ($year == $i)
+                                    echo 'selected'; echo '>' . $i . '</option>';
                             }
                             ?>
                         </select>
