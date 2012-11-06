@@ -216,7 +216,7 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($hp2_female_older[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[5]', '25O', 'FEM', '', '" .$hp2_female_older[5]. "')";  } 
 
  if(!empty($hp3_radio_hrs)){ $query_ans .= ",('" . $form_no . "', 'HP3', 'RAD', '', '', '', '" .$hp3_radio_hrs. "')";  } 
- if(!empty($hp3_tv_hrs)){ $query_ans .= ",('" . $form_no . "', 'HP3', 'TV', '', '', '', '" .$hp3_tv_hrs. "')";  } 
+ if(!empty($hp3_tv_hrs)){ $query_ans .= ",('" . $form_no . "', 'HP3', 'TVN', '', '', '', '" .$hp3_tv_hrs. "')";  } 
 
  if(!empty($hp4_male_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'PRE', 'MAL', '', '" .$hp4_male_peer. "')";  } 
  if(!empty($hp4_female_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'PRE', 'FEM', '', '" .$hp4_female_peer. "')";  } 
