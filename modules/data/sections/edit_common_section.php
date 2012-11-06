@@ -331,11 +331,11 @@
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescription["HP4"][0]; ?></td>
-            <td><input type="number" name="hp5_male_peer" value="<?php if (!empty($fig_ans['HP5']['RAA']['PRE']['MAL'][''])) echo $fig_ans['HP5']['REG']['PRE']['MAL']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="hp5_female_peer" value="<?php if (!empty($fig_ans['HP5']['RAA']['PRE']['FEM'][''])) echo $fig_ans['HP5']['REG']['PRE']['FEM']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp5_male_peer" value="<?php if (!empty($fig_ans['HP4']['RAA']['PRE']['MAL'][''])) echo $fig_ans['HP4']['REG']['PRE']['MAL']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp5_female_peer" value="<?php if (!empty($fig_ans['HP4']['RAA']['PRE']['FEM'][''])) echo $fig_ans['HP4']['REG']['PRE']['FEM']['']; ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="hp5_male_community" value="<?php if (!empty($fig_ans['HP5']['RAA']['CME']['MAL'][''])) echo $fig_ans['HP5']['RAA']['CME']['MAL']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="hp5_female_community" value="<?php if (!empty($fig_ans['HP5']['RAA']['CME']['FEM'][''])) echo $fig_ans['HP5']['RAA']['CME']['FEM']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp5_male_community" value="<?php if (!empty($fig_ans['HP4']['RAA']['CME']['MAL'][''])) echo $fig_ans['HP4']['RAA']['CME']['MAL']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp5_female_community" value="<?php if (!empty($fig_ans['HP4']['RAA']['CME']['FEM'][''])) echo $fig_ans['HP4']['RAA']['CME']['FEM']['']; ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
     </table>
