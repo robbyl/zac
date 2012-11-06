@@ -221,7 +221,7 @@ $query_ans = "UPDATE tblzhafigures
  if(!empty($hp2_female_older[5])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP2' AND BreakdownTypeID1 = '$hiv_inter[5]' AND BreakdownTypeID2 = '25O' AND BreakdownTypeID3 = 'FEM' AND BreakdownTypeID4 = '' THEN '" .$hp2_female_older[5]. "'";  } 
 
  if(!empty($hp3_radio_hrs)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP3' AND BreakdownTypeID1 = 'RAD' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$hp3_radio_hrs. "'";  } 
- if(!empty($hp3_tv_hrs)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP3' AND BreakdownTypeID1 = 'TV' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$hp3_tv_hrs. "'";  } 
+ if(!empty($hp3_tv_hrs)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP3' AND BreakdownTypeID1 = 'TVN' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$hp3_tv_hrs. "'";  } 
 
  if(!empty($hp4_male_peer)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP4' AND BreakdownTypeID1 = 'REG' AND BreakdownTypeID2 = 'PRE' AND BreakdownTypeID3 = 'MAL' AND BreakdownTypeID4 = '' THEN '" .$hp4_male_peer. "'";  } 
  if(!empty($hp4_female_peer)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP4' AND BreakdownTypeID1 = 'REG' AND BreakdownTypeID2 = 'PRE' AND BreakdownTypeID3 = 'FEM' AND BreakdownTypeID4 = '' THEN '" .$hp4_female_peer. "'";  } 
@@ -393,7 +393,7 @@ $query_ans = "UPDATE tblzhafigures
  if(!empty($hp2_female_older[5])){ $query_ans .= ",('" . $form_no . "', 'HP2', '$hiv_inter[5]', '25O', 'FEM', '', '" .$hp2_female_older[5]. "')";  } 
 
  if(!empty($hp3_radio_hrs)){ $query_ans .= ",('" . $form_no . "', 'HP3', 'RAD', '', '', '', '" .$hp3_radio_hrs. "')";  } 
- if(!empty($hp3_tv_hrs)){ $query_ans .= ",('" . $form_no . "', 'HP3', 'TV', '', '', '', '" .$hp3_tv_hrs. "')";  } 
+ if(!empty($hp3_tv_hrs)){ $query_ans .= ",('" . $form_no . "', 'HP3', 'TVN', '', '', '', '" .$hp3_tv_hrs. "')";  } 
 
  if(!empty($hp4_male_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'PRE', 'MAL', '', '" .$hp4_male_peer. "')";  } 
  if(!empty($hp4_female_peer)){ $query_ans .= ",('" . $form_no . "', 'HP4', 'REG', 'PRE', 'FEM', '', '" .$hp4_female_peer. "')";  } 
@@ -513,9 +513,11 @@ $query_ans = "UPDATE tblzhafigures
   
   
   if($result_ans){
-      echo 'done';
+      info('message', 'success!');
+      header('Location: edit_form1.php?form_id=' . $form_no . '&lang=' . $lang);
   } else {
-      echo 'errore';
+      info('error', 'error');
+      header('Location: edit_form1.php?form_id=' . $form_no . '&lang=' . $lang);
 }
 
 exit;

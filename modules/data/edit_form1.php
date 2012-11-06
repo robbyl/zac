@@ -67,10 +67,12 @@
                 <?php
                 require '../../config/config.php';
                 require '../../functions/general_functions.php';
+                // Displaying message and errors
+                include '../../includes/info.php';
 
                 $form_id = clean($_GET['form_id']);
                 $lang = clean($_GET['lang']);
-             
+
 
                 if (isset($form_id) && !empty($form_id) && isset($lang) && !empty($lang)) {
 
