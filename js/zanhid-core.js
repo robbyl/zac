@@ -26,6 +26,9 @@ function organisationDetails(filename, id) {
         data: { org_id: id},
         type: 'POST',
         dataType: 'json',
+        beforeSend: function() {
+            $('input[name=phy_addr], input[name=post_addr], input[name=focal_per], input[name=focal_fax], input[name=focal_email], input[name=focal_tel]').val('Loading...');
+        },
         success: function(data, textStatus, xhr) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);

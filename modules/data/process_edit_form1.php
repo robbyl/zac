@@ -280,7 +280,7 @@ $query_ans = "UPDATE tblzhafigures
  if(!empty($cs1_males)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'CS1' AND BreakdownTypeID1 = 'MAL' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$cs1_males. "'";  } 
  if(!empty($cs1_females)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'CS1' AND BreakdownTypeID1 = 'FEM' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$cs1_females. "'";  } 
                     
- if(!empty($cs2_person_visit)){ $query_ans .= ",('" . $form_no . "' AND ZhaFigureCode = 'CS2' AND BreakdownTypeID1 = '' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$cs2_person_visit. "'";  } 
+ if(!empty($cs2_person_visit)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'CS2' AND BreakdownTypeID1 = '' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$cs2_person_visit. "'";  } 
 
  if(!empty($tc1_volunteers_male[0])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'TC1' AND BreakdownTypeID1 = '$tc1_topic[0]' AND BreakdownTypeID2 = 'VOL' AND BreakdownTypeID3 = 'MAL' AND BreakdownTypeID4 = '' THEN '" .$tc1_volunteers_male[0]. "'";  } 
  if(!empty($tc1_volunteers_female[0])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'TC1' AND BreakdownTypeID1 = '$tc1_topic[0]' AND BreakdownTypeID2 = 'VOL' AND BreakdownTypeID3 = 'FEM' AND BreakdownTypeID4 = '' THEN '" .$tc1_volunteers_female[0]. "'";  } 
@@ -344,6 +344,8 @@ $query_ans = "UPDATE tblzhafigures
   } else {
       echo 'errore';
 }
+
+exit;
 
  $query_ansm = "INSERT INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
