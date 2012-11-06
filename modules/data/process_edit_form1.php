@@ -267,13 +267,13 @@ $query_ans = "UPDATE tblzhafigures
  if(!empty($m1_nutrition_widows)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'NUT' AND BreakdownTypeID2 = 'WID' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_widows. "'";  } 
  if(!empty($m1_nutrition_vulnerable)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'NUT' AND BreakdownTypeID2 = 'VLH' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_vulnerable. "'";  } 
  if(!empty($m1_nutrition_other)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'NUT' AND BreakdownTypeID2 = 'OVG' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_other. "'";  } 
- if(!empty($m1_financial_chldn_male)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'MVC' AND BreakdownTypeID3 = 'MAL' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_chldn_male. "'";  } 
- if(!empty($m1_financial_chldn_female)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'MVC' AND BreakdownTypeID3 = 'FEM' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_chldn_female. "'";  } 
- if(!empty($m1_financial_elderly_male)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'ELD' AND BreakdownTypeID3 = 'MAL' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_elderly_male. "'";  } 
- if(!empty($m1_financial_elderly_female)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'ELD' AND BreakdownTypeID3 = 'FEM' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_elderly_female. "'";  } 
- if(!empty($m1_financial_widows)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'WID' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_widows. "'";  } 
- if(!empty($m1_financial_vulnerable)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'VLH' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_vulnerable. "'";  } 
- if(!empty($m1_financial_other)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'OVG' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_nutrition_other. "'";  } 
+ if(!empty($m1_financial_chldn_male)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'MVC' AND BreakdownTypeID3 = 'MAL' AND BreakdownTypeID4 = '' THEN '" .$m1_financial_chldn_male. "'";  } 
+ if(!empty($m1_financial_chldn_female)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'MVC' AND BreakdownTypeID3 = 'FEM' AND BreakdownTypeID4 = '' THEN '" .$m1_financial_chldn_female. "'";  } 
+ if(!empty($m1_financial_elderly_male)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'ELD' AND BreakdownTypeID3 = 'MAL' AND BreakdownTypeID4 = '' THEN '" .$m1_financial_elderly_male. "'";  } 
+ if(!empty($m1_financial_elderly_female)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'ELD' AND BreakdownTypeID3 = 'FEM' AND BreakdownTypeID4 = '' THEN '" .$m1_financial_elderly_female. "'";  } 
+ if(!empty($m1_financial_widows)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'WID' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_financial_widows. "'";  } 
+ if(!empty($m1_financial_vulnerable)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'VLH' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_financial_vulnerable. "'";  } 
+ if(!empty($m1_financial_other)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'FIN' AND BreakdownTypeID2 = 'OVG' AND BreakdownTypeID3 = 'TOT' AND BreakdownTypeID4 = '' THEN '" .$m1_financial_other. "'";  } 
  if(!empty($m1_school_chldn_male)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'SCH' AND BreakdownTypeID2 = 'MVC' AND BreakdownTypeID3 = 'MAL' AND BreakdownTypeID4 = '' THEN '" .$m1_school_chldn_male. "'";  } 
  if(!empty($m1_school_chldn_female)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'M01' AND BreakdownTypeID1 = 'SCH' AND BreakdownTypeID2 = 'MVC' AND BreakdownTypeID3 = 'FEM' AND BreakdownTypeID4 = '' THEN '" .$m1_school_chldn_female. "'";  } 
 
@@ -439,13 +439,13 @@ $query_ans = "UPDATE tblzhafigures
  if(!empty($m1_nutrition_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'WID', 'TOT', '', '" .$m1_nutrition_widows. "')";  } 
  if(!empty($m1_nutrition_vulnerable)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'VLH', 'TOT', '', '" .$m1_nutrition_vulnerable. "')";  } 
  if(!empty($m1_nutrition_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'NUT', 'OVG', 'TOT', '', '" .$m1_nutrition_other. "')";  } 
- if(!empty($m1_financial_chldn_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'MVC', 'MAL', '', '" .$m1_nutrition_chldn_male. "')";  } 
- if(!empty($m1_financial_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'MVC', 'FEM', '', '" .$m1_nutrition_chldn_female. "')";  } 
- if(!empty($m1_financial_elderly_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'ELD', 'MAL', '', '" .$m1_nutrition_elderly_male. "')";  } 
- if(!empty($m1_financial_elderly_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'ELD', 'FEM', '', '" .$m1_nutrition_elderly_female. "')";  } 
- if(!empty($m1_financial_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'WID', 'TOT', '', '" .$m1_nutrition_widows. "')";  } 
- if(!empty($m1_financial_vulnerable)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'VLH', 'TOT', '', '" .$m1_nutrition_vulnerable. "')";  } 
- if(!empty($m1_financial_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'OVG', 'TOT', '', '" .$m1_nutrition_other. "')";  } 
+ if(!empty($m1_financial_chldn_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'MVC', 'MAL', '', '" .$m1_financial_chldn_male. "')";  } 
+ if(!empty($m1_financial_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'MVC', 'FEM', '', '" .$m1_financial_chldn_female. "')";  } 
+ if(!empty($m1_financial_elderly_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'ELD', 'MAL', '', '" .$m1_financial_elderly_male. "')";  } 
+ if(!empty($m1_financial_elderly_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'ELD', 'FEM', '', '" .$m1_financial_elderly_female. "')";  } 
+ if(!empty($m1_financial_widows)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'WID', 'TOT', '', '" .$m1_financial_widows. "')";  } 
+ if(!empty($m1_financial_vulnerable)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'VLH', 'TOT', '', '" .$m1_financial_vulnerable. "')";  } 
+ if(!empty($m1_financial_other)){ $query_ans .= ",('" . $form_no . "', 'M01', 'FIN', 'OVG', 'TOT', '', '" .$m1_financial_other. "')";  } 
  if(!empty($m1_school_chldn_male)){ $query_ans .= ",('" . $form_no . "', 'M01', 'SCH', 'MVC', 'MAL', '', '" .$m1_school_chldn_male. "')";  } 
  if(!empty($m1_school_chldn_female)){ $query_ans .= ",('" . $form_no . "', 'M01', 'SCH', 'MVC', 'FEM', '', '" .$m1_school_chldn_female. "')";  } 
 

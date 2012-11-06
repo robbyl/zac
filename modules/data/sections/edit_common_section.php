@@ -437,9 +437,9 @@
             <td><input type="number" name="m1_health_elderly_male" value="<?php if (!empty($fig_ans['M01']['HCS']['ELD']['MAL'][''])) echo $fig_ans['M01']['HCS']['ELD']['MAL']['']; ?>" min="0" class="number"></td>
             <td><input type="number" name="m1_health_elderly_female" value="<?php if (!empty($fig_ans['M01']['HCS']['ELD']['FEM'][''])) echo $fig_ans['M01']['HCS']['ELD']['FEM']['']; ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="m1_health_widows" value="<?php if (!empty($fig_ans['M01']['HCS']['WID'][''][''])) echo $fig_ans['M01']['HCS']['WID']['']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="m1_health_vulnerable" value="<?php if (!empty($fig_ans['M01']['HCS']['VLH'][''][''])) echo $fig_ans['M01']['HCS']['VLH']['']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="m1_health_other" value="<?php if (!empty($fig_ans['M01']['HCS']['OVG'][''][''])) echo $fig_ans['M01']['HCS']['OVG']['']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_health_widows" value="<?php if (!empty($fig_ans['M01']['HCS']['WID']['TOT'][''])) echo $fig_ans['M01']['HCS']['WID']['TOT']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_health_vulnerable" value="<?php if (!empty($fig_ans['M01']['HCS']['VLH']['TOT'][''])) echo $fig_ans['M01']['HCS']['VLH']['TOT']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_health_other" value="<?php if (!empty($fig_ans['M01']['HCS']['OVG']['TOT'][''])) echo $fig_ans['M01']['HCS']['OVG']['TOT']['']; ?>" min="0" class="number"></td>
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][0] ?></td>
@@ -449,9 +449,9 @@
             <td><input type="number" name="m1_emotional_elderly_male" value="<?php if (!empty($fig_ans['M01']['EMP']['ELD']['MAL'][''])) echo $fig_ans['M01']['EMP']['ELD']['MAL']['']; ?>" min="0" class="number"></td>
             <td><input type="number" name="m1_emotional_elderly_female" value="<?php if (!empty($fig_ans['M01']['EMP']['ELD']['FEM'][''])) echo $fig_ans['M01']['EMP']['ELD']['FEM']['']; ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="m1_emotional_widows" value="<?php if (!empty($fig_ans['M01']['EMP']['WID'][''][''])) echo $fig_ans['M01']['EMP']['WID']['']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="m1_emotional_vulnerable" value="<?php if (!empty($fig_ans['M01']['EMP']['VLH'][''][''])) echo $fig_ans['M01']['EMP']['VLH']['']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="m1_emotional_other" value="<?php if (!empty($fig_ans['M01']['EMP']['OVG'][''][''])) echo $fig_ans['M01']['EMP']['OVG']['']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_emotional_widows" value="<?php if (!empty($fig_ans['M01']['EMP']['WID']['TOT'][''])) echo $fig_ans['M01']['EMP']['WID']['TOT']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_emotional_vulnerable" value="<?php if (!empty($fig_ans['M01']['EMP']['VLH']['TOT'][''])) echo $fig_ans['M01']['EMP']['VLH']['TOT']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_emotional_other" value="<?php if (!empty($fig_ans['M01']['EMP']['OVG']['TOT'][''])) echo $fig_ans['M01']['EMP']['OVG']['TOT']['']; ?>" min="0" class="number"></td>
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][45] ?></td>
@@ -461,9 +461,9 @@
             <td><input type="number" name="m1_nutrition_elderly_male" value="<?php if (!empty($fig_ans['M01']['NUT']['ELD']['MAL'][''])) echo $fig_ans['M01']['NUT']['ELD']['MAL']['']; ?>" min="0" class="number"></td>
             <td><input type="number" name="m1_nutrition_elderly_female" value="<?php if (!empty($fig_ans['M01']['NUT']['ELD']['FEM'][''])) echo $fig_ans['M01']['NUT']['ELD']['FEM']['']; ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="m1_nutrition_widows" value="<?php if (!empty($fig_ans['M01']['NUT']['WID'][''][''])) echo $fig_ans['M01']['NUT']['WID']['']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="m1_nutrition_vulnerable" value="<?php if (!empty($fig_ans['M01']['NUT']['VLH'][''][''])) echo $fig_ans['M01']['NUT']['VLH']['']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="m1_nutrition_other" value="<?php if (!empty($fig_ans['M01']['NUT']['OVG'][''][''])) echo $fig_ans['M01']['NUT']['OVG']['']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_nutrition_widows" value="<?php if (!empty($fig_ans['M01']['NUT']['WID']['TOT'][''])) echo $fig_ans['M01']['NUT']['WID']['TOT']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_nutrition_vulnerable" value="<?php if (!empty($fig_ans['M01']['NUT']['VLH']['TOT'][''])) echo $fig_ans['M01']['NUT']['VLH']['TOT']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_nutrition_other" value="<?php if (!empty($fig_ans['M01']['NUT']['OVG']['TOT'][''])) echo $fig_ans['M01']['NUT']['OVG']['TOT']['']; ?>" min="0" class="number"></td>
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][15] ?></td>
@@ -473,9 +473,9 @@
             <td><input type="number" name="m1_financial_elderly_male" value="<?php if (!empty($fig_ans['M01']['FIN']['ELD']['MAL'][''])) echo $fig_ans['M01']['FIN']['ELD']['MAL']['']; ?>" min="0" class="number"></td>
             <td><input type="number" name="m1_financial_elderly_female" value="<?php if (!empty($fig_ans['M01']['FIN']['ELD']['FEM'][''])) echo $fig_ans['M01']['FIN']['ELD']['FEM']['']; ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="m1_financial_widows" value="<?php if (!empty($fig_ans['M01']['FIN']['WID'][''][''])) echo $fig_ans['M01']['FIN']['WID']['']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="m1_financial_vulnerable" value="<?php if (!empty($fig_ans['M01']['FIN']['VLH'][''][''])) echo $fig_ans['M01']['FIN']['VLH']['']['']; ?>" min="0" class="number"></td>
-            <td><input type="number" name="m1_financial_other" value="<?php if (!empty($fig_ans['M01']['FIN']['OVG'][''][''])) echo $fig_ans['M01']['FIN']['OVG']['']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_financial_widows" value="<?php if (!empty($fig_ans['M01']['FIN']['WID']['TOT'][''])) echo $fig_ans['M01']['FIN']['WID']['TOT']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_financial_vulnerable" value="<?php if (!empty($fig_ans['M01']['FIN']['VLH']['TOT'][''])) echo $fig_ans['M01']['FIN']['VLH']['TOT']['']; ?>" min="0" class="number"></td>
+            <td><input type="number" name="m1_financial_other" value="<?php if (!empty($fig_ans['M01']['FIN']['OVG']['TOT'][''])) echo $fig_ans['M01']['FIN']['OVG']['TOT']['']; ?>" min="0" class="number"></td>
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][60] ?></td>
