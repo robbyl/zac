@@ -1,0 +1,177 @@
+/* 
+    Document   : print
+    Created on : Sep 25, 2012, 10:59:41 AM
+    Author     : josephmarcel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* CSS Document */
+
+@font-face {
+    font-family: "Segoe UI Light";
+    src: url(fonts/segoeuil.ttf);
+}
+
+body {
+    -webkit-print-color-adjust: exact;
+    font: 100%/1.4 "Segoe UI Light", "Segoe UI", "Tahoma", "Arial", "Verdana", "sans-serif";
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #272727;
+}
+
+.zanz-logo {
+    position: absolute;
+    width: 180px;
+    height: 80px;
+    background: url(../images/zanzibar.jpg) no-repeat center center;
+    background-size: 80px;
+    background-size: contain;
+}
+
+.zac-logo {
+    float: right;
+    width: 150px;
+    height: 80px;
+    background: url(../images/zac.jpg) no-repeat center center;
+    background-size: 80px;
+    background-size: contain;
+}
+
+.form-heading {
+    width: 60%;
+    font-size: 2em;
+    margin: 0 auto !important;
+    text-align: center !important;
+    font-weight: bold;
+}
+
+.form-sub-header {
+    width: 60%;
+    font-size: 1.5em;
+    margin: 0 auto !important;
+    text-align: center;
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table.two-groups, th {
+    text-align: left;
+}
+
+table.two-groups td, table.two-groups th {
+    border-left:  none;
+    border-right: none;
+}
+
+table.two-groups tr.zebra:nth-child(even) {
+    background: #fafafa;
+}
+
+table.two-groups tr.zebra:nth-child(odd) {
+    background: #fff;
+}
+
+table.two-groups tr.odd {
+    background: #fafafa !important;
+}
+
+table.two-groups .no-border td {
+    border: none;
+
+}
+
+.content p {
+    margin: 5px 0 !important;
+    padding: 0;
+}
+
+.sheet-wraper {
+    background-color: #fff;
+}
+
+.sheet-header {
+    width: 100%;
+    height: 110px;
+}
+.page-logo {
+    width: 200px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.page-logo img {
+    display: table-cell;
+    vertical-align: central;
+    margin: 0 auto;
+}
+
+.header-title{
+    width: 100%;
+}
+
+.print-details {
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.black-separator {
+    width: 100%;
+    height: 2px;
+    background: #999999;
+    margin-bottom: 15px;
+    clear: both;
+}
+
+.sheet-table {
+    clear: both;
+}
+
+.sheet-table tr:nth-child(even), .sheet-table tr:nth-child(even) td{
+    background: #fafafa;
+}
+
+.sheet-table tr:nth-child(odd){
+    background: #fff;
+}
+
+.sheet-table td, .sheet-table th {
+    vertical-align: text-top;
+    border-color: #a9a9a9;
+}
+
+td, th {
+    vertical-align: text-top;
+}
+
+@page {
+    size: A4 landscape;
+    margin: 10mm 5mm;
+}
+
+@media print {
+    body {
+        font-size: 12px !important;
+        background: #fff;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    tr, td {
+        page-break-inside: avoid;
+    }
+
+    legend {
+        color: #000;
+        font-weight: bold;
+    }
+}
+
+
