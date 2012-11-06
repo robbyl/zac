@@ -331,12 +331,19 @@ $query_ans = "UPDATE tblzhafigures
  
  if(!empty($mc4_tshs)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'MC4' AND BreakdownTypeID1 = '' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$mc4_tshs. "'"; }
  
- 
- 
- echo $query_ans;
- exit;
+ $query_ans .= " ELSE ZhaFigureValue END";
+// $query_ans .= "WHERE FormSerialNumber AND ZhaFigureCode AND BreakdownTypeID1 IN ()";
+// 
+// echo $query_ans;
+// exit;
  
   $result_ans = mysql_query($query_ans) or die(mysql_error());
+  
+  if($result_ans){
+      echo 'done';
+  } else {
+      echo 'errore';
+}
 
  $query_ansm = "INSERT INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
@@ -356,28 +363,28 @@ $query_ans = "UPDATE tblzhafigures
  if(!empty($mc6g)){ $query_ansm .= ",('" . $form_no . "', 'MC6g', '" . $mc6g . "', '', '')"; } 
  if(!empty($mc6h)){ $query_ansm .= ",('" . $form_no . "', 'MC6h', '" . $mc6h . "', '', '')"; } 
  
- $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+// $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  
- $query_submitted = "INSERT INTO tblzhaformssubmitted
-                                 (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
-                                  `PeriodFrom`, `PeriodTo`, `CompletedByPersonID`, `DateCompleted`,
-                                  `ApprovedByPersonID`, `DateApproved`, `DateReceived`, `DateCaptured`,
-                                  `CapturedByUserID`, `DateFiled`, `VerifiedByUserID`, `DateVerified`,
-                                  `NotesWrittenOnForm`, `DataEntryNotes`)
-                          VALUES ('$form_no', '$reg_no', '$district',
-                                  '$period_from', '$period_to', '$completed_by', '$completed_date',
-                                  '$approved_by', '$approved_date', '$received_date', '$captured_date',
-                                  '$captured_by', '$filed_date', '$verified_by', '$verified_date',
-                                  '$comments', '$comments_zac')";
- 
- $result_submitted = mysql_query($query_submitted) or die(mysql_error());
- 
- if($result_ans && $result_ansm && $result_submitted){
-     info('message', 'Form updated successully!');
-     header("Location: edit_form1.php?lang=" . $lang);
- }  else {
-     info('error', 'Cannot save. Please try again!');
-     header("Location: edit_form1.php?lang=" . $lang);
-}
+// $query_submitted = "INSERT INTO tblzhaformssubmitted
+//                                 (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
+//                                  `PeriodFrom`, `PeriodTo`, `CompletedByPersonID`, `DateCompleted`,
+//                                  `ApprovedByPersonID`, `DateApproved`, `DateReceived`, `DateCaptured`,
+//                                  `CapturedByUserID`, `DateFiled`, `VerifiedByUserID`, `DateVerified`,
+//                                  `NotesWrittenOnForm`, `DataEntryNotes`)
+//                          VALUES ('$form_no', '$reg_no', '$district',
+//                                  '$period_from', '$period_to', '$completed_by', '$completed_date',
+//                                  '$approved_by', '$approved_date', '$received_date', '$captured_date',
+//                                  '$captured_by', '$filed_date', '$verified_by', '$verified_date',
+//                                  '$comments', '$comments_zac')";
+// 
+// $result_submitted = mysql_query($query_submitted) or die(mysql_error());
+// 
+// if($result_ans && $result_ansm && $result_submitted){
+//     info('message', 'Form updated successully!');
+//     header("Location: edit_form1.php?lang=" . $lang);
+// }  else {
+//     info('error', 'Cannot save. Please try again!');
+//     header("Location: edit_form1.php?lang=" . $lang);
+//}
  
  ?>
