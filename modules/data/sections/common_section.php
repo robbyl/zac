@@ -796,13 +796,13 @@
     <table width="100%" border="1" cellspacing="0">
         <tr>
             <td rowspan="2"><?php echo $ZhaFigureDescriptionqn["ME1a"][0] ?></td>
-            <td width="100"><label for="me1_yes"><input type="radio" name="me1_yes" id="me1_yes"> <?php echo $text["SECT_LABEL_YES"] ?></label></td>
-            <td><?php echo $ZhaFigureDescriptionqn["ME1b"][0] ?>  <br><input type="date" name="me1_workshop_date" class="text"></td>
+            <td width="100"><label for="me1_yes"><input type="radio" name="me1a" id="me1_yes"> <?php echo $text["SECT_LABEL_YES"] ?></label></td>
+            <td><?php echo $ZhaFigureDescriptionqn["ME1b"][0] ?>  <br><input type="date" name="me1b" class="text"></td>
             <td rowspan="2" width="60" class="data-group">ME1</td>
         </tr>
         <tr>
-            <td><label for="me1_no"><input type="radio" name="me1_yes" id="me1_no"> <?php echo $text["SECT_LABEL_NO"] ?></label></td>
-            <td><?php echo $ZhaFigureDescriptionqn["ME1c"][0] ?><br> <input type="text" name="mc1_reason" class="text" style="width: 90%"></td>
+            <td><label for="me1_no"><input type="radio" name="me1a" id="me1_no"> <?php echo $text["SECT_LABEL_NO"] ?></label></td>
+            <td><?php echo $ZhaFigureDescriptionqn["ME1c"][0] ?><br> <input type="text" name="me1c" class="text" style="width: 90%"></td>
         </tr>
     </table>
 </div>

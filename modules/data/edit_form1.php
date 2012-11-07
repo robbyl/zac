@@ -93,12 +93,23 @@
                         $fig_ans[$ans['ZhaFigureCode']][$ans['BreakdownTypeID1']][$ans['BreakdownTypeID2']][$ans['BreakdownTypeID3']][$ans['BreakdownTypeID4']] = $ans['ZhaFigureValue'];
                     }
 
+                    $query_mc = "SELECT FormSerialNumber, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`,
+                                        DATE(`ZhaAnswerDate`) AS ZhaAnswerDate
+                                   FROM tblzhaanswers
+                                  WHERE `FormSerialNumber` = '$form_id'";
+                    $result_mc = mysql_query($query_mc) or die(mysql_error());
+
+                    while ($mc = mysql_fetch_array($result_mc)) {
+                        $mcans[$mc['ZhaQuestionCode']] = $mc['ZhaAnswer'];
+                        $mcdate[$mc['ZhaQuestionCode']] = $mc['ZhaAnswerDate'];
+                        $mctext[$mc['ZhaQuestionCode']] = $mc['ZhaAnswerText'];
+                    }
+
                     $query_submitted = "SELECT `FormSerialNumber`, `OrganisationCode`, `DistrictCode`, DATE(`PeriodFrom`) AS PeriodFrom,
                                                DATE(`PeriodTo`) AS PeriodTo, `CompletedByPersonID`, DATE(`DateCompleted`) AS DateCompleted,
                                                `ApprovedByPersonID`, DATE(`DateApproved`) AS DateApproved, DATE(`DateReceived`) AS DateReceived, 
-                                               DATE(`DateCaptured`) AS DateCaptured, `CapturedByUserID`,
-                                               DATE(`DateVerified`) AS DateVerified, `VerifiedByUserID`, `NotesWrittenOnForm`, 
-                                               DATE(`DataEntryNotes`) AS DataEntryNotes
+                                               DATE(`DateCaptured`) AS DateCaptured, `CapturedByUserID`, DATE(`DateFiled`) AS DateFiled,
+                                               DATE(`DateVerified`) AS DateVerified, `VerifiedByUserID`, `NotesWrittenOnForm`, DataEntryNotes
                                           FROM tblzhaformssubmitted
                                          WHERE FormSerialNumber = '$form_id'";
 

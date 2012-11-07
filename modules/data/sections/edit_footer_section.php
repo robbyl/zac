@@ -78,11 +78,11 @@
                     ?>
                 </select></td>
             <td>Date Filed:</td>
-            <td><input type="date" name="filed_date" value="<?php echo date('Y-m-d') ?>" class="text" style="width: 67%"></td>
+            <td><input type="date" name="filed_date" value="<?php echo $submitted['DateFiled'] ?>" class="text" style="width: 67%"></td>
         </tr>
         <tr>
             <td>Additional Notes</td><td><textarea name="comments" cols="31"><?php echo $submitted['NotesWrittenOnForm']; ?></textarea></td>
-            <td>Additional Notes by ZAC</td><td><textarea name="comments_zac" cols="31"></textarea></td>
+            <td>Additional Notes by ZAC</td><td><textarea name="comments_zac" cols="31"><?php echo $submitted['DataEntryNotes']; ?></textarea></td>
         </tr>
     </table>
     <?php mysql_close($conn); ?>

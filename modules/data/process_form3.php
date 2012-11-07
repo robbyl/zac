@@ -146,6 +146,10 @@ $mc6f = $_POST['mc6f'];
 $mc6g = $_POST['mc6g'];
 $mc6h = $_POST['mc6h'];
 
+$me1a = $_POST['me1a'];
+$me1b = $_POST['me1b'];
+$me1c = $_POST['me1c'];
+
 /* ########################### END SECTION F ############################### */
 
 // Geting form approval details
@@ -345,6 +349,10 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($mc6f)){ $query_ansm .= ",('" . $form_no . "', 'MC6f', '" . $mc6f . "', '', '')"; } 
  if(!empty($mc6g)){ $query_ansm .= ",('" . $form_no . "', 'MC6g', '" . $mc6g . "', '', '')"; } 
  if(!empty($mc6h)){ $query_ansm .= ",('" . $form_no . "', 'MC6h', '" . $mc6h . "', '', '')"; } 
+ 
+ if(!empty($me1a)){ $query_ansm .= ",('" . $form_no . "', 'ME1a', '" . $me1a . "', '', '')"; } 
+ if(!empty($me1b)){ $query_ansm .= ",('" . $form_no . "', 'ME1b', '', '', '" . $me1b . "')"; } 
+ if(!empty($me1c)){ $query_ansm .= ",('" . $form_no . "', 'ME1c', '', '" . $me1c . "', '')"; } 
  
  $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  

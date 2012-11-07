@@ -154,6 +154,10 @@ $mc6f = $_POST['mc6f'];
 $mc6g = $_POST['mc6g'];
 $mc6h = $_POST['mc6h'];
 
+$me1a = $_POST['me1a'];
+$me1b = $_POST['me1b'];
+$me1c = $_POST['me1c'];
+
 /* ########################### END SECTION F ############################### */
 
 // Geting form approval details
@@ -526,8 +530,17 @@ $query_ans = "UPDATE tblzhafigures
  if(!empty($mc6f)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6f' THEN '" . $mc6f . "'"; } 
  if(!empty($mc6g)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6g' THEN '" . $mc6g . "'"; } 
  if(!empty($mc6h)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6h' THEN '" . $mc6h . "'"; } 
+ 
+ if(!empty($me1a)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'ME1a' THEN '" . $me1a . "'"; } 
 
- $query_ansm .= " ELSE ZhaAnswer END ";
+ $query_ansm .= " ELSE ZhaAnswer END, ZhaAnswerDate = CASE ";
+  if(!empty($me1b)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'ME1b' THEN '" . $me1b . "'"; }
+  
+   $query_ansm .= " ELSE ZhaAnswerDate END, ZhaAnswerText = CASE ";
+   if(!empty($me1c)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'ME1c' THEN '" . $me1c . "'"; }
+   
+   $query_ansm .= " ELSE ZhaAnswerText END";
+
  
 // echo $query_ansm;
 // 
@@ -554,6 +567,10 @@ $query_ansm = "INSERT IGNORE INTO tblzhaanswers
  if(!empty($mc6f)){ $query_ansm .= ",('" . $form_no . "', 'MC6f', '" . $mc6f . "', '', '')"; } 
  if(!empty($mc6g)){ $query_ansm .= ",('" . $form_no . "', 'MC6g', '" . $mc6g . "', '', '')"; } 
  if(!empty($mc6h)){ $query_ansm .= ",('" . $form_no . "', 'MC6h', '" . $mc6h . "', '', '')"; } 
+ 
+ if(!empty($me1a)){ $query_ansm .= ",('" . $form_no . "', 'ME1a', '" . $me1a . "', '', '')"; } 
+ if(!empty($me1b)){ $query_ansm .= ",('" . $form_no . "', 'ME1b', '', '', '" . $me1b . "')"; } 
+ if(!empty($me1c)){ $query_ansm .= ",('" . $form_no . "', 'ME1c', '', '" . $me1c . "', '')"; } 
  
  
  $result_ansm = mysql_query($query_ansm) or die(mysql_error());
