@@ -582,10 +582,10 @@ $query_ansm = "INSERT IGNORE INTO tblzhaanswers
  
  if($result_ans && $result_ansm && $result_submitted){
      info('message', 'Form updated successully!');
-     header("Location: edit_form1.php?form_id=" . $form_no . "lang=" . $lang);
+     header("Location: edit_form1.php?form_id=" . $form_no . "&lang=" . $lang);
  }  else {
      info('error', 'Cannot update. Please try again!');
-     header("Location: edit_form1.php?form_id=" . $form_no . "lang=" . $lang);
+     header("Location: edit_form1.php?form_id=" . $form_no . "&lang=" . $lang);
 }
  
  ?>
