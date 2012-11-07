@@ -344,9 +344,10 @@ $query_ans = "UPDATE tblzhafigures
   $query_ans = "INSERT IGNORE INTO tblzhafigures
                           (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
-                          `ZhaFigureValue`)
+                          `ZhaFigureValue`) 
                    VALUES ";
- if(!empty($hp1_male_younger[0])){ $query_ans .= "('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; } else { $query_ans .= "('', '', '', '', '', '', '')";}
+ if(!empty($hp1_male_younger[0])){ $query_ans .= "('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; }
+ else { $query_ans .= "('', '', '', '', '', '', '')"; }
  if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
  if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  }
@@ -503,26 +504,34 @@ $query_ans = "UPDATE tblzhafigures
  
  if(!empty($mc4_tshs)){ $query_ans .= ",('" . $form_no . "', 'MC4', '', '', '', '', '" .$mc4_tshs. "')"; } 
  
-  $result_ans = mysql_query($query_ans) or die(mysql_error());
+// echo $query_ans;
+// exit;
+ 
+ $result_ans = mysql_query($query_ans) or die(mysql_error());
 
  $query_ansm = "UPDATE tblzhaanswers
-                   SET `ZhaAnswer` CASE";
- if(!empty($mc1_mngmnt)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC1' THEN '" . $mc1_mngmnt . "'"; }
+                   SET `ZhaAnswer` = CASE";
+ if(!empty($mc1_mngmnt)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC1' THEN '" . $mc1_mngmnt . "'"; }
+ else { $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC1' THEN ZhaAnswer";  }
 
- if(!empty($mc3_money)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC3' THEN '" . $mc3_money . "'"; }
+ if(!empty($mc3_money)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC3' THEN '" . $mc3_money . "'"; }
  
- if(!empty($mc5_activity)){ $query_ansm .= " WHEN FormSerialNumber '" .$form_no . "' AND ZhaQuestionCode 'MC5' THEN '" . $mc5_activity . "'"; } 
+ if(!empty($mc5_activity)){ $query_ansm .= " WHEN FormSerialNumber = '" .$form_no . "' AND ZhaQuestionCode = 'MC5' THEN '" . $mc5_activity . "'"; } 
  
- if(!empty($mc6a)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6a' THEN '" . $mc6a . "'"; } 
- if(!empty($mc6b)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6b' THEN '" . $mc6b . "'"; } 
- if(!empty($mc6c)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6c' THEN '" . $mc6c . "'"; } 
- if(!empty($mc6d)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6d' THEN '" . $mc6d . "'"; } 
- if(!empty($mc6e)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6e' THEN '" . $mc6e . "'"; } 
- if(!empty($mc6f)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6f' THEN '" . $mc6f . "'"; } 
- if(!empty($mc6g)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6g' THEN '" . $mc6g . "'"; } 
- if(!empty($mc6h)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6h' THEN '" . $mc6h . "'"; } 
+ if(!empty($mc6a)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6a' THEN '" . $mc6a . "'"; } 
+ if(!empty($mc6b)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6b' THEN '" . $mc6b . "'"; } 
+ if(!empty($mc6c)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6c' THEN '" . $mc6c . "'"; } 
+ if(!empty($mc6d)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6d' THEN '" . $mc6d . "'"; } 
+ if(!empty($mc6e)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6e' THEN '" . $mc6e . "'"; } 
+ if(!empty($mc6f)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6f' THEN '" . $mc6f . "'"; } 
+ if(!empty($mc6g)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6g' THEN '" . $mc6g . "'"; } 
+ if(!empty($mc6h)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC6h' THEN '" . $mc6h . "'"; } 
 
- $query_ansm = " ELSE ZhaAnswer END ";
+ $query_ansm .= " ELSE ZhaAnswer END ";
+ 
+// echo $query_ansm;
+// 
+// exit;
  
  $result_ansm = mysql_query($query_ansm) or die(mysql_error());
 
@@ -531,7 +540,7 @@ $query_ansm = "";
 $query_ansm = "INSERT IGNORE INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
                     VALUES ";
- if(!empty($mc1_mngmnt)){ $query_ansm .= "('$form_no', 'MC1', '$mc1_mngmnt', '', '')"; } else { echo "('', '', '', '', '')"; }
+ if(!empty($mc1_mngmnt)){ $query_ansm .= "('$form_no', 'MC1', '$mc1_mngmnt', '', '')"; } else { $query_ansm .= "('', '', '', '', '')"; }
 
  if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
  
@@ -546,12 +555,12 @@ $query_ansm = "INSERT IGNORE INTO tblzhaanswers
  if(!empty($mc6g)){ $query_ansm .= ",('" . $form_no . "', 'MC6g', '" . $mc6g . "', '', '')"; } 
  if(!empty($mc6h)){ $query_ansm .= ",('" . $form_no . "', 'MC6h', '" . $mc6h . "', '', '')"; } 
  
+ 
  $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  
  
  $query_submitted = "UPDATE tblzhaformssubmitted
-                        SET `FormSerialNumber` = '$form_no',
-                            `OrganisationCode` = '$reg_no', 
+                        SET `OrganisationCode` = '$reg_no', 
                             `DistrictCode` = '$district',
                             `PeriodFrom` = '$period_from',
                             `PeriodTo` = '$period_to', 
@@ -566,16 +575,17 @@ $query_ansm = "INSERT IGNORE INTO tblzhaanswers
                             `VerifiedByUserID` = '$verified_by',
                             `DateVerified` = '$verified_date',
                             `NotesWrittenOnForm` = '$comments',
-                            `DataEntryNotes` = '$comments_zac'";
+                            `DataEntryNotes` = '$comments_zac'
+                      WHERE `FormSerialNumber` = '$form_no'";
  
  $result_submitted = mysql_query($query_submitted) or die(mysql_error());
  
  if($result_ans && $result_ansm && $result_submitted){
      info('message', 'Form updated successully!');
-     header("Location: edit_form1.php?lang=" . $lang);
+     header("Location: edit_form1.php?form_id=" . $form_no . "lang=" . $lang);
  }  else {
      info('error', 'Cannot update. Please try again!');
-     header("Location: edit_form1.php?lang=" . $lang);
+     header("Location: edit_form1.php?form_id=" . $form_no . "lang=" . $lang);
 }
  
  ?>
