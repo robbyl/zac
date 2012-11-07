@@ -503,50 +503,35 @@ $query_ans = "UPDATE tblzhafigures
  
  if(!empty($mc4_tshs)){ $query_ans .= ",('" . $form_no . "', 'MC4', '', '', '', '', '" .$mc4_tshs. "')"; } 
  
- 
   $result_ans = mysql_query($query_ans) or die(mysql_error());
-  
-  
 
+ $query_ansm = "UPDATE tblzhaanswers
+                   SET `ZhaAnswer` CASE";
+ if(!empty($mc1_mngmnt)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC1' THEN '" . $mc1_mngmnt . "'"; }
 
-  
-  
-  
-  if($result_ans){
-      info('message', 'success!');
-      header('Location: edit_form1.php?form_id=' . $form_no . '&lang=' . $lang);
-  } else {
-      info('error', 'error');
-      header('Location: edit_form1.php?form_id=' . $form_no . '&lang=' . $lang);
-}
+ if(!empty($mc3_money)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC3' THEN '" . $mc3_money . "'"; }
+ 
+ if(!empty($mc5_activity)){ $query_ansm .= " WHEN FormSerialNumber '" .$form_no . "' AND ZhaQuestionCode 'MC5' THEN '" . $mc5_activity . "'"; } 
+ 
+ if(!empty($mc6a)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6a' THEN '" . $mc6a . "'"; } 
+ if(!empty($mc6b)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6b' THEN '" . $mc6b . "'"; } 
+ if(!empty($mc6c)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6c' THEN '" . $mc6c . "'"; } 
+ if(!empty($mc6d)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6d' THEN '" . $mc6d . "'"; } 
+ if(!empty($mc6e)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6e' THEN '" . $mc6e . "'"; } 
+ if(!empty($mc6f)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6f' THEN '" . $mc6f . "'"; } 
+ if(!empty($mc6g)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6g' THEN '" . $mc6g . "'"; } 
+ if(!empty($mc6h)){ $query_ansm .= " WHEN FormSerialNumber '" . $form_no . "' AND ZhaQuestionCode 'MC6h' THEN '" . $mc6h . "'"; } 
 
-exit;
+ $query_ansm = " ELSE ZhaAnswer END ";
+ 
+ $result_ansm = mysql_query($query_ansm) or die(mysql_error());
 
- $query_ansm = "INSERT INTO tblzhaanswers
+$query_ansm = "";
+ 
+$query_ansm = "INSERT IGNORE INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
-                    VALUES (";
- if(!empty($mc1_mngmnt)){ $query_ansm .= "'$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
-
- if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
- 
- if(!empty($mc5_activity)){ $query_ansm .= ",('" .$form_no . "', 'MC5', '" . $mc5_activity . "', '', '')"; } 
- 
- if(!empty($mc6a)){ $query_ansm .= ",('" . $form_no . "', 'MC6a', '" . $mc6a . "', '', '')"; } 
- if(!empty($mc6b)){ $query_ansm .= ",('" . $form_no . "', 'MC6b', '" . $mc6b . "', '', '')"; } 
- if(!empty($mc6c)){ $query_ansm .= ",('" . $form_no . "', 'MC6c', '" . $mc6c . "', '', '')"; } 
- if(!empty($mc6d)){ $query_ansm .= ",('" . $form_no . "', 'MC6d', '" . $mc6d . "', '', '')"; } 
- if(!empty($mc6e)){ $query_ansm .= ",('" . $form_no . "', 'MC6e', '" . $mc6e . "', '', '')"; } 
- if(!empty($mc6f)){ $query_ansm .= ",('" . $form_no . "', 'MC6f', '" . $mc6f . "', '', '')"; } 
- if(!empty($mc6g)){ $query_ansm .= ",('" . $form_no . "', 'MC6g', '" . $mc6g . "', '', '')"; } 
- if(!empty($mc6h)){ $query_ansm .= ",('" . $form_no . "', 'MC6h', '" . $mc6h . "', '', '')"; } 
- 
- 
-// $result_ansm = mysql_query($query_ansm) or die(mysql_error());
- 
-  $query_ansm = "INSERT IGNORE INTO tblzhaanswers
-                           (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
-                    VALUES (";
- if(!empty($mc1_mngmnt)){ $query_ansm .= "'$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
+                    VALUES ";
+ if(!empty($mc1_mngmnt)){ $query_ansm .= "('$form_no', 'MC1', '$mc1_mngmnt', '', '')"; } else { echo "('', '', '', '', '')"; }
 
  if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
  
@@ -564,26 +549,33 @@ exit;
  $result_ansm = mysql_query($query_ansm) or die(mysql_error());
  
  
-// $query_submitted = "INSERT INTO tblzhaformssubmitted
-//                                 (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
-//                                  `PeriodFrom`, `PeriodTo`, `CompletedByPersonID`, `DateCompleted`,
-//                                  `ApprovedByPersonID`, `DateApproved`, `DateReceived`, `DateCaptured`,
-//                                  `CapturedByUserID`, `DateFiled`, `VerifiedByUserID`, `DateVerified`,
-//                                  `NotesWrittenOnForm`, `DataEntryNotes`)
-//                          VALUES ('$form_no', '$reg_no', '$district',
-//                                  '$period_from', '$period_to', '$completed_by', '$completed_date',
-//                                  '$approved_by', '$approved_date', '$received_date', '$captured_date',
-//                                  '$captured_by', '$filed_date', '$verified_by', '$verified_date',
-//                                  '$comments', '$comments_zac')";
-// 
-// $result_submitted = mysql_query($query_submitted) or die(mysql_error());
-// 
-// if($result_ans && $result_ansm && $result_submitted){
-//     info('message', 'Form updated successully!');
-//     header("Location: edit_form1.php?lang=" . $lang);
-// }  else {
-//     info('error', 'Cannot save. Please try again!');
-//     header("Location: edit_form1.php?lang=" . $lang);
-//}
+ $query_submitted = "UPDATE tblzhaformssubmitted
+                        SET `FormSerialNumber` = '$form_no',
+                            `OrganisationCode` = '$reg_no', 
+                            `DistrictCode` = '$district',
+                            `PeriodFrom` = '$period_from',
+                            `PeriodTo` = '$period_to', 
+                            `CompletedByPersonID` = '$completed_by', 
+                            `DateCompleted` = '$completed_date',
+                            `ApprovedByPersonID` = '$approved_by',
+                            `DateApproved` = '$approved_date',
+                            `DateReceived` = '$received_date',
+                            `DateCaptured` = '$captured_date',
+                            `CapturedByUserID` = '$captured_by',
+                            `DateFiled` = '$filed_date',
+                            `VerifiedByUserID` = '$verified_by',
+                            `DateVerified` = '$verified_date',
+                            `NotesWrittenOnForm` = '$comments',
+                            `DataEntryNotes` = '$comments_zac'";
+ 
+ $result_submitted = mysql_query($query_submitted) or die(mysql_error());
+ 
+ if($result_ans && $result_ansm && $result_submitted){
+     info('message', 'Form updated successully!');
+     header("Location: edit_form1.php?lang=" . $lang);
+ }  else {
+     info('error', 'Cannot update. Please try again!');
+     header("Location: edit_form1.php?lang=" . $lang);
+}
  
  ?>
