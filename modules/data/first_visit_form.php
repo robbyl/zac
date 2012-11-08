@@ -40,6 +40,14 @@ while ($qn = mysql_fetch_array($result_qns)) {
 
     $questions[$qn['ZhsQuestionID']] = $qn['QuestionText'];
 }
+$query_setup_answ = "SELECT `AnswerID`,`AnswerSet`,`Answer` FROM tblzhssetupanswers";
+
+$result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
+
+while ($anws = mysql_fetch_array($result_setup_answ)) {
+
+    $setup_answ[$anws['AnswerID']][$anws['AnswerSet']] = $anws['Answer'];
+}
 
 ?>
 <!doctype html>
@@ -129,35 +137,71 @@ while ($qn = mysql_fetch_array($result_qns)) {
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
                                     <td>1.1 <?php echo $questions['1'] ?></td>
-                                    <td>some</td>
+                                    <td>
+                                        <select name="month_range" class="select" required="">
+                                            <option value=""></option>
+                                            <option value="yes"><?php echo $setup_answ['1']['1'] ;?> </option>
+                                            <option value="no"><?php echo $setup_answ['2']['1']; ?> </option>
+                                        </select>
+                                    </td>
+                                     
                                 </tr>
                                 <tr>
                                     <td>1.2 <?php echo $questions['2'] ?></td>
-                                    <td>some</td>
+                                    <td>
+                                        <select name="month_range" class="select" required="">
+                                            <option value=""></option>
+                                            <option value="yes">ANA </option>
+                                            <option value="no">MOHAMMED </option>
+                                            <option value="no">CARRINGTONE </option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>1.3 <?php echo $questions['3'] ?></td>
-                                    <td>some</td>
+                                    <td>
+                                        <select name="month_range" class="select" required="">
+                                            <option value=""></option>
+                                            <option value="yes"><?php echo $setup_answ['1']['1'] ;?> </option>
+                                            <option value="no"><?php echo $setup_answ['2']['1']; ?> </option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>1.4 <?php echo $questions['4'] ?></td>
-                                    <td>some</td>
+                                    <td>
+                                        <input type ="text" > 
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>1.5 <?php echo $questions['5'] ?></td>
-                                    <td>some</td>
+                                    <td><select name="month_range" class="select" required="">
+                                            <option value=""></option>
+                                            <option value="yes"><?php echo $setup_answ['1']['1'] ;?> </option>
+                                            <option value="no"><?php echo $setup_answ['2']['1']; ?> </option>
+                                        </select></td>
                                 </tr>
                                 <tr>
                                     <td>1.6 <?php echo $questions['6'] ?></td>
-                                    <td>some</td>
+                                    <td><select name="month_range" class="select" required="">
+                                            <option value=""></option>
+                                            <option value="yes"><?php echo $setup_answ['1']['1'] ;?> </option>
+                                            <option value="no"><?php echo $setup_answ['2']['1']; ?> </option>
+                                        </select></td>
                                 </tr>
                                 <tr>
                                     <td>1.7 <?php echo $questions['7'] ?></td>
-                                    <td>some</td>
+                                    <td><select name="month_range" class="select" required="">
+                                            <option value=""></option>
+                                            <option value="yes"><?php echo $setup_answ['1']['1'] ;?> </option>
+                                            <option value="no"><?php echo $setup_answ['2']['1']; ?> </option>
+                                        </select></td>
                                 </tr>
                                 <tr>
                                     <td>1.8 <?php echo $questions['8'] ?></td>
-                                    <td>some</td>
+                                    <td>
+                                        <input type ="text" height:300px;>
+                                    </td>
                                 </tr>
                             </table>
                             <!-- end .section  --></div>
