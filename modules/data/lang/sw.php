@@ -30,6 +30,7 @@ $text["SECT_LABEL_PHS"] = "Pahala ilipo";
 $text["SECT_LABEL_POS"] = "Anuani ya posta ya taasisi";
 $text["SECT_LABEL_SPO"] = "Anuani ya posta";
 $text["SECT_LABEL_MPO"] = "Anuani ya posta ya wizara";
+$text["SECT_LABEL_POH"] = "Anuani ya posta ya SHACCOM";
 $text["SECT_LABEL_IFP"] = "Mratibu wa ZHAPMoS ni yule yule Mratibu wa shughuli za Ukimwi?";
 $text["SECT_LABEL_FOP"] = "Jina la mratibu wa ZHAPMoS";
 $text["SECT_LABEL_CFP"] = "Anuani za mratibu wa ZHAPMoS";

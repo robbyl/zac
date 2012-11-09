@@ -30,6 +30,7 @@ $text["SECT_LABEL_PHS"] = "Physical Address of School";
 $text["SECT_LABEL_POS"] = "Postal Address of Organisation";
 $text["SECT_LABEL_SPO"] = "Postal Address of School";
 $text["SECT_LABEL_MPO"] = "Postal Address of Ministry";
+$text["SECT_LABEL_POH"] = "Postal Address of SHACCOM";
 $text["SECT_LABEL_IFP"] = "Is the ZHAPMoS Focal Person the same as HIV Focal Person?";
 $text["SECT_LABEL_FOP"] = "Name of ZHAPMoS Focal Person";
 $text["SECT_LABEL_CFP"] = "Contact Details of ZHAPMoS Focal Person";

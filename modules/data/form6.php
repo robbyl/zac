@@ -50,6 +50,7 @@ if (!empty($lang) && isset($lang)) {
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/zanhid-core.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -63,6 +64,12 @@ if (!empty($lang) && isset($lang)) {
                         total += $(this).val() * 1;
                     });
                     $(this).children('.total').html(total);
+                });
+
+                $('#org_name').change(function() {
+
+                    var orgId = $(this).val();
+                    organisationDetails('outocomplete/organisation.php', orgId);
                 });
             });
         </script>
@@ -127,11 +134,11 @@ if (!empty($lang) && isset($lang)) {
                                         <td align="right">
                                             <select name="reporting_period" class="select" style="width: 150px;">
                                                 <option value=""></option>
-                                               <?php
-                                    for ($i = 2007; $i <= date('Y'); $i++) {
-                                        echo '<option value="' . $i . '/' . ($i + 1) . '">' . $i . '/' . ($i + 1) . '</option>';
-                                    }
-                                    ?>
+                                                <?php
+                                                for ($i = 2007; $i <= date('Y'); $i++) {
+                                                    echo '<option value="' . $i . '/' . ($i + 1) . '">' . $i . '/' . ($i + 1) . '</option>';
+                                                }
+                                                ?>
                                             </select>
                                         </td>
                                     </tr>
@@ -144,7 +151,7 @@ if (!empty($lang) && isset($lang)) {
                                 <tr>
                                     <td width="33%"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
                                     <td colspan="3">
-                                        <select class="select" name="org_name" required style="width: 100%;">
+                                        <select class="select" name="org_name" id="org_name" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
                                             $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`

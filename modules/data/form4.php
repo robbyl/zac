@@ -31,6 +31,7 @@ require 'sections/lang_section.php';
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/zanhid-core.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -44,6 +45,13 @@ require 'sections/lang_section.php';
                         total += $(this).val() * 1;
                     });
                     $(this).children('.total').html(total);
+                });
+
+                $('#shehia_name').change(function() {
+
+                    var orgId = $(this).val();
+
+                    shehiaDetails('outocomplete/organisation.php', orgId);
                 });
             });
         </script>
@@ -86,13 +94,13 @@ require 'sections/lang_section.php';
                     <div class="data-form-wapper">
                         <?php $heading = $text["FORM_4_HEAD"]; ?>
                         <?php require 'sections/head_section.php'; ?>
-                         <div class="section">
+                        <div class="section">
                             <h3><strong>A. <?php echo $text["SECT_HEAD_A4"]; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_NSH"]; ?></td>
                                     <td colspan="3">
-                                        <select class="select" name="shehia_name" required style="width: 100%;">
+                                        <select class="select" name="shehia_name" id="shehia_name" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
                                             $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`
@@ -113,7 +121,7 @@ require 'sections/lang_section.php';
                                     <td width="39" class="data-group">A1</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><?php echo $text["SECT_LABEL_MPO"]; ?></td>
+                                    <td colspan="2"><?php echo $text["SECT_LABEL_POH"]; ?></td>
                                     <td colspan="3"><input type="text" name="post_addr" id="post_addr" class="text" style="width: 98%"></td>
                                     <td class="data-group">A2</td>
                                 </tr>

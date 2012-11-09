@@ -31,6 +31,7 @@ require 'sections/lang_section.php';
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/zanhid-core.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -45,6 +46,13 @@ require 'sections/lang_section.php';
                     });
                     $(this).children('.total').html(total);
                 });
+
+                $('#org_name').change(function() {
+
+                    var orgId = $(this).val();
+
+                    organisationDetails('outocomplete/organisation.php', orgId);
+                });
             });
         </script>
         <style type="text/css">
@@ -56,7 +64,7 @@ require 'sections/lang_section.php';
 
     <body>
         <div class="container">
-           <?php $heading = $text["FORM_1_HEAD"]; ?>
+            <?php $heading = $text["FORM_1_HEAD"]; ?>
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
                 <ul class="nav">
@@ -85,14 +93,14 @@ require 'sections/lang_section.php';
                 <form action="process_form1.php" method="post" novalidate>
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">
                     <div class="data-form-wapper">
-                       <?php require 'sections/head_section.php'; ?>
+                        <?php require 'sections/head_section.php'; ?>
                         <div class="section">
                             <h3><strong>A. <?php echo $text["SECT_HEAD_A"]; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
                                     <td colspan="3">
-                                        <select class="select" name="org_name" required style="width: 100%;">
+                                        <select class="select" name="org_name" id="org_name" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
                                             $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`

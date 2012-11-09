@@ -31,6 +31,7 @@ require 'sections/lang_section.php';
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/zanhid-core.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -44,6 +45,13 @@ require 'sections/lang_section.php';
                         total += $(this).val() * 1;
                     });
                     $(this).children('.total').html(total);
+                });
+                
+                $('#sch_name').change(function() {
+
+                    var orgId = $(this).val();
+                                        
+                    schoolDetails('outocomplete/organisation.php', orgId);
                 });
             });
         </script>
@@ -92,7 +100,7 @@ require 'sections/lang_section.php';
                                 <tr>
                                     <td width="272"><?php echo $text["SECT_LABEL_NOS"] ?></td>
                                     <td colspan="3">
-                                        <select class="select" name="sch_name" required style="width: 100%;">
+                                        <select class="select" name="sch_name" id="sch_name" required style="width: 100%;">
                                             <option value=""></option>
                                             <?php
                                             $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`

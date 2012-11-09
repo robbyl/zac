@@ -6,7 +6,7 @@ ob_start();
 require '../../config/config.php';
 
 $query_forms = "SELECT `FormSerialNumber`, `OrganisationName`, dis.`District`,
-                       DATE(`PeriodFrom`) AS PeriodFrom, DATE(`PeriodTo`) AS PeriodTo
+                       DATE_FORMAT(DATE(`PeriodFrom`), '%d %b, %Y') AS PeriodFrom, DATE_FORMAT(DATE(`PeriodTo`), '%d %b, %Y') AS PeriodTo
                   FROM tblzhaformssubmitted sub
              LEFT JOIN tblgenorganisations org
                     ON sub.`OrganisationCode` = org.`OrganisationCode`
@@ -38,7 +38,7 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
         <script src="../../js/accordion.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-            
+
             $(document).ready(function() {
                 oTable = $('#dataTable').dataTable({
                     "bJQueryUI": true,
@@ -55,23 +55,23 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
                     "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
                 });
 
-                $('#select-all').click(function(){
+                $('#select-all').click(function() {
                     // Iterate each check box
 
-                    if(this.checked){
-                        $('.checkbox').each(function(){
+                    if (this.checked) {
+                        $('.checkbox').each(function() {
                             this.checked = true;
                             $(this).closest('tr').addClass('selected');
                         });
 
                     } else {
-                        $('.checkbox').each(function(){
+                        $('.checkbox').each(function() {
                             this.checked = false;
                             $(this, '.checkbox').closest('tr').removeClass('selected');
                         });
                     }
                 });
-                
+
                 // Putting backgoround color to the tr for checked checkbox 
                 $('.checkbox').click(function(event) {
                     $(this).closest('tr').toggleClass('selected');
@@ -82,7 +82,7 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
                     }
                 });
 
-                $('.message, .error').hide().slideDown('normal').click(function(){
+                $('.message, .error').hide().slideDown('normal').click(function() {
                     $(this).slideUp('normal');
                 });
 
@@ -91,8 +91,8 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
                 });
                 var num = $('.current').parentsUntil(this).length;
 //                alert(num);
-            } );
-            
+            });
+
             ddaccordion.init({
                 headerclass: "expandable", //Shared CSS class name of headers group that are expandable
                 contentclass: "categoryitems", //Shared CSS class name of contents group
@@ -106,10 +106,10 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
                 toggleclass: ["", "openheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
                 togglehtml: ["prefix", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
                 animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
-                oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
+                oninit: function(headers, expandedindices) { //custom code to run when headers have initalized
                     //do nothing
                 },
-                onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+                onopenclose: function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
                     //do nothing
                 }
             })
@@ -250,7 +250,7 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
                 // Displaying messages and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>All Users of the System</h1>
+                <h1>Submitted ZHAPMoS Forms</h1>
                 <div class="hr-line"></div>
                 <form action="action.php" method="post" onSubmit="">
                     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
@@ -267,6 +267,8 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
                         <tbody>
                             <?php
                             while ($form = mysql_fetch_array($result_forms)) {
+                                $expform_no = explode("-", $form['FormSerialNumber']);
+                                $form_type = substr($expform_no[0], 1, 1);
                                 ?>
                                 <tr>
                                     <td><?php echo $form['FormSerialNumber'] ?></td>
@@ -274,7 +276,11 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
                                     <td><?php echo $form['District'] ?></td>
                                     <td><?php echo $form['PeriodFrom'] ?></td>
                                     <td><?php echo $form['PeriodTo'] ?></td>
-                                    <td>edit <a href="delete_form.php?form_id=<?php echo $form['FormSerialNumber'] ?>">Delete</a></td>
+                                    <td>
+                                        <a href="edit_form<?php echo $form_type ?>.php?form_id=<?php echo $form['FormSerialNumber'] ?>&lang=en">Edit en</a>
+                                        <a href="edit_form<?php echo $form_type ?>.php?form_id=<?php echo $form['FormSerialNumber'] ?>&lang=sw">Edit sw</a>
+                                        <a href="delete_form.php?form_id=<?php echo $form['FormSerialNumber'] ?>">Delete</a>
+                                    </td>
                                 </tr>
                                 <?php
                             }

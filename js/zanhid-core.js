@@ -18,7 +18,97 @@ function getContent(filename, filter) {
     });
 }
 
+// Displaying organisation more details
+function organisationDetails(filename, id) {
+
+    $.ajax({
+        url: filename,
+        data: { org_id: id},
+        type: 'POST',
+        dataType: 'json',
+        beforeSend: function() {
+            $('input[name=phy_addr], input[name=post_addr], input[name=focal_per], input[name=focal_fax], input[name=focal_email], input[name=focal_tel]').val('Loading...');
+        },
+        success: function(data, textStatus, xhr) {
+
+            $('input[name=phy_addr]').val(data.PhysicalAddress);
+            $('input[name=post_addr]').val(data.PostalAddress);
+            $('input[name=district]').val(data.DistrictCode);
+            $('input[name=focal_per]').val(data.zhamos_person);
+            $('input[name=focal_tel]').val(data.Phone);
+            $('input[name=focal_fax]').val(data.Fax);
+            $('input[name=focal_email]').val(data.Email);
+            $('input[name=org_date]').val(data.StartedOperating);
+        }
+    });
+}
+
+// Displaying school more details
+function schoolDetails(filename, id) {
+
+    $.ajax({
+        url: filename,
+        data: { org_id: id},
+        type: 'POST',
+        dataType: 'json',
+        success: function(data, textStatus, xhr) {
+
+            $('input[name=phy_addr]').val(data.PhysicalAddress);
+            $('input[name=post_addr]').val(data.PostalAddress);
+            $('input[name=district]').val(data.DistrictCode);
+            $('input[name=focal_per]').val(data.zhamos_person);
+            $('input[name=focal_tel]').val(data.Phone);
+            $('input[name=focal_fax]').val(data.Fax);
+            $('input[name=focal_email]').val(data.Email);
+        }
+    });
+}
+
+// Displaying school more details
+function ministryDetails(filename, id) {
+
+    $.ajax({
+        url: filename,
+        data: { org_id: id},
+        type: 'POST',
+        dataType: 'json',
+        success: function(data, textStatus, xhr) {
+
+            $('input[name=phy_addr]').val(data.PhysicalAddress);
+            $('input[name=post_addr]').val(data.PostalAddress);
+            $('input[name=district]').val(data.DistrictCode);
+            $('input[name=focal_per]').val(data.zhamos_person);
+            $('input[name=focal_tel]').val(data.Phone);
+            $('input[name=focal_fax]').val(data.Fax);
+            $('input[name=focal_email]').val(data.Email);
+        }
+    });
+}
+
+// Displaying school more details
+function shehiaDetails(filename, id) {
+
+    $.ajax({
+        url: filename,
+        data: { org_id: id},
+        type: 'POST',
+        dataType: 'json',
+        success: function(data, textStatus, xhr) {
+
+            $('input[name=phy_addr]').val(data.PhysicalAddress);
+            $('input[name=post_addr]').val(data.PostalAddress);
+            $('input[name=district]').val(data.DistrictCode);
+            $('input[name=focal_per]').val(data.zhamos_person);
+            $('input[name=focal_tel]').val(data.Phone);
+            $('input[name=focal_fax]').val(data.Fax);
+            $('input[name=focal_email]').val(data.Email);
+        }
+    });
+}
+
+
 function makeBackup(filename, filter) {
+
     $.ajax({
         url: filename,
         data: filter,
@@ -113,7 +203,6 @@ function savePDF(id, css) {
 
 }
 
-// Displaying customer or applicant more details
 
 function moreDetails() {
     var type = $('#cust-appnt').val();

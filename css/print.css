@@ -97,7 +97,7 @@ table.two-groups .no-border td {
 
 .sheet-header {
     width: 100%;
-    height: 110px;
+    height: 90px;
 }
 .page-logo {
     width: 200px;
@@ -143,6 +143,10 @@ table.two-groups .no-border td {
 .sheet-table td, .sheet-table th {
     vertical-align: text-top;
     border-color: #a9a9a9;
+}
+
+td, th {
+    vertical-align: text-top;
 }
 
 @page {

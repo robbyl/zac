@@ -256,7 +256,7 @@ require '../../includes/session_validator.php';
                     }
 
                     $query_org = "SELECT `OrganisationName`, org.`OrganisationCode`, `PostalAddress`, org.`Phone`, org.`Fax`, org.`Email`, `PhysicalAddress`,
-                                          DATE(`StartedOperating`) AS StartDAte, `OrganisationGroup`, `OrganisationCategoryDescription`,
+                                          DATE_FORMAT(DATE(`StartedOperating`), '%d %b, %Y') AS StartDAte, `OrganisationGroup`, `OrganisationCategoryDescription`,
                                           foc.`FullName` AS ZHAPMosFocal, hiv.`FullName` AS HIVPerson
                                      FROM tblgenorganisations org
                                INNER JOIN tblgensetuporganisationcategories cat
