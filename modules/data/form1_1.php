@@ -192,7 +192,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                             <h3><strong>2. <?php echo $sections['1F']['2']; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr><td>2.1. <?php echo $questions['9'] ?></td><td width="188">                                     
-                                        <select name="21" class="select" required="">
+                                        <select name="answ21" class="select" required="">
                                             <option value=""></option>
                                             <?php
                                             while ($anws = mysql_fetch_array($result_setup_answ)) {
@@ -221,7 +221,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                 </tr>
                                 <tr>
                                     <td>2.4. <?php echo $questions['12'] ?></td><td width="188">                                     
-                                        <select name="21" class="select" required="">
+                                        <select name="answ21" class="select" required="">
                                             <option value=""></option>
                                             <?php
                                             while ($anws = mysql_fetch_array($result_setup_answ)) {
@@ -367,7 +367,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                             <h3><strong>3. <?php echo $sections['1I']['3']; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr><td>3.1. <?php echo $questions['27'] ?></td><td width="188">
-                                        <select name="31" class="select" required="">
+                                        <select name="answ31" class="select" required="">
                                             <option value=""></option>
                                             <?php
                                             while ($anws = mysql_fetch_array($result_setup_answ)) {
@@ -380,7 +380,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         </select>
                                     </td></tr>
                                 <tr><td>3.2. <?php echo $questions['28'] ?></td><td width="188">
-                                        <select name="32" class="select" required="">
+                                        <select name="answ32" class="select" required="">
                                             <option value=""></option>
                                             <?php
                                             while ($anws = mysql_fetch_array($result_setup_answ)) {
@@ -393,7 +393,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         </select>
                                     </td></tr>
                                 <tr><td>3.3. <?php echo $questions['29'] ?></td><td width="188">
-                                        <select name="33" class="select" required="">
+                                        <select name="answ33" class="select" required="">
                                             <option value=""></option>
                                             <?php
                                             while ($anws = mysql_fetch_array($result_setup_answ)) {
@@ -407,7 +407,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                     </td></tr>
                                 <tr><td>3.4. <?php echo $questions['30'] ?></td><td><textarea name="qn030"></textarea></td></tr>
                                 <tr><td>3.5. <?php echo $questions['31'] ?></td><td width="188">
-                                        <select name="35" class="select" required="">
+                                        <select name="answ35" class="select" required="">
                                             <option value=""></option>
                                             <?php
                                             while ($anws = mysql_fetch_array($result_setup_answ)) {
@@ -497,10 +497,10 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                     </td>
                                 </tr>
                                 <tr><td>3.1.3 <?php echo $questions['39'] ?></td><td width="188">
-                                        <input type="text">
+                                        <input type="text" class ="text" name ="qn0039">
                                     </td>
                                 </tr>
-                                <tr><td>3.1.4 <?php echo $questions['40'] ?></td><td><textarea name="040"></textarea></td></tr>
+                                <tr><td>3.1.4 <?php echo $questions['40'] ?></td><td><textarea name="qn040"></textarea></td></tr>
                             </table>
                         </div>
                         <div class="section">
@@ -628,7 +628,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         ?>
                                     </td>
                                 </tr>
-                                <tr><td>5.0.3. <?php echo $questions['59'] ?></td><td><textarea name="059"></textarea></td></tr>
+                                <tr><td>4.0.3. <?php echo $questions['59'] ?></td><td><textarea name="qn059"></textarea></td></tr>
                             </table>
                         </div>
                         <div class="section">
@@ -746,6 +746,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                             <h3><strong>7. <?php echo $questions['70'] ?>:</strong></h3>
                             <textarea name="remedial7"></textarea> 
                         </div>
+                        <button>submit</button>
                         <!-- end .data-form-wrapper  -->  </div>
                 </form>
                 <!-- end .content --></div>

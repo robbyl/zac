@@ -18,7 +18,7 @@
 
 define('HOST', 'localhost');
 define('USER', 'root');
-define('PASSWORD', '0881');
+define('PASSWORD', '');
 define('DATABASE', 'zanhiddata');
 
 $conn = mysql_connect(HOST, USER, PASSWORD) or die(mysql_error());
