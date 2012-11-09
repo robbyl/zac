@@ -26,11 +26,14 @@
                 });
 
                 $('#sch_name').change(function() {
-
+                    $('#completed-designation, #verified-designation').html('');
                     var orgId = $(this).val();
-
                     schoolDetails('outocomplete/organisation.php', orgId);
                 });
+
+                $('#completed-designation, #verified-designation').html('');
+                var orgId = $('#sch_name').val();
+                schoolDetails('outocomplete/organisation.php', orgId);
 
             });
         </script>

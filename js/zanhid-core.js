@@ -72,7 +72,7 @@ function organisationDetails(filename, id) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
-            $('input[name=district]').val(data.DistrictCode);
+            $('#district').val(data.DistrictCode).attr('selected','selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
@@ -95,7 +95,7 @@ function schoolDetails(filename, id) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
-            $('input[name=district]').val(data.DistrictCode);
+            $('#district').val(data.DistrictCode).attr('selected','selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
@@ -117,7 +117,7 @@ function ministryDetails(filename, id) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
-            $('input[name=district]').val(data.DistrictCode);
+            $('#district').val(data.DistrictCode).attr('selected','selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
@@ -139,7 +139,7 @@ function shehiaDetails(filename, id) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
-            $('input[name=district]').val(data.DistrictCode);
+            $('#district').val(data.DistrictCode).attr('selected','selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
