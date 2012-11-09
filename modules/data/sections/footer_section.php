@@ -4,7 +4,7 @@
             <td width="18%"><?php echo $text["FORM_FOOTER_COMP_BY"] ?></td>
             <td width="28%">
                 <span class="org_person" id="completed">
-                    <select class="select" name="completed_by" required style="width: 90%;">
+                    <select class="select" name="org_person[]" required style="width: 90%;">
                         <option value=""></option>
                     </select>
                 </span>
@@ -22,7 +22,7 @@
             <td><?php echo $text["FORM_FOOTER_APR_BY"] ?></td>
             <td>
                 <span class="org_person" id="approved">
-                    <select class="select" name="approved_by" required style="width: 90%;">
+                    <select class="select" name="org_person[]" required style="width: 90%;">
                         <option value=""></option>
                     </select>
                 </span>

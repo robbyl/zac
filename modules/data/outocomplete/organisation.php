@@ -39,7 +39,7 @@ if (isset($org_id) && !empty($org_id)) {
 
     $result_people = mysql_query($query_people) or die(mysql_error());
 
-    $options = '<select name="approved_by" required style="width: 90%;" class="select person-listing">';
+    $options = '<select name="org_person[]" required style="width: 90%;" class="select person-listing">';
     $options .= '<option value="" ></option>';
     $options .= "<script> $('.person-listing').change(function() {
                     

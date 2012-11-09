@@ -48,9 +48,8 @@ require 'sections/lang_section.php';
                 });
 
                 $('#org_name').change(function() {
-
+                    $('#completed-designation, #verified-designation').html('');
                     var orgId = $(this).val();
-                   
                     organisationDetails('outocomplete/organisation.php', orgId);
 
                 });

@@ -3,32 +3,36 @@
         <tr>
             <td width="18%"><?php echo $text["FORM_FOOTER_COMP_BY"] ?></td>
             <td width="28%">
-                <select class="select" name="completed_by" required style="width: 90%;">
-                    <option value=""></option>
-                    <span class="org_person"></span>
-                </select>
+                <span class="org_person" id="completed">
+                    <select class="select" name="org_person[]" required style="width: 90%;">
+                        <option value=""></option>
+                    </select>
+                </span>
             </td>
             <td width="18%"><?php echo $text["FORM_FOOTER_DATE_COMP"] ?></td>
             <td width="36%"><input type="date" name="completed_date" value="<?php echo $submitted['DateCompleted']; ?>" class="text" style="width: 67%"></td>
         </tr>
         <tr>
             <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
-            <td></td>
+            <td id="completed-designation"></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td><?php echo $text["FORM_FOOTER_APR_BY"] ?></td>
-            <td><select class="select" name="approved_by" required style="width: 90%;">
-                    <option value=""></option>
-                    <span class="org_person"></span>
-                </select></td>
+            <td>
+                <span class="org_person" id="approved">
+                    <select class="select" name="org_person[]" required style="width: 90%;">
+                        <option value=""></option>
+                    </select>
+                </span>
+            </td>
             <td><?php echo $text["FORM_FOOTER_DATE_APR"] ?></td>
             <td><input type="date" name="approved_date" value="<?php echo $submitted['DateApproved']; ?>" class="text" style="width: 67%"></td>
         </tr>
         <tr>
             <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
-            <td>&nbsp;</td>
+            <td id="verified-designation"></td>
             <td></td>
             <td></td>
         </tr>
