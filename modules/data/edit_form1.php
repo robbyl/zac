@@ -26,11 +26,14 @@
                 });
 
                 $('#org_name').change(function() {
-
+                    $('#completed-designation, #verified-designation').html('');
                     var orgId = $(this).val();
-
                     organisationDetails('outocomplete/organisation.php', orgId);
                 });
+                
+                $('#completed-designation, #verified-designation').html('');
+                    var orgId = $('#org_name').val();
+                    organisationDetails('outocomplete/organisation.php', orgId);
             });
         </script>
         <style type="text/css">
@@ -297,7 +300,7 @@
                                                 $result_org = mysql_query($query_org) or die(mysql_error());
                                                 while ($org = mysql_fetch_array($result_org)) {
                                                     ?>
-                                                    <option value="<?php echo $org['OrganisationCode'] ?>"><?php echo $org['OrganisationName'] ?></option>
+                                                    <option value="<?php echo $org['OrganisationCode'] ?>" <?php if ($submitted['OrganisationCode'] === $org['OrganisationCode']) echo 'selected'; ?>><?php echo $org['OrganisationName'] ?></option>
                                                     <?php
                                                 }
                                                 ?>
