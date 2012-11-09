@@ -1,9 +1,11 @@
 <?php
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
 require '../../../config/config.php';
 require '../../../functions/general_functions.php';
 
 $org_id = clean($_POST['org_id']);
+$form_no = clean($_POST['form_id']);
 
 if (isset($org_id) && !empty($org_id)) {
 
@@ -78,6 +80,9 @@ if (isset($org_id) && !empty($org_id)) {
 //    }
 //    $organisation['selection'] = $persons;
     $organisation['selection'] = $options;
+    
+    $query_submitted = "SELECT 
+                          FROM";
 
     echo json_encode($organisation);
 }

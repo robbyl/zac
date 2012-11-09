@@ -58,11 +58,11 @@ function getVerifiedDisignation(filename, id) {
 }
 
 // Displaying organisation more details
-function organisationDetails(filename, id) {
+function organisationDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id},
+        data: { org_id: id, form_id: formId},
         type: 'POST',
         dataType: 'json',
         beforeSend: function() {

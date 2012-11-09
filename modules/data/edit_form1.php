@@ -33,7 +33,8 @@
                 
                 $('#completed-designation, #verified-designation').html('');
                     var orgId = $('#org_name').val();
-                    organisationDetails('outocomplete/organisation.php', orgId);
+                    var formNo = $('#form_no').val();
+                    organisationDetails('outocomplete/organisation.php', orgId, formNo);
             });
         </script>
         <style type="text/css">
