@@ -41,6 +41,15 @@ if (isset($org_id) && !empty($org_id)) {
 
     $options = '<select name="org_person[]" required style="width: 90%;" class="select person-listing">';
     $options .= '<option value="" ></option>';
+
+
+    while ($people = mysql_fetch_array($result_people)) {
+
+        $options .= '<option value="' . $people['OrganisationPersonID'] . '">' . $people['FullName'] . '</option>';
+        $persons[$people['OrganisationPersonID']] = $people['Designation'];
+    }
+
+    $options .= '</select>';
     $options .= "<script> $('.person-listing').change(function() {
                     
                     var personId = $(this).val();
@@ -54,14 +63,6 @@ if (isset($org_id) && !empty($org_id)) {
                     }
                     
                 });</script>";
-    
-    while ($people = mysql_fetch_array($result_people)) {
-
-        $options .= '<option value="' . $people['OrganisationPersonID'] . '">' . $people['FullName'] . '</option>';
-        $persons[$people['OrganisationPersonID']] = $people['Designation'];
-    }
-
-    $options .= '</select>';
 
 //    $query_ans = "SELECT `FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`,
 //                         `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`,
