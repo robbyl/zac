@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
-            <td>&nbsp;</td>
+            <td id="verified-designation"></td>
             <td></td>
             <td></td>
         </tr>

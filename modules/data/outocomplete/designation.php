@@ -8,8 +8,6 @@ require '../../../functions/general_functions.php';
 
 $person_id = clean($_POST['person_id']);
 
-//$person_id = 'CHK004002';
-
 if (!empty($person_id) && isset($person_id)) {
     $query_org_person = "SELECT `OrganisationPersonID`, `Designation`
                            FROM tblgenorganisationpeople

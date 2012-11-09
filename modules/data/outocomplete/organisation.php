@@ -42,11 +42,17 @@ if (isset($org_id) && !empty($org_id)) {
     $options = '<select name="approved_by" required style="width: 90%;" class="select person-listing">';
     $options .= '<option value="" ></option>';
     $options .= "<script> $('.person-listing').change(function() {
-                    alert('sometimes');
-                    exit;
+                    
                     var personId = $(this).val();
+                    
+                    if ($(this).parent('#completed').length) {
+                        getCompletedDisignation('outocomplete/designation.php', personId);
+                    }
 
-                    getCompletedDisignation('outocomplete/designation.php', personId);
+                    if ($(this).parent('#approved').length) {
+                        getVerifiedDisignation('outocomplete/designation.php', personId);
+                    }
+                    
                 });</script>";
     
     while ($people = mysql_fetch_array($result_people)) {

@@ -50,17 +50,8 @@ require 'sections/lang_section.php';
                 $('#org_name').change(function() {
 
                     var orgId = $(this).val();
-                    var personId = $(this).val();
-
+                   
                     organisationDetails('outocomplete/organisation.php', orgId);
-
-                    if ($(this).parent('#completed').length) {
-                        getCompletedDisignation('outocomplete/organisation.php', personId);
-                    }
-
-                    if ($(this).parent('#approved').length) {
-
-                    }
 
                 });
             });

@@ -38,6 +38,25 @@ function getCompletedDisignation(filename, id) {
     });
 }
 
+function getVerifiedDisignation(filename, id) {
+    $.ajax({
+        url: filename,
+        data: { person_id: id},
+        type: 'POST',
+        dataType: 'html',
+        beforeSend: function() {
+            $('#verified-designation').html('Loading...');
+        },
+        success: function(data, textStatus, xhr) {
+
+            $('#verified-designation').html(data);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            $('#verified-designation').html('Error getting content');
+        }
+    });
+}
+
 // Displaying organisation more details
 function organisationDetails(filename, id) {
 
