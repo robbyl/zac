@@ -62,7 +62,7 @@ function organisationDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id, form_id: formId},
+        data: { org_id: id, form_id: formId },
         type: 'POST',
         dataType: 'json',
         beforeSend: function() {
