@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
 require '../../../config/config.php';
@@ -80,9 +81,19 @@ if (isset($org_id) && !empty($org_id)) {
 //    }
 //    $organisation['selection'] = $persons;
     $organisation['selection'] = $options;
-    
-    $query_submitted = "SELECT 
-                          FROM";
+
+    if (isset($form_no) && !empty($form_no)) {
+
+        $query_submitted = "SELECT `FormSerialNumber`, `CapturedByUserID`, `CompletedByPersonID`
+                              FROM tblzhaformssubmitted
+                             WHERE FormSerialNumber = '$form_no'";
+
+        $result_submitted = mysql_query($query_submitted) or die(mysql_error());
+
+        $person = mysql_fetch_array($result_submitted);
+        $organisation['CapturedByUserID'] = $person['CapturedByUserID'];
+        $organisation['CompletedByPersonID'] = $person['CompletedByPersonID'];
+    }
 
     echo json_encode($organisation);
 }
