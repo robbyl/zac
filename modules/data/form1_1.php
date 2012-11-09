@@ -65,7 +65,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
     </head>
     <body>
         <div class="container">
-            <?php  $heading = $text["FORM_1_HEAD"];     ?>
+            <?php $heading = $text["FORM_1_HEAD"]; ?>
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
                 <ul class="nav">
@@ -91,20 +91,19 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                 ?>
                 <h1>Participatory Supervision Guidelines</h1>
                 <div class="hr-line"></div>
-                <form action="process_form1.php" method="post" novalidate>
+                <form action="process_form1_1.php" method="post" novalidate>
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">
                     <div class="data-form-wapper">
                         <?php require 'sections/head_section.php'; ?>
                         <div class="section">
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table"> 
-                                <tr><td>Name of organisation being visited </td><td><input type="text"></td>
-                                <tr><td>District(s) in which the organisation operates </td><td><input type="text"></td>
+                                <tr><td>Name of organisation being visited </td><td><input type="text" name="name_of_org" class="text"></td>
+                                <tr><td>District(s) in which the organisation operates </td><td><input type="text" name="dist_ort" class="text"></td>
                                 <tr><td>Date of visit </td><td><input type="date" name="date_of_visit"></td>                                 
                                 <tr><td>Time of the visit </td><td><input type="time" name="time"></td>
-                                <tr><td>Name(s) of supervisor(s) conducting the visit </td><td><input type="text"></td>
+                                <tr><td>Name(s) of supervisor(s) conducting the visit </td><td><input type="text" name="sup_visit" class="text"></td>
                                 <tr><td>Quarter selected for the data auditing part of the 
-                                    visit(MM/YYYY)</td><td><input type="text"></td>
-                                
+                                        visit(MM/YYYY)</td><td><input type="text" name="quarter" class="text"></td>
                                 </tr>
                             </table>
                         </div>
@@ -127,7 +126,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
                                     <td>1.2. <?php echo $questions['2'] ?> (Full name and position)</td><td width="188">                                     
-                                        <input type="text">
+                                        <input type="text" name="full_name" class="text">
                                     </td>
                                 </tr>
                                 <tr>
@@ -185,7 +184,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         ?></td>
                                 </tr>
                                 <tr>
-                                    <td>1.8. <?php echo $questions['5'] ?></td><td><textarea></textarea></td>
+                                    <td>1.8. <?php echo $questions['5'] ?></td><td><textarea class="text-area" name="qn05"></textarea></td>
                                 </tr>
                             </table>
                         </div>
@@ -218,7 +217,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>2.3. <?php echo $questions['11'] ?></td><td><textarea></textarea></td>
+                                    <td>2.3. <?php echo $questions['11'] ?></td><td><textarea class="text-area" name="qn11"></textarea></td>
                                 </tr>
                                 <tr>
                                     <td>2.4. <?php echo $questions['12'] ?></td><td width="188">                                     
@@ -276,9 +275,11 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         ?>
                                 </tr>
                                 <tr><td>2.9. <?php echo $questions['17'] ?></td><td width="188">
-                                        <input type="text">
+                                        <input type="text" class="text" name="req">
                                     </td></tr>
-                                <tr><td>2.1.0. <?php echo $questions['18'] ?></td><td width="188">
+                                <tr>
+                                    <td>2.1.0. <?php echo $questions['18'] ?></td>
+                                    <td width="188">
                                         <?php
                                         while ($anws = mysql_fetch_array($result_setup_answ)) {
                                             if ($anws['AnswerSet'] == 1) {
@@ -356,10 +357,10 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                     </td>
                                 </tr>
                                 <tr><td>2.1.7. <?php echo $questions['25'] ?></td><td width="188">
-                                        <textarea></textarea>
+                                        <textarea name="qn025"></textarea>
                                     </td>
                                 </tr>
-                                <tr><td>2.1.8. <?php echo $questions['26'] ?></td><td><input type="text"></td></tr>
+                                <tr><td>2.1.8. <?php echo $questions['26'] ?></td><td><input type="text" name="que26" class="text"></td></tr>
                             </table>
                         </div>
                         <div class="section">
@@ -404,7 +405,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                             ?>
                                         </select>
                                     </td></tr>
-                                <tr><td>3.4. <?php echo $questions['30'] ?></td><td><textarea></textarea></td></tr>
+                                <tr><td>3.4. <?php echo $questions['30'] ?></td><td><textarea name="qn030"></textarea></td></tr>
                                 <tr><td>3.5. <?php echo $questions['31'] ?></td><td width="188">
                                         <select name="35" class="select" required="">
                                             <option value=""></option>
@@ -462,7 +463,6 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         ?>
                                     </td>
                                 </tr>
-
                                 <tr><td>3.1.0 <?php echo $questions['36'] ?></td><td width="188">
                                         <?php
                                         while ($anws = mysql_fetch_array($result_setup_answ)) {
@@ -500,7 +500,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         <input type="text">
                                     </td>
                                 </tr>
-                                <tr><td>3.1.4 <?php echo $questions['40'] ?></td><td><textarea></textarea></td></tr>
+                                <tr><td>3.1.4 <?php echo $questions['40'] ?></td><td><textarea name="040"></textarea></td></tr>
                             </table>
                         </div>
                         <div class="section">
@@ -628,7 +628,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         ?>
                                     </td>
                                 </tr>
-                                <tr><td>5.0.3. <?php echo $questions['59'] ?></td><td><textarea></textarea></td></tr>
+                                <tr><td>5.0.3. <?php echo $questions['59'] ?></td><td><textarea name="059"></textarea></td></tr>
                             </table>
                         </div>
                         <div class="section">
@@ -711,7 +711,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         mysql_data_seek($result_setup_answ, 0);
                                         ?>
                                     </td></tr>
-                                <tr><td>5.8. <?php echo $questions['67'] ?></td><td><input type="text"></td></tr>
+                                <tr><td>5.8. <?php echo $questions['67'] ?></td><td><input type="text" class="text" name="qn67"></td></tr>
                             </table>
                             <h3><strong>5.5 <?php echo $questions['68'] ?>:</strong></h3>
                             <textarea name="remedial"></textarea>
