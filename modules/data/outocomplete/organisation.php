@@ -65,7 +65,15 @@ if (isset($org_id) && !empty($org_id)) {
                         getVerifiedDisignation('outocomplete/designation.php', personId);
                     }
                     
-                });</script>";
+                });
+                
+                    var personCompleted = $('#completed .select').val();
+                    var personVerified = $('#approved .select').val();
+                    
+                    getCompletedDisignation('outocomplete/designation.php', personCompleted);
+                    getVerifiedDisignation('outocomplete/designation.php', personVerified);
+            
+                </script>";
 
 //    $query_ans = "SELECT `FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`,
 //                         `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`,
@@ -84,15 +92,15 @@ if (isset($org_id) && !empty($org_id)) {
 
     if (isset($form_no) && !empty($form_no)) {
 
-        $query_submitted = "SELECT `FormSerialNumber`, `CapturedByUserID`, `CompletedByPersonID`
+        $query_submitted = "SELECT `FormSerialNumber`, `CompletedByPersonID`, `ApprovedByPersonID`
                               FROM tblzhaformssubmitted
                              WHERE FormSerialNumber = '$form_no'";
 
         $result_submitted = mysql_query($query_submitted) or die(mysql_error());
 
         $person = mysql_fetch_array($result_submitted);
-        $organisation['CapturedByUserID'] = $person['CapturedByUserID'];
         $organisation['CompletedByPersonID'] = $person['CompletedByPersonID'];
+        $organisation['ApprovedByPersonID'] = $person['ApprovedByPersonID'];
     }
 
     echo json_encode($organisation);

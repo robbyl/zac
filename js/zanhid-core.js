@@ -79,6 +79,8 @@ function organisationDetails(filename, id, formId) {
             $('input[name=focal_email]').val(data.Email);
             $('input[name=org_date]').val(data.StartedOperating);
             $('.org_person').html(data.selection);
+            $('#completed .select').val(data.CompletedByPersonID).attr('selected','selected');
+            $('#approved .select').val(data.ApprovedByPersonID).attr('selected','selected');
         }
     });
 }
