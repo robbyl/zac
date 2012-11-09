@@ -50,7 +50,7 @@ require 'sections/lang_section.php';
                 $('#sch_name').change(function() {
 
                     var orgId = $(this).val();
-                                        
+                     $('#completed-designation, #verified-designation').html('');                    
                     schoolDetails('outocomplete/organisation.php', orgId);
                 });
             });

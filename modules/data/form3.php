@@ -50,7 +50,7 @@ require 'sections/lang_section.php';
                 $('#ministry_name').change(function() {
 
                     var orgId = $(this).val();
-
+                     $('#completed-designation, #verified-designation').html('');
                     ministryDetails('outocomplete/organisation.php', orgId);
                 });
             });

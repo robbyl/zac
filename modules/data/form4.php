@@ -50,7 +50,7 @@ require 'sections/lang_section.php';
                 $('#shehia_name').change(function() {
 
                     var orgId = $(this).val();
-
+                     $('#completed-designation, #verified-designation').html('');
                     shehiaDetails('outocomplete/organisation.php', orgId);
                 });
             });

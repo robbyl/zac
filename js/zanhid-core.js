@@ -100,6 +100,7 @@ function schoolDetails(filename, id) {
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
+            $('.org_person').html(data.selection);
         }
     });
 }
@@ -121,6 +122,7 @@ function ministryDetails(filename, id) {
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
+            $('.org_person').html(data.selection);
         }
     });
 }
@@ -142,6 +144,7 @@ function shehiaDetails(filename, id) {
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
+            $('.org_person').html(data.selection);
         }
     });
 }
