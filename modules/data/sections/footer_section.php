@@ -3,7 +3,7 @@
         <tr>
             <td width="18%"><?php echo $text["FORM_FOOTER_COMP_BY"] ?></td>
             <td width="28%">
-                <span class="org_person">
+                <span class="org_person" id="completed">
                     <select class="select" name="completed_by" required style="width: 90%;">
                         <option value=""></option>
                     </select>
@@ -14,14 +14,14 @@
         </tr>
         <tr>
             <td><?php echo $text["FORM_FOOTER_POS"] ?></td>
-            <td></td>
+            <td id="completed-designation"></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td><?php echo $text["FORM_FOOTER_APR_BY"] ?></td>
             <td>
-                <span class="org_person">
+                <span class="org_person" id="approved">
                     <select class="select" name="approved_by" required style="width: 90%;">
                         <option value=""></option>
                     </select>

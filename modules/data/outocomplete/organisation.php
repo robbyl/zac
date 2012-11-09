@@ -39,8 +39,16 @@ if (isset($org_id) && !empty($org_id)) {
 
     $result_people = mysql_query($query_people) or die(mysql_error());
 
-    $options = '<select name="approved_by" required style="width: 90%;" class="select">';
+    $options = '<select name="approved_by" required style="width: 90%;" class="select person-listing">';
     $options .= '<option value="" ></option>';
+    $options .= "<script> $('.person-listing').change(function() {
+                    alert('sometimes');
+                    exit;
+                    var personId = $(this).val();
+
+                    getCompletedDisignation('outocomplete/designation.php', personId);
+                });</script>";
+    
     while ($people = mysql_fetch_array($result_people)) {
 
         $options .= '<option value="' . $people['OrganisationPersonID'] . '">' . $people['FullName'] . '</option>';

@@ -18,21 +18,22 @@ function getContent(filename, filter) {
     });
 }
 
-function getContent(filename, filter) {
+// Atofill Person's desingnation
+function getCompletedDisignation(filename, id) {
     $.ajax({
         url: filename,
-        data: filter,
-        type: 'GET',
+        data: { person_id: id},
+        type: 'POST',
         dataType: 'html',
         beforeSend: function() {
-            $('#listing').html('Loading...');
+            $('#completed-designation').html('Loading...');
         },
         success: function(data, textStatus, xhr) {
 
-            $('#listing').html(data);
+            $('#completed-designation').html(data);
         },
         error: function(xhr, textStatus, errorThrown) {
-            $('#listing').html('Error getting content');
+            $('#completed-designation').html('Error getting content');
         }
     });
 }
