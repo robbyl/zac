@@ -428,7 +428,7 @@ input[disabled] {
     font-size: 100%;
 }
 
-.text [date] {
+input[type="date"] {
         font-family: inherit;
 }
 
