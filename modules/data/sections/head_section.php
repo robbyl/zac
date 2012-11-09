@@ -36,7 +36,7 @@
                 <td>&nbsp;</td>
                 <td align="right">Form No:</td>
                 <td align="right">
-                    <input type="text" value="<?php echo $form_serial_no ?>" name="form_no" required class="text" style="font-size: 1.5em; width: 150px; text-align: right">
+                    <input type="text" value="<?php echo $form_serial_no ?>" name="form_no" required class="text" style="font-size: 1.5em !important; width: 150px; text-align: right">
                 </td>
             </tr>
         </table>

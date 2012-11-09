@@ -425,8 +425,11 @@ input[disabled] {
     height: 23px;
     outline: none;
     padding: 0 5px;
-    font-family: inherit !important;
     font-size: 100%;
+}
+
+.text [date] {
+        font-family: inherit;
 }
 
 .text {
