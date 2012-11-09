@@ -99,12 +99,13 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table"> 
                                 <tr><td>Name of organisation being visited </td><td><input type="text"></td>
                                 <tr><td>District(s) in which the organisation operates </td><td><input type="text"></td>
+                                <tr><td>How long ago was the first participatory
+                                    supervision visit undertaken?</td><td><input type="text"></td>
                                 <tr><td>Date of visit </td><td><input type="date" name="date_of_visit"></td>                                 
                                 <tr><td>Time of the visit </td><td><input type="time" name="time"></td>
                                 <tr><td>Name(s) of supervisor(s) conducting the visit </td><td><input type="text"></td>
                                 <tr><td>Quarter selected for the data auditing part of the 
-                                    visit(MM/YYYY)</td><td><input type="text"></td>
-                                
+                                        visit(MM/YYYY)</td><td>  <input type="text"><input type="text"></td>               
                                 </tr>
                             </table>
                         </div>
@@ -112,15 +113,18 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                             <h3><strong>1. <?php echo $sections['1F']['1']; ?></strong></h3>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
-                                    <td>1.1. <?php echo $questions['1'] ?></td><td width="188">                                     
-                                        <?php
-                                        while ($anws = mysql_fetch_array($result_setup_answ)) {
-                                            if ($anws['AnswerSet'] == 1) {
-                                                echo '<label><input type="radio" name="answ11" value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</label> &nbsp &nbsp';
+                                    <td>1.1. <?php echo $questions['71'] ?></td><td width="188">                                     
+                                       <select name="111" class="select" required="">
+                                            <option value=""></option>
+                                            <?php
+                                            while ($anws = mysql_fetch_array($result_setup_answ)) {
+                                                if ($anws['AnswerSet'] == 11) {
+                                                    echo '<option value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</option>';
+                                                }
                                             }
-                                        }
-                                        mysql_data_seek($result_setup_answ, 0);
-                                        ?>
+                                            mysql_data_seek($result_setup_answ, 0);
+                                            ?>
+                                        </select>
                                     </td>
                                 </tr>                              
                             </table>
@@ -163,19 +167,22 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                             </table>
                             <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
                                 <tr>
-                                    <td>1.6. <?php echo $questions['6'] ?> (Full name and position)</td><td width="188">                                     
-                                        <?php
-                                        while ($anws = mysql_fetch_array($result_setup_answ)) {
-                                            if ($anws['AnswerSet'] == 1) {
-                                                echo '<label><input type="radio" name="answ16" value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</label> &nbsp &nbsp';
+                                    <td>1.6. <?php echo $questions['72'] ?> (Full name and position)</td><td width="188">                                     
+                                        <select name="21" class="select" required="">
+                                            <option value=""></option>
+                                            <?php
+                                            while ($anws = mysql_fetch_array($result_setup_answ)) {
+                                                if ($anws['AnswerSet'] == 12) {
+                                                    echo '<option value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</option>';
+                                                }
                                             }
-                                        }
-                                        mysql_data_seek($result_setup_answ, 0);
-                                        ?>
+                                            mysql_data_seek($result_setup_answ, 0);
+                                            ?>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>1.7. <?php echo $questions['7'] ?></td><td><?php
+                                    <td>1.7. <?php echo $questions['73'] ?></td><td><?php
                                         while ($anws = mysql_fetch_array($result_setup_answ)) {
                                             if ($anws['AnswerSet'] == 1) {
                                                 echo '<label><input type="radio" name="answ17" value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</label> &nbsp &nbsp';
@@ -606,7 +613,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         ?>
                                     </td>
                                 </tr>
-                                <tr><td>4.0.1. <?php echo $questions['49'] ?></td><td width="188">
+                                <tr><td>5.0. <?php echo $questions['49'] ?></td><td width="188">
                                         <?php
                                         while ($anws = mysql_fetch_array($result_setup_answ)) {
                                             if ($anws['AnswerSet'] == 1) {
@@ -617,7 +624,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         ?>
                                     </td>
                                 </tr>
-                                <tr><td>4.0.2. <?php echo $questions['50'] ?></td><td width="188">
+                                <tr><td>5.1. <?php echo $questions['50'] ?></td><td width="188">
                                         <?php
                                         while ($anws = mysql_fetch_array($result_setup_answ)) {
                                             if ($anws['AnswerSet'] == 1) {
@@ -628,7 +635,7 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         ?>
                                     </td>
                                 </tr>
-                                <tr><td>5.0.3. <?php echo $questions['59'] ?></td><td><textarea></textarea></td></tr>
+                                <tr><td>5.2. <?php echo $questions['59'] ?></td><td><textarea></textarea></td></tr>
                             </table>
                         </div>
                         <div class="section">
@@ -691,27 +698,30 @@ $result_setup_answ = mysql_query($query_setup_answ) or die(mysql_error());
                                         mysql_data_seek($result_setup_answ, 0);
                                         ?>
                                     </td></tr>
-                                <tr><td>5.6. <?php echo $questions['65'] ?></td><td width="188">
+                                <tr><td>5.6. <?php echo $questions['76'] ?></td><td width="188">
                                         <?php
                                         while ($anws = mysql_fetch_array($result_setup_answ)) {
                                             if ($anws['AnswerSet'] == 1) {
-                                                echo '<label><input type="radio" name="answ65" value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</label> &nbsp &nbsp';
+                                                echo '<label><input type="radio" name="answ76" value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</label> &nbsp &nbsp';
                                             }
                                         }
                                         mysql_data_seek($result_setup_answ, 0);
                                         ?>
                                     </td></tr>
-                                <tr><td>5.7. <?php echo $questions['66'] ?></td><td width="188">
-                                        <?php
-                                        while ($anws = mysql_fetch_array($result_setup_answ)) {
-                                            if ($anws['AnswerSet'] == 1) {
-                                                echo '<label><input type="radio" name="answ66" value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</label> &nbsp &nbsp';
+                                <tr><td>5.7. <?php echo $questions['77'] ?></td><td width="188">
+                                        <select name="answ77" class="select" required="">
+                                            <option value=""></option>
+                                            <?php
+                                            while ($anws = mysql_fetch_array($result_setup_answ)) {
+                                                if ($anws['AnswerSet'] == 13) {
+                                                    echo '<option value="' . $anws['AnswerID'] . '">' . $anws['Answer'] . '</option>';
+                                                }
                                             }
-                                        }
-                                        mysql_data_seek($result_setup_answ, 0);
-                                        ?>
+                                            mysql_data_seek($result_setup_answ, 0);
+                                            ?>
+                                        </select>
                                     </td></tr>
-                                <tr><td>5.8. <?php echo $questions['67'] ?></td><td><input type="text"></td></tr>
+                                <tr><td>5.8. <?php echo $questions['78'] ?></td><td><textarea></textarea></td></tr>
                             </table>
                             <h3><strong>5.5 <?php echo $questions['68'] ?>:</strong></h3>
                             <textarea name="remedial"></textarea>
