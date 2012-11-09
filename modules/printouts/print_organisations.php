@@ -1,6 +1,6 @@
 <?php
 /*
- * 2012 softbill
+ * 2012 zanhid
  *
  * NOTICE OF LICENSE
  *
@@ -34,7 +34,7 @@ require '../../includes/session_validator.php';
 
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/tooltip.js" type="text/javascript"></script>
-        <script src="../../js/softbill-core.js" type="text/javascript"></script>
+        <script src="../../js/zanhid-core.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
 
         <script type="text/javascript">
