@@ -39,8 +39,8 @@ if (isset($org_id) && !empty($org_id)) {
 
     $result_people = mysql_query($query_people) or die(mysql_error());
 
-    $options = "<select>";
-
+    $options = '<select name="approved_by" required style="width: 90%;" class="select">';
+    $options .= '<option value="" ></option>';
     while ($people = mysql_fetch_array($result_people)) {
 
         $options .= '<option value="' . $people['OrganisationPersonID'] . '">' . $people['FullName'] . '</option>';
@@ -61,8 +61,7 @@ if (isset($org_id) && !empty($org_id)) {
 //
 //        $fig_ans[$ans['ZhaFigureCode']][$ans['BreakdownTypeID1']][$ans['BreakdownTypeID2']][$ans['BreakdownTypeID3']][$ans['BreakdownTypeID4']] = $ans['ZhaFigureValue'];
 //    }
-
-    $organisation['selection'] = $persons;
+//    $organisation['selection'] = $persons;
     $organisation['selection'] = $options;
 
     echo json_encode($organisation);

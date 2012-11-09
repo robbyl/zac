@@ -18,6 +18,25 @@ function getContent(filename, filter) {
     });
 }
 
+function getContent(filename, filter) {
+    $.ajax({
+        url: filename,
+        data: filter,
+        type: 'GET',
+        dataType: 'html',
+        beforeSend: function() {
+            $('#listing').html('Loading...');
+        },
+        success: function(data, textStatus, xhr) {
+
+            $('#listing').html(data);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            $('#listing').html('Error getting content');
+        }
+    });
+}
+
 // Displaying organisation more details
 function organisationDetails(filename, id) {
 
@@ -39,6 +58,7 @@ function organisationDetails(filename, id) {
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
             $('input[name=org_date]').val(data.StartedOperating);
+            $('.org_person').html(data.selection);
         }
     });
 }
@@ -149,23 +169,6 @@ function getPopForm(filename, filter) {
     });
 }
 
-// Calculates water consumption.
-function consumptions() {
-
-    var curr = document.readings.elements["curr_reading[]"];
-    var prev = document.readings.elements["prev_reading[]"];
-    var cons = document.readings.elements["cons[]"];
-
-    for (i = 0; i < curr.length; i++) {
-
-        var diff = curr[i].value - prev[i].value;
-        if (diff >= 0) {
-            cons[i].value = diff;
-        } else {
-            cons[i].value = "";
-        }
-    }
-}
 
 // Prints specified part of the page
 function printPage(id, css) {
@@ -201,34 +204,6 @@ function savePDF(id, css) {
     $('#html').val(html);
     $('#html-form').submit();
 
-}
-
-
-function moreDetails() {
-    var type = $('#cust-appnt').val();
-    var number = $('#number').val();
-
-    $.ajax({
-        url: 'cust_appnt_details.php',
-        type: 'POST',
-        data: {
-            type: type,
-            number: number
-        },
-        dataType: 'html',
-        beforeSend: function() {
-            //            $('#cust-appnt-details').html('<div class="message">Loading...</div>');
-            $('#cust-appnt-details').html('<div class="loading"></div>');
-        },
-        success: function(data) {
-
-            $('#cust-appnt-details').html(data);
-            $('#total').html('Tsh 85,990.84');
-        },
-        error: function() {
-            $('#cust-appnt-details').html('Failed');
-        }
-    });
 }
 
 // Navigate to a given link
