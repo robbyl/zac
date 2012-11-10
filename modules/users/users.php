@@ -142,7 +142,11 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                         </tbody>
                     </table>
                 </form>
-                <script type="text/javascript">
+                <!-- end .content --></div>
+            <?php include '../../includes/footer.php'; ?>
+            <!-- end .container --></div>
+    </body>
+    <script type="text/javascript">
             $('.users').attr("id", "current");
             var i = $('h3#current').index('.menuheader') - 1;
 
@@ -166,13 +170,6 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                     //do nothing
                 }
             });
-
-
-
-                </script>
-                <!-- end .content --></div>
-            <?php include '../../includes/footer.php'; ?>
-            <!-- end .container --></div>
-    </body>
+    </script>
 </html>
 <?php ob_flush(); ?>

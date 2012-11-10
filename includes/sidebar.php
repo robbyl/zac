@@ -1,3 +1,4 @@
+<?php error_reporting(E_ALL ^ (E_NOTICE | E_WARNING)); ?>
 <?php session_start(); ?>
 <div class="arrowlistmenu">
     <a href="../../home.php"><h3 class="menuheader home">Home</h3></a>
