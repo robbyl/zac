@@ -19,7 +19,7 @@
             <li><a href="../../modules/settings/settings.php" >General settings</a></li>
         </ul>
 
-        <h3 class="menuheader expandable applications">Backup</h3>
+        <h3 class="menuheader expandable backups">Backup</h3>
         <ul class="categoryitems">
             <li><a href="../../modules/backups/backups.php" >View backups</a></li>
             <li><a href="../../modules/applications/view_application.php">View applications</a></li>

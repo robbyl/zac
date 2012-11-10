@@ -164,7 +164,7 @@ require '../../functions/format_byte_function.php';
     </body>
     <script type="text/javascript">
 
-            $('.users').attr("id", "current");
+            $('.backups').attr("id", "current");
             var i = $('h3#current').index('.menuheader') - 1;
 
             ddaccordion.init({
