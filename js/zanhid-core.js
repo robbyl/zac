@@ -98,6 +98,7 @@ function schoolDetails(filename, id, formId) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
+            $('input[name=reg_no]').val(data.OrganisationCode);
             $('#district').val(data.DistrictCode).attr('selected','selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
@@ -122,6 +123,7 @@ function ministryDetails(filename, id, formId) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
+            $('input[name=reg_no]').val(data.OrganisationCode);
             $('#district').val(data.DistrictCode).attr('selected','selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
@@ -146,6 +148,7 @@ function shehiaDetails(filename, id, formId) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
+            $('input[name=reg_no]').val(data.OrganisationCode);
             $('#district').val(data.DistrictCode).attr('selected','selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
