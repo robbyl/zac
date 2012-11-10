@@ -33,7 +33,9 @@
 
                 $('#completed-designation, #verified-designation').html('');
                 var orgId = $('#sch_name').val();
-                schoolDetails('outocomplete/organisation.php', orgId);
+                var formNo = $('#form_no').val();
+                
+                schoolDetails('outocomplete/organisation.php', orgId, formNo);
 
             });
         </script>
@@ -96,8 +98,8 @@
                                                DATE(`PeriodTo`) AS PeriodTo, `CompletedByPersonID`, DATE(`DateCompleted`) AS DateCompleted,
                                                `ApprovedByPersonID`, DATE(`DateApproved`) AS DateApproved, DATE(`DateReceived`) AS DateReceived, 
                                                DATE(`DateCaptured`) AS DateCaptured, `CapturedByUserID`,
-                                               DATE(`DateVerified`) AS DateVerified, `VerifiedByUserID`, `NotesWrittenOnForm`, 
-                                               DATE(`DataEntryNotes`) AS DataEntryNotes
+                                               DATE(`DateVerified`) AS DateVerified, `VerifiedByUserID`, `NotesWrittenOnForm`, DataEntryNotes,
+                                               DATE(`DateFiled`) AS DateFiled
                                           FROM tblzhaformssubmitted
                                          WHERE FormSerialNumber = '$form_id'";
 

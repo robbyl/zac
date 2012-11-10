@@ -33,7 +33,9 @@
 
                 $('#completed-designation, #verified-designation').html('');
                 var orgId = $('#ministry_name').val();
-                ministryDetails('outocomplete/organisation.php', orgId);
+                var formNo = $('#form_no').val();
+                
+                ministryDetails('outocomplete/organisation.php', orgId, formNo);
             });
         </script>
         <style type="text/css">

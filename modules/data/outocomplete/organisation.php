@@ -27,6 +27,7 @@ if (isset($org_id) && !empty($org_id)) {
 
     $org = mysql_fetch_array($result_school);
 
+    $organisation["OrganisationCode"] = $org_id;
     $organisation["PhysicalAddress"] = $org["PhysicalAddress"];
     $organisation["PostalAddress"] = $org["PostalAddress"];
     $organisation["DistrictCode"] = $org["DistrictCode"];
@@ -36,7 +37,7 @@ if (isset($org_id) && !empty($org_id)) {
     $organisation["Email"] = $org["Email"];
     $organisation["StartedOperating"] = $org["StartedOperating"];
 
-    $query_people = "SELECT `OrganisationPersonID`, `OrganisationCode`, `FullName`, `Designation`
+    $query_people = "SELECT `OrganisationPersonID`, `OrganisationCode`, `FullName`
                        FROM tblgenorganisationpeople
                       WHERE `OrganisationCode` = '$org_id'";
 
@@ -49,7 +50,6 @@ if (isset($org_id) && !empty($org_id)) {
     while ($people = mysql_fetch_array($result_people)) {
 
         $options .= '<option value="' . $people['OrganisationPersonID'] . '">' . $people['FullName'] . '</option>';
-        $persons[$people['OrganisationPersonID']] = $people['Designation'];
     }
 
     $options .= '</select>';

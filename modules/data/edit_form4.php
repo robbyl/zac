@@ -33,7 +33,9 @@
 
                 $('#completed-designation, #verified-designation').html('');
                 var orgId = $('#shehia_name').val();
-                shehiaDetails('outocomplete/organisation.php', orgId);
+                var formNo = $('#form_no').val();
+                
+                shehiaDetails('outocomplete/organisation.php', orgId, formNo);
             });
         </script>
         <style type="text/css">
@@ -97,7 +99,7 @@
                                                `ApprovedByPersonID`, DATE(`DateApproved`) AS DateApproved, DATE(`DateReceived`) AS DateReceived, 
                                                DATE(`DateCaptured`) AS DateCaptured, `CapturedByUserID`,
                                                DATE(`DateVerified`) AS DateVerified, `VerifiedByUserID`, `NotesWrittenOnForm`, 
-                                               DATE(`DataEntryNotes`) AS DataEntryNotes
+                                               DATE(`DateFiled`) AS DateFiled
                                           FROM tblzhaformssubmitted
                                          WHERE FormSerialNumber = '$form_id'";
 

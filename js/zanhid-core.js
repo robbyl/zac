@@ -72,6 +72,7 @@ function organisationDetails(filename, id, formId) {
 
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
+            $('input[name=reg_no]').val(data.OrganisationCode);
             $('#district').val(data.DistrictCode).attr('selected','selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
@@ -86,11 +87,11 @@ function organisationDetails(filename, id, formId) {
 }
 
 // Displaying school more details
-function schoolDetails(filename, id) {
+function schoolDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id},
+        data: { org_id: id, form_id: formId },
         type: 'POST',
         dataType: 'json',
         success: function(data, textStatus, xhr) {
@@ -103,16 +104,18 @@ function schoolDetails(filename, id) {
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
             $('.org_person').html(data.selection);
+            $('#completed .select').val(data.CompletedByPersonID).attr('selected','selected');
+            $('#approved .select').val(data.ApprovedByPersonID).attr('selected','selected');
         }
     });
 }
 
 // Displaying school more details
-function ministryDetails(filename, id) {
+function ministryDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id},
+        data: { org_id: id, form_id: formId },
         type: 'POST',
         dataType: 'json',
         success: function(data, textStatus, xhr) {
@@ -125,16 +128,18 @@ function ministryDetails(filename, id) {
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
             $('.org_person').html(data.selection);
+            $('#completed .select').val(data.CompletedByPersonID).attr('selected','selected');
+            $('#approved .select').val(data.ApprovedByPersonID).attr('selected','selected');
         }
     });
 }
 
 // Displaying school more details
-function shehiaDetails(filename, id) {
+function shehiaDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id},
+        data: { org_id: id, form_id: formId },
         type: 'POST',
         dataType: 'json',
         success: function(data, textStatus, xhr) {
@@ -147,6 +152,8 @@ function shehiaDetails(filename, id) {
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
             $('.org_person').html(data.selection);
+            $('#completed .select').val(data.CompletedByPersonID).attr('selected','selected');
+            $('#approved .select').val(data.ApprovedByPersonID).attr('selected','selected');
         }
     });
 }
