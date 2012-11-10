@@ -17,7 +17,6 @@
         <h3 class="menuheader expandable settings">Settings</h3>
         <ul class="categoryitems">
             <li><a href="../../modules/settings/settings.php" >General settings</a></li>
-            <li><a href="../../modules/settings/tariffs.php">Tariffs</a></li>
         </ul>
         <?php
     }
