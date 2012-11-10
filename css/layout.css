@@ -230,17 +230,17 @@ ul.nav ul a, ul.nav ul a:visited {
 }
 
 .backups {
-    background: url(../images/appln.png) no-repeat 10px 5px;
+    background: url(../images/backup.png) no-repeat 10px 5px;
     background-size: 20px;
 }
 
-.customers {
-    background: url(../images/customers.png) no-repeat 10px 5px;
+.data-entry {
+    background: url(../images/data-entry.png) no-repeat 10px 5px;
     background-size: 20px;
 }
 
-.meters {
-    background: url(../images/icon-meter.png) no-repeat 10px 5px;
+.printouts {
+    background: url(../images/print.png) no-repeat 10px 5px;
     background-size: 20px;
 }
 
