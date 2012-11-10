@@ -244,19 +244,6 @@ ul.nav ul a, ul.nav ul a:visited {
     background-size: 20px;
 }
 
-.financial {
-    background: url(../images/coins.png) no-repeat 10px 5px;
-    background-size: 20px;
-}
-.invoices {
-    background: url(../images/invoices.png) no-repeat 10px 5px;
-    background-size: 20px;
-}
-.reports {
-    background: url(../images/charts.png) no-repeat 10px 5px;
-    background-size: 20px;
-}
-
 .arrowlistmenu {
     margin: 15px 0;
     padding-right: 10px; 
@@ -333,7 +320,7 @@ ul.nav ul a, ul.nav ul a:visited {
     width: 180px;
     height: 80px;
     background: url(../images/zanzibar.jpg) no-repeat center center;
-     background-size: 80px;
+    background-size: 80px;
     background-size: contain;
 }
 
@@ -342,7 +329,7 @@ ul.nav ul a, ul.nav ul a:visited {
     width: 150px;
     height: 80px;
     background: url(../images/zac.jpg) no-repeat center center;
-     background-size: 80px;
+    background-size: 80px;
     background-size: contain;
 }
 
@@ -429,7 +416,7 @@ input[disabled] {
 }
 
 input[type="date"], input[type="time"] {
-        font-family: inherit;
+    font-family: inherit;
 }
 
 .text {
@@ -542,27 +529,16 @@ input[type='radio'], input[type=checkbox] {
     background: url(../images/settings.png) no-repeat 26px 0;
 }
 
-.applications-icon {
-    background: url(../images/application.png) no-repeat 26px 0;
+.backups-icon {
+    background: url(../images/backups-icon.png) no-repeat 26px 0;
 }
 
-.customers-icon {
-    background: url(../images/customer.png) no-repeat 26px 0;
+.data-entry-icon {
+    background: url(../images/data-entry-icon.png) no-repeat 26px 0;
 }
 
-.water-meter-icon {
-    background: url(../images/watermeter.png) no-repeat 26px 0;
-}
-
-.financials-icon {
-    background: url(../images/financials.png) no-repeat 26px 0;
-}
-
-.invoice-icon {
-    background: url(../images/invoice.png) no-repeat 26px 0;
-}
-.report-icon {
-    background: url(../images/report.png) no-repeat 26px 0;
+.printouts-icon {
+    background: url(../images/printout.png) no-repeat 26px 0;
 }
 
 .icon-label {
@@ -627,36 +603,8 @@ input[type='radio'], input[type=checkbox] {
     background-size: 16px;
 }
 
-.add-customer {
-    background: url(../images/add-customers.png) no-repeat center center;
-    background-size: contain;
-    height: 20px;
-    width: 100%;
-    padding: 0 5px;
-    cursor: default;
-}
-
 .disabled {
     opacity: 0.3;
-}
-
-.validity {
-    position: absolute;
-    top: 206px;
-    left: 720px;
-    width: 25px;
-    height: 20px;
-    background: pink;
-}
-
-.correct {
-    background: url(../images/correct.png) no-repeat center center;
-    background-size: contain;
-}
-
-.incorrect {
-    background: url(../images/incorrect.png) no-repeat center center;
-    background-size: contain;
 }
 
 .report-list {
@@ -675,36 +623,6 @@ input[type='radio'], input[type=checkbox] {
 
 .report-list li a:hover {
     text-decoration: underline;
-}
-
-.loading {
-    width: 500px;
-    height: 160px;
-    background: url(../images/loading.gif) no-repeat center center;
-}
-
-.status {
-    display: block;
-    text-align: center;
-    line-height: 1.2em;
-}
-
-.paid {
-    background-color: #fadc76;
-    border: 1px solid #d8b256;
-    color: #9b7720;
-}
-
-.not-paid {
-    background-color: #C4452D;
-    border: 1px solid #b12f17;
-    color: #fff;
-}
-
-.processed {
-    background-color: #8dc361;
-    border: 1px solid #489e00;
-    color: #fff;
 }
 
 .selected {

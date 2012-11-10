@@ -87,7 +87,7 @@ session_commit();
                 ) {
                     ?>
                 <a href="modules/backups/backups.php" class="tooltip fltlft" title="View, make and restore backups">
-                        <div class="home-icon applications-icon">
+                        <div class="home-icon backups-icon">
                             <div class="icon-label">Back-up</div>
                         </div>
                     </a>
@@ -95,7 +95,7 @@ session_commit();
                 }
 
                 if (
-                // Customer and water meter access.
+                // Data entry access.
                         $_SESSION['role'] === "ROOT" ||
                         $_SESSION['role'] === "ACCOUNTANT" ||
                         $_SESSION['role'] === "BILLING OFFICER" ||
@@ -103,7 +103,7 @@ session_commit();
                 ) {
                     ?>
                 <a href="modules/data/data_entry.php" class="tooltip fltlft" title="View, add, edit.. data">
-                        <div class="home-icon customers-icon">
+                        <div class="home-icon data-entry-icon">
                             <div class="icon-label">Data Entry</div>
                         </div>
                     </a>
@@ -111,7 +111,7 @@ session_commit();
                 }
                 ?>
                 <a href="modules/printouts/printouts.php" class="tooltip fltlft" title="Generate and view various reports" >
-                    <div class="home-icon report-icon">
+                    <div class="home-icon printouts-icon">
                         <div class="icon-label">Printouts</div>
                     </div>
                 </a>

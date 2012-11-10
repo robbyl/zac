@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/zanhid-core.js" type="text/javascript"></script>
+        <script src="../../js/accordion.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
@@ -30,12 +31,12 @@
                     var orgId = $(this).val();
                     organisationDetails('outocomplete/organisation.php', orgId);
                 });
-                
+
                 $('#completed-designation, #verified-designation').html('');
-                    var orgId = $('#org_name').val();
-                    var formNo = $('#form_no').val();
-                    
-                    organisationDetails('outocomplete/organisation.php', orgId, formNo);
+                var orgId = $('#org_name').val();
+                var formNo = $('#form_no').val();
+
+                organisationDetails('outocomplete/organisation.php', orgId, formNo);
             });
         </script>
         <style type="text/css">
@@ -50,21 +51,7 @@
 
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
-                <ul class="nav">
-                    <li><a href="../../home.php" class="home">Home</a></li>
-                    <li> <a href="users.php" class="users">Manage Users</a>
-                        <ul>
-                            <li><a href="#">Add new user</a></li>
-                        </ul>
-                    </li>
-                    <li> <a href="../settings/settings.php" class="settings">Settings</a> </li>
-                    <li> <a href="../applications/applications.php" class="applications">Applications</a> </li>
-                    <li> <a href="../customers/customers.php" class="customers">Customers</a></li>
-                    <li> <a href="../meters/meters.php" class="meters">Water Meters</a></li>
-                    <li> <a href="../invoice/invoices.php" class="invoices">Invoice</a></li>
-                    <li> <a href="../paypoint/paypoint.php" class="financial">Pay Point</a></li>
-                    <li> <a href="../report/reports.php" class="reports">Reports</a></li>
-                </ul>
+                <?php include '../../includes/sidebar.php'; ?>
                 <!-- end .sidebar --></div>
             <div class="content">
                 <h1>Add New ZHAPMoS Form 1</h1>
@@ -105,147 +92,147 @@
                     $BreakdownTypeID1_1 = $expfig_1[0];
                     $BreakdownTypeID2_1 = $expfig_1[1];
                     $ZhaFigureValue_1 = $expfig_1[4];
-                    
+
                     $figval_2 = $fig_anshs['HP1']['Y25']['MAL'][1];
                     $expfig_2 = explode("-", $figval_2);
                     $BreakdownTypeID1_2 = $expfig_2[0];
                     $BreakdownTypeID2_2 = $expfig_2[1];
                     $ZhaFigureValue_2 = $expfig_2[4];
-                    
-                    $figval_3 = $fig_anshs['HP1']['Y25']['MAL'][2];                    
+
+                    $figval_3 = $fig_anshs['HP1']['Y25']['MAL'][2];
                     $expfig_3 = explode("-", $figval_3);
                     $BreakdownTypeID1_3 = $expfig_3[0];
                     $BreakdownTypeID2_3 = $expfig_3[1];
                     $ZhaFigureValue_3 = $expfig_3[4];
-                    
+
                     $figval_4 = $fig_anshs['HP1']['Y25']['MAL'][3];
                     $expfig_4 = explode("-", $figval_4);
                     $BreakdownTypeID1_4 = $expfig_4[0];
                     $BreakdownTypeID2_4 = $expfig_4[1];
                     $ZhaFigureValue_4 = $expfig_4[4];
-                    
+
                     $figval_5 = $fig_anshs['HP1']['Y25']['MAL'][4];
                     $expfig_5 = explode("-", $figval_5);
                     $BreakdownTypeID1_5 = $expfig_5[0];
                     $BreakdownTypeID2_5 = $expfig_5[1];
                     $ZhaFigureValue_5 = $expfig_5[4];
-                    
+
                     $figval_6 = $fig_anshs['HP1']['Y25']['MAL'][5];
                     $expfig_6 = explode("-", $figval_6);
                     $BreakdownTypeID1_6 = $expfig_6[0];
                     $BreakdownTypeID2_6 = $expfig_6[1];
                     $ZhaFigureValue_6 = $expfig_6[4];
-                    
+
                     $figval_1f = $fig_anshs['HP1']['Y25']['FEM'][0];
                     $expfig_1f = explode("-", $figval_1f);
                     $BreakdownTypeID1_1f = $expfig_1f[0];
                     $BreakdownTypeID2_1f = $expfig_1f[1];
                     $ZhaFigureValue_1f = $expfig_1f[4];
-                    
+
                     $figval_2f = $fig_anshs['HP1']['Y25']['FEM'][1];
                     $expfig_2f = explode("-", $figval_2f);
                     $BreakdownTypeID1_2f = $expfig_2f[0];
                     $BreakdownTypeID2_2f = $expfig_2f[1];
                     $ZhaFigureValue_2f = $expfig_2f[4];
-                    
-                    $figval_3f = $fig_anshs['HP1']['Y25']['FEM'][2];                    
+
+                    $figval_3f = $fig_anshs['HP1']['Y25']['FEM'][2];
                     $expfig_3f = explode("-", $figval_3f);
                     $BreakdownTypeID1_3f = $expfig_3f[0];
                     $BreakdownTypeID2_3f = $expfig_3f[1];
                     $ZhaFigureValue_3f = $expfig_3f[4];
-                    
+
                     $figval_4f = $fig_anshs['HP1']['Y25']['FEM'][3];
                     $expfig_4f = explode("-", $figval_4f);
                     $BreakdownTypeID1_4f = $expfig_4f[0];
                     $BreakdownTypeID2_4f = $expfig_4f[1];
                     $ZhaFigureValue_4f = $expfig_4f[4];
-                    
+
                     $figval_5f = $fig_anshs['HP1']['Y25']['FEM'][4];
                     $expfig_5f = explode("-", $figval_5f);
                     $BreakdownTypeID1_5f = $expfig_5f[0];
                     $BreakdownTypeID2_5f = $expfig_5f[1];
                     $ZhaFigureValue_5f = $expfig_5f[4];
-                    
+
                     $figval_6f = $fig_anshs['HP1']['Y25']['FEM'][5];
                     $expfig_6f = explode("-", $figval_6f);
                     $BreakdownTypeID1_6f = $expfig_6f[0];
                     $BreakdownTypeID2_6f = $expfig_6f[1];
                     $ZhaFigureValue_6f = $expfig_6f[4];
-                    
-                    
+
+
                     $figval_1o = $fig_anshs['HP1']['25O']['MAL'][0];
                     $expfig_1o = explode("-", $figval_1o);
                     $BreakdownTypeID1_1o = $expfig_1o[0];
                     $BreakdownTypeID2_1o = $expfig_1o[1];
                     $ZhaFigureValue_1o = $expfig_1o[4];
-                    
+
                     $figval_2o = $fig_anshs['HP1']['25O']['MAL'][1];
                     $expfig_2o = explode("-", $figval_2o);
                     $BreakdownTypeID1_2o = $expfig_2o[0];
                     $BreakdownTypeID2_2o = $expfig_2o[1];
                     $ZhaFigureValue_2o = $expfig_2o[4];
-                    
-                    $figval_3o = $fig_anshs['HP1']['25O']['MAL'][2];                    
+
+                    $figval_3o = $fig_anshs['HP1']['25O']['MAL'][2];
                     $expfig_3o = explode("-", $figval_3o);
                     $BreakdownTypeID1_3o = $expfig_3o[0];
                     $BreakdownTypeID2_3o = $expfig_3o[1];
                     $ZhaFigureValue_3o = $expfig_3o[4];
-                    
+
                     $figval_4o = $fig_anshs['HP1']['25O']['MAL'][3];
                     $expfig_4o = explode("-", $figval_4o);
                     $BreakdownTypeID1_4o = $expfig_4o[0];
                     $BreakdownTypeID2_4o = $expfig_4o[1];
                     $ZhaFigureValue_4o = $expfig_4o[4];
-                    
+
                     $figval_5o = $fig_anshs['HP1']['25O']['MAL'][4];
                     $expfig_5o = explode("-", $figval_5o);
                     $BreakdownTypeID1_5o = $expfig_5o[0];
                     $BreakdownTypeID2_5o = $expfig_5o[1];
                     $ZhaFigureValue_5o = $expfig_5o[4];
-                    
+
                     $figval_6o = $fig_anshs['HP1']['25O']['MAL'][5];
                     $expfig_6o = explode("-", $figval_6o);
                     $BreakdownTypeID1_6o = $expfig_6o[0];
                     $BreakdownTypeID2_6o = $expfig_6o[1];
                     $ZhaFigureValue_6o = $expfig_6o[4];
-                    
+
                     $figval_1fo = $fig_anshs['HP1']['25O']['FEM'][0];
                     $expfig_1fo = explode("-", $figval_1fo);
                     $BreakdownTypeID1_1fo = $expfig_1fo[0];
                     $BreakdownTypeID2_1fo = $expfig_1fo[1];
                     $ZhaFigureValue_1fo = $expfig_1fo[4];
-                    
+
                     $figval_2fo = $fig_anshs['HP1']['25O']['FEM'][1];
                     $expfig_2fo = explode("-", $figval_2fo);
                     $BreakdownTypeID1_2fo = $expfig_2fo[0];
                     $BreakdownTypeID2_2fo = $expfig_2fo[1];
                     $ZhaFigureValue_2fo = $expfig_2fo[4];
-                    
-                    $figval_3fo = $fig_anshs['HP1']['25O']['FEM'][2];                    
+
+                    $figval_3fo = $fig_anshs['HP1']['25O']['FEM'][2];
                     $expfig_3fo = explode("-", $figval_3fo);
                     $BreakdownTypeID1_3fo = $expfig_3fo[0];
                     $BreakdownTypeID2_3fo = $expfig_3fo[1];
                     $ZhaFigureValue_3fo = $expfig_3fo[4];
-                    
+
                     $figval_4fo = $fig_anshs['HP1']['25O']['FEM'][3];
                     $expfig_4fo = explode("-", $figval_4fo);
                     $BreakdownTypeID1_4fo = $expfig_4fo[0];
                     $BreakdownTypeID2_4fo = $expfig_4fo[1];
                     $ZhaFigureValue_4fo = $expfig_4fo[4];
-                    
+
                     $figval_5fo = $fig_anshs['HP1']['25O']['FEM'][4];
                     $expfig_5fo = explode("-", $figval_5fo);
                     $BreakdownTypeID1_5fo = $expfig_5fo[0];
                     $BreakdownTypeID2_5fo = $expfig_5fo[1];
                     $ZhaFigureValue_5fo = $expfig_5fo[4];
-                    
+
                     $figval_6fo = $fig_anshs['HP1']['25O']['FEM'][5];
                     $expfig_6fo = explode("-", $figval_6fo);
                     $BreakdownTypeID1_6fo = $expfig_6fo[0];
                     $BreakdownTypeID2_6fo = $expfig_6fo[1];
                     $ZhaFigureValue_6fo = $expfig_6fo[4];
-                    
-                    
+
+
 //                    echo $BreakdownTypeID1_1;
 //                    exit;
 
@@ -412,4 +399,30 @@
             <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
+    <script type="text/javascript">
+
+        $('.data-entry').attr("id", "current");
+        var i = $('h3#current').index('.menuheader') - 1;
+
+        ddaccordion.init({
+            headerclass: "expandable", //Shared CSS class name of headers group that are expandable
+            contentclass: "categoryitems", //Shared CSS class name of contents group
+            revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
+            mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+            collapseprev: true, //Collapse previous content (so only one open at any time)? true/false
+            defaultexpanded: [i], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
+            onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
+            animatedefault: true, //Should contents open by default be animated into view?
+            persiststate: false, //persist state of opened contents within browser session?
+            toggleclass: ["", "openheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+            togglehtml: ["prefix", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+            animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+            oninit: function(headers, expandedindices) { //custom code to run when headers have initalized
+                //do nothing
+            },
+            onopenclose: function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
+                //do nothing
+            }
+        });
+    </script>
 </html>

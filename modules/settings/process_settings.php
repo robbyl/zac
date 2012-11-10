@@ -32,7 +32,6 @@ $parking_fee = clean($_POST['parking_fee']);
 $landing_fee = clean($_POST['landing_fee']);
 //$page_size = clean($_POST['page_size']);
 $page_orientation = clean($_POST['page_orientation']);
-$terms_conds = clean($_POST['terms_conds']);
 
 // Get existing Authority logo
 $query_log = "SELECT logo
@@ -89,10 +88,13 @@ if ((($_FILES["logo"]["type"] == "image/gif")
 
 // Inserting data into the database
 $query_settings = "UPDATE settings
-                      SET aut_name = '$authority', address = '$address', phone = '$tel',
-                          fax = '$fax', email = '$email', url = '$url', logo = '$logo',
-                          parking_fee = '$parking_fee', landing_fee = '$landing_fee',
-                          page_orientation = '$page_orientation' , terms_conds = '$terms_conds'";
+                      SET aut_name = '$authority',
+                          address = '$address',
+                          phone = '$tel',
+                          fax = '$fax',
+                          email = '$email',
+                          url = '$url', 
+                          logo = '$logo'";
 
 $result_settings = mysql_query($query_settings) or die(mysql_error());
 

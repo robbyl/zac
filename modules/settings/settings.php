@@ -49,7 +49,7 @@ $row_setting = mysql_fetch_array($result_settings);
                 <h1>General Settings</h1>
                 <div class="hr-line"></div>
                 <form action="process_settings.php" method="post" enctype="multipart/form-data">
-                    <fieldset style="float: left">
+                    <fieldset>
                         <legend>Authority Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
@@ -86,28 +86,6 @@ $row_setting = mysql_fetch_array($result_settings);
                 }
                 echo '<input type="file" name="logo" id="file">';
                 ?></td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                    <fieldset style="float: left; width: 200px;">
-                        <legend>Legal texts</legend>
-                        <div style="padding-left: 15px">Invoice Terms & Conditions
-                            <textarea name="terms_conds" rows="10" cols="50" placeholder="INVOICE TERMS:"><?php echo $row_setting['terms_conds'] ?></textarea>
-                        </div>
-                    </fieldset>
-                    <fieldset style="clear: both">
-                        <legend>PDF Settings</legend>
-                        <table width="" border="0" cellpadding="5">
-                            <tr>
-                                <td width="170">Page size</td>
-                                <td><input type="url" name="url" size="255" class="text"></td>
-                            </tr>
-                            <tr>
-                                <td width="170">Page orientation</td>
-                                <td><select name="page_orientation" class="select" style="width: 100%">
-                                        <option <?php if ($row_setting['page_orientation'] === "portait") echo 'selected'; ?> value="portrait">portrait</option>
-                                        <option <?php if ($row_setting['page_orientation'] === "landscape") echo 'selected'; ?> value="landscape">landscape</option>
-                                    </select></td>
                             </tr>
                         </table>
                     </fieldset>
