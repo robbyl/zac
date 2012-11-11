@@ -27,6 +27,7 @@ require '../../config/config.php';
 
                     var districtAbbr = $(this).val();
                     $('#abbr').val(districtAbbr);
+                    getOrgCode('outocomplete/reg_no.php', districtAbbr);
                 });
             });
 
@@ -75,7 +76,7 @@ require '../../config/config.php';
                                 <td>
                                     <p style=" margin: 0; padding: 0">
                                         <input type="text" name="abbr" id="abbr" disabled="" style="width: 40px; font-size: inherit; border: none; background: transparent; color: inherit;">
-                                        <input type="number" name="org_code" required size="255" class="number" style="width: 350px; float:none">
+                                        <input type="number" name="org_code" required id="org_code" class="number" style="width: 350px; float:none">
                                     </p>
                                 </td>
                             </tr>

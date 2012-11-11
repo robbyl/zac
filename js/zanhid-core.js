@@ -18,6 +18,20 @@ function getContent(filename, filter) {
     });
 }
 
+// Organisation auto-complete registration code.
+function getOrgCode(filename, filter) {
+    $.ajax({
+        url: filename,
+        data: { abbr: filter },
+        type: 'POST',
+        dataType: 'html',
+        success: function(data, textStatus, xhr) {
+
+            $('#org_code').html(data);
+        }
+    });
+}
+
 // Atofill Person's desingnation
 function getCompletedDisignation(filename, id) {
     $.ajax({
@@ -62,7 +76,7 @@ function organisationDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id, form_id: formId },
+        data: { org_id: id, form_id: formId},
         type: 'POST',
         dataType: 'json',
         beforeSend: function() {
@@ -73,15 +87,15 @@ function organisationDetails(filename, id, formId) {
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
             $('input[name=reg_no]').val(data.OrganisationCode);
-            $('#district').val(data.DistrictCode).attr('selected','selected');
+            $('#district').val(data.DistrictCode).attr('selected', 'selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
             $('input[name=org_date]').val(data.StartedOperating);
             $('.org_person').html(data.selection);
-            $('#completed .select').val(data.CompletedByPersonID).attr('selected','selected');
-            $('#approved .select').val(data.ApprovedByPersonID).attr('selected','selected');
+            $('#completed .select').val(data.CompletedByPersonID).attr('selected', 'selected');
+            $('#approved .select').val(data.ApprovedByPersonID).attr('selected', 'selected');
         }
     });
 }
@@ -91,7 +105,7 @@ function schoolDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id, form_id: formId },
+        data: { org_id: id, form_id: formId},
         type: 'POST',
         dataType: 'json',
         success: function(data, textStatus, xhr) {
@@ -99,14 +113,14 @@ function schoolDetails(filename, id, formId) {
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
             $('input[name=reg_no]').val(data.OrganisationCode);
-            $('#district').val(data.DistrictCode).attr('selected','selected');
+            $('#district').val(data.DistrictCode).attr('selected', 'selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
             $('.org_person').html(data.selection);
-            $('#completed .select').val(data.CompletedByPersonID).attr('selected','selected');
-            $('#approved .select').val(data.ApprovedByPersonID).attr('selected','selected');
+            $('#completed .select').val(data.CompletedByPersonID).attr('selected', 'selected');
+            $('#approved .select').val(data.ApprovedByPersonID).attr('selected', 'selected');
         }
     });
 }
@@ -116,7 +130,7 @@ function ministryDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id, form_id: formId },
+        data: { org_id: id, form_id: formId},
         type: 'POST',
         dataType: 'json',
         success: function(data, textStatus, xhr) {
@@ -124,14 +138,14 @@ function ministryDetails(filename, id, formId) {
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
             $('input[name=reg_no]').val(data.OrganisationCode);
-            $('#district').val(data.DistrictCode).attr('selected','selected');
+            $('#district').val(data.DistrictCode).attr('selected', 'selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
             $('.org_person').html(data.selection);
-            $('#completed .select').val(data.CompletedByPersonID).attr('selected','selected');
-            $('#approved .select').val(data.ApprovedByPersonID).attr('selected','selected');
+            $('#completed .select').val(data.CompletedByPersonID).attr('selected', 'selected');
+            $('#approved .select').val(data.ApprovedByPersonID).attr('selected', 'selected');
         }
     });
 }
@@ -141,7 +155,7 @@ function shehiaDetails(filename, id, formId) {
 
     $.ajax({
         url: filename,
-        data: { org_id: id, form_id: formId },
+        data: { org_id: id, form_id: formId},
         type: 'POST',
         dataType: 'json',
         success: function(data, textStatus, xhr) {
@@ -149,14 +163,14 @@ function shehiaDetails(filename, id, formId) {
             $('input[name=phy_addr]').val(data.PhysicalAddress);
             $('input[name=post_addr]').val(data.PostalAddress);
             $('input[name=reg_no]').val(data.OrganisationCode);
-            $('#district').val(data.DistrictCode).attr('selected','selected');
+            $('#district').val(data.DistrictCode).attr('selected', 'selected');
             $('input[name=focal_per]').val(data.zhamos_person);
             $('input[name=focal_tel]').val(data.Phone);
             $('input[name=focal_fax]').val(data.Fax);
             $('input[name=focal_email]').val(data.Email);
             $('.org_person').html(data.selection);
-            $('#completed .select').val(data.CompletedByPersonID).attr('selected','selected');
-            $('#approved .select').val(data.ApprovedByPersonID).attr('selected','selected');
+            $('#completed .select').val(data.CompletedByPersonID).attr('selected', 'selected');
+            $('#approved .select').val(data.ApprovedByPersonID).attr('selected', 'selected');
         }
     });
 }
