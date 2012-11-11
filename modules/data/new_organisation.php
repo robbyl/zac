@@ -11,7 +11,7 @@ require '../../config/config.php';
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
-        
+
         <style type="text/css">
             .text {
                 width: auto;
@@ -22,7 +22,14 @@ require '../../config/config.php';
                 $('.message, .error').hide().slideDown('normal').click(function() {
                     $(this).slideUp('normal');
                 });
+
+                $('#headquarters').change(function() {
+
+                    var districtAbbr = $(this).val();
+                    $('#abbr').val(districtAbbr);
+                });
             });
+
         </script>
     </head>
 
@@ -46,16 +53,16 @@ require '../../config/config.php';
                             <tr>
                                 <td width="200">Headquarters District</td>
                                 <td>
-                                    <select name="headquarters" class="select" style="width: 390px;">
+                                    <select name="headquarters" id="headquarters" class="select" style="width: 390px;">
                                         <option value=""></option>
                                         <?php
-                                        $query_dis = "SELECT `DistrictCode`, `District`
+                                        $query_dis = "SELECT `DistrictAbb`, `District`
                                                             FROM  tblgensetupdistricts
                                                         ORDER BY `District` ASC";
                                         $result_dis = mysql_query($query_dis) or die(mysql_error());
                                         while ($dis = mysql_fetch_array($result_dis)) {
                                             ?>
-                                            <option value="<?php echo $dis['DistrictCode'] ?>"><?php echo $dis['District'] ?></option>
+                                            <option value="<?php echo $dis['DistrictAbb'] ?>"><?php echo $dis['District'] ?></option>
                                             <?php
                                         }
                                         ?>
@@ -65,7 +72,12 @@ require '../../config/config.php';
                             </tr>
                             <tr>
                                 <td width="100">Organisation Code</td>
-                                <td><input type="text" name="org_code" required size="255" class="text" style="width: 380px;"></td>
+                                <td>
+                                    <p style=" margin: 0; padding: 0">
+                                        <input type="text" name="abbr" id="abbr" disabled="" style="width: 40px; font-size: inherit; border: none; background: transparent; color: inherit;">
+                                        <input type="number" name="org_code" required size="255" class="number" style="width: 350px; float:none">
+                                    </p>
+                                </td>
                             </tr>
                             <tr>
                                 <td width="100">Organisation  Name</td>
