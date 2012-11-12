@@ -333,6 +333,24 @@ ul.nav ul a, ul.nav ul a:visited {
     background-size: contain;
 }
 
+.add-row {
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: url(../images/plus.png) no-repeat center center;
+    background-size: contain;
+    background-size: 16px;
+}
+
+.remove-row {
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: url(../images/minus-icon.png) no-repeat center center;
+    background-size: contain;
+    background-size: 16px;
+}
+
 /* ~~ The footer ~~ */
 
 .footer {

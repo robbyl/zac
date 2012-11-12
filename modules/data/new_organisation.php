@@ -9,6 +9,7 @@ require '../../config/config.php';
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
         <title>ZANHID | ADD USER</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
+
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/zanhid-core.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
@@ -38,9 +39,25 @@ require '../../config/config.php';
                 $('a.add-row').live("click", function() {
 
                     var row = $(this).closest("tr").clone();
-
-                    $('a.add-row').removeClass().addClass('remove-row');
+                    row.find('a').attr('title', 'Add new row');
+                    $('a.add-row').removeClass().addClass('remove-row').removeAttr('title').attr('title', 'Remove this row');
                     $('.personal-details').append(row);
+                });
+
+                $('a.remove-row').live("click", function() {
+
+                    $(this).closest("tr").remove();
+                });
+
+                $('.person-name').live("blur", function() {
+                    var select = "<select>";
+                    $('.person-name').each(function() {
+                        select += "<option>" + $(this).val() + "</option>";
+                    });
+
+                    select += "</select>";
+
+                    alert(select);
                 });
             });
 
@@ -159,8 +176,8 @@ require '../../config/config.php';
                                 <td>Is still</td>
                             </tr>
                             <tr>
-                                <td><a class="add-row">mo</a></td>
-                                <td><input type="text" name="person_name" id="person_name" class="text" style="width: 90%; text-transform: uppercase;"></td>
+                                <td><a class="add-row tooltip" title="Add new row"></a></td>
+                                <td><input type="text" name="person_name" id="person_name" class="text person-name" style="width: 90%; text-transform: uppercase;"></td>
                                 <td><input type="text" name="designation[]" style="text-transform: uppercase;" class="text"></td>
                                 <td><input type="tel" name="person_phone[]" class="text" style="width: 135px;"></td>
                                 <td><input type="text" name="person_fax[]" class="text" style="width: 135px;"></td>
@@ -187,8 +204,6 @@ require '../../config/config.php';
                                 </td>
                             </tr>
                         </table>
-
-
                     </fieldset>
                     <fieldset>
                         <legend>Umbrella Organisation(s)</legend>
