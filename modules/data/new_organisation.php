@@ -24,32 +24,22 @@ require '../../config/config.php';
                     $(this).slideUp('normal');
                 });
 
-                function getPersonId() {
-                    var abbr = $('#abbr').val();
-                    var code = $('#org_code').val();
-                    $('#orgCode').val(abbr + code);
-                }
-
                 $('#headquarters').change(function() {
 
                     var districtAbbr = $(this).val();
                     $('#abbr').val(districtAbbr);
                     getOrgCode('outocomplete/reg_no.php', districtAbbr);
-//                    getPersonId();
                 });
 
                 $('#abbr, #org_code').change(function() {
                     getPersonId();
                 });
 
-                $('.add-row').click(function() {
+                $('a.add-row').live("click", function() {
 
                     var row = $(this).closest("tr").clone();
 
-                    $('.add-row').find().each(function() {
-                        $(this).removeClass('add-row');
-                    });
-
+                    $('a.add-row').removeClass().addClass('remove-row');
                     $('.personal-details').append(row);
                 });
             });
