@@ -10,6 +10,7 @@ require '../../config/config.php';
         <title>ZANHID | ADD USER</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="../../js/zanhid-core.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
 
         <style type="text/css">
@@ -23,12 +24,24 @@ require '../../config/config.php';
                     $(this).slideUp('normal');
                 });
 
+                function getPersonId() {
+                    var abbr = $('#abbr').val();
+                    var code = $('#org_code').val();
+                    $('#orgCode').val(abbr + code);
+                }
+
                 $('#headquarters').change(function() {
 
                     var districtAbbr = $(this).val();
                     $('#abbr').val(districtAbbr);
                     getOrgCode('outocomplete/reg_no.php', districtAbbr);
+//                    getPersonId();
                 });
+
+                $('#abbr, #org_code').change(function() {
+                    getPersonId();
+                });
+
             });
 
         </script>
@@ -82,7 +95,7 @@ require '../../config/config.php';
                             </tr>
                             <tr>
                                 <td width="100">Organisation  Name</td>
-                                <td><input type="text" name="org_name" required size="255" class="text" style="width: 380px;"></td>
+                                <td><input type="text" name="org_name" required class="text" style="width: 380px; text-transform: uppercase;"></td>
                             </tr>
                             <tr>
                                 <td width="100">Category</td>
@@ -105,11 +118,11 @@ require '../../config/config.php';
                             </tr>
                             <tr>
                                 <td width="100">Physical Address</td>
-                                <td><input type="text" name="phy_address" required class="text" style="width: 380px;"></td>
+                                <td><input type="text" name="phy_address" required class="text" style="width: 380px; text-transform: uppercase;"></td>
                             </tr>
                             <tr>
                                 <td width="100">Postal Address</td>
-                                <td><input type="text" name="post_address" class="text" style="width: 380px;"></td>
+                                <td><input type="text" name="post_address" class="text" style="width: 380px; text-transform: uppercase;"></td>
                             </tr>
                             <tr>
                                 <td width="100">Phone</td>
@@ -125,7 +138,7 @@ require '../../config/config.php';
                             </tr>
                             <tr>
                                 <td width="100">ZHAPMoS Reporter</td>
-                                <td><input type="text" name="ZHAPMoS_reporter" class="text" style="width: 380px;"></td>
+                                <td><input type="text" name="ZHAPMoS_reporter" class="text" style="width: 380px; text-transform: uppercase;"></td>
                             </tr>
                             <tr>
                                 <td width="100">Started Operating</td>
@@ -146,13 +159,18 @@ require '../../config/config.php';
                                 <td>METTHAZ</td>
                                 <td>Is still</td>
                             </tr>
-                            <tr>
-                                <td><input type="number" name="person_code[]" class="number" min="0"></td>
-                                <td><input type="text" name="person_name" class="text" style="width: 90%"></td>
-                                <td><input type="text" name="designation[]" class="text"></td>
-                                <td><input type="tel" name="person_phone[]" class="text"></td>
-                                <td><input type="text" name="person_fax[]" class="text"></td>
-                                <td><input type="email" name="person_email[]" class="text"></td>
+                            <tr class="personal-details">
+                                <td style="">
+                                    <p style="margin: 0; padding: 0">
+                                        <input type="text" disabled="" id="orgCode" style="width: 80px; border: none; font-size: inherit">
+                                        <input type="number" name="person_code[]" class="number" style="width: 50px !important" min="0">
+                                    </p>
+                                </td>
+                                <td><input type="text" name="person_name" id="person_name" class="text" style="width: 90%; text-transform: uppercase;"></td>
+                                <td><input type="text" name="designation[]" style="text-transform: uppercase;" class="text"></td>
+                                <td><input type="tel" name="person_phone[]" class="text" style="width: 135px;"></td>
+                                <td><input type="text" name="person_fax[]" class="text" style="width: 135px;"></td>
+                                <td><input type="email" name="person_email[]" class="text" style="width: 150px;"></td>
                                 <td><input type="checkbox" name="metthaz[]" value="" required></td>
                                 <td><input type="checkbox" name="still[]" value="" required></td>
                             </tr>

@@ -22,12 +22,12 @@ function getContent(filename, filter) {
 function getOrgCode(filename, filter) {
     $.ajax({
         url: filename,
-        data: { abbr: filter },
+        data: { abbr: filter},
         type: 'POST',
         dataType: 'html',
         success: function(data, textStatus, xhr) {
 
-            $('#org_code').html(data);
+            $('#org_code').val(data);
         }
     });
 }
