@@ -42,6 +42,16 @@ require '../../config/config.php';
                     getPersonId();
                 });
 
+                $('.add-row').click(function() {
+
+                    var row = $(this).closest("tr").clone();
+
+                    $('.add-row').find().each(function() {
+                        $(this).removeClass('add-row');
+                    });
+
+                    $('.personal-details').append(row);
+                });
             });
 
         </script>
@@ -81,7 +91,6 @@ require '../../config/config.php';
                                         }
                                         ?>
                                     </select>
-
                                 </td>
                             </tr>
                             <tr>
@@ -148,9 +157,9 @@ require '../../config/config.php';
                     </fieldset>
                     <fieldset>
                         <legend>Contact People at this Organisation</legend>
-                        <table width="98%" border="0" cellspacing="0" cellpadding="3">
+                        <table width="98%" border="0" cellspacing="0" cellpadding="3"  class="personal-details">
                             <tr>
-                                <td>Person code</td>
+                                <td></td>
                                 <td>Full Name</td>
                                 <td>Designation</td>
                                 <td>Phone</td>
@@ -159,13 +168,8 @@ require '../../config/config.php';
                                 <td>METTHAZ</td>
                                 <td>Is still</td>
                             </tr>
-                            <tr class="personal-details">
-                                <td style="">
-                                    <p style="margin: 0; padding: 0">
-                                        <input type="text" disabled="" id="orgCode" style="width: 80px; border: none; font-size: inherit">
-                                        <input type="number" name="person_code[]" class="number" style="width: 50px !important" min="0">
-                                    </p>
-                                </td>
+                            <tr>
+                                <td><a class="add-row">mo</a></td>
                                 <td><input type="text" name="person_name" id="person_name" class="text" style="width: 90%; text-transform: uppercase;"></td>
                                 <td><input type="text" name="designation[]" style="text-transform: uppercase;" class="text"></td>
                                 <td><input type="tel" name="person_phone[]" class="text" style="width: 135px;"></td>
