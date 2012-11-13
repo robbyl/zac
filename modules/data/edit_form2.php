@@ -26,12 +26,6 @@
                     $(this).children('.total').html(total);
                 });
 
-                $('#sch_name').change(function() {
-                    $('#completed-designation, #verified-designation').html('');
-                    var orgId = $(this).val();
-                    schoolDetails('outocomplete/organisation.php', orgId);
-                });
-
                 $('#completed-designation, #verified-designation').html('');
                 var orgId = $('#sch_name').val();
                 var formNo = $('#form_no').val();
@@ -112,7 +106,7 @@
                                     <tr>
                                         <td width="272"><?php echo $text["SECT_LABEL_NOS"] ?></td>
                                         <td colspan="3">
-                                            <select class="select" name="sch_name" id="sch_name" required style="width: 100%;">
+                                            <select class="select" name="sch_name" id="sch_name" disabled="" required style="width: 100%;">
                                                 <option value=""></option>
                                                 <?php
                                                 $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`

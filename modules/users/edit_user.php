@@ -8,7 +8,7 @@
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
-        
+
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.message, .error').hide().slideDown('normal').click(function() {
@@ -22,7 +22,7 @@
         <div class="container">
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
-               <?php include '../../includes/sidebar.php'; ?>
+                <?php include '../../includes/sidebar.php'; ?>
                 <!-- end .sidebar --></div>
             <div class="content">
                 <h1>Edit User Details</h1>
@@ -58,7 +58,7 @@
                                     </tr>
                                     <tr>
                                         <td>Middle Name</td>
-                                        <td><input type="text" name="usr_lname" required size="255" class="text"></td>
+                                        <td><input type="text" name="usr_mname[]" value="<?php echo $row['usr_mname'] ?>" size="255" class="text"></td>
                                     </tr>
                                     <tr>
                                         <td>Sir Name</td>
@@ -87,12 +87,14 @@
                                             <select name="role[]" class="select" required="required">
                                                 <option value="">-- Select Role --</option>
                                                 <option <?php if ($row['role'] === 'ROOT') echo 'selected' ?> value="ROOT">Administrator</option>
-                                                <option <?php if ($row['role'] === 'ACCOUNTANT') echo 'selected' ?> value="ACCOUNTANT">Accountant</option>
-                                                <option <?php if ($row['role'] === 'BILLING OFFICER') echo 'selected' ?> value="BILLING OFFICER">Billing Officer</option>
-                                                <option <?php if ($row ['role'] === 'CASHIER') echo 'selected' ?> value="CASHIER">Cashier</option>
-                                                <option <?php if ($row['role'] === 'CONNECTION OFFICER') echo 'selected' ?> value="CONNECTION OFFICER">Connection Officer</option>
-                                                <option <?php if ($row['role'] === 'CREDIT CONTROLLER') echo 'selected=' ?> value="CREDIT CONTROLLER">Credit Controller</option>
-                                                <option <?php if ($row['role'] === 'MANAGER') echo 'selected' ?> value="MANAGER">Manager</option>
+                                                <option <?php if ($row['role'] === 'DISTRICT DHAP AND STAFF') echo 'selected' ?> value="DISTRICT DHAP AND STAFF">District DHAP and Staff</option>
+                                                <option <?php if ($row['role'] === 'GENERAL DISTRICT STAFF') echo 'selected' ?> value="GENERAL DISTRICT STAFF">General District Staff</option>
+                                                <option <?php if ($row ['role'] === 'GOVERNMENT STAFF') echo 'selected' ?> value="GOVERNMENT STAFF">Government Staff</option>
+                                                <option <?php if ($row['role'] === 'GENERAL PUBLIC') echo 'selected' ?> value="GENERAL PUBLIC">General Public</option>
+                                                <option <?php if ($row['role'] === 'ZAC HQ GENERAL STAFF') echo 'selected=' ?> value="ZAC HQ GENERAL STAFF">ZAC HQ General Staff</option>
+                                                <option <?php if ($row['role'] === 'ZAC HQ M&E STAFF') echo 'selected' ?> value="ZAC HQ M&E Staff">ZAC HQ M&E Staff</option>
+                                                <option <?php if ($row['role'] === 'ZAC PEMBA GENERAL STAFF') echo 'selected' ?> value="ZAC PEMBA GENERAL STAFF">ZAC Pemba General Staff</option>
+                                                <option <?php if ($row['role'] === 'ZAC PEMBA M&E STAFF') echo 'selected' ?> value="ZAC PEMBA M&E STAFF">ZAC Pemba M&E Staff</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -102,16 +104,16 @@
 
                             <div class="hr-line" style="width: 50%; background: #e0e0e0; margin: 10px 5px"></div>
 
-                                <?php
-                            }
-                            ?>
-                            <table width="598">
-                                <tr>
-                                    <td width="243">&nbsp;</td>
-                                    <td width="343"><button type="submit" style="margin-top: 0px;">Update</button>
-                                        <button type="reset" style="margin-top: 0px;">Reset</button></td>
-                                </tr>
-                            </table>
+                            <?php
+                        }
+                        ?>
+                        <table width="598">
+                            <tr>
+                                <td width="243">&nbsp;</td>
+                                <td width="343"><button type="submit" style="margin-top: 0px;">Update</button>
+                                    <button type="reset" style="margin-top: 0px;">Reset</button></td>
+                            </tr>
+                        </table>
                     </form>
                     <?php
                 } else {
@@ -127,28 +129,28 @@
     </body>
     <script type="text/javascript">
 
-    $('.users').attr("id", "current");
-    var i = $('h3#current').index('.menuheader') - 1;
+        $('.users').attr("id", "current");
+        var i = $('h3#current').index('.menuheader') - 1;
 
-    ddaccordion.init({
-        headerclass: "expandable", //Shared CSS class name of headers group that are expandable
-        contentclass: "categoryitems", //Shared CSS class name of contents group
-        revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
-        mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
-        collapseprev: true, //Collapse previous content (so only one open at any time)? true/false
-        defaultexpanded: [i], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
-        onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
-        animatedefault: true, //Should contents open by default be animated into view?
-        persiststate: false, //persist state of opened contents within browser session?
-        toggleclass: ["", "openheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
-        togglehtml: ["prefix", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
-        animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
-        oninit: function(headers, expandedindices) { //custom code to run when headers have initalized
-            //do nothing
-        },
-        onopenclose: function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
-            //do nothing
-        }
-    });
+        ddaccordion.init({
+            headerclass: "expandable", //Shared CSS class name of headers group that are expandable
+            contentclass: "categoryitems", //Shared CSS class name of contents group
+            revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
+            mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+            collapseprev: true, //Collapse previous content (so only one open at any time)? true/false
+            defaultexpanded: [i], //index of content(s) open by default [index1, index2, etc]. [] denotes no content
+            onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
+            animatedefault: true, //Should contents open by default be animated into view?
+            persiststate: false, //persist state of opened contents within browser session?
+            toggleclass: ["", "openheader"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+            togglehtml: ["prefix", "", ""], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+            animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+            oninit: function(headers, expandedindices) { //custom code to run when headers have initalized
+                //do nothing
+            },
+            onopenclose: function(header, index, state, isuseractivated) { //custom code to run whenever a header is opened or closed
+                //do nothing
+            }
+        });
     </script>
 </html>

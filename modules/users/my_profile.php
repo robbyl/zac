@@ -24,10 +24,10 @@ $row = mysql_fetch_array($result_user);
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
-        
+
         <script type="text/javascript">
-            $(document).ready(function(){
-                $('.message, .error').hide().slideDown('normal').click(function(){
+            $(document).ready(function() {
+                $('.message, .error').hide().slideDown('normal').click(function() {
                     $(this).slideUp('normal');
                 });
             });
@@ -38,7 +38,7 @@ $row = mysql_fetch_array($result_user);
         <div class="container">
             <?php require '../../includes/header.php'; ?>
             <div class="sidebar">
-               <?php include '../../includes/sidebar.php'; ?>
+                <?php include '../../includes/sidebar.php'; ?>
                 <!-- end .sidebar --></div>
             <div class="content">
                 <?php
@@ -56,6 +56,10 @@ $row = mysql_fetch_array($result_user);
                                 <td width="200">First Name</td>
                                 <td><input type="text" name="fname" value="<?php echo $row['usr_fname'] ?>" required size="255" class="text"></td>
 
+                            </tr>
+                            <tr>
+                                <td>Middle Name</td>
+                                <td><input type="text" name="mname" value="<?php echo $row['usr_mname'] ?>" size="255" class="text"></td>
                             </tr>
                             <tr>
                                 <td>Last Name</td>
@@ -99,7 +103,7 @@ $row = mysql_fetch_array($result_user);
             <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
-        <script type="text/javascript">
+    <script type="text/javascript">
 
         $('.users').attr("id", "current");
         var i = $('h3#current').index('.menuheader') - 1;

@@ -114,6 +114,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                                     <input type="checkbox" id="select-all" accesskey="A" title="Select all [Alt+Shift+A]" class="tooltip">
                                 </th>
                                 <th>First name</th>
+                                <th>Middle name</th>
                                 <th>Last name</th>
                                 <th>E-mail</th>
                                 <th>Username</th>
@@ -130,6 +131,7 @@ $result_user = mysql_query($query_user) or die(mysql_error());
                                         <input type="checkbox" name="checkbox[]" title="Select this user" class="checkbox tooltip" value="<?php echo $row['user_id'] ?>" id="<?php echo $row['user_id'] ?>">
                                     </td>
                                     <td><?php echo $row['usr_fname'] ?></td>
+                                    <td><?php echo $row['usr_mname'] ?></td>
                                     <td><?php echo $row['usr_lname'] ?></td>
                                     <td><?php echo $row['email'] ?></td>
                                     <td><?php echo $row['username'] ?></td>

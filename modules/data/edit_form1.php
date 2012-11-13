@@ -26,12 +26,6 @@
                     $(this).children('.total').html(total);
                 });
 
-                $('#org_name').change(function() {
-                    $('#completed-designation, #verified-designation').html('');
-                    var orgId = $(this).val();
-                    organisationDetails('outocomplete/organisation.php', orgId);
-                });
-
                 $('#completed-designation, #verified-designation').html('');
                 var orgId = $('#org_name').val();
                 var formNo = $('#form_no').val();
@@ -273,11 +267,11 @@
                             <?php require 'sections/edit_head_section.php'; ?>
                             <div class="section">
                                 <h3><strong>A. <?php echo $text["SECT_HEAD_A"]; ?></strong></h3>
-                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table">
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5"  class="form-data-table">
                                     <tr>
                                         <td colspan="2"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
                                         <td colspan="3">
-                                            <select class="select" name="org_name" id="org_name" required style="width: 100%;">
+                                            <select class="select" name="org_name" id="org_name" disabled="" required style="width: 100%;">
                                                 <option value=""></option>
                                                 <?php
                                                 $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`

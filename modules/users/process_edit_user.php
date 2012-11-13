@@ -22,6 +22,7 @@ require '../../functions/general_functions.php';
 // Getting form data
 $user_id = clean_arr($_POST['user_id']);
 $usr_fname = clean_arr($_POST['usr_fname']);
+$usr_mname = clean_arr($_POST['usr_mname']);
 $usr_lname = clean_arr($_POST['usr_lname']);
 $email = clean_arr($_POST['email']);
 $role = clean_arr($_POST['role']);
@@ -33,8 +34,10 @@ for ($i = 0; $i < $num_id; $i++) {
     // Inserting form data to the database
     $query_user = "UPDATE users
                       SET usr_fname = '$usr_fname[$i]',
+                          usr_mname = '$usr_mname[$i]',
                           usr_lname = '$usr_lname[$i]',
-                          email = '$email[$i]', role = '$role[$i]'
+                          email = '$email[$i]',
+                          role = '$role[$i]'
                     WHERE user_id = '$user_id[$i]' ";
 
     $result_user = mysql_query($query_user) or die(mysql_error());

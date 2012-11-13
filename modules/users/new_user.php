@@ -41,7 +41,7 @@
                             </tr>
                             <tr>
                                 <td>Middle Name</td>
-                                <td><input type="text" name="usr_lname" required size="255" class="text"></td>
+                                <td><input type="text" name="usr_mname" required size="255" class="text"></td>
                             </tr>
                             <tr>
                                 <td>Sir Name</td>
@@ -77,12 +77,14 @@
                                 <td><select name="role" class="select" required="required">
                                         <option value="">-- Select role --</option>
                                         <option value="ROOT">Administrator</option>
-                                        <option value="ACCOUNTANT">Accountant</option>
-                                        <option value="BILLING OFFICER">Billing Officer</option>
-                                        <option value="CASHIER">Cashier</option>
-                                        <option value="CONNECTION OFFICER">Connection Officer</option>
-                                        <option value="CREDIT CONTROLLER">Credit Controller</option>
-                                        <option value="MANAGER">Manager</option>
+                                        <option value="DISTRICT DHAP AND STAFF">District DHAP and Staff</option>
+                                        <option value="GENERAL DISTRICT STAFF">General District Staff</option>
+                                        <option value="GOVERNMENT STAFF">Government Staff</option>
+                                        <option value="GENERAL PUBLIC">General Public</option>
+                                        <option value="ZAC HQ GENERAL STAFF">ZAC HQ General Staff</option>
+                                        <option value="ZAC HQ M&E STAFF">ZAC HQ M&E Staff</option>
+                                        <option value="ZAC PEMBA GENERAL STAFF">ZAC Pemba General Staff</option>
+                                        <option value="ZAC PEMBA M&E STAFF">ZAC Pemba M&E Staff</option>
                                     </select></td>
                             </tr>
                             <tr>

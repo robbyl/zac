@@ -27,7 +27,7 @@ session_commit();
         <script src="js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="js/tooltip.js" type="text/javascript"></script>
         <script type="text/javascript">
-            $(document).ready(function(){
+            $(document).ready(function() {
                 $('.tooltip').tipTip({
                     delay: 300
                 });
@@ -77,16 +77,7 @@ session_commit();
                             <div class="icon-label">Settings</div>
                         </div>
                     </a>
-                    <?php
-                }
-
-                if (
-                // application access
-                        $_SESSION['role'] === "ROOT" ||
-                        $_SESSION['role'] === "CONNECTION OFFICER"
-                ) {
-                    ?>
-                <a href="modules/backups/backups.php" class="tooltip fltlft" title="View, make and restore backups">
+                    <a href="modules/backups/backups.php" class="tooltip fltlft" title="View, make and restore backups">
                         <div class="home-icon backups-icon">
                             <div class="icon-label">Back-up</div>
                         </div>
@@ -102,19 +93,30 @@ session_commit();
                         $_SESSION['role'] === "CREDIT CONTROLLER"
                 ) {
                     ?>
-                <a href="modules/data/data_entry.php" class="tooltip fltlft" title="View, add, edit.. data">
+                    <a href="modules/data/data_entry.php" class="tooltip fltlft" title="View, add, edit.. data">
                         <div class="home-icon data-entry-icon">
                             <div class="icon-label">Data Entry</div>
                         </div>
                     </a>
                     <?php
                 }
+
+                if (
+                // Printout access.
+                        $_SESSION['role'] === "ROOT" ||
+                        $_SESSION['role'] === "ACCOUNTANT" ||
+                        $_SESSION['role'] === "BILLING OFFICER" ||
+                        $_SESSION['role'] === "CREDIT CONTROLLER"
+                ) {
+                    ?>
+                    <a href="modules/printouts/printouts.php" class="tooltip fltlft" title="Generate and view various reports" >
+                        <div class="home-icon printouts-icon">
+                            <div class="icon-label">Printouts</div>
+                        </div>
+                    </a>
+                    <?php
+                }
                 ?>
-                <a href="modules/printouts/printouts.php" class="tooltip fltlft" title="Generate and view various reports" >
-                    <div class="home-icon printouts-icon">
-                        <div class="icon-label">Printouts</div>
-                    </div>
-                </a>
                 <div class="clearfloat"></div>
 
                 <?php session_commit(); ?>

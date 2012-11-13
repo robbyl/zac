@@ -67,12 +67,6 @@ if (!empty($lang) && isset($lang)) {
                     $(this).children('.total').html(total);
                 });
 
-                $('#org_name').change(function() {
-                    $('#completed-designation, #verified-designation').html('');
-                    var orgId = $(this).val();
-                    organisationDetails('outocomplete/organisation.php', orgId);
-                });
-
                 $('#completed-designation, #verified-designation').html('');
                 var orgId = $('#sch_name').val();
                 schoolDetails('outocomplete/organisation.php', orgId);
@@ -185,7 +179,7 @@ if (!empty($lang) && isset($lang)) {
                                     <tr>
                                         <td width="33%"><?php echo $text["SECT_LABEL_NOG"]; ?></td>
                                         <td colspan="3">
-                                            <select class="select" name="org_name" id="org_name" required style="width: 100%;">
+                                            <select class="select" name="org_name" id="org_name" disabled="" required style="width: 100%;">
                                                 <option value=""></option>
                                                 <?php
                                                 $query_org = "SELECT `OrganisationCode`, `OrganisationName`, `ZhaFormNumber`

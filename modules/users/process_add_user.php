@@ -22,6 +22,7 @@ require '../../functions/general_functions.php';
 
 // Getting form data
 $usr_fname = clean($_POST['usr_fname']);
+$usr_mname = clean($_POST['usr_mname']);
 $usr_lname = clean($_POST['usr_lname']);
 $email = clean($_POST['email']);
 $username = clean($_POST['username']);
@@ -30,8 +31,8 @@ $role = clean($_POST['role']);
 
 // Inserting form data to the database
 $query_user = "INSERT INTO users
-                           (usr_fname, usr_lname, email, username, password, role)
-                     VALUES('$usr_fname','$usr_lname', '$email', '$username', '$password', '$role')";
+                           (usr_fname, usr_mname' usr_lname, email, username, password, role)
+                     VALUES('$usr_fname','$usr_mname', '$usr_lname', '$email', '$username', '$password', '$role')";
 
 $result_user = mysql_query($query_user) or die(mysql_error());
 

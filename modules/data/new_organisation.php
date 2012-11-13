@@ -50,14 +50,15 @@ require '../../config/config.php';
                 });
 
                 $('.person-name').live("blur", function() {
-                    var select = "<select>";
+                    var select = "<select name='hiv_focal[]' class='select' style='width: 390px;'>";
+                       select += "<option></option>";
                     $('.person-name').each(function() {
                         select += "<option>" + $(this).val() + "</option>";
                     });
 
                     select += "</select>";
 
-                    alert(select);
+                    $('.org_persons').html(select);
                 });
             });
 
@@ -189,15 +190,15 @@ require '../../config/config.php';
                         <table width="" border="0" cellspacing="0" cellpadding="3" style="margin-top: 10px;">
                             <tr>
                                 <td width="210">ZHAPMoS Focal Person</td>
-                                <td>
+                                <td class="org_persons">
                                     <select name="ZHAPMoS_person" class="select" style="width: 390px;" >
-                                        <span class="org_persons"></span>
+                                        <span ></span>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>HIV Focal Person</td>
-                                <td>
+                                <td class="org_persons">
                                     <select name="HIV_person" class="select" style="width: 390px;">
                                         <span class="org_persons"></span>
                                     </select>
