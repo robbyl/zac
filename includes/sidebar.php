@@ -27,11 +27,11 @@
     }
 
     if (
-    // Customer access.
+    // Data entry access.
             $_SESSION['role'] === "ROOT" ||
-            $_SESSION['role'] === "ACCOUNTANT" ||
-            $_SESSION['role'] === "BILLING OFFICER" ||
-            $_SESSION['role'] === "CREDIT CONTROLLER"
+            $_SESSION['role'] === "ZAC HQ M&E STAFF" ||
+            $_SESSION['role'] === "ZAC PEMBA M&E STAFF" ||
+            $_SESSION['role'] === "DISTRICT DHAP AND STAFF"
     ) {
         ?>
 
@@ -42,18 +42,11 @@
 
         <?php
     }
-    if (
-    // Water meter access.
-            $_SESSION['role'] === "ROOT" ||
-            $_SESSION['role'] === "BILLING OFFICER"
-    ) {
-        ?>
+    ?>
 
-        <h3 class="menuheader expandable printouts">Printouts</h3>
-        <ul class="categoryitems">
-            <li><a href="../../modules/printouts/printouts.php" >Print records</a></li>
-        </ul>
-
-    <?php } ?>
+    <h3 class="menuheader expandable printouts">Printouts</h3>
+    <ul class="categoryitems">
+        <li><a href="../../modules/printouts/printouts.php" >Print records</a></li>
+    </ul>
 </div>
 <?php session_commit(); ?>

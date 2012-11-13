@@ -88,9 +88,9 @@ session_commit();
                 if (
                 // Data entry access.
                         $_SESSION['role'] === "ROOT" ||
-                        $_SESSION['role'] === "ACCOUNTANT" ||
-                        $_SESSION['role'] === "BILLING OFFICER" ||
-                        $_SESSION['role'] === "CREDIT CONTROLLER"
+                        $_SESSION['role'] === "ZAC HQ M&E STAFF" ||
+                        $_SESSION['role'] === "ZAC PEMBA M&E STAFF" ||
+                        $_SESSION['role'] === "DISTRICT DHAP AND STAFF"
                 ) {
                     ?>
                     <a href="modules/data/data_entry.php" class="tooltip fltlft" title="View, add, edit.. data">
@@ -100,23 +100,12 @@ session_commit();
                     </a>
                     <?php
                 }
-
-                if (
-                // Printout access.
-                        $_SESSION['role'] === "ROOT" ||
-                        $_SESSION['role'] === "ACCOUNTANT" ||
-                        $_SESSION['role'] === "BILLING OFFICER" ||
-                        $_SESSION['role'] === "CREDIT CONTROLLER"
-                ) {
-                    ?>
-                    <a href="modules/printouts/printouts.php" class="tooltip fltlft" title="Generate and view various reports" >
-                        <div class="home-icon printouts-icon">
-                            <div class="icon-label">Printouts</div>
-                        </div>
-                    </a>
-                    <?php
-                }
                 ?>
+                <a href="modules/printouts/printouts.php" class="tooltip fltlft" title="Generate and view various reports" >
+                    <div class="home-icon printouts-icon">
+                        <div class="icon-label">Printouts</div>
+                    </div>
+                </a>
                 <div class="clearfloat"></div>
 
                 <?php session_commit(); ?>

@@ -50,7 +50,7 @@ $row_setting = mysql_fetch_array($result_settings);
                 <div class="hr-line"></div>
                 <form action="process_settings.php" method="post" enctype="multipart/form-data">
                     <fieldset>
-                        <legend>Authority Details</legend>
+                        <legend>Organisation Details</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
                                 <td width="170">Authority</td>

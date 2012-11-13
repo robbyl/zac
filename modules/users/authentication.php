@@ -56,7 +56,7 @@ if ($num_row === 1 && $row_user['status'] === 'ACTIVE') {
 
     // Accont blocked.
     session_start();
-    $_SESSION['error-outer'] = "Account blocked!. Contact admin";
+    $_SESSION['error-outer'] = "Account blocked!. Please contact admin";
     session_commit();
     mysql_close($conn);
 
@@ -65,7 +65,7 @@ if ($num_row === 1 && $row_user['status'] === 'ACTIVE') {
 
     // Login fail
     session_start();
-    $_SESSION['error-outer'] = "Username or password is incorrect!";
+    $_SESSION['error-outer'] = "Username or password is not correct!";
     session_commit();
     mysql_close($conn);
 
