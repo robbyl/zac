@@ -134,9 +134,9 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
                                     <td><?php echo $form['PeriodFrom'] ?></td>
                                     <td><?php echo $form['PeriodTo'] ?></td>
                                     <td>
-                                        <a href="edit_form<?php echo $form_type ?>.php?form_id=<?php echo $form['FormSerialNumber'] ?>&lang=en">Edit en</a>
-                                        <a href="edit_form<?php echo $form_type ?>.php?form_id=<?php echo $form['FormSerialNumber'] ?>&lang=sw">Edit sw</a>
-                                        <a href="delete_form.php?form_id=<?php echo $form['FormSerialNumber'] ?>">Delete</a>
+                                        <a href="edit_form<?php echo $form_type ?>.php?form_id=<?php echo $form['FormSerialNumber'] ?>&lang=en" class="edit_us tooltip" title="Edit this form in English"></a>
+                                        <a href="edit_form<?php echo $form_type ?>.php?form_id=<?php echo $form['FormSerialNumber'] ?>&lang=sw" class="edit_tz tooltip" title="Edit this form in Kiswahili"></a>
+                                        <a href="delete_form.php?form_id=<?php echo $form['FormSerialNumber'] ?>" class="delete-record tooltip" title="Delete this form" onClick="return confirm('Are you sure you want to delete this form?')"></a>
                                     </td>
                                 </tr>
                                 <?php

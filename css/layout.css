@@ -665,6 +665,58 @@ input[type='radio'], input[type=checkbox] {
     box-shadow: 0 1px 3px 1px rgba(0,0,0, 0.15); 
 }
 
+.edit-record {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(../images/pencil.png) center center no-repeat;
+    background-size: 20px;
+    margin-right: 10px;
+    float: left;
+}
+
+.delete-record {
+    display: block;
+    width: 20px;
+    background: url(../images/delete.png) center center no-repeat;
+    background-size: 20px;
+    height: 20px;
+    float: left;
+}
+
+.dowload {
+    display: block;
+    width: 20px;
+    background: url(../images/download.png) center center no-repeat;
+    background-size: 20px;
+    height: 20px;
+    float: left;
+}
+
+.edit_tz {
+    display: block;
+    width: 20px;
+    background: url(../images/edit_tz.png) center center no-repeat;
+    background-size: 20px;
+    height: 20px;
+    margin-right: 10px;
+    float: left;
+}
+
+.edit_us {
+    display: block;
+    width: 20px;
+    background: url(../images/edit_us.png) center center no-repeat;
+    background-size: 20px;
+    height: 20px;
+    margin-right: 10px;
+    float: left;
+}
+
+.make-backup {
+    background: url(../images/backup.png) no-repeat 5px 6px;
+    background-size: 16px;
+}
 /* ~~ data table classes ~~ */
 
 .data-listing {

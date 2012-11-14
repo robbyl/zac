@@ -78,14 +78,22 @@ require '../../functions/format_byte_function.php';
                     $(this).slideUp('normal');
                 });
 
+                $('.tooltip-left').tipTip({
+                    delay: "300",
+                    defaltPositon: "left"
+                });
+
                 $('.tooltip').tipTip({
                     delay: "300"
                 });
 
+
+
                 // Calling the make backup file
                 $('#backup').click(function() {
 
-                    $('#action').submit(function(event) {
+                    $('form#action').submit(function(event) {
+
                         event.preventDefault();
                         makeBackup("make_backups.php", "");
                     });
@@ -93,6 +101,8 @@ require '../../functions/format_byte_function.php';
                 });
 
 //                alert($('.arrowlistmenu').children('.categoryitems').index('#current'));
+
+
             });
 
         </script>
@@ -111,12 +121,14 @@ require '../../functions/format_byte_function.php';
                 include '../../includes/info.php';
                 ?>
                 <h1>System Backups</h1>
+                <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
+                    <button class="make-backup tooltip-left" title="Make system backup" form="action" id="backup" >Make backup</button>
+                </div>
                 <div class="hr-line"></div>
                 <form action="action.php" method="post" id="action">
                     <div class="actions">
-                        <button class="block tooltip" accesskey="B" title="Block [Alt+Shift+B]" form="action"
-                                name="action[]" value="BLOCK" onClick="return confirm('Are you sure you want to block user(s)?');">Delete</button>
-                        <button class="activate tooltip" accesskey="I" title="Activate [Alt+Shift+I]" id="backup">Make Backup</button>
+                        <button class="delete-record tooltip" title="Delete backup(s)" style="width: auto; height: auto; background-position: 5px 6px" form="action"
+                                onClick="return confirm('Are you sure you want to delete backup(s)?');">Delete</button>
                     </div>
                     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
                         <thead>
@@ -141,12 +153,12 @@ require '../../functions/format_byte_function.php';
                                         ?>
                                         <tr>
                                             <td>
-                                                <input type="checkbox" name="checkbox[]" title="Select this user" class="checkbox tooltip" value="<?php echo $row['user_id'] ?>" id="<?php echo $row['user_id'] ?>">
+                                                <input type="checkbox" name="checkbox[]" title="Select this backup" class="checkbox tooltip" value="<?php echo $entry ?>" id="<?php echo $entry; ?>">
                                             </td>
                                             <td><?php echo $entry ?></td>
                                             <td><?php echo date("d M, Y H:i:s", filemtime($dir . $entry)) ?></td>
                                             <td><?php echo human_filesize(filesize($dir . $entry)) ?></td>
-                                            <td></td>
+                                            <td><a href="backups/<?php echo $entry; ?>" title="Download this backup" class="dowload tooltip-left"></a></td>
                                         </tr>
                                         <?php
                                     }

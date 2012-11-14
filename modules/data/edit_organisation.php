@@ -1,13 +1,23 @@
 <?php require '../../includes/session_validator.php'; ?>
 <?php
 require '../../config/config.php';
+
+$query_org = "SELECT `OrganisationCode`, `OrganisationName`,
+                      `PhysicalAddress`, `PostalAddress`, `Phone`, `Email`
+                FROM tblgenorganisations org
+            ORDER BY OrganisationName ASC
+               LIMIT 1";
+
+$result_org = mysql_query($query_org) or die(mysql_error());
+
+$organisation = mysql_fetch_array($result_org);
 ?>
 <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
-        <title>ZANHID | ADD ORGANISATION</title>
+        <title>ZANHID | EDIT ORGANISATION</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
 
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
@@ -51,7 +61,7 @@ require '../../config/config.php';
 
                 $('.person-name').live("blur", function() {
                     var select = "<select name='hiv_focal[]' class='select' style='width: 390px;'>";
-                       select += "<option></option>";
+                    select += "<option></option>";
                     $('.person-name').each(function() {
                         select += "<option>" + $(this).val() + "</option>";
                     });
@@ -76,7 +86,7 @@ require '../../config/config.php';
                 // Displaying message and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Add New Organisation</h1>
+                <h1>Edit Organisation</h1>
                 <div class="hr-line"></div>
                 <form action="process_add_organisaton.php" method="post">
                     <fieldset>
