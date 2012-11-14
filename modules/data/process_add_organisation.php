@@ -29,35 +29,7 @@ $still = '';
 $org_name = strtoupper($org_name);
 $phy_address = strtoupper($phy_address);
 $post_address = strtoupper($post_address);
-
 $n = count($person_name);
-
-echo $org_code . '<br>';
-echo $org_name . '<br>';
-echo $org_cat . '<br>';
-echo $phy_address . '<br>';
-echo $post_address . '<br>';
-echo $org_phone . '<br>';
-echo $org_fax . '<br>';
-echo $org_email . '<br>';
-echo $ZHAPMoS_person . '<br>';
-echo $HIV_person . '<br>';
-echo $org_start_date . '<br>';
-
-for ($i = 0; $i < $n; $i++) {
-
-    echo $person_code[$i] . ' ';
-    echo $person_name[$i] . ' ';
-    echo $designation[$i] . ' ';
-    echo $person_phone[$i] . ' ';
-    echo $person_fax[$i] . ' ';
-    echo $person_email[$i] . ' ';
-    echo '<br>';
-}
-
-echo $metthaz[0] . '<br>';
-
-
 
 $umbrella = '';
 
@@ -71,15 +43,11 @@ $query_organisation = "INSERT INTO tblgenorganisations
 
 //$result_organisation = mysql_query($query_organisation) or die(mysql_error());
 
-$p_code = 001;
+//$p_code = 001;
 for ($i = 0; $i < $n; $i++) {
 
-    $p_code = sprintf('%03d', $p_code++);
-
-    $person_code[$i] = $org_code . $p_code;
-    
-    echo $person_code[0];
-    exit;
+//    $p_code = sprintf('%03d', $p_code);
+//    $person_code[$i] = $org_code . $p_code;
 
     $query_persons = "INSERT INTO tblgenorganisationpeople
                               (`OrganisationPersonID`, `OrganisationCode`, `FullName`, `Designation`,
@@ -88,6 +56,8 @@ for ($i = 0; $i < $n; $i++) {
                                '$person_phone[$i]', '$person_fax[$i]', '$person_email[$i]', '$metthaz[$i]', '$still[$i]')";
 
     $result_persons = mysql_query($query_persons) or die(mysql_error());
+
+    //$p_code++;
 }
 //$query_umbrella = "INSERT INTO tblgenorganisationsumbrella
 //                               (`OrganisationCode`, `UmbrellaOrganisationCode`)
