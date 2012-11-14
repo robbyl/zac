@@ -250,3 +250,10 @@ function savePDF(id, css) {
 function nav(url) {
     document.location.href = url;
 }
+
+// Add specified leading zeros to a number
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}

@@ -9,14 +9,20 @@ require '../../config/config.php';
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
         <title>ZANHID | ADD ORGANISATION</title>
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
+        <link href="../../css/chosen.css" rel="stylesheet" type="text/css">
 
         <script src="../../js/jquery-1.7.2.js" type="text/javascript"></script>
         <script src="../../js/zanhid-core.js" type="text/javascript"></script>
         <script src="../../js/accordion.js" type="text/javascript"></script>
+        <script src="../../js/chosen.jquery.js" type="text/javascript"></script>
 
         <style type="text/css">
             .text {
                 width: auto;
+            }
+
+            td {
+                vertical-align: top;
             }
         </style>
         <script type="text/javascript">
@@ -46,16 +52,29 @@ require '../../config/config.php';
                 });
 
                 function setPerson() {
+
+                    var orgCode = $('#abbr').val() + pad($('#org_code').val(), 3);
+                    var code = '001';
+
                     var select = "<select name='hiv_focal[]' class='select' style='width: 390px;'>";
+                    var personCode = "";
                     select += "<option></option>";
+
                     $('.person-name').each(function() {
-                        select += "<option>" + $(this).val().toUpperCase() + "</option>";
+                        
+                        code = pad(code, 3);
+                        select += "<option value='" + orgCode + code + "'>" + $(this).val().toUpperCase() + "</option>"                      
+                        personCode += '<input type="text" value="' + orgCode + code + '" name=person_code[]>';
+                        code++;
                     });
 
                     select += "</select>";
 
                     $('.org_persons').html(select);
+                    $('#personIds').html(personCode);
                 }
+
+
 
                 $('a.remove-row').live("click", function() {
 
@@ -66,6 +85,8 @@ require '../../config/config.php';
                 $('.person-name').live("blur", function() {
                     setPerson();
                 });
+
+                $(".chzn-select").chosen();
             });
 
         </script>
@@ -84,10 +105,11 @@ require '../../config/config.php';
                 ?>
                 <h1>Add New Organisation</h1>
                 <div class="hr-line"></div>
-                <form action="process_add_organisation.php" method="post">
+                <form action="process_add_organisation.php" novalidate="" method="post">
                     <fieldset>
                         <legend>Organisation Details</legend>
                         <table width="" border="0" cellpadding="5">
+                            <span id="personIds"></span>
                             <tr>
                                 <td width="200">Headquarters District</td>
                                 <td>
@@ -197,7 +219,7 @@ require '../../config/config.php';
                             <tr>
                                 <td width="210">ZHAPMoS Focal Person</td>
                                 <td class="org_persons">
-                                    <select name="ZHAPMoS_person" class="select" style="width: 390px;" >
+                                    <select name="hiv_focal[]" class="select" style="width: 390px;" >
                                         <span ></span>
                                     </select>
                                 </td>
@@ -205,7 +227,7 @@ require '../../config/config.php';
                             <tr>
                                 <td>HIV Focal Person</td>
                                 <td class="org_persons">
-                                    <select name="HIV_person" class="select" style="width: 390px;">
+                                    <select name="hiv_focal[]" class="select" style="width: 390px;">
                                         <span class="org_persons"></span>
                                     </select>
                                 </td>
@@ -216,8 +238,23 @@ require '../../config/config.php';
                         <legend>Umbrella Organisation(s)</legend>
                         <table width="" border="0" cellpadding="5">
                             <tr>
-                                <td width="200">User Name</td>
-                                <td width="364"><input type="text" name="umbralla" required size="255" class="text"  style="width: 380px;" ></td>
+                                <td width="200">Umbrella Organisation(s)</td>
+                                <td width="364">
+                                    <select class="select chzn-select" data-placeholder="select organisation" name="umbrella[]" id="org_name" multiple  required style="width: 390px;">
+                                        <option value=""></option>
+                                        <?php
+                                        $query_org = "SELECT `OrganisationCode`, `OrganisationName`
+                                                            FROM tblgenorganisations org
+                                                        ORDER BY `OrganisationName` ASC";
+                                        $result_org = mysql_query($query_org) or die(mysql_error());
+                                        while ($org = mysql_fetch_array($result_org)) {
+                                            ?>
+                                            <option value="<?php echo $org['OrganisationCode'] ?>"><?php echo $org['OrganisationName'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>

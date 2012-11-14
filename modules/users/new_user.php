@@ -45,7 +45,7 @@
                             </tr>
                             <tr>
                                 <td>Sir Name</td>
-                                <td><input type="text" name="sir_name" required size="255" class="text"></td>
+                                <td><input type="text" name="usr_lname" required size="255" class="text"></td>
                             </tr>
                             <tr>
                                 <td>Phone</td>

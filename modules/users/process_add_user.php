@@ -31,7 +31,7 @@ $role = clean($_POST['role']);
 
 // Inserting form data to the database
 $query_user = "INSERT INTO users
-                           (usr_fname, usr_mname' usr_lname, email, username, password, role)
+                           (usr_fname, usr_mname, usr_lname, email, username, password, role)
                      VALUES('$usr_fname','$usr_mname', '$usr_lname', '$email', '$username', '$password', '$role')";
 
 $result_user = mysql_query($query_user) or die(mysql_error());
