@@ -235,15 +235,6 @@ function printPage(id, css) {
     printWin.close();
 }
 
-function printTable(url) {
-
-    var printWin = window.open(url, '', 'left=0,top=0,width=1060,height=900,toolbar=no,scrollbars=no,status=no');
-    printWin.focus();
-//printWin.print();
-//printWin.close();
-}
-
-
 function savePDF(id, css) {
     var html = "<!doctype html><html><head><title></title>";
     html += "<link rel=\"stylesheet\" type=\"text/css\" href=\"" + css + "\"></head><body>";

@@ -17,7 +17,11 @@ if (isset($abbr) && !empty($abbr)) {
 
     $code = mysql_fetch_array($result_org);
     $subabbr = substr($code['lastCode'], 3);
+    if($subabbr > 1){
     $newCode = ++$subabbr;
     echo sprintf('%03d', $newCode);
+    }  else {
+        echo '001';
+    }
 }
 ?>

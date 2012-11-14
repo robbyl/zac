@@ -39,26 +39,32 @@ require '../../config/config.php';
                 $('a.add-row').live("click", function() {
 
                     var row = $(this).closest("tr").clone();
+                    row.find('input').val('');
                     row.find('a').attr('title', 'Add new row');
                     $('a.add-row').removeClass().addClass('remove-row').removeAttr('title').attr('title', 'Remove this row');
                     $('.personal-details').append(row);
                 });
 
-                $('a.remove-row').live("click", function() {
-
-                    $(this).closest("tr").remove();
-                });
-
-                $('.person-name').live("blur", function() {
+                function setPerson() {
                     var select = "<select name='hiv_focal[]' class='select' style='width: 390px;'>";
-                       select += "<option></option>";
+                    select += "<option></option>";
                     $('.person-name').each(function() {
-                        select += "<option>" + $(this).val() + "</option>";
+                        select += "<option>" + $(this).val().toUpperCase() + "</option>";
                     });
 
                     select += "</select>";
 
                     $('.org_persons').html(select);
+                }
+
+                $('a.remove-row').live("click", function() {
+
+                    $(this).closest("tr").remove();
+                    setPerson();
+                });
+
+                $('.person-name').live("blur", function() {
+                    setPerson();
                 });
             });
 
@@ -78,7 +84,7 @@ require '../../config/config.php';
                 ?>
                 <h1>Add New Organisation</h1>
                 <div class="hr-line"></div>
-                <form action="process_add_organisaton.php" method="post">
+                <form action="process_add_organisation.php" method="post">
                     <fieldset>
                         <legend>Organisation Details</legend>
                         <table width="" border="0" cellpadding="5">
@@ -178,7 +184,7 @@ require '../../config/config.php';
                             </tr>
                             <tr>
                                 <td><a class="add-row tooltip" title="Add new row"></a></td>
-                                <td><input type="text" name="person_name" id="person_name" class="text person-name" style="width: 90%; text-transform: uppercase;"></td>
+                                <td><input type="text" name="person_name[]" id="person_name" class="text person-name" style="width: 90%; text-transform: uppercase;"></td>
                                 <td><input type="text" name="designation[]" style="text-transform: uppercase;" class="text"></td>
                                 <td><input type="tel" name="person_phone[]" class="text" style="width: 135px;"></td>
                                 <td><input type="text" name="person_fax[]" class="text" style="width: 135px;"></td>
