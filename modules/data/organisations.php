@@ -106,7 +106,7 @@ $result_org = mysql_query($query_org) or die(mysql_error());
                 // Displaying messages and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>All Users of the System</h1>
+                <h1>All Organisations</h1>
                 <div class="hr-line"></div>
                 <form action="action.php" method="post" onSubmit="">
                     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
