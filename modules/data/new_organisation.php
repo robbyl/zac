@@ -55,16 +55,15 @@ require '../../config/config.php';
 
                     var orgCode = $('#abbr').val() + pad($('#org_code').val(), 3);
                     var code = '001';
-
                     var select = "<select name='hiv_focal[]' class='select' style='width: 390px;'>";
                     var personCode = "";
                     select += "<option></option>";
 
                     $('.person-name').each(function() {
-                        
+
                         code = pad(code, 3);
-                        select += "<option value='" + orgCode + code + "'>" + $(this).val().toUpperCase() + "</option>"                      
-                        personCode += '<input type="text" value="' + orgCode + code + '" name=person_code[]>';
+                        select += "<option value='" + orgCode + code + "'>" + $(this).val().toUpperCase() + "</option>";
+                        personCode += '<input type="hidden" value="' + orgCode + code + '" name=person_code[]>';
                         code++;
                     });
 
@@ -220,7 +219,7 @@ require '../../config/config.php';
                                 <td width="210">ZHAPMoS Focal Person</td>
                                 <td class="org_persons">
                                     <select name="hiv_focal[]" class="select" style="width: 390px;" >
-                                        <span ></span>
+
                                     </select>
                                 </td>
                             </tr>
@@ -228,7 +227,7 @@ require '../../config/config.php';
                                 <td>HIV Focal Person</td>
                                 <td class="org_persons">
                                     <select name="hiv_focal[]" class="select" style="width: 390px;">
-                                        <span class="org_persons"></span>
+
                                     </select>
                                 </td>
                             </tr>
