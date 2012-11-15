@@ -54,6 +54,18 @@ require 'sections/lang_section.php';
                     $('#completed-designation, #verified-designation').html('');
                     schoolDetails('outocomplete/organisation.php', orgId);
                 });
+
+                // Calculate total number of vales in row
+                $('.fst').on('input', function() {
+
+                    var total = 0;
+                    $(this).closest('tr').find('.fst').each(function() {
+
+                        total += $(this).val() * 1;
+                    });
+
+                    $(this).closest('tr').find('.fst').html(total);
+                });
             });
         </script>
         <style type="text/css">
@@ -194,37 +206,37 @@ require 'sections/lang_section.php';
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B01"][0]; ?></td>
-                                    <td><input type="number" name="b1_males" min="0" class="number"></td>
-                                    <td><input type="number" name="b1_females" min="0" class="number"></td>
-                                    <td></td>
+                                    <td><input type="number" name="b1_males" min="0" class="number fst"></td>
+                                    <td><input type="number" name="b1_females" min="0" class="number fst"></td>
+                                    <td align="center" class="fst"></td>
                                     <td width="60" class="data-group">B1</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B02"][0]; ?></td>
-                                    <td><input type="number" name="b2_males" min="0" class="number"></td>
-                                    <td><input type="number" name="b2_females" min="0" class="number"></td>
-                                    <td></td>
+                                    <td><input type="number" name="b2_males" min="0" class="number fst"></td>
+                                    <td><input type="number" name="b2_females" min="0" class="number fst"></td>
+                                    <td align="center" class="fst"></td>
                                     <td width="60" class="data-group">B2</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B03"][0]; ?></td>
-                                    <td><input type="number" name="b3_males" min="0" class="number"></td>
-                                    <td><input type="number" name="b3_females" min="0" class="number"></td>
-                                    <td></td>
+                                    <td><input type="number" name="b3_males" min="0" class="number fst"></td>
+                                    <td><input type="number" name="b3_females" min="0" class="number fst"></td>
+                                    <td align="center" class="fst"></td>
                                     <td width="60" class="data-group">B3</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B04"][0]; ?></td>
-                                    <td><input type="number" name="b4_males" min="0" class="number"></td>
-                                    <td><input type="number" name="b4_females" min="0" class="number"></td>
-                                    <td></td>
+                                    <td><input type="number" name="b4_males" min="0" class="number fst"></td>
+                                    <td><input type="number" name="b4_females" min="0" class="number fst"></td>
+                                    <td align="center" class="fst"></td>
                                     <td width="60" class="data-group">B4</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $ZhaFigureDescription["B05"][0]; ?></td>
-                                    <td><input type="number" name="b5_males" min="0" class="number"></td>
-                                    <td><input type="number" name="b5_females" min="0" class="number"></td>
-                                    <td></td>
+                                    <td><input type="number" name="b5_males" min="0" class="number fst"></td>
+                                    <td><input type="number" name="b5_females" min="0" class="number fst"></td>
+                                    <td align="center" class="fst"></td>
                                     <td width="60" class="data-group">B5</td>
                                 </tr>
                             </table>
@@ -249,7 +261,7 @@ require 'sections/lang_section.php';
             <?php include '../../includes/footer.php'; ?>
             <!-- end .container --></div>
     </body>
-        <script type="text/javascript">
+    <script type="text/javascript">
 
         $('.data-entry').attr("id", "current");
         var i = $('h3#current').index('.menuheader') - 1;

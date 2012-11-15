@@ -139,7 +139,7 @@
                     <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                         <option value="<?php echo $hiv['BreakdownTypeID'] ?>" 
                         <?php
-                        if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1_4 ||
+                       	    if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1_4 ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_4f ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_4o ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_4fo)
@@ -154,10 +154,10 @@
                     <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
                         <option value="<?php echo $risk['BreakdownTypeID'] ?>"
                         <?php
-                        if ($risk['BreakdownTypeID'] == $BreakdownTypeID2_4 ||
-                                $hiv['BreakdownTypeID'] == $BreakdownTypeID2_4f ||
-                                $hiv['BreakdownTypeID'] == $BreakdownTypeID2_4o ||
-                                $hiv['BreakdownTypeID'] == $BreakdownTypeID2_4fo)
+                        	if ($risk['BreakdownTypeID'] == $BreakdownTypeID2_4 ||
+                                $risk['BreakdownTypeID'] == $BreakdownTypeID2_4f ||
+                                $risk['BreakdownTypeID'] == $BreakdownTypeID2_4o ||
+                                $risk['BreakdownTypeID'] == $BreakdownTypeID2_4fo)
                             echo "selected"
                             ?>><?php echo $risk['breakdownrisk'] ?></option>
                             <?php } mysql_data_seek($result_risk, 0) ?>

@@ -40,12 +40,38 @@ require 'sections/lang_section.php';
                     $(this).slideUp('normal');
                 });
 
-                $('tr').click(function() {
+                // Calculate total number of vales in row
+                $('.fst').on('input', function() {
+
                     var total = 0;
-                    $(this).children().find('.number').each(function() {
+                    $(this).closest('tr').find('.fst').each(function() {
+
                         total += $(this).val() * 1;
                     });
-                    $(this).children('.total').html(total);
+
+                    $(this).closest('tr').find('.fst').html(total);
+                });
+
+                $('.snd').on('input', function() {
+
+                    var total = 0;
+                    $(this).closest('tr').find('.snd').each(function() {
+
+                        total += $(this).val() * 1;
+                    });
+
+                    $(this).closest('tr').find('.snd').html(total);
+                });
+
+                $('.trd').on('input', function() {
+
+                    var total = 0;
+                    $(this).closest('tr').find('.trd').each(function() {
+
+                        total += $(this).val() * 1;
+                    });
+
+                    $(this).closest('tr').find('.trd').html(total);
                 });
 
                 $('#org_name').change(function() {

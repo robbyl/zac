@@ -38,12 +38,12 @@
                 </select>
             </td>
             <td>
-                <input type="number" name="hp1_male_younger[]" min="0" class="number">
+                <input type="number" name="hp1_male_younger[]" min="0" class="number fst">
             </td>
-            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
-            <td align="center" class="total"></td>
+            <td><input type="number" name="hp1_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_male_older[]" min="0" class="number  fst"></td>
+            <td><input type="number" name="hp1_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td>
@@ -60,11 +60,11 @@
                         <option value="<?php echo $risk['BreakdownTypeID'] ?>"><?php echo $risk['breakdownrisk'] ?></option>
                     <?php } mysql_data_seek($result_risk, 0) ?>
                 </select></td>
-            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp1_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td>
@@ -83,11 +83,11 @@
                     <?php } mysql_data_seek($result_risk, 0) ?>
                 </select>
             </td>
-            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp1_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td>
@@ -106,11 +106,11 @@
                     <?php } mysql_data_seek($result_risk, 0) ?>
                 </select>
             </td>
-            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp1_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td>
@@ -129,11 +129,11 @@
                     <?php } mysql_data_seek($result_risk, 0) ?>
                 </select>
             </td>
-            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp1_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td>
@@ -152,11 +152,11 @@
                     <?php } mysql_data_seek($result_risk, 0) ?>
                 </select>
             </td>
-            <td><input type="number" name="hp1_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp1_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp1_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp1_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
     </table>
 
@@ -188,11 +188,11 @@
                     <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp2_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -203,11 +203,11 @@
                     <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp2_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -218,11 +218,11 @@
                     <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp2_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -233,11 +233,11 @@
                     <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp2_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -248,11 +248,11 @@
                     <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp2_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -263,11 +263,11 @@
                     <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp2_male_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_younger[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_male_older[]" min="0" class="number fst"></td>
+            <td><input type="number" name="hp2_female_older[]" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
     </table>
 
@@ -304,12 +304,12 @@
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescription["HP4"][6]; ?></td>
-            <td><input type="number" name="hp4_male_peer" min="0" class="number"></td>
-            <td><input type="number" name="hp4_female_peer" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="hp4_male_community" min="0" class="number"></td>
-            <td><input type="number" name="hp4_female_community" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp4_male_peer" min="0" class="number fst"></td>
+            <td><input type="number" name="hp4_female_peer" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="hp4_male_community" min="0" class="number snd"></td>
+            <td><input type="number" name="hp4_female_community" min="0" class="number snd"></td>
+            <td align="center" class="snd"></td>
         </tr>
     </table>
 
@@ -331,12 +331,12 @@
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescription["HP4"][0]; ?></td>
-            <td><input type="number" name="hp5_male_peer" min="0" class="number"></td>
-            <td><input type="number" name="hp5_female_peer" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="hp5_male_community" min="0" class="number"></td>
-            <td><input type="number" name="hp5_female_community" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp5_male_peer" min="0" class="number fst"></td>
+            <td><input type="number" name="hp5_female_peer" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="hp5_male_community" min="0" class="number snd"></td>
+            <td><input type="number" name="hp5_female_community" min="0" class="number snd"></td>
+            <td align="center" class="snd"></td>
         </tr>
     </table>
 
@@ -383,9 +383,9 @@
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescription["HP8"][0] ?></td>
-            <td><input type="number" name="hp8_pep_male" min="0" class="number"></td>
-            <td><input type="number" name="hp8_pep_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp8_pep_male" min="0" class="number fst"></td>
+            <td><input type="number" name="hp8_pep_female" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
     </table>
 
@@ -400,9 +400,9 @@
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescription["HP9"][0] ?></td>
-            <td><input type="number" name="hp9_wkpl_male" min="0" class="number"></td>
-            <td><input type="number" name="hp9_wkpl_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="hp9_wkpl_male" min="0" class="number fst"></td>
+            <td><input type="number" name="hp9_wkpl_female" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
     </table>
 </div>
@@ -431,57 +431,57 @@
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][30] ?></td>
-            <td><input type="number" name="m1_health_chldn_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_health_chldn_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="m1_health_elderly_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_health_elderly_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="m1_health_widows" min="0" class="number"></td>
-            <td><input type="number" name="m1_health_vulnerable" min="0" class="number"></td>
+            <td><input type="number" name="m1_health_chldn_male" min="0" class="number fst" /></td>
+            <td><input type="number" name="m1_health_chldn_female" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="m1_health_elderly_male" min="0" class="number snd" /></td>
+            <td><input type="number" name="m1_health_elderly_female" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="m1_health_widows" min="0" class="number" /></td>
+            <td><input type="number" name="m1_health_vulnerable" min="0" class="number" /></td>
             <td><input type="number" name="m1_health_other" min="0" class="number"></td>
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][0] ?></td>
-            <td><input type="number" name="m1_emotional_chldn_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_emotional_chldn_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="m1_emotional_elderly_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_emotional_elderly_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="m1_emotional_widows" min="0" class="number"></td>
-            <td><input type="number" name="m1_emotional_vulnerable" min="0" class="number"></td>
+            <td><input type="number" name="m1_emotional_chldn_male" min="0" class="number fst" /></td>
+            <td><input type="number" name="m1_emotional_chldn_female" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="m1_emotional_elderly_male" min="0" class="number snd" /></td>
+            <td><input type="number" name="m1_emotional_elderly_female" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="m1_emotional_widows" min="0" class="number" /></td>
+            <td><input type="number" name="m1_emotional_vulnerable" min="0" class="number" /></td>
             <td><input type="number" name="m1_emotional_other" min="0" class="number"></td>
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][45] ?></td>
-            <td><input type="number" name="m1_nutrition_chldn_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_nutrition_chldn_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="m1_nutrition_elderly_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_nutrition_elderly_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="m1_nutrition_widows" min="0" class="number"></td>
-            <td><input type="number" name="m1_nutrition_vulnerable" min="0" class="number"></td>
+            <td><input type="number" name="m1_nutrition_chldn_male" min="0" class="number fst" /></td>
+            <td><input type="number" name="m1_nutrition_chldn_female" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="m1_nutrition_elderly_male" min="0" class="number snd" /></td>
+            <td><input type="number" name="m1_nutrition_elderly_female" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="m1_nutrition_widows" min="0" class="number" /></td>
+            <td><input type="number" name="m1_nutrition_vulnerable" min="0" class="number" /></td>
             <td><input type="number" name="m1_nutrition_other" min="0" class="number"></td>
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][15] ?></td>
-            <td><input type="number" name="m1_financial_chldn_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_financial_chldn_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="m1_financial_elderly_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_financial_elderly_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="m1_financial_widows" min="0" class="number"></td>
+            <td><input type="number" name="m1_financial_chldn_male" min="0" class="number fst" /></td>
+            <td><input type="number" name="m1_financial_chldn_female" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="m1_financial_elderly_male" min="0" class="number snd" /></td>
+            <td><input type="number" name="m1_financial_elderly_female" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="m1_financial_widows" min="0" class="number" /></td>
             <td><input type="number" name="m1_financial_vulnerable" min="0" class="number"></td>
             <td><input type="number" name="m1_financial_other" min="0" class="number"></td>
         </tr>
         <tr>
             <td><?php echo $BreakdownTypeDescription1['M01'][60] ?></td>
-            <td><input type="number" name="m1_school_chldn_male" min="0" class="number"></td>
-            <td><input type="number" name="m1_school_chldn_female" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="m1_school_chldn_male" min="0" class="number fst" /></td>
+            <td><input type="number" name="m1_school_chldn_female" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
             <td class="not-editable">&nbsp;</td>
             <td class="not-editable">&nbsp;</td>
             <td class="not-editable">&nbsp;</td>
@@ -504,9 +504,9 @@
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescription["CS1"][0]; ?></td>
-            <td><input type="number" name="cs1_males" min="0" class="number"></td>
-            <td><input type="number" name="cs1_females" min="0" class="number"></td>
-            <td></td>
+            <td><input type="number" name="cs1_males" min="0" class="number fst"></td>
+            <td><input type="number" name="cs1_females" min="0" class="number fst"></td>
+            <td align="center" class="fst"></td>
         </tr>
     </table>
 
@@ -553,15 +553,15 @@
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number fst" /></td>
+            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="tc1_staff_male[]" min="0" class="number snd" /></td>
+            <td><input type="number" name="tc1_staff_female[]" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="tc1_employees_male[]" min="0" class="number trd" /></td>
+            <td><input type="number" name="tc1_employees_female[]" min="0" class="number trd" /></td>
+            <td align="center" class="trd"></td>
         </tr>
         <tr>
             <td>
@@ -572,15 +572,15 @@
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number fst" /></td>
+            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number fst" /></td>
+          <td align="center" class="fst"></td>
+            <td><input type="number" name="tc1_staff_male[]" min="0" class="number snd" /></td>
+            <td><input type="number" name="tc1_staff_female[]" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="tc1_employees_male[]" min="0" class="number trd" /></td>
+            <td><input type="number" name="tc1_employees_female[]" min="0" class="number trd" /></td>
+            <td align="center" class="trd"></td>
         </tr>
         <tr>
             <td>
@@ -591,15 +591,15 @@
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number fst" /></td>
+            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="tc1_staff_male[]" min="0" class="number snd" /></td>
+            <td><input type="number" name="tc1_staff_female[]" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="tc1_employees_male[]" min="0" class="number trd" /></td>
+            <td><input type="number" name="tc1_employees_female[]" min="0" class="number trd" /></td>
+            <td align="center" class="trd"></td>
         </tr>
         <tr>
             <td>
@@ -610,15 +610,15 @@
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number fst" /></td>
+            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="tc1_staff_male[]" min="0" class="number snd" /></td>
+            <td><input type="number" name="tc1_staff_female[]" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="tc1_employees_male[]" min="0" class="number trd" /></td>
+            <td><input type="number" name="tc1_employees_female[]" min="0" class="number trd" /></td>
+            <td align="center" class="trd"></td>
         </tr>
         <tr>
             <td>
@@ -629,15 +629,15 @@
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number fst" /></td>
+            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="tc1_staff_male[]" min="0" class="number snd" /></td>
+            <td><input type="number" name="tc1_staff_female[]" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="tc1_employees_male[]" min="0" class="number trd" /></td>
+            <td><input type="number" name="tc1_employees_female[]" min="0" class="number trd" /></td>
+            <td align="center" class="trd"></td>
         </tr>
         <tr>
             <td>
@@ -648,15 +648,15 @@
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number fst" /></td>
+            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="tc1_staff_male[]" min="0" class="number snd" /></td>
+            <td><input type="number" name="tc1_staff_female[]" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="tc1_employees_male[]" min="0" class="number trd" /></td>
+            <td><input type="number" name="tc1_employees_female[]" min="0" class="number trd" /></td>
+            <td align="center" class="trd"></td>
         </tr>
         <tr>
             <td>
@@ -667,15 +667,15 @@
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number fst" /></td>
+            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="tc1_staff_male[]" min="0" class="number snd" /></td>
+            <td><input type="number" name="tc1_staff_female[]" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="tc1_employees_male[]" min="0" class="number trd" /></td>
+            <td><input type="number" name="tc1_employees_female[]" min="0" class="number trd" /></td>
+            <td align="center" class="trd"></td>
         </tr>
         <tr>
             <td>
@@ -686,15 +686,15 @@
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
+            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number fst" /></td>
+            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number fst" /></td>
+            <td align="center" class="fst"></td>
+            <td><input type="number" name="tc1_staff_male[]" min="0" class="number snd" /></td>
+            <td><input type="number" name="tc1_staff_female[]" min="0" class="number snd" /></td>
+            <td align="center" class="snd"></td>
+            <td><input type="number" name="tc1_employees_male[]" min="0" class="number trd" /></td>
+            <td><input type="number" name="tc1_employees_female[]" min="0" class="number trd" /></td>
+            <td align="center" class="trd"></td>
         </tr>
     </table>
 
