@@ -80,17 +80,20 @@ while ($rowHP2 = mysql_fetch_array($resultHP2)) {
 }
 
 $queryHP3 = "SELECT `ZhaFigureCode`, `BreakdownTypeID`, `OrganisationGroup`,
-                  SUM(`ZhaFigureValue`) AS total
-            FROM `tblzhafigures` fig
-      INNER JOIN `tblzhasetupfigurebreakdowntypes` typ
-              ON fig.`BreakdownTypeID1` = typ.`BreakdownTypeID`
-      INNER JOIN tblzhaformssubmitted sub
-              ON fig.`FormSerialNumber` = sub.`FormSerialNumber`
-      INNER JOIN `tblgenorganisations` org
-              ON sub.`OrganisationCode` = org.`OrganisationCode`
-      INNER JOIN `tblgensetuporganisationcategories` cat
-              ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
-        GROUP BY `BreakdownTypeID`, OrganisationGroup";
+                    SUM(`ZhaFigureValue`) AS total
+               FROM `tblzhafigures` fig
+         INNER JOIN `tblzhasetupfigurebreakdowntypes` typ
+                 ON fig.`BreakdownTypeID1` = typ.`BreakdownTypeID`
+         INNER JOIN tblzhaformssubmitted sub
+                 ON fig.`FormSerialNumber` = sub.`FormSerialNumber`
+         INNER JOIN `tblgenorganisations` org
+                 ON sub.`OrganisationCode` = org.`OrganisationCode`
+         INNER JOIN `tblgensetuporganisationcategories` cat
+                 ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+              WHERE ZhaFigureCode = 'HP3'      
+                 OR ZhaFigureCode = 'HP6'      
+                 OR ZhaFigureCode = 'HP7'      
+           GROUP BY `BreakdownTypeID`, OrganisationGroup";
 
 $resultHP3 = mysql_query($queryHP3) or die(mysql_error());
 
@@ -98,12 +101,15 @@ while ($rowHP3 = mysql_fetch_array($resultHP3)) {
     $totalValueHP3[$rowHP3['ZhaFigureCode']][$rowHP3['BreakdownTypeID']][$rowHP3['OrganisationGroup']] = $rowHP3['total'];
 }
 
-$queryHP4 = "SELECT `ZhaFigureCode`, `BreakdownTypeID`, BreakdownTypeID1, `BreakdownTypeDescription`,
+$queryHP4 = "SELECT `ZhaFigureCode`, typ.`BreakdownTypeID`, BreakdownTypeID1, 
+                   typ.`BreakdownTypeDescription`, typTC1.BreakdownTypeDescription AS BreakdownTypeDescriptionTC1,
                   `OrganisationGroup`, BreakdownTypeID3,
                   SUM(`ZhaFigureValue`) AS total
             FROM `tblzhafigures` fig
-      INNER JOIN `tblzhasetupfigurebreakdowntypes` typ
+       LEFT JOIN `tblzhasetupfigurebreakdowntypes` typ
               ON fig.`BreakdownTypeID2` = typ.`BreakdownTypeID`
+       LEFT JOIN `tblzhasetupfigurebreakdowntypes` typTC1
+              ON fig.`BreakdownTypeID1` = typTC1.`BreakdownTypeID`
       INNER JOIN tblzhaformssubmitted sub
               ON fig.`FormSerialNumber` = sub.`FormSerialNumber`
       INNER JOIN `tblgenorganisations` org
@@ -111,17 +117,22 @@ $queryHP4 = "SELECT `ZhaFigureCode`, `BreakdownTypeID`, BreakdownTypeID1, `Break
       INNER JOIN `tblgensetuporganisationcategories` cat
               ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
            WHERE ZhaFigureCode = 'HP4'
+              OR ZhaFigureCode = 'HP8'
+              OR ZhaFigureCode = 'HP9'
               OR ZhaFigureCode = 'M01'
               OR ZhaFigureCode = 'TC1'
+              OR ZhaFigureCode = 'TC2'
         GROUP BY `BreakdownTypeID`,BreakdownTypeID1, BreakdownTypeID3, OrganisationGroup
-        ORDER BY BreakdownTypeDescription ASC";
+        ORDER BY BreakdownTypeDescription ASC, BreakdownTypeDescriptionTC1 ASC";
 
 $resultHP4 = mysql_query($queryHP4) or die(mysql_error());
 
 while ($rowHP4 = mysql_fetch_array($resultHP4)) {
     $totalValueHP4[$rowHP4['ZhaFigureCode']][$rowHP4['BreakdownTypeID']][$rowHP4['BreakdownTypeID1']][$rowHP4['OrganisationGroup']][$rowHP4['BreakdownTypeID3']] = $rowHP4['total'];
     $breackdownTypeHP4[$rowHP4['ZhaFigureCode']][] = $rowHP4['BreakdownTypeID'];
+    $breackdownTypeTC1[$rowHP4['ZhaFigureCode']][] = $rowHP4['BreakdownTypeID1'];
     $organisationCategoryHP4[$rowHP4['BreakdownTypeID']] = $rowHP4['BreakdownTypeDescription'];
+    $organisationCategoryTC1[$rowHP4['BreakdownTypeID1']] = $rowHP4['BreakdownTypeDescriptionTC1'];
 }
 
 
@@ -458,6 +469,90 @@ echo '</table>';
 
 echo '<br>';
 
+echo 'Post Exposure Prophylaxis (PEP)';
+echo '<table border="1">';
+echo '<tr>';
+echo '<th></th>';
+echo '<th colspan="3">Within CSOs</th>';
+echo '<th colspan="3">Within Private Sector</th>';
+echo '<th colspan="3">Within Government</th>';
+echo '<th colspan="3">Within SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td rowspan="2">Number of persons who have been trained in how to counsel persons in and refer persons for PEP this quarter</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>' . $HP8CSOsMAL = $totalValueHP4['HP8']['']['MAL']['CSOs'][''] . '</td>';
+echo '<td>' . $HP8CSOsFEM = $totalValueHP4['HP8']['']['FEM']['CSOs'][''] . '</td>';
+echo '<td>' . ($HP8CSOsMAL + $HP8CSOsFEM) . '</td>';
+echo '<td>' . $HP8PrivateMAL = $totalValueHP4['HP8']['']['MAL']['Private Sector'][''] . '</td>';
+echo '<td>' . $HP8PrivateFEM = $totalValueHP4['HP8']['']['FEM']['Private Sector'][''] . '</td>';
+echo '<td>' . ($HP8PrivateMAL + $HP8PrivateFEM) . '</td>';
+echo '<td>' . $HP8GovernmentMAL = $totalValueHP4['HP8']['']['MAL']['Government'][''] . '</td>';
+echo '<td>' . $HP8GovernmentFEM = $totalValueHP4['HP8']['']['FEM']['Government'][''] . '</td>';
+echo '<td>' . ($HP8GovernmentMAL + $HP8GovernmentFEM) . '</td>';
+echo '<td>' . $HP8SHACCOMsMAL = $totalValueHP4['HP8']['']['MAL']['SHACCOMs'][''] . '</td>';
+echo '<td>' . $HP8SHACCOMsFEM = $totalValueHP4['HP8']['']['FEM']['SHACCOMs'][''] . '</td>';
+echo '<td>' . ($HP8SHACCOMsMAL + $HP8SHACCOMsFEM) . '</td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
+echo 'Post Exposure Prophylaxis (PEP)';
+echo '<table border="1">';
+echo '<tr>';
+echo '<th></th>';
+echo '<th colspan="3">Within CSOs</th>';
+echo '<th colspan="3">Within Private Sector</th>';
+echo '<th colspan="3">Within Government</th>';
+echo '<th colspan="3">Within SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td rowspan="2">Number of persons who have been trained in how to counsel persons in and refer persons for PEP this quarter</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>' . $HP8CSOsMAL = $totalValueHP4['HP9']['']['MAL']['CSOs'][''] . '</td>';
+echo '<td>' . $HP8CSOsFEM = $totalValueHP4['HP9']['']['FEM']['CSOs'][''] . '</td>';
+echo '<td>' . ($HP8CSOsMAL + $HP8CSOsFEM) . '</td>';
+echo '<td>' . $HP8PrivateMAL = $totalValueHP4['HP9']['']['MAL']['Private Sector'][''] . '</td>';
+echo '<td>' . $HP8PrivateFEM = $totalValueHP4['HP9']['']['FEM']['Private Sector'][''] . '</td>';
+echo '<td>' . ($HP8PrivateMAL + $HP8PrivateFEM) . '</td>';
+echo '<td>' . $HP8GovernmentMAL = $totalValueHP4['HP9']['']['MAL']['Government'][''] . '</td>';
+echo '<td>' . $HP8GovernmentFEM = $totalValueHP4['HP9']['']['FEM']['Government'][''] . '</td>';
+echo '<td>' . ($HP8GovernmentMAL + $HP8GovernmentFEM) . '</td>';
+echo '<td>' . $HP8SHACCOMsMAL = $totalValueHP4['HP9']['']['MAL']['SHACCOMs'][''] . '</td>';
+echo '<td>' . $HP8SHACCOMsFEM = $totalValueHP4['HP9']['']['FEM']['SHACCOMs'][''] . '</td>';
+echo '<td>' . ($HP8SHACCOMsMAL + $HP8SHACCOMsFEM) . '</td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
 echo 'By civil society organisations';
 echo '<table border="1">';
 echo '<tr>';
@@ -783,4 +878,188 @@ echo '<td></td>';
 echo '<td></td>';
 echo '</tr>';
 echo '<table>';
+
+echo '<br>';
+
+echo 'E: TRAINING AND CAPACITY BUILDING FOR HIV - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4';
+echo '<br>';
+echo 'By civil society organisations';
+echo '<table border="1">';
+echo '<tr>';
+echo '<th rowspan="2">Training topic</th>';
+echo '<th colspan="3">Number of volunteers trained</th>';
+echo '<th colspan="3">Number of project staff trained</th>';
+echo '<th colspan="3">Number of employees trained</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '</tr>';
+
+foreach (array_unique($breackdownTypeTC1['TC1']) as $valueTC1) {
+
+    echo '<tr>';
+    echo '<td>' . $organisationCategoryTC1[$valueTC1] . '</td>';
+    echo '<td>' . $TC1NSFMAL = $totalValueHP4['TC1']['VOL'][$valueTC1]['CSOs']['MAL'] . '</td>';
+    echo '<td>' . $TC1NSFFEM = $totalValueHP4['TC1']['VOL'][$valueTC1]['CSOs']['FEM'] . '</td>';
+    echo '<td>' . $TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM) . '</td>';
+    echo '<td>' . $TC1PSFMAL = $totalValueHP4['TC1']['PSF'][$valueTC1]['CSOs']['MAL'] . '</td>';
+    echo '<td>' . $TC1PSFFEM = $totalValueHP4['TC1']['PSF'][$valueTC1]['CSOs']['FEM'] . '</td>';
+    echo '<td>' . $TC1PSFTOT = ($TC1PSFMAL + $TC1PSFFEM) . '</td>';
+    echo '<td>' . $TC1NSFMAL = $totalValueHP4['TC1']['NSF'][$valueTC1]['CSOs']['MAL'] . '</td>';
+    echo '<td>' . $TC1NSFFEM = $totalValueHP4['TC1']['NSF'][$valueTC1]['CSOs']['FEM'] . '</td>';
+    echo '<td>' . $TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM) . '</td>';
+    echo '</tr>';
+    echo '<tr>';
+}
+
+echo '<table>';
+echo '<br>';
+
+echo 'By Private Sector';
+echo '<table border="1">';
+echo '<tr>';
+echo '<th rowspan="2">Training topic</th>';
+echo '<th colspan="3">Number of volunteers trained</th>';
+echo '<th colspan="3">Number of project staff trained</th>';
+echo '<th colspan="3">Number of employees trained</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '</tr>';
+
+foreach (array_unique($breackdownTypeTC1['TC1']) as $valueTC1) {
+
+    echo '<tr>';
+    echo '<td>' . $organisationCategoryTC1[$valueTC1] . '</td>';
+    echo '<td>' . $TC1NSFMAL = $totalValueHP4['TC1']['VOL'][$valueTC1]['Private Sector']['MAL'] . '</td>';
+    echo '<td>' . $TC1NSFFEM = $totalValueHP4['TC1']['VOL'][$valueTC1]['Private Sector']['FEM'] . '</td>';
+    echo '<td>' . $TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM) . '</td>';
+    echo '<td>' . $TC1PSFMAL = $totalValueHP4['TC1']['PSF'][$valueTC1]['Private Sector']['MAL'] . '</td>';
+    echo '<td>' . $TC1PSFFEM = $totalValueHP4['TC1']['PSF'][$valueTC1]['Private Sector']['FEM'] . '</td>';
+    echo '<td>' . $TC1PSFTOT = ($TC1PSFMAL + $TC1PSFFEM) . '</td>';
+    echo '<td>' . $TC1NSFMAL = $totalValueHP4['TC1']['NSF'][$valueTC1]['Private Sector']['MAL'] . '</td>';
+    echo '<td>' . $TC1NSFFEM = $totalValueHP4['TC1']['NSF'][$valueTC1]['Private Sector']['FEM'] . '</td>';
+    echo '<td>' . $TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM) . '</td>';
+    echo '</tr>';
+    echo '<tr>';
+}
+
+echo '<table>';
+
+echo '<br>';
+
+echo 'By Public Sector';
+echo '<table border="1">';
+echo '<tr>';
+echo '<th rowspan="2">Training topic</th>';
+echo '<th colspan="3">Number of volunteers trained</th>';
+echo '<th colspan="3">Number of project staff trained</th>';
+echo '<th colspan="3">Number of employees trained</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '</tr>';
+
+foreach (array_unique($breackdownTypeTC1['TC1']) as $valueTC1) {
+
+    echo '<tr>';
+    echo '<td>' . $organisationCategoryTC1[$valueTC1] . '</td>';
+    echo '<td>' . $TC1NSFMAL = $totalValueHP4['TC1']['VOL'][$valueTC1]['Government']['MAL'] . '</td>';
+    echo '<td>' . $TC1NSFFEM = $totalValueHP4['TC1']['VOL'][$valueTC1]['Government']['FEM'] . '</td>';
+    echo '<td>' . $TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM) . '</td>';
+    echo '<td>' . $TC1PSFMAL = $totalValueHP4['TC1']['PSF'][$valueTC1]['Government']['MAL'] . '</td>';
+    echo '<td>' . $TC1PSFFEM = $totalValueHP4['TC1']['PSF'][$valueTC1]['Government']['FEM'] . '</td>';
+    echo '<td>' . $TC1PSFTOT = ($TC1PSFMAL + $TC1PSFFEM) . '</td>';
+    echo '<td>' . $TC1NSFMAL = $totalValueHP4['TC1']['NSF'][$valueTC1]['Government']['MAL'] . '</td>';
+    echo '<td>' . $TC1NSFFEM = $totalValueHP4['TC1']['NSF'][$valueTC1]['Government']['FEM'] . '</td>';
+    echo '<td>' . $TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM) . '</td>';
+    echo '</tr>';
+    echo '<tr>';
+}
+
+echo '<table>';
+
+echo '<br>';
+
+echo 'By SHACCOMs';
+echo '<table border="1">';
+echo '<tr>';
+echo '<th rowspan="2">Training topic</th>';
+echo '<th colspan="3">Number of volunteers trained</th>';
+echo '<th colspan="3">Number of project staff trained</th>';
+echo '<th colspan="3">Number of employees trained</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '</tr>';
+
+foreach (array_unique($breackdownTypeTC1['TC1']) as $valueTC1) {
+
+    echo '<tr>';
+    echo '<td>' . $organisationCategoryTC1[$valueTC1] . '</td>';
+    echo '<td>' . $TC1NSFMAL = $totalValueHP4['TC1']['VOL'][$valueTC1]['SHACCOMs']['MAL'] . '</td>';
+    echo '<td>' . $TC1NSFFEM = $totalValueHP4['TC1']['VOL'][$valueTC1]['SHACCOMs']['FEM'] . '</td>';
+    echo '<td>' . $TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM) . '</td>';
+    echo '<td>' . $TC1PSFMAL = $totalValueHP4['TC1']['PSF'][$valueTC1]['SHACCOMs']['MAL'] . '</td>';
+    echo '<td>' . $TC1PSFFEM = $totalValueHP4['TC1']['PSF'][$valueTC1]['SHACCOMs']['FEM'] . '</td>';
+    echo '<td>' . $TC1PSFTOT = ($TC1PSFMAL + $TC1PSFFEM) . '</td>';
+    echo '<td>' . $TC1NSFMAL = $totalValueHP4['TC1']['NSF'][$valueTC1]['SHACCOMs']['MAL'] . '</td>';
+    echo '<td>' . $TC1NSFFEM = $totalValueHP4['TC1']['NSF'][$valueTC1]['SHACCOMs']['FEM'] . '</td>';
+    echo '<td>' . $TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM) . '</td>';
+    echo '</tr>';
+    echo '<tr>';
+}
+
+echo '<table>';
+
+echo 'Training of community-level organisations';
+
+echo '<table border="1">';
+echo '<tr>';
+echo '<td>Training of community level organisations</td>';
+echo '<th>Within CSOs</th>';
+echo '<th>Within Private Sector</th>';
+echo '<th>Within Government</th>';
+echo '<th>Within SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Number of organisations at the community level trained in planning, implementation and management of HIV services this quarter</td>';
+echo '<td>' . $totalValueHP4['TC2']['']['']['CSOs'][''] . '</td>';
+echo '<td>' . $totalValueHP4['TC2']['']['']['Private Sector'][''] . '</td>';
+echo '<td>' . $totalValueHP4['TC2']['']['']['Government'][''] . '</td>';
+echo '<td>' . $totalValueHP4['TC2']['']['']['SHACCOMs'][''] . '</td>';
+echo '</tr>';
+echo '</table>';
 ?>
