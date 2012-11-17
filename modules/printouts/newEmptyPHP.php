@@ -68,7 +68,8 @@ $queryHP2 = "SELECT `ZhaFigureCode`, `BreakdownTypeID`, `BreakdownTypeDescriptio
               ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
            WHERE `BreakdownCategoryID` = 'HVI'
              AND ZhaFigureCode = 'HP2'
-        GROUP BY `BreakdownTypeID`, BreakdownTypeID3, OrganisationGroup
+        GROUP BY `BreakdownTypeID`, BreakdownTypeID3,
+                  OrganisationGroup, ZhaFigureCode
         ORDER BY BreakdownTypeDescription ASC";
 
 $resultHP2 = mysql_query($queryHP2) or die(mysql_error());
@@ -79,10 +80,10 @@ while ($rowHP2 = mysql_fetch_array($resultHP2)) {
     $organisationCategoryHP2[$rowHP2['BreakdownTypeID']] = $rowHP2['BreakdownTypeDescription'];
 }
 
-$queryHP3 = "SELECT `ZhaFigureCode`, `BreakdownTypeID`, `OrganisationGroup`,
+$queryHP3 = "SELECT DISTINCT `ZhaFigureCode`, `BreakdownTypeID`, `OrganisationGroup`,
                     SUM(`ZhaFigureValue`) AS total
                FROM `tblzhafigures` fig
-         INNER JOIN `tblzhasetupfigurebreakdowntypes` typ
+          LEFT JOIN `tblzhasetupfigurebreakdowntypes` typ
                  ON fig.`BreakdownTypeID1` = typ.`BreakdownTypeID`
          INNER JOIN tblzhaformssubmitted sub
                  ON fig.`FormSerialNumber` = sub.`FormSerialNumber`
@@ -93,7 +94,9 @@ $queryHP3 = "SELECT `ZhaFigureCode`, `BreakdownTypeID`, `OrganisationGroup`,
               WHERE ZhaFigureCode = 'HP3'      
                  OR ZhaFigureCode = 'HP6'      
                  OR ZhaFigureCode = 'HP7'      
-           GROUP BY `BreakdownTypeID`, OrganisationGroup";
+                 OR ZhaFigureCode = 'CS1'      
+                 OR ZhaFigureCode = 'CS2'      
+           GROUP BY `BreakdownTypeID`, OrganisationGroup, ZhaFigureCode";
 
 $resultHP3 = mysql_query($queryHP3) or die(mysql_error());
 
@@ -122,7 +125,13 @@ $queryHP4 = "SELECT `ZhaFigureCode`, typ.`BreakdownTypeID`, BreakdownTypeID1,
               OR ZhaFigureCode = 'M01'
               OR ZhaFigureCode = 'TC1'
               OR ZhaFigureCode = 'TC2'
-        GROUP BY `BreakdownTypeID`,BreakdownTypeID1, BreakdownTypeID3, OrganisationGroup
+              OR ZhaFigureCode = 'MC2'
+              OR ZhaFigureCode = 'MC4'
+              OR ZhaFigureCode = 'B01'
+              OR ZhaFigureCode = 'B02'
+              OR ZhaFigureCode = 'B03'
+        GROUP BY `BreakdownTypeID`,BreakdownTypeID1, BreakdownTypeID3,
+                 OrganisationGroup, ZhaFigureCode
         ORDER BY BreakdownTypeDescription ASC, BreakdownTypeDescriptionTC1 ASC";
 
 $resultHP4 = mysql_query($queryHP4) or die(mysql_error());
@@ -133,6 +142,36 @@ while ($rowHP4 = mysql_fetch_array($resultHP4)) {
     $breackdownTypeTC1[$rowHP4['ZhaFigureCode']][] = $rowHP4['BreakdownTypeID1'];
     $organisationCategoryHP4[$rowHP4['BreakdownTypeID']] = $rowHP4['BreakdownTypeDescription'];
     $organisationCategoryTC1[$rowHP4['BreakdownTypeID1']] = $rowHP4['BreakdownTypeDescriptionTC1'];
+}
+
+$queryMC = "SELECT `ZhaQuestionCode`, `OrganisationGroup`,
+                  COUNT(`ZhaAnswer`) AS total
+            FROM `tblzhaanswers` ans
+      INNER JOIN tblzhaformssubmitted sub
+              ON ans.`FormSerialNumber` = sub.`FormSerialNumber`
+      INNER JOIN `tblgenorganisations` org
+              ON sub.`OrganisationCode` = org.`OrganisationCode`
+      INNER JOIN `tblgensetuporganisationcategories` cat
+              ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
+           WHERE ZhaQuestionCode = 'MC1'
+              OR ZhaQuestionCode = 'MC3'
+              OR ZhaQuestionCode = 'MC5'
+              OR ZhaQuestionCode = 'MC6a'
+              OR ZhaQuestionCode = 'MC6b'
+              OR ZhaQuestionCode = 'MC6c'
+              OR ZhaQuestionCode = 'MC6d'
+              OR ZhaQuestionCode = 'MC6e'
+              OR ZhaQuestionCode = 'MC6f'
+              OR ZhaQuestionCode = 'MC6g'
+              OR ZhaQuestionCode = 'MC6h'
+              OR ZhaQuestionCode = 'ME1a'
+             AND `ZhaAnswer` = 'Yes'
+        GROUP BY ZhaQuestionCode, OrganisationGroup";
+
+$resultMC = mysql_query($queryMC) or die(mysql_error());
+
+while ($rowMC = mysql_fetch_array($resultMC)) {
+    $totalValueMC[$rowMC['ZhaQuestionCode']][$rowMC['OrganisationGroup']] = $rowMC['total'];
 }
 
 
@@ -799,6 +838,102 @@ echo '<table>';
 
 echo '<br>';
 
+echo 'D: HIV CARE AND SUPPORT SERVICES - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4';
+
+echo '<br>';
+
+echo 'Home-based care volunteers';
+echo '<table border="1">';
+echo '<tr>';
+echo '<th></th>';
+echo '<th colspan="2">CSOs</th>';
+echo '<th colspan="2">Private Sector</th>';
+echo '<th colspan="2">Government</th>';
+echo '<th colspan="2">SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td rowspan="2">Number of active home-based care volunteers registered this quarter</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>' . $totalValueHP3['CS1']['MAL']['CSOs'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['FEM']['CSOs'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['MAL']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['FEM']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['MAL']['Government'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['FEM']['Government'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['MAL']['SHACCOMs'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['FEM']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
+echo 'Home-based care visits';
+echo '<br>';
+echo 'Home-based care volunteers';
+
+echo '<table border="1">';
+echo '<tr>';
+echo '<th></th>';
+echo '<th colspan="2">CSOs</th>';
+echo '<th colspan="2">Private Sector</th>';
+echo '<th colspan="2">Government</th>';
+echo '<th colspan="2">SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td rowspan="2">Number of active home-based care volunteers registered this quarter</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>' . $totalValueHP3['CS1']['MAL']['CSOs'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['FEM']['CSOs'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['MAL']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['FEM']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['MAL']['Government'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['FEM']['Government'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['MAL']['SHACCOMs'] . '</td>';
+echo '<td>' . $totalValueHP3['CS1']['FEM']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '</table';
+
+echo '<br>';
+
+echo 'Home-based care visits';
+
+echo '<table border="1">';
+echo '<tr>';
+echo '<td></td>';
+echo '<th>CSOs</th>';
+echo '<th>Private Sector</th>';
+echo '<th>Government</th>';
+echo '<th>SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Number of community home-based care person-visits this quarter</td>';
+echo '<td>' . $totalValueHP3['CS2']['']['CSOs'] . '</td>';
+echo '<td>' . $totalValueHP3['CS2']['']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueHP3['CS2']['']['Government'] . '</td>';
+echo '<td>' . $totalValueHP3['CS2']['']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
 echo 'By SHACCOMs';
 echo '<table border="1">';
 echo '<tr>';
@@ -1044,6 +1179,8 @@ foreach (array_unique($breackdownTypeTC1['TC1']) as $valueTC1) {
 
 echo '<table>';
 
+echo '<br>';
+
 echo 'Training of community-level organisations';
 
 echo '<table border="1">';
@@ -1062,4 +1199,196 @@ echo '<td>' . $totalValueHP4['TC2']['']['']['Government'][''] . '</td>';
 echo '<td>' . $totalValueHP4['TC2']['']['']['SHACCOMs'][''] . '</td>';
 echo '</tr>';
 echo '</table>';
+
+echo '<br>';
+
+echo 'F: MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4';
+
+echo '<br>';
+echo '<br>';
+
+echo '<table border="1">';
+echo '<tr>';
+echo '<td></td>';
+echo '<th>CSOs</th>';
+echo '<th>Private Sector</th>';
+echo '<th>Government</th>';
+echo '<th>SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>How many organisations have HIV work plans for the current financial year?</td>';
+echo '<td>' . $totalValueMC['MC1']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC1']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC1']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC1']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>How many organisations have indicated that funding was available in the last quarter to implement the HIV work plan?</td>';
+echo '<td>' . $totalValueMC['MC3']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC3']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC3']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC3']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>How many organisations implemented their HIV work plans this quarter?</td>';
+echo '<td>' . $totalValueMC['MC5']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC5']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC5']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC5']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
+echo 'Funding';
+echo '<table border="1">';
+echo '<tr>';
+echo '<td></td>';
+echo '<th>CSOs</th>';
+echo '<th>Private Sector</th>';
+echo '<th>Government</th>';
+echo '<th>SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td></td>';
+echo '<td>' . $totalValueHP4['MC2']['']['']['CSOs'][''] . '</td>';
+echo '<td>' . $totalValueHP4['MC2']['']['']['Private Sector'][''] . '</td>';
+echo '<td>' . $totalValueHP4['MC2']['']['']['Government'][''] . '</td>';
+echo '<td>' . $totalValueHP4['MC2']['']['']['SHACCOMs'][''] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td></td>';
+echo '<td>' . $totalValueHP4['MC4']['']['']['CSOs'][''] . '</td>';
+echo '<td>' . $totalValueHP4['MC4']['']['']['Private Sector'][''] . '</td>';
+echo '<td>' . $totalValueHP4['MC4']['']['']['Government'][''] . '</td>';
+echo '<td>' . $totalValueHP4['MC4']['']['']['SHACCOMs'][''] . '</td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
+echo 'Areas covered in work plan';
+
+echo '<table border="1">';
+echo '<tr>';
+echo '<td></td>';
+echo '<th>CSOs</th>';
+echo '<th>Private Sector</th>';
+echo '<th>Government</th>';
+echo '<th>SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Is HIV prevention in your work plan?</td>';
+echo '<td>' . $totalValueMC['MC6a']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC6a']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC6a']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC6a']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Is HIV treatment, care and support in your work plan?</td>';
+echo '<td>' . $totalValueMC['MC6b']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC6b']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC6b']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC6b']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Are HIV impact mitigation services in your work plan?</td>';
+echo '<td>' . $totalValueMC['MC6c']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC6c']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC6c']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC6c']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Is management in your work plan?</td>';
+echo '<td>' . $totalValueMC['MC6d']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC6d']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC6d']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC6d']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Is planning in your work plan?</td>';
+echo '<td>' . $totalValueMC['MC6e']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC6e']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC6e']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC6e']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>s coordination in your work plan?</td>';
+echo '<td>' . $totalValueMC['MC6f']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC6f']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC6f']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC6f']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Is advocacy in your work plan?</td>';
+echo '<td>' . $totalValueMC['MC6g']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC6g']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC6g']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC6g']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Is capacity building in your work plan?</td>';
+echo '<td>' . $totalValueMC['MC6h']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['MC6h']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['MC6h']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['MC6h']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
+echo '<table border="1">';
+echo '<tr>';
+echo '<td>How many organisations attended an HIV feedback
+or data dissemination workshop at district level this
+quarter?</td>';
+echo '<th>CSOs</th>';
+echo '<th>Private Sector</th>';
+echo '<th>Government</th>';
+echo '<th>SHACCOMs</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td></td>';
+echo '<td>' . $totalValueMC['ME1a']['CSOs'] . '</td>';
+echo '<td>' . $totalValueMC['ME1a']['Private Sector'] . '</td>';
+echo '<td>' . $totalValueMC['ME1a']['Government'] . '</td>';
+echo '<td>' . $totalValueMC['ME1a']['SHACCOMs'] . '</td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
+echo 'G: SUMMARY DATA FROM ZHAPMoS FORM 2 (SCHOOLS)';
+?>
+<table width="100%" border="1">
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+
+<?php
+
+echo '<br>';
+echo 'Lifeskills education on HIV';
 ?>
