@@ -76,7 +76,7 @@ h2 h5 {
 }
 
 td.data-group {
-    background-color: #ad343d;
+    background-color: #ad343d !important;
     color: #fff;
     font-weight: bold;
     text-align: center !important;

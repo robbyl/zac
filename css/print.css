@@ -141,17 +141,6 @@ table.two-groups .no-border td {
     background: #fff;
 }
 
-
-
-td.data-group {
-    background-color: #ad343d;
-    color: #fff;
-    font-weight: bold;
-    text-align: center !important;
-    vertical-align: central !important;
-    width: 45px;
-}
-
 .form-summery td {
     text-align: right
 }

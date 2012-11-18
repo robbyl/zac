@@ -1073,6 +1073,293 @@ require '../../includes/session_validator.php';
                                     ?>
                                 </table>
                                 <!-- end .section  --></div>
+
+                            <div class="section">
+                                <h3><strong>D: HIV CARE AND SUPPORT SERVICES - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4</strong></h3>
+                                <p style="font-weight: bold;">Home-based care volunteers</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">                                 
+                                    <tr>
+                                        <th></th>
+                                        <th colspan="2">CSOs</th>
+                                        <th colspan="2">Private Sector</th>
+                                        <th colspan="2">Government</th>
+                                        <th colspan="2">SHACCOMs</th>
+                                        <td rowspan="3"  class="data-group">CS1</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">Number of active home-based care volunteers registered this quarter</td>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>' . number_format($totalValueHP3['CS1']['MAL']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS1']['FEM']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS1']['MAL']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS1']['FEM']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS1']['MAL']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS1']['FEM']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS1']['MAL']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS1']['FEM']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">Home-based care visits</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">                                 
+                                    <tr>
+                                        <th></th>
+                                        <th colspan="4">Number of person-visits</th>
+                                        <td rowspan="3"  class="data-group">CS2</td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>CSOs</th>
+                                        <th>Private Sector</th>
+                                        <th>Government</th>
+                                        <th>SHACCOMs</th>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Number of community home-based care person-visits this quarter</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS2']['']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS2']['']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS2']['']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP3['CS2']['']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+                                <!-- end .section  --></div>
+
+                            <div class="section">
+                                <h3><strong>E: TRAINING AND CAPACITY BUILDING FOR HIV - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4</strong></h3>
+                                <p style="font-weight: bold;">By Civil Society Organisations</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Training topic</th>
+                                        <th colspan="3">Number of volunteers trained</th>
+                                        <th colspan="3">Number of project staff trained</th>
+                                        <th colspan="3">Number of employees trained</th>
+                                        <td rowspan="<?php echo count(array_unique($breackdownTypeTC1['TC1'])) + 2 ?>"  class="data-group">TC1A</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    foreach (array_unique($breackdownTypeTC1['TC1']) as $valueTC1) {
+
+                                        echo '<tr>';
+                                        echo '<td>' . $organisationCategoryTC1[$valueTC1] . '</td>';
+                                        echo '<td>' . number_format($TC1NSFMAL = $totalValueHP4['TC1']['VOL'][$valueTC1]['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFFEM = $totalValueHP4['TC1']['VOL'][$valueTC1]['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM), 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFMAL = $totalValueHP4['TC1']['PSF'][$valueTC1]['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFFEM = $totalValueHP4['TC1']['PSF'][$valueTC1]['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFTOT = ($TC1PSFMAL + $TC1PSFFEM), 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFMAL = $totalValueHP4['TC1']['NSF'][$valueTC1]['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFFEM = $totalValueHP4['TC1']['NSF'][$valueTC1]['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM), 0, ".", ",") . '</td>';
+                                        echo '</tr>';
+                                    }
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">By Private Sector</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Training topic</th>
+                                        <th colspan="3">Number of volunteers trained</th>
+                                        <th colspan="3">Number of project staff trained</th>
+                                        <th colspan="3">Number of employees trained</th>
+                                        <td rowspan="<?php echo count(array_unique($breackdownTypeTC1['TC1'])) + 2 ?>"  class="data-group">TC1B</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    foreach (array_unique($breackdownTypeTC1['TC1']) as $valueTC1) {
+
+                                        echo '<tr>';
+                                        echo '<td>' . $organisationCategoryTC1[$valueTC1] . '</td>';
+                                        echo '<td>' . number_format($TC1NSFMAL = $totalValueHP4['TC1']['VOL'][$valueTC1]['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFFEM = $totalValueHP4['TC1']['VOL'][$valueTC1]['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM), 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFMAL = $totalValueHP4['TC1']['PSF'][$valueTC1]['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFFEM = $totalValueHP4['TC1']['PSF'][$valueTC1]['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFTOT = ($TC1PSFMAL + $TC1PSFFEM), 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFMAL = $totalValueHP4['TC1']['NSF'][$valueTC1]['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFFEM = $totalValueHP4['TC1']['NSF'][$valueTC1]['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM), 0, ".", ",") . '</td>';
+                                        echo '</tr>';
+                                    }
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">By Public Sector</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Training topic</th>
+                                        <th colspan="3">Number of volunteers trained</th>
+                                        <th colspan="3">Number of project staff trained</th>
+                                        <th colspan="3">Number of employees trained</th>
+                                        <td rowspan="<?php echo count($breackdownTypeTC1['TC1']) + 2 ?>"  class="data-group">TC1C</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    foreach (array_unique(array_unique($breackdownTypeTC1['TC1'])) as $valueTC1) {
+
+                                        echo '<tr>';
+                                        echo '<td>' . $organisationCategoryTC1[$valueTC1] . '</td>';
+                                        echo '<td>' . number_format($TC1NSFMAL = $totalValueHP4['TC1']['VOL'][$valueTC1]['Government']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFFEM = $totalValueHP4['TC1']['VOL'][$valueTC1]['Government']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM), 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFMAL = $totalValueHP4['TC1']['PSF'][$valueTC1]['Government']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFFEM = $totalValueHP4['TC1']['PSF'][$valueTC1]['Government']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFTOT = ($TC1PSFMAL + $TC1PSFFEM), 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFMAL = $totalValueHP4['TC1']['NSF'][$valueTC1]['Government']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFFEM = $totalValueHP4['TC1']['NSF'][$valueTC1]['Government']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM), 0, ".", ",") . '</td>';
+                                        echo '</tr>';
+                                    }
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">By SHACCOMs</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Training topic</th>
+                                        <th colspan="3">Number of volunteers trained</th>
+                                        <th colspan="3">Number of project staff trained</th>
+                                        <th colspan="3">Number of employees trained</th>
+                                        <td rowspan="<?php echo count(array_unique($breackdownTypeTC1['TC1'])) + 2 ?>"  class="data-group">TC1D</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    foreach (array_unique($breackdownTypeTC1['TC1']) as $valueTC1) {
+
+                                        echo '<tr>';
+                                        echo '<td>' . $organisationCategoryTC1[$valueTC1] . '</td>';
+                                        echo '<td>' . number_format($TC1NSFMAL = $totalValueHP4['TC1']['VOL'][$valueTC1]['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFFEM = $totalValueHP4['TC1']['VOL'][$valueTC1]['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM), 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFMAL = $totalValueHP4['TC1']['PSF'][$valueTC1]['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFFEM = $totalValueHP4['TC1']['PSF'][$valueTC1]['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1PSFTOT = ($TC1PSFMAL + $TC1PSFFEM), 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFMAL = $totalValueHP4['TC1']['NSF'][$valueTC1]['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFFEM = $totalValueHP4['TC1']['NSF'][$valueTC1]['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                        echo '<td>' . number_format($TC1NSFTOT = ($TC1NSFMAL + $TC1NSFFEM), 0, ".", ",") . '</td>';
+                                        echo '</tr>';
+                                    }
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">Training of community-level organisations</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th>Training of community level organisations</th>
+                                        <th>Within CSOs</th>
+                                        <th>Within Private Sector</th>
+                                        <th>Within Government</th>
+                                        <th>Within SHACCOMs</th>
+                                        <td rowspan="3"  class="data-group">TC2</td>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Number of organisations at the community level trained in planning, implementation and management of HIV services this quarter</td>';
+                                    echo '<td>' . number_format($totalValueHP4['TC2']['']['']['CSOs'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['TC2']['']['']['Private Sector'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['TC2']['']['']['Government'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['TC2']['']['']['SHACCOMs'][''], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+                                <!-- end .section  --></div>
+                            <div class="section">
+                                <h3><strong>F: MANAGEMENT AND COORDINATION OF HIV INTERVENTIONS - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4</strong></h3>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <td></td>
+                                        <th>CSOs</th>
+                                        <th>Private Sector</th>
+                                        <th>Government</th>
+                                        <th>SHACCOMs</th>
+                                        <td class="data-group"></td>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>How many organisations have HIV work plans for the current financial year?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC1']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC1']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC1']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC1']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '<td class="data-group">MC1</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>How many organisations have indicated that funding was available in the last quarter to implement the HIV work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC3']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC3']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC3']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC3']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '<td class="data-group">MC3</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>How many organisations implemented their HIV work plans this quarter?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC5']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC5']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC5']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC5']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '<td class="data-group">MC5</td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+                                
+                                <p style="font-weight: bold;">Funding</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    
+                                </table>
+                                <!-- end .section  --></div>
                             <!-- end sheet-wrapper  --></div>
                         <!-- end #report --></div>
                     <!-- end .report-wrapper --></div>
