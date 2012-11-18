@@ -41,7 +41,7 @@
 
             event.preventDefault();
 
-            nav('form_summery.php');
+            nav('form_summary.php');
 
         });
 
@@ -55,7 +55,7 @@
         ?>
         <div class="form-header">
             <div class="close tip_left" title="Close" ></div>
-            <h1>ZHAPMoS Forms Summery Criteria</h1>
+            <h1>ZHAPMoS Forms Summary Criteria</h1>
             <div class="hr-line"></div>
             <!-- end . form-header --></div>
 

@@ -46,7 +46,7 @@ ob_start();
                 $('#form-summery').click(function() {
 
                     // Display receive form summery as pop-up
-                    getPopForm('summery_criteria.php', '');
+                    getPopForm('summary_criteria.php', '');
                 });
             });
 
@@ -74,7 +74,7 @@ ob_start();
                             <li><a href="#" id="org-list">Organisation list and Contacts Details</a></li>
                             <li><a href="#" id="form-received">ZHAPMoS Forms Received</a></li>
                             <li><a href="#" id="form-submitted">ZHAPMoS Forms Submission Records</a></li>
-                            <li><a href="#" id="form-summery">ZHAPMoS Forms Summery</a></li>
+                            <li><a href="#" id="form-summery">ZHAPMoS Forms Summary</a></li>
                             <!--<li><a href="#">ZAC and District Staff List</a></li>-->
                         </ul>
                     </fieldset>

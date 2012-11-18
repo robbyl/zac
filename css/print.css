@@ -7,6 +7,7 @@
 */
 
 /* CSS Document */
+@import url("forms.css");
 
 @font-face {
     font-family: "Segoe UI Light";
@@ -132,21 +133,31 @@ table.two-groups .no-border td {
     clear: both;
 }
 
-.sheet-table tr:nth-child(even), .sheet-table tr:nth-child(even) td{
+.sheet-table tr:nth-child(even), .sheet-table tr:nth-child(even) td , .form-summery tr:nth-child(even), .form-summery tr:nth-child(even) td{
     background: #fafafa;
 }
 
-.sheet-table tr:nth-child(odd){
+.sheet-table tr:nth-child(odd), .form-summery tr:nth-child(odd){
     background: #fff;
 }
 
-.sheet-table td, .sheet-table th {
-    vertical-align: text-top;
-    border-color: #a9a9a9;
+
+
+td.data-group {
+    background-color: #ad343d;
+    color: #fff;
+    font-weight: bold;
+    text-align: center !important;
+    vertical-align: central !important;
+    width: 45px;
 }
 
-td, th {
-    vertical-align: text-top;
+.form-summery td {
+    text-align: right
+}
+
+.form-summery tr td:first-child {
+    text-align: left !important;
 }
 
 @page {
@@ -165,7 +176,7 @@ td, th {
     }
 
     tr, td {
-        page-break-inside: avoid;
+        page-break-inside: avoid !important;
     }
 
     legend {
