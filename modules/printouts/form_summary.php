@@ -1354,24 +1354,287 @@ require '../../includes/session_validator.php';
                                     echo '</tr>';
                                     ?>
                                 </table>
-                                
+
                                 <p style="font-weight: bold;">Funding</p>
                                 <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
-                                    
+                                    <tr>
+                                        <th></th>
+                                        <th>CSOs</th>
+                                        <th>Private Sector</th>
+                                        <th>Government</th>
+                                        <th>SHACCOMs</th>
+                                        <td class="data-group"></td>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td></td>';
+                                    echo '<td>' . number_format($totalValueHP4['MC2']['']['']['CSOs'][''], 2, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['MC2']['']['']['Private Sector'][''], 2, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['MC2']['']['']['Government'][''], 2, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['MC2']['']['']['SHACCOMs'][''], 2, ".", ",") . '</td>';
+                                    echo '<td class="data-group">MC2</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td></td>';
+                                    echo '<td>' . number_format($totalValueHP4['MC4']['']['']['CSOs'][''], 2, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['MC4']['']['']['Private Sector'][''], 2, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['MC4']['']['']['Government'][''], 2, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueHP4['MC4']['']['']['SHACCOMs'][''], 2, ".", ",") . '</td>';
+                                    echo '<td class="data-group">MC4</td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">Areas covered in work plan</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th></th>
+                                        <th colspan="4">Number of organisations</th>  
+                                        <td rowspan="10" class="data-group">MC6</td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>Within CSOs</th>
+                                        <th>Within Private Sector</th>
+                                        <th>Within Government</th>
+                                        <th>Within SHACCOMs</th>                                        
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Is HIV prevention in your work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6a']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6a']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6a']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6a']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Is HIV treatment, care and support in your work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6b']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6b']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6b']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6b']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Are HIV impact mitigation services in your work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6c']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6c']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6c']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6c']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Is management in your work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6d']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6d']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6d']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6d']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Is planning in your work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6e']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6e']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6e']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6e']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>s coordination in your work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6f']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6f']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6f']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6f']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Is advocacy in your work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6g']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6g']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6g']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6g']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Is capacity building in your work plan?</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6h']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6h']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6h']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['MC6h']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th></th>
+                                        <th>Within CSOs</th>
+                                        <th>Within Private Sector</th>
+                                        <th>Within Government</th>
+                                        <th>Within SHACCOMs</th>
+                                        <td rowspan="2" class="data-group">ME1</td>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>How many organisations attended an HIV feedback or data dissemination workshop at district level this quarter?</td>';
+                                    echo '<td>' . number_format($totalValueMC['ME1a']['CSOs'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['ME1a']['Private Sector'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['ME1a']['Government'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($totalValueMC['ME1a']['SHACCOMs'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    ?>
                                 </table>
                                 <!-- end .section  --></div>
-                            <!-- end sheet-wrapper  --></div>
-                        <!-- end #report --></div>
-                    <!-- end .report-wrapper --></div>
-                <?php
+
+                            <div class="section">
+                                <h3><strong>G: SUMMARY DATA FROM ZHAPMoS FORM 2 (SCHOOLS)</strong></h3>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td rowspan="2" class="data-group">CS1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+
+
+                                <p style="font-weight: bold;">Life skills education on HIV</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Type of school</th>
+                                        <th rowspan="2">Number of schools with teachers trained</th>
+                                        <th colspan="3">Number of teachers trained in life skills</th>
+                                        <th colspan="3">Number of trained teachers who taught life skills regularly</th>
+                                        <td rowspan="7" class="data-group">CS2</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Government primary school</td>';
+                                    echo '<td>' . number_format($B01GPSTOT = ($totalOrg['B01']['MAL']['Government primary schools'] + $totalOrg['B01']['FEM']['Government primary schools']
+                                            + $totalOrg['B02']['MAL']['Government primary schools'] + $totalOrg['B02']['FEM']['Government primary schools']), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B01MAL = $totalValueHP4['B01']['']['MAL']['Government primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B01FEM = $totalValueHP4['B01']['']['FEM']['Government primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B01MAL + $B01FEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B02MAL = $totalValueHP4['B02']['']['MAL']['Government primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B02FEM = $totalValueHP4['B02']['']['FEM']['Government primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B02MAL + $B02FEM), 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Government secondary schools</td>';
+                                    echo '<td>' . number_format($B01GSSTOT = ($totalOrg['B01']['MAL']['Government secondary schools'] + $totalOrg['B01']['FEM']['Government secondary schools']
+                                            + $totalOrg['B02']['MAL']['Government secondary schools'] + $totalOrg['B02']['FEM']['Government secondary schools']), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B01MAL = $totalValueHP4['B01']['']['MAL']['Government secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B01FEM = $totalValueHP4['B01']['']['FEM']['Government secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B01MAL + $B01FEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B02MAL = $totalValueHP4['B02']['']['MAL']['Government secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B02FEM = $totalValueHP4['B02']['']['FEM']['Government secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B02MAL + $B02FEM), 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Private primary schools</td>';
+                                    echo '<td>' . number_format($B01PPSTOT = ($totalOrg['B01']['MAL']['Private primary schools'] + $totalOrg['B01']['FEM']['Private primary schools']
+                                            + $totalOrg['B02']['MAL']['Private primary schools'] + $totalOrg['B02']['FEM']['Private primary schools']), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B01MAL = $totalValueHP4['B01']['']['MAL']['Private primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B01FEM = $totalValueHP4['B01']['']['FEM']['Private primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B01MAL + $B01FEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B02MAL = $totalValueHP4['B02']['']['MAL']['Private primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B02FEM = $totalValueHP4['B02']['']['FEM']['Private primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B02MAL + $B02FEM), 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Private secondary schools</td>';
+                                    echo '<td>' . number_format($B01PSSTOT = ($totalOrg['B01']['MAL']['Private secondary schools'] + $totalOrg['B01']['FEM']['Private secondary schools']
+                                            + $totalOrg['B02']['MAL']['Private secondary schools'] + $totalOrg['B02']['FEM']['Private secondary schools']), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B01MAL = $totalValueHP4['B01']['']['MAL']['Private secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B01FEM = $totalValueHP4['B01']['']['FEM']['Private secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B01MAL + $B01FEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B02MAL = $totalValueHP4['B02']['']['MAL']['Private secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B02FEM = $totalValueHP4['B02']['']['FEM']['Private secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B02MAL + $B02FEM), 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Total</td><td>' . number_format(($B01GPSTOT + $B01GSSTOT + $B01PPSTOT + $B01PSSTOT), 0, ".", ",") . '</td><td></td><td></td><td></td><td></td><td></td><td></td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">Presence of clubs in schools that have HIV prevention programmes</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Type of school</th>
+                                        <th rowspan="2">Number of schools with youth clubs</th>
+                                        <th colspan="3">Number of youth club members</th>
+                                        <td rowspan="7" class="data-group">CS3,4</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Government primary school</td>';
+                                    echo '<td>' . number_format(($totalOrg['B03']['MAL']['Government primary schools'] + $totalOrg['B03']['FEM']['Government primary schools']), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B03MAL = $totalValueHP4['B03']['']['MAL']['Government primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B03FEM = $totalValueHP4['B03']['']['FEM']['Government primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B03MAL + $B03FEM), 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Government secondary schools</td>';
+                                    echo '<td>' . number_format(($totalOrg['B03']['MAL']['Government secondary schools'] + $totalOrg['B03']['FEM']['Government secondary schools']), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B03MAL = $totalValueHP4['B03']['']['MAL']['Government secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B03FEM = $totalValueHP4['B03']['']['FEM']['Government secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B03MAL + $B03FEM), 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Private primary schools</td>';
+                                    echo '<td>' . number_format(($totalOrg['B03']['MAL']['Private primary schools'] + $totalOrg['B03']['FEM']['Private primary schools']), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B03MAL = $totalValueHP4['B03']['']['MAL']['Private primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B03FEM = $totalValueHP4['B03']['']['FEM']['Private primary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B03MAL + $B03FEM), 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Private secondary schools</td>';
+                                    echo '<td>' . number_format(($totalOrg['B03']['MAL']['Private secondary schools'] + $totalOrg['B03']['FEM']['Private secondary schools']), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B03MAL = $totalValueHP4['B03']['']['MAL']['Private secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($B03FEM = $totalValueHP4['B03']['']['FEM']['Private secondary schools'][''], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format(($B03MAL + $B01FEM), 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+                                <!-- end sheet-wrapper  --></div>
+                            <!-- end #report --></div>
+                        <!-- end .report-wrapper --></div>
+                    <?php
 //                    } else {
 //                        echo '<div class="message">no data found!</div>';
 //                    }
 //                }
-                ?>
-                <!-- end .content --></div>
-            <?php include '../../includes/footer.php'; ?>
-            <!-- end .container --></div>
+                    ?>
+                    <!-- end .content --></div>
+                <?php include '../../includes/footer.php'; ?>
+                <!-- end .container --></div>
     </body>
     <script type="text/javascript">
 
