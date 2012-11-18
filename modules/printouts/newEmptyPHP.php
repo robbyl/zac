@@ -1,5 +1,4 @@
 <?php
-
 include '../../config/config.php';
 error_reporting(0);
 
@@ -107,7 +106,7 @@ while ($rowHP3 = mysql_fetch_array($resultHP3)) {
 $queryHP4 = "SELECT `ZhaFigureCode`, typ.`BreakdownTypeID`, BreakdownTypeID1, 
                    typ.`BreakdownTypeDescription`, typTC1.BreakdownTypeDescription AS BreakdownTypeDescriptionTC1,
                   `OrganisationGroup`, BreakdownTypeID3,
-                  SUM(`ZhaFigureValue`) AS total
+                  SUM(`ZhaFigureValue`) AS total, COUNT(OrganisationGroup) AS groupTotal
             FROM `tblzhafigures` fig
        LEFT JOIN `tblzhasetupfigurebreakdowntypes` typ
               ON fig.`BreakdownTypeID2` = typ.`BreakdownTypeID`
@@ -138,6 +137,7 @@ $resultHP4 = mysql_query($queryHP4) or die(mysql_error());
 
 while ($rowHP4 = mysql_fetch_array($resultHP4)) {
     $totalValueHP4[$rowHP4['ZhaFigureCode']][$rowHP4['BreakdownTypeID']][$rowHP4['BreakdownTypeID1']][$rowHP4['OrganisationGroup']][$rowHP4['BreakdownTypeID3']] = $rowHP4['total'];
+    $totalOrg[$rowHP4['ZhaFigureCode']][$rowHP4['BreakdownTypeID1']][$rowHP4['OrganisationGroup']] = $rowHP4['groupTotal'];
     $breackdownTypeHP4[$rowHP4['ZhaFigureCode']][] = $rowHP4['BreakdownTypeID'];
     $breackdownTypeTC1[$rowHP4['ZhaFigureCode']][] = $rowHP4['BreakdownTypeID1'];
     $organisationCategoryHP4[$rowHP4['BreakdownTypeID']] = $rowHP4['BreakdownTypeDescription'];
@@ -1388,7 +1388,114 @@ echo 'G: SUMMARY DATA FROM ZHAPMoS FORM 2 (SCHOOLS)';
 </table>
 
 <?php
-
 echo '<br>';
 echo 'Lifeskills education on HIV';
+
+echo '<table border="1">';
+echo '<tr>';
+echo '<th rowspan="2">Type of school</th>';
+echo '<th rowspan="2">Number of schools with teachers trained</th>';
+echo '<th colspan="3">Number of teachers trained in life skills</th>';
+echo '<th colspan="3">Number of trained teachers who taught life skills regularly</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Government primary school</td>';
+echo '<td>' . $B01GPSTOT = ($totalOrg['B01']['MAL']['Government primary schools'] + $totalOrg['B01']['FEM']['Government primary schools']
+ + $totalOrg['B02']['MAL']['Government primary schools'] + $totalOrg['B02']['FEM']['Government primary schools']) . '</td>';
+echo '<td>' . $B01MAL = $totalValueHP4['B01']['']['MAL']['Government primary schools'][''] . '</td>';
+echo '<td>' . $B01FEM = $totalValueHP4['B01']['']['FEM']['Government primary schools'][''] . '</td>';
+echo '<td>' . ($B01MAL + $B01FEM) . '</td>';
+echo '<td>' . $B02MAL = $totalValueHP4['B02']['']['MAL']['Government primary schools'][''] . '</td>';
+echo '<td>' . $B02FEM = $totalValueHP4['B02']['']['FEM']['Government primary schools'][''] . '</td>';
+echo '<td>' . ($B02MAL + $B02FEM) . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Government secondary schools</td>';
+echo '<td>' . $B01GSSTOT = ($totalOrg['B01']['MAL']['Government secondary schools'] + $totalOrg['B01']['FEM']['Government secondary schools']
+ + $totalOrg['B02']['MAL']['Government secondary schools'] + $totalOrg['B02']['FEM']['Government secondary schools']) . '</td>';
+echo '<td>' . $B01MAL = $totalValueHP4['B01']['']['MAL']['Government secondary schools'][''] . '</td>';
+echo '<td>' . $B01FEM = $totalValueHP4['B01']['']['FEM']['Government secondary schools'][''] . '</td>';
+echo '<td>' . ($B01MAL + $B01FEM) . '</td>';
+echo '<td>' . $B02MAL = $totalValueHP4['B02']['']['MAL']['Government secondary schools'][''] . '</td>';
+echo '<td>' . $B02FEM = $totalValueHP4['B02']['']['FEM']['Government secondary schools'][''] . '</td>';
+echo '<td>' . ($B02MAL + $B02FEM) . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Private primary schools</td>';
+echo '<td>' . $B01PPSTOT = ($totalOrg['B01']['MAL']['Private primary schools'] + $totalOrg['B01']['FEM']['Private primary schools']
+ + $totalOrg['B02']['MAL']['Private primary schools'] + $totalOrg['B02']['FEM']['Private primary schools']) . '</td>';
+echo '<td>' . $B01MAL = $totalValueHP4['B01']['']['MAL']['Private primary schools'][''] . '</td>';
+echo '<td>' . $B01FEM = $totalValueHP4['B01']['']['FEM']['Private primary schools'][''] . '</td>';
+echo '<td>' . ($B01MAL + $B01FEM) . '</td>';
+echo '<td>' . $B02MAL = $totalValueHP4['B02']['']['MAL']['Private primary schools'][''] . '</td>';
+echo '<td>' . $B02FEM = $totalValueHP4['B02']['']['FEM']['Private primary schools'][''] . '</td>';
+echo '<td>' . ($B02MAL + $B02FEM) . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Private secondary schools</td>';
+echo '<td>' . $B01PSSTOT = ($totalOrg['B01']['MAL']['Private secondary schools'] + $totalOrg['B01']['FEM']['Private secondary schools']
+ + $totalOrg['B02']['MAL']['Private secondary schools'] + $totalOrg['B02']['FEM']['Private secondary schools']) . '</td>';
+echo '<td>' . $B01MAL = $totalValueHP4['B01']['']['MAL']['Private secondary schools'][''] . '</td>';
+echo '<td>' . $B01FEM = $totalValueHP4['B01']['']['FEM']['Private secondary schools'][''] . '</td>';
+echo '<td>' . ($B01MAL + $B01FEM) . '</td>';
+echo '<td>' . $B02MAL = $totalValueHP4['B02']['']['MAL']['Private secondary schools'][''] . '</td>';
+echo '<td>' . $B02FEM = $totalValueHP4['B02']['']['FEM']['Private secondary schools'][''] . '</td>';
+echo '<td>' . ($B02MAL + $B02FEM) . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Total</td><td>' . ($B01GPSTOT + $B01GSSTOT + $B01PPSTOT + $B01PSSTOT) . '</td><td></td><td></td><td></td><td></td><td></td><td></td>';
+echo '</tr>';
+echo '</table>';
+
+echo '<br>';
+
+echo 'Presence of clubs in schools that have HIV prevention programmes';
+echo '<table border="1">';
+echo '<tr>';
+echo '<th rowspan="2">Type of school</th>';
+echo '<th rowspan="2">Number of schools with youth clubs</th>';
+echo '<th colspan="3">Number of youth club members</th>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Male</td>';
+echo '<td>Female</td>';
+echo '<td>Total</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Government primary school</td>';
+echo '<td>' . ($totalOrg['B03']['MAL']['Government primary schools'] + $totalOrg['B03']['FEM']['Government primary schools']) . '</td>';
+echo '<td>' . $B03MAL = $totalValueHP4['B03']['']['MAL']['Government primary schools'][''] . '</td>';
+echo '<td>' . $B03FEM = $totalValueHP4['B03']['']['FEM']['Government primary schools'][''] . '</td>';
+echo '<td>' . ($B03MAL + $B03FEM) . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Government secondary schools</td>';
+echo '<td>' . ($totalOrg['B03']['MAL']['Government secondary schools'] + $totalOrg['B03']['FEM']['Government secondary schools']) . '</td>';
+echo '<td>' . $B03MAL = $totalValueHP4['B03']['']['MAL']['Government secondary schools'][''] . '</td>';
+echo '<td>' . $B03FEM = $totalValueHP4['B03']['']['FEM']['Government secondary schools'][''] . '</td>';
+echo '<td>' . ($B03MAL + $B03FEM) . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Private primary schools</td>';
+echo '<td>' . ($totalOrg['B03']['MAL']['Private primary schools'] + $totalOrg['B03']['FEM']['Private primary schools']) . '</td>';
+echo '<td>' . $B03MAL = $totalValueHP4['B03']['']['MAL']['Private primary schools'][''] . '</td>';
+echo '<td>' . $B03FEM = $totalValueHP4['B03']['']['FEM']['Private primary schools'][''] . '</td>';
+echo '<td>' . ($B03MAL + $B03FEM) . '</td>';
+echo '</tr>';
+echo '<tr>';
+echo '<td>Private secondary schools</td>';
+echo '<td>' . ($totalOrg['B03']['MAL']['Private secondary schools'] + $totalOrg['B03']['FEM']['Private secondary schools']) . '</td>';
+echo '<td>' . $B03MAL = $totalValueHP4['B03']['']['MAL']['Private secondary schools'][''] . '</td>';
+echo '<td>' . $B03FEM = $totalValueHP4['B03']['']['FEM']['Private secondary schools'][''] . '</td>';
+echo '<td>' . ($B03MAL + $B01FEM) . '</td>';
+echo '</tr>';
+echo '</table>';
 ?>
