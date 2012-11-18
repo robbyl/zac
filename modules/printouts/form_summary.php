@@ -699,6 +699,7 @@ require '../../includes/session_validator.php';
                                         <th colspan="3">Within Private Sector</th>
                                         <th colspan="3">Within Government</th>
                                         <th colspan="3">Within SHACCOMs</th>
+                                        <td rowspan="3"  class="data-group">HP9</td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">Number of employees who have participated in or benefited from an HIV workplace programme this quarter</td>
@@ -732,11 +733,13 @@ require '../../includes/session_validator.php';
                                     echo '</tr>';
                                     ?>
                                 </table>
+                                <!-- end .section  --></div>
 
-                                <div class="section">
-                                    <h3><strong>C: HIV IMPACT MITIGATION SERVICES - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4</strong></h3>
-                                    <p style="font-weight: bold;">By civil society organisations</p>
-                                    <p style="font-weight: bold;">Support to vulnerable groups</p>
+                            <div class="section">
+                                <h3><strong>C: HIV IMPACT MITIGATION SERVICES - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4</strong></h3>
+                                <p style="font-weight: bold;">By civil society organisations</p> 
+                                <p style="font-weight: bold;">Support to vulnerable groups</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
                                     <tr>
                                         <th rowspan="2">Name of Vulnerable or High Risk Group</th>
                                         <th colspan="3">MVC</th>
@@ -744,16 +747,331 @@ require '../../includes/session_validator.php';
                                         <th rowspan="2">Widow / Widowers</th>
                                         <th rowspan="2">Vulnerable Households</th>
                                         <th rowspan="2">Other vulnerable groups</th>
+                                        <td rowspan="7"  class="data-group">M01A</td>
                                     </tr>
                                     <tr>
-                                        <td>Male</td>
-                                        <td>Female</td>
-                                        <td>Total</td>
-                                        <td>Male</td>
-                                        <td>Female</td>
-                                        <td>Total</td>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
                                     </tr>
-                                </div>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Emotional and psychological</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['EMP']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['EMP']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['EMP']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['EMP']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['EMP']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['EMP']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['EMP']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Financial support</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['FIN']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['FIN']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['FIN']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['FIN']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['FIN']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['FIN']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['FIN']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Health care and supplies</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['HCS']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['HCS']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['HCS']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['HCS']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['HCS']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['HCS']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['HCS']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Nutritional support</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['NUT']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['NUT']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['NUT']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['NUT']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['NUT']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['NUT']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['NUT']['CSOs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>School related assistance</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['SCH']['CSOs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['SCH']['CSOs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">By private sector</p>
+                                <p style="font-weight: bold;">Support to vulnerable groups</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Name of Vulnerable or High Risk Group</th>
+                                        <th colspan="3">MVC</th>
+                                        <th colspan="3">Elderly</th>
+                                        <th rowspan="2">Widow / Widowers</th>
+                                        <th rowspan="2">Vulnerable Households</th>
+                                        <th rowspan="2">Other vulnerable groups</th>
+                                        <td rowspan="7"  class="data-group">M01B</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Emotional and psychological</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['EMP']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['EMP']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['EMP']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['EMP']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['EMP']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['EMP']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['EMP']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Financial support</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['FIN']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['FIN']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['FIN']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['FIN']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['FIN']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['FIN']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['FIN']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Health care and supplies</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['HCS']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['HCS']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['HCS']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['HCS']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['HCS']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['HCS']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['HCS']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Nutritional support</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['NUT']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['NUT']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['NUT']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['NUT']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['NUT']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['NUT']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['NUT']['Private Sector']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>School related assistance</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['SCH']['Private Sector']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['SCH']['Private Sector']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">By public sector</p>
+                                <p style="font-weight: bold;">Support to vulnerable groups</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Name of Vulnerable or High Risk Group</th>
+                                        <th colspan="3">MVC</th>
+                                        <th colspan="3">Elderly</th>
+                                        <th rowspan="2">Widow / Widowers</th>
+                                        <th rowspan="2">Vulnerable Households</th>
+                                        <th rowspan="2">Other vulnerable groups</th>
+                                        <td rowspan="7"  class="data-group">M01C</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Emotional and psychological</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['EMP']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['EMP']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['EMP']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['EMP']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['EMP']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['EMP']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['EMP']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Financial support</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['FIN']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['FIN']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['FIN']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['FIN']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['FIN']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['FIN']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['FIN']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Health care and supplies</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['HCS']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['HCS']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['HCS']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['HCS']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['HCS']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['HCS']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['HCS']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Nutritional support</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['NUT']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['NUT']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['NUT']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['NUT']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['NUT']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['NUT']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['NUT']['Government']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>School related assistance</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['SCH']['Government']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['SCH']['Government']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
+
+                                <p style="font-weight: bold;">By SHACCOMs</p>
+                                <p style="font-weight: bold;">Support to vulnerable groups</p>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
+                                    <tr>
+                                        <th rowspan="2">Name of Vulnerable or High Risk Group</th>
+                                        <th colspan="3">MVC</th>
+                                        <th colspan="3">Elderly</th>
+                                        <th rowspan="2">Widow / Widowers</th>
+                                        <th rowspan="2">Vulnerable Households</th>
+                                        <th rowspan="2">Other vulnerable groups</th>
+                                        <td rowspan="7"  class="data-group">M01D</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                        <th>Male</th>
+                                        <th>Female</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <?php
+                                    echo '<tr>';
+                                    echo '<td>Emotional and psychological</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['EMP']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['EMP']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['EMP']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['EMP']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['EMP']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['EMP']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['EMP']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Financial support</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['FIN']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['FIN']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['FIN']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['FIN']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['FIN']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['FIN']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['FIN']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Health care and supplies</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['HCS']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['HCS']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['HCS']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['HCS']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['HCS']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['HCS']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['HCS']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>Nutritional support</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['NUT']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['NUT']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateMAL = $totalValueHP4['M01']['ELD']['NUT']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateFEM = $totalValueHP4['M01']['ELD']['NUT']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4PrivateTOT = ($HP4PrivateMAL + $HP4PrivateFEM), 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentMAL = $totalValueHP4['M01']['WID']['NUT']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['VLH']['NUT']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4GovernmentFEM = $totalValueHP4['M01']['OVG']['NUT']['SHACCOMs']['TOT'], 0, ".", ",") . '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>School related assistance</td>';
+                                    echo '<td>' . number_format($HP4CSOsMAL = $totalValueHP4['M01']['MVC']['SCH']['SHACCOMs']['MAL'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsFEM = $totalValueHP4['M01']['MVC']['SCH']['SHACCOMs']['FEM'], 0, ".", ",") . '</td>';
+                                    echo '<td>' . number_format($HP4CSOsTOT = ($HP4CSOsMAL + $HP4CSOsFEM), 0, ".", ",") . '</td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '</tr>';
+                                    ?>
+                                </table>
                                 <!-- end .section  --></div>
                             <!-- end sheet-wrapper  --></div>
                         <!-- end #report --></div>
