@@ -95,101 +95,151 @@ require '../../includes/session_validator.php';
                                             INNER JOIN tblgensetupzones zon
                                                     ON reg.`ZoneCode` = zon.`ZoneCode`
                                                  WHERE zon.ZoneCode = 1";
+                            break;
 
-                            $result_districts = mysql_query($query_districts) or die(mysql_error());
+                        case 'North Unguja region':
+                            $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`
+                                                  FROM tblgensetupdistricts dis
+                                            INNER JOIN tblgensetupregions reg
+                                                    ON dis.`RegionCode` = reg.`RegionCode`
+                                                 WHERE reg.`RegionCode` = 122";
+                            break;
 
-                            $districtCodes1 = '';
-                            $districtCodes2 = '';
-                            $districtCodes3 = '';
-                            $districtCodes4 = '';
-                            $districtCodes5 = '';
-                            $districtCodes6 = '';
+                        case 'South Unguja region':
+                            $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`
+                                                  FROM tblgensetupdistricts dis
+                                            INNER JOIN tblgensetupregions reg
+                                                    ON dis.`RegionCode` = reg.`RegionCode`
+                                                 WHERE reg.`RegionCode` = 123";
+                            break;
 
-                            $index = 1;
+                        case 'Urban west region':
+                            $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`
+                                                  FROM tblgensetupdistricts dis
+                                            INNER JOIN tblgensetupregions reg
+                                                    ON dis.`RegionCode` = reg.`RegionCode`
+                                                 WHERE reg.`RegionCode` = 124";
+                            break;
 
-                            while ($district = mysql_fetch_array($result_districts)) {
-                                if ($index == 1) {
-                                    $districtCodes1 .= "WHERE `BreakdownCategoryID` = 'HVI' AND ZhaFigureCode = 'HP1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                        case 'Pemba zone':
+                            $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`,
+                                                       zon.`ZoneCode`, `Zone`
+                                                  FROM tblgensetupdistricts dis
+                                            INNER JOIN tblgensetupregions reg
+                                                    ON dis.`RegionCode` = reg.`RegionCode`
+                                            INNER JOIN tblgensetupzones zon
+                                                    ON reg.`ZoneCode` = zon.`ZoneCode`
+                                                 WHERE zon.ZoneCode = 2";
+                            break;
 
-                                    $districtCodes2 .= "WHERE `BreakdownCategoryID` = 'MRV' AND ZhaFigureCode = 'HP1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes3 .= "WHERE `BreakdownCategoryID` = 'HVI' AND ZhaFigureCode = 'HP2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes4 .= "WHERE ZhaFigureCode = 'HP3' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'HP6' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'HP7' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'CS1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'CS2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes5 .= "WHERE ZhaFigureCode = 'HP4' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'HP8' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'HP9' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'M01' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'TC1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'TC2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'MC2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'MC4' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'B01' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'B02' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'B03' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes6 .= "WHERE ZhaQuestionCode = 'MC1' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC3' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC5' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6a' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6b' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6c' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6d' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6e' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6f' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6g' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6h' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'ME1a' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                } else {
-                                    $districtCodes1 .= " OR `BreakdownCategoryID` = 'HVI' AND ZhaFigureCode = 'HP1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes2 .= " OR `BreakdownCategoryID` = 'MRV' AND ZhaFigureCode = 'HP1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes3 .= " OR `BreakdownCategoryID` = 'HVI' AND ZhaFigureCode = 'HP2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'HP3' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'HP6' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'HP7' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'CS1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes4 .= " OR ZhaFigureCode = 'CS2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'HP4' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'HP8' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'HP9' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'M01' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'TC1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'TC2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'MC2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'MC4' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'B01' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'B02' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes5 .= " OR ZhaFigureCode = 'B03' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC1' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC3' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC5' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6a' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6b' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6c' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6d' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6e' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6f' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6g' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'MC6h' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                    $districtCodes6 .= " OR ZhaQuestionCode = 'ME1a' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
-                                }
-                                $index++;
-                            }
-
+                        case 'North Pemba region':
+                            $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`
+                                                  FROM tblgensetupdistricts dis
+                                            INNER JOIN tblgensetupregions reg
+                                                    ON dis.`RegionCode` = reg.`RegionCode`
+                                                 WHERE reg.`RegionCode` = 225";
+                            break;
+                        
+                        case 'South Pemba region':
+                            $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`
+                                                  FROM tblgensetupdistricts dis
+                                            INNER JOIN tblgensetupregions reg
+                                                    ON dis.`RegionCode` = reg.`RegionCode`
+                                                 WHERE reg.`RegionCode` = 226";
                             break;
 
                         default:
                             break;
+                    }
+
+                    $result_districts = mysql_query($query_districts) or die(mysql_error());
+
+                    $districtCodes1 = '';
+                    $districtCodes2 = '';
+                    $districtCodes3 = '';
+                    $districtCodes4 = '';
+                    $districtCodes5 = '';
+                    $districtCodes6 = '';
+
+                    $index = 1;
+
+                    while ($district = mysql_fetch_array($result_districts)) {
+                        if ($index == 1) {
+                            $districtCodes1 .= "WHERE `BreakdownCategoryID` = 'HVI' AND ZhaFigureCode = 'HP1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes2 .= "WHERE `BreakdownCategoryID` = 'MRV' AND ZhaFigureCode = 'HP1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes3 .= "WHERE `BreakdownCategoryID` = 'HVI' AND ZhaFigureCode = 'HP2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes4 .= "WHERE ZhaFigureCode = 'HP3' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes4 .= " OR ZhaFigureCode = 'HP6' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes4 .= " OR ZhaFigureCode = 'HP7' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes4 .= " OR ZhaFigureCode = 'CS1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes4 .= " OR ZhaFigureCode = 'CS2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes5 .= "WHERE ZhaFigureCode = 'HP4' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'HP8' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'HP9' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'M01' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'TC1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'TC2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'MC2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'MC4' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'B01' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'B02' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'B03' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes6 .= "WHERE ZhaQuestionCode = 'MC1' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC3' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC5' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6a' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6b' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6c' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6d' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6e' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6f' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6g' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6h' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'ME1a' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                        } else {
+                            $districtCodes1 .= " OR `BreakdownCategoryID` = 'HVI' AND ZhaFigureCode = 'HP1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes2 .= " OR `BreakdownCategoryID` = 'MRV' AND ZhaFigureCode = 'HP1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes3 .= " OR `BreakdownCategoryID` = 'HVI' AND ZhaFigureCode = 'HP2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes4 .= " OR ZhaFigureCode = 'HP3' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes4 .= " OR ZhaFigureCode = 'HP6' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes4 .= " OR ZhaFigureCode = 'HP7' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes4 .= " OR ZhaFigureCode = 'CS1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes4 .= " OR ZhaFigureCode = 'CS2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes5 .= " OR ZhaFigureCode = 'HP4' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'HP8' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'HP9' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'M01' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'TC1' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'TC2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'MC2' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'MC4' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'B01' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'B02' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes5 .= " OR ZhaFigureCode = 'B03' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC1' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC3' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC5' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6a' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6b' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6c' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6d' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6e' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6f' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6g' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'MC6h' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                            $districtCodes6 .= " OR ZhaQuestionCode = 'ME1a' AND `ZhaAnswer` = 'Yes' AND DistrictCode = " . $district['DistrictCode'] . ' AND PeriodFrom = ' . $dateFrom;
+                        }
+                        $index++;
                     }
 
                     $query = "SELECT `ZhaFigureCode`, `BreakdownTypeID`, `BreakdownTypeDescription`,
@@ -784,7 +834,7 @@ require '../../includes/session_validator.php';
 
                                 <div class="section">
                                     <h3><strong>C: HIV IMPACT MITIGATION SERVICES - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4</strong></h3>
-                                    <p style="font-weight: bold;">By civil society organisations</p> 
+                                    <p style="font-weight: bold;">By civil society organisations</p>
                                     <p style="font-weight: bold;">Support to vulnerable groups</p>
                                     <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
                                         <tr>
@@ -1124,7 +1174,7 @@ require '../../includes/session_validator.php';
                                 <div class="section">
                                     <h3><strong>D: HIV CARE AND SUPPORT SERVICES - SUMMARY DATA FROM ZHAPMoS FORM 1, ZHAPMoS FORM 3 AND ZHAPMoS FORM 4</strong></h3>
                                     <p style="font-weight: bold;">Home-based care volunteers</p>
-                                    <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">                                 
+                                    <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
                                         <tr>
                                             <th></th>
                                             <th colspan="2">CSOs</th>
@@ -1159,7 +1209,7 @@ require '../../includes/session_validator.php';
                                     </table>
 
                                     <p style="font-weight: bold;">Home-based care visits</p>
-                                    <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">                                 
+                                    <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
                                         <tr>
                                             <th></th>
                                             <th colspan="4">Number of person-visits</th>
@@ -1436,7 +1486,7 @@ require '../../includes/session_validator.php';
                                     <table width="100%" border="1" cellspacing="0" cellpadding="5" class="form-data-table form-summery" style="margin-bottom: 20px;">
                                         <tr>
                                             <th></th>
-                                            <th colspan="4">Number of organisations</th>  
+                                            <th colspan="4">Number of organisations</th>
                                             <td rowspan="10" class="data-group">MC6</td>
                                         </tr>
                                         <tr>
@@ -1444,7 +1494,7 @@ require '../../includes/session_validator.php';
                                             <th>Within CSOs</th>
                                             <th>Within Private Sector</th>
                                             <th>Within Government</th>
-                                            <th>Within SHACCOMs</th>                                        
+                                            <th>Within SHACCOMs</th>
                                         </tr>
                                         <?php
                                         echo '<tr>';
