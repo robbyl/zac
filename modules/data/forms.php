@@ -6,7 +6,8 @@ ob_start();
 require '../../config/config.php';
 
 $query_forms = "SELECT `FormSerialNumber`, `OrganisationName`, dis.`District`,
-                       DATE_FORMAT(DATE(`PeriodFrom`), '%d %b, %Y') AS PeriodFrom, DATE_FORMAT(DATE(`PeriodTo`), '%d %b, %Y') AS PeriodTo
+                       DATE_FORMAT(DATE(`PeriodFrom`), '%d %b, %Y') AS PeriodFrom,
+                       DATE_FORMAT(DATE(`PeriodTo`), '%d %b, %Y') AS PeriodTo
                   FROM tblzhaformssubmitted sub
              LEFT JOIN tblgenorganisations org
                     ON sub.`OrganisationCode` = org.`OrganisationCode`
@@ -94,6 +95,12 @@ $result_forms = mysql_query($query_forms) or die(mysql_error());
             });
 
         </script>
+        
+        <style type="text/css">
+            .message, .error {
+                display: none;
+            }
+        </style>
     </head>
 
     <body>

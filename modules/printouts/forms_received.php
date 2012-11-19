@@ -1,5 +1,7 @@
 <?php require '../../includes/session_validator.php'; ?>
 <?php
+
+error_reporting(0);
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
@@ -14,23 +16,56 @@ $query_received = "SELECT `FormSerialNumber`, sub.`OrganisationCode`, `Organisat
                        ON sub.`DistrictCode` = dis.`DistrictCode`
                 LEFT JOIN tblgensetuporganisationcategories cat
                        ON org.`OrganisationCategoryID` = cat.`OrganisationCategoryID`
-                GROUP BY `OrganisationCategoryDescription`, PeriodFrom, FormSerialNumber
-                 ORDER BY `FormSerialNumber` ASC, OrganisationCategoryDescription ASC, `PeriodFrom` ASC";
+                 GROUP BY `OrganisationCategoryDescription`, FormSerialNumber
+                 ORDER BY `FormSerialNumber` ASC, `PeriodFrom` ASC";
 
 $result = mysql_query($query_received) or die(mysql_error());
 
-$organisation = "";
-$date_from = "";
-echo "<table>";
 while ($row = mysql_fetch_array($result)) {
 
-    if ($row['OrganisationCategoryDescription'] != $organisation) {
-        echo '<tr><td>' . $row['OrganisationCategoryDescription'] . '</td></tr>';
-        $organisation = $row['OrganisationCategoryDescription'];
+    $forms[$row['OrganisationCategoryDescription']][] = $row['FormSerialNumber'];
+    $PeriodFrom[$row['PeriodFrom']][] = $row;
+}
+echo '<table border="1">';
+foreach ($forms as $OrganisationCategoryDescription => $value) {
+    echo '<tr><td>' . $OrganisationCategoryDescription . '</td></tr>';
+
+
+    foreach ($PeriodFrom as $key => $value) {
+        echo '<tr><td>' . $key . '</td><tr>';
+        echo '<tr>';
+        for($i = 0; $i < count($PeriodFrom); $i++){
+            
+            foreach (array_unique($PeriodFrom[$key]) as $formvalues) {
+                echo '<td>' . $formvalues[0] . '</td>';
+            }
+            
+            echo '</tr>';
+        }
     }
+//    for ($i = 0; $i < count($PeriodFrom[$OrganisationCategoryDescription]); $i++) {
+//        echo $PeriodFrom[$OrganisationCategoryDescription][$i] . '<br>';
+//    }
+//    for($i = 0; $i < count($forms[$OrganisationCategoryDescription]); $i++ ){
+//        echo $forms[$OrganisationCategoryDescription][$i] . '<br>';
+//    }
+//    echo count($forms[$OrganisationCategoryDescription]) . '<br>';
 }
 
-echo "</table>";
+echo '</table>';
+
+//$organisation = "";
+//$date_from = "";
+//echo "<table>";
+//while ($row = mysql_fetch_array($result)) {
+//
+//    if ($row['OrganisationCategoryDescription'] != $organisation) {
+//        echo '<tr><td>' . $row['OrganisationCategoryDescription'] . '</td></tr>';
+//        $organisation = $row['OrganisationCategoryDescription'];
+//    }
+//}
+//
+//echo "</table>";
 
 exit;
 //$groups = array();

@@ -38,4 +38,29 @@ function info($type, $content) {
     session_commit();
 }
 
+// Converting numeric period into words
+function period_to_words($period) {
+    switch ($period) {
+        case '01-01/03-31':
+            return 'January - March';
+            break;
+
+        case '04-01/06-30':
+            return 'April - June';
+            break;
+
+        case '07-01/09-30':
+            return 'July - September';
+            break;
+
+        case '10-01/12-31':
+            return 'October - December';
+            break;
+
+        default:
+            return 'Invalid period';
+            break;
+    }
+}
+
 ?>
