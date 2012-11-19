@@ -147,6 +147,17 @@ require '../../includes/session_validator.php';
                                                     ON dis.`RegionCode` = reg.`RegionCode`
                                                  WHERE reg.`RegionCode` = 226";
                             break;
+                        
+                        case 'National':
+                            $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`,
+                                                       zon.`ZoneCode`, `Zone`
+                                                  FROM tblgensetupdistricts dis
+                                            INNER JOIN tblgensetupregions reg
+                                                    ON dis.`RegionCode` = reg.`RegionCode`
+                                            INNER JOIN tblgensetupzones zon
+                                                    ON reg.`ZoneCode` = zon.`ZoneCode`
+                                                 WHERE zon.ZoneCode = 1
+                                                    OR zon.ZoneCode = 2";
 
                         default:
                             break;
