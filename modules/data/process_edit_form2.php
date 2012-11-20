@@ -14,6 +14,7 @@ $period_from = $year . '-' . $exmonth_range[0];
 $period_to = $year . '-' . $exmonth_range[1];
 
 // Geting form-data for data-section A data-set A
+$reg_no = clean($_POST['reg_no']);
 $sch_name = clean($_POST['sch_name']);
 $phy_addr = clean($_POST['phy_addr']);
 $post_addr = clean($_POST['post_addr']);
@@ -53,8 +54,7 @@ $b7_youth_club = clean($_POST['b7_youth_club']);
 /* ########################### END SECTION B ############################### */
 
 // Geting form approval details
-$completed_by = clean($_POST['completed_by']);
-$approved_by = clean($_POST['approved_by']);
+$org_person = clean_arr(($_POST['org_person']));
 $completed_date = clean($_POST['completed_date']);
 $approved_date = clean($_POST['approved_date']);
 $received_date = clean($_POST['received_date']);
@@ -69,12 +69,41 @@ $comments_zac = clean($_POST['comments_zac']);
 /* ########################### END FORM APPROVAL ############################### */
 
 
-$query_ans = "INSERT INTO tblzhafigures
+$query_ans = "UPDATE tblzhafigures
+                 SET `ZhaFigureValue` = CASE";
+
+ if(!empty($b1_males)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B01' AND BreakdownTypeID1 = 'MAL' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b1_males . "'"; }
+ if(!empty($b1_females)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B01' AND BreakdownTypeID1 = 'FEM' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b1_females . "'"; }
+ 
+ if(!empty($b2_males)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B02' AND BreakdownTypeID1 = 'MAL' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b2_males . "'"; }
+ if(!empty($b2_females)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B02' AND BreakdownTypeID1 = 'FEM' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b2_females . "'"; }
+ 
+ if(!empty($b3_males)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B03' AND BreakdownTypeID1 = 'MAL' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b3_males . "'"; }
+ if(!empty($b3_females)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B03' AND BreakdownTypeID1 = 'FEM' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b3_females . "'"; }
+ 
+ if(!empty($b4_males)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B04' AND BreakdownTypeID1 = 'MAL' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b4_males . "'"; }
+ if(!empty($b4_females)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B04' AND BreakdownTypeID1 = 'FEM' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b4_females . "'"; }
+ 
+ if(!empty($b5_males)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B05' AND BreakdownTypeID1 = 'MAL' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b5_males . "'"; }
+ if(!empty($b5_females)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B05' AND BreakdownTypeID1 = 'FEM' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b5_females . "'"; }
+ 
+ if(!empty($b6_hiv_related)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B06' AND BreakdownTypeID1 = '' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b6_hiv_related . "'"; }
+ 
+  if(!empty($b7_youth_club)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'B07' AND BreakdownTypeID1 = '' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" . $b7_youth_club . "'"; }
+  
+  
+ if (strpos($query_ans, 'WHEN') !== false) {
+
+    $query_ans .= " ELSE ZhaFigureValue END";
+    $result_ans = mysql_query($query_ans) or die(mysql_error());
+}
+  
+$query_ans = "INSERT IGNORE INTO tblzhafigures
                           (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`)
-                   VALUES (";
- if(!empty($b1_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_males . "')"; }
+                   VALUES ";
+ if(!empty($b1_males)){ $query_ans .= "('" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_males . "')"; }
  if(!empty($b1_females)){ $query_ans .= ",('" . $form_no . "', 'B01', 'FEM', '', '', '', '" . $b1_females . "')"; }
  
  if(!empty($b2_males)){ $query_ans .= ",('" . $form_no . "', 'B02', 'MAL', '', '', '', '" . $b2_males . "')"; }
@@ -92,17 +121,30 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($b6_hiv_related)){ $query_ans .= ",('" . $form_no . "', 'B06', '', '', '', '', '" . $b6_hiv_related . "')"; }
  
   if(!empty($b7_youth_club)){ $query_ans .= ",('" . $form_no . "', 'B07', '', '', '', '', '" . $b7_youth_club . "')"; }
- 
- $result_ans = mysql_query($query_ans) or die(mysql_error());
+  
+   switch (substr($query_ans, '279', '1')) {
+
+    case ',':
+        $query_ans = substr_replace($query_ans, ' ', '279', '1');
+        $result_ans = mysql_query($query_ans) or die(mysql_error());
+        break;
+
+    case '(':
+        $result_ans = mysql_query($query_ans) or die(mysql_error());
+        break;
+
+    default:
+        break;
+}
 
  $query_submitted = "UPDATE tblzhaformssubmitted
                         SET `OrganisationCode` = '$reg_no', 
                             `DistrictCode` = '$district',
                             `PeriodFrom` = '$period_from',
                             `PeriodTo` = '$period_to', 
-                            `CompletedByPersonID` = '$completed_by', 
+                            `CompletedByPersonID` = '$org_person[0]', 
                             `DateCompleted` = '$completed_date',
-                            `ApprovedByPersonID` = '$approved_by',
+                            `ApprovedByPersonID` = '$org_person[1]',
                             `DateApproved` = '$approved_date',
                             `DateReceived` = '$received_date',
                             `DateCaptured` = '$captured_date',
@@ -116,11 +158,11 @@ $query_ans = "INSERT INTO tblzhafigures
 
 $result_submitted = mysql_query($query_submitted) or die(mysql_error());
 
-if ($result_submitted && $result_ans) {
+if ($result_submitted) {
     info('message', 'Form saved successully!');
-    header("Location: form2.php?lang=" . $lang);
+    header("Location: edit_form2.php?form_id=" . $form_no . "&lang=" . $lang);
 } else {
     info('error', 'Cannot save. Please try again!');
-    header("Location: form2.php?lang=" . $lang);
+    header("Location: edit_form2.php?form_id=" . $form_no . "&lang=" . $lang);
 }
 ?>

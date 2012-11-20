@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(0);
-
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 

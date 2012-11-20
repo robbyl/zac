@@ -38,6 +38,9 @@
             .text , .text:focus {
                 border: none;
             }
+            .message, .error {
+                display: none;
+            }
         </style>
     </head>
 
@@ -94,9 +97,13 @@
                     $experiod_to = explode("-", $period_to);
                     $year = $experiod_from[0];
                     $month_range = $experiod_from[1] . '-' . $experiod_from[2] . '/' . $experiod_to[1] . '-' . $experiod_to[2];
+                    
+                    // Displaying message and errors
+                    include '../../includes/info.php';
                     ?>
-                    <form action="process_edit_form2.php" method="post" novalidate>
+                    <form action="process_edit_form2.php" method="post">
                         <input type="hidden" name="lang" value="<?php echo $lang ?>">
+                        <input type="hidden" name="reg_no" id="reg_no" class="text" style="width: 98%">
                         <div class="data-form-wapper">
                             <?php $heading = $text["FORM_2_HEAD"]; ?>
                             <?php require 'sections/edit_head_section.php'; ?>
