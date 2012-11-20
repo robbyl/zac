@@ -803,7 +803,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC1"][0] ?></td>
             <td width="200">
                 <label for="mc1_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc1_mngmnt" id="mc1_yes" <?php if ($mcans['MC1'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc1_mngmnt" id="mc1_yes" <?php if ($mcans['MC1'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc1_no">
                     <input type="radio" name="mc1_mngmnt" id="mc1_no" <?php if ($mcans['MC1'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>
@@ -837,10 +837,10 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC5"][0] ?></td>
             <td>
                 <label for="mc5_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc5_activity" id="mc5_yes" <?php if ($mcans['MC5'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc5_activity" id="mc5_yes" <?php if ($mcans['MC5'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc5_no">
-                    <input type="radio" name="mc5_activity" id="mc5_no" <?php if ($mcans['MC5'] == "No") echo "checked"; ?> value="No" required> <?php echo $text["SECT_LABEL_NO"] ?>
+                    <input type="radio" name="mc5_activity" id="mc5_no" <?php if ($mcans['MC5'] == "No") echo "checked"; ?> value="No"> <?php echo $text["SECT_LABEL_NO"] ?>
                 </label>
             </td>
             <td width="47" class="data-group">MC5</td>
@@ -854,7 +854,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC6a"][0] ?></td>
             <td  width="200">
                 <label for="mc6a_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc6a" id="mc6a_yes" <?php if ($mcans['MC6a'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc6a" id="mc6a_yes" <?php if ($mcans['MC6a'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc6a_no">
                     <input type="radio" name="mc6a" id="mc6a_no" <?php if ($mcans['MC6a'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>
@@ -866,7 +866,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC6b"][0] ?></td>
             <td>
                 <label for="mc6b_yes"  style="margin-right: 50px">
-                    <input type="radio" name="mc6b" id="mc6b_yes" <?php if ($mcans['MC6b'] == "Yes") echo "checked"; ?> value="Yes" required > <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc6b" id="mc6b_yes" <?php if ($mcans['MC6b'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc6b_no">
                     <input type="radio" name="mc6b" id="mc6b_no" <?php if ($mcans['MC6b'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>
@@ -877,7 +877,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC6c"][0] ?></td>
             <td>
                 <label for="mc6c_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc6c" id="mc6c_yes" <?php if ($mcans['MC6c'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc6c" id="mc6c_yes" <?php if ($mcans['MC6c'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc6c_no">
                     <input type="radio" name="mc6c" id="mc6c_no" <?php if ($mcans['MC6c'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>
@@ -888,7 +888,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC6d"][0] ?></td>
             <td>
                 <label for="mc6d_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc6d" id="mc6d_yes" <?php if ($mcans['MC6d'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc6d" id="mc6d_yes" <?php if ($mcans['MC6d'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc6d_no">
                     <input type="radio" name="mc6d" id="mc6d_no" <?php if ($mcans['MC6d'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>
@@ -899,7 +899,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC6e"][0] ?></td>
             <td>
                 <label for="mc6e_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc6e" id="mc6e_yes" <?php if ($mcans['MC6e'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc6e" id="mc6e_yes" <?php if ($mcans['MC6e'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc6e_no">
                     <input type="radio" name="mc6e" id="mc6e_no" <?php if ($mcans['MC6e'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>
@@ -910,7 +910,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC6f"][0] ?></td>
             <td>
                 <label for="mc6f_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc6f" id="mc6f_yes" <?php if ($mcans['MC6f'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc6f" id="mc6f_yes" <?php if ($mcans['MC6f'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc6f_no">
                     <input type="radio" name="mc6f" id="mc6f_no" <?php if ($mcans['MC6f'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>
@@ -921,7 +921,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC6g"][0] ?></td>
             <td>
                 <label for="mc6g_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc6g" id="mc6g_yes" <?php if ($mcans['MC6g'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc6g" id="mc6g_yes" <?php if ($mcans['MC6g'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc6g_no">
                     <input type="radio" name="mc6g" id="mc6g_no" <?php if ($mcans['MC6g'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>
@@ -932,7 +932,7 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC6h"][0] ?></td>
             <td>
                 <label for="mc6h_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc6h" id="mc6h_yes" <?php if ($mcans['MC6h'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc6h" id="mc6h_yes" <?php if ($mcans['MC6h'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc6h_no" style="margin-right: 50px">
                     <input type="radio" name="mc6h" id="mc6h_no" <?php if ($mcans['MC6h'] == "No") echo "checked"; ?> value="No">  <?php echo $text["SECT_LABEL_NO"] ?>

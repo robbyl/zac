@@ -51,7 +51,7 @@
                 <?php include '../../includes/sidebar.php'; ?>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <h1>Add New ZHAPMoS Form 1</h1>
+                <h1>Edit ZHAPMoS Form 1</h1>
                 <div class="hr-line"></div>
                 <?php
                 require '../../config/config.php';

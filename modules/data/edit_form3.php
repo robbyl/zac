@@ -51,7 +51,7 @@
                 // Displaying message and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Add New ZHAPMoS Form 3</h1>
+                <h1>Edit ZHAPMoS Form 3</h1>
                 <div class="hr-line"></div>
                 <?php
                 require '../../config/config.php';

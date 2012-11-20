@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 require '../../config/config.php';
 require '../../functions/general_functions.php';
 
@@ -161,8 +163,7 @@ $me1c = $_POST['me1c'];
 /* ########################### END SECTION F ############################### */
 
 // Geting form approval details
-$completed_by = clean($_POST['completed_by']);
-$approved_by = clean($_POST['approved_by']);
+$org_person = clean_arr(($_POST['org_person']));
 $completed_date = clean($_POST['completed_date']);
 $approved_date = clean($_POST['approved_date']);
 $received_date = clean($_POST['received_date']);
@@ -177,7 +178,7 @@ $comments_zac = clean($_POST['comments_zac']);
 /* ########################### END FORM APPROVAL ############################### */
 
 $query_ans = "UPDATE tblzhafigures
-                 SET `ZhaFigureValue` = CASE ";
+                 SET `ZhaFigureValue` = CASE";
  if(!empty($hp1_male_younger[0])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP1' AND BreakdownTypeID1 = '$hiv_type[0]' AND BreakdownTypeID2 = '$most_risk[0]' AND BreakdownTypeID3 = 'Y25' AND BreakdownTypeID4 = 'MAL' THEN '" .$hp1_male_younger[0] . "'"; }
  if(!empty($hp1_female_younger[0])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP1' AND BreakdownTypeID1 = '$hiv_type[0]' AND BreakdownTypeID2 = '$most_risk[0]' AND BreakdownTypeID3 = 'Y25' AND BreakdownTypeID4 = 'FEM' THEN '" .$hp1_female_younger[0]. "'";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP1' AND BreakdownTypeID1 = '$hiv_type[0]' AND BreakdownTypeID2 = '$most_risk[0]' AND BreakdownTypeID3 = '25O' AND BreakdownTypeID4 = 'MAL' THEN '" .$hp1_male_older[0]. "'";  } 
@@ -339,14 +340,14 @@ $query_ans = "UPDATE tblzhafigures
  
  if(!empty($mc4_tshs)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'MC4' AND BreakdownTypeID1 = '' AND BreakdownTypeID2 = '' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$mc4_tshs. "'"; }
  
- $query_ans .= " ELSE ZhaFigureValue END";
-// $query_ans .= "WHERE FormSerialNumber AND ZhaFigureCode AND BreakdownTypeID1 IN ()";
-// 
-// echo $query_ans;
-// exit;
  
-  $result_ans = mysql_query($query_ans) or die(mysql_error());
-  
+ if (strpos($query_ans, 'WHEN') !== false) {
+
+    $query_ans .= " ELSE ZhaFigureValue END";
+    $result_ans = mysql_query($query_ans) or die(mysql_error());
+}
+ 
+ 
   $query_ans = "";
   
   $query_ans = "INSERT IGNORE INTO tblzhafigures
@@ -355,7 +356,6 @@ $query_ans = "UPDATE tblzhafigures
                           `ZhaFigureValue`) 
                    VALUES ";
  if(!empty($hp1_male_younger[0])){ $query_ans .= "('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; }
- else { $query_ans .= "('', '', '', '', '', '', '')"; }
  if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
  if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  }
@@ -516,15 +516,26 @@ $query_ans = "UPDATE tblzhafigures
  
  if(!empty($mc4_tshs)){ $query_ans .= ",('" . $form_no . "', 'MC4', '', '', '', '', '" .$mc4_tshs. "')"; } 
  
-// echo $query_ans;
-// exit;
  
- $result_ans = mysql_query($query_ans) or die(mysql_error());
+ switch (substr($query_ans, '280', '1')) {
+
+    case ',':
+        $query_ans = substr_replace($query_ans, ' ', '280', '1');
+        $result_ans = mysql_query($query_ans) or die(mysql_error());
+        break;
+
+    case '(':
+        $result_ans = mysql_query($query_ans) or die(mysql_error());
+        break;
+
+    default:
+        break;
+}
+
 
  $query_ansm = "UPDATE tblzhaanswers
                    SET `ZhaAnswer` = CASE";
  if(!empty($mc1_mngmnt)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC1' THEN '" . $mc1_mngmnt . "'"; }
- else { $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC1' THEN ZhaAnswer";  }
 
  if(!empty($mc3_money)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'MC3' THEN '" . $mc3_money . "'"; }
  
@@ -541,27 +552,42 @@ $query_ans = "UPDATE tblzhafigures
  
  if(!empty($me1a)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'ME1a' THEN '" . $me1a . "'"; } 
 
- $query_ansm .= " ELSE ZhaAnswer END, ZhaAnswerDate = CASE ";
+ 
+     if (strpos($query_ansm, 'WHEN') !== false) {
+
+    $query_ansm .= " ELSE ZhaAnswer END";
+    $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+}
+ 
+ $query_ansm = "UPDATE tblzhaanswers
+                   SET ZhaAnswerDate = CASE";
   if(!empty($me1b)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'ME1b' THEN '" . $me1b . "'"; }
-  
-   $query_ansm .= " ELSE ZhaAnswerDate END, ZhaAnswerText = CASE ";
+       
+  if (strpos($query_ansm, 'WHEN') !== false) {
+
+    $query_ansm .= " ELSE ZhaAnswerDate END";
+    $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+}
+
+    $query_ansm = "UPDATE tblzhaanswers
+                   SET ZhaAnswerText = CASE";
+    
    if(!empty($me1c)){ $query_ansm .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaQuestionCode = 'ME1c' THEN '" . $me1c . "'"; }
    
-   $query_ansm .= " ELSE ZhaAnswerText END";
+     if (strpos($query_ansm, 'WHEN') !== false) {
 
- 
-// echo $query_ansm;
-// 
-// exit;
- 
- $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+    $query_ansm .= " ELSE ZhaAnswerText END";
+    $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+}
+   
+   
 
 $query_ansm = "";
  
 $query_ansm = "INSERT IGNORE INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
                     VALUES ";
- if(!empty($mc1_mngmnt)){ $query_ansm .= "('$form_no', 'MC1', '$mc1_mngmnt', '', '')"; } else { $query_ansm .= "('', '', '', '', '')"; }
+ if(!empty($mc1_mngmnt)){ $query_ansm .= "('$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
 
  if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
  
@@ -581,7 +607,20 @@ $query_ansm = "INSERT IGNORE INTO tblzhaanswers
  if(!empty($me1c)){ $query_ansm .= ",('" . $form_no . "', 'ME1c', '', '" . $me1c . "', '')"; } 
  
  
- $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+  switch (substr($query_ansm, '176', '1')) {
+
+    case ',':
+        $query_ansm = substr_replace($query_ansm, ' ', '176', '1');
+        $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+        break;
+
+    case '(':
+        $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+        break;
+
+    default:
+        break;
+}
  
  
  $query_submitted = "UPDATE tblzhaformssubmitted
@@ -589,9 +628,9 @@ $query_ansm = "INSERT IGNORE INTO tblzhaanswers
                             `DistrictCode` = '$district',
                             `PeriodFrom` = '$period_from',
                             `PeriodTo` = '$period_to', 
-                            `CompletedByPersonID` = '$completed_by', 
+                            `CompletedByPersonID` = '$org_person[0]', 
                             `DateCompleted` = '$completed_date',
-                            `ApprovedByPersonID` = '$approved_by',
+                            `ApprovedByPersonID` = '$org_person[1]',
                             `DateApproved` = '$approved_date',
                             `DateReceived` = '$received_date',
                             `DateCaptured` = '$captured_date',
@@ -605,7 +644,7 @@ $query_ansm = "INSERT IGNORE INTO tblzhaanswers
  
  $result_submitted = mysql_query($query_submitted) or die(mysql_error());
  
- if($result_ans && $result_ansm && $result_submitted){
+ if($result_submitted){
      info('message', 'Form updated successully!');
      header("Location: edit_form1.php?form_id=" . $form_no . "&lang=" . $lang);
  }  else {

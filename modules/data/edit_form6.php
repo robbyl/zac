@@ -90,7 +90,7 @@ if (!empty($lang) && isset($lang)) {
                 // Displaying message and errors
                 include '../../includes/info.php';
                 ?>
-                <h1>Add New ZHAPMoS Form 6</h1>
+                <h1>Edit ZHAPMoS Form 6</h1>
                 <div class="hr-line"></div>
                 <?php
                 $form_id = clean($_GET['form_id']);
