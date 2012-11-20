@@ -94,6 +94,9 @@ require 'sections/lang_section.php';
             .text , .text:focus {
                 border: none;
             }
+            .message, .error {
+                display: none;
+            }
         </style>
     </head>
 
@@ -110,8 +113,9 @@ require 'sections/lang_section.php';
                 ?>
                 <h1>Add New ZHAPMoS Form 3</h1>
                 <div class="hr-line"></div>
-                <form action="process_form3.php" method="post" novalidate>
+                <form action="process_form3.php" method="post">
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">
+                    <input type="hidden" name="reg_no" id="reg_no" class="text" style="width: 98%">
                     <div class="data-form-wapper">
                         <?php $heading = $text["FORM_3_HEAD"]; ?>
                         <?php require 'sections/head_section.php'; ?>

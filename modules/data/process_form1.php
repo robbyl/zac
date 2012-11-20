@@ -161,8 +161,7 @@ $me1c = $_POST['me1c'];
 /* ########################### END SECTION F ############################### */
 
 // Geting form approval details
-$completed_by = clean($_POST['completed_by']);
-$approved_by = clean($_POST['approved_by']);
+$org_person = clean_arr(($_POST['org_person']));
 $completed_date = clean($_POST['completed_date']);
 $approved_date = clean($_POST['approved_date']);
 $received_date = clean($_POST['received_date']);
@@ -180,8 +179,8 @@ $query_ans = "INSERT INTO tblzhafigures
                           (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`)
-                   VALUES (";
- if(!empty($hp1_male_younger[0])){ $query_ans .= "'" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; }
+                   VALUES ";
+ if(!empty($hp1_male_younger[0])){ $query_ans .= "('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; }
  if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
  if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  }
@@ -342,12 +341,26 @@ $query_ans = "INSERT INTO tblzhafigures
  
  if(!empty($mc4_tshs)){ $query_ans .= ",('" . $form_no . "', 'MC4', '', '', '', '', '" .$mc4_tshs. "')"; } 
  
-  $result_ans = mysql_query($query_ans) or die(mysql_error());
 
+ switch (substr($query_ans, '272', '1')) {
+
+    case ',':
+        $query_ans = substr_replace($query_ans, ' ', '272', '1');
+        $result_ans = mysql_query($query_ans) or die(mysql_error());
+        break;
+
+    case '(':
+        $result_ans = mysql_query($query_ans) or die(mysql_error());
+        break;
+
+    default:
+        break;
+}
+  
  $query_ansm = "INSERT INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
-                    VALUES (";
- if(!empty($mc1_mngmnt)){ $query_ansm .= "'$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
+                    VALUES ";
+ if(!empty($mc1_mngmnt)){ $query_ansm .= "('$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
 
  if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
  
@@ -366,7 +379,21 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($me1b)){ $query_ansm .= ",('" . $form_no . "', 'ME1b', '', '', '" . $me1b . "')"; } 
  if(!empty($me1c)){ $query_ansm .= ",('" . $form_no . "', 'ME1c', '', '" . $me1c . "', '')"; } 
  
- $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+ 
+ switch (substr($query_ansm, '169', '1')) {
+
+    case ',':
+        $query_ansm = substr_replace($query_ansm, ' ', '169', '1');
+        $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+        break;
+
+    case '(':
+        $result_ansm = mysql_query($query_ansm) or die(mysql_error());
+        break;
+
+    default:
+        break;
+}
  
  $query_submitted = "INSERT INTO tblzhaformssubmitted
                                  (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
@@ -375,14 +402,14 @@ $query_ans = "INSERT INTO tblzhafigures
                                   `CapturedByUserID`, `DateFiled`, `VerifiedByUserID`, `DateVerified`,
                                   `NotesWrittenOnForm`, `DataEntryNotes`)
                           VALUES ('$form_no', '$reg_no', '$district',
-                                  '$period_from', '$period_to', '$completed_by', '$completed_date',
-                                  '$approved_by', '$approved_date', '$received_date', '$captured_date',
+                                  '$period_from', '$period_to', '$org_person[0]', '$completed_date',
+                                  '$org_person[1]', '$approved_date', '$received_date', '$captured_date',
                                   '$captured_by', '$filed_date', '$verified_by', '$verified_date',
                                   '$comments', '$comments_zac')";
  
  $result_submitted = mysql_query($query_submitted) or die(mysql_error());
  
- if($result_ans && $result_ansm && $result_submitted){
+ if($result_submitted){
      info('message', 'Form saved successully!');
      header("Location: form1.php?lang=" . $lang);
  }  else {

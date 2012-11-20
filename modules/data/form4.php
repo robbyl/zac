@@ -104,6 +104,7 @@ require 'sections/lang_section.php';
                 <div class="hr-line"></div>
                 <form action="process_form4.php" method="post" novalidate>
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">
+                    <input type="hidden" name="reg_no" id="reg_no" class="text" style="width: 98%">
                     <div class="data-form-wapper">
                         <?php $heading = $text["FORM_4_HEAD"]; ?>
                         <?php require 'sections/head_section.php'; ?>

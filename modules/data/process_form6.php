@@ -29,8 +29,7 @@ $actual_hiv_management = clean($_POST['actual_hiv_management']);
 $actual_hiv_mne = clean($_POST['actual_hiv_mne']);
 
 // Geting form approval details
-$completed_by = clean($_POST['completed_by']);
-$approved_by = clean($_POST['approved_by']);
+$org_person = clean_arr(($_POST['org_person']));
 $completed_date = clean($_POST['completed_date']);
 $approved_date = clean($_POST['approved_date']);
 $received_date = clean($_POST['received_date']);
@@ -53,8 +52,8 @@ $query_submitted = "INSERT INTO tblzhaformssubmitted
                                   `CapturedByUserID`, `DateFiled`, `VerifiedByUserID`, `DateVerified`,
                                   `NotesWrittenOnForm`, `DataEntryNotes`)
                           VALUES ('$form_no', '$reg_no', '$district',
-                                  '$period_from', '$period_to', '$completed_by', '$completed_date',
-                                  '$approved_by', '$approved_date', '$received_date', '$captured_date',
+                                  '$period_from', '$period_to', '$org_person[0]', '$completed_date',
+                                  '$org_person[1]', '$approved_date', '$received_date', '$captured_date',
                                   '$captured_by', '$filed_date', '$verified_by', '$verified_date',
                                   '$comments', '$comments_zac')";
 

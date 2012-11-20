@@ -72,6 +72,9 @@ require 'sections/lang_section.php';
             .text , .text:focus {
                 border: none;
             }
+            .message, .error {
+                display: none;
+            }
         </style>
     </head>
 
@@ -88,7 +91,7 @@ require 'sections/lang_section.php';
                 ?>
                 <h1>Add New ZHAPMoS Form 2</h1>
                 <div class="hr-line"></div>
-                <form action="process_form2.php" method="post" novalidate>
+                <form action="process_form2.php" method="post">
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">
                     <div class="data-form-wapper">
                         <?php $heading = $text["FORM_2_HEAD"]; ?>
@@ -181,9 +184,9 @@ require 'sections/lang_section.php';
                                 </tr>
                                 <tr>
 
-                                    <td><input type="number" name="std_male" id="std_male" min="0" class="number"></td>
-                                    <td><input type="number" name="std_female" id="std_female" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="std_male" id="std_male" min="0" class="number fst"></td>
+                                    <td><input type="number" name="std_female" id="std_female" min="0" class="number fst"></td>
+                                    <td class="fst">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["SECT_LABEL_SOW"]; ?></td>

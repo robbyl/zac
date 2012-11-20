@@ -53,8 +53,7 @@ $b7_youth_club = clean($_POST['b7_youth_club']);
 /* ########################### END SECTION B ############################### */
 
 // Geting form approval details
-$completed_by = clean($_POST['completed_by']);
-$approved_by = clean($_POST['approved_by']);
+$org_person = clean_arr(($_POST['org_person']));
 $completed_date = clean($_POST['completed_date']);
 $approved_date = clean($_POST['approved_date']);
 $received_date = clean($_POST['received_date']);
@@ -73,8 +72,8 @@ $query_ans = "INSERT INTO tblzhafigures
                           (`FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`, 
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`)
-                   VALUES (";
- if(!empty($b1_males)){ $query_ans .= "'" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_males . "')"; }
+                   VALUES ";
+ if(!empty($b1_males)){ $query_ans .= "('" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_males . "')"; }
  if(!empty($b1_females)){ $query_ans .= ",('" . $form_no . "', 'B01', 'FEM', '', '', '', '" . $b1_females . "')"; }
  
  if(!empty($b2_males)){ $query_ans .= ",('" . $form_no . "', 'B02', 'MAL', '', '', '', '" . $b2_males . "')"; }
@@ -92,8 +91,23 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($b6_hiv_related)){ $query_ans .= ",('" . $form_no . "', 'B06', '', '', '', '', '" . $b6_hiv_related . "')"; }
  
   if(!empty($b7_youth_club)){ $query_ans .= ",('" . $form_no . "', 'B07', '', '', '', '', '" . $b7_youth_club . "')"; }
- 
- $result_ans = mysql_query($query_ans) or die(mysql_error());
+  
+   switch (substr($query_ans, '272', '1')) {
+
+    case ',':
+
+        $query_ans = substr_replace($query_ans, ' ', '272', '1');
+        $result_ans = mysql_query($query_ans) or die(mysql_error());
+        break;
+
+    case '(':
+
+        $result_ans = mysql_query($query_ans) or die(mysql_error());
+        break;
+
+    default:
+        break;
+}
 
 $query_submitted = "INSERT INTO tblzhaformssubmitted
                                  (`FormSerialNumber`, `OrganisationCode`, `DistrictCode`,
@@ -102,14 +116,14 @@ $query_submitted = "INSERT INTO tblzhaformssubmitted
                                   `CapturedByUserID`, `DateFiled`, `VerifiedByUserID`, `DateVerified`,
                                   `NotesWrittenOnForm`, `DataEntryNotes`)
                           VALUES ('$form_no', '$sch_name', '$district',
-                                  '$period_from', '$period_to', '$completed_by', '$completed_date',
-                                  '$approved_by', '$approved_date', '$received_date', '$captured_date',
+                                  '$period_from', '$period_to', '$org_person[0]', '$completed_date',
+                                  '$org_person[1]', '$approved_date', '$received_date', '$captured_date',
                                   '$captured_by', '$filed_date', '$verified_by', '$verified_date',
                                   '$comments', '$comments_zac')";
 
 $result_submitted = mysql_query($query_submitted) or die(mysql_error());
 
-if ($result_submitted && $result_ans) {
+if ($result_submitted) {
     info('message', 'Form saved successully!');
     header("Location: form2.php?lang=" . $lang);
 } else {

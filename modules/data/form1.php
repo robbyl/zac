@@ -87,6 +87,10 @@ require 'sections/lang_section.php';
             .text , .text:focus {
                 border: none;
             }
+            
+            .message, .error {
+                display: none;
+            }
         </style>
     </head>
 
@@ -104,7 +108,7 @@ require 'sections/lang_section.php';
                 ?>
                 <h1>Add New ZHAPMoS Form 1</h1>
                 <div class="hr-line"></div>
-                <form action="process_form1.php" method="post" novalidate>
+                <form action="process_form1.php" method="post">
                     <input type="hidden" name="lang" value="<?php echo $lang ?>">
                     <div class="data-form-wapper">
                         <?php require 'sections/head_section.php'; ?>
@@ -190,15 +194,15 @@ require 'sections/lang_section.php';
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["SECT_LABEL_FTM"]; ?></td>
-                                    <td><input type="number" name="full_male" id="full_male" min="0" class="number"></td>
-                                    <td><input type="number" name="full_female" id="full_female" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="full_male" id="full_male" min="0" class="number fst" style="width:80% !important"></td>
+                                    <td><input type="number" name="full_female" id="full_female" min="0" class="number fst"  style="width:80% !important"></td>
+                                    <td class="fst">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $text["SECT_LABEL_PTM"]; ?></td>
-                                    <td><input type="number" name="part_male" id="part_male" min="0" class="number"></td>
-                                    <td><input type="number" name="part_female" id="part_female" min="0" class="number"></td>
-                                    <td>&nbsp;</td>
+                                    <td><input type="number" name="part_male" id="part_male" min="0" class="number fst"  style="width:80% !important"></td>
+                                    <td><input type="number" name="part_female" id="part_female" min="0" class="number fst"  style="width:80% !important"></td>
+                                    <td class="fst">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><?php echo $text["SECT_LABEL_NOD"]; ?></td>

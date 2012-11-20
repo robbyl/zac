@@ -264,7 +264,7 @@
                     $year = $experiod_from[0];
                     $month_range = $experiod_from[1] . '-' . $experiod_from[2] . '/' . $experiod_to[1] . '-' . $experiod_to[2];
                     ?>
-                    <form action="process_edit_form1.php" method="post" novalidate>
+                    <form action="process_edit_form1.php" method="post">
                         <input type="hidden" name="lang" value="<?php echo $lang ?>">
                         <div class="data-form-wapper">
                             <?php require 'sections/edit_head_section.php'; ?>
@@ -321,7 +321,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2"><?php echo $text["SECT_LABEL_REG"]; ?></td>
-                                        <td colspan="3"><input type="text" name="reg_no" id="reg_no" class="text" style="width: 98%"></td>
+                                        <td colspan="3"><input type="text" name="reg_no" id="reg_no" class="text" style="width: 98%" readonly></td>
                                         <td class="data-group">CD6</td>
                                     </tr>
                                     <tr>

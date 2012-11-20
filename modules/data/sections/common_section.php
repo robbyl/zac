@@ -716,7 +716,7 @@
     <table width="100%" border="1" cellspacing="0">
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC1"][0] ?></td>
-            <td width="200"><label for="mc1_yes" style="margin-right: 50px"><input type="radio" name="mc1_mngmnt" id="mc1_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td width="200"><label for="mc1_yes" style="margin-right: 50px"><input type="radio" name="mc1_mngmnt" id="mc1_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc1_no"><input type="radio" name="mc1_mngmnt" id="mc1_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label>
             </td>
             <td width="47" class="data-group">MC1</td>
@@ -728,8 +728,8 @@
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC3"][0] ?></td>
-            <td><label for="mc3_yes" style="margin-right: 50px"><input type="radio" name="mc3_money" id="mc3_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
-                <label for="mc3_no"><input type="radio" name="mc3_money" id="mc3_no" value="No" required> <?php echo $text["SECT_LABEL_NO"] ?></label>
+            <td><label for="mc3_yes" style="margin-right: 50px"><input type="radio" name="mc3_money" id="mc3_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
+                <label for="mc3_no"><input type="radio" name="mc3_money" id="mc3_no" value="No"> <?php echo $text["SECT_LABEL_NO"] ?></label>
             </td>
             <td width="47" class="data-group">MC3</td>
         </tr>
@@ -740,8 +740,8 @@
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC5"][0] ?></td>
-            <td><label for="mc5_yes" style="margin-right: 50px"><input type="radio" name="mc5_activity" id="mc5_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
-                <label for="mc5_no"><input type="radio" name="mc5_activity" id="mc5_no" value="No" required> <?php echo $text["SECT_LABEL_NO"] ?></label>
+            <td><label for="mc5_yes" style="margin-right: 50px"><input type="radio" name="mc5_activity" id="mc5_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
+                <label for="mc5_no"><input type="radio" name="mc5_activity" id="mc5_no" value="No"> <?php echo $text["SECT_LABEL_NO"] ?></label>
             </td>
             <td width="47" class="data-group">MC5</td>
         </tr>
@@ -752,43 +752,43 @@
         <tr>
             <td width="300" rowspan="8"><?php echo $text["SECT_SUB_HEAD_MC_HIV"] ?></td>
             <td><?php echo $ZhaFigureDescriptionqn["MC6a"][0] ?></td>
-            <td  width="200"><label for="mc6a_yes" style="margin-right: 50px"><input type="radio" name="mc6a" id="mc6a_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td  width="200"><label for="mc6a_yes" style="margin-right: 50px"><input type="radio" name="mc6a" id="mc6a_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc6a_no"><input type="radio" name="mc6a" id="mc6a_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
             <td rowspan="8" width="47" class="data-group">MC6</td>
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC6b"][0] ?></td>
-            <td><label for="mc6b_yes"  style="margin-right: 50px"><input type="radio" name="mc6b" id="mc6b_yes" value="Yes" required > <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td><label for="mc6b_yes"  style="margin-right: 50px"><input type="radio" name="mc6b" id="mc6b_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc6b_no"><input type="radio" name="mc6b" id="mc6b_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC6c"][0] ?></td>
-            <td><label for="mc6c_yes" style="margin-right: 50px"><input type="radio" name="mc6c" id="mc6c_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td><label for="mc6c_yes" style="margin-right: 50px"><input type="radio" name="mc6c" id="mc6c_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc6c_no"><input type="radio" name="mc6c" id="mc6c_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC6d"][0] ?></td>
-            <td><label for="mc6d_yes" style="margin-right: 50px"><input type="radio" name="mc6d" id="mc6d_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td><label for="mc6d_yes" style="margin-right: 50px"><input type="radio" name="mc6d" id="mc6d_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc6d_no"><input type="radio" name="mc6d" id="mc6d_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC6e"][0] ?></td>
-            <td><label for="mc6e_yes" style="margin-right: 50px"><input type="radio" name="mc6e" id="mc6e_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td><label for="mc6e_yes" style="margin-right: 50px"><input type="radio" name="mc6e" id="mc6e_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc6e_no"><input type="radio" name="mc6e" id="mc6e_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC6f"][0] ?></td>
-            <td><label for="mc6f_yes" style="margin-right: 50px"><input type="radio" name="mc6f" id="mc6f_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td><label for="mc6f_yes" style="margin-right: 50px"><input type="radio" name="mc6f" id="mc6f_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc6f_no"><input type="radio" name="mc6f" id="mc6f_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC6g"][0] ?></td>
-            <td><label for="mc6g_yes" style="margin-right: 50px"><input type="radio" name="mc6g" id="mc6g_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td><label for="mc6g_yes" style="margin-right: 50px"><input type="radio" name="mc6g" id="mc6g_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc6g_no"><input type="radio" name="mc6g" id="mc6g_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
         </tr>
         <tr>
             <td><?php echo $ZhaFigureDescriptionqn["MC6h"][0] ?></td>
-            <td><label for="mc6h_yes" style="margin-right: 50px"><input type="radio" name="mc6h" id="mc6h_yes" value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?></label>
+            <td><label for="mc6h_yes" style="margin-right: 50px"><input type="radio" name="mc6h" id="mc6h_yes" value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?></label>
                 <label for="mc6h_no" style="margin-right: 50px"><input type="radio" name="mc6h" id="mc6h_no" value="No">  <?php echo $text["SECT_LABEL_NO"] ?></label></td>
         </tr>
     </table>
@@ -796,12 +796,12 @@
     <table width="100%" border="1" cellspacing="0">
         <tr>
             <td rowspan="2"><?php echo $ZhaFigureDescriptionqn["ME1a"][0] ?></td>
-            <td width="100"><label for="me1_yes"><input type="radio" name="me1a" id="me1_yes"> <?php echo $text["SECT_LABEL_YES"] ?></label></td>
+            <td width="100"><label for="me1_yes"><input type="radio" name="me1a" value="Yes" id="me1_yes"> <?php echo $text["SECT_LABEL_YES"] ?></label></td>
             <td><?php echo $ZhaFigureDescriptionqn["ME1b"][0] ?>  <br><input type="date" name="me1b" class="text"></td>
             <td rowspan="2" width="60" class="data-group">ME1</td>
         </tr>
         <tr>
-            <td><label for="me1_no"><input type="radio" name="me1a" id="me1_no"> <?php echo $text["SECT_LABEL_NO"] ?></label></td>
+            <td><label for="me1_no"><input type="radio" name="me1a" value="No" id="me1_no"> <?php echo $text["SECT_LABEL_NO"] ?></label></td>
             <td><?php echo $ZhaFigureDescriptionqn["ME1c"][0] ?><br> <input type="text" name="me1c" class="text" style="width: 90%"></td>
         </tr>
     </table>
