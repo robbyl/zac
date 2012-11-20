@@ -63,7 +63,7 @@ require '../../includes/session_validator.php';
                 <?php include '../../includes/sidebar.php'; ?>
                 <!-- end .sidebar --></div>
             <div class="content">
-                <h1>ZHAPMoS Submission Records Printout</h1>
+                <h1>ZHAPMoS Forms Summary Printout</h1>
                 <div class="actions" style="top: 100px; width: auto; right: 0; margin: 0 15px 0 0" >
                     <button class="print tooltip" accesskey="P" title="Print [Alt+Shift+P]" onClick="printPage('report', '../../css/print.css')">Print</button>
                     <button class="pdf tooltip" accesskey="D" title="Save as PDF [Alt+Shift+D]" id="pdf" >PDF</button>
@@ -139,7 +139,7 @@ require '../../includes/session_validator.php';
                                                     ON dis.`RegionCode` = reg.`RegionCode`
                                                  WHERE reg.`RegionCode` = 225";
                             break;
-                        
+
                         case 'South Pemba region':
                             $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`
                                                   FROM tblgensetupdistricts dis
@@ -147,7 +147,7 @@ require '../../includes/session_validator.php';
                                                     ON dis.`RegionCode` = reg.`RegionCode`
                                                  WHERE reg.`RegionCode` = 226";
                             break;
-                        
+
                         case 'National':
                             $query_districts = "SELECT `DistrictCode`, `District`, reg.`RegionCode`, `Region`,
                                                        zon.`ZoneCode`, `Zone`
@@ -160,6 +160,9 @@ require '../../includes/session_validator.php';
                                                     OR zon.ZoneCode = 2";
 
                         default:
+                            $query_districts = "SELECT `DistrictCode`, `District`
+                                                  FROM tblgensetupdistricts
+                                                 WHERE `District` = '$geoarea'";
                             break;
                     }
 

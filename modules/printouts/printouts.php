@@ -45,8 +45,14 @@ ob_start();
 
                 $('#form-Gographical-summary').click(function() {
 
-                    // Display receive form summery as pop-up
+                    // Display receive form summary as pop-up
                     getPopForm('geographical_criteria.php', '');
+                });
+                
+                $('#form-District-summary').click(function() {
+
+                    // Display receive form summary as pop-up
+                    getPopForm('district_criteria.php', '');
                 });
             });
 
