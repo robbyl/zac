@@ -820,10 +820,10 @@
             <td><?php echo $ZhaFigureDescriptionqn["MC3"][0] ?></td>
             <td>
                 <label for="mc3_yes" style="margin-right: 50px">
-                    <input type="radio" name="mc3_money" id="mc3_yes" <?php if ($mcans['MC3'] == "Yes") echo "checked"; ?> value="Yes" required> <?php echo $text["SECT_LABEL_YES"] ?>
+                    <input type="radio" name="mc3_money" id="mc3_yes" <?php if ($mcans['MC3'] == "Yes") echo "checked"; ?> value="Yes"> <?php echo $text["SECT_LABEL_YES"] ?>
                 </label>
                 <label for="mc3_no">
-                    <input type="radio" name="mc3_money" id="mc3_no" <?php if ($mcans['MC3'] == "No") echo "checked"; ?> value="No" required> <?php echo $text["SECT_LABEL_NO"] ?>
+                    <input type="radio" name="mc3_money" id="mc3_no" <?php if ($mcans['MC3'] == "No") echo "checked"; ?> value="No"> <?php echo $text["SECT_LABEL_NO"] ?>
                 </label>
             </td>
             <td width="47" class="data-group">MC3</td>

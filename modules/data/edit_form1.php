@@ -266,6 +266,7 @@
                     ?>
                     <form action="process_edit_form1.php" method="post">
                         <input type="hidden" name="lang" value="<?php echo $lang ?>">
+                        <input type="hidden" name="reg_no" id="reg_no" class="text" style="width: 98%">
                         <div class="data-form-wapper">
                             <?php require 'sections/edit_head_section.php'; ?>
                             <div class="section">
@@ -357,13 +358,13 @@
                                     <tr>
                                         <td><?php echo $text["SECT_LABEL_PTM"]; ?></td>
                                         <td><input type="number" name="part_male" id="part_male" value="<?php if (!empty($fig_ans['CD9']['PRT']['MAL'][''][''])) echo $fig_ans['CD9']['PRT']['MAL']['']['']; ?>" min="0" class="number"></td>
-                                        <td><input type="number" name="part_female" id="part_female" value="<?php if (!empty($fig_ans['CD9']['PRT']['FEM'][''][''])) echo $fig_ans['CD9']['PRT']['FEM']['']['']; ?>" min="0" class="number"></td>
+                                        <td><input type="number" name="part_female" id="part_female"  value="<?php if (!empty($fig_ans['CD9']['PRT']['FEM'][''][''])) echo $fig_ans['CD9']['PRT']['FEM']['']['']; ?>" min="0" class="number"></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2"><?php echo $text["SECT_LABEL_NOD"]; ?></td>
                                         <td colspan="3">
-                                            <select class="select" name="district" id="district" style="width: 100%;">
+                                            <select class="select" name="district" id="district" readonly="" style="width: 100%;">
                                                 <option value=""></option>
                                                 <?php
                                                 $query_district = "SELECT `DistrictCode`, `District` FROM tblgensetupdistricts ORDER BY `District` ASC";

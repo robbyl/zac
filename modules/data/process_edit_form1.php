@@ -177,6 +177,10 @@ $comments_zac = clean($_POST['comments_zac']);
 
 $query_ans = "UPDATE tblzhafigures
                  SET `ZhaFigureValue` = CASE";
+ if(!empty($part_male)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'CD9' AND BreakdownTypeID1 = 'PRT' AND BreakdownTypeID2 = 'MAL' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$part_male . "'"; }
+ if(!empty($part_female)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'CD9' AND BreakdownTypeID1 = 'PRT' AND BreakdownTypeID2 = 'FEM' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$part_female . "'"; }
+ if(!empty($full_male)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'CD9' AND BreakdownTypeID1 = 'FLT' AND BreakdownTypeID2 = 'MAL' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$full_male . "'"; }
+ if(!empty($full_female)){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'CD9' AND BreakdownTypeID1 = 'FLT' AND BreakdownTypeID2 = 'FEM' AND BreakdownTypeID3 = '' AND BreakdownTypeID4 = '' THEN '" .$full_female . "'"; }
  if(!empty($hp1_male_younger[0])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP1' AND BreakdownTypeID1 = '$hiv_type[0]' AND BreakdownTypeID2 = '$most_risk[0]' AND BreakdownTypeID3 = 'Y25' AND BreakdownTypeID4 = 'MAL' THEN '" .$hp1_male_younger[0] . "'"; }
  if(!empty($hp1_female_younger[0])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP1' AND BreakdownTypeID1 = '$hiv_type[0]' AND BreakdownTypeID2 = '$most_risk[0]' AND BreakdownTypeID3 = 'Y25' AND BreakdownTypeID4 = 'FEM' THEN '" .$hp1_female_younger[0]. "'";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= " WHEN FormSerialNumber = '" . $form_no . "' AND ZhaFigureCode = 'HP1' AND BreakdownTypeID1 = '$hiv_type[0]' AND BreakdownTypeID2 = '$most_risk[0]' AND BreakdownTypeID3 = '25O' AND BreakdownTypeID4 = 'MAL' THEN '" .$hp1_male_older[0]. "'";  } 
@@ -353,7 +357,11 @@ $query_ans = "UPDATE tblzhafigures
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`) 
                    VALUES ";
- if(!empty($hp1_male_younger[0])){ $query_ans .= "('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; }
+ if(!empty($part_male)){ $query_ans .= "('" . $form_no . "', 'CD9', 'PRT', 'MAL', '', '', '" .$part_male . "')"; }
+ if(!empty($part_female)){ $query_ans .= ",('" . $form_no . "', 'CD9', 'PRT', 'FEM', '', '', '" .$part_female . "')"; }
+ if(!empty($full_male)){ $query_ans .= ",('" . $form_no . "', 'CD9', 'FLT', 'MAL', '', '', '" .$full_male . "')"; }
+ if(!empty($full_female)){ $query_ans .= ",('" . $form_no . "', 'CD9', 'FLT', 'FEM', '', '', '" .$full_female . "')"; }
+ if(!empty($hp1_male_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; }
  if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
  if(!empty($hp1_female_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'FEM', '" .$hp1_female_older[0]. "')";  }
@@ -620,6 +628,10 @@ $query_ansm = "INSERT IGNORE INTO tblzhaanswers
         break;
 }
  
+$query_organisation = "UPDATE `tblgenorganisations` 
+                          SET `PhysicalAddress` = '$phy_addr',
+                              `PostalAddress` = '$post_addr',
+                              `Phone` = ''";
  
  $query_submitted = "UPDATE tblzhaformssubmitted
                         SET `OrganisationCode` = '$reg_no', 
