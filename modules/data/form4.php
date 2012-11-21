@@ -86,6 +86,9 @@ require 'sections/lang_section.php';
             .text , .text:focus {
                 border: none;
             }
+            .message, .error {
+                display: none;
+            }
         </style>
     </head>
 

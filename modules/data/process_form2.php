@@ -73,7 +73,10 @@ $query_ans = "INSERT INTO tblzhafigures
                           `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`, 
                           `ZhaFigureValue`)
                    VALUES ";
- if(!empty($b1_males)){ $query_ans .= "('" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_males . "')"; }
+ if(!empty($std_male)){ $query_ans .= "('" . $form_no . "', 'A10', 'MAL', '', '', '', '" . $std_male . "')"; }
+ if(!empty($std_female)){ $query_ans .= ",('" . $form_no . "', 'A10', 'FEM', '', '', '', '" . $std_female . "')"; }
+ 
+ if(!empty($b1_males)){ $query_ans .= ",('" . $form_no . "', 'B01', 'MAL', '', '', '', '" . $b1_males . "')"; }
  if(!empty($b1_females)){ $query_ans .= ",('" . $form_no . "', 'B01', 'FEM', '', '', '', '" . $b1_females . "')"; }
  
  if(!empty($b2_males)){ $query_ans .= ",('" . $form_no . "', 'B02', 'MAL', '', '', '', '" . $b2_males . "')"; }

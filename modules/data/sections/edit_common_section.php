@@ -139,7 +139,7 @@
                     <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
                         <option value="<?php echo $hiv['BreakdownTypeID'] ?>" 
                         <?php
-                       	    if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1_4 ||
+                        if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1_4 ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_4f ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_4o ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_4fo)
@@ -154,7 +154,7 @@
                     <?php while ($risk = mysql_fetch_array($result_risk)) { ?>
                         <option value="<?php echo $risk['BreakdownTypeID'] ?>"
                         <?php
-                        	if ($risk['BreakdownTypeID'] == $BreakdownTypeID2_4 ||
+                        if ($risk['BreakdownTypeID'] == $BreakdownTypeID2_4 ||
                                 $risk['BreakdownTypeID'] == $BreakdownTypeID2_4f ||
                                 $risk['BreakdownTypeID'] == $BreakdownTypeID2_4o ||
                                 $risk['BreakdownTypeID'] == $BreakdownTypeID2_4fo)
@@ -211,14 +211,14 @@
                 <select name="hiv_type[]" class="select" style="width: 240px;">
                     <option value=""></option>
                     <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
-                        <option value="<?php echo $hiv['BreakdownTypeID'] ?> 
+                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>" 
                         <?php
                         if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1_6 ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_6f ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_6o ||
                                 $hiv['BreakdownTypeID'] == $BreakdownTypeID1_6fo)
                             echo "selected"
-                            ?>"><?php echo $hiv['breakdown'] ?></option>
+                            ?>><?php echo $hiv['breakdown'] ?></option>
                             <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
@@ -269,44 +269,21 @@
                 <select name="hiv_inter[]" class="select" style="width: 480px;">
                     <option value=""></option>
                     <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
-                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
-                    <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"
+                        <?php
+                        if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_1 ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_1f ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_1o ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_1fo)
+                            echo "selected"
+                            ?>><?php echo $hiv['breakdown'] ?></option>
+                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <select name="" class="select" style="width: 480px;">
-                    <option value="hiv_inter[]"></option>
-                    <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
-                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
-                    <?php } mysql_data_seek($result_hiv_intv, 0); ?>
-                </select>
-            </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <select name="" class="select" style="width: 480px;">
-                    <option value="hiv_inter[]"></option>
-                    <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
-                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
-                    <?php } mysql_data_seek($result_hiv_intv, 0); ?>
-                </select>
-            </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_younger[]" value="<?php echo $ZhaFigureValueh2_1 ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_younger[]" value="<?php echo $ZhaFigureValueh2_1f ?>"  min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_older[]" value="<?php echo $ZhaFigureValueh2_1o ?>"  min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_older[]" value="<?php echo $ZhaFigureValueh2_1fo ?>"  min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -314,14 +291,21 @@
                 <select name="hiv_inter[]" class="select" style="width: 480px;">
                     <option value=""></option>
                     <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
-                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
-                    <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"
+                        <?php
+                        if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_2 ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_2f ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_2o ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_12o)
+                            echo "selected"
+                            ?>><?php echo $hiv['breakdown'] ?></option>
+                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_younger[]" value="<?php echo $ZhaFigureValueh2_2 ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_younger[]" value="<?php echo $ZhaFigureValueh2_2f ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_older[]" value="<?php echo $ZhaFigureValueh2_2o ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_older[]" value="<?php echo $ZhaFigureValueh2_2fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -329,14 +313,21 @@
                 <select name="hiv_inter[]" class="select" style="width: 480px;">
                     <option value=""></option>
                     <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
-                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
-                    <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"
+                        <?php
+                        if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_3 ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_3f ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_3o ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_3fo)
+                            echo "selected"
+                            ?>><?php echo $hiv['breakdown'] ?></option>
+                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_younger[]" value="<?php echo $ZhaFigureValueh2_3 ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_younger[]" value="<?php echo $ZhaFigureValueh2_3f ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_older[]" value="<?php echo $ZhaFigureValueh2_3o ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_older[]" value="<?php echo $ZhaFigureValueh2_3fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -344,14 +335,65 @@
                 <select name="hiv_inter[]" class="select" style="width: 480px;">
                     <option value=""></option>
                     <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
-                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"><?php echo $hiv['breakdown'] ?></option>
-                    <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"
+                        <?php
+                        if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_4 ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_4f ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_4o ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_4fo)
+                            echo "selected"
+                            ?>><?php echo $hiv['breakdown'] ?></option>
+                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="hp2_male_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_younger[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_male_older[]" min="0" class="number"></td>
-            <td><input type="number" name="hp2_female_older[]" min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_younger[]" value="<?php echo $ZhaFigureValueh2_4 ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_younger[]" value="<?php echo $ZhaFigureValueh2_4f ?>"  min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_older[]" value="<?php echo $ZhaFigureValueh2_4o ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_older[]" value="<?php echo $ZhaFigureValueh2_4fo ?>" min="0" class="number"></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <select name="hiv_inter[]" class="select" style="width: 480px;">
+                    <option value=""></option>
+                    <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"
+                        <?php
+                        if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_5 ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_5f ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_5o ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_5fo)
+                            echo "selected"
+                            ?>><?php echo $hiv['breakdown'] ?></option>
+                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                </select>
+            </td>
+            <td><input type="number" name="hp2_male_younger[]"  value="<?php echo $ZhaFigureValueh2_5 ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_younger[]" value="<?php echo $ZhaFigureValueh2_5f ?>"  min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_older[]" value="<?php echo $ZhaFigureValueh2_5o ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_older[]" value="<?php echo $ZhaFigureValueh2_5fo ?>" min="0" class="number"></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <select name="hiv_inter[]" class="select" style="width: 480px;">
+                    <option value=""></option>
+                    <?php while ($hiv = mysql_fetch_array($result_hiv_intv)) { ?>
+                        <option value="<?php echo $hiv['BreakdownTypeID'] ?>"
+                        <?php
+                        if ($hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_6 ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_6f ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_6o ||
+                                $hiv['BreakdownTypeID'] == $BreakdownTypeID1h2_6fo)
+                            echo "selected"
+                            ?>><?php echo $hiv['breakdown'] ?></option>
+                            <?php } mysql_data_seek($result_hiv_intv, 0); ?>
+                </select>
+            </td>
+            <td><input type="number" name="hp2_male_younger[]"  value="<?php echo $ZhaFigureValueh2_6 ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_younger[]" value="<?php echo $ZhaFigureValueh2_6f ?>"  min="0" class="number"></td>
+            <td><input type="number" name="hp2_male_older[]" value="<?php echo $ZhaFigureValueh2_6o ?>" min="0" class="number"></td>
+            <td><input type="number" name="hp2_female_older[]" value="<?php echo $ZhaFigureValueh2_6fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
     </table>
@@ -634,18 +676,27 @@
                 <select name="tc1_topic[]" class="select" style="width: 240px;">
                     <option value=""></option>
                     <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                        <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
-                    <?php } mysql_data_seek($result_training, 0); ?>
+                        <option value="<?php echo $training['BreakdownTypeID'] ?>" 
+                        <?php
+                        if ($training['BreakdownTypeID'] == $BreakdownTypeID1tc_1 ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_1f ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_1o ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_1fo ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_1p ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_1fp)
+                            echo "selected"
+                            ?>><?php echo $training['breakdowntraining'] ?></option>
+                            <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_male[]" value="<?php echo $ZhaFigureValuetc_1 ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_female[]" value="<?php echo $ZhaFigureValuetc_1f ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_male[]" value="<?php echo $ZhaFigureValuetc_1o ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_female[]" value="<?php echo $ZhaFigureValuetc_1fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_male[]" value="<?php echo $ZhaFigureValuetc_1p ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_female[]" value="<?php echo $ZhaFigureValuetc_1po ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -653,18 +704,27 @@
                 <select name="tc1_topic[]" class="select" style="width: 240px;">
                     <option value=""></option>
                     <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                        <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                        <option value="<?php echo $training['BreakdownTypeID'] ?>" 
+                        <?php
+                        if ($training['BreakdownTypeID'] == $BreakdownTypeID1tc_2 ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_2f ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_2o ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_2fo ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_2p ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_2fp)
+                            echo "selected"
+                            ?>><?php echo $training['breakdowntraining'] ?></option>
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_male[]" value="<?php echo $ZhaFigureValuetc_2 ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_female[]" value="<?php echo $ZhaFigureValuetc_2f ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_male[]" value="<?php echo $ZhaFigureValuetc_2o ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_female[]" value="<?php echo $ZhaFigureValuetc_2fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_male[]" value="<?php echo $ZhaFigureValuetc_2p ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_female[]" value="<?php echo $ZhaFigureValuetc_2po ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -672,18 +732,27 @@
                 <select name="tc1_topic[]" class="select" style="width: 240px;">
                     <option value=""></option>
                     <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                        <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                        <option value="<?php echo $training['BreakdownTypeID'] ?>" 
+                        <?php
+                        if ($training['BreakdownTypeID'] == $BreakdownTypeID1tc_3 ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_3f ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_3o ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_3fo ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_3p ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_3fp)
+                            echo "selected"
+                            ?>><?php echo $training['breakdowntraining'] ?></option>
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_male[]" value="<?php echo $ZhaFigureValuetc_3 ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_female[]" value="<?php echo $ZhaFigureValuetc_3f ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_male[]" value="<?php echo $ZhaFigureValuetc_3o ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_female[]" value="<?php echo $ZhaFigureValuetc_3fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_male[]" value="<?php echo $ZhaFigureValuetc_3p ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_female[]" value="<?php echo $ZhaFigureValuetc_3po ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -691,18 +760,27 @@
                 <select name="tc1_topic[]" class="select" style="width: 240px;">
                     <option value=""></option>
                     <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                        <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                        <option value="<?php echo $training['BreakdownTypeID'] ?>" 
+                        <?php
+                        if ($training['BreakdownTypeID'] == $BreakdownTypeID1tc_4 ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_4f ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_4o ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_4fo ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_4p ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_4fp)
+                            echo "selected"
+                            ?>><?php echo $training['breakdowntraining'] ?></option>
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_male[]" value="<?php echo $ZhaFigureValuetc_4 ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_female[]" value="<?php echo $ZhaFigureValuetc_4f ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_male[]" value="<?php echo $ZhaFigureValuetc_4f ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_female[]" value="<?php echo $ZhaFigureValuetc_4fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_male[]" value="<?php echo $ZhaFigureValuetc_4p ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_female[]" value="<?php echo $ZhaFigureValuetc_4po ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -710,18 +788,27 @@
                 <select name="tc1_topic[]" class="select" style="width: 240px;">
                     <option value=""></option>
                     <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                        <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                        <option value="<?php echo $training['BreakdownTypeID'] ?>" 
+                        <?php
+                        if ($training['BreakdownTypeID'] == $BreakdownTypeID1tc_5 ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_5f ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_5o ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_5fo ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_5p ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_5fp)
+                            echo "selected"
+                            ?>><?php echo $training['breakdowntraining'] ?></option>
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_male[]" value="<?php echo $ZhaFigureValuetc_5 ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_female[]" value="<?php echo $ZhaFigureValuetc_5f ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_male[]" value="<?php echo $ZhaFigureValuetc_5o ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_female[]" value="<?php echo $ZhaFigureValuetc_5fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_male[]" value="<?php echo $ZhaFigureValuetc_5p ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_female[]" value="<?php echo $ZhaFigureValuetc_5po ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -729,18 +816,27 @@
                 <select name="tc1_topic[]" class="select" style="width: 240px;">
                     <option value=""></option>
                     <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                        <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                        <option value="<?php echo $training['BreakdownTypeID'] ?>" 
+                        <?php
+                        if ($training['BreakdownTypeID'] == $BreakdownTypeID1tc_6 ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_6f ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_6o ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_6fo ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_6p ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_6fp)
+                            echo "selected"
+                            ?>><?php echo $training['breakdowntraining'] ?></option>
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_male[]" value="<?php echo $ZhaFigureValuetc_6 ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_female[]" value="<?php echo $ZhaFigureValuetc_6f ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_male[]" value="<?php echo $ZhaFigureValuetc_6o ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_female[]" value="<?php echo $ZhaFigureValuetc_6fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_male[]" value="<?php echo $ZhaFigureValuetc_6p ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_female[]" value="<?php echo $ZhaFigureValuetc_6po ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
@@ -748,37 +844,55 @@
                 <select name="tc1_topic[]" class="select" style="width: 240px;">
                     <option value=""></option>
                     <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                        <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                        <option value="<?php echo $training['BreakdownTypeID'] ?>" 
+                        <?php
+                        if ($training['BreakdownTypeID'] == $BreakdownTypeID1tc_7 ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_7f ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_7o ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_7fo ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_7p ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_7fp)
+                            echo "selected"
+                            ?>><?php echo $training['breakdowntraining'] ?></option>
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_male[]" value="<?php echo $ZhaFigureValuetc_7 ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_female[]" value="<?php echo $ZhaFigureValuetc_7f ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_male[]" value="<?php echo $ZhaFigureValuetc_7o ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_female[]" value="<?php echo $ZhaFigureValuetc_7fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_male[]" value="<?php echo $ZhaFigureValuetc_7p ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_female[]" value="<?php echo $ZhaFigureValuetc_7po ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td>
-                <select name="" class="select" style="width: 240px;">
-                    <option value="tc1_topic[]"></option>
+                <select name="tc1_topic[]" class="select" style="width: 240px;">
+                    <option value=""></option>
                     <?php while ($training = mysql_fetch_array($result_training)) { ?>
-                        <option value="<?php echo $training['BreakdownTypeID'] ?>"><?php echo $training['breakdowntraining'] ?></option>
+                        <option value="<?php echo $training['BreakdownTypeID'] ?>" 
+                        <?php
+                        if ($training['BreakdownTypeID'] == $BreakdownTypeID1tc_8 ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_8f ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_8o ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_8fo ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_8p ||
+                                $training['BreakdownTypeID'] == $BreakdownTypeID1tc_8fp)
+                            echo "selected"
+                            ?>><?php echo $training['breakdowntraining'] ?></option>
                     <?php } mysql_data_seek($result_training, 0); ?>
                 </select>
             </td>
-            <td><input type="number" name="tc1_volunteers_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_volunteers_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_male[]" value="<?php echo $ZhaFigureValuetc_8 ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_volunteers_female[]" value="<?php echo $ZhaFigureValuetc_8f ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_staff_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_staff_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_male[]" value="<?php echo $ZhaFigureValuetc_8o ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_staff_female[]" value="<?php echo $ZhaFigureValuetc_8fo ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
-            <td><input type="number" name="tc1_employees_male[]" min="0" class="number"></td>
-            <td><input type="number" name="tc1_employees_female[]" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_male[]" value="<?php echo $ZhaFigureValuetc_8p ?>" min="0" class="number"></td>
+            <td><input type="number" name="tc1_employees_female[]" value="<?php echo $ZhaFigureValuetc_8po ?>" min="0" class="number"></td>
             <td>&nbsp;</td>
         </tr>
     </table>

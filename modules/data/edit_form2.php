@@ -195,8 +195,8 @@
                                     </tr>
                                     <tr>
 
-                                        <td><input type="number" name="std_male" id="std_male" min="0" class="number"></td>
-                                        <td><input type="number" name="std_female" id="std_female" min="0" class="number"></td>
+                                        <td><input type="number" name="std_male" id="std_male" min="0" value="<?php if (!empty($fig_ans['A10']['MAL'])) echo $fig_ans['A10']['MAL']; ?>" class="number"></td>
+                                        <td><input type="number" name="std_female" id="std_female" min="0" value="<?php if (!empty($fig_ans['A10']['FEM'])) echo $fig_ans['A10']['FEM']; ?>"  class="number"></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr>

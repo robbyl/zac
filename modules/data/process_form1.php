@@ -184,6 +184,7 @@ $query_ans = "INSERT INTO tblzhafigures
  if(!empty($part_female)){ $query_ans .= ",('" . $form_no . "', 'CD9', 'PRT', 'FEM', '', '', '" .$part_female . "')"; }
  if(!empty($full_male)){ $query_ans .= ",('" . $form_no . "', 'CD9', 'FLT', 'MAL', '', '', '" .$full_male . "')"; }
  if(!empty($full_female)){ $query_ans .= ",('" . $form_no . "', 'CD9', 'FLT', 'FEM', '', '', '" .$full_female . "')"; }
+ 
  if(!empty($hp1_male_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'MAL', '" .$hp1_male_younger[0] . "')"; }
  if(!empty($hp1_female_younger[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', 'Y25', 'FEM', '" .$hp1_female_younger[0]. "')";  } 
  if(!empty($hp1_male_older[0])){ $query_ans .= ",('" . $form_no . "', 'HP1', '$hiv_type[0]', '$most_risk[0]', '25O', 'MAL', '" .$hp1_male_older[0]. "')";  } 
