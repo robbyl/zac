@@ -37,6 +37,9 @@
             .text , .text:focus {
                 border: none;
             }
+            .message, .error {
+                display: none;
+            }
         </style>
     </head>
 
@@ -65,41 +68,44 @@
                     $form_serial_no = $form_id;
                     require 'sections/lang_section.php';
                     $heading = $text["FORM_1_HEAD"];
+                    
+                     require 'sections/common_edit_query.php';
 
-                    $query_ans = "SELECT `FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`,
-                                         `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`,
-                                         `ZhaFigureValue`
-                                    FROM tblzhafigures
-                                   WHERE `FormSerialNumber` = '$form_id'";
-
-                    $result_ans = mysql_query($query_ans) or die(mysql_error());
-
-                    while ($ans = mysql_fetch_array($result_ans)) {
-
-                        $fig_ans[$ans['ZhaFigureCode']][$ans['BreakdownTypeID1']][$ans['BreakdownTypeID2']][$ans['BreakdownTypeID3']][$ans['BreakdownTypeID4']] = $ans['ZhaFigureValue'];
-                    }
-
-                    $query_submitted = "SELECT `FormSerialNumber`, `OrganisationCode`, `DistrictCode`, DATE(`PeriodFrom`) AS PeriodFrom,
-                                               DATE(`PeriodTo`) AS PeriodTo, `CompletedByPersonID`, DATE(`DateCompleted`) AS DateCompleted,
-                                               `ApprovedByPersonID`, DATE(`DateApproved`) AS DateApproved, DATE(`DateReceived`) AS DateReceived,
-                                               DATE(`DateCaptured`) AS DateCaptured, `CapturedByUserID`, DATE(`DateFiled`) AS DateFiled,
-                                               DATE(`DateVerified`) AS DateVerified, `VerifiedByUserID`, `NotesWrittenOnForm`, DataEntryNotes
-                                          FROM tblzhaformssubmitted
-                                         WHERE FormSerialNumber = '$form_id'";
-
-                    $result_submitted = mysql_query($query_submitted) or die(mysql_error());
-                    $submitted = mysql_fetch_array($result_submitted);
-
-                    $period_from = $submitted['PeriodFrom'];
-                    $period_to = $submitted['PeriodTo'];
-
-                    $experiod_from = explode("-", $period_from);
-                    $experiod_to = explode("-", $period_to);
-                    $year = $experiod_from[0];
-                    $month_range = $experiod_from[1] . '-' . $experiod_from[2] . '/' . $experiod_to[1] . '-' . $experiod_to[2];
+//                    $query_ans = "SELECT `FormSerialNumber`, `ZhaFigureCode`, `BreakdownTypeID1`,
+//                                         `BreakdownTypeID2`, `BreakdownTypeID3`, `BreakdownTypeID4`,
+//                                         `ZhaFigureValue`
+//                                    FROM tblzhafigures
+//                                   WHERE `FormSerialNumber` = '$form_id'";
+//
+//                    $result_ans = mysql_query($query_ans) or die(mysql_error());
+//
+//                    while ($ans = mysql_fetch_array($result_ans)) {
+//
+//                        $fig_ans[$ans['ZhaFigureCode']][$ans['BreakdownTypeID1']][$ans['BreakdownTypeID2']][$ans['BreakdownTypeID3']][$ans['BreakdownTypeID4']] = $ans['ZhaFigureValue'];
+//                    }
+//
+//                    $query_submitted = "SELECT `FormSerialNumber`, `OrganisationCode`, `DistrictCode`, DATE(`PeriodFrom`) AS PeriodFrom,
+//                                               DATE(`PeriodTo`) AS PeriodTo, `CompletedByPersonID`, DATE(`DateCompleted`) AS DateCompleted,
+//                                               `ApprovedByPersonID`, DATE(`DateApproved`) AS DateApproved, DATE(`DateReceived`) AS DateReceived,
+//                                               DATE(`DateCaptured`) AS DateCaptured, `CapturedByUserID`, DATE(`DateFiled`) AS DateFiled,
+//                                               DATE(`DateVerified`) AS DateVerified, `VerifiedByUserID`, `NotesWrittenOnForm`, DataEntryNotes
+//                                          FROM tblzhaformssubmitted
+//                                         WHERE FormSerialNumber = '$form_id'";
+//
+//                    $result_submitted = mysql_query($query_submitted) or die(mysql_error());
+//                    $submitted = mysql_fetch_array($result_submitted);
+//
+//                    $period_from = $submitted['PeriodFrom'];
+//                    $period_to = $submitted['PeriodTo'];
+//
+//                    $experiod_from = explode("-", $period_from);
+//                    $experiod_to = explode("-", $period_to);
+//                    $year = $experiod_from[0];
+//                    $month_range = $experiod_from[1] . '-' . $experiod_from[2] . '/' . $experiod_to[1] . '-' . $experiod_to[2];
                     ?>
                     <form action="process_edit_form3.php" method="post" novalidate>
                         <input type="hidden" name="lang" value="<?php echo $lang ?>">
+                        <input type="hidden" name="reg_no" id="reg_no" class="text" style="width: 98%">
                         <div class="data-form-wapper">
                             <?php $heading = $text["FORM_3_HEAD"]; ?>
                             <?php require 'sections/edit_head_section.php'; ?>
