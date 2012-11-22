@@ -128,7 +128,7 @@ require '../../functions/format_byte_function.php';
                 <form action="action.php" method="post" id="action">
                     <div class="actions">
                         <button class="delete-record tooltip" title="Delete backup(s)" style="width: auto; height: auto; background-position: 5px 6px" form="action"
-                                onClick="return confirm('Are you sure you want to delete backup(s)?');">Delete</button>
+                                onClick="return confirm('Are you sure you want to delete backup(s)?');" name="action[]" value="DELETE">Delete</button>
                     </div>
                     <table cellpadding="0" cellspacing="0" border="0" id="dataTable">
                         <thead>
