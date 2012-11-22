@@ -50,6 +50,10 @@
                 <?php include '../../includes/sidebar.php'; ?>
                 <!-- end .sidebar --></div>
             <div class="content">
+                <?php
+                // Displaying message and errors
+                include '../../includes/info.php';
+                ?>
                 <h1>Edit ZHAPMoS Form 4</h1>
                 <div class="hr-line"></div>
                 <?php

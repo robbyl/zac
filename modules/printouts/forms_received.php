@@ -21,7 +21,7 @@ $query_received = "SELECT `FormSerialNumber`, sub.`OrganisationCode`, `Organisat
 
 $result = mysql_query($query_received) or die(mysql_error());
 
-while ($row = mysql_fetch_array($result)) {
+while ($row = mysql_fetch_assoc($result)) {
 
     $forms[$row['OrganisationCategoryDescription']][] = $row['FormSerialNumber'];
     $PeriodFrom[$row['PeriodFrom']][] = $row;
@@ -37,7 +37,7 @@ foreach ($forms as $OrganisationCategoryDescription => $value) {
         for($i = 0; $i < count($PeriodFrom); $i++){
             
             foreach (array_unique($PeriodFrom[$key]) as $formvalues) {
-                echo '<td>' . $formvalues[0] . '</td>';
+                echo '<td>' . $formvalues . '</td>';
             }
             
             echo '</tr>';

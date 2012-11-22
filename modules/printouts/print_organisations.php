@@ -181,8 +181,6 @@ require '../../includes/session_validator.php';
                                                 echo '<th>Umbrella Organisations</th>';
                                                 echo '</tr>';
 
-
-
                                                 $num_org = 0;
 
                                                 // Desplaying organisation details
@@ -228,12 +226,12 @@ require '../../includes/session_validator.php';
                                                     $num_org++;
                                                 }
 
-                                                echo'<tr><td colspan="7" align="right">organisation total ' . $num_org . '</td><tr>';
+                                                echo'<tr><td colspan="7" align="right">Total ' . $num_org . '</td><tr>';
                                             }
                                             ?>
                                         </table>
-                                        <?php echo 'Total Organisations ' . $total; ?>
-
+                                        <p style="float: right"><?php echo "Total Organisations " . $total; ?></p>
+                                        <div style="clear: both"></div>
                                     </div>
                                     <!-- end sheet-wrapper  --></div>
                                 <!-- end #report --></div>

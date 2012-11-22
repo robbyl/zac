@@ -81,7 +81,7 @@ require '../../config/config.php';
                     setPerson();
                 });
 
-                $('.person-name').live("blur", function() {
+                $('.person-name').live("input", function() {
                     setPerson();
                 });
 
@@ -104,7 +104,7 @@ require '../../config/config.php';
                 ?>
                 <h1>Add New Organisation</h1>
                 <div class="hr-line"></div>
-                <form action="process_add_organisation.php" novalidate="" method="post">
+                <form action="process_add_organisation.php" method="post">
                     <fieldset>
                         <legend>Organisation Details</legend>
                         <table width="" border="0" cellpadding="5">
@@ -112,7 +112,7 @@ require '../../config/config.php';
                             <tr>
                                 <td width="200">Headquarters District</td>
                                 <td>
-                                    <select name="headquarters" id="headquarters" class="select" style="width: 390px;">
+                                    <select name="headquarters" id="headquarters" required="" class="select" style="width: 390px;">
                                         <option value=""></option>
                                         <?php
                                         $query_dis = "SELECT `DistrictAbb`, `District`
@@ -133,7 +133,7 @@ require '../../config/config.php';
                                 <td>
                                     <p style=" margin: 0; padding: 0">
                                         <input type="text" name="abbr" id="abbr" disabled="" style="width: 40px; font-size: inherit; border: none; background: transparent; color: inherit;">
-                                        <input type="number" name="org_code" required id="org_code" class="number" style="width: 350px; float:none">
+                                        <input type="number" name="org_code" required id="org_code" readonly="" class="number" style="width: 350px; float:none">
                                     </p>
                                 </td>
                             </tr>
@@ -205,13 +205,13 @@ require '../../config/config.php';
                             </tr>
                             <tr>
                                 <td><a class="add-row tooltip" title="Add new row"></a></td>
-                                <td><input type="text" name="person_name[]" id="person_name" class="text person-name" style="width: 90%; text-transform: uppercase;"></td>
+                                <td><input type="text" name="person_name[]" id="person_name" required="" class="text person-name" style="width: 90%; text-transform: uppercase;"></td>
                                 <td><input type="text" name="designation[]" style="text-transform: uppercase;" class="text"></td>
                                 <td><input type="tel" name="person_phone[]" class="text" style="width: 135px;"></td>
                                 <td><input type="text" name="person_fax[]" class="text" style="width: 135px;"></td>
                                 <td><input type="email" name="person_email[]" class="text" style="width: 150px;"></td>
-                                <td><input type="checkbox" name="metthaz[]" value="" required></td>
-                                <td><input type="checkbox" name="still[]" value="" required></td>
+                                <td><input type="checkbox" name="metthaz[]" value=""></td>
+                                <td><input type="checkbox" name="still[]" value="-1" checked=""></td>
                             </tr>
                         </table>
                         <table width="" border="0" cellspacing="0" cellpadding="3" style="margin-top: 10px;">
@@ -239,7 +239,7 @@ require '../../config/config.php';
                             <tr>
                                 <td width="200">Umbrella Organisation(s)</td>
                                 <td width="364">
-                                    <select class="select chzn-select" data-placeholder="select organisation" name="umbrella[]" id="org_name" multiple  required style="width: 390px;">
+                                    <select class="select chzn-select" data-placeholder="select organisation" name="umbrella[]" id="org_name" multiple style="width: 390px;">
                                         <option value=""></option>
                                         <?php
                                         $query_org = "SELECT `OrganisationCode`, `OrganisationName`

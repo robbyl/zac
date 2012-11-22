@@ -135,7 +135,7 @@ if (!empty($lang) && isset($lang)) {
                     $year = $experiod_from[0];
                     $month_range = $experiod_from[1] . '-' . $experiod_from[2] . '/' . $experiod_to[1] . '-' . $experiod_to[2];
                     ?>
-                    <form action="process_form6.php" method="post" novalidate>
+                    <form action="process_form6.php" method="post">
                         <input type="hidden" name="lang" value="<?php echo $lang ?>">
                         <div class="data-form-wapper">
                             <div class="form-header">

@@ -24,6 +24,9 @@ require '../../functions/general_functions.php';
             td {
                 vertical-align: top;
             }
+            .message, .error {
+                display: none;
+            }
         </style>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -67,7 +70,7 @@ require '../../functions/general_functions.php';
 
                         code = pad(code, 3);
                         select += "<option value='" + orgCode + code + "'>" + $(this).val().toUpperCase() + "</option>";
-                        personCode += '<input type="text" value="' + orgCode + code + '" name=person_code[]>';
+                        personCode += '<input type="hidden" value="' + orgCode + code + '" name=person_code[]>';
                         code++;
                     });
 
@@ -79,7 +82,7 @@ require '../../functions/general_functions.php';
                     $('#HIVPersonSelect select').val($('#HIVPerson').val()).attr('selected', 'selected');
                 }
 
-                $('.person-name').live("blur", function() {
+                $('.person-name').live("input", function() {
                     setPesons();
                 });
 
@@ -140,17 +143,17 @@ require '../../functions/general_functions.php';
 
                     $result_org_person = mysql_query($query_org_person) or die(mysql_error());
                     ?>
-                    <form action="process_edit_organisaton.php" method="post">
+                    <form action="process_edit_organisation.php" method="post">
                         <fieldset>
                             <legend>Organisation Details</legend>
                             <table width="" border="0" cellpadding="5">
                                 <span id="personIds"></span>
-                                <input type="text" id="focalPerson" value="<?php echo $organisation['ZHAPMoSFocalPersonID'] ?>">
-                                <input type="text" id="HIVPerson" value="<?php echo $organisation['HIVFocalPersonID'] ?>">
+                                <input type="hidden" id="focalPerson" value="<?php echo $organisation['ZHAPMoSFocalPersonID'] ?>">
+                                <input type="hidden" id="HIVPerson" value="<?php echo $organisation['HIVFocalPersonID'] ?>">
                                 <tr>
                                     <td width="200">Headquarters District</td>
                                     <td>
-                                        <select name="headquarters" id="headquarters" class="select" style="width: 390px;">
+                                        <select name="headquarters" id="headquarters" disabled="" class="select" style="width: 390px;">
                                             <option value=""></option>
                                             <?php
                                             $query_dis = "SELECT `DistrictAbb`, `District`
@@ -170,7 +173,7 @@ require '../../functions/general_functions.php';
                                     <td width="100">Organisation Code</td>
                                     <td>
                                         <p style=" margin: 0; padding: 0">
-                                            <input type="text" name="org_code" required id="org_code" class="text" value="<?php echo $org_id ?>" disabled="" style="width: 350px; float:none">
+                                            <input type="text" name="org_code" required id="org_code" class="text" value="<?php echo $org_id ?>" readonly="" style="width: 350px; float:none">
                                         </p>
                                     </td>
                                 </tr>
@@ -244,13 +247,13 @@ require '../../functions/general_functions.php';
                                     ?>
                                     <tr>
                                         <td><a class="add-row tooltip" title="Add new row"></a></td>
-                                        <td><input type="text" name="person_name" value="<?php echo $person['FullName'] ?>" id="person_name" class="text person-name" style="width: 90%; text-transform: uppercase;"></td>
+                                        <td><input type="text" name="person_name[]" value="<?php echo $person['FullName'] ?>" id="person_name" required="" class="text person-name" style="width: 90%; text-transform: uppercase;"></td>
                                         <td><input type="text" name="designation[]" value="<?php echo $person['Designation'] ?>" style="text-transform: uppercase;" class="text"></td>
                                         <td><input type="tel" name="person_phone[]" value="<?php echo $person['Phone'] ?>" class="text" style="width: 135px;"></td>
                                         <td><input type="text" name="person_fax[]" value="<?php echo $person['Fax'] ?>" class="text" style="width: 135px;"></td>
                                         <td><input type="email" name="person_email[]" value="<?php echo $person['Email'] ?>" class="text" style="width: 150px;"></td>
-                                        <td><input type="checkbox" name="metthaz[]" value="" required></td>
-                                        <td><input type="checkbox" name="still[]" value="" required></td>
+                                        <td><input type="checkbox" name="metthaz[]" value=""></td>
+                                        <td><input type="checkbox" name="still[]" value="-1" <?php if($person['StillAtOrganisation']) echo 'checked' ?>></td>
                                     </tr>
                                 <?php }
                                 ?>
@@ -281,7 +284,7 @@ require '../../functions/general_functions.php';
                                 <tr>
                                     <td width="200">Umbrella Organisation(s)</td>
                                     <td width="364">
-                                        <select class="select chzn-select" data-placeholder="select organisation" name="umbrella[]" id="org_name" multiple  required style="width: 390px;">
+                                        <select class="select chzn-select" data-placeholder="select organisation" name="umbrella[]" id="org_name" multiple style="width: 390px;">
                                             <option value=""></option>
                                             <?php
                                             $query_orgns = "SELECT `OrganisationCode`, `OrganisationName`

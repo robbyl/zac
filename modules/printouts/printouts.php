@@ -88,8 +88,8 @@ ob_start();
                     <fieldset style="float: left">
                         <legend>ZHAPMoS Supervision Printouts</legend>
                         <ul class="report-list">
-                            <li><a href="#" id="org-list">ZHAPMoS Supervision List</a></li>
-                            <li><a href="#" id="form-received">ZHAPMoS Supervision Form</a></li>
+                            <li><a href="#">ZHAPMoS Supervision List</a></li>
+                            <li><a href="#">ZHAPMoS Supervision Form</a></li>
                             <li><a href="#">ZHAPMoS Supervision Analysis</a></li>
                             <li><a href="#">ZAC and District Staff List</a></li>
                         </ul>

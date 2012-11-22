@@ -355,7 +355,7 @@ $query_ans = "INSERT INTO tblzhafigures
  $query_ansm = "INSERT INTO tblzhaanswers
                            (`FormSerialNumber`, `ZhaQuestionCode`, `ZhaAnswer`, `ZhaAnswerText`, `ZhaAnswerDate`)
                     VALUES ";
- if(!empty($mc1_mngmnt)){ $query_ansm .= "'$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
+ if(!empty($mc1_mngmnt)){ $query_ansm .= "('$form_no', 'MC1', '$mc1_mngmnt', '', '')"; }
 
  if(!empty($mc3_money)){ $query_ansm .= ",('" . $form_no . "', 'MC3', '" . $mc3_money . "', '', '')"; }
  

@@ -183,11 +183,12 @@ require '../../includes/session_validator.php';
                                                     $num_org++;
                                                 }
 
-                                                echo'<tr><td colspan="8" align="right">organisation total ' . $num_org . '</td><tr>';
                                             }
                                             ?>
                                         </table>
-                                        <?php echo 'Total Organisations ' . $total; ?>
+                                        
+                                        <p style="float: right"><?php echo "Total Organisations " . $total; ?></p>
+                                        <div style="clear: both"></div>
 
                                     </div>
                                     <!-- end sheet-wrapper  --></div>

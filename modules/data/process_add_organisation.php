@@ -23,7 +23,7 @@ $person_phone = clean_arr($_POST['person_phone']);
 $person_fax = clean_arr($_POST['person_fax']);
 $person_email = clean_arr($_POST['person_email']);
 $metthaz = clean_arr($_POST['metthaz']);
-$still = '';
+$still = clean_arr($_POST['still']);
 
 $org_name = strtoupper($org_name);
 $phy_address = strtoupper($phy_address);
