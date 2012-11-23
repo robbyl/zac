@@ -48,7 +48,7 @@ ob_start();
                     // Display receive form summary as pop-up
                     getPopForm('geographical_criteria.php', '');
                 });
-                
+
                 $('#form-District-summary').click(function() {
 
                     // Display receive form summary as pop-up
@@ -78,7 +78,7 @@ ob_start();
                         <legend>ZHAPMoS Form Printouts</legend>
                         <ul class="report-list">
                             <li><a href="#" id="org-list">Organisation list and Contacts Details</a></li>
-                            <!--<li><a href="#" id="form-received">ZHAPMoS Forms Received</a></li>-->
+                            <li><a href="#" id="form-received">ZHAPMoS Forms Received</a></li>
                             <li><a href="#" id="form-submitted">ZHAPMoS Forms Submission Records</a></li>
                             <li><a href="#" id="form-District-summary">ZHAPMoS District Summary</a></li>
                             <li><a href="#" id="form-Gographical-summary">ZHAPMoS Gographical Summary</a></li>

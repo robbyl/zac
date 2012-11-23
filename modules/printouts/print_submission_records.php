@@ -25,7 +25,7 @@ require '../../includes/session_validator.php';
         <meta charset="utf-8">
         <link rel="icon" href="../../favicon.ico" type="image/x-icon" />
 
-        <title>ZANHID ORGANISATION AND PEOPLE PRINTOUT</title>
+        <title>ZANHID SUBMISSION RECORDS PRINTOUT</title>
 
         <link href="../../css/layout.css" rel="stylesheet" type="text/css">
         <link href="../../css/print.css" rel="stylesheet" type="text/css">

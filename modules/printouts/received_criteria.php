@@ -49,14 +49,16 @@
 
             event.preventDefault();
 
+            var from = $('input[name=received_form]').val();
+            var to = $('input[name=received_to]').val();
             var creteria = $('input[name=org_creteria1]:checked').val();
             var details = $('input[name=org_creteria2]:checked').val();
 
             if (creteria === 'particular') {
                 orgCategory = $('#org_cat').val();
-                nav('forms_received.php?creteria=' + creteria + '&category=' + orgCategory + '&details=' + details);
+                nav('forms_received.php?creteria=' + creteria + '&org_id=' + orgCategory + '&from=' + from + '&to=' + to);
             } else {
-                nav('forms_received.php?creteria=' + creteria + '&category=none&details=' + details);
+                nav('forms_received.php?creteria=' + creteria + '&org_id=none&from=' + from + '&to=' + to);
             }
         });
 
