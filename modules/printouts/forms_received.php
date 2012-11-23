@@ -23,25 +23,34 @@ $result = mysql_query($query_received) or die(mysql_error());
 
 while ($row = mysql_fetch_assoc($result)) {
 
-    $forms[$row['OrganisationCategoryDescription']][] = $row['FormSerialNumber'];
+    $forms[$row['OrganisationCategoryDescription']][$row['PeriodFrom']][] = $row;
     $PeriodFrom[$row['PeriodFrom']][] = $row;
 }
 echo '<table border="1">';
-foreach ($forms as $OrganisationCategoryDescription => $value) {
-    echo '<tr><td>' . $OrganisationCategoryDescription . '</td></tr>';
+foreach ($forms as $OrganisationCategoryDescription => $PeriodFrom) {
+    echo '<tr><th colspan="8">' . $OrganisationCategoryDescription . '</th></tr>';
 
 
-    foreach ($PeriodFrom as $key => $value) {
-        echo '<tr><td>' . $key . '</td><tr>';
-        echo '<tr>';
-        for($i = 0; $i < count($PeriodFrom); $i++){
-            
-            foreach (array_unique($PeriodFrom[$key]) as $formvalues) {
-                echo '<td>' . $formvalues . '</td>';
+    foreach ($PeriodFrom as $rows => $some ) {
+        echo '<tr><th colspan="8">' . $rows . '</th><tr>';
+        
+//        for($i = 0; $i < count($PeriodFrom); $i++){
+//            
+            foreach ($some as $value) {
+                echo '<tr>';
+                echo '<td>' . $value['FormSerialNumber'] . '</td>';
+                echo '<td>' . $value['OrganisationCode'] . '</td>';
+                echo '<td>' . $value['OrganisationName'] . '</td>';
+                echo '<td>' . $value['District'] . '</td>';
+                echo '<td>' . $value['DateCompleted'] . '</td>';
+                echo '<td>' . $value['DateApproved'] . '</td>';
+                echo '<td>' . $value['DateReceived'] . '</td>';
+                echo '<td>' . $value['DateCaptured'] . '</td>';
+                echo '</tr>';
             }
-            
-            echo '</tr>';
-        }
+//            
+//            
+//        }
     }
 //    for ($i = 0; $i < count($PeriodFrom[$OrganisationCategoryDescription]); $i++) {
 //        echo $PeriodFrom[$OrganisationCategoryDescription][$i] . '<br>';
